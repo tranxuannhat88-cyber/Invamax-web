@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới thiệu Chương trình Khám bệnh Online - INVAMAX</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .intro-hero {
+            padding: 120px 0 60px;
+            text-align: center;
+            background: linear-gradient(to bottom, #0b1120, var(--bg-dark));
+        }
+        .intro-section {
+            padding: 60px 0;
+        }
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        .intro-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 24px;
+        }
+        .intro-card h3 {
+            color: var(--primary);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .img-placeholder {
+            width: 100%;
+            height: 400px;
+            background-color: var(--bg-darker);
+            border: 1px dashed var(--border-color);
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-muted);
+            margin-top: 24px;
+        }
+        @media (max-width: 768px) {
+            .intro-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">INVA<span>MAX</span></a>
+            <div class="nav-links">
+                <a href="../index.html">Giới thiệu<br>INVAMAX</a>
+                <a href="../dich-vu.html#kham-benh" class="active">Gói khám bệnh<br>nhà máy</a>
+                <a href="../dich-vu.html#lean">Tư vấn<br>triển khai Lean</a>
+                <a href="../dich-vu.html#so-hoa">Số hoá/AI<br>sản xuất</a>
+                <a href="../san-pham.html">INVAMAX<br>Supply Hub</a>
+                <a href="../kien-thuc.html">Chia sẻ<br>kiến thức</a>
+                <a href="../thu-vien.html">Thư viện<br>tài liệu</a>
+            </div>
+            <button class="mobile-menu-btn"><i data-lucide="menu"></i></button>
+        </div>
+    </nav>
+
+    <div class="intro-hero">
+        <div class="container">
+            <span class="section-subtitle">Chương trình</span>
+            <h1 style="font-size: 2.5rem; margin-bottom: 24px;">Khám Bệnh Nhà Máy Online</h1>
+            <p style="font-size: 1.1rem; color: var(--text-muted); max-width: 800px; margin: 0 auto;">Giải pháp chẩn đoán nhanh chóng, giúp Ban Giám Đốc và Quản lý xưởng nhìn rõ "điểm nghẽn", đánh giá mức độ lãng phí và định hướng cải tiến hệ thống vận hành chỉ trong 5 phút.</p>
+        </div>
+    </div>
+
+    <section class="intro-section">
+        <div class="container">
+            <div class="intro-grid">
+                <div>
+                    <div class="intro-card">
+                        <h3><i data-lucide="target"></i> Ý nghĩa chương trình</h3>
+                        <p style="margin-bottom: 12px;">Đa số các nhà máy thường "bận rộn dập lửa" thay vì xử lý tận gốc vấn đề. Chương trình này giúp bạn:</p>
+                        <ul style="list-style-position: inside; color: var(--text-muted); line-height: 1.8;">
+                            <li>Đánh giá khách quan sức khỏe hệ thống vận hành hiện tại.</li>
+                            <li>Nhận diện nhanh các lãng phí tàng hình gây thất thoát chi phí.</li>
+                            <li>Phát hiện các "căn bệnh" trong quản lý chất lượng, tiến độ và con người.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="intro-card">
+                        <h3><i data-lucide="mouse-pointer-click"></i> Phương pháp thao tác</h3>
+                        <p style="margin-bottom: 12px;">Chỉ với 5 phút thực hiện trắc nghiệm online:</p>
+                        <ul style="list-style-position: inside; color: var(--text-muted); line-height: 1.8;">
+                            <li>Trả lời các câu hỏi đánh giá thực trạng dựa trên thực tế xưởng.</li>
+                            <li>Hệ thống AI sẽ tự động chấm điểm và chẩn đoán mức độ rủi ro.</li>
+                            <li>Nhận ngay <strong>Báo cáo sơ bộ miễn phí</strong> trực tiếp trên web.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <div class="intro-card" style="border-top: 4px solid var(--primary); height: 100%;">
+                        <h3><i data-lucide="file-bar-chart"></i> Báo cáo kết quả</h3>
+                        <p>Hệ thống trả về Báo cáo chẩn đoán với giao diện trực quan, chấm điểm hệ thống từ 0-100 (5 cấp độ cảnh báo) và gợi ý hướng xử lý.</p>
+                        
+                        <div style="background-color: #fff; padding: 10px; border-radius: 8px; margin-top: 20px;">
+                            <!-- Placeholder cho ảnh minh họa báo cáo -->
+                            <div style="width: 100%; height: 280px; background-color: #f3f4f6; border-radius: 4px; border: 1px solid #e5e7eb; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #6b7280; font-size: 0.95rem;">
+                                <i data-lucide="image" style="width: 48px; height: 48px; margin-bottom: 12px; opacity: 0.5;"></i>
+                                Hình ảnh minh hoạ báo cáo
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 60px;">
+                <h2 style="margin-bottom: 24px; font-size: 1.8rem;">Bạn đã sẵn sàng chẩn đoán nhà máy của mình?</h2>
+                <a href="index.html" class="btn btn-primary" style="font-size: 1.2rem; padding: 16px 40px; box-shadow: 0 4px 20px rgba(249, 115, 22, 0.4);">
+                    <i data-lucide="play-circle"></i> Khám bệnh ngay
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="../index.html" class="logo mb-2" style="display: block;">INVA<span>MAX</span></a>
+                    <p class="text-muted mb-4">Giải pháp vận hành tinh gọn, <br>hiệu suất cao cho nhà máy.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Giải pháp</h4>
+                    <div class="footer-links">
+                        <a href="../dich-vu.html">NỀN FOS</a>
+                        <a href="../dich-vu.html">Khám bệnh nhà máy</a>
+                        <a href="../san-pham.html">Supply Hub</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Về chúng tôi</h4>
+                    <div class="footer-links">
+                        <a href="../index.html">Giới thiệu</a>
+                        <a href="../kien-thuc.html">Bài viết</a>
+                        <a href="../thu-vien.html">Thư viện</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Liên hệ</h4>
+                    <p style="font-weight: 600; color: white; margin-bottom: 16px; font-size: 0.95rem;">CÔNG TY TNHH ĐẦU TƯ VÀ PHÁT TRIỂN INVAMAX</p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i data-lucide="file-text"></i>
+                            <span>Mã số thuế: 0202236953</span>
+                        </div>
+                        <div class="contact-item">
+                            <i data-lucide="map-pin"></i>
+                            <span>Thôn Đông Lôi, xã Vĩnh Thịnh, TP Hải Phòng</span>
+                        </div>
+                        <div class="contact-item">
+                            <i data-lucide="phone"></i>
+                            <span>0988.911.869</span>
+                        </div>
+                        <div class="contact-item">
+                            <i data-lucide="mail"></i>
+                            <span>nhattran.invamax@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 INVAMAX. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

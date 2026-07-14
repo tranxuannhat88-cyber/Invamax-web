@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khám bệnh nhà máy Online | INVAMAX</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <header class="app-header">
+        <div class="container">
+            <a href="/" class="logo">INVA<span>MAX</span></a>
+            <h1 style="margin-top: 16px;">Khám bệnh nhà máy Online</h1>
+            <p>Đánh giá sức khỏe vận hành và phát hiện lãng phí chỉ trong 5 phút.</p>
+            
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <form id="khamBenhForm" onsubmit="return false;">
+            
+            <!-- Bước 1: Thông tin nhà máy -->
+            <div class="form-step active" data-step="1">
+                <h2 class="step-title">1. Thông tin nhà máy</h2>
+                <div class="question-block">
+                    <div class="form-group">
+                        <label>Tên nhà máy / Công ty (*)</label>
+                        <input type="text" name="factoryName" class="form-control" required placeholder="Nhập tên nhà máy...">
+                    </div>
+                    <div class="form-group">
+                        <label>Ngành nghề sản xuất (*)</label>
+                        <select name="industry" class="form-control" required>
+                            <option value="">-- Chọn ngành nghề --</option>
+                            <option value="Gỗ / nội thất">Gỗ / nội thất</option>
+                            <option value="Cơ khí / kim loại">Cơ khí / kim loại</option>
+                            <option value="May mặc / da giày">May mặc / da giày</option>
+                            <option value="Nhựa / cao su">Nhựa / cao su</option>
+                            <option value="Thực phẩm / đồ uống">Thực phẩm / đồ uống</option>
+                            <option value="Điện tử / điện lạnh">Điện tử / điện lạnh</option>
+                            <option value="Vật liệu xây dựng">Vật liệu xây dựng</option>
+                            <option value="Bao bì / in ấn">Bao bì / in ấn</option>
+                            <option value="Khác">Khác</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Sản phẩm chính của nhà máy là gì? (*)</label>
+                        <input type="text" name="mainProduct" class="form-control" required placeholder="VD: Bàn ghế gỗ, Phụ tùng xe máy...">
+                    </div>
+                    <div class="form-group">
+                        <label>Địa chỉ nhà máy (*)</label>
+                        <input type="text" name="address" class="form-control" required placeholder="Tỉnh/Thành phố hoặc địa chỉ cụ thể...">
+                    </div>
+                    <div class="form-group">
+                        <label>Số năm hoạt động (*)</label>
+                        <input type="number" name="years" class="form-control" required placeholder="Ví dụ: 5" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label>Quy mô nhân sự (người) (*)</label>
+                        <input type="number" name="scale" class="form-control" required placeholder="Ví dụ: 150" min="1">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bước 2: 8W -->
+            <div class="form-step" data-step="2">
+                <h2 class="step-title">2. Triệu chứng lãng phí (8W)</h2>
+                <p style="margin-bottom: 20px; color: var(--text-muted);">Đánh giá mức độ xuất hiện của 8 loại lãng phí tại xưởng của bạn.</p>
+                <div id="waste8-container"></div>
+            </div>
+
+            <!-- Bước 3: FOS Nhóm 1 -->
+            <div class="form-step" data-step="3">
+                <h2 class="step-title">3. Khung vận hành - Nhóm 1</h2>
+                <p style="margin-bottom: 20px; color: var(--text-muted);">Đánh giá tính định hướng, nhân sự và tiêu chuẩn.</p>
+                <div id="fos1-container"></div>
+            </div>
+
+            <!-- Bước 4: FOS Nhóm 2 -->
+            <div class="form-step" data-step="4">
+                <h2 class="step-title">4. Khung vận hành - Nhóm 2</h2>
+                <p style="margin-bottom: 20px; color: var(--text-muted);">Đánh giá năng lực, quản lý hàng ngày và chất lượng.</p>
+                <div id="fos2-container"></div>
+            </div>
+
+            <!-- Bước 5: FOS Nhóm 3 -->
+            <div class="form-step" data-step="5">
+                <h2 class="step-title">5. Khung vận hành - Nhóm 3</h2>
+                <p style="margin-bottom: 20px; color: var(--text-muted);">Đánh giá số hóa, cải tiến và duy trì.</p>
+                <div id="fos3-container"></div>
+            </div>
+
+            <!-- Bước 6: Ưu tiên cải tiến -->
+            <div class="form-step" data-step="6">
+                <h2 class="step-title">6. Mức độ ưu tiên</h2>
+                <div class="question-block">
+                    <div class="form-group">
+                        <label>Anh/chị ưu tiên cải thiện vấn đề nào nhất trong 3-6 tháng tới? (Chọn tối đa 3) (*)</label>
+                        <div class="priority-options">
+                            <label class="priority-pill" style="background-color: var(--bg-darker); border-color: var(--border-color); color: var(--text-white);"><input type="checkbox" name="priority" value="Tăng năng suất"> <span>Tăng năng suất</span></label>
+                            <label class="priority-pill" style="background-color: var(--bg-darker); border-color: var(--border-color); color: var(--text-white);"><input type="checkbox" name="priority" value="Giảm lỗi"> <span>Giảm lỗi</span></label>
+                            <label class="priority-pill" style="background-color: var(--bg-darker); border-color: var(--border-color); color: var(--text-white);"><input type="checkbox" name="priority" value="Giảm tồn kho"> <span>Giảm tồn kho</span></label>
+                            <label class="priority-pill" style="background-color: var(--bg-darker); border-color: var(--border-color); color: var(--text-white);"><input type="checkbox" name="priority" value="Giao hàng đúng hạn hơn"> <span>Giao hàng đúng hạn hơn</span></label>
+                            <label class="priority-pill" style="background-color: var(--bg-darker); border-color: var(--border-color); color: var(--text-white);"><input type="checkbox" name="priority" value="Giảm chi phí sản xuất"> <span>Giảm chi phí sản xuất</span></label>
+                            <label class="priority-pill" style="background-color: var(--bg-darker); border-color: var(--border-color); color: var(--text-white);"><input type="checkbox" name="priority" value="Chuẩn hóa quy trình"> <span>Chuẩn hóa quy trình</span></label>
+                            <label class="priority-pill" style="background-color: var(--bg-darker); border-color: var(--border-color); color: var(--text-white);"><input type="checkbox" name="priority" value="Quản lý tiến độ rõ hơn"> <span>Quản lý tiến độ rõ hơn</span></label>
+                            <label class="priority-pill" style="background-color: var(--bg-darker); border-color: var(--border-color); color: var(--text-white);"><input type="checkbox" name="priority" value="Số hóa dữ liệu sản xuất"> <span>Số hóa dữ liệu sản xuất</span></label>
+                            <label class="priority-pill" style="background-color: var(--bg-darker); border-color: var(--border-color); color: var(--text-white);"><input type="checkbox" name="priority" value="Đào tạo quản lý cấp trung"> <span>Đào tạo quản lý cấp trung</span></label>
+                            <label class="priority-pill" style="background-color: var(--bg-darker); border-color: var(--border-color); color: var(--text-white);"><input type="checkbox" name="priority" value="Giảm sự phụ thuộc vào chủ doanh nghiệp"> <span>Giảm sự phụ thuộc...</span></label>
+                            <label class="priority-pill" style="background-color: var(--bg-darker); border-color: var(--border-color); color: var(--text-white);"><input type="checkbox" name="priority" value="Khác"> <span>Khác</span></label>
+                        </div>
+                        <p id="priority-error" style="color: var(--danger); font-size: 0.9rem; margin-top: 8px; display: none;">Vui lòng chọn từ 1 đến 3 ưu tiên.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bước 7: Thông tin liên hệ -->
+            <div class="form-step" data-step="7">
+                <h2 class="step-title">7. Nhận kết quả</h2>
+                <p style="margin-bottom: 20px; color: var(--text-muted);">Vui lòng để lại thông tin để chúng tôi gửi báo cáo phân tích chi tiết.</p>
+                <div class="question-block">
+                    <div class="form-group">
+                        <label>Họ và tên (*)</label>
+                        <input type="text" name="contactName" class="form-control" required placeholder="Nhập họ tên...">
+                    </div>
+                    <div class="form-group">
+                        <label>Chức vụ của bạn là gì? (*)</label>
+                        <input type="text" name="jobTitle" class="form-control" required placeholder="VD: Giám đốc, Quản lý xưởng...">
+                    </div>
+                    <div class="form-group">
+                        <label>Số điện thoại (*)</label>
+                        <input type="tel" name="contactPhone" class="form-control" required placeholder="Nhập số điện thoại...">
+                    </div>
+                    <div class="form-group">
+                        <label>Email (*)</label>
+                        <input type="email" name="contactEmail" class="form-control" required placeholder="Nhập email...">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bước 8: Kết quả -->
+            <div class="form-step" data-step="8">
+                <div class="result-header">
+                    <h2 style="font-size: 2rem; margin-bottom: 12px;">Kết quả chẩn đoán sơ bộ</h2>
+                    <p style="color: var(--text-muted);">Dựa trên thông tin cung cấp, đây là phân tích hệ thống của bạn.</p>
+                </div>
+                
+                <div class="score-container" style="display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap; margin-bottom: 40px;">
+                    <!-- Biểu đồ và Trạng thái -->
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+                        <div class="score-circle" id="score-circle-ui" style="--progress: 0%; --circle-color: #f97316;">
+                            <div class="score-content">
+                                <span id="res-score">0</span>
+                                <span>/100</span>
+                            </div>
+                        </div>
+                        <div class="level-badge" id="res-level" style="font-size: 1.2rem; padding: 10px 24px; border-radius: 30px; font-weight: bold; background-color: var(--circle-color); color: white; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+                            Đang xử lý...
+                        </div>
+                    </div>
+
+                    <!-- Chú giải -->
+                    <div class="score-legend" style="text-align: left; background: var(--bg-card); padding: 16px 24px; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <h4 style="margin-bottom: 12px; font-size: 1.1rem; color: var(--text-white);">Thang điểm đánh giá:</h4>
+                        <ul style="list-style: none; padding: 0; margin: 0; font-size: 1rem; color: var(--text-muted);">
+                            <li style="margin-bottom: 8px; display: flex; align-items: center;"><span style="display: inline-block; width: 14px; height: 14px; border-radius: 50%; background: #10b981; margin-right: 12px;"></span> 0 - 20: Ổn định / Rất tốt</li>
+                            <li style="margin-bottom: 8px; display: flex; align-items: center;"><span style="display: inline-block; width: 14px; height: 14px; border-radius: 50%; background: #84cc16; margin-right: 12px;"></span> 21 - 40: Có vài điểm nghẽn</li>
+                            <li style="margin-bottom: 8px; display: flex; align-items: center;"><span style="display: inline-block; width: 14px; height: 14px; border-radius: 50%; background: #f59e0b; margin-right: 12px;"></span> 41 - 60: Có dấu hiệu rối vận hành</li>
+                            <li style="margin-bottom: 8px; display: flex; align-items: center;"><span style="display: inline-block; width: 14px; height: 14px; border-radius: 50%; background: #ef4444; margin-right: 12px;"></span> 61 - 80: Bệnh vận hành rõ ràng</li>
+                            <li style="display: flex; align-items: center;"><span style="display: inline-block; width: 14px; height: 14px; border-radius: 50%; background: #7f1d1d; margin-right: 12px;"></span> 81 - 100: Báo động đỏ (Nguy hiểm)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <h3>Nhận định tổng quan</h3>
+                    <p id="res-general"></p>
+                </div>
+
+                <div class="result-card">
+                    <h3>3 Bệnh vận hành hiện tại</h3>
+                    <ul id="res-diseases"></ul>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="result-card" style="margin-bottom: 0;">
+                        <h3>Top 3 Triệu chứng</h3>
+                        <ul id="res-top-wastes"></ul>
+                    </div>
+                    <div class="result-card" style="margin-bottom: 0;">
+                        <h3>Top 3 Điểm yếu NỀN FOS</h3>
+                        <ul id="res-top-fos"></ul>
+                    </div>
+                </div>
+
+                <div class="result-card" style="margin-top: 24px;">
+                    <h3>Gợi ý bước tiếp theo</h3>
+                    <p id="res-nextsteps"></p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 24px;">
+                    <!-- Báo cáo sơ bộ -->
+                    <div class="result-card cta-box" style="margin-top: 0; display: flex; flex-direction: column; align-items: center; text-align: center;">
+                        <h3 style="margin-bottom: 8px;">Nhận báo cáo sơ bộ miễn phí</h3>
+                        <p style="margin-bottom: 20px; color: var(--text-muted); flex-grow: 1;">Kết quả sơ bộ vừa hiển thị ở trên. Bạn có thể xem lại hoặc lưu trữ dưới dạng PDF.</p>
+                        <button type="button" class="btn btn-outline" id="btnDownloadPdf" style="font-size: 1.1rem; padding: 12px 24px;">Nhận báo cáo sơ bộ</button>
+                    </div>
+
+                    <!-- Báo cáo chi tiết -->
+                    <div class="result-card cta-box" style="margin-top: 0; display: flex; flex-direction: column; align-items: center; text-align: center; border-color: var(--primary);">
+                        <h3 style="margin-bottom: 8px;">Nhận báo cáo chi tiết</h3>
+                        <p style="font-size: 1.1rem; font-weight: 700; color: var(--text-white); margin-bottom: 12px;">Mức phí: 990.000 VNĐ / báo cáo</p>
+                        <ul style="margin-bottom: 20px; padding-left: 20px; color: var(--text-muted); flex-grow: 1; font-size: 0.95rem; text-align: left;">
+                            <li style="margin-bottom: 4px;">Điểm sức khỏe vận hành nhà máy</li>
+                            <li style="margin-bottom: 4px;">Bản đồ 8 lãng phí</li>
+                            <li style="margin-bottom: 4px;">Truy nguyên nguyên nhân theo 4M + Information</li>
+                            <li style="margin-bottom: 4px;">3 bệnh vận hành chính cần ưu tiên xử lý</li>
+                            <li>Gợi ý phác đồ cải tiến 30–60 ngày</li>
+                        </ul>
+                        <button type="button" class="btn btn-primary" id="btnShowPayment" style="font-size: 1.1rem; padding: 12px 24px;">Nhận báo cáo chi tiết</button>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </main>
+
+    <!-- Footer Buttons -->
+    <div class="form-footer" id="form-footer">
+        <div class="container">
+            <button type="button" class="btn btn-outline" id="btnPrev" style="display: none;">
+                <i data-lucide="arrow-left"></i> Quay lại
+            </button>
+            <button type="button" class="btn btn-primary" id="btnNext" style="margin-left: auto;">
+                Tiếp tục <i data-lucide="arrow-right"></i>
+            </button>
+            <button type="button" class="btn btn-primary" id="btnSubmit" style="display: none; margin-left: auto;">
+                Hoàn tất & Nhận kết quả
+            </button>
+        </div>
+    </div>
+
+    <!-- Link Quay lại trang chủ -->
+    <div style="text-align: center; margin: 40px 0; width: 100%;">
+        <a href="../index.html" class="btn btn-outline" style="display: inline-flex; align-items: center; gap: 8px; border-color: transparent; font-weight: normal; color: var(--text-muted); background: transparent;">
+            <i data-lucide="home"></i> Quay lại trang chủ INVAMAX
+        </a>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+    <!-- Phải gọi type="module" để JS có thể import/export -->
+    <script type="module" src="assets/js/app.js"></script>
+
+    <!-- Modal Thanh Toán -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 style="font-size: 1.5rem; margin-bottom: 20px;">Thông tin chuyển khoản:</h2>
+            
+            <div class="payment-info-container" style="display: flex; flex-wrap: wrap; gap: 20px;">
+                <div class="payment-details" style="flex: 1; min-width: 250px; font-size: 1rem; line-height: 1.6;">
+                    <p style="margin-bottom: 8px;">Ngân hàng: <strong>Thương mại cổ phần Quân Đội (MB)</strong></p>
+                    <p style="margin-bottom: 8px;">Số tài khoản: <strong style="font-size: 1.2rem;">5757658888</strong></p>
+                    <p style="margin-bottom: 8px;">Chủ tài khoản: <strong>INVAMAX</strong></p>
+                    <p style="margin-bottom: 8px;">Nội dung chuyển khoản:<br><strong>KBM + Số điện thoại đã đăng ký.</strong></p>
+                    <p style="margin-top: 12px; font-style: italic; color: var(--text-muted);">Ví dụ:<br>KBM <span id="payment-phone-placeholder" style="font-weight: bold; color: var(--text-white);">0945530699</span></p>
+                </div>
+                <div class="payment-qr" style="flex: 1; min-width: 200px; display: flex; justify-content: center; align-items: center; background: white; border-radius: 12px; padding: 20px;">
+                    <img id="payment-qr-img" src="" alt="Mã QR Thanh Toán" style="width: 100%; max-width: 250px; height: auto;">
+                </div>
+            </div>
+
+            <p style="margin-top: 24px; color: var(--text-muted); font-size: 0.95rem; line-height: 1.5;">Sau khi thanh toán, anh/chị vui lòng gửi ảnh giao dịch qua Zalo: <strong>0945.530.699</strong> để INVAMAX xác nhận và gửi báo cáo chi tiết qua Email/Zalo.</p>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="../index.html" class="logo mb-2" style="display: block;">INVA<span>MAX</span></a>
+                    <p class="text-muted mb-4">Gi?i ph�p v?n h�nh tinh g?n, <br>hi?u su?t cao cho nh� m�y.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Gi?i Ph�p</h4>
+                    <ul>
+                        <li><a href="../dich-vu.html#kham-benh">Kh�m b?nh nh� m�y</a></li>
+                        <li><a href="../dich-vu.html#lean">Tu v?n tri?n khai Lean</a></li>
+                        <li><a href="../dich-vu.html#so-hoa">S? h�a / AI s?n xu?t</a></li>
+                        <li><a href="../san-pham.html">INVAMAX Supply Hub</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>C�ng ty</h4>
+                    <ul>
+                        <li><a href="../index.html">V? ch�ng t�i</a></li>
+                        <li><a href="../kien-thuc.html">Ki?n th?c</a></li>
+                        <li><a href="../thu-vien.html">Thu vi?n t�i li?u</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Li�n h?</h4>
+                    <ul class="text-muted">
+                        <li style="margin-bottom: 8px;">Hotline: 0945 530 699</li>
+                        <li style="margin-bottom: 8px;">Email: nhattran.invamax@gmail.com</li>
+                        <li>�?a ch?: H� N?i, Vi?t Nam</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-muted); font-size: 0.9rem;">
+                <p>&copy; 2026 INVAMAX. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
