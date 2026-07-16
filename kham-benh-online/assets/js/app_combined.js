@@ -466,41 +466,312 @@ async function submitForm() {
     localStorage.removeItem(LS_KEY);
 
     currentStep = totalSteps;
-    renderResults(results);
+    renderResults(payload);
     updateUI();
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function renderResults(res) {
-    document.getElementById('res-score').innerText = res.warningScore;
-    document.getElementById('res-level').innerText = res.assessmentLevel;
-    document.getElementById('res-general').innerText = res.generalAssessment;
+function renderResults(payload) {
+    const res = payload.scores;
+    const info = payload.factoryInfo;
+    const phone = payload.contactInfo.phone;
 
-    const topWastesEl = document.getElementById('res-top-wastes');
-    topWastesEl.innerHTML = res.top3Wastes.map(w => `<li>${w}</li>`).join('');
+    // Trang 1
+    document.getElementById('a4-company').innerText = info.name || '---';
+    document.getElementById('a4-product').innerText = info.mainProduct || '---';
+    document.getElementById('a4-name').innerText = payload.contactInfo.name || '---';
+    document.getElementById('a4-job').innerText = payload.contactInfo.jobTitle || '---';
+    document.getElementById('a4-phone').innerText = phone || '---';
+    
+    document.getElementById('a4-score-text').innerText = res.warningScore + ' / 100';
+    document.getElementById('a4-level-text').innerText = 'MỨC ĐỘ: ' + res.assessmentLevel.toUpperCase();
+    document.getElementById('a4-general-desc').innerText = res.generalAssessment;
 
-    const topFosEl = document.getElementById('res-top-fos');
-    topFosEl.innerHTML = res.top3FOS.map(f => `<li>${f}</li>`).join('');
+    let levelText = "";
+    let levelColor = "";
+    let recText = "";
+    const s = res.warningScore;
+    if(s <= 20) { 
+        levelText = "KHỎE MẠNH"; levelColor = "#10b981"; 
+        recText = "Khuyến nghị: Duy trì tiêu chuẩn và tập trung cải tiến liên tục.";
+    }
+    else if(s <= 40) { 
+        levelText = "CẢNH BÁO"; levelColor = "#eab308"; 
+        recText = "Khuyến nghị: Kiểm tra các khu vực có điểm cao để ngăn vấn đề lan rộng.";
+    }
+    else if(s <= 60) { 
+        levelText = "MẮC BỆNH"; levelColor = "#f97316"; 
+        recText = "Khuyến nghị: Thực hiện đánh giá chuyên sâu và lập kế hoạch cải tiến ưu tiên.";
+    }
+    else if(s <= 80) { 
+        levelText = "BỆNH NẶNG"; levelColor = "#ef4444"; 
+        recText = "Khuyến nghị: Triển khai chương trình cải tiến có người chịu trách nhiệm và theo dõi hằng ngày.";
+    }
+    else { 
+        levelText = "NGUY KỊCH"; levelColor = "#334155"; 
+        recText = "Khuyến nghị: Ưu tiên đánh giá hiện trường toàn diện và xử lý các vấn đề trọng yếu trước khi mở rộng cải tiến.";
+    }
+    
+    document.getElementById('a4-level-text').innerText = `MỨC ĐỘ: ${levelText}`;
+    document.getElementById('a4-level-text').style.color = levelColor;
+    document.getElementById('a4-score-text').innerText = `${s} / 100`;
+    document.getElementById('a4-score-text').style.color = levelColor;
+    
+    const recTextEl = document.getElementById('a4-recommendation-text');
+    if(recTextEl) {
+        recTextEl.innerText = recText;
+        recTextEl.style.color = levelColor;
+    }
+    
+    // Gauge Chart (Trang 1)
+    const ctxGauge = document.getElementById('gaugeChart');
+    if(window.myGauge) window.myGauge.destroy();
+    window.myGauge = new Chart(ctxGauge, {
+        type: 'doughnut',
+        data: {
+            labels: ['Khỏe mạnh', 'Cảnh báo', 'Mắc bệnh', 'Bệnh nặng', 'Nguy kịch'],
+            datasets: [{
+                data: [20, 20, 20, 20, 20],
+                backgroundColor: ['#10b981', '#eab308', '#f97316', '#ef4444', '#334155'],
+                borderWidth: 0,
+                circumference: 180,
+                rotation: 270
+            }]
+        },
+        plugins: [{
+            id: 'gaugeNeedle',
+            afterDatasetDraw(chart) {
+                const { ctx, chartArea: { width, height } } = chart;
+                ctx.save();
+                const score = res.warningScore; 
+                // Calculate angle: 270 deg (start) to 450 deg (end), spread is 180 deg (Math.PI).
+                // 270 deg = 1.5 * Math.PI, but with rotation:270, the center is aligned.
+                // Angle needs to be mapped to the arc.
+                const angle = Math.PI + (score / 100) * Math.PI;
+                
+                // The center of the arc
+                const meta = chart.getDatasetMeta(0);
+                const cx = meta.data[0].x;
+                const cy = meta.data[0].y;
+                // Needle length based on outer radius
+                const radius = meta.data[0].outerRadius;
+                
+                ctx.translate(cx, cy);
+                ctx.rotate(angle);
+                ctx.beginPath();
+                ctx.moveTo(0, -4);
+                ctx.lineTo(radius - 10, 0);
+                ctx.lineTo(0, 4);
+                ctx.fillStyle = '#1e293b';
+                ctx.fill();
+                // Center pin
+                ctx.beginPath();
+                ctx.arc(0, 0, 8, 0, Math.PI * 2);
+                ctx.fillStyle = '#1e293b';
+                ctx.fill();
+                ctx.beginPath();
+                ctx.arc(0, 0, 4, 0, Math.PI * 2);
+                ctx.fillStyle = '#ffffff';
+                ctx.fill();
+                ctx.restore();
+            }
+        }],
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            cutout: '80%',
+            plugins: { tooltip: { enabled: false }, legend: { display: false } },
+            animation: { animateRotate: true, animateScale: false }
+        }
+    });
 
-    const diseasesEl = document.getElementById('res-diseases');
-    diseasesEl.innerHTML = res.diseases.map(d => `<li>${d}</li>`).join('');
+    const top3Html = res.top3Wastes.map((w, i) => `
+        <div class="a4-issue-card">
+            <div class="circle-num">${i+1}</div>
+            <strong style="color:#1e293b;font-size:12px;">${w}</strong>
+        </div>
+    `).join('');
+    document.getElementById('a4-top-3-issues').innerHTML = top3Html;
+
+    // Trang 2
+    // Extract Waste Scores (Assuming questionsData.waste8 order)
+    const wasteLabels = questionsData.waste8.map(q => q.module);
+    const wasteData = questionsData.waste8.map(q => payload.rawAnswers[q.id] ? parseInt(payload.rawAnswers[q.id]) : 0);
     
-    const scoreCircle = document.getElementById('score-circle-ui');
-    const levelBadge = document.getElementById('res-level');
-    let circleColor = "#7f1d1d";
+    const ctxRadar = document.getElementById('radarChart');
+    if(window.myRadar) window.myRadar.destroy();
+    window.myRadar = new Chart(ctxRadar, {
+        type: 'radar',
+        data: {
+            labels: wasteLabels,
+            datasets: [{
+                label: 'Điểm Lãng phí (0-4)',
+                data: wasteData,
+                backgroundColor: 'rgba(249, 115, 22, 0.2)',
+                borderColor: '#f97316',
+                pointBackgroundColor: '#f97316',
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                r: {
+                    angleLines: { color: '#cbd5e1' },
+                    grid: { color: '#cbd5e1' },
+                    pointLabels: { color: '#475569', font: { size: 10 } },
+                    ticks: { display: false, min: 0, max: 4, stepSize: 1 }
+                }
+            },
+            plugins: { legend: { display: false } }
+        }
+    });
+
+    const wasteScoresHtml = wasteLabels.map((lbl, idx) => `
+        <div class="a4-waste-pill">
+            <div style="color:#94a3b8">${lbl}</div>
+            <span>${wasteData[idx]} / 4</span>
+        </div>
+    `).join('');
+    document.getElementById('a4-waste-scores').innerHTML = wasteScoresHtml;
+
+    const wasteAnalysisHtml = res.top3Wastes.map((w, i) => `
+        <div style="margin-bottom: 20px; background: #f8fafc; padding: 15px; border-radius: 8px; border-left: 3px solid #f97316;">
+            <div style="display:flex; align-items:center; gap: 10px; margin-bottom: 10px;">
+                <div style="width:24px; height:24px; background:#f97316; color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:12px;">${i+1}</div>
+                <h4 style="color:#1e293b; margin:0; font-size:14px;">${w}</h4>
+            </div>
+            <p style="font-size: 12px; color: #475569; line-height: 1.5; margin:0;">Tác động: Dòng chảy bị đứt đoạn, tăng chi phí vận hành, giảm biên lợi nhuận đáng kể. Cần áp dụng ngay các biện pháp kiểm soát và chuẩn hóa.</p>
+        </div>
+    `).join('');
+    document.getElementById('a4-waste-analysis').innerHTML = wasteAnalysisHtml;
+
+    // Trang 3 - Heatmap
+    const fosQs = [...questionsData.fosGroup1, ...questionsData.fosGroup2, ...questionsData.fosGroup3];
+    const heatmapHtml = fosQs.map(q => {
+        const s = payload.rawAnswers[q.id] ? parseInt(payload.rawAnswers[q.id]) : 0;
+        let cClass = 'good';
+        if(s===1) cClass='fair'; else if(s===2) cClass='warn'; else if(s===3) cClass='bad'; else if(s===4) cClass='critical';
+        return `
+            <div class="a4-heat-cell ${cClass}">
+                <div class="module-name">${q.module}</div>
+                <div class="score">${s} / 4</div>
+            </div>
+        `;
+    }).join('');
+    document.getElementById('a4-heatmap').innerHTML = heatmapHtml;
+
+    const topFosHtml = res.top3FOS.map((f, i) => `
+        <div style="margin-bottom: 15px; background: #f8fafc; padding: 15px; border-radius: 8px; border-left: 3px solid #ef4444;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 8px;">
+                <div style="display:flex; align-items:center; gap: 10px;">
+                    <div style="width:20px; height:20px; background:#ef4444; color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:11px;">${i+1}</div>
+                    <strong style="color:#1e293b; font-size:13px;">${f}</strong>
+                </div>
+            </div>
+            <p style="font-size: 11px; color: #475569; line-height: 1.5; margin:0;">Khung quản trị nền tảng tại khâu này đang bị thiếu hụt nghiêm trọng, tạo ra sự phụ thuộc hoàn toàn vào con người.</p>
+        </div>
+    `).join('');
+    document.getElementById('a4-top3-fos').innerHTML = topFosHtml;
+
+    // Trang 4 - Triệu chứng
+    const symptomsHtml = res.diseases.map((d, i) => `
+        <tr>
+            <td style="text-align: center;">${i+1}</td>
+            <td style="color: #1e293b; font-weight: bold;">${d}</td>
+            <td style="text-align: center; color: #f97316; font-weight: bold;">CẢNH BÁO</td>
+            <td><span style="background: rgba(239, 68, 68, 0.1); color: #ef4444; padding: 4px 8px; border-radius: 4px; font-size: 10px; font-weight: bold;">NGHIÊM TRỌNG</span></td>
+        </tr>
+    `).join('');
+    document.getElementById('a4-symptoms-table').innerHTML = symptomsHtml;
+
+    // Trang 5 - Khuyến nghị & QR
+    const recHtml = `
+        <li style="margin-bottom:10px">Tổ chức họp khẩn ban lãnh đạo để đánh giá lại mức độ nghiêm trọng của 3 lãng phí lớn nhất.</li>
+        <li style="margin-bottom:10px">Yêu cầu thu thập số liệu thực tế về Tồn kho, Lỗi hỏng và Thời gian chờ trong 7 ngày gần nhất.</li>
+        <li style="margin-bottom:10px">Nâng cấp năng lực quản lý hiện trường (Daily Management) và Thiết lập lại bộ tiêu chuẩn (Standard).</li>
+        <li style="margin-bottom:10px">Thanh toán Mở khóa Báo Cáo Chi Tiết để nhận bản Phân tích Nguyên nhân Gốc rễ và Lộ trình Cải tiến 60 ngày.</li>
+    `;
+    document.getElementById('a4-recommendations').innerHTML = recHtml;
+
+    // QR Payment is no longer shown on the PDF, but used in the modal instead.
+    // The modal already has #payment-qr-img which we update here.
+    const phoneTrim = (phone || '0945530699').replace(/\s+/g, '');
+    const modalQrPhone = document.getElementById('payment-phone-placeholder');
+    if(modalQrPhone) modalQrPhone.innerText = phoneTrim;
     
-    if(res.warningScore <= 20) { circleColor = "#10b981"; }
-    else if(res.warningScore <= 40) { circleColor = "#84cc16"; }
-    else if(res.warningScore <= 60) { circleColor = "#f59e0b"; }
-    else if(res.warningScore <= 80) { circleColor = "#ef4444"; }
-    else { circleColor = "#7f1d1d"; }
-    
-    scoreCircle.style.setProperty('--circle-color', circleColor);
-    levelBadge.style.backgroundColor = circleColor;
-    // assessmentLevel is already unified from calculateResults
-    levelBadge.innerText = res.assessmentLevel;
-    
-    setTimeout(() => {
-        scoreCircle.style.setProperty('--progress', res.warningScore + '%');
-    }, 100);
+    const modalQrImg = document.getElementById('payment-qr-img');
+    if(modalQrImg) modalQrImg.src = `https://img.vietqr.io/image/MB-5757658888-qr_only.png?amount=990000&addInfo=${encodeURIComponent('KBM ' + phoneTrim)}&accountName=INVAMAX`;
+
+    // Also populate the inline QR on Trang 5
+    const inlineQrPhone = document.getElementById('a4-qr-phone-inline');
+    if(inlineQrPhone) inlineQrPhone.innerText = phoneTrim;
+    const inlineQrImg = document.getElementById('a4-qr-img-inline');
+    if(inlineQrImg) inlineQrImg.src = `https://img.vietqr.io/image/MB-5757658888-qr_only.png?amount=990000&addInfo=${encodeURIComponent('KBM ' + phoneTrim)}&accountName=INVAMAX`;
+
+    // Bind Payment Button
+    const btnShowPayment = document.getElementById('btn-show-payment');
+    const paymentModal = document.getElementById('paymentModal');
+    if (btnShowPayment && paymentModal) {
+        btnShowPayment.addEventListener('click', () => {
+            paymentModal.style.display = 'flex';
+        });
+    }
+
+    const closeModalBtn = document.getElementById('closeModal');
+    if (closeModalBtn && paymentModal) {
+        closeModalBtn.addEventListener('click', () => {
+            paymentModal.style.display = 'none';
+        });
+    }
+
+    window.addEventListener('click', (event) => {
+        if (event.target == paymentModal) {
+            paymentModal.style.display = "none";
+        }
+    });
+
+    // Download PDF event
+    const btnDown = document.getElementById('a4-btn-download');
+    if (btnDown) {
+        const newBtn = btnDown.cloneNode(true);
+        btnDown.parentNode.replaceChild(newBtn, btnDown);
+        
+        newBtn.addEventListener('click', () => {
+            const element = document.getElementById('report-a4-wrapper');
+            const pdfControls = document.getElementById('a4-pdf-controls');
+            element.classList.add('pdf-export-mode');
+            if(pdfControls) pdfControls.style.display = 'none'; // Hide explicitly for PDF
+            
+            const originalText = newBtn.innerHTML;
+            newBtn.innerHTML = '<i data-lucide="loader" class="spin"></i> ĐANG TẠO PDF...';
+            
+            // To ensure html2canvas captures properly
+            window.scrollTo(0,0);
+            
+            setTimeout(() => {
+                const opt = {
+                    margin:       0,
+                    filename:     'INVAMAX_Bao_Cao_So_Bo.pdf',
+                    image:        { type: 'jpeg', quality: 1 },
+                    html2canvas:  { scale: 2, useCORS: true, logging: false, backgroundColor: '#ffffff' },
+                    jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
+                    pagebreak:    { mode: ['css', 'legacy'] }
+                };
+
+                html2pdf().set(opt).from(element).save().then(() => {
+                    newBtn.innerHTML = originalText;
+                    element.classList.remove('pdf-export-mode');
+                    if(pdfControls) pdfControls.style.display = '';
+                }).catch(e => {
+                    console.error(e);
+                    newBtn.innerHTML = originalText;
+                    element.classList.remove('pdf-export-mode');
+                    if(pdfControls) pdfControls.style.display = '';
+                    alert('Lỗi tạo PDF!');
+                });
+            }, 1000);
+        });
+    }
 }
