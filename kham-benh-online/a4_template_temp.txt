@@ -1,0 +1,280 @@
+﻿<div class="a4-wrapper" id="report-a4-wrapper">
+                        <!-- Trang 1 -->
+                        <div class="a4-page">
+                            <div class="a4-header">
+                                <div>
+                                    <div class="a4-logo" style="font-size: 22px; font-weight: 800; color: #0f172a; letter-spacing: 1px;">INVA<span style="color:#f97316;">MAX</span></div>
+                                    <div style="font-size: 10px; font-weight: bold; color: #f97316; margin-top: 2px;">Ná»€N FOS | AI / Digital | Supply Hub</div>
+                                </div>
+                                <div class="a4-title-center">BÃO CÃO KHÃM Bá»†NH NHÃ€ MÃY ONLINE<br>THEO Há»† ÄIá»€U HÃ€NH Ná»€N FOS</div>
+                                <div style="width: 160px;"></div>
+                            </div>
+                            <div class="a4-content">
+                                <div class="a4-section-title">1. THÃ”NG TIN NHÃ€ MÃY & Tá»”NG QUAN Sá»¨C KHá»ŽE Váº¬N HÃ€NH <span style="float:right">Trang 1 / 5</span></div>
+                                <div class="a4-box" style="margin-bottom: 20px;">
+                                    <h3>THÃ”NG TIN NHÃ€ MÃY</h3>
+                                    <div class="a4-grid-2" style="gap: 10px 30px;">
+                                        <div>
+                                            <table class="a4-table-info">
+                                                <tr><td>TÃªn cÃ´ng ty</td><td id="a4-company" style="font-weight: 600; color: #1e293b;">...</td></tr>
+                                                <tr><td>Sáº£n pháº©m</td><td id="a4-product" style="font-weight: 600; color: #1e293b;">...</td></tr>
+                                                <tr><td>MÃ£ bÃ¡o cÃ¡o</td><td id="a4-code-1" style="font-weight: 600; color: #1e293b;">FOS-25052026-001</td></tr>
+                                            </table>
+                                        </div>
+                                        <div>
+                                            <table class="a4-table-info">
+                                                <tr><td>NgÆ°á»i tráº£ lá»i</td><td id="a4-name" style="font-weight: 600; color: #1e293b;">...</td></tr>
+                                                <tr><td>Chá»©c vá»¥</td><td id="a4-job" style="font-weight: 600; color: #1e293b;">...</td></tr>
+                                                <tr><td>Sá»‘ Ä‘iá»‡n thoáº¡i</td><td id="a4-phone" style="font-weight: 600; color: #1e293b;">...</td></tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="a4-box" style="margin-top: 20px;">
+                                    <h3 style="text-align: center; margin-bottom: 20px;">ÄIá»‚M Sá»¨C KHá»ŽE Tá»”NG QUAN</h3>
+                                    <div style="display: flex; align-items: center; justify-content: center; gap: 40px;">
+                                        <div style="width: 280px; position: relative;">
+                                            <div style="height: 140px; width: 100%;">
+                                                <canvas id="gaugeChart"></canvas>
+                                            </div>
+                                            <div style="text-align: center; margin-top: -15px;">
+                                                <div style="font-size: 32px; font-weight: bold; color: #1e293b;" id="a4-score-text">0 / 100</div>
+                                                <div style="font-size: 14px; font-weight: bold; margin-top: 5px; color: #1e293b;" id="a4-level-text">Má»¨C Äá»˜: ...</div>
+                                            </div>
+                                        </div>
+                                        <div style="text-align: left; font-size: 13px; color: #475569;">
+                                            <div style="margin-bottom: 12px;"><span style="display:inline-block; width:16px; height:16px; border-radius:50%; background:#10b981; margin-right:10px; vertical-align:middle;"></span> <strong>Khá»e máº¡nh</strong></div>
+                                            <div style="margin-bottom: 12px;"><span style="display:inline-block; width:16px; height:16px; border-radius:50%; background:#eab308; margin-right:10px; vertical-align:middle;"></span> <strong>Cáº£nh bÃ¡o</strong></div>
+                                            <div style="margin-bottom: 12px;"><span style="display:inline-block; width:16px; height:16px; border-radius:50%; background:#f97316; margin-right:10px; vertical-align:middle;"></span> <strong>Máº¯c bá»‡nh</strong></div>
+                                            <div style="margin-bottom: 12px;"><span style="display:inline-block; width:16px; height:16px; border-radius:50%; background:#ef4444; margin-right:10px; vertical-align:middle;"></span> <strong>Bá»‡nh náº·ng</strong></div>
+                                            <div><span style="display:inline-block; width:16px; height:16px; border-radius:50%; background:#334155; margin-right:10px; vertical-align:middle;"></span> <strong>Nguy ká»‹ch</strong></div>
+                                        </div>
+                                    </div>
+                                    <div style="text-align: center; margin-top: 25px; border-top: 1px solid #e2e8f0; padding-top: 20px;">
+                                        <h4 style="color: #f97316; margin-bottom: 8px;">Káº¾T LUáº¬N TÃŒNH TRáº NG & KHUYáº¾N NGHá»Š (AI)</h4>
+                                        <p id="a4-general-desc" style="font-size: 13px; color: #475569; line-height: 1.6; margin: 0;"></p>
+                                        <div id="a4-recommendation-text" style="font-size: 13.5px; font-weight: bold; color: #0f172a; margin-top: 15px; padding: 12px; background: #f1f5f9; border-radius: 6px;">
+                                            <!-- JS will populate -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="a4-box" style="margin-top: 20px;">
+                                    <h3>BA Váº¤N Äá»€ Ná»”I Báº¬T</h3>
+                                    <div class="a4-flex-3" id="a4-top-3-issues">
+                                        <!-- JS will populate -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a4-footer">INVAMAX www.invamax.com | MÃ£ bÃ¡o cÃ¡o: <span id="a4-code-f1">FOS-25052026-001</span> | Trang 1 / 5</div>
+                        </div>
+                    
+                        <!-- Trang 2 -->
+                        <div class="a4-page">
+                            <div class="a4-header">
+                                <div>
+                                    <div class="a4-logo" style="font-size: 22px; font-weight: 800; color: #0f172a; letter-spacing: 1px;">INVA<span style="color:#f97316;">MAX</span></div>
+                                    <div style="font-size: 10px; font-weight: bold; color: #f97316; margin-top: 2px;">Ná»€N FOS | AI / Digital | Supply Hub</div>
+                                </div>
+                                <div class="a4-title-center">BÃO CÃO KHÃM Bá»†NH NHÃ€ MÃY ONLINE<br>THEO Há»† ÄIá»€U HÃ€NH Ná»€N FOS</div>
+                                <div style="width: 160px;"></div>
+                            </div>
+                            <div class="a4-content">
+                                <div class="a4-section-title">2. Báº¢N Äá»’ 8 LÃƒNG PHÃ & PHÃ‚N TÃCH LÃƒNG PHÃ <span style="float:right">Trang 2 / 5</span></div>
+                                <div class="a4-grid-2">
+                                    <div class="a4-box" style="text-align: center;">
+                                        <h3>Báº¢N Äá»’ 8 LÃƒNG PHÃ</h3>
+                                        <div style="height: 320px; width: 100%; margin: 20px 0; display: flex; justify-content: center; align-items: center;">
+                                            <canvas id="radarChart"></canvas>
+                                        </div>
+                                        <h3 style="margin-top: 20px;">ÄIá»‚M Tá»”NG Há»¢P 8 LÃƒNG PHÃ</h3>
+                                        <div class="a4-flex-8" id="a4-waste-scores" style="margin-top: 15px;">
+                                            <!-- JS will populate -->
+                                        </div>
+                                    </div>
+                                    <div class="a4-box">
+                                        <h3>PHÃ‚N TÃCH LÃƒNG PHÃ (TOP 3)</h3>
+                                        <div id="a4-waste-analysis" style="margin-top: 15px;">
+                                            <!-- JS will populate -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a4-footer">INVAMAX www.invamax.com | MÃ£ bÃ¡o cÃ¡o: <span id="a4-code-f2">FOS-25052026-001</span> | Trang 2 / 5</div>
+                        </div>
+                    
+                        <!-- Trang 3 -->
+                        <div class="a4-page">
+                            <div class="a4-header">
+                                <div>
+                                    <div class="a4-logo" style="font-size: 22px; font-weight: 800; color: #0f172a; letter-spacing: 1px;">INVA<span style="color:#f97316;">MAX</span></div>
+                                    <div style="font-size: 10px; font-weight: bold; color: #f97316; margin-top: 2px;">Ná»€N FOS | AI / Digital | Supply Hub</div>
+                                </div>
+                                <div class="a4-title-center">BÃO CÃO KHÃM Bá»†NH NHÃ€ MÃY ONLINE<br>THEO Há»† ÄIá»€U HÃ€NH Ná»€N FOS</div>
+                                <div style="width: 160px;"></div>
+                            </div>
+                            <div class="a4-content">
+                                <div class="a4-section-title">3. HEATMAP 11 MODULE Ná»€N FOS <span style="float:right">Trang 3 / 5</span></div>
+                                <div class="a4-grid-2" style="grid-template-columns: 2fr 1fr;">
+                                    <div class="a4-box">
+                                        <h3>HEATMAP 11 MODULE</h3>
+                                        <div class="a4-heatmap-grid" id="a4-heatmap" style="margin-top: 15px;">
+                                            <!-- JS will populate -->
+                                        </div>
+                                        <p style="font-size: 11px; color: #64748b; margin-top: 20px; line-height: 1.5;">Äiá»ƒm cÃ ng cao thá»ƒ hiá»‡n má»©c Ä‘á»™ rá»‘i loáº¡n cÃ ng nghiÃªm trá»ng.<br>Thang Ä‘iá»ƒm: 0 - Ráº¥t tá»‘t | 1 - KhÃ¡ | 2 - Trung bÃ¬nh | 3 - KÃ©m | 4 - Nguy hiá»ƒm</p>
+                                    </div>
+                                    <div class="a4-box">
+                                        <h3>TOP 3 MODULE Yáº¾U NHáº¤T</h3>
+                                        <div id="a4-top3-fos" style="margin-top: 15px;">
+                                            <!-- JS will populate -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a4-footer">INVAMAX www.invamax.com | MÃ£ bÃ¡o cÃ¡o: <span id="a4-code-f3">FOS-25052026-001</span> | Trang 3 / 5</div>
+                        </div>
+                    
+                        <!-- Trang 4 -->
+                        <div class="a4-page">
+                            <div class="a4-header">
+                                <div>
+                                    <div class="a4-logo" style="font-size: 22px; font-weight: 800; color: #0f172a; letter-spacing: 1px;">INVA<span style="color:#f97316;">MAX</span></div>
+                                    <div style="font-size: 10px; font-weight: bold; color: #f97316; margin-top: 2px;">Ná»€N FOS | AI / Digital | Supply Hub</div>
+                                </div>
+                                <div class="a4-title-center">BÃO CÃO KHÃM Bá»†NH NHÃ€ MÃY ONLINE<br>THEO Há»† ÄIá»€U HÃ€NH Ná»€N FOS</div>
+                                <div style="width: 160px;"></div>
+                            </div>
+                            <div class="a4-content">
+                                <div class="a4-section-title">4. CÃC Váº¤N Äá»€ Rá»I LOáº N Ná»”I Báº¬T <span style="float:right">Trang 4 / 5</span></div>
+                                <div class="a4-box">
+                                    <table class="a4-table-issues" style="margin-top: 10px;">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 50px; text-align: center;">STT</th>
+                                                <th>Triá»‡u chá»©ng / Rá»‘i loáº¡n</th>
+                                                <th style="width: 80px; text-align: center;">Äiá»ƒm</th>
+                                                <th style="width: 120px;">Má»©c Ä‘á»™</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="a4-symptoms-table">
+                                            <!-- JS will populate -->
+                                        </tbody>
+                                    </table>
+                                    <div style="margin-top: 30px;">
+                                        <h3>CHUá»–I TÃC Äá»˜NG ÄIá»‚N HÃŒNH</h3>
+                                        <div class="a4-impact-chain" id="a4-impact-chain" style="margin-top: 15px; display: flex; justify-content: space-between; align-items: center; background: #f8fafc; padding: 20px; border-radius: 8px; border: 1px dashed #cbd5e1;">
+                                            <!-- JS will populate arrows -->
+                                            <div style="text-align:center"><div style="width:50px;height:50px;border-radius:50%;background:#ffffff;border:1px solid #cbd5e1;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;"><i data-lucide="package-minus"></i></div><span style="font-size:11px;color:#1e293b">Thiáº¿u váº­t tÆ°</span></div>
+                                            <i data-lucide="arrow-right" style="color:#94a3b8"></i>
+                                            <div style="text-align:center"><div style="width:50px;height:50px;border-radius:50%;background:#ffffff;border:1px solid #f59e0b;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;"><i data-lucide="clock"></i></div><span style="font-size:11px;color:#1e293b">Chá» Ä‘á»£i</span></div>
+                                            <i data-lucide="arrow-right" style="color:#94a3b8"></i>
+                                            <div style="text-align:center"><div style="width:50px;height:50px;border-radius:50%;background:#ffffff;border:1px solid #cbd5e1;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;"><i data-lucide="users"></i></div><span style="font-size:11px;color:#1e293b">TÄƒng ca</span></div>
+                                            <i data-lucide="arrow-right" style="color:#94a3b8"></i>
+                                            <div style="text-align:center"><div style="width:50px;height:50px;border-radius:50%;background:#ffffff;border:1px solid #ef4444;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;"><i data-lucide="alert-circle"></i></div><span style="font-size:11px;color:#1e293b">Lá»—i</span></div>
+                                            <i data-lucide="arrow-right" style="color:#94a3b8"></i>
+                                            <div style="text-align:center"><div style="width:50px;height:50px;border-radius:50%;background:#ffffff;border:1px solid #cbd5e1;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;"><i data-lucide="truck"></i></div><span style="font-size:11px;color:#1e293b">Cháº­m giao hÃ ng</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a4-footer">INVAMAX www.invamax.com | MÃ£ bÃ¡o cÃ¡o: <span id="a4-code-f4">FOS-25052026-001</span> | Trang 4 / 5</div>
+                        </div>
+                    
+                        <!-- Trang 5 -->
+                        <div class="a4-page">
+                            <div class="a4-header">
+                                <div class="a4-logo"><div style="font-size: 22px; font-weight: 800; color: #0f172a; letter-spacing: 1px;">INVA<span style="color:#f97316;">MAX</span></div></div>
+                                <div class="a4-title-center">BÃO CÃO KHÃM Bá»†NH NHÃ€ MÃY ONLINE<br>THEO Há»† ÄIá»€U HÃ€NH Ná»€N FOS</div>
+                                <div class="a4-header-right">Ná»€N FOS | AI / Digital | Supply Hub</div>
+                            </div>
+                            <div class="a4-content">
+                                <div class="a4-section-title">5. KHUYáº¾N NGHá»Š & NHáº¬N BÃO CÃO CHI TIáº¾T <span style="float:right">Trang 5 / 5</span></div>
+                                <div class="a4-box" style="margin-bottom: 20px;">
+                                    <h3 style="margin-bottom: 15px;">KHUYáº¾N NGHá»Š TIáº¾P THEO (MIá»„N PHÃ)</h3>
+                                    <ul id="a4-recommendations" style="font-size: 13px; color: #475569; padding-left: 20px; line-height: 1.8; margin: 0;">
+                                        <!-- JS will populate -->
+                                    </ul>
+                                </div>
+                                <div class="a4-box" style="padding: 0; overflow: hidden; border: 1px solid #f97316; margin-bottom: 20px;">
+                                    <div style="background: #fff7ed; padding: 12px; text-align: center; color: #ea580c; font-weight: bold; font-size: 14px; border-bottom: 1px solid #ffedd5;">Ná»˜I DUNG CHI TIáº¾T â€“ Má»ž KHÃ“A SAU KHI THANH TOÃN</div>
+                                    
+                                    <div style="display: flex; border-bottom: 1px solid #f1f5f9;">
+                                        <div style="background: #f97316; color: white; width: 60px; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: bold;">06</div>
+                                        <div style="padding: 12px 15px; flex-grow: 1;">
+                                            <div style="font-weight: bold; color: #1e293b; font-size: 14px;">PHÃ‚N TÃCH NGUYÃŠN NHÃ‚N</div>
+                                            <div style="font-size: 12px; color: #475569; margin-top: 4px;">PhÃ¢n tÃ­ch nguyÃªn nhÃ¢n trá»±c tiáº¿p â€“ há»‡ thá»‘ng â€“ gá»‘c cho 3 váº¥n Ä‘á» Æ°u tiÃªn káº¿t ná»‘i vá»›i 11 module Ná»€N FOS.</div>
+                                        </div>
+                                        <div style="width: 140px; padding: 10px; border-left: 1px solid #f1f5f9; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #ea580c; font-size: 11px; text-align: center; font-weight: bold;">
+                                            <i data-lucide="lock" style="width:16px;height:16px;margin-bottom:4px;"></i> Má»Ÿ khÃ³a sau khi thanh toÃ¡n
+                                        </div>
+                                    </div>
+                                    
+                                    <div style="display: flex; border-bottom: 1px solid #f1f5f9;">
+                                        <div style="background: #f97316; color: white; width: 60px; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: bold;">07</div>
+                                        <div style="padding: 12px 15px; flex-grow: 1;">
+                                            <div style="font-weight: bold; color: #1e293b; font-size: 14px;">MA TRáº¬N Æ¯U TIÃŠN Váº¤N Äá»€</div>
+                                            <div style="font-size: 12px; color: #475569; margin-top: 4px;">ÄÃ¡nh giÃ¡ vÃ  xáº¿p háº¡ng váº¥n Ä‘á» theo má»©c Ä‘á»™ tÃ¡c Ä‘á»™ng, táº§n suáº¥t, kháº£ nÄƒng kiá»ƒm soÃ¡t vÃ  má»©c Ä‘á»™ nghiÃªm trá»ng.</div>
+                                        </div>
+                                        <div style="width: 140px; padding: 10px; border-left: 1px solid #f1f5f9; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #ea580c; font-size: 11px; text-align: center; font-weight: bold;">
+                                            <i data-lucide="lock" style="width:16px;height:16px;margin-bottom:4px;"></i> Má»Ÿ khÃ³a sau khi thanh toÃ¡n
+                                        </div>
+                                    </div>
+                                    
+                                    <div style="display: flex; border-bottom: 1px solid #f1f5f9;">
+                                        <div style="background: #f97316; color: white; width: 60px; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: bold;">08</div>
+                                        <div style="padding: 12px 15px; flex-grow: 1;">
+                                            <div style="font-weight: bold; color: #1e293b; font-size: 14px;">GIáº¢I PHÃP Äá»€ XUáº¤T</div>
+                                            <div style="font-size: 12px; color: #475569; margin-top: 4px;">Chi tiáº¿t giáº£i phÃ¡p cho 3 váº¥n Ä‘á» Æ°u tiÃªn: má»¥c tiÃªu, cÃ¡ch lÃ m, nguá»“n lá»±c, chá»‰ sá»‘, rá»§i ro vÃ  tiÃªu chÃ­ nghiá»‡m thu.</div>
+                                        </div>
+                                        <div style="width: 140px; padding: 10px; border-left: 1px solid #f1f5f9; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #ea580c; font-size: 11px; text-align: center; font-weight: bold;">
+                                            <i data-lucide="lock" style="width:16px;height:16px;margin-bottom:4px;"></i> Má»Ÿ khÃ³a sau khi thanh toÃ¡n
+                                        </div>
+                                    </div>
+                                    
+                                    <div style="display: flex; border-bottom: 1px solid #f1f5f9;">
+                                        <div style="background: #f97316; color: white; width: 60px; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: bold;">09</div>
+                                        <div style="padding: 12px 15px; flex-grow: 1;">
+                                            <div style="font-weight: bold; color: #1e293b; font-size: 14px;">ROADMAP 30 â€“ 60 â€“ 90 NGÃ€Y</div>
+                                            <div style="font-size: 12px; color: #475569; margin-top: 4px;">Káº¿ hoáº¡ch hÃ nh Ä‘á»™ng theo 3 giai Ä‘oáº¡n: á»”n Ä‘á»‹nh â€“ Chuáº©n hÃ³a â€“ Duy trÃ¬ vÃ  sá»‘ hÃ³a phÃ¹ há»£p.</div>
+                                        </div>
+                                        <div style="width: 140px; padding: 10px; border-left: 1px solid #f1f5f9; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #ea580c; font-size: 11px; text-align: center; font-weight: bold;">
+                                            <i data-lucide="lock" style="width:16px;height:16px;margin-bottom:4px;"></i> Má»Ÿ khÃ³a sau khi thanh toÃ¡n
+                                        </div>
+                                    </div>
+                                    
+                                    <div style="display: flex;">
+                                        <div style="background: #f97316; color: white; width: 60px; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: bold;">10</div>
+                                        <div style="padding: 12px 15px; flex-grow: 1;">
+                                            <div style="font-weight: bold; color: #1e293b; font-size: 14px;">CÆ  CHáº¾ TRIá»‚N KHAI & DUY TRÃŒ</div>
+                                            <div style="font-size: 12px; color: #475569; margin-top: 4px;">PhÃ¢n cÃ´ng trÃ¡ch nhiá»‡m (RACI), KPI theo dÃµi, táº§n suáº¥t há»p, cÆ¡ cháº¿ duy trÃ¬ vÃ  kiá»ƒm soÃ¡t hiá»‡u quáº£ bá»n vá»¯ng.</div>
+                                        </div>
+                                        <div style="width: 140px; padding: 10px; border-left: 1px solid #f1f5f9; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #ea580c; font-size: 11px; text-align: center; font-weight: bold;">
+                                            <i data-lucide="lock" style="width:16px;height:16px;margin-bottom:4px;"></i> Má»Ÿ khÃ³a sau khi thanh toÃ¡n
+                                        </div>
+                                    </div>
+                                
+                                    <div style="background: #fff7ed; padding: 12px; text-align: center; color: #ea580c; font-weight: bold; font-size: 13px; border-top: 1px solid #ffedd5;">
+                                        <i data-lucide="lock" style="width:16px;height:16px;vertical-align:middle;margin-right:5px;"></i> Vui lÃ²ng thanh toÃ¡n Ä‘á»ƒ má»Ÿ khÃ³a toÃ n bá»™ ná»™i dung phÃ¢n tÃ­ch chi tiáº¿t vÃ  nháº­n bÃ¡o cÃ¡o Ä‘áº§y Ä‘á»§ 10 trang.
+                                    </div>
+                                </div>
+                                
+                                <div style="background: #f0fdf4; padding: 20px; border-radius: 8px; border-left: 4px solid #10b981; display: flex; align-items: center; justify-content: space-between;">
+                                    <div style="flex-grow: 1;">
+                                        <h4 style="color: #10b981; margin-bottom: 15px; font-size: 14px;">LIÃŠN Há»† Há»– TRá»¢ TRá»°C TIáº¾P</h4>
+                                        <div style="display: flex; gap: 20px;">
+                                            <p style="font-size: 13px; color: #475569; margin: 0;"><strong>Hotline:</strong> 0945 530 699</p>
+                                            <p style="font-size: 13px; color: #475569; margin: 0;"><strong>Email:</strong> contact@invamax.com.vn</p>
+                                            <p style="font-size: 13px; color: #475569; margin: 0;"><strong>Website:</strong> www.invamax.com.vn</p>
+                                        </div>
+                                    </div>
+                                    <div style="background: white; padding: 8px; border-radius: 8px; text-align: center; width: 140px; flex-shrink: 0; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                                        <img id="a4-qr-img-inline" src="" style="width: 100%; border-radius: 4px;" alt="QR Thanh toÃ¡n">
+                                        <div style="color: black; font-weight: bold; font-size: 13px; margin-top: 5px;">990,000 VNÄ</div>
+                                        <div style="color: #444; font-size: 10px; margin-top: 2px;">KBM <span id="a4-qr-phone-inline" style="font-weight: bold; color: #e11d48;"></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a4-footer">INVAMAX www.invamax.com | MÃ£ bÃ¡o cÃ¡o: <span id="a4-code-f5">FOS-25052026-001</span> | Trang 5 / 5</div>
+                        </div>
+                        
+                        
+</div>

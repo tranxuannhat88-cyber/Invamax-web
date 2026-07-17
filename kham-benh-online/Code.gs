@@ -67,8 +67,7 @@ function doPost(e) {
       (payload.scores.top3Wastes || []).join(", "),
       (payload.scores.top3FOS || []).join(", "),
       (payload.scores.diseases || []).join(", "),
-      payload.scores.nextSteps || ""
-    ];
+      payload.scores.nextSteps || "", e.postData.contents];
 
     sheet.appendRow(rowData);
 
@@ -173,3 +172,4 @@ function generateAndDraftEmail() {
   
   SpreadsheetApp.getUi().alert("✅ Đã tạo thành công! Hãy vào hộp thư nháp (Drafts) của Gmail để xem lại và bấm Gửi.");
 }
+

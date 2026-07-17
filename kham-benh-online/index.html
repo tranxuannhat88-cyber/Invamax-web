@@ -276,124 +276,50 @@
         <main>
             <form id="assessmentForm">
                 
-                <!-- Step 1: Thông tin nhà máy -->
+                <!-- Step 1: Phần A -->
                 <div class="form-step active" data-step="1">
                     <h2>1. Thông tin nhà máy</h2>
-                    <div class="form-group">
-                        <label>Tên nhà máy / Công ty (*)</label>
-                        <input type="text" id="companyName" name="companyName" class="form-control" placeholder="Nhập tên nhà máy..." required>
-                    </div>
-                    <div class="form-group">
-                        <label>Ngành nghề sản xuất (*)</label>
-                        <select id="industry" name="industry" class="form-control" required>
-                            <option value="">-- Chọn ngành nghề --</option>
-                            <option value="Cơ khí chế tạo">Cơ khí chế tạo</option>
-                            <option value="May mặc / Giày da">May mặc / Giày da</option>
-                            <option value="Điện tử">Điện tử</option>
-                            <option value="Nhựa / Bao bì">Nhựa / Bao bì</option>
-                            <option value="Gỗ / Nội thất">Gỗ / Nội thất</option>
-                            <option value="Thực phẩm / Đồ uống">Thực phẩm / Đồ uống</option>
-                            <option value="Khác">Khác</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Sản phẩm Chính của nhà máy là gì? (*)</label>
-                        <input type="text" id="products" name="products" class="form-control" placeholder="VD: Bàn ghế gỗ, Phụ tùng xe máy..." required>
-                    </div>
-                    <div class="form-group">
-                        <label>Địa chỉ nhà máy (*)</label>
-                        <input type="text" id="address" name="address" class="form-control" placeholder="Tỉnh/Thành phố hoặc Địa chỉ cụ thể..." required>
-                    </div>
-                    <div class="form-group">
-                        <label>Số năm hoạt động (*)</label>
-                        <input type="number" id="years" name="years" class="form-control" placeholder="VD: 5" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Quy mô nhân sự (người) (*)</label>
-                        <input type="number" id="employees" name="employees" class="form-control" placeholder="VD: 150" required>
-                    </div>
+                    <p style="color: var(--text-muted); margin-bottom: 24px;">Thông tin bối cảnh giúp cá nhân hóa báo cáo và phân nhóm nhà máy.</p>
+                    <div id="partA-container"></div>
                 </div>
 
-                <!-- Step 2: 8W -->
+                <!-- Step 2: Phần B -->
                 <div class="form-step" data-step="2">
-                    <h2>2. Triệu chứng lãng phí (8W)</h2>
+                    <h2>2. Khám 8 Lãng phí (8W)</h2>
                     <p style="color: var(--text-muted); margin-bottom: 24px;">Đánh giá mức độ xuất hiện của 8 loại lãng phí tại xưởng của bạn.</p>
-                    <div id="waste8-container"></div>
+                    <div id="partB-container"></div>
                 </div>
 
-                <!-- Step 3: FOS 1 -->
+                <!-- Step 3: Phần C -->
                 <div class="form-step" data-step="3">
-                    <h2>3. Nền tảng FOS - Nhóm 1</h2>
-                    <p style="color: var(--text-muted); margin-bottom: 24px;">Đánh giá cốt lõi: Chiến lược, Con người, Dòng chảy và Tiêu chuẩn.</p>
-                    <div id="fosGroup1-container"></div>
+                    <h2>3. Khám 8 Dấu hiệu bất thường tại hiện trường</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 24px;">Đánh giá các dấu hiệu bất thường ảnh hưởng đến vận hành.</p>
+                    <div id="partC-container"></div>
                 </div>
 
-                <!-- Step 4: FOS 2 -->
+                <!-- Step 4: Phần D -->
                 <div class="form-step" data-step="4">
-                    <h2>4. Nền tảng FOS - Nhóm 2</h2>
-                    <p style="color: var(--text-muted); margin-bottom: 24px;">Đánh giá năng lực: Năng lực thiết bị, Quản lý hàng ngày, Chất lượng và Tri thức.</p>
-                    <div id="fosGroup2-container"></div>
+                    <h2>4. Khám 11 Module Nền FOS</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 24px;">Đánh giá mức độ trưởng thành của hệ thống quản trị.</p>
+                    <div id="partD-container"></div>
                 </div>
 
-                <!-- Step 5: FOS 3 -->
+                <!-- Step 5: Phần E -->
                 <div class="form-step" data-step="5">
-                    <h2>5. Nền tảng FOS - Nhóm 3</h2>
-                    <p style="color: var(--text-muted); margin-bottom: 24px;">Đánh giá phát triển: Số hóa, Cải tiến liên tục và Khả năng duy trì.</p>
-                    <div id="fosGroup3-container"></div>
+                    <h2>5. Mục tiêu ưu tiên của doanh nghiệp</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 24px;">Dữ liệu giúp ưu tiên nội dung phân tích và đề xuất.</p>
+                    <div id="partE-container"></div>
                 </div>
 
-                <!-- Step 6: Priority -->
+                <!-- Step 6: Phần F -->
                 <div class="form-step" data-step="6">
-                    <h2>6. Mức độ ưu tiên</h2>
-                    <div class="priority-grid">
-                        <p style="font-weight: 600; margin-bottom: 16px;">Anh/chị ưu tiên cải thiện vấn đề nào nhất trong 3-6 tháng tới? (Chọn tối đa 3) (*)</p>
-                        <p id="priority-error" style="color: #ef4444; font-size: 0.9rem; display: none; margin-bottom: 12px;">Vui lòng chọn từ 1 đến 3 ưu tiên.</p>
-                        <div class="pill-group" style="display: flex; flex-wrap: wrap; gap: 12px;">
-                            <label class="priority-pill"><input type="checkbox" name="priority" value="Tăng năng suất"> <span>Tăng năng suất</span></label>
-                            <label class="priority-pill"><input type="checkbox" name="priority" value="Giảm lỗi"> <span>Giảm lỗi</span></label>
-                            <label class="priority-pill"><input type="checkbox" name="priority" value="Giảm tồn kho"> <span>Giảm tồn kho</span></label>
-                            <label class="priority-pill"><input type="checkbox" name="priority" value="Giao hàng đúng hạn hơn"> <span>Giao hàng đúng hạn hơn</span></label>
-                            <label class="priority-pill"><input type="checkbox" name="priority" value="Giảm chi phí sản xuất"> <span>Giảm chi phí sản xuất</span></label>
-                            <label class="priority-pill"><input type="checkbox" name="priority" value="Chuẩn hóa quy trình"> <span>Chuẩn hóa quy trình</span></label>
-                            <label class="priority-pill"><input type="checkbox" name="priority" value="Quản lý tiến độ rõ hơn"> <span>Quản lý tiến độ rõ hơn</span></label>
-                            <label class="priority-pill"><input type="checkbox" name="priority" value="Số hóa dữ liệu sản xuất"> <span>Số hóa dữ liệu sản xuất</span></label>
-                            <label class="priority-pill"><input type="checkbox" name="priority" value="Đào tạo quản lý cấp trung"> <span>Đào tạo quản lý cấp trung</span></label>
-                            <label class="priority-pill"><input type="checkbox" name="priority" value="Giảm sự phụ thuộc vào con người"> <span>Giảm sự phụ thuộc...</span></label>
-                            <label class="priority-pill"><input type="checkbox" name="priority" value="Khác"> <span>Khác</span></label>
-                        </div>
-                    </div>
+                    <h2>6. Nhận kết quả khám bệnh</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 24px;" id="partF-description"></p>
+                    <div id="partF-container"></div>
                 </div>
 
-                <!-- Step 7: Nhận kết quả -->
+                <!-- Step 7: Kết quả phân tích (Màn hình cuối) -->
                 <div class="form-step" data-step="7">
-                    <h2>7. Nhận kết quả</h2>
-                    <div class="form-group">
-                        <label>Họ và tên (*)</label>
-                        <input type="text" id="contactName" name="contactName" class="form-control" autocomplete="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Chức vụ của bạn (*)</label>
-                        <select id="jobTitle" name="jobTitle" class="form-control" autocomplete="organization-title" required>
-                            <option value="">-- Chọn chức vụ --</option>
-                            <option value="Chủ doanh nghiệp / Giám đốc">Chủ doanh nghiệp / Giám đốc</option>
-                            <option value="Giám đốc Nhà máy / Quản đốc">Giám đốc Nhà máy / Quản đốc</option>
-                            <option value="Trưởng/Phó phòng ban">Trưởng/Phó phòng ban</option>
-                            <option value="Kỹ sư / Nhân viên">Kỹ sư / Nhân viên</option>
-                            <option value="Khác">Khác</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Email nhận báo cáo (*)</label>
-                        <input type="email" id="contactEmail" name="contactEmail" class="form-control" autocomplete="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Số điện thoại Zalo của bạn (*)</label>
-                        <input type="tel" id="phone" name="phone" class="form-control" autocomplete="tel" required>
-                    </div>
-                </div>
-
-                <!-- Step 8: Kết quả phân tích (Màn hình cuối) -->
-                <div class="form-step" data-step="8">
                     <div class="a4-wrapper" id="report-a4-wrapper">
                         <!-- Trang 1 -->
                         <div class="a4-page">
@@ -680,8 +606,9 @@
                                 <i data-lucide="unlock"></i> NHẬN BÁO CÁO CHI TIẾT
                             </button>
                         </div>
-                        <div style="text-align: center; margin-top: 15px;" class="hide-in-pdf">
+                        <div style="text-align: center; margin-top: 15px; display: flex; justify-content: center; gap: 20px;" class="hide-in-pdf">
                             <button type="button" style="font-size: 14px; padding: 10px 20px; border: none; background: transparent; text-decoration: underline; color: #475569; cursor: pointer;" onclick="location.reload();">Làm lại khảo sát</button>
+                            <a href="../index.html" style="font-size: 14px; padding: 10px 20px; border: none; background: transparent; text-decoration: underline; color: #475569; cursor: pointer;">Quay về trang chủ</a>
                         </div>
                     </div>
                 </div>
@@ -746,6 +673,7 @@
         lucide.createIcons();
     </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="assets/js/questions_data.js"></script>
     <script src="assets/js/app_combined.js"></script>
 </body>
 </html>
