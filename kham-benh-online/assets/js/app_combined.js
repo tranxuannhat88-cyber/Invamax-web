@@ -1,106 +1,88 @@
-// Dữ liệu câu hỏi giả lập cho hệ thống Khám bệnh nhà máy
-const optionsTemplate = [
-    "Hoàn toàn không có / Được kiểm soát rất tốt",
-    "Thỉnh thoảng xảy ra / Có kiểm soát cơ bản",
-    "Thường xuyên xảy ra / Khó kiểm soát",
-    "Xảy ra liên tục, ảnh hưởng nghiêm trọng",
-    "Không hề đo lường, hoàn toàn mất kiểm soát"
-];
-
-const fosOptionsTemplate = [
-    "Đã áp dụng triệt để, có hệ thống chuẩn xác",
-    "Có áp dụng nhưng chưa đồng bộ",
-    "Mới bắt đầu triển khai, còn nhiều bất cập",
-    "Chưa triển khai nhưng đang có kế hoạch",
-    "Hoàn toàn không có khái niệm hoặc bỏ mặc"
-];
-
-const questionsData = {
-    waste8: [
-        { id: "w1", module: "Lỗi / làm lại", text: "Mức độ sản phẩm bị lỗi, hỏng và phải làm lại trên dây chuyền của bạn?", options: optionsTemplate },
-        { id: "w2", module: "Sản xuất thừa", text: "Tình trạng sản xuất vượt quá nhu cầu thực tế của khách hàng hoặc đơn hàng?", options: optionsTemplate },
-        { id: "w3", module: "Chờ đợi", text: "Thời gian công nhân hoặc máy móc phải đứng chờ nguyên vật liệu, thông tin?", options: optionsTemplate },
-        { id: "w4", module: "Không tận dụng năng lực con người", text: "Mức độ lãng phí chất xám, kỹ năng và ý tưởng đóng góp của nhân viên?", options: optionsTemplate },
-        { id: "w5", module: "Vận chuyển thừa", text: "Tình trạng di chuyển nguyên vật liệu, bán thành phẩm qua lại quá nhiều lần?", options: optionsTemplate },
-        { id: "w6", module: "Tồn kho", text: "Lượng nguyên vật liệu, bán thành phẩm và thành phẩm tồn đọng trong xưởng?", options: optionsTemplate },
-        { id: "w7", module: "Thao tác / di chuyển thừa", text: "Công nhân phải đi lại, tìm kiếm dụng cụ, cúi gập người không cần thiết?", options: optionsTemplate },
-        { id: "w8", module: "Gia công thừa", text: "Thực hiện các công đoạn gia công, kiểm tra vượt quá yêu cầu chất lượng của khách hàng?", options: optionsTemplate }
-    ],
-    fosGroup1: [
-        { id: "f1", module: "Core", text: "Sự rõ ràng của mục tiêu cốt lõi (Core) và chiến lược dài hạn được truyền đạt xuống xưởng?", options: fosOptionsTemplate },
-        { id: "f2", module: "People", text: "Hệ thống đánh giá, đào tạo và giữ chân nhân sự (People) tại nhà máy?", options: fosOptionsTemplate },
-        { id: "f3", module: "Flow", text: "Mức độ trơn tru của dòng chảy sản xuất (Flow) và thông tin xuyên suốt xưởng?", options: fosOptionsTemplate },
-        { id: "f4", module: "Standard", text: "Việc áp dụng và tuân thủ các quy trình thao tác chuẩn (Standard Work) của công nhân?", options: fosOptionsTemplate }
-    ],
-    fosGroup2: [
-        { id: "f5", module: "Capacity", text: "Khả năng đo lường, phân bổ và tối ưu hóa năng lực thiết bị, máy móc (Capacity)?", options: fosOptionsTemplate },
-        { id: "f6", module: "Daily Management", text: "Hiệu quả của các cuộc họp giao ban hàng ngày (Daily Management) tại xưởng?", options: fosOptionsTemplate },
-        { id: "f7", module: "Quality", text: "Hệ thống quản lý chất lượng (Quality) từ đầu vào, trên chuyền đến đầu ra?", options: fosOptionsTemplate },
-        { id: "f8", module: "Knowledge", text: "Quá trình lưu trữ, quản trị và kế thừa tri thức (Knowledge), bài học kinh nghiệm?", options: fosOptionsTemplate }
-    ],
-    fosGroup3: [
-        { id: "f9", module: "Digital", text: "Mức độ ứng dụng số hóa (Digital), phần mềm trong quản lý hiện trường?", options: fosOptionsTemplate },
-        { id: "f10", module: "Kaizen", text: "Phong trào cải tiến liên tục (Kaizen) và sự chủ động của cấp quản lý / công nhân?", options: fosOptionsTemplate },
-        { id: "f11", module: "Sustain", text: "Khả năng duy trì (Sustain) các thành quả cải tiến sau khi dự án kết thúc?", options: fosOptionsTemplate }
-    ]
-};
+// Dữ liệu câu hỏi giờ được tải từ questions_data.js (biến AppQuestions toàn cục)
 
 function calculateResults(answers) {
-    let totalScore = 0;
-    let questionCount = 0;
-    const wasteScores = [];
-    const fosScores = [];
-
-    questionsData.waste8.forEach(q => {
-        const score = answers[q.id] !== undefined ? parseInt(answers[q.id]) : 0;
-        totalScore += score;
-        questionCount++;
-        wasteScores.push({ module: q.module, score: score });
-    });
-
-    const calculateFOSGroup = (group) => {
+    const getGroupScore = (group) => {
+        let totalWeightedScore = 0;
+        let totalWeights = 0;
+        
         group.forEach(q => {
-            const score = answers[q.id] !== undefined ? parseInt(answers[q.id]) : 0;
-            totalScore += score;
-            questionCount++;
-            fosScores.push({ module: q.module, score: score });
+            if (answers[q.id] !== undefined && q.trongSo !== undefined && q.trongSo > 0) {
+                const ansStr = String(answers[q.id]);
+                if (ansStr.trim() !== "") {
+                    let score = 0;
+                    if (q.loaiTraLoi === 'Thang điểm 0-4' || (q.dapAn && q.dapAn.length > 0 && !q.loaiTraLoi.includes('Nhiều lựa chọn'))) {
+                        score = parseInt(ansStr);
+                    } else {
+                        score = parseInt(ansStr);
+                    }
+                    if (!isNaN(score)) {
+                        totalWeightedScore += score * q.trongSo;
+                        totalWeights += q.trongSo;
+                    }
+                }
+            }
         });
+        
+        return totalWeights > 0 ? (totalWeightedScore / totalWeights) : 0;
     };
 
-    calculateFOSGroup(questionsData.fosGroup1);
-    calculateFOSGroup(questionsData.fosGroup2);
-    calculateFOSGroup(questionsData.fosGroup3);
+    let wScore = getGroupScore(AppQuestions.partB);
+    let sScore = getGroupScore(AppQuestions.partC);
+    let mScore = getGroupScore(AppQuestions.partD);
+    
+    // Scale 0-4 to 0-100 (where 4 = worst = 100)
+    let warningScore = ((wScore * 0.4 + sScore * 0.4 + mScore * 0.2) / 4) * 100;
+    warningScore = Math.round(warningScore);
 
-    const averageScore = questionCount > 0 ? (totalScore / questionCount) : 0;
-    const warningScore = Math.round(averageScore * 25);
+    const wasteScores = [];
+    const wasteModules = [...new Set(AppQuestions.partB.map(q => q.nhom))];
+    wasteModules.forEach(module => {
+        const questions = AppQuestions.partB.filter(q => q.nhom === module);
+        wasteScores.push({
+            module: module,
+            score: isNaN(getGroupScore(questions)) ? 0 : Math.round((getGroupScore(questions) / 4) * 100)
+        });
+    });
+
+    const fosScores = [];
+    const fosModules = [...new Set(AppQuestions.partD.map(q => q.nhom))];
+    fosModules.forEach(module => {
+        const questions = AppQuestions.partD.filter(q => q.nhom === module);
+        fosScores.push({
+            module: module,
+            score: isNaN(getGroupScore(questions)) ? 0 : Math.round((getGroupScore(questions) / 4) * 100)
+        });
+    });
 
     let assessmentLevel = "";
     let generalAssessment = "";
     let diseases = [];
     let nextSteps = "";
 
-    if (warningScore <= 20) {
-        assessmentLevel = "Ổn định / Rất tốt";
-        generalAssessment = "Nhà máy đang duy trì được các quy trình cơ bản khá tốt. Các lãng phí được kiểm soát ở mức cho phép.";
-        diseases = ["Chưa phát hiện bệnh nghiêm trọng", "Một số điểm nghẽn cục bộ nhỏ", "Thiếu sự bứt phá tối ưu"];
-        nextSteps = "Tiếp tục duy trì và bắt đầu áp dụng Kaizen nhỏ ở từng bộ phận để tối ưu thêm.";
-    } else if (warningScore <= 40) {
-        assessmentLevel = "Có vài điểm nghẽn";
-        generalAssessment = "Hệ thống bắt đầu bộc lộ các vấn đề ở giai đoạn đầu. Sự liên kết giữa các bộ phận chưa mượt mà.";
-        diseases = ["Nút thắt cổ chai ở một số công đoạn", "Bắt đầu xuất hiện lãng phí thời gian chờ", "Quản lý dữ liệu chậm trễ"];
-        nextSteps = "Cần rà soát lại quy trình chuẩn (Standard) và tối ưu hóa luồng chảy (Flow) cơ bản.";
-    } else if (warningScore <= 60) {
-        assessmentLevel = "Có dấu hiệu rối vận hành";
-        generalAssessment = "Các triệu chứng lãng phí đang ăn mòn lợi nhuận. Sự thiếu hụt nền tảng quản trị khiến mọi thứ bị phụ thuộc vào con người.";
-        diseases = ["Sản xuất ùn ứ, tồn kho mất kiểm soát", "Lỗi hỏng nhiều, chi phí làm lại cao", "Họp hành kém hiệu quả, không có KPI rõ ràng"];
-        nextSteps = "Tiến hành khám bệnh chuyên sâu toàn diện 3 ngày, thiết lập lại hệ thống Core & Daily Management.";
-    } else if (warningScore <= 80) {
-        assessmentLevel = "Bệnh vận hành rõ ràng";
-        generalAssessment = "Hệ thống đang trong tình trạng báo động. Mọi hoạt động đều mang tính đối phó, lãng phí lớn.";
-        diseases = ["Mất kiểm soát chất lượng và tiến độ", "Chảy máu dòng tiền do lãng phí khổng lồ", "Mất niềm tin nội bộ, quy trình đứt gãy"];
-        nextSteps = "Lập tức áp dụng hệ điều hành NỀN FOS Premium để đập đi xây lại nền tảng quản trị xưởng.";
+    let healthScore = 100 - warningScore;
+
+    if (healthScore >= 80) {
+        assessmentLevel = "Khỏe mạnh";
+        generalAssessment = "Hệ thống vận hành trơn tru, tiêu chuẩn được duy trì tốt. Doanh nghiệp có nền tảng vững chắc để mở rộng hoặc chuyển đổi số.";
+        diseases = ["Không phát hiện bệnh nghiêm trọng"];
+        nextSteps = "Tiếp tục cải tiến liên tục (Kaizen) và bắt đầu số hóa các quy trình cốt lõi.";
+    } else if (healthScore >= 60) {
+        assessmentLevel = "Cảnh báo nhẹ";
+        generalAssessment = "Hệ thống cơ bản hoạt động nhưng đã xuất hiện các điểm nghẽn và lãng phí rải rác. Nếu không xử lý kịp thời có thể làm giảm biên lợi nhuận.";
+        diseases = ["Lãng phí tiềm ẩn", "Quy trình chưa chuẩn hóa đồng bộ"];
+        nextSteps = "Tập trung chuẩn hóa quy trình tại các điểm nghẽn, đào tạo lại nhân sự về tiêu chuẩn.";
+    } else if (healthScore >= 40) {
+        assessmentLevel = "Mắc bệnh (Cần điều trị)";
+        generalAssessment = "Rối loạn hệ thống hiện diện rõ. Lãng phí xảy ra thường xuyên làm tăng chi phí và ảnh hưởng đến tiến độ, chất lượng giao hàng.";
+        diseases = ["Tắc nghẽn cục bộ", "Lỗi và làm lại thường xuyên", "Chỉ số OEE thấp"];
+        nextSteps = "Thực hiện dự án cải tiến điểm (Kaizen Blitz) tại khu vực yếu nhất, xây dựng lại hệ thống đo lường hiệu quả.";
+    } else if (healthScore >= 20) {
+        assessmentLevel = "Bệnh nặng (Nguy hiểm)";
+        generalAssessment = "Hệ thống vận hành lỏng lẻo, chi phí sản xuất mất kiểm soát. Doanh nghiệp đang đối mặt với rủi ro lớn về dòng tiền và phàn nàn từ khách hàng.";
+        diseases = ["Rối loạn luồng chảy", "Mất kiểm soát chất lượng diện rộng", "Tồn kho quá mức/Thiếu vật tư liên tục"];
+        nextSteps = "Cần chuyên gia can thiệp ngay lập tức. Tái thiết lập luồng giá trị và áp dụng các biện pháp kiểm soát khẩn cấp.";
     } else {
-        assessmentLevel = "Báo động đỏ (Nguy hiểm)";
+        assessmentLevel = "Báo động đỏ (Nguy kịch)";
         generalAssessment = "Hệ thống đang trong tình trạng khủng hoảng. Rủi ro đứt gãy dây chuyền cực kỳ cao và gây thiệt hại nghiêm trọng.";
         diseases = ["Mất kiểm soát hoàn toàn chất lượng và tiến độ", "Đứt gãy toàn bộ chuỗi cung ứng nội bộ", "Thiếu hụt hoàn toàn khả năng quản trị hiện trường"];
         nextSteps = "Dừng ngay các hoạt động lãng phí, triệu tập ban lãnh đạo để tái cơ cấu toàn diện hệ thống quản lý.";
@@ -113,10 +95,10 @@ function calculateResults(answers) {
     const top3Wastes = wasteScores.slice(0, 3).map(item => item.module);
     const top3FOS = fosScores.slice(0, 3).map(item => item.module);
 
-    return { warningScore, assessmentLevel, generalAssessment, diseases, nextSteps, top3Wastes, top3FOS };
+    return { warningScore, assessmentLevel, generalAssessment, diseases, nextSteps, top3Wastes, top3FOS, wasteScores, fosScores };
 }
 
-const GAS_URL = "https://script.google.com/macros/s/AKfycbwYOUR_SCRIPT_ID_HERE/exec"; 
+const GAS_URL = "https://script.google.com/macros/s/AKfycbxA0w8vMs95Aswa2nOKhM8EJs2U5Y2nFj4pG_goURBGTDt0w0tJNQlecGsQD9uno0FLnA/exec"; 
 
 async function submitDataToGoogleSheet(payload) {
     try {
@@ -147,65 +129,110 @@ const totalSteps = formSteps.length;
 let currentStep = 1;
 
 document.addEventListener('DOMContentLoaded', () => {
-    const waste8Container = document.getElementById('waste8-container');
-    if(waste8Container) {
-        waste8Container.innerHTML = questionsData.waste8.map((q, index) => `
-            <div class="question-block" id="block-${q.id}">
-                <div class="question-header">
-                    <span class="question-number">Câu ${index + 1}</span>
-                    <span class="question-module">${q.module}</span>
-                </div>
-                <h4 class="question-text">${q.text}</h4>
-                <div class="options-group">
-                    ${q.options.map((optText, optIndex) => `
-                        <label class="option-label">
-                            <input type="radio" name="${q.id}" value="${optIndex}" required>
-                            <span class="option-custom"></span>
-                            <span class="option-text">${optText}</span>
-                        </label>
-                    `).join('')}
-                </div>
-            </div>
-        `).join('');
-    }
-
-    const renderFos = (groupId, dataList) => {
+    function renderGroup(groupId, questions) {
         const container = document.getElementById(groupId);
-        if(container) {
-            container.innerHTML = dataList.map((q, index) => `
-                <div class="question-block" id="block-${q.id}">
-                    <div class="question-header">
-                        <span class="question-number">Câu ${index + 1}</span>
-                        <span class="question-module">${q.module}</span>
+        if (!container) return;
+        
+        container.innerHTML = questions.map((q, index) => {
+            let inputHtml = '';
+            let isRequired = q.batBuoc ? 'required' : '';
+            
+            let loai = (q.loaiTraLoi || '').toLowerCase();
+            
+            if (loai.includes('văn bản')) {
+                if (q.id === 'E04') {
+                    inputHtml = `<textarea name="${q.id}" class="form-control" placeholder="${q.huongDan || ''}" rows="3" ${isRequired}></textarea>`;
+                } else {
+                    inputHtml = `<input type="text" name="${q.id}" class="form-control" placeholder="${q.huongDan || ''}" ${isRequired}>`;
+                }
+            } else if (loai === 'điền số') {
+                inputHtml = `<input type="number" name="${q.id}" class="form-control" placeholder="${q.huongDan || ''}" ${isRequired}>`;
+            } else if (loai === 'danh sách') {
+                inputHtml = `
+                    <select name="${q.id}" class="form-control" ${isRequired}>
+                        <option value="">-- Chọn --</option>
+                        ${q.dapAn.map(opt => `<option value="${opt}">${opt}</option>`).join('')}
+                    </select>
+                `;
+            } else if (loai.includes('nhiều lựa chọn') || loai.includes('tối đa')) {
+                inputHtml = `
+                    <div class="pill-group" style="display: flex; flex-wrap: wrap; gap: 12px;">
+                        ${q.dapAn.map((opt, i) => `
+                            <label class="priority-pill">
+                                <input type="checkbox" name="${q.id}" value="${opt}" ${q.batBuoc ? 'data-required="true"' : ''}> <span>${opt}</span>
+                            </label>
+                        `).join('')}
                     </div>
-                    <h4 class="question-text">${q.text}</h4>
+                `;
+            } else if (loai === 'check box') {
+                inputHtml = `
+                    <label style="display:flex; align-items:flex-start; gap:8px;">
+                        <input type="checkbox" name="${q.id}" value="Đồng ý" ${q.batBuoc ? 'data-required="true"' : ''} style="margin-top:3px;">
+                        <span style="font-size:14px; color:var(--text-color);">${q.cauHoi}</span>
+                    </label>
+                `;
+                q.cauHoi = ''; // Hide default question title
+            } else if (loai.includes('thang điểm') || loai.includes('chọn một') || (q.dapAn && q.dapAn.length > 0)) {
+                inputHtml = `
                     <div class="options-group">
-                        ${q.options.map((optText, optIndex) => `
+                        ${q.dapAn.map((optText, optIndex) => `
                             <label class="option-label">
-                                <input type="radio" name="${q.id}" value="${optIndex}" required>
+                                <input type="radio" name="${q.id}" value="${optIndex}" ${isRequired}>
                                 <span class="option-custom"></span>
                                 <span class="option-text">${optText}</span>
                             </label>
                         `).join('')}
                     </div>
-                </div>
-            `).join('');
-        }
-    }
-    
-    renderFos('fosGroup1-container', questionsData.fosGroup1);
-    renderFos('fosGroup2-container', questionsData.fosGroup2);
-    renderFos('fosGroup3-container', questionsData.fosGroup3);
-
-    const priorityCheckboxes = document.querySelectorAll('input[name="priority"]');
-    priorityCheckboxes.forEach(cb => {
-        cb.addEventListener('change', () => {
-            const checkedCount = document.querySelectorAll('input[name="priority"]:checked').length;
-            if (checkedCount > 3) {
-                cb.checked = false;
-                alert("Bạn chỉ được chọn tối đa 3 mức độ ưu tiên!");
+                `;
             }
-        });
+
+            let moduleHeader = q.nhom ? `<span class="question-module">${q.nhom}</span>` : '';
+
+            return `
+                <div class="question-block" id="block-${q.id}">
+                    <div class="question-header">
+                        <span class="question-number">Câu ${index + 1}</span>
+                        ${moduleHeader}
+                    </div>
+                    <h4 class="question-text">${q.cauHoi} ${q.batBuoc ? '<span style="color: #ea580c; margin-left: 4px;">*</span>' : ''}</h4>
+                    ${q.huongDan ? `<p style="font-size:12px; color:var(--text-muted); margin-bottom:10px;">${q.huongDan}</p>` : ''}
+                    ${inputHtml}
+                </div>
+            `;
+        }).join('');
+    }
+
+    renderGroup('partA-container', AppQuestions.partA);
+    renderGroup('partB-container', AppQuestions.partB);
+    renderGroup('partC-container', AppQuestions.partC);
+    renderGroup('partD-container', AppQuestions.partD);
+    renderGroup('partE-container', AppQuestions.partE);
+    renderGroup('partF-container', AppQuestions.partF);
+
+    if (AppQuestions.partF && AppQuestions.partF.description) {
+        const descEl = document.getElementById('partF-description');
+        if (descEl) descEl.innerText = AppQuestions.partF.description;
+    }
+
+    AppQuestions.partE.forEach(q => {
+        let loai = (q.loaiTraLoi || '').toLowerCase();
+        if (loai.includes('nhiều lựa chọn') || loai.includes('tối đa')) {
+            const priorityCheckboxes = document.querySelectorAll(`input[name="${q.id}"]`);
+            let maxLimit = 3;
+            let match = q.loaiTraLoi.match(/\d+/);
+            if (match) maxLimit = parseInt(match[0]);
+            if (q.id === 'E01') maxLimit = 5; // User specifically requested 5 for Q1
+
+            priorityCheckboxes.forEach(cb => {
+                cb.addEventListener('change', () => {
+                    const checkedCount = document.querySelectorAll(`input[name="${q.id}"]:checked`).length;
+                    if (checkedCount > maxLimit) {
+                        cb.checked = false;
+                        alert(`Bạn chỉ được chọn tối đa ${maxLimit} đáp án!`);
+                    }
+                });
+            });
+        }
     });
 
     loadDraft();
@@ -215,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('input', saveDraft);
 
     const modal = document.getElementById('paymentModal');
-    const btnShow = document.getElementById('btnShowPayment');
+    const btnShow = document.getElementById('btn-show-payment');
     const spanClose = document.getElementById('closeModal');
     const qrImg = document.getElementById('payment-qr-img');
     const phonePlaceholder = document.getElementById('payment-phone-placeholder');
@@ -223,7 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if(btnShow && modal && spanClose) {
         btnShow.addEventListener('click', () => {
             const formObj = Object.fromEntries(new FormData(form).entries());
-            let phone = formObj['phone'] || '0945530699';
+            let phone = formObj['F04'] || '0945530699'; // Tùy chỉnh id theo câu số điện thoại (F04)
             phone = phone.replace(/\s+/g, '');
             phonePlaceholder.innerText = phone;
             const amount = 990000;
@@ -247,17 +274,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const btnDownload = document.getElementById('btnDownloadPdf');
+    const btnDownload = document.getElementById('a4-btn-download');
     if(btnDownload) {
         btnDownload.addEventListener('click', () => {
-            const resultElement = document.querySelector('.form-step[data-step="8"]');
+            const resultElement = document.querySelector(`.form-step[data-step="${totalSteps}"]`);
             resultElement.classList.add('pdf-export-mode');
             
             const ctaBox = resultElement.querySelector('.cta-box');
             if (ctaBox) ctaBox.style.display = 'none';
 
             var opt = {
-                margin:       10,
+                margin:       0,
                 filename:     'INVAMAX_Bao_Cao_So_Bo.pdf',
                 image:        { type: 'jpeg', quality: 1 },
                 html2canvas:  { scale: 2, useCORS: true, logging: false, backgroundColor: '#ffffff' },
@@ -341,16 +368,20 @@ function validateStep(stepIndex) {
         }
     });
 
-    if (stepIndex === 6) {
-        const checkedCount = currentStepElement.querySelectorAll('input[name="priority"]:checked').length;
-        const errObj = document.getElementById('priority-error');
-        if (checkedCount === 0 || checkedCount > 3) {
+    const checkboxGroups = new Set();
+    currentStepElement.querySelectorAll('input[type="checkbox"][data-required="true"]').forEach(cb => {
+        checkboxGroups.add(cb.name);
+    });
+
+    checkboxGroups.forEach(name => {
+        if (currentStepElement.querySelectorAll(`input[name="${name}"]:checked`).length === 0) {
             isValid = false;
-            if(errObj) errObj.style.display = 'block';
-        } else {
-            if(errObj) errObj.style.display = 'none';
+            const block = currentStepElement.querySelector(`input[name="${name}"]`).closest('.question-block');
+            if (block) {
+                block.classList.add('error-border');
+            }
         }
-    }
+    });
 
     if (!isValid) alert('Vui lòng điền đầy đủ các trường bắt buộc có dấu (*).');
     return isValid; 
@@ -368,50 +399,65 @@ function updateUI() {
     btnPrev.style.display = currentStep === 1 || currentStep === totalSteps ? 'none' : 'inline-flex';
     btnNext.style.display = currentStep >= totalSteps - 1 ? 'none' : 'inline-flex';
     btnSubmit.style.display = currentStep === totalSteps - 1 ? 'inline-flex' : 'none';
-    const formFooter = document.getElementById('form-footer');
-    if (formFooter) formFooter.style.display = currentStep === totalSteps ? 'none' : 'flex';
 }
 
 function saveDraft() {
+    if(currentStep === totalSteps) return; // Do not save if already at result
     const formData = new FormData(form);
-    const draft = Object.fromEntries(formData.entries());
-    const priorities = formData.getAll("priority");
-    if(priorities.length > 0) {
-        draft["priority"] = priorities;
-    }
-    localStorage.setItem(LS_KEY, JSON.stringify(draft));
+    const formObj = Object.fromEntries(formData.entries());
+    
+    // Combine checkboxes
+    AppQuestions.partE.forEach(q => {
+        let loai = (q.loaiTraLoi || '').toLowerCase();
+        if (loai.includes('nhiều lựa chọn') || loai.includes('tối đa')) {
+            const vals = formData.getAll(q.id);
+            if(vals.length > 0) {
+                formObj[q.id] = vals;
+            }
+        }
+    });
+
+    localStorage.setItem(LS_KEY, JSON.stringify({ currentStep, formObj }));
 }
 
 function loadDraft() {
-    const draftStr = localStorage.getItem(LS_KEY);
-    if (!draftStr) return;
-    try {
-        const draft = JSON.parse(draftStr);
-        for (const key in draft) {
-            if(key === 'priority' && Array.isArray(draft[key])) {
-                draft[key].forEach(val => {
-                    const cb = form.querySelector(`input[name="${key}"][value="${val}"]`);
-                    if(cb) cb.checked = true;
-                });
-            } else {
-                const input = form.querySelector(`[name="${key}"]`);
-                if (input) {
-                    if (input.type === 'radio' || input.type === 'checkbox') {
-                        const target = form.querySelector(`[name="${key}"][value="${draft[key]}"]`);
-                        if(target) target.checked = true;
-                    } else {
-                        input.value = draft[key];
+    const saved = localStorage.getItem(LS_KEY);
+    if (saved) {
+        try {
+            const data = JSON.parse(saved);
+            if (data.formObj) {
+                for (let key in data.formObj) {
+                    const el = form.elements[key];
+                    if (el) {
+                        if (el.type === 'radio') {
+                            const radio = Array.from(form.elements[key]).find(r => r.value === data.formObj[key]);
+                            if (radio) radio.checked = true;
+                        } else if (el.type === 'checkbox' || (el.length && el[0].type === 'checkbox')) {
+                            // Part E multiple select
+                            const arr = Array.isArray(data.formObj[key]) ? data.formObj[key] : [data.formObj[key]];
+                            const checkboxes = document.querySelectorAll(`input[name="${key}"]`);
+                            checkboxes.forEach(cb => {
+                                if(arr.includes(cb.value)) {
+                                    cb.checked = true;
+                                }
+                            });
+                        } else {
+                            el.value = data.formObj[key];
+                        }
                     }
                 }
             }
+            if (data.currentStep && data.currentStep < totalSteps) {
+                currentStep = data.currentStep;
+            }
+        } catch(e) {
+            console.error('Error loading draft', e);
         }
-    } catch (e) {
-        console.error("Lỗi parse draft", e);
     }
 }
 
 async function submitForm() {
-    if (!validateStep(7)) {
+    if (!validateStep(6)) {
         return;
     }
     const originalBtnText = btnSubmit.innerHTML;
@@ -420,14 +466,20 @@ async function submitForm() {
 
     const formData = new FormData(form);
     const formObj = Object.fromEntries(formData.entries());
-    formObj['priority'] = formData.getAll('priority').join(', ');
+    
+    // Handle Part E checkboxes (multiple choice)
+    AppQuestions.partE.forEach(q => {
+        let loai = (q.loaiTraLoi || '').toLowerCase();
+        if (loai.includes('nhiều lựa chọn') || loai.includes('tối đa')) {
+            formObj[q.id] = formData.getAll(q.id).join(', ');
+        }
+    });
 
     const diagnosticAnswers = {};
     const questionIds = [
-        ...questionsData.waste8, 
-        ...questionsData.fosGroup1, 
-        ...questionsData.fosGroup2, 
-        ...questionsData.fosGroup3
+        ...AppQuestions.partB, 
+        ...AppQuestions.partC, 
+        ...AppQuestions.partD
     ].map(q => q.id);
 
     questionIds.forEach(id => {
@@ -438,22 +490,25 @@ async function submitForm() {
 
     const results = calculateResults(diagnosticAnswers);
 
+    let factoryInfo = {};
+    AppQuestions.partA.forEach(q => {
+        factoryInfo[q.id] = formObj[q.id];
+    });
+
+    let contactInfo = {};
+    AppQuestions.partF.forEach(q => {
+        contactInfo[q.id] = formObj[q.id];
+    });
+    
+    let priorityInfo = {};
+    AppQuestions.partE.forEach(q => {
+        priorityInfo[q.id] = formObj[q.id];
+    });
+
     const payload = {
-        factoryInfo: {
-            name: formObj['companyName'],
-            industry: formObj['industry'],
-            mainProduct: formObj['products'],
-            address: formObj['address'],
-            years: formObj['years'],
-            scale: formObj['employees']
-        },
-        contactInfo: {
-            name: formObj['contactName'],
-            jobTitle: formObj['jobTitle'],
-            phone: formObj['phone'],
-            email: formObj['contactEmail'],
-            priority: formObj['priority']
-        },
+        factoryInfo: factoryInfo,
+        contactInfo: contactInfo,
+        priorityInfo: priorityInfo,
         rawAnswers: formObj,
         scores: results
     };
@@ -474,23 +529,41 @@ async function submitForm() {
 function renderResults(payload) {
     const res = payload.scores;
     const info = payload.factoryInfo;
-    const phone = payload.contactInfo.phone;
+    const contact = payload.contactInfo;
+
+    const findValByMaCau = (maCau, dataObj) => {
+        for (const [key, partArray] of Object.entries(AppQuestions)) {
+            if (Array.isArray(partArray)) {
+                const q = partArray.find(x => x.maCau === maCau);
+                if (q && dataObj[q.id] !== undefined) {
+                    return dataObj[q.id];
+                }
+            }
+        }
+        return '---';
+    };
 
     // Trang 1
-    document.getElementById('a4-company').innerText = info.name || '---';
-    document.getElementById('a4-product').innerText = info.mainProduct || '---';
-    document.getElementById('a4-name').innerText = payload.contactInfo.name || '---';
-    document.getElementById('a4-job').innerText = payload.contactInfo.jobTitle || '---';
+    const companyName = findValByMaCau('A01', info);
+    const mainProduct = findValByMaCau('A04', info);
+    const contactName = findValByMaCau('F01', contact);
+    const jobTitle = findValByMaCau('F02', contact);
+    const phone = findValByMaCau('F04', contact); // Zalo phone
+
+    document.getElementById('a4-company').innerText = companyName || '---';
+    document.getElementById('a4-product').innerText = mainProduct || '---';
+    document.getElementById('a4-name').innerText = contactName || '---';
+    document.getElementById('a4-job').innerText = jobTitle || '---';
     document.getElementById('a4-phone').innerText = phone || '---';
     
-    document.getElementById('a4-score-text').innerText = res.warningScore + ' / 100';
-    document.getElementById('a4-level-text').innerText = 'MỨC ĐỘ: ' + res.assessmentLevel.toUpperCase();
     document.getElementById('a4-general-desc').innerText = res.generalAssessment;
 
     let levelText = "";
     let levelColor = "";
     let recText = "";
-    const s = res.warningScore;
+    const s = res.warningScore; 
+    const healthPercent = 100 - s;
+
     if(s <= 20) { 
         levelText = "KHỎE MẠNH"; levelColor = "#10b981"; 
         recText = "Khuyến nghị: Duy trì tiêu chuẩn và tập trung cải tiến liên tục.";
@@ -505,7 +578,7 @@ function renderResults(payload) {
     }
     else if(s <= 80) { 
         levelText = "BỆNH NẶNG"; levelColor = "#ef4444"; 
-        recText = "Khuyến nghị: Triển khai chương trình cải tiến có người chịu trách nhiệm và theo dõi hằng ngày.";
+        recText = "Khuyến nghị: Triển khai chương trình cải tiến có người chịu trách nhiệm và theo dõi hàng ngày.";
     }
     else { 
         levelText = "NGUY KỊCH"; levelColor = "#334155"; 
@@ -514,264 +587,163 @@ function renderResults(payload) {
     
     document.getElementById('a4-level-text').innerText = `MỨC ĐỘ: ${levelText}`;
     document.getElementById('a4-level-text').style.color = levelColor;
-    document.getElementById('a4-score-text').innerText = `${s} / 100`;
+    document.getElementById('a4-score-text').innerText = `${healthPercent} / 100`;
     document.getElementById('a4-score-text').style.color = levelColor;
-    
+
     const recTextEl = document.getElementById('a4-recommendation-text');
     if(recTextEl) {
         recTextEl.innerText = recText;
         recTextEl.style.color = levelColor;
     }
     
-    // Gauge Chart (Trang 1)
-    const ctxGauge = document.getElementById('gaugeChart');
-    if(window.myGauge) window.myGauge.destroy();
-    window.myGauge = new Chart(ctxGauge, {
-        type: 'doughnut',
-        data: {
-            labels: ['Khỏe mạnh', 'Cảnh báo', 'Mắc bệnh', 'Bệnh nặng', 'Nguy kịch'],
-            datasets: [{
-                data: [20, 20, 20, 20, 20],
-                backgroundColor: ['#10b981', '#eab308', '#f97316', '#ef4444', '#334155'],
-                borderWidth: 0,
-                circumference: 180,
-                rotation: 270
-            }]
-        },
-        plugins: [{
-            id: 'gaugeNeedle',
-            afterDatasetDraw(chart) {
-                const { ctx, chartArea: { width, height } } = chart;
-                ctx.save();
-                const score = res.warningScore; 
-                // Calculate angle: 270 deg (start) to 450 deg (end), spread is 180 deg (Math.PI).
-                // 270 deg = 1.5 * Math.PI, but with rotation:270, the center is aligned.
-                // Angle needs to be mapped to the arc.
-                const angle = Math.PI + (score / 100) * Math.PI;
-                
-                // The center of the arc
-                const meta = chart.getDatasetMeta(0);
-                const cx = meta.data[0].x;
-                const cy = meta.data[0].y;
-                // Needle length based on outer radius
-                const radius = meta.data[0].outerRadius;
-                
-                ctx.translate(cx, cy);
-                ctx.rotate(angle);
-                ctx.beginPath();
-                ctx.moveTo(0, -4);
-                ctx.lineTo(radius - 10, 0);
-                ctx.lineTo(0, 4);
-                ctx.fillStyle = '#1e293b';
-                ctx.fill();
-                // Center pin
-                ctx.beginPath();
-                ctx.arc(0, 0, 8, 0, Math.PI * 2);
-                ctx.fillStyle = '#1e293b';
-                ctx.fill();
-                ctx.beginPath();
-                ctx.arc(0, 0, 4, 0, Math.PI * 2);
-                ctx.fillStyle = '#ffffff';
-                ctx.fill();
-                ctx.restore();
-            }
-        }],
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            cutout: '80%',
-            plugins: { tooltip: { enabled: false }, legend: { display: false } },
-            animation: { animateRotate: true, animateScale: false }
-        }
-    });
-
-    const top3Html = res.top3Wastes.map((w, i) => `
-        <div class="a4-issue-card">
-            <div class="circle-num">${i+1}</div>
-            <strong style="color:#1e293b;font-size:12px;">${w}</strong>
-        </div>
-    `).join('');
-    document.getElementById('a4-top-3-issues').innerHTML = top3Html;
-
-    // Trang 2
-    // Extract Waste Scores (Assuming questionsData.waste8 order)
-    const wasteLabels = questionsData.waste8.map(q => q.module);
-    const wasteData = questionsData.waste8.map(q => payload.rawAnswers[q.id] ? parseInt(payload.rawAnswers[q.id]) : 0);
-    
-    const ctxRadar = document.getElementById('radarChart');
-    if(window.myRadar) window.myRadar.destroy();
-    window.myRadar = new Chart(ctxRadar, {
-        type: 'radar',
-        data: {
-            labels: wasteLabels,
-            datasets: [{
-                label: 'Điểm Lãng phí (0-4)',
-                data: wasteData,
-                backgroundColor: 'rgba(249, 115, 22, 0.2)',
-                borderColor: '#f97316',
-                pointBackgroundColor: '#f97316',
-                borderWidth: 2
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                r: {
-                    angleLines: { color: '#cbd5e1' },
-                    grid: { color: '#cbd5e1' },
-                    pointLabels: { color: '#475569', font: { size: 10 } },
-                    ticks: { display: false, min: 0, max: 4, stepSize: 1 }
-                }
-            },
-            plugins: { legend: { display: false } }
-        }
-    });
-
-    const wasteScoresHtml = wasteLabels.map((lbl, idx) => `
-        <div class="a4-waste-pill">
-            <div style="color:#94a3b8">${lbl}</div>
-            <span>${wasteData[idx]} / 4</span>
-        </div>
-    `).join('');
-    document.getElementById('a4-waste-scores').innerHTML = wasteScoresHtml;
-
-    const wasteAnalysisHtml = res.top3Wastes.map((w, i) => `
-        <div style="margin-bottom: 20px; background: #f8fafc; padding: 15px; border-radius: 8px; border-left: 3px solid #f97316;">
-            <div style="display:flex; align-items:center; gap: 10px; margin-bottom: 10px;">
-                <div style="width:24px; height:24px; background:#f97316; color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:12px;">${i+1}</div>
-                <h4 style="color:#1e293b; margin:0; font-size:14px;">${w}</h4>
+    const top3IssuesEl = document.getElementById('a4-top-3-issues');
+    if (top3IssuesEl) {
+        top3IssuesEl.innerHTML = res.diseases.map(disease => `
+            <div class="a4-issue-card">
+                <i class="fas fa-exclamation-triangle" style="color: #ef4444; font-size: 24px; margin-bottom: 10px;"></i>
+                <div class="title" style="font-weight: bold; color: #1e293b;">${disease}</div>
             </div>
-            <p style="font-size: 12px; color: #475569; line-height: 1.5; margin:0;">Tác động: Dòng chảy bị đứt đoạn, tăng chi phí vận hành, giảm biên lợi nhuận đáng kể. Cần áp dụng ngay các biện pháp kiểm soát và chuẩn hóa.</p>
-        </div>
-    `).join('');
-    document.getElementById('a4-waste-analysis').innerHTML = wasteAnalysisHtml;
-
-    // Trang 3 - Heatmap
-    const fosQs = [...questionsData.fosGroup1, ...questionsData.fosGroup2, ...questionsData.fosGroup3];
-    const heatmapHtml = fosQs.map(q => {
-        const s = payload.rawAnswers[q.id] ? parseInt(payload.rawAnswers[q.id]) : 0;
-        let cClass = 'good';
-        if(s===1) cClass='fair'; else if(s===2) cClass='warn'; else if(s===3) cClass='bad'; else if(s===4) cClass='critical';
-        return `
-            <div class="a4-heat-cell ${cClass}">
-                <div class="module-name">${q.module}</div>
-                <div class="score">${s} / 4</div>
-            </div>
-        `;
-    }).join('');
-    document.getElementById('a4-heatmap').innerHTML = heatmapHtml;
-
-    const topFosHtml = res.top3FOS.map((f, i) => `
-        <div style="margin-bottom: 15px; background: #f8fafc; padding: 15px; border-radius: 8px; border-left: 3px solid #ef4444;">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 8px;">
-                <div style="display:flex; align-items:center; gap: 10px;">
-                    <div style="width:20px; height:20px; background:#ef4444; color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:11px;">${i+1}</div>
-                    <strong style="color:#1e293b; font-size:13px;">${f}</strong>
-                </div>
-            </div>
-            <p style="font-size: 11px; color: #475569; line-height: 1.5; margin:0;">Khung quản trị nền tảng tại khâu này đang bị thiếu hụt nghiêm trọng, tạo ra sự phụ thuộc hoàn toàn vào con người.</p>
-        </div>
-    `).join('');
-    document.getElementById('a4-top3-fos').innerHTML = topFosHtml;
-
-    // Trang 4 - Triệu chứng
-    const symptomsHtml = res.diseases.map((d, i) => `
-        <tr>
-            <td style="text-align: center;">${i+1}</td>
-            <td style="color: #1e293b; font-weight: bold;">${d}</td>
-            <td style="text-align: center; color: #f97316; font-weight: bold;">CẢNH BÁO</td>
-            <td><span style="background: rgba(239, 68, 68, 0.1); color: #ef4444; padding: 4px 8px; border-radius: 4px; font-size: 10px; font-weight: bold;">NGHIÊM TRỌNG</span></td>
-        </tr>
-    `).join('');
-    document.getElementById('a4-symptoms-table').innerHTML = symptomsHtml;
-
-    // Trang 5 - Khuyến nghị & QR
-    const recHtml = `
-        <li style="margin-bottom:10px">Tổ chức họp khẩn ban lãnh đạo để đánh giá lại mức độ nghiêm trọng của 3 lãng phí lớn nhất.</li>
-        <li style="margin-bottom:10px">Yêu cầu thu thập số liệu thực tế về Tồn kho, Lỗi hỏng và Thời gian chờ trong 7 ngày gần nhất.</li>
-        <li style="margin-bottom:10px">Nâng cấp năng lực quản lý hiện trường (Daily Management) và Thiết lập lại bộ tiêu chuẩn (Standard).</li>
-        <li style="margin-bottom:10px">Thanh toán Mở khóa Báo Cáo Chi Tiết để nhận bản Phân tích Nguyên nhân Gốc rễ và Lộ trình Cải tiến 60 ngày.</li>
-    `;
-    document.getElementById('a4-recommendations').innerHTML = recHtml;
-
-    // QR Payment is no longer shown on the PDF, but used in the modal instead.
-    // The modal already has #payment-qr-img which we update here.
-    const phoneTrim = (phone || '0945530699').replace(/\s+/g, '');
-    const modalQrPhone = document.getElementById('payment-phone-placeholder');
-    if(modalQrPhone) modalQrPhone.innerText = phoneTrim;
-    
-    const modalQrImg = document.getElementById('payment-qr-img');
-    if(modalQrImg) modalQrImg.src = `https://img.vietqr.io/image/MB-5757658888-qr_only.png?amount=990000&addInfo=${encodeURIComponent('KBM ' + phoneTrim)}&accountName=INVAMAX`;
-
-    // Also populate the inline QR on Trang 5
-    const inlineQrPhone = document.getElementById('a4-qr-phone-inline');
-    if(inlineQrPhone) inlineQrPhone.innerText = phoneTrim;
-    const inlineQrImg = document.getElementById('a4-qr-img-inline');
-    if(inlineQrImg) inlineQrImg.src = `https://img.vietqr.io/image/MB-5757658888-qr_only.png?amount=990000&addInfo=${encodeURIComponent('KBM ' + phoneTrim)}&accountName=INVAMAX`;
-
-    // Bind Payment Button
-    const btnShowPayment = document.getElementById('btn-show-payment');
-    const paymentModal = document.getElementById('paymentModal');
-    if (btnShowPayment && paymentModal) {
-        btnShowPayment.addEventListener('click', () => {
-            paymentModal.style.display = 'flex';
-        });
+        `).join('');
     }
 
-    const closeModalBtn = document.getElementById('closeModal');
-    if (closeModalBtn && paymentModal) {
-        closeModalBtn.addEventListener('click', () => {
-            paymentModal.style.display = 'none';
-        });
+    const fosShortfallsEl = document.getElementById('a4-top3-fos');
+    if (fosShortfallsEl) {
+        fosShortfallsEl.innerHTML = res.top3FOS.map(item => `
+            <div class="a4-issue-card" style="background: #fff1f2; color: #e11d48; padding: 12px; margin-bottom: 10px; border-radius: 6px; font-weight: bold; border-left: 4px solid #e11d48; display: flex; align-items: center; justify-content: space-between;">
+                <span>${item}</span>
+                <i class="fas fa-exclamation-circle"></i>
+            </div>
+        `).join('');
     }
 
-    window.addEventListener('click', (event) => {
-        if (event.target == paymentModal) {
-            paymentModal.style.display = "none";
-        }
-    });
+    setTimeout(() => {
+        if (typeof initCharts === 'function') initCharts(res);
+    }, 100);
 
-    // Download PDF event
-    const btnDown = document.getElementById('a4-btn-download');
-    if (btnDown) {
-        const newBtn = btnDown.cloneNode(true);
-        btnDown.parentNode.replaceChild(newBtn, btnDown);
-        
-        newBtn.addEventListener('click', () => {
-            const element = document.getElementById('report-a4-wrapper');
-            const pdfControls = document.getElementById('a4-pdf-controls');
-            element.classList.add('pdf-export-mode');
-            if(pdfControls) pdfControls.style.display = 'none'; // Hide explicitly for PDF
-            
-            const originalText = newBtn.innerHTML;
-            newBtn.innerHTML = '<i data-lucide="loader" class="spin"></i> ĐANG TẠO PDF...';
-            
-            // To ensure html2canvas captures properly
-            window.scrollTo(0,0);
-            
-            setTimeout(() => {
-                const opt = {
-                    margin:       0,
-                    filename:     'INVAMAX_Bao_Cao_So_Bo.pdf',
-                    image:        { type: 'jpeg', quality: 1 },
-                    html2canvas:  { scale: 2, useCORS: true, logging: false, backgroundColor: '#ffffff' },
-                    jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
-                    pagebreak:    { mode: ['css', 'legacy'] }
-                };
-
-                html2pdf().set(opt).from(element).save().then(() => {
-                    newBtn.innerHTML = originalText;
-                    element.classList.remove('pdf-export-mode');
-                    if(pdfControls) pdfControls.style.display = '';
-                }).catch(e => {
-                    console.error(e);
-                    newBtn.innerHTML = originalText;
-                    element.classList.remove('pdf-export-mode');
-                    if(pdfControls) pdfControls.style.display = '';
-                    alert('Lỗi tạo PDF!');
-                });
-            }, 1000);
-        });
+    // QR Code for the PDF Report inline
+    const amount = 990000;
+    const bankId = 'MB';
+    const accountNo = '5757658888';
+    const accountName = 'INVAMAX';
+    let cleanPhone = (phone || '0945530699').replace(/\s+/g, '');
+    const addInfo = 'KBM ' + cleanPhone;
+    const qrUrl = `https://img.vietqr.io/image/${bankId}-${accountNo}-qr_only.png?amount=${amount}&addInfo=${encodeURIComponent(addInfo)}&accountName=${encodeURIComponent(accountName)}`;
+    
+    const qrImgInline = document.getElementById('a4-qr-img-inline');
+    if (qrImgInline) {
+        qrImgInline.src = qrUrl;
+    }
+    const qrPhoneInline = document.getElementById('a4-qr-phone-inline');
+    if (qrPhoneInline) {
+        qrPhoneInline.innerText = cleanPhone;
     }
 }
+
+function initCharts(res) {
+    // 1. Gauge Chart
+    const ctxGauge = document.getElementById('gaugeChart');
+    if (ctxGauge) {
+        // Destroy existing chart if any
+        if(window.gaugeChartInstance) window.gaugeChartInstance.destroy();
+        
+        window.gaugeChartInstance = new Chart(ctxGauge, {
+            type: 'doughnut',
+            data: {
+                datasets: [{
+                    data: [20, 20, 20, 20, 20],
+                    backgroundColor: ['#10b981', '#eab308', '#f97316', '#ef4444', '#334155'],
+                    borderWidth: 0,
+                    circumference: 180,
+                    rotation: 270,
+                    needleValue: res.warningScore
+                }]
+            },
+            options: {
+                animation: false,
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '70%',
+                plugins: { legend: { display: false }, tooltip: { enabled: false } }
+            },
+            plugins: [{
+                id: 'gaugeNeedle',
+                afterDatasetDraw(chart) {
+                    const { ctx, chartArea: { width, height } } = chart;
+                    ctx.save();
+                    const needleValue = chart.data.datasets[0].needleValue;
+                    const angle = Math.PI + (needleValue / 100) * Math.PI;
+                    const cx = chart.chartArea.left + width / 2;
+                    const cy = chart.chartArea.top + height;
+
+                    ctx.translate(cx, cy);
+                    ctx.rotate(angle);
+                    ctx.beginPath();
+                    ctx.moveTo(0, -5);
+                    ctx.lineTo(height - 20, 0);
+                    ctx.lineTo(0, 5);
+                    ctx.fillStyle = '#1e293b';
+                    ctx.fill();
+                    ctx.restore();
+                    
+                    ctx.beginPath();
+                    ctx.arc(cx, cy, 8, 0, Math.PI * 2);
+                    ctx.fillStyle = '#1e293b';
+                    ctx.fill();
+                    ctx.restore();
+                }
+            }]
+        });
+    }
+
+    // 2. Radar Chart
+    const ctxRadar = document.getElementById('radarChart');
+    if (ctxRadar) {
+        if(window.radarChartInstance) window.radarChartInstance.destroy();
+        window.radarChartInstance = new Chart(ctxRadar, {
+            type: 'radar',
+            data: {
+                labels: res.wasteScores.map(w => w.module),
+                datasets: [{
+                    label: 'Điểm Lãng Phí',
+                    data: res.wasteScores.map(w => w.score),
+                    backgroundColor: 'rgba(234, 88, 12, 0.2)',
+                    borderColor: '#ea580c',
+                    pointBackgroundColor: '#ea580c',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                animation: false,
+                scales: {
+                    r: { min: 0, max: 100, ticks: { display: false } }
+                },
+                plugins: { legend: { display: false } }
+            }
+        });
+    }
+
+    // 3. Heatmap
+    const heatmapEl = document.getElementById('a4-heatmap');
+    if (heatmapEl) {
+        heatmapEl.innerHTML = res.fosScores.map(f => {
+            let color = '#10b981';
+            if (f.score > 80) color = '#ef4444';
+            else if (f.score > 60) color = '#f97316';
+            else if (f.score > 40) color = '#eab308';
+            return '<div class="a4-heat-cell" style="background: ' + color + ';"><div class="module-name" style="color: white;">' + f.module + '</div><div class="score" style="color: white;">' + f.score + '</div></div>';
+        }).join('');
+    }
+
+    // 4. Waste Scores
+    const wasteScoresEl = document.getElementById('a4-waste-scores');
+    if (wasteScoresEl) {
+        wasteScoresEl.innerHTML = res.wasteScores.map(w => {
+            let color = '#10b981';
+            if (w.score > 80) color = '#ef4444';
+            else if (w.score > 60) color = '#f97316';
+            else if (w.score > 40) color = '#eab308';
+            return '<div class="a4-heat-cell" style="background: ' + color + ';"><div class="module-name" style="color: white;">' + w.module + '</div><div class="score" style="color: white;">' + w.score + '</div></div>';
+        }).join('');
+    }
+}
+
