@@ -721,29 +721,296 @@ function initCharts(res) {
             }
         });
     }
+    // Render advanced A4 UI components
+    if (typeof renderAdvancedUI === 'function') {
+        renderAdvancedUI(res);
+    }
+    
+    renderRawDataReview(res, payload.rawAnswers);
+    
+    // Add default Quick Wins for client preview
+    const quickWinsEl = document.getElementById('a4-quick-wins');
+    if (quickWinsEl && res.top3FOS && res.top3FOS.length >= 1) {
+        quickWinsEl.innerHTML = `
+            <li style="margin-bottom: 8px;"><strong>Đào tạo nhận thức cơ bản về Lãng phí:</strong> Mở ngay 1 buổi họp toàn xưởng để định nghĩa lại các Lãng phí (Wastes) đang tồn đọng tại ${res.top3FOS[0]} và ${res.top3FOS[1] || 'các công đoạn'}.</li>
+            <li style="margin-bottom: 8px;"><strong>Thiết lập quản lý trực quan (Visual Management):</strong> Dán nhãn, kẻ vạch, quy định rõ ràng vị trí vật tư tại khu vực dễ xảy ra lỗi nhất.</li>
+            <li style="margin-bottom: 8px;"><strong>Áp dụng họp giao ban 10 phút (Daily Huddle):</strong> Quản đốc/Tổ trưởng cần đứng họp 10 phút đầu ca để rà soát mục tiêu sản lượng và chất lượng.</li>
+            <li style="margin-bottom: 8px;"><strong>Xác định Nút thắt (Bottleneck):</strong> Đo thời gian thao tác tại trạm đang bị ùn ứ nhiều nhất để cân bằng lại nhịp điệu (Takt Time).</li>
+            <li style="margin-bottom: 8px;"><strong>Tiêu chuẩn hóa thao tác (SOP):</strong> Viết ra 1 tờ giấy A4 duy nhất quy trình thao tác chuẩn cho công đoạn hay bị lỗi nhất và dán ngay trước mặt công nhân.</li>
+        `;
+    }
+}
 
-    // 3. Heatmap
-    const heatmapEl = document.getElementById('a4-heatmap');
-    if (heatmapEl) {
-        heatmapEl.innerHTML = res.fosScores.map(f => {
-            let color = '#10b981';
-            if (f.score > 80) color = '#ef4444';
-            else if (f.score > 60) color = '#f97316';
-            else if (f.score > 40) color = '#eab308';
-            return '<div class="a4-heat-cell" style="background: ' + color + ';"><div class="module-name" style="color: white;">' + f.module + '</div><div class="score" style="color: white;">' + f.score + '</div></div>';
+
+
+function renderRawDataReview(scores, rawAnswers) {
+    const el1 = document.getElementById('a4-raw-data-review');
+    const el2 = document.getElementById('a4-raw-data-review-2');
+    if(!el1 || !el2 || !scores || !scores.top3FOS || !rawAnswers) return;
+
+    const moduleMapping = {
+        "Flow": { wastes: ["Sản xuất thừa", "Chờ đợi", "Vận chuyển", "Tồn kho"], symptoms: ["Trì hoãn và tiến độ chậm", "Thông tin phối hợp không thông suốt"] },
+        "Capacity": { wastes: ["Chờ đợi", "Không khai thác hết nguồn lực"], symptoms: ["Kế hoạch bất ổn", "Quản trị hiện trường mang tính chữa cháy"] },
+        "Standard": { wastes: ["Lỗi và làm lại", "Thao tác", "Gia công thừa"], symptoms: ["Dữ liệu và quyết định thiếu tin cậy", "Môi trường làm việc thiếu an toàn, lộn xộn"] },
+        "Quality": { wastes: ["Lỗi và làm lại"], symptoms: ["Dữ liệu và quyết định thiếu tin cậy"] },
+        "People": { wastes: ["Không khai thác hết nguồn lực", "Thao tác"], symptoms: ["Quản trị hiện trường mang tính chữa cháy"] },
+        "Daily Management": { wastes: ["Chờ đợi", "Gia công thừa"], symptoms: ["Quản trị hiện trường mang tính chữa cháy", "Thông tin phối hợp không thông suốt"] },
+        "Sustain": { wastes: ["Không khai thác hết nguồn lực"], symptoms: ["Môi trường làm việc thiếu an toàn, lộn xộn"] },
+        "Kaizen": { wastes: ["Gia công thừa"], symptoms: ["Dữ liệu và quyết định thiếu tin cậy"] },
+        "Knowledge": { wastes: ["Lỗi và làm lại", "Không khai thác hết nguồn lực"], symptoms: ["Dữ liệu và quyết định thiếu tin cậy"] },
+        "Digital": { wastes: ["Chờ đợi"], symptoms: ["Dữ liệu và quyết định thiếu tin cậy", "Thông tin phối hợp không thông suốt"] },
+        "Core": { wastes: ["Không khai thác hết nguồn lực"], symptoms: ["Kế hoạch bất ổn"] }
+    };
+
+    const top3 = scores.top3FOS; 
+    let html1 = '';
+    let html2 = '';
+    
+    top3.forEach((module, index) => {
+        const qFOS = AppQuestions.partD.filter(q => q.nhom === module);
+        const mapData = moduleMapping[module] || { wastes: [], symptoms: [] };
+        
+        let relatedSymptoms = (scores.symptomsScores || []).filter(s => mapData.symptoms.includes(s.module)).sort((a,b)=>b.score - a.score);
+        let relatedWastes = (scores.wasteScores || []).filter(w => mapData.wastes.includes(w.module)).sort((a,b)=>b.score - a.score);
+
+        if (relatedSymptoms.length === 0 && scores.symptomsScores) { relatedSymptoms = scores.symptomsScores.slice(0, 2); }
+        if (relatedWastes.length === 0 && scores.wasteScores) { relatedWastes = scores.wasteScores.slice(0, 2); }
+
+        const renderQList = (qList) => {
+            if(!qList || qList.length === 0) return '<div style="color:#94a3b8; font-style:italic;">Không có dữ liệu</div>';
+            return qList.map(q => {
+                let ansText = rawAnswers[q.id] !== undefined ? rawAnswers[q.id] : 'Chưa trả lời';
+                const ansIdx = parseInt(ansText);
+                if(q.dapAn && q.dapAn.length > 0 && !isNaN(ansIdx) && q.loaiTraLoi !== 'Điền số') {
+                    if(q.dapAn[ansIdx] !== undefined) ansText = q.dapAn[ansIdx];
+                }
+                if (Array.isArray(rawAnswers[q.id])) {
+                    ansText = rawAnswers[q.id].map(idx => {
+                        const i = parseInt(idx);
+                        return (!isNaN(i) && q.dapAn[i]) ? q.dapAn[i] : idx;
+                    }).join(', ');
+                }
+                return `<div style="margin-bottom: 8px; border-bottom: 1px dashed #e2e8f0; padding-bottom: 6px;">
+                            <div style="font-weight: 500; margin-bottom: 4px; color: #334155; line-height: 1.3;">${q.cauHoi}</div>
+                            <div style="color: #ef4444; font-size: 10px; font-weight: bold;"><i class="fas fa-check-circle" style="margin-right:4px;"></i>KH Chọn: ${ansText}</div>
+                        </div>`;
+            }).join('');
+        };
+
+        const renderRelated = (items, type) => {
+            if(!items || items.length === 0) return '<div style="color:#94a3b8; font-style:italic;">Không có dữ liệu</div>';
+            return items.map(item => `
+                <div style="margin-bottom: 10px; background: white; border: 1px solid #f1f5f9; padding: 8px; border-radius: 6px;">
+                    <div style="font-weight: bold; color: #334155; margin-bottom: 4px;">${item.module}</div>
+                    <div style="color: #ef4444; font-size: 10px; font-weight: bold;">Điểm ${type}: ${item.score}/100</div>
+                </div>
+            `).join('');
+        };
+
+        let cardHtml = `
+        <div style="background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; font-size: 10px; margin-bottom: 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+            <div style="color: #0f172a; font-weight: 900; font-size: 13px; margin-bottom: 10px; border-bottom: 2px solid #e2e8f0; padding-bottom: 5px; text-transform: uppercase;">KHÁM MODULE: <span style="color:#ef4444;">${module}</span></div>
+            <div style="display: flex; gap: 15px;">
+                <div style="flex: 3;">
+                    <div style="color: #475569; font-size: 9px; text-transform: uppercase; margin-bottom: 8px; font-weight: bold; background: #f8fafc; padding: 4px; border-radius: 4px;">1. ĐÁNH GIÁ MODULE</div>
+                    ${renderQList(qFOS)}
+                </div>
+                <div style="flex: 2; border-left: 1px dashed #cbd5e1; padding-left: 15px;">
+                    <div style="color: #b45309; font-size: 9px; text-transform: uppercase; margin-bottom: 8px; font-weight: bold; background: #fef3c7; padding: 4px; border-radius: 4px;">2. DẤU HIỆU LIÊN QUAN</div>
+                    ${renderRelated(relatedSymptoms, "bất thường")}
+                </div>
+                <div style="flex: 2; border-left: 1px dashed #cbd5e1; padding-left: 15px;">
+                    <div style="color: #c2410c; font-size: 9px; text-transform: uppercase; margin-bottom: 8px; font-weight: bold; background: #ffedd5; padding: 4px; border-radius: 4px;">3. LÃNG PHÍ LIÊN QUAN</div>
+                    ${renderRelated(relatedWastes, "lãng phí")}
+                </div>
+            </div>
+        </div>
+        `;
+        
+        if (index < 2) {
+            html1 += cardHtml;
+        } else {
+            html2 += cardHtml;
+        }
+    });
+    
+    el1.innerHTML = html1;
+    el2.innerHTML = html2;
+}
+
+
+const getColorConfig = (score, isHealth) => {
+        let normalizedDisease = isHealth ? (100 - score) : score;
+        
+        let bg = '', text = '', icon = '', trendText = '';
+        if (normalizedDisease >= 80) {
+            bg = '#334155'; text = '#ffffff'; icon = 'fa-skull-crossbones'; trendText = 'Nguy kịch, mất kiểm soát';
+        } else if (normalizedDisease >= 60) {
+            bg = '#ef4444'; text = '#ffffff'; icon = 'fa-exclamation-triangle'; trendText = 'Nghiêm trọng, cần xử lý gấp';
+        } else if (normalizedDisease >= 40) {
+            bg = '#f97316'; text = '#ffffff'; icon = 'fa-exclamation-circle'; trendText = 'Có bệnh, phát sinh vấn đề';
+        } else if (normalizedDisease >= 20) {
+            bg = '#facc15'; text = '#1e293b'; icon = 'fa-info-circle'; trendText = 'Cảnh báo, cần cải thiện';
+        } else {
+            bg = '#10b981'; text = '#ffffff'; icon = 'fa-check-circle'; trendText = 'Khỏe mạnh, tối ưu tốt';
+        }
+        
+        return { bg, text, icon, trendText };
+    };
+const getWasteImpact = (wasteName) => {
+    const w = wasteName.toLowerCase();
+        if(w.includes('chờ đợi')) return 'Gây tắc nghẽn dòng chảy, tăng thời gian chu kỳ và chi phí nhân công, giảm năng suất.';
+        if(w.includes('tồn kho')) return 'Tốn diện tích, chi phí vốn, khó kiểm soát và dễ phát sinh lỗi.';
+        if(w.includes('vận chuyển')) return 'Tiêu tốn thời gian, nguy cơ hỏng hóc, không tạo ra giá trị gia tăng.';
+        if(w.includes('thao tác')) return 'Gây mệt mỏi cho công nhân, giảm năng suất lao động.';
+        if(w.includes('quy trình') || w.includes('gia công')) return 'Lãng phí vật tư, hao mòn máy móc, không mang lại giá trị cho khách hàng.';
+        if(w.includes('dư thừa') || w.includes('sản xuất thừa')) return 'Nguồn gốc của mọi lãng phí khác, ứ đọng vốn.';
+        if(w.includes('lỗi') || w.includes('khuyết tật')) return 'Tăng chi phí sửa chữa, ảnh hưởng giao hàng và uy tín khách hàng.';
+        if(w.includes('nguồn lực') || w.includes('năng lực') || w.includes('talent')) return 'Lãng phí chất xám, giảm động lực làm việc của nhân viên.';
+        return 'Lãng phí làm giảm hiệu quả hoạt động chung của hệ thống.';
+    };
+const getModuleInfo = (modName) => {
+    const m = modName.toLowerCase();
+    if(m.includes('core')) return {vi: 'Cốt lõi', icon: 'fa-bullseye'};
+    if(m.includes('people')) return {vi: 'Con người', icon: 'fa-users'};
+    if(m.includes('flow')) return {vi: 'Dòng chảy', icon: 'fa-water'};
+    if(m.includes('standard')) return {vi: 'Tiêu chuẩn', icon: 'fa-ruler-combined'};
+    if(m.includes('capacity')) return {vi: 'Năng lực', icon: 'fa-cogs'};
+    if(m.includes('daily management')) return {vi: 'Quản trị hằng ngày', icon: 'fa-calendar-check'};
+    if(m.includes('quality')) return {vi: 'Chất lượng', icon: 'fa-check-circle'};
+    if(m.includes('knowledge')) return {vi: 'Tri thức', icon: 'fa-book-open'};
+    if(m.includes('digital')) return {vi: 'Số hóa', icon: 'fa-laptop-code'};
+    if(m.includes('kaizen')) return {vi: 'Cải tiến', icon: 'fa-arrow-trend-up'};
+    if(m.includes('sustain')) return {vi: 'Duy trì', icon: 'fa-shield-alt'};
+    return {vi: modName, icon: 'fa-layer-group'};
+};
+
+const getSymptomIcon = (symptomName) => {
+    const s = symptomName.toLowerCase();
+    if(s.includes('thông tin')) return 'fa-unlink';
+    if(s.includes('dữ liệu')) return 'fa-database';
+    if(s.includes('chữa cháy')) return 'fa-fire-extinguisher';
+    if(s.includes('cải tiến')) return 'fa-history';
+    if(s.includes('kế hoạch')) return 'fa-calendar-times';
+    if(s.includes('tiêu chuẩn')) return 'fa-ruler-combined';
+    if(s.includes('nguồn lực')) return 'fa-battery-empty';
+    if(s.includes('dòng chảy')) return 'fa-pause-circle';
+    return 'fa-exclamation-circle';
+};
+
+const getWasteIcon = (wasteName) => {
+    const w = wasteName.toLowerCase();
+        if(w.includes('chờ đợi')) return 'fa-clock';
+        if(w.includes('tồn kho')) return 'fa-boxes';
+        if(w.includes('vận chuyển')) return 'fa-truck';
+        if(w.includes('thao tác')) return 'fa-people-carry';
+        if(w.includes('quy trình') || w.includes('gia công')) return 'fa-cogs';
+        if(w.includes('dư thừa') || w.includes('sản xuất thừa')) return 'fa-industry';
+        if(w.includes('lỗi') || w.includes('khuyết tật')) return 'fa-exclamation-triangle';
+        if(w.includes('nguồn lực') || w.includes('năng lực') || w.includes('talent')) return 'fa-user-times';
+        return 'fa-trash-alt';
+    };
+const getLightColorConfig = (score) => {
+        if (score >= 80) return { bg: '#f8fafc', border: '#e2e8f0', color: '#334155' };
+        if (score >= 60) return { bg: '#fef2f2', border: '#fee2e2', color: '#ef4444' };
+        if (score >= 40) return { bg: '#fff7ed', border: '#ffedd5', color: '#ea580c' };
+        if (score >= 20) return { bg: '#fefce8', border: '#fef08a', color: '#eab308' };
+        return { bg: '#f0fdf4', border: '#dcfce7', color: '#10b981' };
+    };
+
+
+function renderAdvancedUI(res) {
+    const renderScoresList = (containerId, scores, color) => {
+        const container = document.getElementById(containerId);
+        if(!container) return;
+        container.innerHTML = scores.map(item => `
+            <div style="display:flex;justify-content:space-between;border-bottom:1px solid #f1f5f9;padding:8px 0;font-size:12px;">
+                <span style="color:#475569;font-weight:bold;">${item.module}</span>
+                <span style="color:${color};font-weight:bold;">${item.score}/100</span>
+            </div>
+        `).join('');
+    };
+    
+    const el_waste_scores = document.getElementById('a4-waste-scores');
+    if (el_waste_scores) {
+        el_waste_scores.innerHTML = res.wasteScores.map(item => {
+            const conf = getColorConfig(item.score, false);
+            return `<div style="flex:1; border-radius:6px; background:${conf.bg}; border:1px solid ${conf.bg}; padding:10px 2px; display:flex; flex-direction:column; align-items:center; text-align:center; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
+                <div style="font-size:22px; color:${conf.text}; margin-bottom:8px;"><i class="fas ${getWasteIcon(item.module)}"></i></div>
+                <div style="flex: 1; font-size:10px; font-weight:bold; color:${conf.text}; margin-bottom:8px; display:flex; align-items:center; justify-content:center; line-height:1.3; width: 100%; word-break: break-word;">${item.module}</div>
+                <div style="font-size:16px; font-weight:900; color:${conf.text}; margin-top: auto;">${item.score}</div>
+            </div>`;
         }).join('');
     }
 
-    // 4. Waste Scores
-    const wasteScoresEl = document.getElementById('a4-waste-scores');
-    if (wasteScoresEl) {
-        wasteScoresEl.innerHTML = res.wasteScores.map(w => {
-            let color = '#10b981';
-            if (w.score > 80) color = '#ef4444';
-            else if (w.score > 60) color = '#f97316';
-            else if (w.score > 40) color = '#eab308';
-            return '<div class="a4-heat-cell" style="background: ' + color + ';"><div class="module-name" style="color: white;">' + w.module + '</div><div class="score" style="color: white;">' + w.score + '</div></div>';
+    const el_waste_top3 = document.getElementById('a4-waste-analysis');
+    if (el_waste_top3) {
+        const top3 = res.wasteScores.slice(0, 3);
+        el_waste_top3.innerHTML = top3.map((item, idx) => {
+            const confLight = getLightColorConfig(item.score);
+            const confDark = getColorConfig(item.score, false);
+            return `<div style="flex:1; border-radius:8px; background:${confLight.bg}; border:1px solid ${confLight.border}; padding:10px 12px; display:flex; flex-direction:column; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
+                    <div style="display:flex; align-items:flex-start; flex:1; margin-right:10px;">
+                        <div style="width:28px; height:28px; border-radius:50%; background:${confLight.color}; color:white; font-weight:bold; display:flex; justify-content:center; align-items:center; margin-right:10px; flex-shrink:0;">${idx+1}</div>
+                        <div style="font-size:14px; font-weight:bold; color:#1e293b; line-height:1.4; padding-top:2px;">${item.module}</div>
+                    </div>
+                    <div style="font-size:18px; font-weight:900; color:#1e293b; white-space:nowrap; flex-shrink:0;">${item.score} <span style="font-size:11px; color:#94a3b8; font-weight:normal;">/ 100</span></div>
+                </div>
+                <div style="font-size:12px; font-weight:bold; color:${confLight.color}; margin-bottom:4px;">Mức độ: ${confDark.trendText.toUpperCase()}</div>
+                <div style="font-size:13px; color:#475569; line-height:1.6;"><span style="font-weight:bold;">Tác động:</span> ${(() => {
+                    let aiImpact = getWasteImpact(item.module);
+                    if (res.diagnostic && res.diagnostic.top3WastesImpacts) {
+                        const found = res.diagnostic.top3WastesImpacts.find(x => x.waste.toLowerCase() === item.module.toLowerCase());
+                        if (found) aiImpact = found.impact;
+                    }
+                    return aiImpact;
+                })()}</div>
+            </div>`;
         }).join('');
     }
+    
+    const el_symp_scores = document.getElementById('a4-symptoms-scores');
+    if (el_symp_scores && res.symptomsScores) {
+        el_symp_scores.innerHTML = res.symptomsScores.map(item => {
+            const conf = getColorConfig(item.score, false);
+            return `<div style="flex:1; border-radius:6px; background:${conf.bg}; border:1px solid ${conf.bg}; padding:10px 2px; display:flex; flex-direction:column; align-items:center; text-align:center; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
+                <div style="font-size:22px; color:${conf.text}; margin-bottom:8px;"><i class="fas ${getSymptomIcon(item.module)}"></i></div>
+                <div style="flex: 1; font-size:10px; font-weight:bold; color:${conf.text}; margin-bottom:8px; display:flex; align-items:center; justify-content:center; line-height:1.3; width: 100%; word-break: break-word;">${item.module}</div>
+                <div style="font-size:16px; font-weight:900; color:${conf.text}; margin-top: auto;">${item.score}</div>
+            </div>`;
+        }).join('');
+    }
+    
+    // Render Heatmap Groups
+    const renderHeatmapGroup = (containerId, modulesList, scoresArr) => {
+        const container = document.getElementById(containerId);
+        if(!container) return;
+        const html = modulesList.map(modName => {
+            const item = scoresArr.find(x => x.module === modName) || {score: 0};
+            const modInfo = getModuleInfo(modName);
+            const conf = getColorConfig(item.score, true); // true for Health score
+            
+            return `
+            <div style="flex: 1; background: ${conf.bg}; color: ${conf.text}; border-radius: 6px; padding: 8px 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: space-between;">
+                <div style="font-size: 26px; opacity: 0.25;">
+                    <i class="fas ${modInfo.icon}"></i>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 10px; font-weight: bold; line-height: 1.2; margin-bottom: 2px; text-transform: uppercase;">${modName}</div>
+                    <div style="font-size: 10px; font-weight: 600; line-height: 1.2; margin-bottom: 2px; opacity: 0.9;">(${modInfo.vi})</div>
+                    <div style="font-size: 22px; font-weight: 900; line-height: 1;">${item.score}</div>
+                </div>
+            </div>`;
+        }).join('');
+        container.innerHTML = html;
+    };
+    
+    renderHeatmapGroup('a4-heatmap-group-a', ['Core', 'People', 'Flow'], res.fosScores);
+    renderHeatmapGroup('a4-heatmap-group-b', ['Standard', 'Capacity', 'Daily Management', 'Quality'], res.fosScores);
+    renderHeatmapGroup('a4-heatmap-group-c', ['Knowledge', 'Digital'], res.fosScores);
+    renderHeatmapGroup('a4-heatmap-group-d', ['Kaizen', 'Sustain'], res.fosScores);
+
+    // top3 fos moved to generateReport
 }
 

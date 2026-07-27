@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="kham-benh-online/assets/js/questions_data.js"></script>
+</head>
+<body>
+    <script>
+        const rawAnswers = {"A01":"Nhất","A02":"Hải Phòng","A03":"Cơ khí / kim loại","A04":"Tủ","A05":"2","A06":"34","A07":"5","A08":"9","A09":"1 ca","A10":"Appsheet","B01":"2","B02":"2","B03":"2","B04":"3","B05":"3","B06":"3","B07":"2","B08":"4","B09":"2","B10":"1","B11":"1","B12":"1","B13":"1","B14":"3","B15":"3","B16":"3","C01":"2","C02":"2","C03":"3","C04":"3","C05":"4","C06":"3","C07":"2","C08":"2","C09":"2","C10":"2","C11":"1","C12":"1","C13":"3","C14":"3","C15":"3","C16":"2","C17":"3","C18":"2","C19":"2","C20":"2","C21":"2","C22":"3","C23":"3","C24":"3","D01":"1","D02":"2","D03":"2","D04":"3","D05":"3","D06":"2","D07":"2","D08":"2","D09":"2","D10":"2","D11":"2","D12":"3","D13":"2","D14":"2","D15":"3","D16":"2","D17":"1","D18":"2","D19":"3","D20":"3","D21":"2","D22":"2","D23":"2","D24":"2","D25":"3","D26":"3","D27":"3","D28":"3","D29":"2","D30":"2","D31":"2","D32":"2","D33":"1","E01":"Tăng doanh thu hoặc mở rộng thị trường","E02":"1","E03":"Thị trường và đơn hàng","E04":"2","E05":"Tiêu chuẩn và hướng dẫn công việc","E06":"1","E07":"2","F01":"Trần Xuân Nhất","F02":"Giám đốc","F03":"","F04":"0988911869","F05":"Đồng ý"};
+        
+        function calculateResults(rawAnswers) {
+            let getGroupScore = (questions) => {
+                let score = 0;
+                let weight = 0;
+                questions.forEach(q => {
+                    let val = rawAnswers[q.id];
+                    if (val) {
+                        score += parseInt(val) * q.trongSo;
+                        weight += q.trongSo;
+                    }
+                });
+                return weight > 0 ? score / weight : 0;
+            };
+
+            let wScore = getGroupScore(AppQuestions.partB);
+            let sScore = getGroupScore(AppQuestions.partC);
+            let mScore = getGroupScore(AppQuestions.partD);
+            
+            let warningScore = ((wScore * 0.4 + sScore * 0.4 + mScore * 0.2) / 4) * 100;
+            warningScore = Math.round(warningScore);
+
+            const wasteScores = [];
+            const wasteModules = [...new Set(AppQuestions.partB.map(q => q.nhom))];
+            wasteModules.forEach(module => {
+                const questions = AppQuestions.partB.filter(q => q.nhom === module);
+                wasteScores.push({
+                    module: module,
+                    score: Math.round((getGroupScore(questions) / 4) * 100)
+                });
+            });
+
+            const fosScores = [];
+            const fosModules = [...new Set(AppQuestions.partD.map(q => q.nhom))];
+            fosModules.forEach(module => {
+                const questions = AppQuestions.partD.filter(q => q.nhom === module);
+                fosScores.push({
+                    module: module,
+                    score: Math.round((getGroupScore(questions) / 4) * 100)
+                });
+            });
+
+            let assessmentLevel = "";
+            let generalAssessment = "";
+            let diseases = [];
+            let nextSteps = "";
+
+            let healthScore = 100 - warningScore;
+
+            if (healthScore >= 80) {
+                assessmentLevel = "Khỏe mạnh";
+                generalAssessment = "Hệ thống vận hành trơn tru...";
+                diseases = ["Không phát hiện bệnh nghiêm trọng"];
+                nextSteps = "Tiếp tục cải tiến...";
+            } else if (healthScore >= 60) {
+                assessmentLevel = "Cảnh báo nhẹ";
+                generalAssessment = "Hệ thống cơ bản hoạt động...";
+                diseases = ["Lãng phí tiềm ẩn", "Quy trình chưa chuẩn hóa"];
+                nextSteps = "Tập trung chuẩn hóa...";
+            } else if (healthScore >= 40) {
+                assessmentLevel = "Mắc bệnh (Cần điều trị)";
+                generalAssessment = "Rối loạn hệ thống hiện diện rõ...";
+                diseases = ["Tắc nghẽn cục bộ", "Lỗi và làm lại thường xuyên", "Chỉ số OEE thấp"];
+                nextSteps = "Thực hiện dự án cải tiến...";
+            } else if (healthScore >= 20) {
+                assessmentLevel = "Bệnh nặng (Nguy hiểm)";
+                generalAssessment = "Hệ thống vận hành lỏng lẻo...";
+                diseases = ["Rối loạn luồng chảy", "Mất kiểm soát chất lượng", "Tồn kho quá mức"];
+                nextSteps = "Cần chuyên gia can thiệp ngay lập tức...";
+            } else {
+                assessmentLevel = "Báo động đỏ (Nguy kịch)";
+                generalAssessment = "Hệ thống đang trong tình trạng khủng hoảng...";
+                diseases = ["Mất kiểm soát hoàn toàn", "Đứt gãy toàn bộ chuỗi", "Thiếu hụt hoàn toàn"];
+                nextSteps = "Dừng ngay các hoạt động lãng phí...";
+            }
+
+            const sortDesc = (a, b) => b.score - a.score;
+            wasteScores.sort(sortDesc);
+            fosScores.sort(sortDesc);
+
+            const top3Wastes = wasteScores.slice(0, 3).map(item => item.module);
+            const top3FOS = fosScores.slice(0, 3).map(item => item.module);
+
+            return { warningScore, assessmentLevel, generalAssessment, diseases, nextSteps, top3Wastes, top3FOS, wasteScores, fosScores };
+        }
+        
+        try {
+            const res = calculateResults(rawAnswers);
+            console.log(JSON.stringify(res, null, 2));
+            document.write('<pre>' + JSON.stringify(res, null, 2) + '</pre>');
+        } catch (e) {
+            console.error(e);
+            document.write(e.toString());
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết - NỀN FOS Standard 30 ngày - INVAMAX</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .intro-hero {
+            padding: 120px 0 60px;
+            text-align: center;
+            background: linear-gradient(to bottom, #0b1120, var(--bg-dark));
+        }
+        .intro-section {
+            padding: 60px 0;
+        }
+        .module-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .module-group {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .module-group h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+        .module-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .module-item i {
+            color: var(--text-muted);
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+        .module-item span {
+            font-size: 0.95rem;
+            color: #cbd5e1;
+            line-height: 1.4;
+        }
+        .module-item strong {
+            display: block;
+            color: white;
+            font-size: 1rem;
+            margin-bottom: 2px;
+        }
+        
+        .role-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .role-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .role-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--primary);
+            margin-bottom: 24px;
+            font-size: 1.3rem;
+        }
+        .role-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .role-list li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 16px;
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+        .role-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        .conclusion-box {
+            background: rgba(234, 88, 12, 0.1);
+            border-left: 4px solid var(--primary);
+            padding: 24px;
+            border-radius: 0 12px 12px 0;
+            margin-top: 40px;
+        }
+        .conclusion-box p {
+            margin: 0;
+            font-size: 1.1rem;
+            color: white;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 992px) {
+            .module-grid { grid-template-columns: 1fr 1fr; }
+            .role-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 576px) {
+            .module-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar (Simplified for this script, we assume header is included or similar to others) -->
+        <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">INVA<span>MAX</span></a>
+            <div class="nav-links">
+                <a href="../index.html">Giới thiệu<br>INVAMAX</a>
+                <a href="../dich-vu.html#kham-benh">Khám bệnh<br>nhà máy</a>
+                <a href="../dich-vu.html#lean" class="active">Tư vấn<br>triển khai Lean</a>
+                <a href="../dich-vu.html#so-hoa">Số hoá/AI<br>sản xuất</a>
+                <a href="../san-pham.html">INVAMAX<br>Supply Hub</a>
+                <a href="../kien-thuc.html">Chia sẻ<br>kiến thức</a>
+                <a href="../thu-vien.html">Thư viện<br>tài liệu</a>
+            </div>
+            <button class="mobile-menu-btn"><i data-lucide="menu"></i></button>
+        </div>
+    </nav>
+
+    <div class="intro-hero">
+        <div class="container">
+            <h1 class="hero-title" style="margin-bottom: 20px;">NỀN FOS Standard 30 ngày</h1>
+            <p class="hero-subtitle" style="max-width: 800px; margin: 0 auto 40px; color: #94a3b8; font-size: 1.1rem; line-height: 1.6;">
+                Thiết lập hệ thống biểu mẫu, quy chuẩn và nền tảng cốt lõi của 11 module quản trị sản xuất. Phù hợp cho đội ngũ muốn tự chủ xây dựng nội dung dưới sự hướng dẫn của chuyên gia.
+            </p>
+            
+        </div>
+    </div>
+    
+    <section class="intro-section" style="background: rgba(255,255,255,0.02);">
+        <div class="container">
+            <h2 class="section-title text-center">Bản Đồ 11 Module Hệ Điều Hành Nhà Máy</h2>
+            <p class="section-desc text-center">Gói NỀN FOS bao phủ toàn diện 4 nhóm nền tảng cốt lõi của một nhà máy tinh gọn (Lean Manufacturing).</p>
+            
+            <div class="module-grid">
+                <!-- Group 1 -->
+                <div class="module-group">
+                    <h4>1. NỀN MÓNG QUẢN TRỊ</h4>
+                    <div class="module-item">
+                        <i data-lucide="crosshair"></i>
+                        <div><strong>Core</strong><span>Chiến lược & cơ chế điều hành</span></div>
+                    </div>
+                    <div class="module-item">
+                        <i data-lucide="users"></i>
+                        <div><strong>People</strong><span>Con người & năng lực tổ chức</span></div>
+                    </div>
+                    <div class="module-item">
+                        <i data-lucide="git-merge"></i>
+                        <div><strong>Flow</strong><span>Quy trình & dòng chảy</span></div>
+                    </div>
+                </div>
+                <!-- Group 2 -->
+                <div class="module-group">
+                    <h4>2. VẬN HÀNH SẢN XUẤT</h4>
+                    <div class="module-item">
+                        <i data-lucide="file-check-2"></i>
+                        <div><strong>Standard</strong><span>Công việc tiêu chuẩn</span></div>
+                    </div>
+                    <div class="module-item">
+                        <i data-lucide="bar-chart-2"></i>
+                        <div><strong>Capacity</strong><span>Năng lực & cân bằng</span></div>
+                    </div>
+                    <div class="module-item">
+                        <i data-lucide="calendar"></i>
+                        <div><strong>Daily</strong><span>Điều hành hằng ngày</span></div>
+                    </div>
+                    <div class="module-item">
+                        <i data-lucide="shield-check"></i>
+                        <div><strong>Quality</strong><span>Chất lượng tại nguồn</span></div>
+                    </div>
+                </div>
+                <!-- Group 3 -->
+                <div class="module-group">
+                    <h4>3. TRI THỨC & CÔNG CỤ</h4>
+                    <div class="module-item">
+                        <i data-lucide="book-open"></i>
+                        <div><strong>Knowledge</strong><span>Quản trị tri thức</span></div>
+                    </div>
+                    <div class="module-item">
+                        <i data-lucide="laptop"></i>
+                        <div><strong>Digital</strong><span>Công cụ số</span></div>
+                    </div>
+                </div>
+                <!-- Group 4 -->
+                <div class="module-group">
+                    <h4>4. CẢI TIẾN & DUY TRÌ</h4>
+                    <div class="module-item">
+                        <i data-lucide="zap"></i>
+                        <div><strong>Kaizen</strong><span>Giải quyết vấn đề & cải tiến</span></div>
+                    </div>
+                    <div class="module-item">
+                        <i data-lucide="trending-up"></i>
+                        <div><strong>Sustain</strong><span>Duy trì & trưởng thành</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="intro-section">
+        <div class="container">
+            <h2 class="section-title">Phạm vi triển khai gói NỀN FOS Standard 30 ngày</h2>
+            <div style="background: rgba(255,255,255,0.02); padding: 20px; border-radius: 8px; border-left: 3px solid var(--primary); margin-bottom: 30px;">
+                <p style="margin: 0; color: #cbd5e1; font-style: italic;"><strong>Phù hợp với:</strong> Nhà máy có người nội bộ đủ khả năng triển khai, nhưng còn thiếu phương pháp, bộ form và hệ thống chuẩn.</p>
+            </div>
+            
+            <div class="role-grid">
+                <!-- INVAMAX Role -->
+                <div class="role-card">
+                    <h3><i data-lucide="briefcase"></i> INVAMAX cung cấp</h3>
+                    <ul class="role-list">
+                        <li>Khảo sát và xác định hiện trạng cơ bản.</li><li>Bộ form chuẩn của đủ 11 module.</li><li>Hướng dẫn điền và ví dụ tham khảo.</li><li>Đào tạo FOS Owner và người phụ trách module.</li><li>Lập kế hoạch triển khai theo từng giai đoạn.</li><li>Review nội dung do nhà máy hoàn thành.</li><li>Một vòng phản hồi chính cho từng đầu ra.</li><li>Chuẩn hóa hệ thống mã tài liệu và phiên bản.</li><li>Thiết lập kho tài liệu dùng chung.</li><li>Cấu hình các biểu mẫu số, Google Sheets/AppSheet và dashboard cơ bản.</li><li>Đào tạo sử dụng công cụ.</li><li>Kiểm tra trước khi nghiệm thu và ban hành.</li>
+                    </ul>
+                </div>
+                
+                <!-- Factory Role -->
+                <div class="role-card">
+                    <h3><i data-lucide="factory"></i> Nhà máy thực hiện</h3>
+                    <ul class="role-list">
+                        <li>Cử FOS Owner.</li><li>Điền nội dung vào các form.</li><li>Cung cấp dữ liệu thực tế.</li><li>Thử nghiệm tài liệu tại hiện trường.</li><li>Chỉnh sửa theo góp ý.</li><li>Phê duyệt và ban hành.</li><li>Nhập và duy trì dữ liệu hằng ngày.</li><li>Đào tạo lại cho nhân viên.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="conclusion-box">
+                <p><strong>Tóm lại:</strong> INVAMAX cung cấp hệ thống chuẩn, nhà máy chủ động xây nội dung và vận hành.</p>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <button onclick="openContactModal()" class="btn btn-primary btn-lg" style="padding: 15px 40px; font-size: 1.1rem; border-radius: 8px;">Liên hệ tư vấn</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer (Simplified) -->
+    <footer class="footer" style="margin-top: 60px;">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 INVAMAX. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeContactModal()" style="font-size: 24px; line-height: 1; font-weight: bold;">&times;</button>
+            <h2 style="font-size: 1.5rem; color: var(--primary); margin-bottom: 5px;">Đăng ký tư vấn</h2>
+            <p style="color: #64748b; margin-bottom: 20px; font-size: 0.95rem;">Vui lòng để lại thông tin, chuyên gia INVAMAX sẽ liên hệ lại với bạn trong 24h.</p>
+            
+            <form id="leadForm" onsubmit="submitForm(event)">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Họ và tên *</label>
+                        <input type="text" name="hoTen" required placeholder="Nguyễn Văn A">
+                    </div>
+                    <div class="form-group">
+                        <label>Chức danh *</label>
+                        <input type="text" name="chucDanh" required placeholder="Giám đốc / Trưởng phòng">
+                    </div>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Số điện thoại *</label>
+                        <input type="tel" name="soDienThoai" required placeholder="0988...">
+                    </div>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" name="email" required placeholder="email@congty.com">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Tên nhà máy / Công ty *</label>
+                    <input type="text" name="tenNhaMay" required placeholder="Công ty TNHH XYZ">
+                </div>
+                
+                <div class="form-group">
+                    <label>Địa chỉ nhà máy *</label>
+                    <input type="text" name="diaChi" required placeholder="KCN abc, Tỉnh xyz...">
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Lĩnh vực sản xuất *</label>
+                        <select name="linhVuc" required>
+                            <option value="">-- Chọn lĩnh vực --</option>
+                            <option value="Gỗ / nội thất">Gỗ / nội thất</option>
+                            <option value="Cơ khí / kim loại">Cơ khí / kim loại</option>
+                            <option value="May mặc / da giày">May mặc / da giày</option>
+                            <option value="Nhựa / cao su">Nhựa / cao su</option>
+                            <option value="Thực phẩm / đồ uống">Thực phẩm / đồ uống</option>
+                            <option value="Điện tử / điện lạnh">Điện tử / điện lạnh</option>
+                            <option value="Vật liệu xây dựng">Vật liệu xây dựng</option>
+                            <option value="Bao bì / in ấn">Bao bì / in ấn</option>
+                            <option value="Khác">Khác</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Quy mô nhân sự *</label>
+                        <select name="quyMo" required>
+                            <option value="Dưới 50 người">Dưới 50 người</option>
+                            <option value="50 ~ 100 người">50 ~ 100 người</option>
+                            <option value="101 ~ 200 người">101 ~ 200 người</option>
+                            <option value="Trên 200 người">Trên 200 người</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Nội dung cần tư vấn *</label>
+                    <textarea name="noiDung" rows="3" required placeholder="Mô tả sơ bộ về định hướng, vấn đề hiện tại của nhà máy..."></textarea>
+                </div>
+                
+                <button type="submit" id="btnSubmitForm" class="btn btn-primary" style="width: 100%; margin-top: 10px;">
+                    <i data-lucide="send"></i> Gửi Đề Nghị
+                </button>
+            </form>
+            
+            <div id="formSuccess" style="display: none; text-align: center; padding: 30px 0;">
+                <i data-lucide="check-circle" style="color: #22c55e; width: 64px; height: 64px; margin-bottom: 15px; margin: 0 auto;"></i>
+                <h3 style="color: #16a34a; font-size: 1.3rem; margin-top: 15px;">Gửi thành công!</h3>
+                <p style="color: #475569; margin-top: 10px;">Cảm ơn bạn. Chuyên gia INVAMAX sẽ sớm liên hệ lại.</p>
+                <button type="button" class="btn btn-outline" style="margin-top: 20px;" onclick="closeContactModal()">Đóng cửa sổ</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

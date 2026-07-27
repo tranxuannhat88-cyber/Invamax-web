@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới thiệu Chương trình Khám bệnh trực tiếp - INVAMAX</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .intro-hero {
+            padding: 120px 0 20px;
+            text-align: center;
+            background: linear-gradient(to bottom, #0b1120, var(--bg-dark));
+        }
+        .intro-section {
+            padding: 60px 0;
+        }
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        .intro-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 24px;
+        }
+        .intro-card h3 {
+            color: var(--primary);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .img-placeholder {
+            width: 100%;
+            height: 400px;
+            background-color: var(--bg-darker);
+            border: 1px dashed var(--border-color);
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-muted);
+            margin-top: 24px;
+        }
+        @media (max-width: 768px) {
+            .intro-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">INVA<span>MAX</span></a>
+            <div class="nav-links">
+                <a href="../index.html">Giới thiệu<br>INVAMAX</a>
+                <a href="../dich-vu.html#kham-benh" class="active">Khám bệnh<br>nhà máy</a>
+                <a href="../dich-vu.html#lean">Tư vấn<br>triển khai Lean</a>
+                <a href="../dich-vu.html#so-hoa">Số hoá/AI<br>sản xuất</a>
+                <a href="../san-pham.html">INVAMAX<br>Supply Hub</a>
+                <a href="../kien-thuc.html">Chia sẻ<br>kiến thức</a>
+                <a href="../thu-vien.html">Thư viện<br>tài liệu</a>
+            </div>
+            <button class="mobile-menu-btn"><i data-lucide="menu"></i></button>
+        </div>
+    </nav>
+
+    <div class="intro-hero">
+        <div class="container">
+            <h1 style="font-size: 2.5rem; margin-bottom: 0; text-transform: uppercase;">Khám Bệnh Trực Tiếp Tại Nhà Máy</h1>
+        </div>
+    </div>
+
+    <section class="intro-section" style="padding-top: 10px;">
+        <div class="container">
+            <!-- 9 CĂN BỆNH -->
+            <div style="text-align: center; margin-bottom: 50px;">
+                <h2 style="font-size: 2.2rem; margin-bottom: 16px; text-transform: uppercase;">Nhà máy của bạn có đang mắc những <span style="color: var(--primary);">"Căn bệnh"</span> này?</h2>
+                <p style="font-size: 1.1rem; color: var(--text-muted); max-width: 800px; margin: 0 auto;">Những dấu hiệu tưởng chừng nhỏ – nhưng đang âm thầm ăn mòn lợi nhuận và kìm hãm sự phát triển của nhà máy.</p>
+            </div>
+
+            <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 40px; margin-bottom: 60px;">
+                <div style="background-color: #111; color: white; display: inline-block; padding: 8px 24px; border-radius: 4px; font-weight: bold; margin-top: -60px; margin-bottom: 30px; font-size: 1.2rem; border-left: 4px solid var(--primary);">
+                    <span style="color: var(--primary); font-size: 1.4rem;">9</span> CĂN BỆNH PHỔ BIẾN ẨN GIẤU TRONG NHÀ MÁY
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 20px; text-align: center;">
+                    <div><div style="color: var(--primary); font-size: 1.5rem; font-weight: bold; margin-bottom: 10px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">1</div><i data-lucide="factory" style="width: 40px; height: 40px; margin-bottom: 15px;"></i><p style="font-size: 0.9rem; font-weight: bold;">Nhà xưởng bừa bộn</p></div>
+                    <div><div style="color: var(--primary); font-size: 1.5rem; font-weight: bold; margin-bottom: 10px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">2</div><i data-lucide="trending-down" style="width: 40px; height: 40px; margin-bottom: 15px;"></i><p style="font-size: 0.9rem; font-weight: bold;">Năng suất lao động thấp</p></div>
+                    <div><div style="color: var(--primary); font-size: 1.5rem; font-weight: bold; margin-bottom: 10px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">3</div><i data-lucide="settings-2" style="width: 40px; height: 40px; margin-bottom: 15px;"></i><p style="font-size: 0.9rem; font-weight: bold;">Tỷ lệ lỗi cao, lỗi lặp lại</p></div>
+                    <div><div style="color: var(--primary); font-size: 1.5rem; font-weight: bold; margin-bottom: 10px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">4</div><i data-lucide="package-open" style="width: 40px; height: 40px; margin-bottom: 15px;"></i><p style="font-size: 0.9rem; font-weight: bold;">Tồn kho NVL, thành phẩm cao</p></div>
+                    <div><div style="color: var(--primary); font-size: 1.5rem; font-weight: bold; margin-bottom: 10px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">5</div><i data-lucide="alert-triangle" style="width: 40px; height: 40px; margin-bottom: 15px; color: var(--primary);"></i><p style="font-size: 0.9rem; font-weight: bold;">Thường xuyên phát sinh vấn đề</p></div>
+                    <div><div style="color: var(--primary); font-size: 1.5rem; font-weight: bold; margin-bottom: 10px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">6</div><i data-lucide="user-x" style="width: 40px; height: 40px; margin-bottom: 15px;"></i><p style="font-size: 0.9rem; font-weight: bold;">Phụ thuộc vào một vài cá nhân</p></div>
+                    <div><div style="color: var(--primary); font-size: 1.5rem; font-weight: bold; margin-bottom: 10px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">7</div><i data-lucide="bar-chart-2" style="width: 40px; height: 40px; margin-bottom: 15px;"></i><p style="font-size: 0.9rem; font-weight: bold;">Thiếu thông tin để quản trị</p></div>
+                    <div><div style="color: var(--primary); font-size: 1.5rem; font-weight: bold; margin-bottom: 10px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">8</div><i data-lucide="pie-chart" style="width: 40px; height: 40px; margin-bottom: 15px;"></i><p style="font-size: 0.9rem; font-weight: bold;">Doanh thu tăng nhưng lợi nhuận không tăng</p></div>
+                    <div><div style="color: var(--primary); font-size: 1.5rem; font-weight: bold; margin-bottom: 10px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">9</div><i data-lucide="laptop" style="width: 40px; height: 40px; margin-bottom: 15px;"></i><p style="font-size: 0.9rem; font-weight: bold;">Chủ nhà máy phải can thiệp thường xuyên</p></div>
+                </div>
+            </div>
+
+            <!-- GIẢI PHÁP & BÁO CÁO -->
+            <div class="intro-grid" style="align-items: stretch; margin-bottom: 60px;">
+                <div class="intro-card" style="margin-bottom: 0;">
+                    <h3 style="text-transform: uppercase;">Khám bệnh nhà máy cùng INVAMAX</h3>
+                    <p style="color: var(--primary); font-weight: bold; font-size: 1.1rem; margin-bottom: 20px;">CHẨN ĐOÁN ĐÚNG – KÊ ĐƠN CHÍNH XÁC</p>
+                    <p style="margin-bottom: 20px; color: var(--text-muted);">Trong 3 ngày, chuyên gia INVAMAX sẽ trực tiếp:</p>
+                    <ul style="list-style: none; padding: 0; color: var(--text-muted); line-height: 2;">
+                        <li style="display: flex; align-items: center; gap: 10px;"><i data-lucide="check-circle-2" style="color: var(--primary); width: 20px;"></i> Đi thực địa toàn bộ nhà máy</li>
+                        <li style="display: flex; align-items: center; gap: 10px;"><i data-lucide="check-circle-2" style="color: var(--primary); width: 20px;"></i> Đánh giá dòng chảy sản xuất</li>
+                        <li style="display: flex; align-items: center; gap: 10px;"><i data-lucide="check-circle-2" style="color: var(--primary); width: 20px;"></i> Kiểm tra hệ thống quản lý</li>
+                        <li style="display: flex; align-items: center; gap: 10px;"><i data-lucide="check-circle-2" style="color: var(--primary); width: 20px;"></i> Phân tích dữ liệu vận hành</li>
+                        <li style="display: flex; align-items: center; gap: 10px;"><i data-lucide="check-circle-2" style="color: var(--primary); width: 20px;"></i> Phỏng vấn các cấp quản lý</li>
+                        <li style="display: flex; align-items: center; gap: 10px;"><i data-lucide="check-circle-2" style="color: var(--primary); width: 20px;"></i> Xác định nguyên nhân gốc của các vấn đề.</li>
+                    </ul>
+                </div>
+
+                <div class="intro-card" style="margin-bottom: 0; background-color: rgba(255,255,255,0.02);">
+                    <h3 style="text-transform: uppercase; color: var(--text-white);">Sau 3 ngày bạn nhận được</h3>
+                    <p style="color: var(--primary); font-weight: bold; font-size: 1.1rem; margin-bottom: 30px; text-transform: uppercase;">Báo cáo hiện trạng nhà máy</p>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 24px;">
+                        <div style="display: flex; align-items: flex-start; gap: 16px;">
+                            <div style="background: var(--primary); color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">1</div>
+                            <div>
+                                <h4 style="margin-bottom: 4px;">Các vấn đề tồn tại và hậu quả</h4>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: flex-start; gap: 16px;">
+                            <div style="background: var(--primary); color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">2</div>
+                            <div>
+                                <h4 style="margin-bottom: 4px;">Nguyên nhân gốc rễ của từng vấn đề</h4>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: flex-start; gap: 16px;">
+                            <div style="background: var(--primary); color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">3</div>
+                            <div>
+                                <h4 style="margin-bottom: 4px;">Giải pháp xử lý, cải thiện</h4>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: flex-start; gap: 16px;">
+                            <div style="background: var(--primary); color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">4</div>
+                            <div>
+                                <h4 style="margin-bottom: 4px;">Lộ trình triển khai</h4>
+                            </div>
+                        </div>
+                </div>
+                </div>
+            </div>
+
+            <!-- WARNING BOX -->
+            <div style="background: linear-gradient(135deg, #2a1610, #111); border: 1px solid var(--primary); border-radius: 12px; padding: 40px; display: flex; align-items: center; gap: 40px; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 300px;">
+                    <h3 style="color: var(--primary); font-size: 1.4rem; margin-bottom: 10px; display: flex; align-items: center; gap: 12px;"><i data-lucide="alert-triangle" style="width: 36px; height: 36px;"></i> ĐỪNG ĐỂ "BỆNH NHẸ" TRỞ THÀNH "BỆNH MÃN TÍNH"!</h3>
+                    <p style="font-size: 1.1rem; margin-bottom: 16px;">Mỗi tháng trì hoãn có thể là:</p>
+                    <ul style="list-style: none; padding: 0; color: var(--text-muted); line-height: 1.8;">
+                        <li style="display: flex; align-items: center; gap: 10px;"><div style="width: 6px; height: 6px; background: var(--primary); border-radius: 50%;"></div> Hàng trăm giờ lao động lãng phí</li>
+                        <li style="display: flex; align-items: center; gap: 10px;"><div style="width: 6px; height: 6px; background: var(--primary); border-radius: 50%;"></div> Hàng chục triệu đồng chi phí ẩn</li>
+                        <li style="display: flex; align-items: center; gap: 10px;"><div style="width: 6px; height: 6px; background: var(--primary); border-radius: 50%;"></div> Những cơ hội tăng trưởng bị bỏ lỡ</li>
+                    </ul>
+                </div>
+                <div style="text-align: center;">
+                    <p style="font-size: 1.2rem; font-weight: bold; margin-bottom: 20px;">ĐẶT LỊCH KHÁM BỆNH NHÀ MÁY NGAY HÔM NAY!</p>
+                    <button onclick="openContactModal()" class="btn btn-primary" style="font-size: 1.2rem; padding: 16px 40px; box-shadow: 0 4px 20px rgba(249, 115, 22, 0.4);">
+                        <i data-lucide="calendar-check"></i> Liên hệ tư vấn
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="../index.html" class="logo mb-2" style="display: block;">INVA<span>MAX</span></a>
+                    <p class="text-muted mb-4">Thiết kế & Chuyển đổi<br>Mô hình vận hành nhà máy.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Giải pháp</h4>
+                    <div class="footer-links">
+                        <a href="../dich-vu.html">NỀN FOS</a>
+                        <a href="../dich-vu.html">Khám bệnh nhà máy</a>
+                        <a href="../san-pham.html">Supply Hub</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Về chúng tôi</h4>
+                    <div class="footer-links">
+                        <a href="../index.html">Giới thiệu</a>
+                        <a href="../kien-thuc.html">Bài viết</a>
+                        <a href="../thu-vien.html">Thư viện</a>
+                    </div>
+                    <div class="social-links" style="margin-top: 24px; display: flex; gap: 16px;">
+                        <a href="https://www.linkedin.com/in/xuannhattran/" target="_blank" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='var(--primary)'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        </a>
+                        <a href="https://www.facebook.com/invamax.vanhanhtinhgon" target="_blank" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='var(--primary)'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Liên hệ</h4>
+                    <p style="font-weight: 600; color: white; margin-bottom: 16px; font-size: 0.95rem;">CÔNG TY TNHH ĐẦU TƯ VÀ PHÁT TRIỂN INVAMAX</p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i data-lucide="file-text"></i>
+                            <span>Mã số thuế: 0202236953</span>
+                        </div>
+                        <div class="contact-item">
+                            <i data-lucide="map-pin"></i>
+                            <span>Thôn Đông Lôi, xã Vĩnh Thịnh, TP Hải Phòng</span>
+                        </div>
+                        <div class="contact-item">
+                            <i data-lucide="phone"></i>
+                            <span>0988.911.869</span>
+                        </div>
+                        <div class="contact-item">
+                            <i data-lucide="mail"></i>
+                            <span>info@invamax.com</span>
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 INVAMAX. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+<!-- Contact Modal -->
+    <div id="contactModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeContactModal()" style="font-size: 24px; line-height: 1; font-weight: bold;">&times;</button>
+            <h2 style="font-size: 1.5rem; color: var(--primary); margin-bottom: 5px;">Đăng ký tư vấn</h2>
+            <p style="color: #64748b; margin-bottom: 20px; font-size: 0.95rem;">Vui lòng để lại thông tin, chuyên gia INVAMAX sẽ liên hệ lại với bạn trong 24h.</p>
+            
+            <form id="leadForm" onsubmit="submitForm(event)">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Họ và tên *</label>
+                        <input type="text" name="hoTen" required placeholder="Nguyễn Văn A">
+                    </div>
+                    <div class="form-group">
+                        <label>Chức danh *</label>
+                        <input type="text" name="chucDanh" required placeholder="Giám đốc / Trưởng phòng">
+                    </div>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Số điện thoại *</label>
+                        <input type="tel" name="soDienThoai" required placeholder="0988...">
+                    </div>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" name="email" required placeholder="email@congty.com">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Tên nhà máy / Công ty *</label>
+                    <input type="text" name="tenNhaMay" required placeholder="Công ty TNHH XYZ">
+                </div>
+                
+                <div class="form-group">
+                    <label>Địa chỉ nhà máy *</label>
+                    <input type="text" name="diaChi" required placeholder="KCN abc, Tỉnh xyz...">
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Lĩnh vực sản xuất *</label>
+                        <select name="linhVuc" required>
+                            <option value="">-- Chọn lĩnh vực --</option>
+                            <option value="Gỗ / nội thất">Gỗ / nội thất</option>
+                            <option value="Cơ khí / kim loại">Cơ khí / kim loại</option>
+                            <option value="May mặc / da giày">May mặc / da giày</option>
+                            <option value="Nhựa / cao su">Nhựa / cao su</option>
+                            <option value="Thực phẩm / đồ uống">Thực phẩm / đồ uống</option>
+                            <option value="Điện tử / điện lạnh">Điện tử / điện lạnh</option>
+                            <option value="Vật liệu xây dựng">Vật liệu xây dựng</option>
+                            <option value="Bao bì / in ấn">Bao bì / in ấn</option>
+                            <option value="Khác">Khác</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Quy mô nhân sự *</label>
+                        <select name="quyMo" required>
+                            <option value="Dưới 50 người">Dưới 50 người</option>
+                            <option value="50 ~ 100 người">50 ~ 100 người</option>
+                            <option value="101 ~ 200 người">101 ~ 200 người</option>
+                            <option value="Trên 200 người">Trên 200 người</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Nội dung cần tư vấn *</label>
+                    <textarea name="noiDung" rows="3" required placeholder="Mô tả sơ bộ về định hướng, vấn đề hiện tại của nhà máy..."></textarea>
+                </div>
+                
+                <button type="submit" id="btnSubmitForm" class="btn btn-primary" style="width: 100%; margin-top: 10px;">
+                    <i data-lucide="send"></i> Gửi Đề Nghị
+                </button>
+            </form>
+            
+            <div id="formSuccess" style="display: none; text-align: center; padding: 30px 0;">
+                <i data-lucide="check-circle" style="color: #22c55e; width: 64px; height: 64px; margin-bottom: 15px; margin: 0 auto;"></i>
+                <h3 style="color: #16a34a; font-size: 1.3rem; margin-top: 15px;">Gửi thành công!</h3>
+                <p style="color: #475569; margin-top: 10px;">Cảm ơn bạn. Chuyên gia INVAMAX sẽ sớm liên hệ lại.</p>
+                <button type="button" class="btn btn-outline" style="margin-top: 20px;" onclick="closeContactModal()">Đóng cửa sổ</button>
+            </div>
+        </div>
+    </div>
+
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

@@ -69,7 +69,7 @@ export function calculateResults(answers) {
     // Tìm Top 3
     const sortDesc = (a, b) => b.score - a.score;
     wasteScores.sort(sortDesc);
-    fosScores.sort(sortDesc);
+    fosScores.sort((a, b) => a.score - b.score);
 
     const top3Wastes = wasteScores.slice(0, 3).map(item => item.module);
     const top3FOS = fosScores.slice(0, 3).map(item => item.module);
