@@ -207,8 +207,8 @@ img {
 
 /* Hero Section */
 .hero {
-    padding-top: 160px;
-    padding-bottom: 80px;
+    padding-top: 120px;
+    padding-bottom: 40px;
     min-height: 100vh;
     display: flex;
     align-items: center;
