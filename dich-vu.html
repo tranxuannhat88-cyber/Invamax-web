@@ -76,15 +76,15 @@
                         
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; margin-bottom: 30px;">
                             <div style="background: rgba(255,255,255,0.03); padding: 25px; border-radius: 8px; border: 1px dashed var(--primary);">
-                                <h4 style="color: white; margin-bottom: 15px; font-size: 1.15rem; border-bottom: 1px dashed var(--border-color); padding-bottom: 10px;">Lớp 1 – Chẩn đoán 8 Lãng phí</h4>
+                                <h4 style="color: white; margin-bottom: 15px; font-size: 1.15rem; border-bottom: 1px dashed var(--border-color); padding-bottom: 10px; line-height: 1.5;">Lớp 1 – Chẩn đoán 8 Lãng phí</h4>
                                 <p style="font-size: 1.05rem; color: var(--text-muted); margin: 0; line-height: 1.6;">Nhận diện các hoạt động không tạo ra giá trị, làm tăng chi phí, kéo dài thời gian và giảm năng suất.</p>
                             </div>
                             <div style="background: rgba(255,255,255,0.03); padding: 25px; border-radius: 8px; border: 1px dashed var(--primary);">
-                                <h4 style="color: white; margin-bottom: 15px; font-size: 1.15rem; border-bottom: 1px dashed var(--border-color); padding-bottom: 10px;">Lớp 2 – Chẩn đoán các dấu hiệu bất thường</h4>
+                                <h4 style="color: white; margin-bottom: 15px; font-size: 1.15rem; border-bottom: 1px dashed var(--border-color); padding-bottom: 10px; line-height: 1.5;">Lớp 2 – Chẩn đoán các dấu hiệu bất thường</h4>
                                 <p style="font-size: 1.05rem; color: var(--text-muted); margin: 0; line-height: 1.6;">Đánh giá các dấu hiệu bất thường về con người, máy móc, vật tư, chất lượng, dòng chảy, thông tin và cách tổ chức công việc tại hiện trường.</p>
                             </div>
                             <div style="background: rgba(255,255,255,0.03); padding: 25px; border-radius: 8px; border: 1px dashed var(--primary);">
-                                <h4 style="color: white; margin-bottom: 15px; font-size: 1.15rem; border-bottom: 1px dashed var(--border-color); padding-bottom: 10px;">Lớp 3 – Chẩn đoán hệ thống vận hành</h4>
+                                <h4 style="color: white; margin-bottom: 15px; font-size: 1.15rem; border-bottom: 1px dashed var(--border-color); padding-bottom: 10px; line-height: 1.5;">Lớp 3 – Chẩn đoán hệ thống vận hành</h4>
                                 <p style="font-size: 1.05rem; color: var(--text-muted); margin: 0; line-height: 1.6;">Đánh giá toàn diện hệ thống quản trị theo khung <strong>NỀN FOS</strong>, bao gồm cơ cấu tổ chức, quy trình, tiêu chuẩn, dữ liệu và cơ chế điều hành nhằm xác định các nguyên nhân gốc mang tính hệ thống.</p>
                             </div>
                         </div>
@@ -311,7 +311,7 @@
                     </div>
 
                     <!-- Why INVAMAX -->
-                    <div style="background: rgba(249,115,22,0.05); border: 1px solid rgba(249,115,22,0.2); border-radius: 12px; padding: 50px;">
+                    <div style="background: rgba(249,115,22,0.05); border: 1px solid rgba(249,115,22,0.2); border-radius: 12px; padding: clamp(20px, 5vw, 50px);">
                         <h2 style="font-size: 1.8rem; margin-bottom: 25px; color: white; text-align: center;">Vì sao doanh nghiệp lựa chọn INVAMAX?</h2>
                         <p style="text-align: center; font-size: 1.15rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 30px;">Khác với các đơn vị chỉ tập trung vào Lean, phần mềm hay tự động hóa, INVAMAX tiếp cận từ góc nhìn <strong>thiết kế hệ thống</strong>.</p>
                         
@@ -750,6 +750,12 @@
                         <a href="thu-vien.html">Thư viện</a>
                     </div>
                     <div class="social-links" style="margin-top: 24px; display: flex; gap: 16px;">
+                        <a href="https://zalo.me/0988911869" target="_blank" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='#0068FF'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
+                            <span style="font-size: 12px; font-weight: 800; font-family: 'Inter', sans-serif;">Zalo</span>
+                        </a>
+                        <a href="mailto:info@invamax.com" onclick="try{navigator.clipboard.writeText('info@invamax.com'); alert(' Đã copy email: info@invamax.com');}catch(e){}" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='#EA4335'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        </a>
                         <a href="https://www.linkedin.com/in/xuannhattran/" target="_blank" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='#0A66C2'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
                         </a>
