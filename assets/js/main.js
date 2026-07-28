@@ -21,6 +21,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Mobile dropdown toggle
+    const navTitles = document.querySelectorAll('.nav-title');
+    navTitles.forEach(title => {
+        title.addEventListener('click', (e) => {
+            if (window.innerWidth <= 900) {
+                e.preventDefault();
+                const parent = title.parentElement;
+                
+                // Close other dropdowns
+                document.querySelectorAll('.nav-item').forEach(item => {
+                    if (item !== parent) {
+                        item.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current
+                parent.classList.toggle('active');
+            }
+        });
+    });
+
     // Navbar scroll effect
     const navbar = document.querySelector('.navbar');
     window.addEventListener('scroll', () => {

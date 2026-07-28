@@ -22,6 +22,8 @@
             .punchline-h2 span.highlight { font-size: 1.3em !important; display: block !important; margin-top: 10px !important; }
             .footer-cta h2 { font-size: 2.2rem !important; }
             .footer-cta p { font-size: 1.1rem !important; }
+            .layer-card { flex-direction: column !important; text-align: center !important; padding: 30px 20px !important; gap: 20px !important; }
+            .layer-card > div:first-child { display: none !important; } /* hide the left absolute border line on mobile to keep it clean */
         }
         @media (max-width: 480px) {
             .hero-main-title { font-size: 1.8rem !important; }
@@ -374,7 +376,7 @@
                 <div style="display: flex; flex-direction: column; gap: 30px; max-width: 900px; margin: 0 auto;">
                     
                     <!-- Tầng 1: Cốt lõi (OS) -->
-                    <div style="background: rgba(249,115,22,0.15); border: 2px solid var(--primary); border-radius: 12px; padding: 40px; display: flex; gap: 30px; align-items: center; position: relative; overflow: hidden; transform: scale(1.03); box-shadow: 0 15px 40px rgba(249,115,22,0.3); z-index: 10;">
+                    <div class="layer-card" style="background: rgba(249,115,22,0.15); border: 2px solid var(--primary); border-radius: 12px; padding: 40px; display: flex; gap: 30px; align-items: center; position: relative; overflow: hidden; transform: scale(1.03); box-shadow: 0 15px 40px rgba(249,115,22,0.3); z-index: 10;">
                         <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 8px; background: var(--primary);"></div>
                         <div style="width: 90px; height: 90px; background: rgba(249,115,22,0.25); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
                             <i data-lucide="cpu" style="color: var(--primary); width: 45px; height: 45px;"></i>
@@ -387,7 +389,7 @@
                     </div>
 
                     <!-- Tầng 2: Năng lực (AI) -->
-                    <div style="background: rgba(30,41,59,0.7); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 35px; display: flex; gap: 30px; align-items: center; position: relative; overflow: hidden;">
+                    <div class="layer-card" style="background: rgba(30,41,59,0.7); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 35px; display: flex; gap: 30px; align-items: center; position: relative; overflow: hidden;">
                         <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 6px; background: #3b82f6;"></div>
                         <div style="width: 80px; height: 80px; background: rgba(59,130,246,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
                             <i data-lucide="brain-circuit" style="color: #3b82f6; width: 40px; height: 40px;"></i>
@@ -400,7 +402,7 @@
                     </div>
 
                     <!-- Tầng 3: Thực thi (Infrastructure) -->
-                    <div style="background: rgba(30,41,59,0.7); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 35px; display: flex; gap: 30px; align-items: center; position: relative; overflow: hidden;">
+                    <div class="layer-card" style="background: rgba(30,41,59,0.7); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 35px; display: flex; gap: 30px; align-items: center; position: relative; overflow: hidden;">
                         <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 6px; background: #10b981;"></div>
                         <div style="width: 80px; height: 80px; background: rgba(16,185,129,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
                             <i data-lucide="package" style="color: #10b981; width: 40px; height: 40px;"></i>
