@@ -32,11 +32,25 @@
     <!-- Hero -->
     
     <!-- Hero -->
-    <section class="hero" style="padding: 70px 0 40px; text-align: center;">
+    <section class="hero">
         <div class="container">
-            <h1 style="font-size: 2.8rem; margin-bottom: 25px; font-weight: 800; line-height: 1.3;">Thiết kế & Xây dựng<br><span style="color: var(--primary);">mô hình vận hành nhà máy thế hệ mới</span></h1>
-            <p style="font-size: 1.25rem; font-weight: 600; color: #f97316; margin-bottom: 25px;">Vận hành tinh gọn hơn. Hiệu quả cao hơn. Sẵn sàng cho kỷ nguyên AI.</p>
-            <p style="font-size: 1.15rem; color: #d1d5db; max-width: 900px; margin: 0 auto; line-height: 1.6;">INVAMAX giúp các doanh nghiệp sản xuất vừa và nhỏ thiết kế và chuyển đổi mô hình vận hành nhà máy thế hệ mới, kết hợp Lean Manufacturing, Tự động hóa, Số hóa và AI để xây dựng một bộ máy vận hành tinh gọn, hiệu quả và bền vững.</p>
+            <!-- Nhóm Tiêu đề và Subtitle căn giữa ở trên cùng -->
+            <div style="text-align: center; margin-bottom: 50px;">
+                <h1 class="hero-main-title" style="margin-bottom: 15px;">Thiết kế & Xây dựng<br><span style="color: var(--primary);">mô hình vận hành nhà máy thế hệ mới</span></h1>
+                <p style="font-size: 1.25rem; font-weight: 600; color: #f97316; margin: 0 auto; max-width: 800px;">Vận hành tinh gọn hơn. Hiệu quả cao hơn. Sẵn sàng cho kỷ nguyên AI.</p>
+            </div>
+            
+            <!-- Nội dung chia 2 cột với class chuẩn của template -->
+            <div class="hero-content">
+                <div class="hero-text" style="display: flex; align-items: center; padding-right: 30px;">
+                    <p style="font-size: 1.15rem; color: #d1d5db; margin: 0; line-height: 1.7;">INVAMAX giúp các doanh nghiệp sản xuất vừa và nhỏ thiết kế và chuyển đổi mô hình vận hành nhà máy thế hệ mới, kết hợp Lean Manufacturing, Tự động hóa, Số hóa và AI để xây dựng một bộ máy vận hành tinh gọn, hiệu quả và bền vững.</p>
+                </div>
+                
+                <!-- Hiển thị ảnh đơn giản, loại bỏ khung cam -->
+                <div style="display: flex; justify-content: flex-end; align-items: center;">
+                    <img src="assets/images/hero_img.jpg" alt="Mô hình vận hành nhà máy thế hệ mới" style="max-width: 85%; border-radius: 12px; box-shadow: 0 15px 30px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05);">
+                </div>
+            </div>
         </div>
     </section>
 
@@ -135,13 +149,13 @@
             <div class="grid" style="grid-template-columns: 1fr 1.5fr; gap: 50px; align-items: center;">
                 <div style="background: rgba(30,41,59,0.5); padding: 40px; border-radius: 12px; border: 1px solid var(--border-color);">
                     <p style="color: white; font-weight: bold; margin-bottom: 25px; font-size: 1.15rem;">NỀN FOS kết hợp:</p>
-                    <ul style="list-style: none; padding: 0; margin: 0;">
-                        <li style="margin-bottom: 18px; color: var(--text-muted); font-size: 1.05rem; display: flex; align-items: center; gap: 10px;"><i data-lucide="chevron-right" style="color: var(--primary); width: 18px; height: 18px;"></i> Quản trị tinh gọn Lean.</li>
-                        <li style="margin-bottom: 18px; color: var(--text-muted); font-size: 1.05rem; display: flex; align-items: center; gap: 10px;"><i data-lucide="chevron-right" style="color: var(--primary); width: 18px; height: 18px;"></i> Tổ chức con người và trách nhiệm.</li>
-                        <li style="margin-bottom: 18px; color: var(--text-muted); font-size: 1.05rem; display: flex; align-items: center; gap: 10px;"><i data-lucide="chevron-right" style="color: var(--primary); width: 18px; height: 18px;"></i> Chuẩn hóa quy trình và công việc.</li>
-                        <li style="margin-bottom: 18px; color: var(--text-muted); font-size: 1.05rem; display: flex; align-items: center; gap: 10px;"><i data-lucide="chevron-right" style="color: var(--primary); width: 18px; height: 18px;"></i> Quản trị dòng chảy và dữ liệu.</li>
-                        <li style="margin-bottom: 18px; color: var(--text-muted); font-size: 1.05rem; display: flex; align-items: center; gap: 10px;"><i data-lucide="chevron-right" style="color: var(--primary); width: 18px; height: 18px;"></i> Cải tiến liên tục.</li>
-                        <li style="color: var(--text-muted); font-size: 1.05rem; display: flex; align-items: center; gap: 10px;"><i data-lucide="chevron-right" style="color: var(--primary); width: 18px; height: 18px;"></i> Số hóa, AI và tự động hóa phù hợp.</li>
+                    <ul style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 15px 20px;">
+                        <li style="color: var(--text-muted); font-size: 1.05rem; display: flex; align-items: flex-start; gap: 10px;"><i data-lucide="chevron-right" style="color: var(--primary); width: 18px; height: 18px; margin-top: 3px; flex-shrink: 0;"></i> Quản trị tinh gọn Lean.</li>
+                        <li style="color: var(--text-muted); font-size: 1.05rem; display: flex; align-items: flex-start; gap: 10px;"><i data-lucide="chevron-right" style="color: var(--primary); width: 18px; height: 18px; margin-top: 3px; flex-shrink: 0;"></i> Tổ chức con người và trách nhiệm.</li>
+                        <li style="color: var(--text-muted); font-size: 1.05rem; display: flex; align-items: flex-start; gap: 10px;"><i data-lucide="chevron-right" style="color: var(--primary); width: 18px; height: 18px; margin-top: 3px; flex-shrink: 0;"></i> Chuẩn hóa quy trình và công việc.</li>
+                        <li style="color: var(--text-muted); font-size: 1.05rem; display: flex; align-items: flex-start; gap: 10px;"><i data-lucide="chevron-right" style="color: var(--primary); width: 18px; height: 18px; margin-top: 3px; flex-shrink: 0;"></i> Quản trị dòng chảy và dữ liệu.</li>
+                        <li style="color: var(--text-muted); font-size: 1.05rem; display: flex; align-items: flex-start; gap: 10px;"><i data-lucide="chevron-right" style="color: var(--primary); width: 18px; height: 18px; margin-top: 3px; flex-shrink: 0;"></i> Cải tiến liên tục.</li>
+                        <li style="color: var(--text-muted); font-size: 1.05rem; display: flex; align-items: flex-start; gap: 10px;"><i data-lucide="chevron-right" style="color: var(--primary); width: 18px; height: 18px; margin-top: 3px; flex-shrink: 0;"></i> Số hóa, AI và tự động hóa phù hợp.</li>
                     </ul>
                 </div>
                 
@@ -210,8 +224,8 @@
     <section class="section" style="background: var(--primary); color: white; padding: 40px 0; text-align: center;">
         <div class="container">
             <h2 style="font-size: 3rem; margin-bottom: 15px; font-weight: 900; letter-spacing: 2px;">INVAMAX</h2>
-            <p style="font-size: 1.35rem; font-weight: 600; margin-bottom: 15px; max-width: 800px; margin-left: auto; margin-right: auto;">Đơn vị thiết kế và chuyển đổi mô hình vận hành nhà máy thế hệ mới dành cho doanh nghiệp vừa và nhỏ.</p>
-            <p style="font-size: 1.15rem; opacity: 0.9; margin-bottom: 25px; max-width: 700px; margin-left: auto; margin-right: auto;">Giúp doanh nghiệp xây dựng một bộ máy tinh gọn hơn, hiệu quả hơn và sẵn sàng cạnh tranh trong kỷ nguyên AI.</p>
+            <p style="font-size: 1.35rem; font-weight: 600; margin-bottom: 15px; max-width: 800px; margin-left: auto; margin-right: auto;">Thiết kế và chuyển đổi mô hình vận hành nhà máy thế hệ mới<br>dành cho doanh nghiệp vừa và nhỏ.</p>
+            <p style="font-size: 1.15rem; opacity: 0.9; margin-bottom: 25px; max-width: 700px; margin-left: auto; margin-right: auto;">Giúp doanh nghiệp xây dựng một bộ máy tinh gọn hơn, hiệu quả hơn<br>và sẵn sàng cạnh tranh trong kỷ nguyên AI.</p>
             <button onclick="openContactModal()" class="btn" style="background: white; color: var(--primary); padding: 12px 35px; font-size: 1.15rem; font-weight: bold; border:none; border-radius: 8px;">Liên hệ với chúng tôi</button>
         </div>
     </section>
