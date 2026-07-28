@@ -114,6 +114,11 @@ img {
     background-color: var(--primary-hover);
     transform: translateY(-2px);
     box-shadow: 0 10px 20px -10px var(--primary);
+    color: var(--text-white);
+}
+
+a.btn:hover {
+    color: var(--text-white);
 }
 
 .btn-outline {

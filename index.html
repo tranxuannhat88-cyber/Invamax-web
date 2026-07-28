@@ -8,6 +8,26 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Responsive Overrides */
+        @media (max-width: 992px) {
+            .hero-main-title { font-size: 2rem !important; }
+            .hero-main-title span { font-size: 1.2rem !important; }
+            .hero-text { align-items: center !important; padding-right: 0 !important; }
+            .hero-text p { text-align: center !important; }
+            .hero-img-wrapper { justify-content: center !important; margin-top: 20px; }
+            .hero-img-wrapper img { max-width: 100% !important; }
+            .punchline-h2 { font-size: 1.3rem !important; line-height: 1.5 !important; }
+            .punchline-h2 span.highlight { font-size: 1.3em !important; display: block !important; margin-top: 10px !important; }
+            .footer-cta h2 { font-size: 2.2rem !important; }
+            .footer-cta p { font-size: 1.1rem !important; }
+        }
+        @media (max-width: 480px) {
+            .hero-main-title { font-size: 1.8rem !important; }
+            .punchline-h2 { font-size: 1.1rem !important; }
+        }
+    </style>
 </head>
 <body>
     <!-- Navbar -->
@@ -104,7 +124,7 @@
                 </div>
                 
                 <!-- Hiển thị ảnh đơn giản, loại bỏ khung cam -->
-                <div style="display: flex; justify-content: flex-end; align-items: center;">
+                <div class="hero-img-wrapper" style="display: flex; justify-content: flex-end; align-items: center;">
                     <img src="assets/images/hero_img.jpg" alt="Mô hình vận hành nhà máy thế hệ mới" style="max-width: 85%; border-radius: 12px; box-shadow: 0 15px 30px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05);">
                 </div>
             </div>
@@ -114,9 +134,9 @@
     <!-- Định vị đắt giá -->
     <section style="background: rgba(249,115,22,0.05); padding: 60px 0; border-top: 1px solid rgba(249,115,22,0.2); border-bottom: 1px solid rgba(249,115,22,0.2);">
         <div class="container">
-            <h2 style="color: white; font-size: 1.8rem; text-align: center; font-weight: 700; line-height: 1.6; margin: 0;">
+            <h2 class="punchline-h2" style="color: white; font-size: 1.8rem; text-align: center; font-weight: 700; line-height: 1.6; margin: 0;">
                 <span style="opacity: 0.85;">Không bắt đầu từ Lean. Không bắt đầu từ AI. Không bắt đầu từ phần mềm.</span><br>
-                <span style="font-size: 1.4em; color: var(--primary); display: inline-block; margin-top: 15px; font-weight: 900; letter-spacing: -0.5px;">Chúng tôi bắt đầu từ việc thiết kế đúng cách nhà máy vận hành.</span>
+                <span class="highlight" style="font-size: 1.4em; color: var(--primary); display: inline-block; margin-top: 15px; font-weight: 900; letter-spacing: -0.5px;">Chúng tôi bắt đầu từ việc thiết kế đúng cách nhà máy vận hành.</span>
             </h2>
         </div>
     </section>
@@ -404,11 +424,11 @@
     <!-- Footer/CTA -->
     <section class="section" style="background: linear-gradient(135deg, rgba(30,41,59,1) 0%, rgba(249,115,22,0.1) 100%); color: white; padding: 60px 0; text-align: center; border-top: 1px solid rgba(249,115,22,0.2);">
         <div class="container">
-            <h2 style="font-size: 3rem; margin-bottom: 15px; font-weight: 900; letter-spacing: 2px; color: var(--primary);">INVAMAX</h2>
+            <div class="footer-cta"><h2 style="font-size: 3rem; margin-bottom: 15px; font-weight: 900; letter-spacing: 2px; color: var(--primary);">INVAMAX</h2>
             <p style="font-size: 1.35rem; font-weight: 600; margin-bottom: 15px; max-width: 800px; margin-left: auto; margin-right: auto;">Thiết kế mô hình vận hành nhà máy thế hệ mới<br>dành cho doanh nghiệp vừa và nhỏ.</p>
             <p style="font-size: 1.15rem; opacity: 0.8; margin-bottom: 35px; max-width: 700px; margin-left: auto; margin-right: auto;">Giúp doanh nghiệp sử dụng nguồn lực hiệu quả hơn, ra quyết định nhanh hơn<br>và sẵn sàng mở rộng trong kỷ nguyên AI.</p>
-            <a href="dich-vu.html#kham-benh" class="btn" style="background: var(--primary); color: white; padding: 16px 45px; font-size: 1.15rem; font-weight: bold; border:none; border-radius: 8px; text-decoration: none; box-shadow: 0 10px 25px rgba(249,115,22,0.4);"><i data-lucide="activity" style="margin-right:8px;"></i> Đăng ký Khám bệnh nhà máy</a>
-        </div>
+            <a href="dich-vu.html#kham-benh" class="btn btn-primary" style="padding: 16px 45px; font-size: 1.15rem; font-weight: bold; border:none; border-radius: 8px; text-decoration: none; box-shadow: 0 10px 25px rgba(249,115,22,0.4);"><i data-lucide="activity" style="margin-right:8px;"></i> Đăng ký Khám bệnh nhà máy</a>
+        </div></div>
     </section>
 
     <!-- Footer -->
@@ -435,6 +455,12 @@
                         <a href="thu-vien.html">Thư viện</a>
                     </div>
                     <div class="social-links" style="margin-top: 24px; display: flex; gap: 16px;">
+                        <a href="https://zalo.me/0988911869" target="_blank" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='#0068FF'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
+                            <span style="font-size: 12px; font-weight: 800; font-family: 'Inter', sans-serif;">Zalo</span>
+                        </a>
+                        <a href="mailto:info@invamax.com" onclick="try{navigator.clipboard.writeText('info@invamax.com'); alert('Đã copy email: info@invamax.com');}catch(e){}" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='#EA4335'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        </a>
                         <a href="https://www.linkedin.com/in/xuannhattran/" target="_blank" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='#0A66C2'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
                         </a>
@@ -456,11 +482,11 @@
                         </div>
                         <div class="contact-item">
                             <i data-lucide="phone"></i>
-                            <span>0988.911.869</span>
+                            <a href="https://zalo.me/0988911869" target="_blank" style="color: var(--text-muted);">0988.911.869 (Zalo)</a>
                         </div>
                           <div class="contact-item">
                             <i data-lucide="mail"></i>
-                            <span>info@invamax.com</span>
+                            <a href="mailto:info@invamax.com" onclick="try{navigator.clipboard.writeText('info@invamax.com'); alert('Đã copy email: info@invamax.com');}catch(e){}" style="color: var(--text-muted);">info@invamax.com</a>
                         </div>
                           <div class="contact-item">
                             <i data-lucide="map-pin"></i>
