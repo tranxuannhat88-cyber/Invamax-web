@@ -59,8 +59,34 @@
             
             <!-- Nội dung chia 2 cột với class chuẩn của template -->
             <div class="hero-content">
-                <div class="hero-text" style="display: flex; align-items: center; padding-right: 30px;">
-                    <p style="font-size: 1.15rem; color: #d1d5db; margin: 0; line-height: 1.7;">INVAMAX giúp các doanh nghiệp sản xuất vừa và nhỏ thiết kế và chuyển đổi mô hình vận hành nhà máy thế hệ mới trên nền tảng NỀN FOS™, kết hợp Lean, Digital, AI và tự động hóa để xây dựng một bộ máy vận hành tinh gọn, linh hoạt và có khả năng tự cải tiến.</p>
+                <div class="hero-text" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding-right: 30px;">
+                    <p style="font-size: 1.15rem; color: #d1d5db; margin-bottom: 25px; line-height: 1.7;">INVAMAX giúp các doanh nghiệp sản xuất vừa và nhỏ thiết kế và chuyển đổi mô hình vận hành nhà máy thế hệ mới, xây dựng một bộ máy vận hành tinh gọn, linh hoạt và có khả năng tự cải tiến.</p>
+                    
+                    <!-- USP List -->
+                    <div style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 35px;">
+                        <div style="display: flex; align-items: flex-start; gap: 12px;">
+                            <i data-lucide="check-square" style="color: #22c55e; width: 22px; height: 22px; flex-shrink: 0; margin-top: 2px;"></i>
+                            <span style="color: white; font-size: 1.1rem; font-weight: 500;">Thiết kế mô hình vận hành trước khi triển khai giải pháp.</span>
+                        </div>
+                        <div style="display: flex; align-items: flex-start; gap: 12px;">
+                            <i data-lucide="check-square" style="color: #22c55e; width: 22px; height: 22px; flex-shrink: 0; margin-top: 2px;"></i>
+                            <span style="color: white; font-size: 1.1rem; font-weight: 500;">NỀN FOS™ – Hệ điều hành quản trị do INVAMAX phát triển.</span>
+                        </div>
+                        <div style="display: flex; align-items: flex-start; gap: 12px;">
+                            <i data-lucide="check-square" style="color: #22c55e; width: 22px; height: 22px; flex-shrink: 0; margin-top: 2px;"></i>
+                            <span style="color: white; font-size: 1.1rem; font-weight: 500;">Kết hợp Lean, AI và tự động hóa trên một nền tảng thống nhất.</span>
+                        </div>
+                    </div>
+
+                    <!-- CTA Buttons -->
+                    <div style="display: flex; flex-wrap: wrap; gap: 15px;">
+                        <a href="dich-vu.html#kham-benh" class="btn btn-primary" style="font-size: 1.1rem; padding: 14px 28px; border-radius: 8px; font-weight: 600; box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4); display: flex; align-items: center; gap: 8px;">
+                            <i data-lucide="activity" style="width: 20px; height: 20px;"></i> Khám bệnh nhà máy
+                        </a>
+                        <a href="dich-vu.html#thiet-ke" class="btn btn-outline" style="font-size: 1.1rem; padding: 14px 28px; border-radius: 8px; font-weight: 600; color: white; border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.05); display: flex; align-items: center; gap: 8px;">
+                            <i data-lucide="layout-template" style="width: 20px; height: 20px;"></i> Xem mô hình vận hành
+                        </a>
+                    </div>
                 </div>
                 
                 <!-- Hiển thị ảnh đơn giản, loại bỏ khung cam -->
@@ -68,6 +94,152 @@
                     <img src="assets/images/hero_img.jpg" alt="Mô hình vận hành nhà máy thế hệ mới" style="max-width: 85%; border-radius: 12px; box-shadow: 0 15px 30px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05);">
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Hệ sinh thái INVAMAX -->
+    <section class="section" style="padding: 70px 0; background: var(--bg-color); border-bottom: 1px solid rgba(255,255,255,0.05);">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 50px;">
+                <h2 class="section-title">Hệ sinh thái giải pháp hoàn chỉnh</h2>
+                <div class="divider"></div>
+                <p style="color: var(--text-muted); font-size: 1.15rem; max-width: 700px; margin: 0 auto;">Từ chẩn đoán vấn đề đến triển khai thực tế, chúng tôi đồng hành cùng doanh nghiệp trong suốt quá trình xây dựng nhà máy thế hệ mới.</p>
+            </div>
+            
+            <style>
+                .ecosystem-flow {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-start;
+                    position: relative;
+                    padding: 20px 0;
+                }
+                .ecosystem-flow::before {
+                    content: '';
+                    position: absolute;
+                    top: 65px;
+                    left: 10%;
+                    right: 10%;
+                    height: 2px;
+                    background: linear-gradient(90deg, rgba(249,115,22,0.1) 0%, var(--primary) 50%, rgba(249,115,22,0.1) 100%);
+                    z-index: 1;
+                }
+                .ecosystem-step {
+                    flex: 1;
+                    text-align: center;
+                    position: relative;
+                    z-index: 2;
+                    padding: 0 10px;
+                }
+                .ecosystem-icon-wrapper {
+                    width: 90px;
+                    height: 90px;
+                    background: var(--bg-darker);
+                    border: 2px solid var(--primary);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0 auto 25px auto;
+                    box-shadow: 0 0 20px rgba(249,115,22,0.15);
+                    transition: all 0.4s ease;
+                }
+                .ecosystem-icon-wrapper i {
+                    color: var(--primary);
+                    width: 36px;
+                    height: 36px;
+                    transition: all 0.4s ease;
+                }
+                .ecosystem-step:hover .ecosystem-icon-wrapper {
+                    transform: translateY(-8px);
+                    box-shadow: 0 10px 30px rgba(249,115,22,0.4);
+                    background: var(--primary);
+                }
+                .ecosystem-step:hover .ecosystem-icon-wrapper i {
+                    color: white;
+                }
+                .ecosystem-title {
+                    font-size: 1.15rem;
+                    font-weight: 700;
+                    color: white;
+                    margin-bottom: 12px;
+                }
+                .ecosystem-desc {
+                    font-size: 0.95rem;
+                    color: var(--text-muted);
+                    line-height: 1.6;
+                }
+                
+                @media (max-width: 900px) {
+                    .ecosystem-flow {
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 50px;
+                    }
+                    .ecosystem-flow::before {
+                        display: none;
+                    }
+                    .ecosystem-flow::after {
+                        content: '';
+                        position: absolute;
+                        top: 40px;
+                        bottom: 40px;
+                        left: 50%;
+                        width: 2px;
+                        transform: translateX(-50%);
+                        background: linear-gradient(180deg, rgba(249,115,22,0.1) 0%, var(--primary) 50%, rgba(249,115,22,0.1) 100%);
+                        z-index: 1;
+                    }
+                }
+            </style>
+
+            <div class="ecosystem-flow">
+                <!-- Bước 1 -->
+                <div class="ecosystem-step">
+                    <div class="ecosystem-icon-wrapper">
+                        <i data-lucide="activity"></i>
+                    </div>
+                    <div class="ecosystem-title">1. Khám bệnh</div>
+                    <div class="ecosystem-desc">Nhận diện "điểm nghẽn", đánh giá hiện trạng và tiềm năng cải tiến.</div>
+                </div>
+                
+                <!-- Bước 2 -->
+                <div class="ecosystem-step">
+                    <div class="ecosystem-icon-wrapper">
+                        <i data-lucide="layout-template"></i>
+                    </div>
+                    <div class="ecosystem-title">2. Thiết kế mô hình</div>
+                    <div class="ecosystem-desc">Xây dựng kiến trúc vận hành tổng thể chuẩn Lean & Digital.</div>
+                </div>
+                
+                <!-- Bước 3 -->
+                <div class="ecosystem-step">
+                    <div class="ecosystem-icon-wrapper">
+                        <i data-lucide="cpu"></i>
+                    </div>
+                    <div class="ecosystem-title">3. NỀN FOS™</div>
+                    <div class="ecosystem-desc">Triển khai hệ điều hành quản trị nhà máy để đồng bộ hóa quy trình.</div>
+                </div>
+                
+                <!-- Bước 4 -->
+                <div class="ecosystem-step">
+                    <div class="ecosystem-icon-wrapper">
+                        <i data-lucide="brain-circuit"></i>
+                    </div>
+                    <div class="ecosystem-title">4. AI & Digital Operations</div>
+                    <div class="ecosystem-desc">Ứng dụng số hóa, AI và tự động hóa để thông minh hóa quản lý.</div>
+                </div>
+                
+                <!-- Bước 5 -->
+                <div class="ecosystem-step">
+                    <div class="ecosystem-icon-wrapper">
+                        <i data-lucide="package"></i>
+                    </div>
+                    <div class="ecosystem-title">5. Supply Hub</div>
+                    <div class="ecosystem-desc">Cung cấp thiết bị, vật tư và đồ gá để triển khai các cải tiến tại hiện trường.</div>
+                </div>
+            </div>
+            
         </div>
     </section>
 
