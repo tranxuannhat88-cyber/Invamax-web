@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INVAMAX - Giải pháp vận hành tinh gọn, hiệu suất cao</title>
+    <meta name="description" content="INVAMAX phát triển hệ sinh thái giải pháp vận hành tinh gọn cho nhà máy vừa và nhỏ. NỀN FOS, AI/Digital Manufacturing, Supply Hub.">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">INVA<span>MAX</span></a>
+            <div class="nav-links">
+                <div class="nav-item">
+                    <span class="nav-title">GIỚI THIỆU <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i></span>
+                    <div class="nav-dropdown">
+                        <a href="index.html">Giới thiệu INVAMAX</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <span class="nav-title">GIẢI PHÁP <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i></span>
+                    <div class="nav-dropdown">
+                        <a href="dich-vu.html#kham-benh">Khám bệnh Nhà máy</a>
+                        <a href="dich-vu.html#thiet-ke">Thiết kế & Chuyển đổi mô hình vận hành nhà máy</a>
+                        <a href="dich-vu.html#fos">NỀN FOS™ - Hệ điều hành nhà máy</a>
+                        <a href="dich-vu.html#ai-digital">AI &amp; Digital Operations</a>
+                        <a href="san-pham.html">Supply Hub</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <span class="nav-title">TRI THỨC <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i></span>
+                    <div class="nav-dropdown">
+                        <a href="kien-thuc.html">Chia sẻ kiến thức</a>
+                        <a href="thu-vien.html">Thư viện</a>
+                    </div>
+                </div>
+            </div>
+            <button class="mobile-menu-btn"><i data-lucide="menu"></i></button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero-main-title">Thiết kế & Chuyển đổi Mô hình vận hành nhà máy</h1>
+            <div class="hero-content">
+                <div class="hero-text">
+                <p style="font-size: 1.25rem; font-weight: 500; margin-bottom: 15px;">Từ hiện trạng rời rạc đến hệ thống vận hành rõ ràng, tinh gọn và hiệu quả cao.</p>
+                <p>INVAMAX giúp các nhà máy vừa và nhỏ thiết kế lại mô hình vận hành, chuẩn hóa hệ thống quản trị sản xuất, số hóa đúng điểm nghẽn và chuyển đổi hiện trường để vận hành ổn định, hiệu quả và bền vững hơn.</p>
+                <ul style="list-style-type: none; padding-left: 0; margin-bottom: 30px; font-size: 1.05rem; display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">
+                    <li style="display: flex; align-items: flex-start;"><i data-lucide="check-circle" style="color: var(--primary); width: 20px; height: 20px; flex-shrink: 0; margin-right: 10px; margin-top: 3px;"></i>Tinh gọn bộ máy nhân sự.</li>
+                    <li style="display: flex; align-items: flex-start;"><i data-lucide="check-circle" style="color: var(--primary); width: 20px; height: 20px; flex-shrink: 0; margin-right: 10px; margin-top: 3px;"></i>Tăng năng suất lao động.</li>
+                    <li style="display: flex; align-items: flex-start;"><i data-lucide="check-circle" style="color: var(--primary); width: 20px; height: 20px; flex-shrink: 0; margin-right: 10px; margin-top: 3px;"></i>Cải thiện chất lượng.</li>
+                    <li style="display: flex; align-items: flex-start;"><i data-lucide="check-circle" style="color: var(--primary); width: 20px; height: 20px; flex-shrink: 0; margin-right: 10px; margin-top: 3px;"></i>Thông tin quản trị rõ ràng.</li>
+                    <li style="display: flex; align-items: flex-start;"><i data-lucide="check-circle" style="color: var(--primary); width: 20px; height: 20px; flex-shrink: 0; margin-right: 10px; margin-top: 3px;"></i>Vận hành ổn định, ít phụ thuộc vào chủ nhà máy.</li>
+                    <li style="display: flex; align-items: flex-start;"><i data-lucide="check-circle" style="color: var(--primary); width: 20px; height: 20px; flex-shrink: 0; margin-right: 10px; margin-top: 3px;"></i>Giảm lãng phí, tăng lợi nhuận.</li>
+                </ul>
+                <div class="hero-buttons">
+                    <button onclick="openContactModal()" class="btn btn-outline" style="font-size: 0.95rem;">Liên hệ tư vấn <i data-lucide="arrow-right"></i></button>
+                    <a href="#about" class="btn btn-outline">Tìm hiểu giải pháp INVAMAX</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="assets/images/hero_img.jpg" alt="INVAMAX Factory Operating Model">
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vấn đề của nhiều nhà máy hiện nay -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Vấn đề của nhiều nhà máy hiện nay</span>
+                <h2 class="section-title">Nhà máy không thiếu nỗ lực. Nhà máy thiếu một mô hình vận hành đủ rõ.</h2>
+                <p class="section-desc">Phần lớn nhà máy vừa và nhỏ đang vận hành trong trạng thái bận rộn nhưng thiếu ổn định. Kế hoạch thay đổi liên tục, chất lượng chưa vững, dữ liệu thiếu minh bạch, hiện trường còn rối và đội ngũ quản lý phải xử lý sự vụ mỗi ngày.</p>
+                <p class="section-desc">Những vấn đề này thường không nằm ở một công đoạn riêng lẻ, mà là dấu hiệu cho thấy mô hình vận hành của nhà máy chưa được thiết kế rõ ràng.</p>
+            </div>
+            
+            <h3 style="text-align: center; margin-bottom: 30px; font-size: 1.5rem; color: var(--text-dark);">Các dấu hiệu thường gặp</h3>
+            <div class="grid-3">
+                <div class="card">
+                    <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px;">
+                        <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px;">
+                        <div class="card-icon" style="margin-bottom: 0; flex-shrink: 0; margin-bottom: 0; flex-shrink: 0;">
+                            <i data-lucide="alert-circle"></i>
+                        </div>
+                        <h3 style="margin-bottom: 0; margin-top: 4px; line-height: 1.4; margin-bottom: 0; margin-top: 4px; line-height: 1.4;">Hệ thống quản trị sản xuất chưa rõ</h3>
+                    </div>
+                    </div>
+                    <p>Kế hoạch rối, thiếu chuẩn hóa, dòng chảy và layout chưa tối ưu, lỗi lặp lại, quản lý thiếu công cụ giải quyết vấn đề.</p>
+                </div>
+                <div class="card">
+                    <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px;">
+                        <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px;">
+                        <div class="card-icon" style="margin-bottom: 0; flex-shrink: 0; margin-bottom: 0; flex-shrink: 0;">
+                            <i data-lucide="database"></i>
+                        </div>
+                        <h3 style="margin-bottom: 0; margin-top: 4px; line-height: 1.4; margin-bottom: 0; margin-top: 4px; line-height: 1.4;">Dữ liệu & thông tin thiếu tin cậy</h3>
+                    </div>
+                    </div>
+                    <p>Báo cáo thủ công, dữ liệu phân tán, thông tin không trực quan, quản lý khó ra quyết định kịp thời.</p>
+                </div>
+                <div class="card">
+                    <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px;">
+                        <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px;">
+                        <div class="card-icon" style="margin-bottom: 0; flex-shrink: 0; margin-bottom: 0; flex-shrink: 0;">
+                            <i data-lucide="layout-panel-top"></i>
+                        </div>
+                        <h3 style="margin-bottom: 0; margin-top: 4px; line-height: 1.4; margin-bottom: 0; margin-top: 4px; line-height: 1.4;">Hiện trường và hậu cần sản xuất chưa đồng bộ</h3>
+                    </div>
+                    </div>
+                    <p>Cấp phát vật tư chậm, dụng cụ không đúng chỗ, mặt bằng thiếu trật tự, thiết bị phụ trợ chưa phù hợp với dòng chảy sản xuất.</p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 40px; padding: 25px; background: rgba(255, 107, 0, 0.05); border: 1px solid rgba(255, 107, 0, 0.2); border-radius: 8px; text-align: center;">
+                <p style="color: var(--text-light); font-weight: 600; font-size: 1.1rem; margin: 0;"><span style="color: var(--primary);">Hệ quả:</span> năng suất giảm, chi phí tăng, giao hàng thiếu ổn định, chất lượng suy giảm và doanh nghiệp mất dần năng lực cạnh tranh.</p>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INVAMAX giúp gì cho nhà máy -->
+    <section class="section section-darker">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">INVAMAX giúp gì cho nhà máy?</span>
+                <h2 class="section-title">Thiết kế mô hình vận hành — Xây lộ trình chuyển đổi — Đồng hành triển khai</h2>
+                <p class="section-desc">INVAMAX không chỉ triển khai Lean, không chỉ làm số hóa và cũng không chỉ cung cấp thiết bị phụ trợ. Chúng tôi tiếp cận nhà máy như một hệ thống tổng thể, nơi con người, dòng chảy, tiêu chuẩn công việc, dữ liệu, nhịp quản lý và giải pháp hiện trường cần được thiết kế đồng bộ.</p>
+            </div>
+            
+            <h3 style="text-align: center; margin-bottom: 30px; font-size: 1.5rem; color: var(--text-dark);">Mục tiêu của INVAMAX là giúp nhà máy trả lời rõ 3 câu hỏi:</h3>
+            <div class="grid-3">
+                <div class="card">
+                    <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px;">
+                        <div class="step-number" style="background: var(--primary); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; flex-shrink: 0;">1</div>
+                        <h3 style="margin-bottom: 0; margin-top: 4px; line-height: 1.4;">Nhà máy hiện đang vận hành theo mô hình nào?</h3>
+                    </div>
+                    <p>Đâu là điểm nghẽn, lãng phí, rối loạn và nguyên nhân gốc khiến hiệu quả chưa ổn định?</p>
+                </div>
+                <div class="card">
+                    <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px;">
+                        <div class="step-number" style="background: var(--primary); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; flex-shrink: 0;">2</div>
+                        <h3 style="margin-bottom: 0; margin-top: 4px; line-height: 1.4;">Nhà máy cần vận hành theo mô hình nào?</h3>
+                    </div>
+                    <p>Cơ cấu quản lý, flow, layout, tiêu chuẩn công việc, KPI, dữ liệu và cơ chế cải tiến cần được thiết kế ra sao?</p>
+                </div>
+                <div class="card">
+                    <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px;">
+                        <div class="step-number" style="background: var(--primary); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; flex-shrink: 0;">3</div>
+                        <h3 style="margin-bottom: 0; margin-top: 4px; line-height: 1.4;">Chuyển đổi như thế nào để tạo ra kết quả thực tế?</h3>
+                    </div>
+                    <p>Ưu tiên làm gì trước, triển khai theo giai đoạn nào, ai chịu trách nhiệm, đo kết quả ra sao và duy trì thế nào?</p>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Factory Operating Model Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Mô hình vận hành nhà máy là gì?</span>
+                <h2 class="section-title" style="font-size: 2.2rem;">Factory Operating Model</h2>
+                <p class="section-desc" style="max-width: 800px; margin: 0 auto;">
+                    Mô hình vận hành nhà máy là cách doanh nghiệp tổ chức con người, dòng chảy sản xuất, nhịp quản lý, tiêu chuẩn công việc, dữ liệu và giải pháp hiện trường để tạo ra kết quả ổn định.
+                </p>
+            </div>
+            
+            <div class="grid-2" style="margin-bottom: 50px;">
+                <div class="card" style="background: var(--primary); color: white; padding: 40px;">
+                    <h3 style="color: white; font-size: 1.5rem; margin-bottom: 20px;">Một mô hình vận hành rõ ràng giúp nhà máy:</h3>
+                    <ul style="font-size: 1.125rem; line-height: 2; margin-left: 20px;">
+                        <li>Dễ kiểm soát hiện trường.</li>
+                        <li>Dễ đào tạo nhân sự.</li>
+                        <li>Dễ phát hiện vấn đề.</li>
+                        <li>Dễ cải tiến.</li>
+                        <li>Dễ số hóa.</li>
+                        <li>Dễ mở rộng khi quy mô tăng lên.</li>
+                    </ul>
+                </div>
+                <div style="display: flex; flex-direction: column; justify-content: center;">
+                    <img src="assets/images/hero_img.jpg" alt="Mô hình vận hành" style="border-radius: 8px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);">
+                </div>
+            </div>
+            
+            <h3 style="text-align: center; margin-bottom: 40px; font-size: 1.8rem; color: var(--text-dark);">Các thành phần chính của mô hình vận hành</h3>
+            <div class="grid-3">
+                <div class="card" style="border-left: 4px solid var(--primary);">
+                    <h4>Cơ cấu tổ chức & vai trò</h4>
+                    <p style="font-size: 0.95rem;">Ai quản lý việc gì, trách nhiệm ở đâu, cách phối hợp giữa các bộ phận như thế nào.</p>
+                </div>
+                <div class="card" style="border-left: 4px solid var(--primary);">
+                    <h4>Flow & Layout</h4>
+                    <p style="font-size: 0.95rem;">Dòng chảy sản phẩm, vật tư, con người, thông tin và mặt bằng sản xuất được thiết kế ra sao.</p>
+                </div>
+                <div class="card" style="border-left: 4px solid var(--primary);">
+                    <h4>Standard Work</h4>
+                    <p style="font-size: 0.95rem;">Công việc tiêu chuẩn, hướng dẫn thao tác, checklist, biểu mẫu và cơ chế đào tạo tại hiện trường.</p>
+                </div>
+                <div class="card" style="border-left: 4px solid var(--primary);">
+                    <h4>Daily Management & KPI</h4>
+                    <p style="font-size: 0.95rem;">Nhịp quản lý hằng ngày, họp sản xuất, bảng trực quan, chỉ số vận hành và cơ chế phản ứng nhanh.</p>
+                </div>
+                <div class="card" style="border-left: 4px solid var(--primary);">
+                    <h4>Quality & Problem Solving</h4>
+                    <p style="font-size: 0.95rem;">Kiểm soát chất lượng tại nguồn, phân tích lỗi, xử lý nguyên nhân gốc và ngăn lỗi lặp lại.</p>
+                </div>
+                <div class="card" style="border-left: 4px solid var(--primary);">
+                    <h4>Data & Digital</h4>
+                    <p style="font-size: 0.95rem;">Dữ liệu vận hành, dashboard, báo cáo, truy xuất SOP và AI hỗ trợ ra quyết định.</p>
+                </div>
+                <div class="card" style="border-left: 4px solid var(--primary);">
+                    <h4>Sustain & Continuous Improvement</h4>
+                    <p style="font-size: 0.95rem;">Cơ chế duy trì, rà soát định kỳ, Kaizen và cải tiến liên tục.</p>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6 Bước triển khai -->
+    <section class="section section-darker">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Phương pháp triển khai của INVAMAX</span>
+                <h2 class="section-title">6 bước thiết kế & chuyển đổi mô hình vận hành</h2>
+            </div>
+            
+            <div class="grid-2">
+                <div class="step-item">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3>Đánh giá mô hình vận hành hiện tại</h3>
+                        <p class="text-muted">INVAMAX khảo sát hiện trường, dòng chảy sản xuất, layout, tổ chức quản lý, dữ liệu, tiêu chuẩn công việc, chất lượng, năng suất và các điểm nghẽn trong vận hành.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3>Thiết kế mô hình vận hành mục tiêu</h3>
+                        <p class="text-muted">Dựa trên hiện trạng và mục tiêu của doanh nghiệp, INVAMAX thiết kế mô hình vận hành cần đạt: cơ cấu quản lý, flow, layout, daily management, KPI, tiêu chuẩn công việc, dữ liệu và giải pháp hiện trường.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3>Xây dựng lộ trình chuyển đổi</h3>
+                        <p class="text-muted">Chúng tôi xác định đúng ưu tiên, chia giai đoạn triển khai, làm rõ nguồn lực, trách nhiệm, chỉ số đánh giá và kế hoạch hành động phù hợp với năng lực thực tế của nhà máy.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <h3>Đồng hành chuyển đổi mô hình vận hành</h3>
+                        <p class="text-muted">INVAMAX đồng hành cùng đội ngũ của doanh nghiệp để triển khai tại hiện trường, huấn luyện nhân sự, điều chỉnh giải pháp và đưa mô hình mới vào vận hành thực tế.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">05</div>
+                    <div class="step-content">
+                        <h3>Đánh giá kết quả & bàn giao</h3>
+                        <p class="text-muted">Kết quả được đo lường, chuẩn hóa và bàn giao thành cơ chế vận hành rõ ràng để đội ngũ nội bộ có thể tiếp tục áp dụng.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">06</div>
+                    <div class="step-content">
+                        <h3>Duy trì & cải tiến liên tục</h3>
+                        <p class="text-muted">Sau chuyển đổi, INVAMAX hỗ trợ thiết lập cơ chế duy trì, rà soát định kỳ và cải tiến liên tục để mô hình vận hành không bị quay lại trạng thái cũ.</p>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3 Năng lực triển khai -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">3 năng lực triển khai của INVAMAX</span>
+                <h2 class="section-title">Một mô hình vận hành cần được thiết kế, số hóa và hiện thực hóa tại hiện trường</h2>
+            </div>
+            
+            <div style="margin-bottom: 50px;">
+                <div class="card" style="margin-bottom: 20px; border-left: 4px solid var(--primary);">
+                    <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 15px;">
+                        <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px;">
+                        <div class="card-icon" style="margin-bottom: 0; flex-shrink: 0;  margin-bottom: 0;">
+                            <i data-lucide="factory"></i>
+                        </div>
+                        <h3 style="margin-bottom: 0; margin-top: 4px; line-height: 1.4; margin: 0; font-size: 1.5rem;">01. NỀN FOS (Factory Operating System)</h3>
+                    </div>
+                    </div>
+                    <p style="font-weight: bold; margin-bottom: 15px; font-size: 1.1rem;">NỀN FOS là khung phương pháp của INVAMAX dùng để thiết kế và chuẩn hóa mô hình vận hành nhà máy.</p>
+                    <p>Thông qua NỀN FOS, doanh nghiệp xác định rõ cách nhà máy cần vận hành: từ dòng chảy sản xuất, layout, tiêu chuẩn công việc, nhịp quản lý hằng ngày, KPI, chất lượng, năng lực đội ngũ đến cơ chế cải tiến liên tục.</p>
+                    <div class="grid-2" style="margin-top: 20px;">
+                        <div>
+                            <strong style="color: var(--primary);">NỀN FOS phù hợp cho:</strong>
+                            <ul style="margin-top: 10px; padding-left: 20px; line-height: 1.8;">
+                                <li>Đánh giá hiện trạng vận hành nhà máy.</li>
+                                <li>Thiết kế flow, layout và dòng chảy sản xuất.</li>
+                                <li>Chuẩn hóa công việc và tài liệu vận hành.</li>
+                                <li>Thiết lập Daily Management và KPI.</li>
+                                <li>Cải thiện năng suất, chất lượng và giao hàng.</li>
+                                <li>Xây dựng năng lực cải tiến nội bộ.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div style="background: var(--bg-darker); padding: 20px; border-radius: 8px;">
+                                <strong style="color: var(--text-dark);">Giá trị mang lại:</strong>
+                                <p style="margin-top: 10px;">Rõ mô hình vận hành, rõ vấn đề gốc, rõ ưu tiên chuyển đổi, giảm lãng phí, tăng năng suất và tạo nền cho số hóa.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-bottom: 20px; border-left: 4px solid var(--primary);">
+                    <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 15px;">
+                        <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px;">
+                        <div class="card-icon" style="margin-bottom: 0; flex-shrink: 0;  margin-bottom: 0;">
+                            <i data-lucide="cpu"></i>
+                        </div>
+                        <h3 style="margin-bottom: 0; margin-top: 4px; line-height: 1.4; margin: 0; font-size: 1.5rem;">02. AI / Digital Manufacturing</h3>
+                    </div>
+                    </div>
+                    <p style="font-weight: bold; margin-bottom: 15px; font-size: 1.1rem;">Số hóa & AI để vận hành mô hình quản trị</p>
+                    <p>Số hóa chỉ hiệu quả khi mô hình vận hành đã rõ. AI chỉ tạo giá trị khi dữ liệu đủ sạch và bài toán đủ cụ thể. INVAMAX giúp doanh nghiệp xác định những điểm cần số hóa, dữ liệu cần thu thập, dashboard cần xây dựng và các bài toán AI có thể hỗ trợ quản lý sản xuất thực tế.</p>
+                    <div class="grid-2" style="margin-top: 20px;">
+                        <div>
+                            <strong style="color: var(--primary);">Ứng dụng tiêu biểu:</strong>
+                            <ul style="margin-top: 10px; padding-left: 20px; line-height: 1.8;">
+                                <li>Báo cáo sản xuất hằng ngày.</li>
+                                <li>Theo dõi tiến độ đơn hàng và kế hoạch sản xuất.</li>
+                                <li>Quản lý hiệu suất và đánh giá kết quả.</li>
+                                <li>Truy xuất SOP, quy trình, biểu mẫu và tài liệu kỹ thuật.</li>
+                                <li>Dashboard sản xuất và cảnh báo bất thường.</li>
+                                <li>AI hỗ trợ tổng hợp, phân tích và ra quyết định.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div style="background: var(--bg-darker); padding: 20px; border-radius: 8px;">
+                                <strong style="color: var(--text-dark);">Giá trị mang lại:</strong>
+                                <p style="margin-top: 10px;">Dữ liệu rõ hơn, quản lý nhanh hơn, giảm phụ thuộc vào báo cáo thủ công và tạo nền tảng cho nhà máy số.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-bottom: 20px; border-left: 4px solid var(--primary);">
+                    <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 15px;">
+                        <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px;">
+                        <div class="card-icon" style="margin-bottom: 0; flex-shrink: 0;  margin-bottom: 0;">
+                            <i data-lucide="truck"></i>
+                        </div>
+                        <h3 style="margin-bottom: 0; margin-top: 4px; line-height: 1.4; margin: 0; font-size: 1.5rem;">03. INVAMAX Supply Hub</h3>
+                    </div>
+                    </div>
+                    <p style="font-weight: bold; margin-bottom: 15px; font-size: 1.1rem;">Hiện thực hóa mô hình vận hành tại hiện trường</p>
+                    <p>INVAMAX Supply Hub là năng lực triển khai hiện trường của INVAMAX, giúp chuyển các thiết kế vận hành thành không gian làm việc, trạm thao tác, hệ thống lưu trữ, dụng cụ hỗ trợ và thiết bị phụ trợ phù hợp với thực tế nhà máy. Chúng tôi không chỉ cung cấp sản phẩm. Chúng tôi thiết kế giải pháp vật lý dựa trên flow, layout, tiêu chuẩn công việc và yêu cầu vận hành của từng khu vực sản xuất.</p>
+                    <div class="grid-2" style="margin-top: 20px;">
+                        <div>
+                            <strong style="color: var(--primary);">Nhóm giải pháp tiêu biểu:</strong>
+                            <ul style="margin-top: 10px; padding-left: 20px; line-height: 1.8;">
+                                <li>Bàn thao tác, bàn lắp ráp, bàn đóng gói, bàn kiểm tra.</li>
+                                <li>Kệ hàng, xe đẩy, tủ dụng cụ, giá treo, storage trolley.</li>
+                                <li>Jig, khay, đồ gá, dụng cụ hỗ trợ sản xuất.</li>
+                                <li>Linh kiện, vật tư kết cấu và thiết bị phụ trợ.</li>
+                                <li>Trạm quản lý trực quan và không gian làm việc Lean.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div style="background: var(--bg-darker); padding: 20px; border-radius: 8px;">
+                                <strong style="color: var(--text-dark);">Giá trị mang lại:</strong>
+                                <p style="margin-top: 10px;">Hiện trường gọn hơn, thao tác ít hơn, dụng cụ đúng chỗ hơn, vận hành trực quan hơn và dễ duy trì hơn.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies / Scenarios -->
+    <section class="section section-darker">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Giải pháp tổng thể theo bài toán nhà máy</span>
+                <h2 class="section-title">Từ mô hình hiện tại đến mô hình vận hành mục tiêu</h2>
+                <p class="section-desc">INVAMAX không bán từng giải pháp rời rạc. Chúng tôi bắt đầu từ bài toán thật của nhà máy, sau đó phối hợp các lớp giải pháp phù hợp để tạo ra kết quả thực tế.</p>
+            </div>
+            
+            <h3 style="text-align: center; margin-bottom: 30px; font-size: 1.5rem; color: var(--text-dark);">Ví dụ triển khai</h3>
+            <div class="grid-2">
+                <div class="card">
+                    <h4>Hiện trường rối, nhiều lãng phí di chuyển</h4>
+                    <ul style="margin-top: 15px; padding-left: 20px; line-height: 1.6;">
+                        <li><strong>NỀN FOS:</strong> thiết kế lại flow, layout, Daily Management và 5S theo dòng chảy.</li>
+                        <li><strong>AI/Digital:</strong> thiết lập dữ liệu hiện trường cơ bản.</li>
+                        <li><strong>Supply Hub:</strong> bàn thao tác, kệ, xe đẩy, khu vực trực quan.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>Thiếu dữ liệu, khó kiểm soát tiến độ</h4>
+                    <ul style="margin-top: 15px; padding-left: 20px; line-height: 1.6;">
+                        <li><strong>NỀN FOS:</strong> chuẩn hóa nhịp quản lý và chỉ số vận hành.</li>
+                        <li><strong>AI/Digital:</strong> dashboard, báo cáo sản xuất và cảnh báo bất thường.</li>
+                        <li><strong>Supply Hub:</strong> trạm quản lý trực quan tại hiện trường.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>Lỗi chất lượng lặp lại</h4>
+                    <ul style="margin-top: 15px; padding-left: 20px; line-height: 1.6;">
+                        <li><strong>NỀN FOS:</strong> phân tích nguyên nhân gốc, thiết lập Standard Work và kiểm soát chất lượng tại nguồn.</li>
+                        <li><strong>AI/Digital:</strong> truy xuất SOP, lỗi, dữ liệu chất lượng.</li>
+                        <li><strong>Supply Hub:</strong> jig, khay, dụng cụ hỗ trợ chống lỗi.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>Cần tối ưu khu vực làm việc</h4>
+                    <ul style="margin-top: 15px; padding-left: 20px; line-height: 1.6;">
+                        <li><strong>NỀN FOS:</strong> đánh giá flow, thao tác và nhu cầu vận hành.</li>
+                        <li><strong>AI/Digital:</strong> theo dõi dữ liệu vận hành.</li>
+                        <li><strong>Supply Hub:</strong> workspace, storage trolley, trạm làm việc và thiết bị phụ trợ.</li>
+                    </ul>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Vì sao chọn INVAMAX?</span>
+                <h2 class="section-title">Thiết kế đúng mô hình trước khi triển khai giải pháp</h2>
+            </div>
+            
+            <div class="grid-2">
+                <div class="card" style="display: flex; flex-direction: row; align-items: flex-start; gap: 20px; padding: 25px;">
+                    <div style="background: var(--primary); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; flex-shrink: 0;">1</div>
+                    <div>
+                        <h4 style="margin-bottom: 10px; font-size: 1.2rem;">Hiểu thực tế sản xuất</h4>
+                        <p>INVAMAX tiếp cận vấn đề từ hiện trường, từ dòng chảy công việc, con người, thiết bị, dữ liệu và cách vận hành thực tế của nhà máy.</p>
+                    </div>
+                </div>
+                <div class="card" style="display: flex; flex-direction: row; align-items: flex-start; gap: 20px; padding: 25px;">
+                    <div style="background: var(--primary); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; flex-shrink: 0;">2</div>
+                    <div>
+                        <h4 style="margin-bottom: 10px; font-size: 1.2rem;">Không triển khai giải pháp rời rạc</h4>
+                        <p>Chúng tôi không bắt đầu bằng việc bán Lean, AI hay thiết bị. INVAMAX bắt đầu bằng việc hiểu mô hình vận hành hiện tại và xác định mô hình mục tiêu phù hợp.</p>
+                    </div>
+                </div>
+                <div class="card" style="display: flex; flex-direction: row; align-items: flex-start; gap: 20px; padding: 25px;">
+                    <div style="background: var(--primary); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; flex-shrink: 0;">3</div>
+                    <div>
+                        <h4 style="margin-bottom: 10px; font-size: 1.2rem;">Kết hợp tư vấn và giải pháp hiện trường</h4>
+                        <p>INVAMAX có khả năng kết nối giữa thiết kế vận hành, số hóa dữ liệu và giải pháp vật lý tại hiện trường.</p>
+                    </div>
+                </div>
+                <div class="card" style="display: flex; flex-direction: row; align-items: flex-start; gap: 20px; padding: 25px;">
+                    <div style="background: var(--primary); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; flex-shrink: 0;">4</div>
+                    <div>
+                        <h4 style="margin-bottom: 10px; font-size: 1.2rem;">Tập trung vào tính dễ duy trì</h4>
+                        <p>Giải pháp được thiết kế theo nguyên tắc rõ ràng, đơn giản, phù hợp với năng lực đội ngũ và có thể duy trì sau triển khai.</p>
+                    </div>
+                </div>
+                <div class="card" style="display: flex; flex-direction: row; align-items: flex-start; gap: 20px; padding: 25px;">
+                    <div style="background: var(--primary); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; flex-shrink: 0;">5</div>
+                    <div>
+                        <h4 style="margin-bottom: 10px; font-size: 1.2rem;">Hướng tới năng lực tự vận hành</h4>
+                        <p>Mục tiêu cuối cùng không phải là doanh nghiệp phụ thuộc vào INVAMAX, mà là đội ngũ nội bộ có thể vận hành, kiểm soát và cải tiến hệ thống tốt hơn.</p>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kiến thức & Phân tích -->
+    <section class="section" style="background: var(--bg-dark); border-top: 1px solid var(--border-color);">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 40px;">
+                <h2>Kiến thức & Phân tích nổi bật</h2>
+                <p class="text-muted">Cập nhật những xu hướng và kinh nghiệm thực tiễn về quản trị sản xuất</p>
+            </div>
+            
+            <div class="grid-3" id="latest-posts-container">
+                <!-- Articles will be loaded here dynamically via JS -->
+                <p style="text-align: center; grid-column: 1 / -1; color: var(--text-muted); width: 100%;">Đang tải bài viết mới nhất...</p>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="kien-thuc.html" class="btn btn-outline">Xem tất cả bài viết</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lời mời hành động (CTA) -->
+
+    <!-- Lời mời hành động (CTA) -->
+    <section class="section" style="background: var(--primary); color: white; padding: 60px 0;">
+        <div class="container" style="text-align: center; max-width: 1100px;">
+            <h2 style="font-size: 2.2rem; margin-bottom: 20px; color: white;">Nhà máy của bạn đang vận hành theo mô hình nào?</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 20px; line-height: 1.8;">
+                Nếu nhà máy đang gặp các vấn đề như kế hoạch rối, chất lượng thiếu ổn định, dữ liệu không rõ, hiện trường nhiều lãng phí hoặc quản lý bị cuốn vào xử lý sự vụ mỗi ngày, đó có thể không chỉ là vấn đề con người hay công đoạn.
+            </p>
+            <p style="font-size: 1.4rem; font-weight: bold; margin-bottom: 30px;">
+                Đó có thể là dấu hiệu cho thấy mô hình vận hành cần được thiết kế lại.
+            </p>
+            <p style="font-size: 1.1rem; margin-bottom: 40px;">
+                Liên hệ INVAMAX để đánh giá mô hình vận hành hiện tại và xây dựng lộ trình chuyển đổi phù hợp cho nhà máy của bạn.
+            </p>
+            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <button onclick="openContactModal()" class="btn" style="background: white; color: var(--primary); padding: 15px 30px; font-size: 1.1rem; font-weight: bold; border:none;">Liên hệ tư vấn</button>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo mb-2" style="display: block;">INVA<span>MAX</span></a>
+                    <p class="text-muted mb-4">Thiết kế & Chuyển đổi<br>Mô hình vận hành nhà máy.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Giải pháp</h4>
+                    <div class="footer-links">
+                        <a href="dich-vu.html">NỀN FOS™ - Hệ điều hành nhà máy</a>
+                        <a href="dich-vu.html">Khám bệnh nhà máy</a>
+                        <a href="san-pham.html">Supply Hub</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Về chúng tôi</h4>
+                    <div class="footer-links">
+                        <a href="index.html">Giới thiệu</a>
+                        <a href="kien-thuc.html">Bài viết</a>
+                        <a href="thu-vien.html">Thư viện</a>
+                    </div>
+                    <div class="social-links" style="margin-top: 24px; display: flex; gap: 16px;">
+                        <a href="https://www.linkedin.com/in/xuannhattran/" target="_blank" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='#0A66C2'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        </a>
+                        <a href="https://www.facebook.com/invamax.vanhanhtinhgon" target="_blank" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='#1877F2'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Liên hệ</h4>
+                    <p style="font-weight: 600; color: white; margin-bottom: 16px; font-size: 0.95rem;">CÔNG TY TNHH ĐẦU TƯ VÀ PHÁT TRIỂN INVAMAX</p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i data-lucide="file-text"></i>
+                            <span>Mã số thuế: 0202236953</span>
+                        </div>
+                        <div class="contact-item">
+                            <i data-lucide="map-pin"></i>
+                            <span>Thôn Đông Lôi, xã Vĩnh Thịnh, TP Hải Phòng</span>
+                        </div>
+                        <div class="contact-item">
+                            <i data-lucide="phone"></i>
+                            <span>0988.911.869</span>
+                        </div>
+                        <div class="contact-item">
+                            <i data-lucide="mail"></i>
+                            <span>info@invamax.com</span>
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 INVAMAX. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeContactModal()" style="font-size: 24px; line-height: 1; font-weight: bold;">&times;</button>
+            <h2 style="font-size: 1.5rem; color: var(--primary); margin-bottom: 5px;">Đăng ký tư vấn</h2>
+            <p style="color: #64748b; margin-bottom: 20px; font-size: 0.95rem;">Vui lòng để lại thông tin, chuyên gia INVAMAX sẽ liên hệ lại với bạn trong 24h.</p>
+            
+            <form id="leadForm" onsubmit="submitForm(event)">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Họ và tên *</label>
+                        <input type="text" name="hoTen" required placeholder="Nguyễn Văn A">
+                    </div>
+                    <div class="form-group">
+                        <label>Chức danh *</label>
+                        <input type="text" name="chucDanh" required placeholder="Giám đốc / Trưởng phòng">
+                    </div>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Số điện thoại *</label>
+                        <input type="tel" name="soDienThoai" required placeholder="0988...">
+                    </div>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" name="email" required placeholder="email@congty.com">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Tên nhà máy / Công ty *</label>
+                    <input type="text" name="tenNhaMay" required placeholder="Công ty TNHH XYZ">
+                </div>
+                
+                <div class="form-group">
+                    <label>Địa chỉ nhà máy *</label>
+                    <input type="text" name="diaChi" required placeholder="KCN abc, Tỉnh xyz...">
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Lĩnh vực sản xuất *</label>
+                        <select name="linhVuc" required>
+                            <option value="">-- Chọn lĩnh vực --</option>
+                            <option value="Gỗ / nội thất">Gỗ / nội thất</option>
+                            <option value="Cơ khí / kim loại">Cơ khí / kim loại</option>
+                            <option value="May mặc / da giày">May mặc / da giày</option>
+                            <option value="Nhựa / cao su">Nhựa / cao su</option>
+                            <option value="Thực phẩm / đồ uống">Thực phẩm / đồ uống</option>
+                            <option value="Điện tử / điện lạnh">Điện tử / điện lạnh</option>
+                            <option value="Vật liệu xây dựng">Vật liệu xây dựng</option>
+                            <option value="Bao bì / in ấn">Bao bì / in ấn</option>
+                            <option value="Khác">Khác</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Quy mô nhân sự *</label>
+                        <select name="quyMo" required>
+                            <option value="Dưới 50 người">Dưới 50 người</option>
+                            <option value="50 ~ 100 người">50 ~ 100 người</option>
+                            <option value="101 ~ 200 người">101 ~ 200 người</option>
+                            <option value="Trên 200 người">Trên 200 người</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Nội dung cần tư vấn *</label>
+                    <textarea name="noiDung" rows="3" required placeholder="Mô tả sơ bộ về định hướng, vấn đề hiện tại của nhà máy..."></textarea>
+                </div>
+                
+                <button type="submit" id="btnSubmitForm" class="btn btn-primary" style="width: 100%; margin-top: 10px;">
+                    <i data-lucide="send"></i> Gửi Đề Nghị
+                </button>
+            </form>
+            
+            <div id="formSuccess" style="display: none; text-align: center; padding: 30px 0;">
+                <i data-lucide="check-circle" style="color: #22c55e; width: 64px; height: 64px; margin-bottom: 15px; margin: 0 auto;"></i>
+                <h3 style="color: #16a34a; font-size: 1.3rem; margin-top: 15px;">Gửi thành công!</h3>
+                <p style="color: #475569; margin-top: 10px;">Cảm ơn bạn. Chuyên gia INVAMAX sẽ sớm liên hệ lại.</p>
+                <button type="button" class="btn btn-outline" style="margin-top: 20px;" onclick="closeContactModal()">Đóng cửa sổ</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

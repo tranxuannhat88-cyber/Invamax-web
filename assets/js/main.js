@@ -53,28 +53,38 @@ document.addEventListener('DOMContentLoaded', () => {
     function filterServices() {
         const hash = window.location.hash;
         const wrapperKhamBenh = document.getElementById('wrapper-kham-benh');
-        const wrapperLean = document.getElementById('wrapper-lean');
-        const wrapperSoHoa = document.getElementById('wrapper-so-hoa');
+        const wrapperThietKe = document.getElementById('wrapper-thiet-ke');
+        const wrapperFos = document.getElementById('wrapper-fos');
+        const wrapperAiDigital = document.getElementById('wrapper-ai-digital');
         
         // Only run on dich-vu.html
         if (!wrapperKhamBenh) return;
         
         if (hash === '#kham-benh') {
             wrapperKhamBenh.style.display = 'block';
-            wrapperLean.style.display = 'none';
-            wrapperSoHoa.style.display = 'none';
-        } else if (hash === '#lean') {
+            wrapperThietKe.style.display = 'none';
+            if (wrapperFos) wrapperFos.style.display = 'none';
+            wrapperAiDigital.style.display = 'none';
+        } else if (hash === '#thiet-ke') {
             wrapperKhamBenh.style.display = 'none';
-            wrapperLean.style.display = 'block';
-            wrapperSoHoa.style.display = 'none';
-        } else if (hash === '#so-hoa') {
+            wrapperThietKe.style.display = 'block';
+            if (wrapperFos) wrapperFos.style.display = 'none';
+            wrapperAiDigital.style.display = 'none';
+        } else if (hash === '#fos') {
             wrapperKhamBenh.style.display = 'none';
-            wrapperLean.style.display = 'none';
-            wrapperSoHoa.style.display = 'block';
+            wrapperThietKe.style.display = 'none';
+            if (wrapperFos) wrapperFos.style.display = 'block';
+            wrapperAiDigital.style.display = 'none';
+        } else if (hash === '#ai-digital') {
+            wrapperKhamBenh.style.display = 'none';
+            wrapperThietKe.style.display = 'none';
+            if (wrapperFos) wrapperFos.style.display = 'none';
+            wrapperAiDigital.style.display = 'block';
         } else {
             wrapperKhamBenh.style.display = 'block';
-            wrapperLean.style.display = 'block';
-            wrapperSoHoa.style.display = 'block';
+            wrapperThietKe.style.display = 'block';
+            if (wrapperFos) wrapperFos.style.display = 'block';
+            wrapperAiDigital.style.display = 'block';
         }
     }
 
