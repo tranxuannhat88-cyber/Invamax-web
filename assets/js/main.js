@@ -42,6 +42,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Close mobile menu when clicking a link
+    const dropdownLinks = document.querySelectorAll('.nav-dropdown a');
+    dropdownLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 900) {
+                if (navLinks) {
+                    navLinks.style.display = 'none';
+                }
+                // also remove active class from all nav items
+                document.querySelectorAll('.nav-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+            }
+        });
+    });
+
+
     // Navbar scroll effect
     const navbar = document.querySelector('.navbar');
     window.addEventListener('scroll', () => {
