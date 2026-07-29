@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giải pháp - INVAMAX</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">INVA<span>MAX</span></a>
+            <div class="nav-links">
+                <div class="nav-item">
+                    <span class="nav-title">GIỚI THIỆU <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i></span>
+                    <div class="nav-dropdown">
+                        <a href="index.html">Giới thiệu INVAMAX</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="giai-phap.html" class="nav-title" style="color: inherit; text-decoration: none;">GIẢI PHÁP <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i></a>
+                    <div class="nav-dropdown">
+                        <a href="dich-vu.html#kham-benh">Khám bệnh Nhà máy</a>
+                        <a href="dich-vu.html#thiet-ke">Thiết kế & Chuyển đổi mô hình vận hành nhà máy</a>
+                        <a href="dich-vu.html#fos">NỀN FOS™ - Hệ điều hành nhà máy</a>
+                        <a href="dich-vu.html#ai-digital">AI &amp; Digital Operations</a>
+                        <a href="san-pham.html">Supply Hub</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="tri-thuc.html" class="nav-title" style="color: inherit; text-decoration: none;">TRI THỨC <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i></a>
+                    <div class="nav-dropdown">
+                        <a href="kien-thuc.html">Bài viết</a>
+                        <a href="#">Case Study</a>
+                        <a href="thu-vien.html">Toolkit & Tài liệu</a>
+                        <a href="#">Video</a>
+                    </div>
+                </div>
+                            <div class="nav-item lang-switcher" style="display: flex; gap: 8px; align-items: center; margin-left: auto;">
+                    <a href="#" class="active" style="color: var(--primary); font-weight: bold; padding: 0;">VN</a>
+                    <span style="color: var(--border-color);">|</span>
+                    <a href="#" style="color: var(--text-muted); padding: 0; opacity: 0.7;">EN</a>
+                </div>
+            </div>
+            <button class="mobile-menu-btn"><i data-lucide="menu"></i></button>
+        </div>
+    </nav>
+
+    <div class="page-header" style="background: radial-gradient(circle at center top, rgba(234, 88, 12, 0.15) 0%, transparent 60%); padding: 120px 0 30px; border-bottom: none;">
+        <div class="container" style="text-align: center;">
+            <h1 class="page-title" style="font-size: 2.5rem; margin-bottom: 12px; background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 800; display: inline-block;">Hệ sinh thái Giải pháp INVAMAX</h1>
+            <p class="page-desc" style="font-size: 1.1rem; color: rgba(255,255,255,0.9); max-width: 600px; margin: 0 auto;">Thiết kế mô hình vận hành. Chuẩn hóa hệ thống. Sẵn sàng cho AI.</p>
+        </div>
+    </div>
+
+    
+    
+    
+    <style>
+        @media (max-width: 768px) {
+            .card {
+                flex-direction: column !important;
+                text-align: center !important;
+                padding: 24px !important;
+            }
+            .card > div:first-child {
+                margin-right: 0 !important;
+                margin-bottom: 20px !important;
+            }
+            .card > div:last-child {
+                margin-left: 0 !important;
+                margin-top: 24px !important;
+            }
+        }
+    </style>
+    
+    <style>
+        .compact-card:hover .arrow-icon {
+            opacity: 1 !important;
+            transform: translateX(5px);
+        }
+        @media (max-width: 600px) {
+            .compact-card {
+                padding: 16px !important;
+            }
+            .compact-card > div:first-child {
+                margin-right: 12px !important;
+            }
+        }
+    </style>
+    
+    <style>
+        .compact-card:hover .arrow-icon {
+            opacity: 1 !important;
+            transform: translateX(5px);
+            filter: drop-shadow(0 0 8px currentColor);
+        }
+        @media (max-width: 992px) {
+            .compact-card > div:nth-child(2) {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 4px !important;
+            }
+            .compact-card h3 {
+                min-width: auto !important;
+            }
+        }
+        @media (max-width: 600px) {
+            .compact-card {
+                padding: 16px !important;
+            }
+            .compact-card > div:first-child {
+                margin-right: 12px !important;
+            }
+        }
+    </style>
+    <section class="section" style="padding-top: 0; padding-bottom: 60px;">
+        <div class="container">
+            <div style="max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; gap: 4px;">
+                <a href="kham-benh-online/index.html" style="text-decoration: none; display: block;">
+                    <div class="compact-card" style="display: flex; align-items: center; background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 16px 24px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 12px 40px #e11d4860'; this.style.borderColor='#fb7185'; this.style.background='linear-gradient(145deg, rgba(255,255,255,0.1) 0%, #e11d4830 100%)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.borderColor='rgba(255,255,255,0.05)'; this.style.background='linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)';">
+                        <div style="background: linear-gradient(135deg, #e11d48, #fb7185); color: white; width: 48px; height: 48px; min-width: 48px; display: flex; align-items: center; justify-content: center; border-radius: 12px; box-shadow: 0 4px 15px #e11d4840; margin-right: 20px;">
+                            <i data-lucide="activity" style="width: 24px; height: 24px;"></i>
+                        </div>
+                        <div style="flex: 1; display: flex; align-items: center; justify-content: space-between; gap: 20px;">
+                            <h3 style="margin: 0; font-size: 1.25rem; color: white; min-width: 250px;">1. Khám bệnh Nhà máy</h3>
+                            <p style="color: rgba(255,255,255,0.7); margin: 0; line-height: 1.5; font-size: 0.95rem; flex: 1; text-align: left;">Chẩn đoán sức khỏe hệ thống vận hành, phát hiện điểm nghẽn và lãng phí để tối ưu hóa.</p>
+                        </div>
+                        <div style="margin-left: 16px; color: #fb7185; opacity: 0.7; transition: all 0.3s;" class="arrow-icon">
+                            <i data-lucide="chevron-right" style="width: 24px; height: 24px;"></i>
+                        </div>
+                    </div>
+                </a>
+                <div style="color: rgba(255,255,255,0.15); display: flex; justify-content: center; margin: 2px 0;">
+                    <i data-lucide="arrow-down" style="width: 20px; height: 20px;"></i>
+                </div>
+                <a href="dich-vu.html#thiet-ke" style="text-decoration: none; display: block;">
+                    <div class="compact-card" style="display: flex; align-items: center; background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 16px 24px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 12px 40px #4f46e560'; this.style.borderColor='#818cf8'; this.style.background='linear-gradient(145deg, rgba(255,255,255,0.1) 0%, #4f46e530 100%)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.borderColor='rgba(255,255,255,0.05)'; this.style.background='linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)';">
+                        <div style="background: linear-gradient(135deg, #4f46e5, #818cf8); color: white; width: 48px; height: 48px; min-width: 48px; display: flex; align-items: center; justify-content: center; border-radius: 12px; box-shadow: 0 4px 15px #4f46e540; margin-right: 20px;">
+                            <i data-lucide="git-merge" style="width: 24px; height: 24px;"></i>
+                        </div>
+                        <div style="flex: 1; display: flex; align-items: center; justify-content: space-between; gap: 20px;">
+                            <h3 style="margin: 0; font-size: 1.25rem; color: white; min-width: 250px;">2. Thiết kế & Chuyển đổi</h3>
+                            <p style="color: rgba(255,255,255,0.7); margin: 0; line-height: 1.5; font-size: 0.95rem; flex: 1; text-align: left;">Thiết kế và cấu trúc lại mô hình vận hành đồng bộ, tinh gọn và hiệu quả.</p>
+                        </div>
+                        <div style="margin-left: 16px; color: #818cf8; opacity: 0.7; transition: all 0.3s;" class="arrow-icon">
+                            <i data-lucide="chevron-right" style="width: 24px; height: 24px;"></i>
+                        </div>
+                    </div>
+                </a>
+                <div style="color: rgba(255,255,255,0.15); display: flex; justify-content: center; margin: 2px 0;">
+                    <i data-lucide="arrow-down" style="width: 20px; height: 20px;"></i>
+                </div>
+                <a href="dich-vu.html#fos" style="text-decoration: none; display: block;">
+                    <div class="compact-card" style="display: flex; align-items: center; background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 16px 24px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 12px 40px #ea580c60'; this.style.borderColor='#f97316'; this.style.background='linear-gradient(145deg, rgba(255,255,255,0.1) 0%, #ea580c30 100%)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.borderColor='rgba(255,255,255,0.05)'; this.style.background='linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)';">
+                        <div style="background: linear-gradient(135deg, #ea580c, #f97316); color: white; width: 48px; height: 48px; min-width: 48px; display: flex; align-items: center; justify-content: center; border-radius: 12px; box-shadow: 0 4px 15px #ea580c40; margin-right: 20px;">
+                            <i data-lucide="cpu" style="width: 24px; height: 24px;"></i>
+                        </div>
+                        <div style="flex: 1; display: flex; align-items: center; justify-content: space-between; gap: 20px;">
+                            <h3 style="margin: 0; font-size: 1.25rem; color: white; min-width: 250px;">3. NỀN FOS&trade;</h3>
+                            <p style="color: rgba(255,255,255,0.7); margin: 0; line-height: 1.5; font-size: 0.95rem; flex: 1; text-align: left;">Hệ điều hành nhà máy độc quyền, nền tảng số hóa mọi quy trình và tiêu chuẩn vận hành.</p>
+                        </div>
+                        <div style="margin-left: 16px; color: #f97316; opacity: 0.7; transition: all 0.3s;" class="arrow-icon">
+                            <i data-lucide="chevron-right" style="width: 24px; height: 24px;"></i>
+                        </div>
+                    </div>
+                </a>
+                <div style="color: rgba(255,255,255,0.15); display: flex; justify-content: center; margin: 2px 0;">
+                    <i data-lucide="arrow-down" style="width: 20px; height: 20px;"></i>
+                </div>
+                <a href="dich-vu.html#ai-digital" style="text-decoration: none; display: block;">
+                    <div class="compact-card" style="display: flex; align-items: center; background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 16px 24px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 12px 40px #2563eb60'; this.style.borderColor='#60a5fa'; this.style.background='linear-gradient(145deg, rgba(255,255,255,0.1) 0%, #2563eb30 100%)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.borderColor='rgba(255,255,255,0.05)'; this.style.background='linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)';">
+                        <div style="background: linear-gradient(135deg, #2563eb, #60a5fa); color: white; width: 48px; height: 48px; min-width: 48px; display: flex; align-items: center; justify-content: center; border-radius: 12px; box-shadow: 0 4px 15px #2563eb40; margin-right: 20px;">
+                            <i data-lucide="network" style="width: 24px; height: 24px;"></i>
+                        </div>
+                        <div style="flex: 1; display: flex; align-items: center; justify-content: space-between; gap: 20px;">
+                            <h3 style="margin: 0; font-size: 1.25rem; color: white; min-width: 250px;">4. AI & Digital Operations</h3>
+                            <p style="color: rgba(255,255,255,0.7); margin: 0; line-height: 1.5; font-size: 0.95rem; flex: 1; text-align: left;">Chuyển đổi số và ứng dụng trí tuệ nhân tạo để kiến tạo nhà máy thông minh thế hệ mới.</p>
+                        </div>
+                        <div style="margin-left: 16px; color: #60a5fa; opacity: 0.7; transition: all 0.3s;" class="arrow-icon">
+                            <i data-lucide="chevron-right" style="width: 24px; height: 24px;"></i>
+                        </div>
+                    </div>
+                </a>
+                <div style="color: rgba(255,255,255,0.15); display: flex; justify-content: center; margin: 2px 0;">
+                    <i data-lucide="arrow-down" style="width: 20px; height: 20px;"></i>
+                </div>
+                <a href="san-pham.html" style="text-decoration: none; display: block;">
+                    <div class="compact-card" style="display: flex; align-items: center; background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 16px 24px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 12px 40px #05966960'; this.style.borderColor='#34d399'; this.style.background='linear-gradient(145deg, rgba(255,255,255,0.1) 0%, #05966930 100%)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.borderColor='rgba(255,255,255,0.05)'; this.style.background='linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)';">
+                        <div style="background: linear-gradient(135deg, #059669, #34d399); color: white; width: 48px; height: 48px; min-width: 48px; display: flex; align-items: center; justify-content: center; border-radius: 12px; box-shadow: 0 4px 15px #05966940; margin-right: 20px;">
+                            <i data-lucide="boxes" style="width: 24px; height: 24px;"></i>
+                        </div>
+                        <div style="flex: 1; display: flex; align-items: center; justify-content: space-between; gap: 20px;">
+                            <h3 style="margin: 0; font-size: 1.25rem; color: white; min-width: 250px;">5. Supply Hub</h3>
+                            <p style="color: rgba(255,255,255,0.7); margin: 0; line-height: 1.5; font-size: 0.95rem; flex: 1; text-align: left;">Nền tảng kết nối và quản lý chuỗi cung ứng linh hoạt, tối ưu chi phí và thời gian.</p>
+                        </div>
+                        <div style="margin-left: 16px; color: #34d399; opacity: 0.7; transition: all 0.3s;" class="arrow-icon">
+                            <i data-lucide="chevron-right" style="width: 24px; height: 24px;"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+    <!-- Footer Included Here -->
+    
+    <!-- Back to Home Button -->
+    <div style="text-align: center; padding: 40px 0; margin-bottom: 20px;">
+        <a href="index.html" class="btn btn-outline" style="padding: 12px 30px; font-size: 1.05rem; border-color: rgba(255,255,255,0.1); color: var(--text-muted); transition: all 0.3s ease;" onmouseover="this.style.color='white'; this.style.borderColor='var(--primary)';" onmouseout="this.style.color='var(--text-muted)'; this.style.borderColor='rgba(255,255,255,0.1)';"><i data-lucide="arrow-left" style="width: 18px; height: 18px; margin-right: 8px;"></i> Quay lại trang chủ</a>
+    </div>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <!-- Cột 1: Logo -->
+            <div class="footer-col" style="text-align: center;">
+                <div style="margin-bottom: 8px;">
+                    <a href="index.html" class="logo mb-2" style="display: inline-block; font-size: 2.4rem;">INVA<span>MAX</span></a>
+                </div>
+                <p class="text-muted" style="line-height: 1.6; max-width: 280px; margin: 0 auto;">Thiết kế mô hình vận hành. Chuẩn hóa hệ thống. Sẵn sàng cho AI.</p>
+            </div>
+            
+            <!-- Cột 2: Giải pháp -->
+            <div class="footer-col">
+                <h4>Giải pháp</h4>
+                <div class="footer-links">
+                    <a href="kham-benh-online/index.html">Khám bệnh Nhà máy</a>
+                    <a href="dich-vu.html#thiet-ke">Thiết kế & Chuyển đổi</a>
+                    <a href="dich-vu.html#fos">NỀN FOS&trade;</a>
+                    <a href="dich-vu.html#ai-digital">AI & Digital Operations</a>
+                    <a href="san-pham.html">Supply Hub</a>
+                </div>
+            </div>
+            
+            <!-- Cột 3: Tri thức -->
+            <div class="footer-col">
+                <h4>Tri thức</h4>
+                <div class="footer-links">
+                    <a href="kien-thuc.html">Bài viết</a>
+                    <a href="case-study.html">Case Study</a>
+                    <a href="thu-vien.html">Toolkit & Tài liệu</a>
+                    <a href="video.html">Video</a>
+                </div>
+            </div>
+            
+            <!-- Cột 4: Liên hệ -->
+            <div class="footer-col">
+                <h4>Liên hệ</h4>
+                <p style="font-weight: 600; color: white; margin-bottom: 16px; font-size: 0.95rem;">CÔNG TY TNHH ĐẦU TƯ VÀ PHÁT TRIỂN INVAMAX</p>
+                <div class="contact-info" style="margin-bottom: 24px;">
+                    <div class="contact-item">
+                        <i data-lucide="file-text"></i>
+                        <span>MST: 0202236953</span>
+                    </div>
+                    <div class="contact-item">
+                        <i data-lucide="phone"></i>
+                        <span>0988.911.869</span>
+                    </div>
+                    <div class="contact-item">
+                        <i data-lucide="mail"></i>
+                        <span>info@invamax.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i data-lucide="map-pin"></i>
+                        <span>Thôn Đông Lôi, xã Vĩnh Thịnh, TP Hải Phòng</span>
+                    </div>
+                </div>
+                
+                <h5 style="color: white; margin-bottom: 12px; font-size: 0.95rem; font-weight: 600;">Kết nối với chúng tôi</h5>
+                <div class="social-links" style="display: flex; gap: 12px;">
+                    <a href="https://zalo.me/0988911869" target="_blank" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='#0068FF'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
+                        <span style="font-size: 11px; font-weight: 800; font-family: 'Inter', sans-serif;">Zalo</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/xuannhattran/" target="_blank" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='#0A66C2'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    </a>
+                    <a href="https://www.facebook.com/invamax.vanhanhtinhgon" target="_blank" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='#1877F2'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                    </a>
+                    <a href="https://www.youtube.com/@NguoiXayNen" target="_blank" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='#ff0000'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom" style="text-align: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 24px; margin-top: 40px;">
+            <p style="font-size: 0.85rem; color: rgba(255,255,255,0.4); margin-bottom: 8px; letter-spacing: 0.5px;">Factory Diagnosis&trade; &bull; Factory Operating Model&trade; &bull; NỀN FOS&trade;</p>
+            <p style="color: var(--text-muted);">&copy; 2026 INVAMAX. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

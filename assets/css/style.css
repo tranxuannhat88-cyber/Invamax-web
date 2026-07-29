@@ -150,14 +150,25 @@ a.btn:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 80px;
+    height: auto;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    transition: padding 0.3s ease;
 }
 
 .logo {
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 800;
     color: var(--text-white);
     letter-spacing: 1px;
+    transition: font-size 0.3s ease;
+}
+.navbar.scrolled .container {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.navbar.scrolled .logo {
+    font-size: 2.2rem;
 }
 
 .logo span {
@@ -1049,5 +1060,56 @@ a.btn:hover {
     .nav-item.active .nav-dropdown {
         display: flex;
         flex-direction: column;
+    }
+}
+
+/* Card Buttons Grid */
+.card-buttons {
+    margin-top: auto;
+    padding-top: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+@media (max-width: 480px) {
+    .card-buttons {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* --- Comprehensive Mobile Adjustments --- */
+@media (max-width: 768px) {
+    /* Adjust large headings */
+    .page-title {
+        font-size: 2rem !important;
+    }
+    .section-title {
+        font-size: 1.8rem !important;
+    }
+    h2, h3 {
+        font-size: 1.5rem !important;
+        line-height: 1.3 !important;
+    }
+    p {
+        font-size: 1rem !important;
+    }
+    
+    /* Adjust spacing */
+    .section, .page-header {
+        padding-top: 100px !important;
+        padding-bottom: 40px !important;
+    }
+    
+    /* Ensure no flex overflow */
+    .step-item {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    /* Allow cards to wrap flex direction if needed, but flex-direction: column is standard */
+    .card {
+        padding: 20px !important;
     }
 }

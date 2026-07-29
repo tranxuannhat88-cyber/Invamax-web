@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thư Viện Tài Liệu - INVAMAX</title>
+    <title>Trung tâm Tri thức - INVAMAX</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
@@ -47,62 +47,74 @@
         </div>
     </nav>
 
-    <div class="page-header">
-        <div class="container">
-            <h1 class="page-title">Thư Viện Tài Liệu</h1>
-            <p class="page-desc">Tải về các biểu mẫu, checklist và tài liệu chuẩn hỗ trợ quản trị và vận hành sản xuất tinh gọn.</p>
+    <div class="page-header" style="background: radial-gradient(circle at center top, rgba(234, 88, 12, 0.15) 0%, transparent 60%); padding: 140px 0 60px; border-bottom: none;">
+        <div class="container" style="text-align: center;">
+            <h1 class="page-title" style="font-size: 3rem; margin-bottom: 20px; background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 800; display: inline-block;">Trung tâm Tri thức INVAMAX</h1>
+            <p class="page-desc" style="font-size: 1.2rem; color: rgba(255,255,255,0.9); max-width: 600px; margin: 0 auto;">Kiến thức, công cụ và kinh nghiệm thực tiễn dành cho nhà quản lý sản xuất.</p>
         </div>
     </div>
 
-    <section class="section">
+    <section class="section" style="padding-top: 0;">
         <div class="container">
             <div class="grid-2">
-                <!-- Document 1 -->
-                <div class="card" style="display: flex; flex-direction: row; gap: 24px; align-items: flex-start;">
-                    <div class="card-icon" style="flex-shrink: 0; width: 48px; height: 48px; margin-bottom: 0;">
-                        <i data-lucide="file-text" style="width: 24px; height: 24px;"></i>
+                <!-- Bài viết -->
+                <div class="card" style="display: flex; flex-direction: column; background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(234,88,12,0.05) 100%); border: 1px solid rgba(234,88,12,0.15); border-radius: 16px; padding: 32px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 40px rgba(234,88,12,0.15)'; this.style.borderColor='rgba(234,88,12,0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.borderColor='rgba(234,88,12,0.15)';">
+                    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
+                        <div style="background: linear-gradient(135deg, #ea580c, #f97316); color: white; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; border-radius: 14px; box-shadow: 0 8px 20px rgba(234,88,12,0.3);">
+                            <i data-lucide="book-open" style="width: 28px; height: 28px;"></i>
+                        </div>
+                        <h3 style="margin-bottom: 0; font-size: 1.5rem; color: white;">Bài viết</h3>
                     </div>
-                    <div>
-                        <h3 class="mb-1" style="font-size: 1.25rem;">Checklist Đánh Giá 5S Nhà Máy</h3>
-                        <p class="text-muted mb-3" style="font-size: 0.9rem;">Biểu mẫu tiêu chuẩn giúp đánh giá mức độ tuân thủ 5S hàng ngày tại xưởng sản xuất.</p>
-                        <a href="#" class="btn btn-outline" style="padding: 8px 16px; font-size: 0.85rem;"><i data-lucide="download" style="width: 16px; height: 16px;"></i> Tải xuống (PDF)</a>
-                    </div>
+                    <p style="font-weight: 600; color: white; margin-bottom: 12px; font-size: 1.1rem;">Góc nhìn, phương pháp và kinh nghiệm thực tiễn về quản lý và vận hành sản xuất.</p>
+                    <p style="color: rgba(255,255,255,0.7); margin-bottom: 30px; flex: 1; line-height: 1.7;">Chia sẻ kiến thức chuyên sâu về Lean, quản trị sản xuất, AI, Digital và Mô hình vận hành nhà máy thế hệ mới, giúp doanh nghiệp cập nhật xu hướng và áp dụng vào thực tế.</p>
+                    <a href="kien-thuc.html" class="btn" style="align-self: flex-start; background: rgba(234,88,12,0.1); color: #ea580c; border: 1px solid rgba(234,88,12,0.3); font-weight: 600; padding: 10px 24px; border-radius: 8px; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s;" onmouseover="this.style.background='#ea580c'; this.style.color='white';" onmouseout="this.style.background='rgba(234,88,12,0.1)'; this.style.color='#ea580c';">
+                        Khám phá ngay <i data-lucide="arrow-right" style="width: 18px; height: 18px;"></i>
+                    </a>
                 </div>
 
-                <!-- Document 2 -->
-                <div class="card" style="display: flex; flex-direction: row; gap: 24px; align-items: flex-start;">
-                    <div class="card-icon" style="flex-shrink: 0; width: 48px; height: 48px; margin-bottom: 0;">
-                        <i data-lucide="table" style="width: 24px; height: 24px;"></i>
+                <!-- Case Study -->
+                <div class="card" style="display: flex; flex-direction: column; background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(234,88,12,0.05) 100%); border: 1px solid rgba(234,88,12,0.15); border-radius: 16px; padding: 32px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 40px rgba(234,88,12,0.15)'; this.style.borderColor='rgba(234,88,12,0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.borderColor='rgba(234,88,12,0.15)';">
+                    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
+                        <div style="background: linear-gradient(135deg, #ea580c, #f97316); color: white; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; border-radius: 14px; box-shadow: 0 8px 20px rgba(234,88,12,0.3);">
+                            <i data-lucide="folder-open" style="width: 28px; height: 28px;"></i>
+                        </div>
+                        <h3 style="margin-bottom: 0; font-size: 1.5rem; color: white;">Case Study</h3>
                     </div>
-                    <div>
-                        <h3 class="mb-1" style="font-size: 1.25rem;">Biểu Mẫu Quản Lý KPI (Daily Management)</h3>
-                        <p class="text-muted mb-3" style="font-size: 0.9rem;">Template Excel giúp quản đốc xưởng theo dõi tiến độ, chất lượng và nhân sự hàng ngày.</p>
-                        <a href="#" class="btn btn-outline" style="padding: 8px 16px; font-size: 0.85rem;"><i data-lucide="download" style="width: 16px; height: 16px;"></i> Tải xuống (Excel)</a>
-                    </div>
+                    <p style="font-weight: 600; color: white; margin-bottom: 12px; font-size: 1.1rem;">Những câu chuyện chuyển đổi từ thực tế.</p>
+                    <p style="color: rgba(255,255,255,0.7); margin-bottom: 30px; flex: 1; line-height: 1.7;">Các tình huống điển hình, phương pháp triển khai và bài học kinh nghiệm từ các dự án tư vấn, cải tiến và chuyển đổi do INVAMAX thực hiện hoặc tổng hợp.</p>
+                    <a href="#" class="btn" style="align-self: flex-start; background: rgba(234,88,12,0.1); color: #ea580c; border: 1px solid rgba(234,88,12,0.3); font-weight: 600; padding: 10px 24px; border-radius: 8px; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s;" onmouseover="this.style.background='#ea580c'; this.style.color='white';" onmouseout="this.style.background='rgba(234,88,12,0.1)'; this.style.color='#ea580c';">
+                        Xem tình huống <i data-lucide="arrow-right" style="width: 18px; height: 18px;"></i>
+                    </a>
                 </div>
 
-                <!-- Document 3 -->
-                <div class="card" style="display: flex; flex-direction: row; gap: 24px; align-items: flex-start;">
-                    <div class="card-icon" style="flex-shrink: 0; width: 48px; height: 48px; margin-bottom: 0;">
-                        <i data-lucide="book-open" style="width: 24px; height: 24px;"></i>
+                <!-- Toolkit & Tài liệu -->
+                <div class="card" style="display: flex; flex-direction: column; background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(234,88,12,0.05) 100%); border: 1px solid rgba(234,88,12,0.15); border-radius: 16px; padding: 32px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 40px rgba(234,88,12,0.15)'; this.style.borderColor='rgba(234,88,12,0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.borderColor='rgba(234,88,12,0.15)';">
+                    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
+                        <div style="background: linear-gradient(135deg, #ea580c, #f97316); color: white; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; border-radius: 14px; box-shadow: 0 8px 20px rgba(234,88,12,0.3);">
+                            <i data-lucide="box" style="width: 28px; height: 28px;"></i>
+                        </div>
+                        <h3 style="margin-bottom: 0; font-size: 1.5rem; color: white;">Toolkit & Tài liệu</h3>
                     </div>
-                    <div>
-                        <h3 class="mb-1" style="font-size: 1.25rem;">Sổ Tay Vận Hành Tinh Gọn Cơ Bản</h3>
-                        <p class="text-muted mb-3" style="font-size: 0.9rem;">Tài liệu tổng hợp các khái niệm Lean, Kaizen và cách ứng dụng thực tế cho nhân viên mới.</p>
-                        <a href="#" class="btn btn-outline" style="padding: 8px 16px; font-size: 0.85rem;"><i data-lucide="download" style="width: 16px; height: 16px;"></i> Tải xuống (PDF)</a>
-                    </div>
+                    <p style="font-weight: 600; color: white; margin-bottom: 12px; font-size: 1.1rem;">Bộ công cụ và tài liệu giúp triển khai ngay trong công việc.</p>
+                    <p style="color: rgba(255,255,255,0.7); margin-bottom: 30px; flex: 1; line-height: 1.7;">Bao gồm checklist, biểu mẫu, template, SOP, KPI, dashboard, ebook và các tài liệu thực hành hỗ trợ quản lý và vận hành sản xuất.</p>
+                    <a href="thu-vien.html" class="btn" style="align-self: flex-start; background: rgba(234,88,12,0.1); color: #ea580c; border: 1px solid rgba(234,88,12,0.3); font-weight: 600; padding: 10px 24px; border-radius: 8px; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s;" onmouseover="this.style.background='#ea580c'; this.style.color='white';" onmouseout="this.style.background='rgba(234,88,12,0.1)'; this.style.color='#ea580c';">
+                        Khám phá ngay <i data-lucide="arrow-right" style="width: 18px; height: 18px;"></i>
+                    </a>
                 </div>
 
-                <!-- Document 4 -->
-                <div class="card" style="display: flex; flex-direction: row; gap: 24px; align-items: flex-start;">
-                    <div class="card-icon" style="flex-shrink: 0; width: 48px; height: 48px; margin-bottom: 0;">
-                        <i data-lucide="file-spreadsheet" style="width: 24px; height: 24px;"></i>
+                <!-- Video -->
+                <div class="card" style="display: flex; flex-direction: column; background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(234,88,12,0.05) 100%); border: 1px solid rgba(234,88,12,0.15); border-radius: 16px; padding: 32px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 40px rgba(234,88,12,0.15)'; this.style.borderColor='rgba(234,88,12,0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.borderColor='rgba(234,88,12,0.15)';">
+                    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
+                        <div style="background: linear-gradient(135deg, #ea580c, #f97316); color: white; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; border-radius: 14px; box-shadow: 0 8px 20px rgba(234,88,12,0.3);">
+                            <i data-lucide="video" style="width: 28px; height: 28px;"></i>
+                        </div>
+                        <h3 style="margin-bottom: 0; font-size: 1.5rem; color: white;">Video</h3>
                     </div>
-                    <div>
-                        <h3 class="mb-1" style="font-size: 1.25rem;">Mẫu SOP Chuẩn Hóa Công Việc</h3>
-                        <p class="text-muted mb-3" style="font-size: 0.9rem;">Standard Operating Procedure template giúp chuẩn hóa thao tác cho từng trạm làm việc.</p>
-                        <a href="#" class="btn btn-outline" style="padding: 8px 16px; font-size: 0.85rem;"><i data-lucide="download" style="width: 16px; height: 16px;"></i> Tải xuống (Word)</a>
-                    </div>
+                    <p style="font-weight: 600; color: white; margin-bottom: 12px; font-size: 1.1rem;">Học nhanh qua hình ảnh và tình huống thực tế.</p>
+                    <p style="color: rgba(255,255,255,0.7); margin-bottom: 30px; flex: 1; line-height: 1.7;">Video chia sẻ kiến thức, hướng dẫn phương pháp, phân tích case study, webinar và các nội dung về quản trị sản xuất, Lean, AI và chuyển đổi mô hình vận hành.</p>
+                    <a href="#" class="btn" style="align-self: flex-start; background: rgba(234,88,12,0.1); color: #ea580c; border: 1px solid rgba(234,88,12,0.3); font-weight: 600; padding: 10px 24px; border-radius: 8px; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s;" onmouseover="this.style.background='#ea580c'; this.style.color='white';" onmouseout="this.style.background='rgba(234,88,12,0.1)'; this.style.color='#ea580c';">
+                        Xem video <i data-lucide="play-circle" style="width: 18px; height: 18px;"></i>
+                    </a>
                 </div>
             </div>
         </div>

@@ -17,7 +17,7 @@
         }
         .intro-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 40px;
             align-items: center;
         }
@@ -82,6 +82,11 @@
                         <a href="../thu-vien.html">Thư viện</a>
                     </div>
                 </div>
+                            <div class="nav-item lang-switcher" style="display: flex; gap: 8px; align-items: center; margin-left: auto;">
+                    <a href="#" class="active" style="color: var(--primary); font-weight: bold; padding: 0;">VN</a>
+                    <span style="color: var(--border-color);">|</span>
+                    <a href="#" style="color: var(--text-muted); padding: 0; opacity: 0.7;">EN</a>
+                </div>
             </div>
             <button class="mobile-menu-btn"><i data-lucide="menu"></i></button>
         </div>
@@ -108,11 +113,11 @@
         </div>
 
         <!-- Phương pháp 3-Layer -->
-        <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 40px; margin-bottom: 50px;">
+        <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: clamp(20px, 5vw, 40px); margin-bottom: 50px;">
             <h2 style="font-size: 1.8rem; margin-bottom: 20px; color: white; text-align: center;">Phương pháp <span style="color: var(--primary);">INVAMAX 3-Layer Factory Diagnosis™</span></h2>
             <p style="text-align: center; font-size: 1.1rem; color: var(--text-muted); margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">Đội ngũ chuyên gia INVAMAX trực tiếp thực hiện chương trình khám bệnh tại nhà máy theo ba hình thức:</p>
             
-            <ul style="list-style: none; padding-left: 0; margin-bottom: 40px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+            <ul style="list-style: none; padding-left: 0; margin-bottom: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
                 <li style="display: flex; align-items: flex-start; gap: 12px; background: rgba(255,255,255,0.03); padding: 20px; border-radius: 8px; border: 1px solid var(--border-color);">
                     <i data-lucide="eye" style="color: var(--primary); width: 32px; height: 32px; flex-shrink: 0; margin-top: 5px;"></i>
                     <div>
@@ -138,17 +143,17 @@
 
             <p style="text-align: center; font-size: 1.1rem; color: white; margin-bottom: 30px; font-weight: 500;">Toàn bộ thông tin sau đó được phân tích theo 3 lớp:</p>
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; margin-bottom: 30px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; margin-bottom: 30px;">
                 <div style="background: rgba(255,255,255,0.03); padding: 25px; border-radius: 8px; border: 1px dashed var(--primary);">
-                    <h4 style="color: white; margin-bottom: 15px; font-size: 1.15rem; border-bottom: 1px dashed var(--border-color); padding-bottom: 10px;">Lớp 1 – 8 Lãng phí trong sản xuất</h4>
+                    <h4 style="color: white; margin-bottom: 15px; font-size: 1.15rem; border-bottom: 1px dashed var(--border-color); padding-bottom: 10px; line-height: 1.5;">Lớp 1 – 8 Lãng phí trong sản xuất</h4>
                     <p style="font-size: 1.05rem; color: var(--text-muted); margin: 0; line-height: 1.6;">Nhận diện các hoạt động không tạo ra giá trị, làm tăng chi phí, kéo dài thời gian sản xuất và giảm năng suất.</p>
                 </div>
                 <div style="background: rgba(255,255,255,0.03); padding: 25px; border-radius: 8px; border: 1px dashed var(--primary);">
-                    <h4 style="color: white; margin-bottom: 15px; font-size: 1.15rem; border-bottom: 1px dashed var(--border-color); padding-bottom: 10px;">Lớp 2 – Dấu hiệu bất thường tại hiện trường</h4>
+                    <h4 style="color: white; margin-bottom: 15px; font-size: 1.15rem; border-bottom: 1px dashed var(--border-color); padding-bottom: 10px; line-height: 1.5;">Lớp 2 – Dấu hiệu bất thường tại hiện trường</h4>
                     <p style="font-size: 1.05rem; color: var(--text-muted); margin: 0; line-height: 1.6;">Đánh giá các dấu hiệu bất thường về con người, máy móc, vật tư, chất lượng, dòng chảy, thông tin và môi trường làm việc.</p>
                 </div>
                 <div style="background: rgba(255,255,255,0.03); padding: 25px; border-radius: 8px; border: 1px dashed var(--primary);">
-                    <h4 style="color: white; margin-bottom: 15px; font-size: 1.15rem; border-bottom: 1px dashed var(--border-color); padding-bottom: 10px;">Lớp 3 – Hệ thống vận hành nhà máy</h4>
+                    <h4 style="color: white; margin-bottom: 15px; font-size: 1.15rem; border-bottom: 1px dashed var(--border-color); padding-bottom: 10px; line-height: 1.5;">Lớp 3 – Hệ thống vận hành nhà máy</h4>
                     <p style="font-size: 1.05rem; color: var(--text-muted); margin: 0; line-height: 1.6;">Đánh giá toàn diện hệ thống quản trị theo khung <strong>NỀN FOS</strong>: cơ cấu, quy trình, tiêu chuẩn, điều hành, mức độ sẵn sàng chuyển đổi.</p>
                 </div>
             </div>
@@ -159,14 +164,14 @@
         </div>
 
         <!-- AI NỀN FOS Expert -->
-        <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 40px; margin-bottom: 50px;">
+        <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: clamp(20px, 5vw, 40px); margin-bottom: 50px;">
             <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 20px;">
                 <i data-lucide="bot" style="color: var(--primary); width: 32px; height: 32px;"></i>
                 <h2 style="font-size: 1.8rem; color: white; margin: 0;">AI <span style="color: var(--primary);">NỀN FOS Expert</span> hỗ trợ phân tích chuyên sâu</h2>
             </div>
             <p style="text-align: center; font-size: 1.1rem; color: var(--text-muted); margin-bottom: 30px;">Sau khi hoàn thành khảo sát, toàn bộ dữ liệu từ hiện trường, hồ sơ và phỏng vấn được tổng hợp để <strong>AI NỀN FOS Expert</strong> hỗ trợ phân tích.</p>
             <p style="font-size: 1.1rem; color: white; margin-bottom: 20px; font-weight: 600;">AI giúp chuẩn hóa việc đánh giá, đối chiếu với cơ sở tri thức của NỀN FOS và hỗ trợ chuyên gia:</p>
-            <ul style="list-style: none; padding-left: 0; margin-bottom: 30px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px;">
+            <ul style="list-style: none; padding-left: 0; margin-bottom: 30px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
                 <li style="display: flex; align-items: flex-start; gap: 12px;"><i data-lucide="check-circle-2" style="color: var(--primary); width: 22px; margin-top: 3px; flex-shrink: 0;"></i><span style="color: var(--text-muted); font-size: 1.05rem;">Phân tích mối liên hệ giữa các vấn đề.</span></li>
                 <li style="display: flex; align-items: flex-start; gap: 12px;"><i data-lucide="check-circle-2" style="color: var(--primary); width: 22px; margin-top: 3px; flex-shrink: 0;"></i><span style="color: var(--text-muted); font-size: 1.05rem;">Xác định nguyên nhân gốc mang tính hệ thống.</span></li>
                 <li style="display: flex; align-items: flex-start; gap: 12px;"><i data-lucide="check-circle-2" style="color: var(--primary); width: 22px; margin-top: 3px; flex-shrink: 0;"></i><span style="color: var(--text-muted); font-size: 1.05rem;">Đánh giá mức độ ảnh hưởng đến năng suất, chất lượng, giao hàng và chi phí.</span></li>
@@ -179,9 +184,9 @@
         </div>
 
         <!-- Result -->
-        <div style="background: rgba(249,115,22,0.05); border: 1px solid rgba(249,115,22,0.2); border-radius: 12px; padding: 40px; margin-bottom: 50px;">
+        <div style="background: rgba(249,115,22,0.05); border: 1px solid rgba(249,115,22,0.2); border-radius: 12px; padding: clamp(20px, 5vw, 40px); margin-bottom: 50px;">
             <h2 style="font-size: 1.8rem; margin-bottom: 25px; color: white; text-align: center;">Doanh nghiệp nhận được gì?</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 20px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
                 <ul style="list-style: none; padding-left: 0; margin: 0;">
                     <li style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 15px;"><i data-lucide="check-square" style="color: var(--primary); width: 22px; margin-top: 2px; flex-shrink: 0;"></i><span style="color: white; font-size: 1.1rem; line-height: 1.6;">Báo cáo chẩn đoán toàn diện về hệ thống vận hành nhà máy.</span></li>
                     <li style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 15px;"><i data-lucide="check-square" style="color: var(--primary); width: 22px; margin-top: 2px; flex-shrink: 0;"></i><span style="color: white; font-size: 1.1rem; line-height: 1.6;">Phân tích nguyên nhân gốc của các vấn đề theo từng lĩnh vực.</span></li>
@@ -196,7 +201,7 @@
         </div>
 
         <!-- Outro -->
-        <div style="background: rgba(30,41,59,0.5); border: 1px solid var(--border-color); border-radius: 12px; padding: 40px; text-align: center; margin-bottom: 50px;">
+        <div style="background: rgba(30,41,59,0.5); border: 1px solid var(--border-color); border-radius: 12px; padding: clamp(20px, 5vw, 40px); text-align: center; margin-bottom: 50px;">
             <h2 style="font-size: 1.8rem; color: white; margin-bottom: 25px;">Không chỉ tìm ra vấn đề,<br>mà xác định con đường để thay đổi</h2>
             <p style="font-size: 1.25rem; font-weight: bold; line-height: 1.8; color: var(--text-muted); margin-bottom: 25px;">
                 Nhìn rõ hiện trạng.<br>
@@ -211,12 +216,17 @@
 </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    
+    <!-- Back to Home Button -->
+    <div style="text-align: center; padding: 40px 0; margin-bottom: 20px;">
+        <a href="../index.html" class="btn btn-outline" style="padding: 12px 30px; font-size: 1.05rem; border-color: rgba(255,255,255,0.1); color: var(--text-muted); transition: all 0.3s ease;" onmouseover="this.style.color='white'; this.style.borderColor='var(--primary)';" onmouseout="this.style.color='var(--text-muted)'; this.style.borderColor='rgba(255,255,255,0.1)';"><i data-lucide="arrow-left" style="width: 18px; height: 18px; margin-right: 8px;"></i> Quay lại trang chủ</a>
+    </div>
+<footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
                     <a href="../index.html" class="logo mb-2" style="display: block;">INVA<span>MAX</span></a>
-                    <p class="text-muted mb-4">Thiết kế & Chuyển đổi<br>Mô hình vận hành nhà máy.</p>
+                    <p class="text-muted mb-4">Thiết kế & Chuyển đổi<br>Mô hình vận hành nhà máy</p>
                 </div>
                 <div class="footer-col">
                     <h4>Giải pháp</h4>
@@ -234,6 +244,12 @@
                         <a href="../thu-vien.html">Thư viện</a>
                     </div>
                     <div class="social-links" style="margin-top: 24px; display: flex; gap: 16px;">
+                        <a href="https://zalo.me/0988911869" target="_blank" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='#0068FF'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
+                            <span style="font-size: 12px; font-weight: 800; font-family: 'Inter', sans-serif;">Zalo</span>
+                        </a>
+                        <a href="mailto:info@invamax.com" onclick="try{navigator.clipboard.writeText('info@invamax.com'); alert(' Đã copy email: info@invamax.com');}catch(e){}" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='#EA4335'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        </a>
                         <a href="https://www.linkedin.com/in/xuannhattran/" target="_blank" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='#0A66C2'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
                         </a>
