@@ -344,37 +344,38 @@ async function generateReport() {
         // Render AI fields for pages 2, 3, 5
         
         
-        const el_symp_ana = document.getElementById('a4-symptoms-analysis');
-        if (el_symp_ana && scores.symptomsScores) {
-            const top3Symp = scores.symptomsScores.slice(0, 3);
-            el_symp_ana.innerHTML = top3Symp.map((item, idx) => {
-                const confLight = getLightColorConfig(item.score);
-                const confDark = getColorConfig(item.score, false);
-                return `<div style="flex:1; border-radius:8px; background:${confLight.bg}; border:1px solid ${confLight.border}; padding:10px 12px; display:flex; flex-direction:column; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
-                        <div style="display:flex; align-items:flex-start; flex:1; margin-right:10px;">
-                            <div style="width:28px; height:28px; border-radius:50%; background:${confLight.color}; color:white; font-weight:bold; display:flex; justify-content:center; align-items:center; margin-right:10px; flex-shrink:0;">${idx+1}</div>
-                            <div style="font-size:14px; font-weight:bold; color:#1e293b; line-height:1.4; padding-top:2px;">${item.module}</div>
-                        </div>
-                        <div style="font-size:18px; font-weight:900; color:#1e293b; white-space:nowrap; flex-shrink:0;">${item.score} <span style="font-size:11px; color:#94a3b8; font-weight:normal;">/ 100</span></div>
-                    </div>
-                    <div style="font-size:12px; font-weight:bold; color:${confLight.color}; margin-bottom:4px;">Mức độ: ${confDark.trendText.toUpperCase()}</div>
-                    <div style="font-size:13px; color:#475569; line-height:1.6;"><span style="font-weight:bold;">Tác động:</span> ${(() => {
-                        let aiImpact = "Cần theo dõi sát sao để tránh ảnh hưởng đến hiệu suất chung.";
-                        if (aiJsonData.diagnostic && aiJsonData.diagnostic.top3SymptomsImpacts) {
-                            const found = aiJsonData.diagnostic.top3SymptomsImpacts.find(x => x.symptom.toLowerCase() === item.module.toLowerCase());
-                            if (found) aiImpact = found.impact;
-                        }
-                        return aiImpact;
-                    })()}</div>
+        const el_waste_analysis = document.getElementById('a4-waste-analysis');
+        if (el_waste_analysis && scores.top3Wastes) {
+            el_waste_analysis.innerHTML = scores.top3Wastes.map(modName => {
+                let aiImpact = "Điểm nghẽn gây lãng phí nguồn lực cần khắc phục.";
+                if (aiJsonData.diagnostic && aiJsonData.diagnostic.top3WasteImpacts) {
+                    const found = aiJsonData.diagnostic.top3WasteImpacts.find(x => x.module && x.module.toLowerCase() === modName.toLowerCase());
+                    if (found) aiImpact = found.impact;
+                }
+                return `
+                <div style="flex: 1; background: #fff1f2; border: 1px solid #ffe4e6; padding: 15px; border-radius: 8px; border-top: 4px solid #e11d48; display: flex; flex-direction: column;">
+                    <div style="font-weight: 800; color: #be123c; font-size: 13px; margin-bottom: 8px; text-transform: uppercase;">${modName}</div>
+                    <div style="font-size: 12px; color: #4c0519; line-height: 1.5; flex: 1;">${aiImpact}</div>
                 </div>`;
             }).join('');
         }
-        const el_fos_ana = document.getElementById('a4-fos-analysis');
-        if (el_fos_ana && aiJsonData.diagnostic && aiJsonData.diagnostic.fosAnalysis) {
-            el_fos_ana.innerText = aiJsonData.diagnostic.fosAnalysis;
+
+        const el_symp_analysis = document.getElementById('a4-symptoms-analysis');
+        if (el_symp_analysis && scores.top3Symptoms) {
+            el_symp_analysis.innerHTML = scores.top3Symptoms.map(modName => {
+                let aiImpact = "Dấu hiệu bất thường cần theo dõi và xử lý.";
+                if (aiJsonData.diagnostic && aiJsonData.diagnostic.top3SymptomImpacts) {
+                    const found = aiJsonData.diagnostic.top3SymptomImpacts.find(x => x.module && x.module.toLowerCase() === modName.toLowerCase());
+                    if (found) aiImpact = found.impact;
+                }
+                return `
+                <div style="flex: 1; background: #fff7ed; border: 1px solid #ffedd5; padding: 15px; border-radius: 8px; border-top: 4px solid #ea580c; display: flex; flex-direction: column;">
+                    <div style="font-weight: 800; color: #c2410c; font-size: 13px; margin-bottom: 8px; text-transform: uppercase;">${modName}</div>
+                    <div style="font-size: 12px; color: #7c2d12; line-height: 1.5; flex: 1;">${aiImpact}</div>
+                </div>`;
+            }).join('');
         }
-        
+
         const el_top3_fos = document.getElementById('a4-top3-fos');
         if (el_top3_fos && scores.top3FOS) {
             el_top3_fos.innerHTML = scores.top3FOS.map(modName => {
@@ -510,37 +511,38 @@ TRẢ VỀ KẾT QUẢ DƯỚI DẠNG JSON. BẮT BUỘC dùng JSON Schema sau:
         // Render AI fields for pages 2, 3, 5
         
         
-        const el_symp_ana = document.getElementById('a4-symptoms-analysis');
-        if (el_symp_ana && scores.symptomsScores) {
-            const top3Symp = scores.symptomsScores.slice(0, 3);
-            el_symp_ana.innerHTML = top3Symp.map((item, idx) => {
-                const confLight = getLightColorConfig(item.score);
-                const confDark = getColorConfig(item.score, false);
-                return `<div style="flex:1; border-radius:8px; background:${confLight.bg}; border:1px solid ${confLight.border}; padding:10px 12px; display:flex; flex-direction:column; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
-                        <div style="display:flex; align-items:flex-start; flex:1; margin-right:10px;">
-                            <div style="width:28px; height:28px; border-radius:50%; background:${confLight.color}; color:white; font-weight:bold; display:flex; justify-content:center; align-items:center; margin-right:10px; flex-shrink:0;">${idx+1}</div>
-                            <div style="font-size:14px; font-weight:bold; color:#1e293b; line-height:1.4; padding-top:2px;">${item.module}</div>
-                        </div>
-                        <div style="font-size:18px; font-weight:900; color:#1e293b; white-space:nowrap; flex-shrink:0;">${item.score} <span style="font-size:11px; color:#94a3b8; font-weight:normal;">/ 100</span></div>
-                    </div>
-                    <div style="font-size:12px; font-weight:bold; color:${confLight.color}; margin-bottom:4px;">Mức độ: ${confDark.trendText.toUpperCase()}</div>
-                    <div style="font-size:13px; color:#475569; line-height:1.6;"><span style="font-weight:bold;">Tác động:</span> ${(() => {
-                        let aiImpact = "Cần theo dõi sát sao để tránh ảnh hưởng đến hiệu suất chung.";
-                        if (aiJsonData.diagnostic && aiJsonData.diagnostic.top3SymptomsImpacts) {
-                            const found = aiJsonData.diagnostic.top3SymptomsImpacts.find(x => x.symptom.toLowerCase() === item.module.toLowerCase());
-                            if (found) aiImpact = found.impact;
-                        }
-                        return aiImpact;
-                    })()}</div>
+        const el_waste_analysis = document.getElementById('a4-waste-analysis');
+        if (el_waste_analysis && scores.top3Wastes) {
+            el_waste_analysis.innerHTML = scores.top3Wastes.map(modName => {
+                let aiImpact = "Điểm nghẽn gây lãng phí nguồn lực cần khắc phục.";
+                if (aiJsonData.diagnostic && aiJsonData.diagnostic.top3WasteImpacts) {
+                    const found = aiJsonData.diagnostic.top3WasteImpacts.find(x => x.module && x.module.toLowerCase() === modName.toLowerCase());
+                    if (found) aiImpact = found.impact;
+                }
+                return `
+                <div style="flex: 1; background: #fff1f2; border: 1px solid #ffe4e6; padding: 15px; border-radius: 8px; border-top: 4px solid #e11d48; display: flex; flex-direction: column;">
+                    <div style="font-weight: 800; color: #be123c; font-size: 13px; margin-bottom: 8px; text-transform: uppercase;">${modName}</div>
+                    <div style="font-size: 12px; color: #4c0519; line-height: 1.5; flex: 1;">${aiImpact}</div>
                 </div>`;
             }).join('');
         }
-        const el_fos_ana = document.getElementById('a4-fos-analysis');
-        if (el_fos_ana && aiJsonData.diagnostic && aiJsonData.diagnostic.fosAnalysis) {
-            el_fos_ana.innerText = aiJsonData.diagnostic.fosAnalysis;
+
+        const el_symp_analysis = document.getElementById('a4-symptoms-analysis');
+        if (el_symp_analysis && scores.top3Symptoms) {
+            el_symp_analysis.innerHTML = scores.top3Symptoms.map(modName => {
+                let aiImpact = "Dấu hiệu bất thường cần theo dõi và xử lý.";
+                if (aiJsonData.diagnostic && aiJsonData.diagnostic.top3SymptomImpacts) {
+                    const found = aiJsonData.diagnostic.top3SymptomImpacts.find(x => x.module && x.module.toLowerCase() === modName.toLowerCase());
+                    if (found) aiImpact = found.impact;
+                }
+                return `
+                <div style="flex: 1; background: #fff7ed; border: 1px solid #ffedd5; padding: 15px; border-radius: 8px; border-top: 4px solid #ea580c; display: flex; flex-direction: column;">
+                    <div style="font-weight: 800; color: #c2410c; font-size: 13px; margin-bottom: 8px; text-transform: uppercase;">${modName}</div>
+                    <div style="font-size: 12px; color: #7c2d12; line-height: 1.5; flex: 1;">${aiImpact}</div>
+                </div>`;
+            }).join('');
         }
-        
+
         const el_top3_fos = document.getElementById('a4-top3-fos');
         if (el_top3_fos && scores.top3FOS) {
             el_top3_fos.innerHTML = scores.top3FOS.map(modName => {
@@ -628,21 +630,35 @@ TRẢ VỀ KẾT QUẢ DƯỚI DẠNG JSON. BẮT BUỘC dùng JSON Schema sau:
     }
 }
 
-function generatePageHeader(title, subtitle, pageNum, maxPage = 10) {
+function generatePageHeader(title, subtitle, pageNum, maxPage = 7) {
     return `
-    <div class="a4-header">
-        <div style="width: 180px;">
-            <div class="a4-logo" style="font-size: 22px; font-weight: 800; color: #0f172a; letter-spacing: 1px;">INVA<span style="color:#ea580c">MAX</span></div>
-            <div style="font-size: 10px; font-weight: bold; color: #ea580c; margin-top: 2px;">NỀN FOS | AI | Digital | Supply Hub</div>
+    <div class="a4-header" style="display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 12px; border-bottom: 2px solid #ea580c; margin-bottom: 25px;">
+        <div style="width: 250px;">
+            <div class="a4-logo" style="font-size: 26px; font-weight: 900; color: #0f172a; letter-spacing: 1px; margin-bottom: 2px;">INVAMAX</div>
+            <div style="font-size: 13px; font-weight: bold; color: #ea580c;">Factory Diagnosis&trade;</div>
         </div>
-        <div class="a4-title-center">
-            BÁO CÁO KHÁM BỆNH NHÀ MÁY ONLINE<br>THEO HỆ ĐIỀU HÀNH NỀN FOS
+        <div style="flex: 1; text-align: right;">
+            <div style="font-size: 18px; font-weight: 800; color: #1e293b; text-transform: uppercase;">HỒ SƠ KHÁM BỆNH NHÀ MÁY ONLINE</div>
+            <div style="font-size: 12px; font-weight: 600; color: #64748b; margin-top: 4px;">THEO HỆ ĐIỀU HÀNH NỀN FOS</div>
         </div>
-        <div style="width: 180px;"></div>
     </div>
-    <div class="a4-section-title">
+    <div class="a4-section-title" style="background: #1e293b; color: white; padding: 12px 20px; font-size: 15px; font-weight: bold; border-radius: 8px; margin-bottom: 25px; text-transform: uppercase; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
         <span>${pageNum}. ${title}</span>
-        <span>TRANG ${pageNum} / ${maxPage}</span>
+    </div>
+    `;
+}
+
+function generatePageFooter(pageNum, maxPage = 7) {
+    return `
+    <div class="a4-footer" style="display: flex; justify-content: space-between; align-items: center; padding-top: 15px; border-top: 1px solid #e2e8f0; margin-top: auto; font-size: 11px; color: #64748b; font-weight: 500;">
+        <div style="display: flex; gap: 12px;">
+            <span style="font-weight: bold; color: #0f172a;">INVAMAX</span>
+            <span>|</span>
+            <span style="color: #ea580c; font-weight: bold;">Factory Diagnosis&trade;</span>
+            <span>|</span>
+            <span>invamax.com</span>
+        </div>
+        <div>Trang ${pageNum} / ${maxPage}</div>
     </div>
     `;
 }
@@ -721,11 +737,11 @@ const getWasteIcon = (wasteName) => {
         return 'fa-trash-alt';
     };
 const getLightColorConfig = (score) => {
-        if (score >= 80) return { bg: '#f8fafc', border: '#e2e8f0', color: '#334155' };
-        if (score >= 60) return { bg: '#fef2f2', border: '#fee2e2', color: '#ef4444' };
-        if (score >= 40) return { bg: '#fff7ed', border: '#ffedd5', color: '#ea580c' };
-        if (score >= 20) return { bg: '#fefce8', border: '#fef08a', color: '#eab308' };
-        return { bg: '#f0fdf4', border: '#dcfce7', color: '#10b981' };
+        if (score >= 80) return { bg: '#f8fafc', border: '#e2e8f0', color: '#334155', trendText: 'Rất tệ' };
+        if (score >= 60) return { bg: '#fef2f2', border: '#fee2e2', color: '#ef4444', trendText: 'Tệ' };
+        if (score >= 40) return { bg: '#fff7ed', border: '#ffedd5', color: '#ea580c', trendText: 'Trung bình' };
+        if (score >= 20) return { bg: '#fefce8', border: '#fef08a', color: '#eab308', trendText: 'Khá' };
+        return { bg: '#f0fdf4', border: '#dcfce7', color: '#10b981', trendText: 'Tốt' };
     };
 
 
@@ -910,27 +926,27 @@ function renderPreliminary(res, factoryInfo, contactInfo, rawAnswers) {
     const cardsContainer = document.getElementById('a4-metric-cards');
     if (cardsContainer) {
         cardsContainer.innerHTML = `
-            <div style="display: flex; align-items: center; width: 32%; border-radius: 8px; padding: 12px 15px; box-sizing: border-box; background: ${c1.bg}; color: ${c1.text}; border: 1px solid rgba(0,0,0,0.1); box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <div style="display: flex; align-items: center; width: 32%; border-radius: 8px; padding: 8px 12px; box-sizing: border-box; background: ${c1.bg}; color: ${c1.text}; border: 1px solid rgba(0,0,0,0.1); box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
                 <div style="font-size: 38px; margin-right: 15px;"><i class="fas fa-trash-alt"></i></div>
                 <div style="display: flex; flex-direction: column; align-items: center; flex: 1;">
                     <div style="font-size: 10px; font-weight: bold; text-transform: uppercase; text-align: center; opacity: 0.9;">TỔNG THỂ LÃNG PHÍ</div>
-                    <div style="font-size: 28px; font-weight: 900; margin: 5px 0;">${res.pWaste} / 100</div>
+                    <div style="font-size: 28px; font-weight: 900; margin: 2px 0;">${res.pWaste} / 100</div>
                     <div style="font-size: 11px; opacity: 0.9; text-align: center;"><i class="fas ${c1.icon}"></i> <span>${c1.trendText}</span></div>
                 </div>
             </div>
-            <div style="display: flex; align-items: center; width: 32%; border-radius: 8px; padding: 12px 15px; box-sizing: border-box; background: ${c2.bg}; color: ${c2.text}; border: 1px solid rgba(0,0,0,0.1); box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <div style="display: flex; align-items: center; width: 32%; border-radius: 8px; padding: 8px 12px; box-sizing: border-box; background: ${c2.bg}; color: ${c2.text}; border: 1px solid rgba(0,0,0,0.1); box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
                 <div style="font-size: 38px; margin-right: 15px;"><i class="fas fa-virus"></i></div>
                 <div style="display: flex; flex-direction: column; align-items: center; flex: 1;">
                     <div style="font-size: 10px; font-weight: bold; text-transform: uppercase; text-align: center; opacity: 0.9;">DẤU HIỆU BẤT THƯỜNG</div>
-                    <div style="font-size: 28px; font-weight: 900; margin: 5px 0;">${res.pSymptoms} / 100</div>
+                    <div style="font-size: 28px; font-weight: 900; margin: 2px 0;">${res.pSymptoms} / 100</div>
                     <div style="font-size: 11px; opacity: 0.9; text-align: center;"><i class="fas ${c2.icon}"></i> <span>${c2.trendText}</span></div>
                 </div>
             </div>
-            <div style="display: flex; align-items: center; width: 32%; border-radius: 8px; padding: 12px 15px; box-sizing: border-box; background: ${c3.bg}; color: ${c3.text}; border: 1px solid rgba(0,0,0,0.1); box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <div style="display: flex; align-items: center; width: 32%; border-radius: 8px; padding: 8px 12px; box-sizing: border-box; background: ${c3.bg}; color: ${c3.text}; border: 1px solid rgba(0,0,0,0.1); box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
                 <div style="font-size: 38px; margin-right: 15px;"><i class="fas fa-heartbeat"></i></div>
                 <div style="display: flex; flex-direction: column; align-items: center; flex: 1;">
-                    <div style="font-size: 10px; font-weight: bold; text-transform: uppercase; text-align: center; opacity: 0.9;">SỨC KHỎE HỆ THỐNG</div>
-                    <div style="font-size: 28px; font-weight: 900; margin: 5px 0;">${res.pFos} / 100</div>
+                    <div style="font-size: 10px; font-weight: bold; text-transform: uppercase; text-align: center; opacity: 0.9;">BỆNH LÝ HỆ THỐNG</div>
+                    <div style="font-size: 28px; font-weight: 900; margin: 2px 0;">${res.pFos} / 100</div>
                     <div style="font-size: 11px; opacity: 0.9; text-align: center;"><i class="fas ${c3.icon}"></i> <span>${c3.trendText}</span></div>
                 </div>
             </div>
@@ -993,52 +1009,29 @@ function renderPreliminary(res, factoryInfo, contactInfo, rawAnswers) {
     };
     
     const el_waste_scores = document.getElementById('a4-waste-scores');
-    if (el_waste_scores) {
+    if (el_waste_scores && res.wasteScores) {
         el_waste_scores.innerHTML = res.wasteScores.map(item => {
-            const conf = getColorConfig(item.score, false);
-            return `<div style="flex:1; border-radius:6px; background:${conf.bg}; border:1px solid ${conf.bg}; padding:10px 2px; display:flex; flex-direction:column; align-items:center; text-align:center; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
-                <div style="font-size:22px; color:${conf.text}; margin-bottom:8px;"><i class="fas ${getWasteIcon(item.module)}"></i></div>
-                <div style="flex: 1; font-size:10px; font-weight:bold; color:${conf.text}; margin-bottom:8px; display:flex; align-items:center; justify-content:center; line-height:1.3; width: 100%; word-break: break-word;">${item.module}</div>
-                <div style="font-size:16px; font-weight:900; color:${conf.text}; margin-top: auto;">${item.score}</div>
+            const conf = getLightColorConfig(item.score); 
+            return `<div class="a4-card" style="flex:1; border-radius:12px; background:${conf.bg}; border:1px solid ${conf.border}; padding:10px 2px; display:flex; flex-direction:column; align-items:center; text-align:center; box-shadow: 0 2px 8px rgba(0,0,0,0.02);">
+                <div style="font-size:22px; color:${conf.color}; margin-bottom:8px; opacity:0.9;"><i class="fas ${getWasteIcon(item.module)}"></i></div>
+                <div style="flex: 1; font-size:10px; font-weight:bold; color:#1e293b; margin-bottom:8px; display:flex; align-items:center; justify-content:center; line-height:1.3; width: 100%; word-break: break-word;">${item.module}</div>
+                <div style="font-size:16px; font-weight:900; color:${conf.color}; margin-top: auto;">${item.score}</div>
+                <div style="font-size:9px; font-weight:600; color:${conf.color}; background:white; padding:2px 4px; border-radius:10px; border:1px solid ${conf.border}; margin-top:4px;">${conf.trendText}</div>
             </div>`;
         }).join('');
     }
 
-    const el_waste_top3 = document.getElementById('a4-waste-analysis');
-    if (el_waste_top3) {
-        const top3 = res.wasteScores.slice(0, 3);
-        el_waste_top3.innerHTML = top3.map((item, idx) => {
-            const confLight = getLightColorConfig(item.score);
-            const confDark = getColorConfig(item.score, false);
-            return `<div style="flex:1; border-radius:8px; background:${confLight.bg}; border:1px solid ${confLight.border}; padding:10px 12px; display:flex; flex-direction:column; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-                <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
-                    <div style="display:flex; align-items:flex-start; flex:1; margin-right:10px;">
-                        <div style="width:28px; height:28px; border-radius:50%; background:${confLight.color}; color:white; font-weight:bold; display:flex; justify-content:center; align-items:center; margin-right:10px; flex-shrink:0;">${idx+1}</div>
-                        <div style="font-size:14px; font-weight:bold; color:#1e293b; line-height:1.4; padding-top:2px;">${item.module}</div>
-                    </div>
-                    <div style="font-size:18px; font-weight:900; color:#1e293b; white-space:nowrap; flex-shrink:0;">${item.score} <span style="font-size:11px; color:#94a3b8; font-weight:normal;">/ 100</span></div>
-                </div>
-                <div style="font-size:12px; font-weight:bold; color:${confLight.color}; margin-bottom:4px;">Mức độ: ${confDark.trendText.toUpperCase()}</div>
-                <div style="font-size:13px; color:#475569; line-height:1.6;"><span style="font-weight:bold;">Tác động:</span> ${(() => {
-                    let aiImpact = getWasteImpact(item.module);
-                    if (res.diagnostic && res.diagnostic.top3WastesImpacts) {
-                        const found = res.diagnostic.top3WastesImpacts.find(x => x.waste.toLowerCase() === item.module.toLowerCase());
-                        if (found) aiImpact = found.impact;
-                    }
-                    return aiImpact;
-                })()}</div>
-            </div>`;
-        }).join('');
-    }
+    
     
     const el_symp_scores = document.getElementById('a4-symptoms-scores');
     if (el_symp_scores && res.symptomsScores) {
         el_symp_scores.innerHTML = res.symptomsScores.map(item => {
-            const conf = getColorConfig(item.score, false);
-            return `<div style="flex:1; border-radius:6px; background:${conf.bg}; border:1px solid ${conf.bg}; padding:10px 2px; display:flex; flex-direction:column; align-items:center; text-align:center; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
-                <div style="font-size:22px; color:${conf.text}; margin-bottom:8px;"><i class="fas ${getSymptomIcon(item.module)}"></i></div>
-                <div style="flex: 1; font-size:10px; font-weight:bold; color:${conf.text}; margin-bottom:8px; display:flex; align-items:center; justify-content:center; line-height:1.3; width: 100%; word-break: break-word;">${item.module}</div>
-                <div style="font-size:16px; font-weight:900; color:${conf.text}; margin-top: auto;">${item.score}</div>
+            const conf = getLightColorConfig(item.score);
+            return `<div class="a4-card" style="flex:1; border-radius:12px; background:${conf.bg}; border:1px solid ${conf.border}; padding:10px 2px; display:flex; flex-direction:column; align-items:center; text-align:center; box-shadow: 0 2px 8px rgba(0,0,0,0.02);">
+                <div style="font-size:22px; color:${conf.color}; margin-bottom:8px; opacity:0.9;"><i class="fas ${getSymptomIcon(item.module)}"></i></div>
+                <div style="flex: 1; font-size:10px; font-weight:bold; color:#1e293b; margin-bottom:8px; display:flex; align-items:center; justify-content:center; line-height:1.3; width: 100%; word-break: break-word;">${item.module}</div>
+                <div style="font-size:16px; font-weight:900; color:${conf.color}; margin-top: auto;">${item.score}</div>
+                <div style="font-size:9px; font-weight:600; color:${conf.color}; background:white; padding:2px 4px; border-radius:10px; border:1px solid ${conf.border}; margin-top:4px;">${conf.trendText}</div>
             </div>`;
         }).join('');
     }
@@ -1091,6 +1084,23 @@ function renderPreliminary(res, factoryInfo, contactInfo, rawAnswers) {
 
 function renderDetailedReport(json, metadata) {
     if (!json || !json.diagnostic || !json.consulting || !json.report) return;
+    
+    // Inject Short Analysis
+    const el_waste_short = document.getElementById('a4-waste-analysis-short');
+    if (el_waste_short && json.diagnostic.wasteAnalysis) {
+        el_waste_short.innerText = json.diagnostic.wasteAnalysis;
+    }
+    
+    const el_symp_short = document.getElementById('a4-symptoms-analysis-short');
+    if (el_symp_short && json.diagnostic.symptomsAnalysis) {
+        el_symp_short.innerText = json.diagnostic.symptomsAnalysis;
+    }
+    
+    const el_fos_short = document.getElementById('a4-fos-analysis-short');
+    if (el_fos_short && json.diagnostic.fosAnalysis) {
+        el_fos_short.innerText = json.diagnostic.fosAnalysis;
+    }
+    
     
     const rc = json.consulting.rootCauses && json.consulting.rootCauses[0] ? json.consulting.rootCauses[0] : { issue: "Chưa xác định", why5: ["","","","",""], impact: "" };
 
@@ -1529,6 +1539,15 @@ function exportPDF(type = 'chi-tiet') {
     
     // Add classes for CSS logic
     element.classList.add('pdf-export-mode');
+    
+    // TEMPORARY OVERRIDE INLINE STYLES THAT BREAK PDF
+    const oldPadding = element.style.padding;
+    const oldGap = element.style.gap;
+    const oldBackground = element.style.background;
+    element.style.padding = '0';
+    element.style.gap = '0';
+    element.style.background = 'white';
+
     if (type === 'chi-tiet') {
         element.classList.add('pdf-export-chi-tiet');
     }
@@ -1571,5 +1590,10 @@ function exportPDF(type = 'chi-tiet') {
         if(page5_1) page5_1.style.display = '';
         element.classList.remove('pdf-export-mode');
         element.classList.remove('pdf-export-chi-tiet');
+        
+        // RESTORE INLINE STYLES
+        element.style.padding = oldPadding;
+        element.style.gap = oldGap;
+        element.style.background = oldBackground;
     });
 }

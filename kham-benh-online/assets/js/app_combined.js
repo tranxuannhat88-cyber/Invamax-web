@@ -190,11 +190,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
             return `
                 <div class="question-block" id="block-${q.id}">
-                    <div class="question-header">
-                        <span class="question-number">Câu ${index + 1}</span>
+                    <div class="question-header" style="align-items: flex-start; margin-bottom: 12px;">
+                        <div style="display: flex; align-items: flex-start; gap: 12px; flex: 1;">
+                            <span class="question-number" style="white-space: nowrap; margin-top: -2px;">Câu ${index + 1}</span>
+                            <h4 class="question-text" style="margin-bottom: 0; padding-right: 15px;">${q.cauHoi} ${q.batBuoc ? '<span style="color: #ea580c; margin-left: 4px;">*</span>' : ''}</h4>
+                        </div>
                         ${moduleHeader}
                     </div>
-                    <h4 class="question-text">${q.cauHoi} ${q.batBuoc ? '<span style="color: #ea580c; margin-left: 4px;">*</span>' : ''}</h4>
                     ${q.huongDan ? `<p style="font-size:12px; color:var(--text-muted); margin-bottom:10px;">${q.huongDan}</p>` : ''}
                     ${inputHtml}
                 </div>
@@ -287,7 +289,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 margin:       0,
                 filename:     'INVAMAX_Bao_Cao_So_Bo.pdf',
                 image:        { type: 'jpeg', quality: 1 },
-                html2canvas:  { scale: 2, useCORS: true, logging: false, backgroundColor: '#ffffff' },
+                pagebreak:    { mode: 'css' },
+        html2canvas:  { scale: 2, useCORS: true, logging: false, backgroundColor: '#ffffff' },
                 jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
             };
 
@@ -557,6 +560,40 @@ function renderResults(payload) {
     document.getElementById('a4-phone').innerText = phone || '---';
     
     document.getElementById('a4-general-desc').innerText = res.generalAssessment;
+
+    const c1 = getColorConfig(res.pWaste, false);
+    const c2 = getColorConfig(res.pSymptoms, false);
+    const c3 = getColorConfig(res.pFos, false);
+
+    const cardsContainer = document.getElementById('a4-metric-cards');
+    if (cardsContainer) {
+        cardsContainer.innerHTML = `
+            <div style="display: flex; align-items: center; width: 32%; border-radius: 8px; padding: 8px 12px; box-sizing: border-box; background: ${c1.bg}; color: ${c1.text}; border: 1px solid rgba(0,0,0,0.1); box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                <div style="font-size: 38px; margin-right: 15px;"><i class="fas fa-trash-alt"></i></div>
+                <div style="display: flex; flex-direction: column; align-items: center; flex: 1;">
+                    <div style="font-size: 10px; font-weight: bold; text-transform: uppercase; text-align: center; opacity: 0.9;">TỔNG THỂ LÃNG PHÍ</div>
+                    <div style="font-size: 28px; font-weight: 900; margin: 2px 0;">${res.pWaste} / 100</div>
+                    <div style="font-size: 11px; opacity: 0.9; text-align: center;"><i class="fas ${c1.icon}"></i> <span>${c1.trendText}</span></div>
+                </div>
+            </div>
+            <div style="display: flex; align-items: center; width: 32%; border-radius: 8px; padding: 8px 12px; box-sizing: border-box; background: ${c2.bg}; color: ${c2.text}; border: 1px solid rgba(0,0,0,0.1); box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                <div style="font-size: 38px; margin-right: 15px;"><i class="fas fa-virus"></i></div>
+                <div style="display: flex; flex-direction: column; align-items: center; flex: 1;">
+                    <div style="font-size: 10px; font-weight: bold; text-transform: uppercase; text-align: center; opacity: 0.9;">DẤU HIỆU BẤT THƯỜNG</div>
+                    <div style="font-size: 28px; font-weight: 900; margin: 2px 0;">${res.pSymptoms} / 100</div>
+                    <div style="font-size: 11px; opacity: 0.9; text-align: center;"><i class="fas ${c2.icon}"></i> <span>${c2.trendText}</span></div>
+                </div>
+            </div>
+            <div style="display: flex; align-items: center; width: 32%; border-radius: 8px; padding: 8px 12px; box-sizing: border-box; background: ${c3.bg}; color: ${c3.text}; border: 1px solid rgba(0,0,0,0.1); box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                <div style="font-size: 38px; margin-right: 15px;"><i class="fas fa-heartbeat"></i></div>
+                <div style="display: flex; flex-direction: column; align-items: center; flex: 1;">
+                    <div style="font-size: 10px; font-weight: bold; text-transform: uppercase; text-align: center; opacity: 0.9;">BỆNH LÝ HỆ THỐNG</div>
+                    <div style="font-size: 28px; font-weight: 900; margin: 2px 0;">${res.pFos} / 100</div>
+                    <div style="font-size: 11px; opacity: 0.9; text-align: center;"><i class="fas ${c3.icon}"></i> <span>${c3.trendText}</span></div>
+                </div>
+            </div>
+        `;
+    }
 
     let levelText = "";
     let levelColor = "";
