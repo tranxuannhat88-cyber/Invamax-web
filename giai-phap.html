@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giải pháp - INVAMAX</title>
+    <title>Lộ trình Chuyển đổi - INVAMAX</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
@@ -49,8 +49,8 @@
 
     <div class="page-header" style="background: radial-gradient(circle at center top, rgba(234, 88, 12, 0.15) 0%, transparent 60%); padding: 120px 0 30px; border-bottom: none;">
         <div class="container" style="text-align: center;">
-            <h1 class="page-title" style="font-size: 2.5rem; margin-bottom: 12px; background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 800; display: inline-block;">Hệ sinh thái Giải pháp INVAMAX</h1>
-            <p class="page-desc" style="font-size: 1.1rem; color: rgba(255,255,255,0.9); max-width: 600px; margin: 0 auto;">Thiết kế mô hình vận hành. Chuẩn hóa hệ thống. Sẵn sàng cho AI.</p>
+            <h1 class="page-title" style="font-size: 2.5rem; margin-bottom: 12px; font-weight: 800; display: inline-block;">Lộ trình Chuyển đổi Nhà máy</h1>
+            <p class="page-desc" style="font-size: 1.1rem; color: rgba(255,255,255,0.9); max-width: 700px; margin: 0 auto;">Từ chẩn đoán hiện trạng đến xây dựng mô hình vận hành và ứng dụng AI vào sản xuất.</p>
         </div>
     </div>
 
@@ -115,6 +115,32 @@
             }
         }
     </style>
+    
+    <style>
+        .compact-card:hover .arrow-icon {
+            opacity: 1 !important;
+            transform: translateX(5px);
+            filter: drop-shadow(0 0 8px currentColor);
+        }
+        @media (max-width: 992px) {
+            .compact-card > div:nth-child(2) {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 4px !important;
+            }
+            .compact-card h3 {
+                min-width: auto !important;
+            }
+        }
+        @media (max-width: 600px) {
+            .compact-card {
+                padding: 16px !important;
+            }
+            .compact-card > div:first-child {
+                margin-right: 12px !important;
+            }
+        }
+    </style>
     <section class="section" style="padding-top: 0; padding-bottom: 60px;">
         <div class="container">
             <div style="max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; gap: 4px;">
@@ -124,8 +150,8 @@
                             <i data-lucide="activity" style="width: 24px; height: 24px;"></i>
                         </div>
                         <div style="flex: 1; display: flex; align-items: center; justify-content: space-between; gap: 20px;">
-                            <h3 style="margin: 0; font-size: 1.25rem; color: white; min-width: 250px;">1. Khám bệnh Nhà máy</h3>
-                            <p style="color: rgba(255,255,255,0.7); margin: 0; line-height: 1.5; font-size: 0.95rem; flex: 1; text-align: left;">Chẩn đoán sức khỏe hệ thống vận hành, phát hiện điểm nghẽn và lãng phí để tối ưu hóa.</p>
+                            <h3 style="margin: 0; font-size: 1.25rem; color: white; min-width: 250px;">Khám bệnh Nhà máy</h3>
+                            <p style="color: rgba(255,255,255,0.7); margin: 0; line-height: 1.5; font-size: 0.95rem; flex: 1; text-align: left;">Đánh giá toàn diện hệ thống vận hành, xác định điểm nghẽn và nguyên nhân gốc.</p>
                         </div>
                         <div style="margin-left: 16px; color: #fb7185; opacity: 0.7; transition: all 0.3s;" class="arrow-icon">
                             <i data-lucide="chevron-right" style="width: 24px; height: 24px;"></i>
@@ -141,8 +167,8 @@
                             <i data-lucide="git-merge" style="width: 24px; height: 24px;"></i>
                         </div>
                         <div style="flex: 1; display: flex; align-items: center; justify-content: space-between; gap: 20px;">
-                            <h3 style="margin: 0; font-size: 1.25rem; color: white; min-width: 250px;">2. Thiết kế & Chuyển đổi</h3>
-                            <p style="color: rgba(255,255,255,0.7); margin: 0; line-height: 1.5; font-size: 0.95rem; flex: 1; text-align: left;">Thiết kế và cấu trúc lại mô hình vận hành đồng bộ, tinh gọn và hiệu quả.</p>
+                            <h3 style="margin: 0; font-size: 1.25rem; color: white; min-width: 250px;">Thiết kế & Chuyển đổi</h3>
+                            <p style="color: rgba(255,255,255,0.7); margin: 0; line-height: 1.5; font-size: 0.95rem; flex: 1; text-align: left;">Thiết kế Mô hình vận hành nhà máy phù hợp với chiến lược và mục tiêu phát triển.</p>
                         </div>
                         <div style="margin-left: 16px; color: #818cf8; opacity: 0.7; transition: all 0.3s;" class="arrow-icon">
                             <i data-lucide="chevron-right" style="width: 24px; height: 24px;"></i>
@@ -158,8 +184,8 @@
                             <i data-lucide="cpu" style="width: 24px; height: 24px;"></i>
                         </div>
                         <div style="flex: 1; display: flex; align-items: center; justify-content: space-between; gap: 20px;">
-                            <h3 style="margin: 0; font-size: 1.25rem; color: white; min-width: 250px;">3. NỀN FOS&trade;</h3>
-                            <p style="color: rgba(255,255,255,0.7); margin: 0; line-height: 1.5; font-size: 0.95rem; flex: 1; text-align: left;">Hệ điều hành nhà máy độc quyền, nền tảng số hóa mọi quy trình và tiêu chuẩn vận hành.</p>
+                            <h3 style="margin: 0; font-size: 1.25rem; color: white; min-width: 250px;">NỀN FOS&trade;</h3>
+                            <p style="color: rgba(255,255,255,0.7); margin: 0; line-height: 1.5; font-size: 0.95rem; flex: 1; text-align: left;">Xây dựng Hệ điều hành Nhà máy để chuẩn hóa và duy trì hệ thống vận hành.</p>
                         </div>
                         <div style="margin-left: 16px; color: #f97316; opacity: 0.7; transition: all 0.3s;" class="arrow-icon">
                             <i data-lucide="chevron-right" style="width: 24px; height: 24px;"></i>
@@ -175,8 +201,8 @@
                             <i data-lucide="network" style="width: 24px; height: 24px;"></i>
                         </div>
                         <div style="flex: 1; display: flex; align-items: center; justify-content: space-between; gap: 20px;">
-                            <h3 style="margin: 0; font-size: 1.25rem; color: white; min-width: 250px;">4. AI & Digital Operations</h3>
-                            <p style="color: rgba(255,255,255,0.7); margin: 0; line-height: 1.5; font-size: 0.95rem; flex: 1; text-align: left;">Chuyển đổi số và ứng dụng trí tuệ nhân tạo để kiến tạo nhà máy thông minh thế hệ mới.</p>
+                            <h3 style="margin: 0; font-size: 1.25rem; color: white; min-width: 250px;">AI & Digital Operations</h3>
+                            <p style="color: rgba(255,255,255,0.7); margin: 0; line-height: 1.5; font-size: 0.95rem; flex: 1; text-align: left;">Ứng dụng Digital và AI vào các bài toán quản lý và vận hành sản xuất.</p>
                         </div>
                         <div style="margin-left: 16px; color: #60a5fa; opacity: 0.7; transition: all 0.3s;" class="arrow-icon">
                             <i data-lucide="chevron-right" style="width: 24px; height: 24px;"></i>
@@ -192,17 +218,25 @@
                             <i data-lucide="boxes" style="width: 24px; height: 24px;"></i>
                         </div>
                         <div style="flex: 1; display: flex; align-items: center; justify-content: space-between; gap: 20px;">
-                            <h3 style="margin: 0; font-size: 1.25rem; color: white; min-width: 250px;">5. Supply Hub</h3>
-                            <p style="color: rgba(255,255,255,0.7); margin: 0; line-height: 1.5; font-size: 0.95rem; flex: 1; text-align: left;">Nền tảng kết nối và quản lý chuỗi cung ứng linh hoạt, tối ưu chi phí và thời gian.</p>
+                            <h3 style="margin: 0; font-size: 1.25rem; color: white; min-width: 250px;">Supply Hub</h3>
+                            <p style="color: rgba(255,255,255,0.7); margin: 0; line-height: 1.5; font-size: 0.95rem; flex: 1; text-align: left;">Kết nối chuyên gia, đối tác và giải pháp giúp doanh nghiệp triển khai hiệu quả các chương trình cải tiến và chuyển đổi.</p>
                         </div>
                         <div style="margin-left: 16px; color: #34d399; opacity: 0.7; transition: all 0.3s;" class="arrow-icon">
                             <i data-lucide="chevron-right" style="width: 24px; height: 24px;"></i>
                         </div>
                     </div>
                 </a>
+            
+                <div style="margin-top: 24px; padding: 16px 24px; background: rgba(255,255,255,0.03); border-left: 3px solid rgba(255,255,255,0.2); border-radius: 0 8px 8px 0;">
+                    <p style="margin: 0; font-size: 0.95rem; color: rgba(255,255,255,0.6); line-height: 1.6; font-style: italic;">
+                        <i data-lucide="info" style="width: 16px; height: 16px; display: inline-block; vertical-align: text-bottom; margin-right: 4px;"></i>
+                        Không phải mọi doanh nghiệp đều cần triển khai đủ 5 bước. INVAMAX sẽ đồng hành theo nhu cầu và mức độ sẵn sàng của từng nhà máy.
+                    </p>
+                </div>
             </div>
         </div>
     </section>
+
 
 
 
