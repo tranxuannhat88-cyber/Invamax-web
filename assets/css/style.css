@@ -114,11 +114,6 @@ img {
     background-color: var(--primary-hover);
     transform: translateY(-2px);
     box-shadow: 0 10px 20px -10px var(--primary);
-    color: var(--text-white);
-}
-
-a.btn:hover {
-    color: var(--text-white);
 }
 
 .btn-outline {
@@ -150,25 +145,14 @@ a.btn:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: auto;
-    padding-top: 18px;
-    padding-bottom: 18px;
-    transition: padding 0.3s ease;
+    height: 80px;
 }
 
 .logo {
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: 800;
     color: var(--text-white);
     letter-spacing: 1px;
-    transition: font-size 0.3s ease;
-}
-.navbar.scrolled .container {
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-.navbar.scrolled .logo {
-    font-size: 2.2rem;
 }
 
 .logo span {
@@ -223,7 +207,7 @@ a.btn:hover {
 
 /* Hero Section */
 .hero {
-    padding-top: 120px;
+    padding-top: 110px;
     padding-bottom: 40px;
     min-height: 100vh;
     display: flex;
@@ -370,7 +354,7 @@ a.btn:hover {
 
 .section-title {
     font-size: 2.5rem;
-    margin-bottom: 24px;
+    margin-bottom: 48px;
 }
 
 .section-desc {
@@ -973,143 +957,88 @@ a.btn:hover {
     z-index: 2;
 }
 
-/* Dropdown Menu overrides */
-.nav-links {
-    align-items: center !important;
+/* Hover effect for all layer cards */
+.layer-card {
+    transition: all 0.3s ease !important;
+    cursor: pointer;
+}
+.layer-card:hover {
+    transform: translateY(-7px) !important;
+    filter: brightness(2.0) !important;
+    box-shadow: 0 15px 40px rgba(255, 255, 255, 0.2), inset 0 0 25px rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(255, 255, 255, 0.4) !important;
 }
 
+/* Dropdown Menu Styles */
 .nav-item {
     position: relative;
     padding: 10px 0;
 }
-
-.nav-title {
-    color: var(--text-light);
-    font-weight: 600;
-    font-size: 0.95rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    transition: var(--transition);
-}
-
-.nav-item:hover .nav-title {
-    color: var(--primary);
-}
-
 .nav-dropdown {
+    display: none;
     position: absolute;
     top: 100%;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     background: var(--bg-card);
-    min-width: 220px;
     border: 1px solid var(--border-color);
     border-radius: 8px;
-    padding: 10px 0;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(10px);
-    transition: all 0.3s ease;
+    padding: 10px;
+    min-width: 250px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
     z-index: 1000;
 }
-
 .nav-item:hover .nav-dropdown {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
-
-.nav-links .nav-dropdown a {
-    text-align: left;
-    padding: 12px 20px;
-    color: var(--text-muted);
-    font-size: 0.95rem;
+.nav-dropdown a {
+    color: var(--text-light) !important;
+    text-decoration: none !important;
+    padding: 10px 15px !important;
+    border-radius: 6px;
+    transition: all 0.3s ease;
     display: block;
-    width: 100%;
+    font-size: 0.95rem;
+    font-weight: 500;
+    line-height: 1.4;
+    white-space: normal;
+}
+.nav-dropdown a:hover {
+    background: rgba(249, 115, 22, 0.1);
+    color: var(--primary) !important;
+}
+.nav-title {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.3s;
+}
+.nav-item:hover .nav-title {
+    color: var(--primary) !important;
 }
 
-.nav-links .nav-dropdown a::after {
-    display: none;
+/* Diagnosis Card Hover Effect */
+.diagnosis-card {
+    transition: all 0.3s ease !important;
+}
+.diagnosis-card:hover {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 25px rgba(249, 115, 22, 0.4) !important;
+    transform: translateY(-3px) !important;
 }
 
-.nav-links .nav-dropdown a:hover {
-    color: var(--primary);
-    background: rgba(255,255,255,0.03);
+/* Diagnosis Card White Hover Effect */
+.diagnosis-card-white {
+    transition: all 0.3s ease !important;
 }
-
-/* Mobile adjustments */
-@media (max-width: 900px) {
-    .nav-item {
-        width: 100%;
-    }
-    .nav-dropdown {
-        position: static;
-        box-shadow: none;
-        opacity: 1;
-        visibility: visible;
-        transform: none;
-        display: none;
-        border: none;
-        padding-left: 20px;
-        background: transparent;
-    }
-    .nav-item.active .nav-dropdown {
-        display: flex;
-        flex-direction: column;
-    }
-}
-
-/* Card Buttons Grid */
-.card-buttons {
-    margin-top: auto;
-    padding-top: 1rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-}
-
-@media (max-width: 480px) {
-    .card-buttons {
-        grid-template-columns: 1fr;
-    }
-}
-
-
-/* --- Comprehensive Mobile Adjustments --- */
-@media (max-width: 768px) {
-    /* Adjust large headings */
-    .page-title {
-        font-size: 2rem !important;
-    }
-    .section-title {
-        font-size: 1.8rem !important;
-    }
-    h2, h3 {
-        font-size: 1.5rem !important;
-        line-height: 1.3 !important;
-    }
-    p {
-        font-size: 1rem !important;
-    }
-    
-    /* Adjust spacing */
-    .section, .page-header {
-        padding-top: 100px !important;
-        padding-bottom: 40px !important;
-    }
-    
-    /* Ensure no flex overflow */
-    .step-item {
-        flex-direction: column;
-        gap: 12px;
-    }
-    
-    /* Allow cards to wrap flex direction if needed, but flex-direction: column is standard */
-    .card {
-        padding: 20px !important;
-    }
+.diagnosis-card-white:hover {
+    border-color: rgba(255, 255, 255, 0.7) !important;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.15) !important;
+    transform: translateY(-3px) !important;
 }

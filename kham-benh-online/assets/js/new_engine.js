@@ -1,4 +1,4 @@
-async function generateReport() {
+﻿async function generateReport() {
     const jsonText = document.getElementById('jsonData').value.trim();
     if (!jsonText) { Swal.fire('Lỗi', 'Vui lòng dán JSON dữ liệu thô', 'error'); return; }
 
@@ -334,3 +334,4 @@ function renderDetailedReport(json) {
     
     document.getElementById('detailed-report').innerHTML = aiHtml;
 }
+

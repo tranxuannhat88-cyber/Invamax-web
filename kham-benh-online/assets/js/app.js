@@ -1,4 +1,4 @@
-﻿import { questionsData } from './questions.js';
+﻿﻿import { questionsData } from './questions.js';
 import { calculateResults } from './scoring.js';
 import { submitDataToGoogleSheet } from './api.js';
 
@@ -430,3 +430,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+

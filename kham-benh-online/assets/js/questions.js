@@ -1,4 +1,4 @@
-// Dữ liệu câu hỏi giả lập cho hệ thống Khám bệnh nhà máy
+﻿// Dữ liệu câu hỏi giả lập cho hệ thống Khám bệnh nhà máy
 // Mỗi câu hỏi có 5 lựa chọn tương ứng với số điểm 0, 1, 2, 3, 4
 // 0: Rất tốt (Không có bệnh) -> 4: Rất tệ (Bệnh nặng)
 
@@ -54,3 +54,4 @@ export const questionsData = {
         { id: "f11", module: "Sustain", text: "Khả năng duy trì (Sustain) các thành quả cải tiến sau khi dự án kết thúc?", options: fosOptionsTemplate }
     ]
 };
+

@@ -21,44 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Mobile dropdown toggle
-    const navTitles = document.querySelectorAll('.nav-title');
-    navTitles.forEach(title => {
-        title.addEventListener('click', (e) => {
-            if (window.innerWidth <= 900) {
-                e.preventDefault();
-                const parent = title.parentElement;
-                
-                // Close other dropdowns
-                document.querySelectorAll('.nav-item').forEach(item => {
-                    if (item !== parent) {
-                        item.classList.remove('active');
-                    }
-                });
-                
-                // Toggle current
-                parent.classList.toggle('active');
-            }
-        });
-    });
-
-    // Close mobile menu when clicking a link
-    const dropdownLinks = document.querySelectorAll('.nav-dropdown a');
-    dropdownLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            if (window.innerWidth <= 900) {
-                if (navLinks) {
-                    navLinks.style.display = 'none';
-                }
-                // also remove active class from all nav items
-                document.querySelectorAll('.nav-item').forEach(item => {
-                    item.classList.remove('active');
-                });
-            }
-        });
-    });
-
-
     // Navbar scroll effect
     const navbar = document.querySelector('.navbar');
     window.addEventListener('scroll', () => {
@@ -90,39 +52,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function filterServices() {
         const hash = window.location.hash;
-        const wrapperKhamBenh = document.getElementById('wrapper-kham-benh');
-        const wrapperThietKe = document.getElementById('wrapper-thiet-ke');
-        const wrapperFos = document.getElementById('wrapper-fos');
-        const wrapperAiDigital = document.getElementById('wrapper-ai-digital');
+        const wKhamBenh = document.getElementById('wrapper-kham-benh');
+        const wThietKe = document.getElementById('wrapper-thiet-ke');
+        const wFos = document.getElementById('wrapper-fos');
+        const wAi = document.getElementById('wrapper-ai-digital');
         
         // Only run on dich-vu.html
-        if (!wrapperKhamBenh) return;
+        if (!wKhamBenh) return;
         
-        if (hash === '#kham-benh') {
-            wrapperKhamBenh.style.display = 'block';
-            wrapperThietKe.style.display = 'none';
-            if (wrapperFos) wrapperFos.style.display = 'none';
-            wrapperAiDigital.style.display = 'none';
-        } else if (hash === '#thiet-ke') {
-            wrapperKhamBenh.style.display = 'none';
-            wrapperThietKe.style.display = 'block';
-            if (wrapperFos) wrapperFos.style.display = 'none';
-            wrapperAiDigital.style.display = 'none';
-        } else if (hash === '#fos') {
-            wrapperKhamBenh.style.display = 'none';
-            wrapperThietKe.style.display = 'none';
-            if (wrapperFos) wrapperFos.style.display = 'block';
-            wrapperAiDigital.style.display = 'none';
-        } else if (hash === '#ai-digital') {
-            wrapperKhamBenh.style.display = 'none';
-            wrapperThietKe.style.display = 'none';
-            if (wrapperFos) wrapperFos.style.display = 'none';
-            wrapperAiDigital.style.display = 'block';
+        // Helper to hide all
+        function hideAll() {
+            if (wKhamBenh) wKhamBenh.style.display = 'none';
+            if (wThietKe) wThietKe.style.display = 'none';
+            if (wFos) wFos.style.display = 'none';
+            if (wAi) wAi.style.display = 'none';
+        }
+        
+        hideAll();
+        
+        if (hash === '#thiet-ke' && wThietKe) {
+            wThietKe.style.display = 'block';
+        } else if (hash === '#fos' && wFos) {
+            wFos.style.display = 'block';
+        } else if (hash === '#ai-digital' && wAi) {
+            wAi.style.display = 'block';
         } else {
-            wrapperKhamBenh.style.display = 'block';
-            wrapperThietKe.style.display = 'block';
-            if (wrapperFos) wrapperFos.style.display = 'block';
-            wrapperAiDigital.style.display = 'block';
+            // Default to kham-benh if no hash or #kham-benh
+            if (wKhamBenh) wKhamBenh.style.display = 'block';
         }
     }
 
@@ -231,4 +187,18 @@ document.addEventListener('DOMContentLoaded', function() {
             // But we can put a gentle fallback
             container.innerHTML = '<p style="text-align: center; grid-column: 1 / -1; color: var(--text-muted);">Không thể tự động tải bài viết (Do chặn CORS trên máy tính). Khi đưa lên mạng web sẽ hoạt động bình thường.</p>';
         });
+});
+
+// Language Switcher Toggle (UI Only Placeholder)
+document.addEventListener('DOMContentLoaded', () => {
+    const langSwitchers = document.querySelectorAll('.lang-switcher a');
+    langSwitchers.forEach(langBtn => {
+        langBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const lang = e.target.textContent.trim();
+            if (lang === 'EN') {
+                alert('English version is coming soon!');
+            }
+        });
+    });
 });

@@ -1,4 +1,4 @@
-// ĐIỀN URL WEB APP CỦA GOOGLE APPS SCRIPT VÀO ĐÂY
+﻿// ĐIỀN URL WEB APP CỦA GOOGLE APPS SCRIPT VÀO ĐÂY
 const GAS_URL = "https://script.google.com/macros/s/AKfycbwYOUR_SCRIPT_ID_HERE/exec"; 
 
 /**
@@ -34,3 +34,4 @@ export async function submitDataToGoogleSheet(payload) {
         return false;
     }
 }
+

@@ -1,4 +1,4 @@
-function generatePageHeader(title, subtitle, pageNum, maxPage = 10) {
+﻿function generatePageHeader(title, subtitle, pageNum, maxPage = 10) {
     return `
     <div class="a4-header">
         <div class="a4-header-left">
@@ -667,3 +667,4 @@ function renderDetailedReport(json, metadata) {
 
     document.getElementById('detailed-report').innerHTML = p6 + p7 + p8 + p9 + p10;
 }
+

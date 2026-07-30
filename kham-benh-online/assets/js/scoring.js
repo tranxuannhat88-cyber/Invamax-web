@@ -1,4 +1,4 @@
-import { questionsData } from './questions.js';
+﻿import { questionsData } from './questions.js';
 
 /**
  * Tính toán kết quả dựa trên các câu trả lời của user
@@ -88,3 +88,4 @@ export function calculateResults(answers) {
         }
     };
 }
+
