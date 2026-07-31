@@ -88,6 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('hashchange', () => {
         updateActiveMenu();
         filterServices();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 });
 

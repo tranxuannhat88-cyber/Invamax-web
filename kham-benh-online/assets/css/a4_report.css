@@ -109,7 +109,7 @@ body {
     justify-content: center;
     font-weight: 800;
     font-size: 14px;
-    border-radius: 4px;
+    border-radius: 20px;
     margin-right: 10px;
     flex-shrink: 0;
 }
@@ -188,7 +188,7 @@ body {
     height: 30px;
     background: white;
     padding: 2px;
-    border-radius: 4px;
+    border-radius: 20px;
     display: inline-block;
     vertical-align: middle;
 }
@@ -204,7 +204,7 @@ body {
 /* Blocks */
 .content-box {
     border: 1px solid var(--border-light);
-    border-radius: 6px;
+    border-radius: 24px;
     background: white;
     padding: 15px;
     display: flex;
@@ -281,7 +281,7 @@ body {
 
 .insight-box {
     background: var(--bg-light);
-    border-radius: 6px;
+    border-radius: 24px;
     padding: 12px;
     margin-top: auto;
 }
@@ -401,7 +401,7 @@ body {
 }
 .hm-cell {
     flex: 1;
-    border-radius: 8px;
+    border-radius: 24px;
     padding: 15px 10px;
     text-align: center;
     color: white;
@@ -479,7 +479,7 @@ body {
 .conclusion-box {
     background: #fff7ed;
     border: 1px solid #ffedd5;
-    border-radius: 6px;
+    border-radius: 24px;
     padding: 15px;
     margin-top: 20px;
 }
@@ -516,7 +516,7 @@ body {
     width: 40px;
     height: 40px;
     background: var(--bg-light);
-    border-radius: 8px;
+    border-radius: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -544,7 +544,7 @@ body {
 
 .paywall-container {
     border: 2px solid var(--border-light);
-    border-radius: 8px;
+    border-radius: 24px;
     padding: 20px;
     background: white;
     text-align: center;
@@ -775,7 +775,7 @@ body {
     margin-top: 15px;
     padding: 10px;
     background: var(--bg-light);
-    border-radius: 4px;
+    border-radius: 20px;
 }
 
 /* Page 9: Roadmap */
@@ -873,7 +873,7 @@ body {
     border: 1px solid var(--green);
     color: var(--green);
     padding: 5px 10px;
-    border-radius: 4px;
+    border-radius: 20px;
     font-size: 10px;
     font-weight: 800;
     margin-top: 15px;
@@ -1006,7 +1006,7 @@ body {
 .ai-recommendation-box {
     background: #f1f5f9;
     padding: 12px;
-    border-radius: 6px;
+    border-radius: 24px;
     font-size: 11px;
     text-align: center;
     color: #0f172a;
@@ -1020,7 +1020,7 @@ body {
 .top3-card {
     background: #fff5f5;
     border: 1px solid #fee2e2;
-    border-radius: 8px;
+    border-radius: 24px;
     padding: 15px;
 }
 .top3-card-header {
@@ -1054,7 +1054,7 @@ body {
 }
 .top3-impact-box {
     background: #fff1f2;
-    border-radius: 8px;
+    border-radius: 24px;
     padding: 12px 20px;
     display: flex;
     align-items: center;
@@ -1085,7 +1085,7 @@ body {
 }
 .top3-action-box {
     background: #ecfdf5;
-    border-radius: 8px;
+    border-radius: 24px;
     padding: 15px;
     display: flex;
     align-items: center;
@@ -1122,7 +1122,7 @@ body {
     font-weight: bold;
     font-size: 14px;
     margin-bottom: 25px;
-    border-radius: 4px;
+    border-radius: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1135,7 +1135,7 @@ body {
 
 .a4-box {
     background: #f8fafc;
-    border-radius: 6px;
+    border-radius: 24px;
     padding: 20px;
     border: 1px solid #f1f5f9;
 }
