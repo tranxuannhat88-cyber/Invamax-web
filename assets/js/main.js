@@ -21,6 +21,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Mobile dropdown accordion
+    const dropdowns = document.querySelectorAll('.nav-dropdown');
+    dropdowns.forEach(dropdown => {
+        const title = dropdown.previousElementSibling;
+        if (title && title.classList.contains('nav-title')) {
+            title.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    // Toggle current
+                    dropdown.parentElement.classList.toggle('open');
+                    // Close others (optional)
+                    document.querySelectorAll('.nav-item').forEach(item => {
+                        if (item !== dropdown.parentElement) {
+                            item.classList.remove('open');
+                        }
+                    });
+                }
+            });
+        }
+    });
+
+
     // Navbar scroll effect
     const navbar = document.querySelector('.navbar');
     window.addEventListener('scroll', () => {

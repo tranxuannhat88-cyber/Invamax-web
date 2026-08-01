@@ -321,6 +321,10 @@ section[id], div[id] {
     background-color: rgba(255, 255, 255, 0.05);
     color: #a0aec0;
     margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
 }
 
 .card-icon svg {
@@ -513,6 +517,7 @@ section[id], div[id] {
     }
 }
 
+
 @media (max-width: 768px) {
     .nav-links {
         display: none;
@@ -521,6 +526,27 @@ section[id], div[id] {
     .mobile-menu-btn {
         display: block;
     }
+    
+    /* Fix mobile dropdown */
+    .nav-dropdown {
+        position: static !important;
+        transform: none !important;
+        box-shadow: none !important;
+        border: none !important;
+        padding-left: 20px !important;
+        background: transparent !important;
+        width: 100% !important;
+        margin-top: 10px;
+    }
+    .nav-item:hover .nav-dropdown {
+        display: none; /* Disable hover on mobile */
+    }
+    .nav-item.open .nav-dropdown {
+        display: flex !important;
+        flex-direction: column;
+        gap: 5px;
+    }
+
     
     .hero-text h1 {
         font-size: 2.5rem;
