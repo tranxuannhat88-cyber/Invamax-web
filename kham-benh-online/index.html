@@ -653,6 +653,12 @@
         </div>
     </div>
 
+    
+                    <div id="floating-actions" class="hide-in-pdf" style="display: none; position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: #1e293b; padding: 15px 25px; border-radius: 50px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); z-index: 1000; gap: 15px; align-items: center; border: 1px solid rgba(255,255,255,0.1);">
+                        <button onclick="editAnswers()" style="background: transparent; border: 1px solid rgba(255,255,255,0.3); color: white; padding: 10px 20px; border-radius: 30px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 8px;"><i data-lucide="edit-3"></i> Sửa lại đáp án & Khám lại</button>
+                        <button onclick="window.print()" style="background: #ea580c; border: none; color: white; padding: 10px 20px; border-radius: 30px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 8px;"><i data-lucide="download"></i> Tải PDF</button>
+                    </div>
+
     <!-- Script -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
