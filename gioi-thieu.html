@@ -1,0 +1,408 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới thiệu Chương trình Khám bệnh Online - INVAMAX</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .intro-hero {
+            padding: 120px 0 60px;
+            text-align: center;
+            background: linear-gradient(to bottom, #0b1120, var(--bg-dark));
+        }
+        .intro-section {
+            padding: 60px 0;
+        }
+        .intro-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            align-items: center;
+        }
+        .intro-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 24px;
+        }
+        .intro-card h3 {
+            color: var(--primary);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .img-placeholder {
+            width: 100%;
+            height: 400px;
+            background-color: var(--bg-darker);
+            border: 1px dashed var(--border-color);
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-muted);
+            margin-top: 24px;
+        }
+        @media (max-width: 768px) {
+            .intro-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <meta name="google-site-verification" content="d9opRRlvn7gdYQvrvD_fqSJEh8E2KOLNiIyV_1hknA0" />
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">INVA<span>MAX</span></a>
+            <div class="nav-links">
+                <div class="nav-item">
+                    <a href="../index.html" class="nav-title" style="color: inherit; text-decoration: none;">GIỚI THIỆU</a>
+                </div>
+                <div class="nav-item">
+                    <a href="javascript:void(0)" class="nav-title" style="color: inherit; text-decoration: none;">GIẢI PHÁP <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i></a>
+                    <div class="nav-dropdown">
+                            <a href="../giai-phap.html" style="font-weight: 800; color: #ea580c; border-bottom: 1px solid #f1f5f9; margin-bottom: 5px; padding-bottom: 10px;">Lộ trình chuyển đổi</a>
+                        <a href="../dich-vu.html#kham-benh">Khám bệnh Nhà máy</a>
+<a href="../kham-benh-online/gioi-thieu.html" style="text-align: left !important; padding-left: 45px !important; font-size: 0.82rem !important; font-weight: 400 !important; color: #94a3b8 !important; padding-top: 5px !important; padding-bottom: 5px !important; transition: color 0.2s;" onmouseover="this.style.color='#f97316'" onmouseout="this.style.color='#94a3b8'">- Khám bệnh online</a>
+<a href="../kham-benh-truc-tiep/gioi-thieu.html" style="text-align: left !important; padding-left: 45px !important; font-size: 0.82rem !important; font-weight: 400 !important; color: #94a3b8 !important; padding-top: 5px !important; padding-bottom: 5px !important; transition: color 0.2s;" onmouseover="this.style.color='#f97316'" onmouseout="this.style.color='#94a3b8'">- Khám bệnh trực tiếp</a>
+                        <a href="../dich-vu.html#thiet-ke">Mô hình vận hành nhà máy</a>
+                        <a href="../dich-vu.html#fos">Hệ điều hành nhà máy</a>
+                        <a href="../dich-vu.html#ai-digital">Số hoá &amp; AI vận hành</a>
+                        <a href="../san-pham.html">Thiết bị hỗ trợ sản xuất</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="javascript:void(0)" class="nav-title" style="color: inherit; text-decoration: none;">TRI THỨC <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i></a>
+                    <div class="nav-dropdown">
+                            <a href="../tri-thuc.html" style="font-weight: 800; color: #ea580c; border-bottom: 1px solid #f1f5f9; margin-bottom: 5px; padding-bottom: 10px;">Trung tâm tri thức</a>
+                        <a href="../kien-thuc.html">Bài viết</a>
+                        <a href="#">Case Study</a>
+                        <a href="../thu-vien.html">Toolkit & Tài liệu</a>
+                        <a href="#">Video</a>
+                    </div>
+                </div>
+                            <div class="nav-item lang-switcher" style="display: flex; gap: 8px; align-items: center; margin-left: auto;">
+                    <a href="#" class="active" style="color: var(--primary); font-weight: bold; padding: 0;">VN</a>
+                    <span style="color: var(--border-color);">|</span>
+                    <a href="#" style="color: var(--text-muted); padding: 0; opacity: 0.7;">EN</a>
+                </div>
+            </div>
+            <button class="mobile-menu-btn"><i data-lucide="menu"></i></button>
+        </div>
+    </nav>
+
+    
+    <!-- Blueprint Hero Section -->
+    <div style="padding: 100px 0 60px; text-align: center;">
+        <h2 style="font-size: 2.5rem; margin-bottom: 15px; font-weight: bold; color: white; text-transform: none; letter-spacing: -0.5px;">Khám bệnh nhà máy online</h2>
+        <h3 style="color: #94a3b8; font-size: 1.15rem; font-weight: normal; margin-top: -5px; margin-bottom: 30px; letter-spacing: 0.5px;">Đánh giá nhanh sức khỏe vận hành hệ thống chỉ trong 20 phút</h3>
+    </div>
+
+    <!-- Intro Text -->
+    <div style="max-width: 800px; margin: 0 auto 80px auto; text-align: center; padding: 0 20px;">
+        <p style="font-size: 1.05rem; line-height: 1.8; color: white; margin-bottom: 20px; font-weight: 500;">
+            Nhà máy của bạn đang ở mức độ nào? Đâu là những điểm nghẽn đang làm giảm năng suất, tăng chi phí và cản trở sự phát triển?
+        </p>
+        <p style="font-size: 1rem; line-height: 1.8; color: #94a3b8; margin-bottom: 20px;">
+            Chỉ với khoảng <strong>20 phút</strong> thực hiện bộ câu hỏi trắc nghiệm trực tuyến, doanh nghiệp có thể nhanh chóng đánh giá hiện trạng vận hành và nhận được báo cáo phân tích ngay trên website.
+        </p>
+        <div style="margin-top: 40px;">
+            <a href="index.html" class="btn btn-outline" style="padding: 15px 40px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none;">Khám bệnh ngay</a>
+        </div>
+        <p style="color: #64748b; font-size: 0.85rem; letter-spacing: 1px; font-family: monospace; margin-top: 20px; text-transform: uppercase;">
+            Bước khởi đầu chuẩn xác trước khi chuyển đổi
+        </p>
+    </div>
+
+    <!-- Phương pháp 3-Layer Architecture Schematic -->
+    <div style="max-width: 1000px; margin: 0 auto 120px auto; padding: 0 20px;">
+        <h2 style="font-size: 1.8rem; margin-bottom: 20px; color: white; text-align: center; font-weight: 600; letter-spacing: -0.5px;">Phương pháp INVAMAX 3-Layer Factory Diagnosis™</h2>
+        <p style="font-size: 1rem; line-height: 1.8; color: #94a3b8; margin-bottom: 40px; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;">
+            Bài đánh giá được xây dựng dựa trên phương pháp chẩn đoán 3 lớp, giúp nhìn nhà máy từ các biểu hiện bên ngoài đến nguyên nhân gốc của hệ thống.
+        </p>
+
+        <div style="background: rgba(255,255,255,0.01); border: 1px solid rgba(255,255,255,0.05); padding: 50px 40px; position: relative; border-radius: 16px;">
+            <div style="display: flex; flex-direction: column; gap: 40px;">
+                <!-- Layer 1 -->
+                <div style="display: flex; gap: 30px; align-items: flex-start;">
+                    <div style="width: 100px; flex-shrink: 0; color: #64748b; font-family: monospace; font-size: 0.85rem; letter-spacing: 2px; text-align: right; margin-top: 5px;">LAYER 01</div>
+                    <div style="flex-grow: 1; border-left: 2px solid rgba(255,255,255,0.1); padding-left: 20px;">
+                        <h4 style="color: white; font-size: 1.1rem; margin-bottom: 8px; font-weight: 500;">8 Lãng phí trong sản xuất</h4>
+                        <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.6; margin: 0;">Đánh giá mức độ tồn tại của các hoạt động không tạo ra giá trị, làm tăng chi phí, kéo dài thời gian và giảm năng suất.</p>
+                    </div>
+                </div>
+                <!-- Layer 2 -->
+                <div style="display: flex; gap: 30px; align-items: flex-start;">
+                    <div style="width: 100px; flex-shrink: 0; color: #64748b; font-family: monospace; font-size: 0.85rem; letter-spacing: 2px; text-align: right; margin-top: 5px;">LAYER 02</div>
+                    <div style="flex-grow: 1; border-left: 2px solid rgba(255,255,255,0.1); padding-left: 20px;">
+                        <h4 style="color: white; font-size: 1.1rem; margin-bottom: 8px; font-weight: 500;">Dấu hiệu bất thường</h4>
+                        <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.6; margin: 0;">Nhận diện các dấu hiệu bất thường về con người, máy móc, vật tư, chất lượng, dòng chảy, thông tin và cách tổ chức công việc – những tín hiệu phản ánh sức khỏe thực sự của nhà máy.</p>
+                    </div>
+                </div>
+                <!-- Layer 3 -->
+                <div style="display: flex; gap: 30px; align-items: flex-start;">
+                    <div style="width: 100px; flex-shrink: 0; color: #64748b; font-family: monospace; font-size: 0.85rem; letter-spacing: 2px; text-align: right; margin-top: 5px;">LAYER 03</div>
+                    <div style="flex-grow: 1; border-left: 2px solid rgba(255,255,255,0.1); padding-left: 20px;">
+                        <h4 style="color: white; font-size: 1.1rem; margin-bottom: 8px; font-weight: 500;">Hệ thống vận hành nhà máy</h4>
+                        <p style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.6; margin: 0;">Đánh giá mức độ hoàn thiện của hệ thống quản trị theo khung INVAMAX FOS, bao gồm tổ chức, quy trình, tiêu chuẩn, dữ liệu và cơ chế điều hành, nhằm xác định nguyên nhân mang tính hệ thống.</p>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top: 40px; padding-top: 20px; border-top: 1px dashed rgba(255,255,255,0.05); text-align: center; color: #64748b; font-size: 0.9rem;">
+                Ba lớp đánh giá được liên kết logic, giúp doanh nghiệp hiểu sâu nguyên nhân gốc rễ, thay vì chỉ giải quyết phần ngọn.
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Data Flow Block -->
+    <div style="max-width: 1000px; margin: 0 auto 120px auto; padding: 0 20px;">
+        <h2 style="font-size: 1.8rem; margin-bottom: 40px; color: white; text-align: center; font-weight: 600; letter-spacing: -0.5px;">Phân tích bởi AI INVAMAX FOS Expert</h2>
+        
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px;">
+            <div style="flex: 1; min-width: 300px;">
+                <div style="color: #64748b; font-family: monospace; font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 15px;">INPUT DATA</div>
+                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px;">Ngay sau khi hoàn thành bài đánh giá, hệ thống AI tự động tổng hợp và xử lý dữ liệu khảo sát 3 lớp từ nhà máy của bạn.</p>
+                <div style="color: var(--primary); font-family: monospace; font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 15px; margin-top: 40px;">AI PROCESSING ENGINE</div>
+                <p style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.7;">Mô hình chuyên gia phân tích dữ liệu, nhận diện mẫu (pattern recognition) để chỉ ra chính xác các điểm nghẽn nghiêm trọng nhất.</p>
+            </div>
+            
+            <div style="flex: 1; min-width: 300px; border-left: 1px solid rgba(255,255,255,0.05); padding-left: 20px;">
+                <div style="color: #64748b; font-family: monospace; font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 25px;">OUTPUT INTELLIGENCE</div>
+                <div style="display: flex; flex-direction: column; gap: 15px;">
+                    <div style="display: flex; gap: 15px;">
+                        <div style="width: 4px; height: 4px; background: white; border-radius: 50%; margin-top: 8px; flex-shrink: 0;"></div>
+                        <div style="color: #cbd5e1; font-size: 1rem; line-height: 1.6;">Phân tích các nhóm vấn đề nổi bật.</div>
+                    </div>
+                    <div style="display: flex; gap: 15px;">
+                        <div style="width: 4px; height: 4px; background: white; border-radius: 50%; margin-top: 8px; flex-shrink: 0;"></div>
+                        <div style="color: #cbd5e1; font-size: 1rem; line-height: 1.6;">Xác định nguyên nhân gốc rễ gây ra điểm nghẽn.</div>
+                    </div>
+                    <div style="display: flex; gap: 15px;">
+                        <div style="width: 4px; height: 4px; background: white; border-radius: 50%; margin-top: 8px; flex-shrink: 0;"></div>
+                        <div style="color: #cbd5e1; font-size: 1rem; line-height: 1.6;">Đánh giá mức độ ảnh hưởng đến Năng suất & Chi phí.</div>
+                    </div>
+                    <div style="display: flex; gap: 15px;">
+                        <div style="width: 4px; height: 4px; background: white; border-radius: 50%; margin-top: 8px; flex-shrink: 0;"></div>
+                        <div style="color: #cbd5e1; font-size: 1rem; line-height: 1.6;">Đề xuất định hướng chuyển đổi phù hợp với hiện trạng.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gói kết quả (Dashboard style) -->
+    <div style="max-width: 1000px; margin: 0 auto 120px auto; padding: 0 20px;">
+        <h2 style="font-size: 1.8rem; margin-bottom: 40px; color: white; text-align: center; font-weight: 600; letter-spacing: -0.5px;">Gói kết quả phân tích</h2>
+        
+        <div style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center;">
+            <!-- Gói Cơ Bản -->
+            <div style="flex: 1; min-width: 320px; border: 1px solid rgba(255,255,255,0.05); padding: 40px 30px; background: rgba(255,255,255,0.01); border-radius: 16px; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.boxShadow='0 0 30px rgba(249,115,22,0.15)'; this.style.borderColor='rgba(249,115,22,0.3)'" onmouseout="this.style.boxShadow='none'; this.style.borderColor='rgba(255,255,255,0.05)'">
+                <div style="color: #64748b; font-size: 0.85rem; font-family: monospace; margin-bottom: 10px; letter-spacing: 2px;">TIER 01</div>
+                <h3 style="color: white; font-size: 1.3rem; font-weight: bold; margin-bottom: 10px;">Báo cáo Sơ bộ</h3>
+                <div style="color: #94a3b8; font-size: 1rem; margin-bottom: 30px; letter-spacing: 1px;">MIỄN PHÍ</div>
+                
+                <p style="color: #94a3b8; font-size: 0.95rem; margin-bottom: 20px; font-weight: 500;">Hiển thị trực tiếp trên website ngay sau khi hoàn thành khảo sát.</p>
+                
+                <div style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 30px;">
+                    <div style="color: #94a3b8; font-size: 0.9rem; display: flex; align-items: flex-start; gap: 10px;"><i data-lucide="minus" style="color: #475569; width: 14px; margin-top: 2px; flex-shrink: 0;"></i>Điểm đánh giá tổng quan sức khỏe vận hành.</div>
+                    <div style="color: #94a3b8; font-size: 0.9rem; display: flex; align-items: flex-start; gap: 10px;"><i data-lucide="minus" style="color: #475569; width: 14px; margin-top: 2px; flex-shrink: 0;"></i>Kết quả theo từng lớp 3-Layer Diagnosis.</div>
+                    <div style="color: #94a3b8; font-size: 0.9rem; display: flex; align-items: flex-start; gap: 10px;"><i data-lucide="minus" style="color: #475569; width: 14px; margin-top: 2px; flex-shrink: 0;"></i>Các nhóm vấn đề nổi bật.</div>
+                    <div style="color: #94a3b8; font-size: 0.9rem; display: flex; align-items: flex-start; gap: 10px;"><i data-lucide="minus" style="color: #475569; width: 14px; margin-top: 2px; flex-shrink: 0;"></i>Đánh giá sơ bộ về hệ thống vận hành.</div>
+                    <div style="color: #94a3b8; font-size: 0.9rem; display: flex; align-items: flex-start; gap: 10px;"><i data-lucide="minus" style="color: #475569; width: 14px; margin-top: 2px; flex-shrink: 0;"></i>Những khuyến nghị ban đầu từ AI.</div>
+                </div>
+            </div>
+            
+            <!-- Gói Chuyên sâu -->
+            <div style="flex: 1; min-width: 320px; border: 1px solid rgba(249,115,22,0.2); padding: 40px 30px; background: rgba(255,255,255,0.02); position: relative; border-radius: 16px; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.boxShadow='0 0 30px rgba(249,115,22,0.15)'; this.style.borderColor='var(--primary)'" onmouseout="this.style.boxShadow='none'; this.style.borderColor='rgba(249,115,22,0.2)'">
+                <div style="position: absolute; top: -12px; right: 30px; background: var(--primary); padding: 4px 16px; color: white; font-size: 0.75rem; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; border-radius: 20px;">Khuyến nghị</div>
+                <div style="color: var(--primary); font-size: 0.85rem; font-family: monospace; margin-bottom: 10px; letter-spacing: 2px;">TIER 02 / RECOMMENDED</div>
+                <h3 style="color: white; font-size: 1.3rem; font-weight: bold; margin-bottom: 10px;">Chẩn đoán Chuyên sâu</h3>
+                <div style="color: var(--primary); font-size: 1rem; margin-bottom: 30px; letter-spacing: 1px; font-weight: bold;">990.000 VNĐ</div>
+                
+                <p style="color: #cbd5e1; font-size: 0.95rem; margin-bottom: 20px; font-weight: 500;">Bản thiết kế định hướng, tập trung phân tích sâu để ra quyết định cải tiến.</p>
+                
+                <div style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 30px;">
+                    <div style="color: #cbd5e1; font-size: 0.9rem; display: flex; align-items: flex-start; gap: 10px;"><i data-lucide="minus" style="color: var(--primary); width: 14px; margin-top: 2px; flex-shrink: 0;"></i>Phân tích nguyên nhân gốc theo từng nhóm vấn đề.</div>
+                    <div style="color: #cbd5e1; font-size: 0.9rem; display: flex; align-items: flex-start; gap: 10px;"><i data-lucide="minus" style="color: var(--primary); width: 14px; margin-top: 2px; flex-shrink: 0;"></i>Ma trận ưu tiên cải tiến (Priority Matrix).</div>
+                    <div style="color: #cbd5e1; font-size: 0.9rem; display: flex; align-items: flex-start; gap: 10px;"><i data-lucide="minus" style="color: var(--primary); width: 14px; margin-top: 2px; flex-shrink: 0;"></i>Bộ giải pháp kiến trúc khắc phục.</div>
+                    <div style="color: #cbd5e1; font-size: 0.9rem; display: flex; align-items: flex-start; gap: 10px;"><i data-lucide="minus" style="color: var(--primary); width: 14px; margin-top: 2px; flex-shrink: 0;"></i>Đề xuất lộ trình chuyển đổi phù hợp với nguồn lực.</div>
+                    <div style="color: #cbd5e1; font-size: 0.9rem; display: flex; align-items: flex-start; gap: 10px;"><i data-lucide="minus" style="color: var(--primary); width: 14px; margin-top: 2px; flex-shrink: 0;"></i>Khuyến nghị cơ chế duy trì dài hạn.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Outro / High-end CTA -->
+    <div style="max-width: 900px; margin: 0 auto 100px auto; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 80px; text-align: center;">
+        <h3 style="font-size: 1.5rem; line-height: 1.6; color: white; margin-bottom: 30px; font-weight: 500; letter-spacing: -0.5px;">
+            Bắt đầu từ việc nhìn đúng
+        </h3>
+        <p style="font-size: 1rem; line-height: 1.8; color: #94a3b8; max-width: 700px; margin: 0 auto 40px auto;">
+            Nhìn rõ hiện trạng. Chẩn đúng nguyên nhân. Đó là nền tảng cốt lõi trước khi thiết kế bất kỳ hệ thống quản trị, lộ trình số hóa hay tự động hóa nào.
+        </p>
+        <a href="index.html" class="btn btn-outline" style="padding: 15px 40px; text-transform: uppercase; letter-spacing: 2px; text-decoration: none;">Khám bệnh ngay</a>
+    </div>
+    
+
+    <!-- Footer -->
+    
+    <!-- Back to Home Button -->
+    <div style="text-align: center; padding: 40px 0; margin-bottom: 20px;">
+        <a href="../index.html" class="btn btn-outline" style="padding: 12px 30px; font-size: 1.05rem; border-color: rgba(255,255,255,0.1); color: var(--text-muted); transition: all 0.3s ease;" onmouseover="this.style.color='white'; this.style.borderColor='var(--primary)';" onmouseout="this.style.color='var(--text-muted)'; this.style.borderColor='rgba(255,255,255,0.1)';"><i data-lucide="arrow-left" style="width: 18px; height: 18px; margin-right: 8px;"></i> Quay lại trang chủ</a>
+    </div>
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <!-- Cột 1: Logo -->
+            <div class="footer-col" style="text-align: center;">
+                <div style="margin-bottom: 8px;">
+                    <a href="../index.html" class="logo mb-2" style="display: inline-block; font-size: 2.4rem;">INVA<span>MAX</span></a>
+                </div>
+                <p class="text-muted" style="line-height: 1.6; max-width: 280px; margin: 0 auto;">Thiết kế mô hình vận hành. Chuẩn hóa hệ thống. Sẵn sàng cho AI.</p>
+            </div>
+            
+            <!-- Cột 2: Giải pháp -->
+            <div class="footer-col">
+                <h4>Giải pháp</h4>
+                <div class="footer-links">
+                    <a href="../dich-vu.html#kham-benh">Khám bệnh Nhà máy</a>
+<a href="../kham-benh-online/gioi-thieu.html" style="text-align: left !important; padding-left: 45px !important; font-size: 0.82rem !important; font-weight: 400 !important; color: #94a3b8 !important; padding-top: 5px !important; padding-bottom: 5px !important; transition: color 0.2s;" onmouseover="this.style.color='#f97316'" onmouseout="this.style.color='#94a3b8'">- Khám bệnh online</a>
+<a href="../kham-benh-truc-tiep/gioi-thieu.html" style="text-align: left !important; padding-left: 45px !important; font-size: 0.82rem !important; font-weight: 400 !important; color: #94a3b8 !important; padding-top: 5px !important; padding-bottom: 5px !important; transition: color 0.2s;" onmouseover="this.style.color='#f97316'" onmouseout="this.style.color='#94a3b8'">- Khám bệnh trực tiếp</a>
+                    <a href="../dich-vu.html#thiet-ke">Mô hình vận hành nhà máy</a>
+                    <a href="../dich-vu.html#fos">Hệ điều hành nhà máy</a>
+                    <a href="../dich-vu.html#ai-digital">Số hoá & AI vận hành</a>
+                    <a href="../san-pham.html">Thiết bị hỗ trợ sản xuất</a>
+                </div>
+            </div>
+            
+            <!-- Cột 3: Tri thức -->
+            <div class="footer-col">
+                <h4>Tri thức</h4>
+                <div class="footer-links">
+                    <a href="../kien-thuc.html">Bài viết</a>
+                    <a href="../case-study.html">Case Study</a>
+                    <a href="../thu-vien.html">Toolkit & Tài liệu</a>
+                    <a href="../video.html">Video</a>
+                </div>
+            </div>
+            
+            <!-- Cột 4: Liên hệ -->
+            <div class="footer-col">
+                <h4>Liên hệ</h4>
+                <p style="font-weight: 600; color: white; margin-bottom: 16px; font-size: 0.95rem;">CÔNG TY TNHH ĐẦU TƯ VÀ PHÁT TRIỂN INVAMAX</p>
+                <div class="contact-info" style="margin-bottom: 24px;">
+                    <div class="contact-item">
+                        <i data-lucide="file-text"></i>
+                        <span>MST: 0202236953</span>
+                    </div>
+                    <div class="contact-item">
+                        <i data-lucide="phone"></i>
+                        <span>0988.911.869</span>
+                    </div>
+                    <div class="contact-item">
+                        <i data-lucide="mail"></i>
+                        <span>info@invamax.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i data-lucide="map-pin"></i>
+                        <span>Thôn Đông Lôi, xã Vĩnh Thịnh, TP Hải Phòng</span>
+                    </div>
+                </div>
+                
+                <h5 style="color: white; margin-bottom: 12px; font-size: 0.95rem; font-weight: 600;">Kết nối với chúng tôi</h5>
+                <div class="social-links" style="display: flex; gap: 12px;">
+                    <a href="https://zalo.me/0988911869" target="_blank" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='#0068FF'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
+                        <span style="font-size: 11px; font-weight: 800; font-family: 'Inter', sans-serif;">Zalo</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/xuannhattran/" target="_blank" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='#0A66C2'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    </a>
+                    <a href="https://www.facebook.com/invamax.vanhanhtinhgon" target="_blank" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='#1877F2'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                    </a>
+                    <a href="https://www.youtube.com/@NguoiXayNen" target="_blank" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='#ff0000'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom" style="text-align: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 24px; margin-top: 40px;">
+            <p style="font-size: 0.85rem; color: rgba(255,255,255,0.4); margin-bottom: 8px; letter-spacing: 0.5px;">Factory Diagnosis&trade; &bull; Factory Operating Model&trade; &bull; INVAMAX FOS&trade;</p>
+            <p style="color: var(--text-muted);">&copy; 2026 INVAMAX. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+
+    <!-- History Modal -->
+    <div id="historyModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9999; justify-content: center; align-items: center; padding: 20px;">
+        <div style="background: #1e293b; width: 100%; max-width: 800px; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; max-height: 90vh;">
+            <div style="padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="color: white; margin: 0; font-size: 1.2rem; display: flex; align-items: center; gap: 10px;"><i data-lucide="history"></i> Lịch sử Khám bệnh của bạn</h3>
+                <button onclick="closeHistoryModal()" style="background: transparent; border: none; color: #94a3b8; cursor: pointer;"><i data-lucide="x"></i></button>
+            </div>
+            <div id="historyList" style="padding: 20px; overflow-y: auto; flex-grow: 1; display: flex; flex-direction: column; gap: 15px;">
+                <!-- Items will be generated here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openHistoryModal() {
+            document.getElementById('historyModal').style.display = 'flex';
+            renderHistory();
+        }
+        function closeHistoryModal() {
+            document.getElementById('historyModal').style.display = 'none';
+        }
+        function renderHistory() {
+            const list = document.getElementById('historyList');
+            let history = [];
+            try {
+                const h = localStorage.getItem('invamax_history');
+                if (h) history = JSON.parse(h);
+            } catch(e) {}
+            
+            if (history.length === 0) {
+                list.innerHTML = '<div style="text-align: center; color: #94a3b8; padding: 40px 0;">Chưa có dữ liệu khám bệnh nào được lưu trên thiết bị này.</div>';
+                return;
+            }
+
+            // Sort by timestamp desc
+            history.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+            list.innerHTML = history.map(item => {
+                const date = new Date(item.timestamp).toLocaleString('vi-VN');
+                const company = item.factoryInfo?.A01 || 'Chưa nhập tên';
+                const score = item.scores?.pWaste || 0;
+                let color = score < 20 ? '#10b981' : (score < 40 ? '#f59e0b' : '#ef4444');
+                
+                return `
+                    <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 20px; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
+                        <div>
+                            <div style="color: var(--primary); font-size: 0.85rem; font-weight: bold; margin-bottom: 5px;">${item.reportId || 'IVM-OLD'} • ${date}</div>
+                            <div style="color: white; font-size: 1.1rem; font-weight: bold; margin-bottom: 5px;">${company}</div>
+                            <div style="color: #94a3b8; font-size: 0.9rem;">Lãng phí: <span style="color: ${color}; font-weight: bold;">${score}/100</span></div>
+                        </div>
+                        <div style="display: flex; gap: 10px;">
+                            <a href="index.html?reportId=${item.reportId}" class="btn-outline" style="padding: 10px 20px; font-size: 0.9rem; text-decoration: none;">Xem Báo Cáo</a>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            lucide.createIcons();
+        }
+    </script>
+
+</body>
+</html>
+
