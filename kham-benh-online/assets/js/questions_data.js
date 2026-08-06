@@ -1350,7 +1350,7 @@ const questionsRawData = [
     "Điểm càng cao càng nghiêm trọng",
   ],
   [
-    "PHẦN D: KHÁM 11 MODULE NỀN FOS",
+    "PHẦN D: KHÁM 11 MODULE INVAMAX FOS",
     "",
     "",
     "",

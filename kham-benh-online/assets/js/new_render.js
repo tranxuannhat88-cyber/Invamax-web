@@ -3,11 +3,11 @@
     <div class="a4-header">
         <div class="a4-header-left">
             <div class="logo">INVA<span style="color:#ea580c">MAX</span></div>
-            <div class="sub-logo">NỀN FOS | AI | Digital | Supply Hub</div>
+            <div class="sub-logo">INVAMAX FOS | AI | Digital | Supply Hub</div>
         </div>
         <div class="a4-header-center">
             <h1>BÁO CÁO KHÁM BỆNH NHÀ MÁY ONLINE</h1>
-            <p>THEO HỆ ĐIỀU HÀNH NỀN FOS</p>
+            <p>THEO HỆ ĐIỀU HÀNH INVAMAX FOS</p>
         </div>
         <div class="a4-header-right">
             Mã báo cáo<br><span class="val a4-code-placeholder"></span><br>
@@ -28,10 +28,10 @@ function generatePageFooter() {
     <div class="a4-footer">
         <div class="a4-footer-left">
             <strong>INVAMAX</strong>
-            <span>NỀN FOS - Kim chỉ nam vận hành nhà máy SME</span>
+            <span>INVAMAX FOS - Kim chỉ nam vận hành nhà máy SME</span>
         </div>
         <div class="a4-footer-center">
-            <strong>11 MODULE NỀN FOS</strong>
+            <strong>11 MODULE INVAMAX FOS</strong>
             <span class="footer-module"><span class="footer-dot bg-green"></span> Core</span>
             <span class="footer-module"><span class="footer-dot bg-green"></span> People</span>
             <span class="footer-module"><span class="footer-dot bg-green"></span> Standard</span>
@@ -45,7 +45,7 @@ function generatePageFooter() {
             <span class="footer-module"><span class="footer-dot bg-purple"></span> Sustain</span>
         </div>
         <div class="a4-footer-right">
-            <span>Báo cáo được phân tích bởi AI dựa trên hệ thống chuyên gia NỀN FOS.<br>Kết quả chỉ mang tính tham khảo và cần được xác nhận bởi chuyên gia.</span>
+            <span>Báo cáo được phân tích bởi AI dựa trên hệ thống chuyên gia INVAMAX FOS.<br>Kết quả chỉ mang tính tham khảo và cần được xác nhận bởi chuyên gia.</span>
             <span>www.invamax.vn | Hotline: 0896676399</span>
             <img src="https://img.vietqr.io/image/MB-5757658888-qr_only.png?amount=990000" alt="QR">
         </div>
@@ -191,7 +191,7 @@ function renderPreliminary(res, factoryInfo, contactInfo, rawAnswers) {
 
     let p3 = `
     <div class="a4-page">
-        ${generatePageHeader('HEATMAP 11 MODULE NỀN FOS', 'SYSTEM HEALTH MAP', 3, 10)}
+        ${generatePageHeader('HEATMAP 11 MODULE INVAMAX FOS', 'SYSTEM HEALTH MAP', 3, 10)}
         <div class="heatmap-legend">Thang điểm: 0 - Rất tốt | 25 - Khá | 50 - Trung bình | 75 - Tệ | 100 - Xuất sắc (Rối loạn)</div>
         
         <div class="hm-group">
@@ -652,8 +652,8 @@ function renderDetailedReport(json, metadata) {
                     <div class="info-box">
                         <div class="info-box-row"><span class="label">Mã báo cáo</span><span class="val a4-code-placeholder"></span></div>
                         <div class="info-box-row"><span class="label">Ngày báo cáo</span><span class="val a4-date-placeholder"></span></div>
-                        <div class="info-box-row"><span class="label">AI Profile</span><span class="val">NỀN FOS Expert v1.0</span></div>
-                        <div class="info-box-row"><span class="label">Phương pháp</span><span class="val">INVAMAX NỀN FOS</span></div>
+                        <div class="info-box-row"><span class="label">AI Profile</span><span class="val">INVAMAX FOS Expert v1.0</span></div>
+                        <div class="info-box-row"><span class="label">Phương pháp</span><span class="val">INVAMAX FOS</span></div>
                         <div class="info-box-row"><span class="label">Độ tin cậy</span><span class="val">95%</span></div>
                     </div>
                     <div style="text-align:right;">

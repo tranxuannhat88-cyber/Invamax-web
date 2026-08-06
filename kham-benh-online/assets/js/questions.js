@@ -31,7 +31,7 @@ export const questionsData = {
         { id: "w8", module: "Gia công thừa", text: "Thực hiện các công đoạn gia công, kiểm tra vượt quá yêu cầu chất lượng của khách hàng?", options: optionsTemplate }
     ],
 
-    // Phần 2: NỀN FOS Nhóm 1
+    // Phần 2: INVAMAX FOS Nhóm 1
     fosGroup1: [
         { id: "f1", module: "Core", text: "Sự rõ ràng của mục tiêu cốt lõi (Core) và chiến lược dài hạn được truyền đạt xuống xưởng?", options: fosOptionsTemplate },
         { id: "f2", module: "People", text: "Hệ thống đánh giá, đào tạo và giữ chân nhân sự (People) tại nhà máy?", options: fosOptionsTemplate },
@@ -39,7 +39,7 @@ export const questionsData = {
         { id: "f4", module: "Standard", text: "Việc áp dụng và tuân thủ các quy trình thao tác chuẩn (Standard Work) của công nhân?", options: fosOptionsTemplate }
     ],
 
-    // Phần 3: NỀN FOS Nhóm 2
+    // Phần 3: INVAMAX FOS Nhóm 2
     fosGroup2: [
         { id: "f5", module: "Capacity", text: "Khả năng đo lường, phân bổ và tối ưu hóa năng lực thiết bị, máy móc (Capacity)?", options: fosOptionsTemplate },
         { id: "f6", module: "Daily Management", text: "Hiệu quả của các cuộc họp giao ban hàng ngày (Daily Management) tại xưởng?", options: fosOptionsTemplate },
@@ -47,7 +47,7 @@ export const questionsData = {
         { id: "f8", module: "Knowledge", text: "Quá trình lưu trữ, quản trị và kế thừa tri thức (Knowledge), bài học kinh nghiệm?", options: fosOptionsTemplate }
     ],
 
-    // Phần 4: NỀN FOS Nhóm 3
+    // Phần 4: INVAMAX FOS Nhóm 3
     fosGroup3: [
         { id: "f9", module: "Digital", text: "Mức độ ứng dụng số hóa (Digital), phần mềm trong quản lý hiện trường?", options: fosOptionsTemplate },
         { id: "f10", module: "Kaizen", text: "Phong trào cải tiến liên tục (Kaizen) và sự chủ động của cấp quản lý / công nhân?", options: fosOptionsTemplate },

@@ -63,7 +63,7 @@ export function calculateResults(answers) {
         assessmentLevel = "Cần cải tổ nền vận hành";
         generalAssessment = "Hệ thống đang trong tình trạng báo động đỏ. Mọi hoạt động đều mang tính đối phó, rủi ro đứt gãy dây chuyền rất cao.";
         diseases = ["Mất kiểm soát hoàn toàn chất lượng và tiến độ", "Chảy máu dòng tiền do lãng phí khổng lồ", "Mất niềm tin nội bộ, quy trình đứt gãy"];
-        nextSteps = "Lập tức áp dụng hệ điều hành NỀN FOS Premium để đập đi xây lại nền tảng quản trị xưởng.";
+        nextSteps = "Lập tức áp dụng hệ điều hành INVAMAX FOS Premium để đập đi xây lại nền tảng quản trị xưởng.";
     }
 
     // Tìm Top 3
