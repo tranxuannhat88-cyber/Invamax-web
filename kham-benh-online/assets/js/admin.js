@@ -161,7 +161,8 @@ const LS_API_KEY = 'openai_api_key';
 document.addEventListener('DOMContentLoaded', async () => {
     // Load API Key
     const savedKey = localStorage.getItem(LS_API_KEY);
-    if (savedKey) document.getElementById('apiKey').value = savedKey;
+    const apiKeyEl = document.getElementById('apiKey');
+    if (savedKey && apiKeyEl) apiKeyEl.value = savedKey;
 });
 
 function saveApiKey() {
