@@ -1116,7 +1116,7 @@ function renderDetailedReport(json, metadata) {
     // PAGE 6
     html += `
     <div class="a4-page">
-        ${generatePageHeader('6. PHÂN TÍCH NGUYÊN NHÂN & CHUỖI TÁC ĐỘNG', 'Top 3 chuỗi nguyên nhân hệ thống ảnh hưởng lớn nhất đến hiệu suất vận hành', 6, 10)}
+        ${generatePageHeader('PHÂN TÍCH NGUYÊN NHÂN & CHUỖI TÁC ĐỘNG', 'Top 3 chuỗi nguyên nhân hệ thống ảnh hưởng lớn nhất đến hiệu suất vận hành', 6, 10)}
         <div class="a4-content">
             <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 12px; display: flex; align-items: center; margin-bottom: 10px;">
                 <div style="background: #3b82f6; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 12px; flex-shrink: 0;">i</div>
@@ -1370,7 +1370,7 @@ function renderDetailedReport(json, metadata) {
     // PAGE 7 (Ma trận)
     html += `
     <div class="a4-page">
-        ${generatePageHeader('7. MA TRẬN VẤN ĐỀ ƯU TIÊN', 'Xếp hạng các vấn đề theo mức độ tác động và nguồn lực cần thiết để triển khai', 7, 10)}
+        ${generatePageHeader('MA TRẬN VẤN ĐỀ ƯU TIÊN', 'Xếp hạng các vấn đề theo mức độ tác động và nguồn lực cần thiết để triển khai', 7, 10)}
         <div class="a4-content">
             <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 10px 12px; display: flex; align-items: center; margin-bottom: 15px;">
                 <div style="background: #3b82f6; color: white; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 12px; flex-shrink: 0; font-size:12px;">i</div>
@@ -1621,7 +1621,7 @@ function renderDetailedReport(json, metadata) {
     // PAGE 8
     html += `
     <div class="a4-page">
-        ${generatePageHeader('8. KẾ HOẠCH ĐIỀU TRỊ ƯU TIÊN', 'Ba giải pháp ưu tiên nhất - Triển khai trước trong 30-60 ngày', 8, 10)}
+        ${generatePageHeader('KẾ HOẠCH ĐIỀU TRỊ ƯU TIÊN', 'Ba giải pháp ưu tiên nhất - Triển khai trước trong 30-60 ngày', 8, 10)}
         <div class="a4-content">
             <div style="display:flex; gap:15px; height: 100%;">
                 
@@ -1797,7 +1797,7 @@ function renderDetailedReport(json, metadata) {
     // PAGE 9
     html += `
     <div class="a4-page">
-        ${generatePageHeader('9. PHÁC ĐỒ ĐIỀU TRỊ 30-60 NGÀY', 'Lộ trình triển khai theo thứ tự ưu tiên, từ ổn định đến chuẩn hóa.', 9, 10)}
+        ${generatePageHeader('PHÁC ĐỒ ĐIỀU TRỊ 30-60 NGÀY', 'Lộ trình triển khai theo thứ tự ưu tiên, từ ổn định đến chuẩn hóa.', 9, 10)}
         <div class="a4-content">
             <div style="display:flex; gap:15px; margin-bottom: 10px; height: 100%;">
                 
@@ -2007,7 +2007,7 @@ function renderDetailedReport(json, metadata) {
     // PAGE 10
     html += `
     <div class="a4-page">
-        ${generatePageHeader('10. KẾT LUẬN & BƯỚC TIẾP THEO', 'Đồng hành cùng nhà máy kiến tạo vận hành tinh gọn, hiệu suất cao.', 10, 10)}
+        ${generatePageHeader('KẾT LUẬN & BƯỚC TIẾP THEO', 'Đồng hành cùng nhà máy kiến tạo vận hành tinh gọn, hiệu suất cao.', 10, 10)}
         <div class="a4-content">
             <!-- 01 -->
             <div style="margin-bottom: 10px;">
