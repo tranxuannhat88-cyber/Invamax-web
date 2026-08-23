@@ -1,0 +1,85 @@
+<div id="contactModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeContactModal()" style="font-size: 24px; line-height: 1; font-weight: bold;">&times;</button>
+            <h2 style="font-size: 1.5rem; color: var(--primary); margin-bottom: 10px;">Đăng ký tư vấn</h2>
+            <p style="color: #64748b; margin-bottom: 20px; font-size: 0.95rem;">Vui lòng để lại thông tin, chuyên gia INVAMAX sẽ liên hệ lại với bạn.</p>
+            
+            <form id="leadForm" onsubmit="submitForm(event)">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Họ và tên *</label>
+                        <input type="text" name="hoTen" required placeholder="Nguyễn Văn A">
+                    </div>
+                    <div class="form-group">
+                        <label>Chức danh *</label>
+                        <input type="text" name="chucDanh" required placeholder="Giám đốc / Trưởng phòng">
+                    </div>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Số điện thoại *</label>
+                        <input type="tel" name="soDienThoai" required placeholder="0988...">
+                    </div>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" name="email" required placeholder="email@congty.com">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Tên nhà máy / Công ty *</label>
+                    <input type="text" name="tenNhaMay" required placeholder="Công ty TNHH XYZ">
+                </div>
+                
+                <div class="form-group">
+                    <label>Địa chỉ nhà máy *</label>
+                    <input type="text" name="diaChi" required placeholder="KCN abc, Tỉnh xyz...">
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Lĩnh vực sản xuất *</label>
+                        <select name="linhVuc" required>
+                            <option value="">-- Chọn lĩnh vực --</option>
+                            <option value="Gỗ / nội thất">Gỗ / nội thất</option>
+                            <option value="Cơ khí / kim loại">Cơ khí / kim loại</option>
+                            <option value="May mặc / da giày">May mặc / da giày</option>
+                            <option value="Nhựa / cao su">Nhựa / cao su</option>
+                            <option value="Thực phẩm / đồ uống">Thực phẩm / đồ uống</option>
+                            <option value="Điện tử / điện lạnh">Điện tử / điện lạnh</option>
+                            <option value="Vật liệu xây dựng">Vật liệu xây dựng</option>
+                            <option value="Bao bì / in ấn">Bao bì / in ấn</option>
+                            <option value="Khác">Khác</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Quy mô nhân sự *</label>
+                        <select name="quyMo" required>
+                            <option value="">-- Chọn quy mô --</option>
+                            <option value="Dưới 50 người">Dưới 50 người</option>
+                            <option value="50 ~ 100 người">50 ~ 100 người</option>
+                            <option value="101 ~ 200 người">101 ~ 200 người</option>
+                            <option value="Trên 200 người">Trên 200 người</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Nội dung cần tư vấn *</label>
+                    <textarea name="noiDung" rows="3" required placeholder="Mô tả sơ bộ về định hướng, vấn đề hiện tại của nhà máy..."></textarea>
+                </div>
+                
+                <button type="submit" id="btnSubmitForm" class="btn btn-outline" style="width: 100%; margin-top: 10px; transition: all 0.3s ease;">
+                    <i data-lucide="send"></i> Gửi Đề Nghị
+                </button>
+            </form>
+            
+            <div id="formSuccess" style="display: none; text-align: center; padding: 30px 0;">
+                <i data-lucide="check-circle" style="color: #22c55e; width: 64px; height: 64px; margin-bottom: 15px; margin: 0 auto;"></i>
+                <h3 style="color: #16a34a; font-size: 1.3rem; margin-top: 15px;">Gửi thành công!</h3>
+                <p style="color: #475569; margin-top: 10px;">Cảm ơn bạn. Chuyên gia INVAMAX sẽ sớm liên hệ lại.</p>
+                <button type="button" class="btn btn-outline" style="margin-top: 20px; transition: all 0.3s ease;" onclick="closeContactModal()">Đóng cửa sổ</button>
+            </div>
+        </div>
+    </div>

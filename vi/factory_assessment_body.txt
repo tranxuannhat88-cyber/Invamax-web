@@ -1,0 +1,317 @@
+</nav>
+
+    <!-- 01. Phần mở đầu -->
+    <section class="hero" style="padding: 120px 0 80px; position: relative; overflow: hidden; ">
+        <div class="container" style="max-width: 1200px;">
+            <div style="text-align: center;">
+                <div class="tag" style="display: inline-block; padding: 6px 16px; background: rgba(255, 102, 0, 0.1); color: var(--primary); border: 1px solid rgba(255, 102, 0, 0.2); border-radius: 20px; font-size: 0.9rem; font-weight: 600; margin-bottom: 20px;">ĐÁNH GIÁ NĂNG LỰC NHÀ MÁY</div>
+                <h1 style="font-size: 3.5rem; line-height: 1.2; margin-bottom: 25px; letter-spacing: -1px;">Hiểu đúng năng lực hiện tại trước khi quyết định bước tiếp theo</h1>
+                <p style="font-size: 1.2rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 30px; max-width: 900px; margin-left: auto; margin-right: auto;">INVAMAX giúp doanh nghiệp đánh giá có cấu trúc về năng lực vận hành, mức độ trưởng thành, khoảng trống và rủi ro của nhà máy để xác định đúng những vấn đề cần ưu tiên.</p>
+                <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: var(--radius-md); border-left: 3px solid var(--primary); margin-bottom: 40px; text-align: left; max-width: 900px; margin-left: auto; margin-right: auto;">
+                    <p style="margin: 0; color: var(--text-light); font-size: 1.05rem;">Không chỉ tìm xem nhà máy đang có vấn đề gì. Quan trọng hơn là <strong style="color: white;">hiểu vì sao vấn đề đó tồn tại và hệ thống đang thiếu năng lực nào.</strong></p>
+                </div>
+                <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                    <a href="#" class="btn btn-primary" onclick="document.getElementById('assessmentModal').style.display='block'; return false;">Bắt đầu Đánh giá</a>
+                    <a href="#" class="btn btn-outline" style="border: 1px solid rgba(255, 102, 0, 0.3);" onclick="document.getElementById('contactModal').style.display='block'; return false;">Trao đổi với INVAMAX</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 02. Khi nào doanh nghiệp cần đánh giá -->
+    <section class="site-section">
+        <div class="container" style="max-width: 1200px;">
+            <div class="section-header text-center" style="margin: 0 auto 50px;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Khi doanh nghiệp cần một bức tranh rõ hơn về năng lực thực tế</h2>
+                <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; max-width: 900px; margin-left: auto; margin-right: auto;">Đánh giá đặc biệt hữu ích khi doanh nghiệp biết rằng nhà máy cần cải thiện nhưng chưa chắc vấn đề gốc nằm ở đâu, hoặc khi cần một góc nhìn có cấu trúc trước một quyết định quan trọng.</p>
+            </div>
+            
+            <div class="grid-2">
+                <div class="card" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 30px; border-radius: var(--radius-lg);">
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 15px; display: flex; align-items: flex-start;"><i data-lucide="help-circle" style="color: var(--primary); margin-right: 12px; flex-shrink: 0; margin-top: 2px; width: 20px; height: 20px;"></i>Hiệu quả vận hành chưa đạt kỳ vọng nhưng nguyên nhân chưa rõ.</li>
+                        <li style="margin-bottom: 15px; display: flex; align-items: flex-start;"><i data-lucide="help-circle" style="color: var(--primary); margin-right: 12px; flex-shrink: 0; margin-top: 2px; width: 20px; height: 20px;"></i>Nhiều vấn đề xuất hiện đồng thời và khó xác định thứ tự ưu tiên.</li>
+                        <li style="margin-bottom: 0; display: flex; align-items: flex-start;"><i data-lucide="help-circle" style="color: var(--primary); margin-right: 12px; flex-shrink: 0; margin-top: 2px; width: 20px; height: 20px;"></i>Doanh nghiệp chuẩn bị mở rộng quy mô, tăng sản lượng hoặc thay đổi sản phẩm.</li>
+                    </ul>
+                </div>
+                <div class="card" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 30px; border-radius: var(--radius-lg);">
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 15px; display: flex; align-items: flex-start;"><i data-lucide="help-circle" style="color: var(--primary); margin-right: 12px; flex-shrink: 0; margin-top: 2px; width: 20px; height: 20px;"></i>Đã triển khai Lean, phần mềm hoặc các chương trình cải tiến nhưng kết quả chưa bền vững.</li>
+                        <li style="margin-bottom: 15px; display: flex; align-items: flex-start;"><i data-lucide="help-circle" style="color: var(--primary); margin-right: 12px; flex-shrink: 0; margin-top: 2px; width: 20px; height: 20px;"></i>Ban lãnh đạo cần một góc nhìn độc lập trước khi quyết định chương trình chuyển đổi hoặc đầu tư.</li>
+                        <li style="margin-bottom: 0; display: flex; align-items: flex-start;"><i data-lucide="help-circle" style="color: var(--primary); margin-right: 12px; flex-shrink: 0; margin-top: 2px; width: 20px; height: 20px;"></i>Doanh nghiệp cần đánh giá năng lực của một nhà cung cấp trước hoặc trong quá trình hợp tác.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px; max-width: 850px; margin-left: auto; margin-right: auto;">
+                <p style="font-size: 1.15rem; color: white; font-weight: 500;">Đánh giá tốt giúp doanh nghiệp tránh cải tiến sai vấn đề, đầu tư sai chỗ hoặc xử lý triệu chứng thay vì nguyên nhân.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 03. INVAMAX đánh giá những gì -->
+    <section class="site-section" >
+        <div class="container" style="max-width: 1200px;">
+            <div class="section-header text-center" style="margin: 0 auto 50px;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Đánh giá không chỉ là kiểm tra công suất</h2>
+                <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; max-width: 900px; margin-left: auto; margin-right: auto;">INVAMAX nhìn nhà máy như một hệ thống vận hành tổng thể, từ cách tổ chức, sản xuất và chất lượng đến dữ liệu, cải tiến và khả năng phát triển.</p>
+            </div>
+            
+            <div class="grid-4" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                <div class="card" style="background: rgba(255,255,255,0.02); border-top: 3px solid var(--primary); padding: 25px; border-radius: 0 0 var(--radius-md) var(--radius-md);">
+                    <h3 style="font-size: 1.15rem; margin-bottom: 10px;">1. Tổ chức &amp; Cơ chế điều hành</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;">Cơ cấu, vai trò, trách nhiệm, KPI và nhịp quản trị.</p>
+                </div>
+                <div class="card" style="background: rgba(255,255,255,0.02); border-top: 3px solid var(--primary); padding: 25px; border-radius: 0 0 var(--radius-md) var(--radius-md);">
+                    <h3 style="font-size: 1.15rem; margin-bottom: 10px;">2. Sản xuất &amp; Dòng chảy</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;">Năng lực sản xuất, điểm nghẽn, dòng chảy, WIP và mức độ ổn định của quá trình.</p>
+                </div>
+                <div class="card" style="background: rgba(255,255,255,0.02); border-top: 3px solid var(--primary); padding: 25px; border-radius: 0 0 var(--radius-md) var(--radius-md);">
+                    <h3 style="font-size: 1.15rem; margin-bottom: 10px;">3. Kế hoạch &amp; Năng lực</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;">Cách lập kế hoạch, cân đối nhu cầu và năng lực thực tế.</p>
+                </div>
+                <div class="card" style="background: rgba(255,255,255,0.02); border-top: 3px solid var(--primary); padding: 25px; border-radius: 0 0 var(--radius-md) var(--radius-md);">
+                    <h3 style="font-size: 1.15rem; margin-bottom: 10px;">4. Chất lượng</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;">Khả năng kiểm soát lỗi, xử lý nguyên nhân gốc và duy trì ổn định.</p>
+                </div>
+                <div class="card" style="background: rgba(255,255,255,0.02); border-top: 3px solid var(--primary); padding: 25px; border-radius: 0 0 var(--radius-md) var(--radius-md);">
+                    <h3 style="font-size: 1.15rem; margin-bottom: 10px;">5. Giao hàng &amp; Tồn kho</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;">Độ tin cậy giao hàng, mức tồn kho và khả năng đáp ứng nhu cầu.</p>
+                </div>
+                <div class="card" style="background: rgba(255,255,255,0.02); border-top: 3px solid var(--primary); padding: 25px; border-radius: 0 0 var(--radius-md) var(--radius-md);">
+                    <h3 style="font-size: 1.15rem; margin-bottom: 10px;">6. Con người &amp; Năng lực tổ chức</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;">Năng lực quản lý, kỹ năng, phối hợp và khả năng duy trì hệ thống.</p>
+                </div>
+                <div class="card" style="background: rgba(255,255,255,0.02); border-top: 3px solid var(--primary); padding: 25px; border-radius: 0 0 var(--radius-md) var(--radius-md);">
+                    <h3 style="font-size: 1.15rem; margin-bottom: 10px;">7. Dữ liệu &amp; Công nghệ</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;">Chất lượng dữ liệu, mức độ số hóa và khả năng sử dụng dữ liệu trong điều hành.</p>
+                </div>
+                <div class="card" style="background: rgba(255,255,255,0.02); border-top: 3px solid var(--primary); padding: 25px; border-radius: 0 0 var(--radius-md) var(--radius-md);">
+                    <h3 style="font-size: 1.15rem; margin-bottom: 10px;">8. Cải tiến &amp; Khả năng phát triển</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;">Khả năng nhận diện vấn đề, cải tiến liên tục và thích ứng khi điều kiện thay đổi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 04. Hai hình thức đánh giá -->
+    <section class="site-section">
+        <div class="container" style="max-width: 1200px;">
+            <div class="section-header text-center" style="margin: 0 auto 50px;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Hai hình thức Đánh giá Năng lực Nhà máy</h2>
+            </div>
+            
+            <div class="grid-2">
+                <!-- Cột 1 -->
+                <div class="card" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 40px; border-radius: var(--radius-lg); display: flex; flex-direction: column;">
+                    <h3 style="font-size: 1.6rem; margin-bottom: 15px; color: var(--primary);">Đánh giá Nhà máy Nội bộ</h3>
+                    <p style="color: var(--text-light); margin-bottom: 25px;">Dành cho doanh nghiệp muốn hiểu rõ điểm mạnh, điểm yếu, khoảng trống năng lực và các ưu tiên cần cải thiện của chính nhà máy mình.</p>
+                    <div style="flex-grow: 1;">
+                        <strong style="display: block; margin-bottom: 12px; color: white;">Phù hợp khi:</strong>
+                        <ul style="list-style: none; padding: 0; margin: 0; color: var(--text-muted);">
+                            <li style="margin-bottom: 10px; display: flex; align-items: center;"><i data-lucide="check" style="color: var(--primary); margin-right: 10px; width: 16px; height: 16px;"></i> cần xác định vấn đề gốc</li>
+                            <li style="margin-bottom: 10px; display: flex; align-items: center;"><i data-lucide="check" style="color: var(--primary); margin-right: 10px; width: 16px; height: 16px;"></i> chuẩn bị chương trình cải tiến</li>
+                            <li style="margin-bottom: 10px; display: flex; align-items: center;"><i data-lucide="check" style="color: var(--primary); margin-right: 10px; width: 16px; height: 16px;"></i> chuẩn bị chuyển đổi mô hình vận hành</li>
+                            <li style="margin-bottom: 10px; display: flex; align-items: center;"><i data-lucide="check" style="color: var(--primary); margin-right: 10px; width: 16px; height: 16px;"></i> chuẩn bị mở rộng quy mô</li>
+                            <li style="margin-bottom: 0; display: flex; align-items: center;"><i data-lucide="check" style="color: var(--primary); margin-right: 10px; width: 16px; height: 16px;"></i> cần một góc nhìn độc lập cho ban lãnh đạo</li>
+                        </ul>
+                    </div>
+                    <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05);">
+                        <strong style="color: white; display: block; margin-bottom: 8px;">Đầu ra:</strong>
+                        <span style="color: var(--text-muted); font-size: 0.95rem;">Bức tranh năng lực hiện tại + Khoảng trống + Ưu tiên hành động</span>
+                    </div>
+                </div>
+                
+                <!-- Cột 2 -->
+                <div class="card" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 40px; border-radius: var(--radius-lg); display: flex; flex-direction: column;">
+                    <h3 style="font-size: 1.6rem; margin-bottom: 15px; color: var(--text-light);">Đánh giá Năng lực Nhà cung cấp</h3>
+                    <p style="color: var(--text-light); margin-bottom: 25px;">Dành cho doanh nghiệp cần đánh giá mức độ đáp ứng, khoảng trống và rủi ro của nhà cung cấp về sản xuất, chất lượng, giao hàng và hệ thống quản trị.</p>
+                    <div style="flex-grow: 1;">
+                        <strong style="display: block; margin-bottom: 12px; color: white;">Phù hợp khi:</strong>
+                        <ul style="list-style: none; padding: 0; margin: 0; color: var(--text-muted);">
+                            <li style="margin-bottom: 10px; display: flex; align-items: center;"><i data-lucide="check" style="color: var(--text-light); margin-right: 10px; width: 16px; height: 16px;"></i> lựa chọn nhà cung cấp mới</li>
+                            <li style="margin-bottom: 10px; display: flex; align-items: center;"><i data-lucide="check" style="color: var(--text-light); margin-right: 10px; width: 16px; height: 16px;"></i> đánh giá nhà cung cấp hiện tại</li>
+                            <li style="margin-bottom: 10px; display: flex; align-items: center;"><i data-lucide="check" style="color: var(--text-light); margin-right: 10px; width: 16px; height: 16px;"></i> chuẩn bị tăng sản lượng</li>
+                            <li style="margin-bottom: 10px; display: flex; align-items: center;"><i data-lucide="check" style="color: var(--text-light); margin-right: 10px; width: 16px; height: 16px;"></i> đánh giá rủi ro chuỗi cung ứng</li>
+                            <li style="margin-bottom: 0; display: flex; align-items: center;"><i data-lucide="check" style="color: var(--text-light); margin-right: 10px; width: 16px; height: 16px;"></i> cần xác định năng lực trước một hợp đồng lớn</li>
+                        </ul>
+                    </div>
+                    <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05);">
+                        <strong style="color: white; display: block; margin-bottom: 8px;">Đầu ra:</strong>
+                        <span style="color: var(--text-muted); font-size: 0.95rem;">Hồ sơ năng lực nhà cung cấp + Khoảng trống + Rủi ro cần lưu ý</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Câu giải thích phạm vi -->
+            <div style="text-align: center; margin-top: 30px;">
+                <p style="color: var(--text-muted); font-size: 1rem; font-style: italic;">Phạm vi và tiêu chí đánh giá được điều chỉnh theo mục tiêu của từng doanh nghiệp, không áp dụng một bộ tiêu chí giống nhau cho mọi trường hợp.</p>
+            </div>
+
+            <!-- Block INVAMAX FA -->
+            <div style="margin-top: 40px; background: rgba(255,102,0,0.03); border: 1px solid rgba(255,102,0,0.15); padding: 25px 30px; border-radius: var(--radius-md); text-align: center;">
+                <h4 style="font-size: 1.1rem; color: var(--primary); margin-bottom: 10px;">Được hỗ trợ bởi INVAMAX FA&trade;</h4>
+                <p style="color: var(--text-light); margin-bottom: 10px; font-size: 1rem;">INVAMAX FA&trade; là khung và bộ công cụ giúp chuẩn hóa cách đánh giá năng lực, mức độ trưởng thành, khoảng trống và rủi ro của nhà máy.</p>
+                <p style="color: var(--text-muted); font-size: 0.9rem; font-style: italic; margin-bottom: 15px;">Khám bệnh nhà máy chỉ là một công cụ bên trong INVAMAX FA&trade;.</p>
+                <a href="../vi/invamax-fa.html" style="color: var(--primary); font-weight: 500; font-size: 0.95rem; text-decoration: underline;">Tìm hiểu thêm về Khung Đánh giá INVAMAX FA&trade;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 05. Khách hàng nhận được gì -->
+    <section class="site-section" >
+        <div class="container" style="max-width: 1200px;">
+            <div class="section-header text-center" style="margin: 0 auto 50px;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Không chỉ là một điểm số đánh giá</h2>
+                <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; max-width: 900px; margin-left: auto; margin-right: auto;">Mục tiêu của đánh giá là giúp doanh nghiệp hiểu rõ nhà máy đang ở đâu và nên làm gì tiếp theo.</p>
+            </div>
+            
+            <div class="grid-3" style="row-gap: 30px; margin-bottom: 50px;">
+                <div class="card" style="background: transparent; padding: 20px;">
+                    <div style="display: flex; align-items: flex-start; margin-bottom: 10px;">
+                        <i data-lucide="check-circle" style="color: var(--primary); width: 22px; height: 22px; margin-right: 12px; margin-top: 2px;"></i>
+                        <p style="color: var(--text-light); font-size: 1.05rem; margin: 0; font-weight: 500;">Bức tranh tổng thể về năng lực hiện tại.</p>
+                    </div>
+                </div>
+                <div class="card" style="background: transparent; padding: 20px;">
+                    <div style="display: flex; align-items: flex-start; margin-bottom: 10px;">
+                        <i data-lucide="check-circle" style="color: var(--primary); width: 22px; height: 22px; margin-right: 12px; margin-top: 2px;"></i>
+                        <p style="color: var(--text-light); font-size: 1.05rem; margin: 0; font-weight: 500;">Các điểm mạnh cần tiếp tục phát huy.</p>
+                    </div>
+                </div>
+                <div class="card" style="background: transparent; padding: 20px;">
+                    <div style="display: flex; align-items: flex-start; margin-bottom: 10px;">
+                        <i data-lucide="check-circle" style="color: var(--primary); width: 22px; height: 22px; margin-right: 12px; margin-top: 2px;"></i>
+                        <p style="color: var(--text-light); font-size: 1.05rem; margin: 0; font-weight: 500;">Các khoảng trống và rủi ro quan trọng.</p>
+                    </div>
+                </div>
+                <div class="card" style="background: transparent; padding: 20px;">
+                    <div style="display: flex; align-items: flex-start; margin-bottom: 10px;">
+                        <i data-lucide="check-circle" style="color: var(--primary); width: 22px; height: 22px; margin-right: 12px; margin-top: 2px;"></i>
+                        <p style="color: var(--text-light); font-size: 1.05rem; margin: 0; font-weight: 500;">Những vấn đề cần ưu tiên xử lý.</p>
+                    </div>
+                </div>
+                <div class="card" style="background: transparent; padding: 20px;">
+                    <div style="display: flex; align-items: flex-start; margin-bottom: 10px;">
+                        <i data-lucide="check-circle" style="color: var(--primary); width: 22px; height: 22px; margin-right: 12px; margin-top: 2px;"></i>
+                        <p style="color: var(--text-light); font-size: 1.05rem; margin: 0; font-weight: 500;">Mối liên hệ giữa các vấn đề thay vì nhìn từng vấn đề riêng lẻ.</p>
+                    </div>
+                </div>
+                <div class="card" style="background: transparent; padding: 20px;">
+                    <div style="display: flex; align-items: flex-start; margin-bottom: 10px;">
+                        <i data-lucide="check-circle" style="color: var(--primary); width: 22px; height: 22px; margin-right: 12px; margin-top: 2px;"></i>
+                        <p style="color: var(--text-light); font-size: 1.05rem; margin: 0; font-weight: 500;">Đề xuất hướng hành động phù hợp với mức độ vấn đề.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Block Logic Hành động -->
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 30px; border-radius: var(--radius-lg); max-width: 900px; margin: 0 auto 50px;">
+                <h4 style="font-size: 1.1rem; color: white; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;">Bước tiếp theo sau đánh giá</h4>
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 12px;">
+                        <span style="color: var(--text-light);">Nếu vấn đề cụ thể</span>
+                        <i data-lucide="arrow-right" style="width: 16px; height: 16px; color: var(--border-color); margin: 0 15px;"></i>
+                        <a href="../vi/focused-improvement.html" style="color: var(--primary); font-weight: 500; text-decoration: none; text-align: right; min-width: 250px;">Cải tiến Trọng điểm</a>
+                    </div>
+                    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 12px;">
+                        <span style="color: var(--text-light);">Nếu khoảng trống mang tính hệ thống</span>
+                        <i data-lucide="arrow-right" style="width: 16px; height: 16px; color: var(--border-color); margin: 0 15px;"></i>
+                        <a href="../vi/factory-transformation.html" style="color: var(--primary); font-weight: 500; text-decoration: none; text-align: right; min-width: 250px;">Chuyển đổi Mô hình Vận hành</a>
+                    </div>
+                    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 12px;">
+                        <span style="color: var(--text-light);">Nếu doanh nghiệp thiếu năng lực điều hành</span>
+                        <i data-lucide="arrow-right" style="width: 16px; height: 16px; color: var(--border-color); margin: 0 15px;"></i>
+                        <a href="../vi/operate-transform.html" style="color: var(--primary); font-weight: 500; text-decoration: none; text-align: right; min-width: 250px;">Điều hành Nhà máy</a>
+                    </div>
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <span style="color: var(--text-light);">Nếu nhu cầu tập trung vào công nghệ</span>
+                        <i data-lucide="arrow-right" style="width: 16px; height: 16px; color: var(--border-color); margin: 0 15px;"></i>
+                        <a href="../vi/digital-ai.html" style="color: var(--primary); font-weight: 500; text-decoration: none; text-align: right; min-width: 250px;">Digital &amp; AI cho Sản xuất</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center;">
+                <p style="font-size: 1.15rem; color: white; font-weight: 500; font-style: italic; max-width: 800px; margin: 0 auto;">"Đầu ra quan trọng nhất không phải là điểm số. Đó là khả năng nhìn rõ điều gì đang giới hạn hiệu quả của nhà máy và nên ưu tiên thay đổi ở đâu."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 06. Cách INVAMAX triển khai -->
+    <section class="site-section">
+        <div class="container" style="max-width: 1200px;">
+            <div class="section-header text-center" style="margin: 0 auto 50px;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Từ dữ liệu thực tế đến ưu tiên hành động</h2>
+            </div>
+            
+            <div class="grid-2">
+                <!-- Bước 1 -->
+                <div class="card" style="background: rgba(255,255,255,0.02); border-top: 3px solid var(--primary); padding: 30px; border-radius: 0 0 var(--radius-lg) var(--radius-lg); display: flex; flex-direction: column;">
+                    <div style="display: flex; align-items: baseline; gap: 15px; margin-bottom: 15px;">
+                        <span style="font-size: 2rem; color: rgba(255,255,255,0.1); font-weight: 800; line-height: 1;">01</span>
+                        <h3 style="font-size: 1.3rem; margin: 0;">Xác định Phạm vi</h3>
+                    </div>
+                    <p style="color: var(--text-muted); margin-bottom: 20px; flex-grow: 1;">Làm rõ mục tiêu đánh giá, phạm vi nhà máy và những quyết định doanh nghiệp cần hỗ trợ.</p>
+                    <div style="padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.05);">
+                        <div style="font-weight: 500; color: var(--primary);">Đầu ra: Phạm vi và tiêu chí đánh giá</div>
+                    </div>
+                </div>
+
+                <!-- Bước 2 -->
+                <div class="card" style="background: rgba(255,255,255,0.02); border-top: 3px solid var(--primary); padding: 30px; border-radius: 0 0 var(--radius-lg) var(--radius-lg); display: flex; flex-direction: column;">
+                    <div style="display: flex; align-items: baseline; gap: 15px; margin-bottom: 15px;">
+                        <span style="font-size: 2rem; color: rgba(255,255,255,0.1); font-weight: 800; line-height: 1;">02</span>
+                        <h3 style="font-size: 1.3rem; margin: 0;">Thu thập &amp; Quan sát</h3>
+                    </div>
+                    <p style="color: var(--text-muted); margin-bottom: 20px; flex-grow: 1;">Thu thập dữ liệu, xem xét tài liệu, trao đổi với đội ngũ và quan sát cách nhà máy thực sự vận hành.</p>
+                    <div style="padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.05);">
+                        <div style="font-size: 0.9rem; color: var(--text-light); font-style: italic;">Không chỉ dựa vào tài liệu hoặc câu trả lời trên biểu mẫu.</div>
+                    </div>
+                </div>
+
+                <!-- Bước 3 -->
+                <div class="card" style="background: rgba(255,255,255,0.02); border-top: 3px solid var(--primary); padding: 30px; border-radius: 0 0 var(--radius-lg) var(--radius-lg); display: flex; flex-direction: column;">
+                    <div style="display: flex; align-items: baseline; gap: 15px; margin-bottom: 15px;">
+                        <span style="font-size: 2rem; color: rgba(255,255,255,0.1); font-weight: 800; line-height: 1;">03</span>
+                        <h3 style="font-size: 1.3rem; margin: 0;">Phân tích &amp; Đánh giá</h3>
+                    </div>
+                    <p style="color: var(--text-muted); margin-bottom: 20px; flex-grow: 1;">Phân tích năng lực, khoảng trống, điểm nghẽn, rủi ro và mối liên hệ giữa các vấn đề.</p>
+                    <div style="padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.05);">
+                        <div style="font-weight: 500; color: var(--primary);">Đầu ra: Hồ sơ năng lực + Các khoảng trống chính</div>
+                    </div>
+                </div>
+
+                <!-- Bước 4 -->
+                <div class="card" style="background: rgba(255,255,255,0.02); border-top: 3px solid var(--primary); padding: 30px; border-radius: 0 0 var(--radius-lg) var(--radius-lg); display: flex; flex-direction: column;">
+                    <div style="display: flex; align-items: baseline; gap: 15px; margin-bottom: 15px;">
+                        <span style="font-size: 2rem; color: rgba(255,255,255,0.1); font-weight: 800; line-height: 1;">04</span>
+                        <h3 style="font-size: 1.3rem; margin: 0;">Kết luận &amp; Ưu tiên</h3>
+                    </div>
+                    <p style="color: var(--text-muted); margin-bottom: 20px; flex-grow: 1;">Trình bày kết quả, làm rõ nguyên nhân chính và xác định những ưu tiên nên thực hiện tiếp theo.</p>
+                    <div style="padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.05);">
+                        <div style="font-weight: 500; color: var(--primary);">Đầu ra: Báo cáo đánh giá + Ưu tiên hành động</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 07. Kêu gọi hành động cuối trang -->
+    <section class="cta-section" style="padding: 80px 0;  text-align: center; border-top: 1px solid rgba(255,102,0,0.2);">
+        <div class="container" style="max-width: 1200px;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Chưa chắc vấn đề thực sự nằm ở đâu?</h2>
+            <p style="font-size: 1.15rem; color: var(--text-muted); margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.6;">Hãy bắt đầu bằng một đánh giá có cấu trúc để hiểu rõ năng lực hiện tại, những khoảng trống quan trọng và bước đi phù hợp tiếp theo.</p>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 30px;">
+                <a href="#" class="btn btn-primary" onclick="document.getElementById('assessmentModal').style.display='block'; return false;">Bắt đầu Đánh giá</a>
+                <a href="#" class="btn btn-outline" style="border: 1px solid rgba(255, 102, 0, 0.3);" onclick="document.getElementById('contactModal').style.display='block'; return false;">Trao đổi với INVAMAX</a>
+            </div>
+            <p style="color: var(--text-light); font-size: 0.95rem; margin: 0;">Nếu đã xác định rõ một vấn đề cụ thể, <a href="../vi/focused-improvement.html" style="color: var(--primary); text-decoration: underline;">Cải tiến Trọng điểm</a> có thể là điểm bắt đầu phù hợp hơn.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- Footer -->
+<!-- Footer -->
+<!-- Footer -->
+<!-- Footer -->

@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>INVAMAX FA™ - Factory Capability Assessment Framework | INVAMAX</title>
+    <meta name="description" content="The Factory Capability Assessment Framework (INVAMAX FA™) developed by INVAMAX, helps businesses measure and position current manufacturing capabilities.">
+    
+    <link rel="canonical" href="https://invamax.com/en/invamax-fa.html">
+    <link rel="alternate" hreflang="vi" href="https://invamax.com/vi/invamax-fa.html">
+    <link rel="alternate" hreflang="en" href="https://invamax.com/en/invamax-fa.html">
+    <link rel="alternate" hreflang="x-default" href="https://invamax.com/en/invamax-fa.html">
+
+    
+    <meta property="og:title" content="INVAMAX FA™ - Factory Capability Assessment Framework | INVAMAX">
+    <meta property="og:description" content="The Factory Capability Assessment Framework (INVAMAX FA™) developed by INVAMAX, helps businesses measure and position current manufacturing capabilities.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://invamax.com/en/invamax-fa.html">
+    <meta property="og:image" content="https://invamax.com/assets/images/logo.png">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="INVAMAX FA™ - Factory Capability Assessment Framework | INVAMAX">
+    <meta name="twitter:description" content="The Factory Capability Assessment Framework (INVAMAX FA™) developed by INVAMAX, helps businesses measure and position current manufacturing capabilities.">
+    <meta name="twitter:image" content="https://invamax.com/assets/images/logo.png">
+    
+    
+    
+    
+    <link rel="stylesheet" href="../assets/css/style.css?v=3">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for the new homepage structure */
+        .hero-section {
+            padding: 100px 0 30px 0;
+            position: relative;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        @media (max-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .hero-eyebrow {
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            display: block;
+        }
+        .hero-h1 {
+            font-size: 3rem;
+            line-height: 1.15;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-white);
+            text-wrap: balance;
+        }
+        
+        .hero-desc {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 24px;
+            max-width: 100%;
+        }
+        /* Simulated Hero Image Placeholder */
+        /* Flow under hero */
+        .hero-flow {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding: 16px 24px;
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: var(--radius-lg);
+            background: rgba(255,255,255,0.02);
+        }
+        .flow-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 12px;
+            flex: 1;
+        }
+        .flow-arrow {
+            color: var(--text-white);
+            opacity: 0.9;
+            width: 32px;
+            height: 32px;
+        }
+        @media (max-width: 768px) {
+            .flow-arrow {
+                transform: rotate(90deg);
+            }
+        }
+        /* Solutions Grid: 5 columns */
+        .solutions-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+        }
+        @media (max-width: 1200px) {
+            .solutions-grid-5 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        .solution-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: var(--radius-md);
+            padding: 16px 12px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .solution-card:hover {
+            border-color: rgba(255, 102, 0, 0.8);
+            background: rgba(255,255,255,0.05);
+            box-shadow: 0 8px 32px rgba(255, 102, 0, 0.15), 0 0 0 1px rgba(255, 102, 0, 0.5) inset;
+            transform: translateY(-4px);
+        }
+        .solution-number {
+            color: var(--primary);
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .solution-icon {
+            color: var(--text-white);
+            margin-bottom: 20px;
+        }
+        .solution-title {
+            color: var(--text-white);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            text-align: center;
+        }
+        .solution-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            flex-grow: 1;
+            margin-bottom: 16px;
+        }
+        .solution-link {
+            color: var(--primary);
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        /* Values Grid */
+        /* Values Grid: 5 columns */
+        .values-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+        }
+        @media (max-width: 1280px) {
+            .values-grid-5 {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+        @media (max-width: 1024px) {
+            .values-grid-5 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .values-grid-5 {
+                grid-template-columns: 1fr;
+            }
+        }
+        .value-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: var(--radius-md);
+            padding: 16px 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .value-card:hover {
+            border-color: rgba(255, 102, 0, 0.8);
+            background: rgba(255,255,255,0.05);
+            box-shadow: 0 8px 32px rgba(255, 102, 0, 0.15), 0 0 0 1px rgba(255, 102, 0, 0.5) inset;
+            transform: translateY(-4px);
+        }
+        .value-title {
+            color: var(--text-white);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        /* Capability Flow */
+        .cap-flow {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-top: 24px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 16px 24px;
+            border-radius: var(--radius-lg);
+        }
+        .cap-flow-box {
+            flex: 1;
+            text-align: center;
+        }
+        .cap-flow-arrow {
+            color: var(--text-white);
+            opacity: 0.9;
+            width: 32px;
+            height: 32px;
+        }
+        @media (max-width: 768px) {
+            .cap-flow-arrow { transform: rotate(90deg); margin: 10px 0;}
+        }
+        /* CTA Cards */
+        .cta-choice-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: var(--radius-md);
+            padding: 16px 12px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .cta-choice-title {
+            color: var(--text-white);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .cap-circle {
+            width: 80px; height: 80px; 
+            border-radius: 50%; 
+            border: 1px solid rgba(255,255,255,0.15); 
+            display: flex; align-items: center; justify-content: center; 
+            margin: 0 auto 20px auto; 
+            background: rgba(255,255,255,0.02);
+            transition: all 0.3s ease;
+        }
+        .value-card:hover .cap-circle {
+            border-color: rgba(255, 102, 0, 0.8);
+            box-shadow: 0 0 20px rgba(255, 102, 0, 0.2), 0 0 0 1px rgba(255, 102, 0, 0.3) inset;
+        }
+        /* Make all Lucide icons thinner */
+        svg.lucide, .lucide {
+            stroke-width: 1px !important;
+        }
+</style>
+<style>
+/* Add specific FA styles here */
+.hover-glow {
+    transition: all 0.3s ease;
+}
+.hover-glow:hover {
+    border-color: rgba(255, 102, 0, 0.8) !important;
+    background: rgba(255,255,255,0.05) !important;
+    box-shadow: 0 8px 32px rgba(255, 102, 0, 0.15), 0 0 0 1px rgba(255, 102, 0, 0.5) inset !important;
+    transform: translateY(-4px);
+}
+.grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+@media (max-width: 1200px) {
+    .grid-5 { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 480px) {
+    .grid-5 { grid-template-columns: 1fr; }
+}
+.text-center {
+    text-align: center;
+    align-items: center;
+}
+.fa-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.fa-number {
+    color: var(--primary);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    opacity: 0.8;
+}
+.fa-title {
+    color: var(--text-white);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+.fa-desc {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+/* Diff List */
+.diff-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.diff-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    padding: 16px 24px;
+    border-radius: var(--radius-md);
+}
+.diff-icon {
+    color: var(--primary);
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+.diff-content h4 {
+    color: var(--text-white);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+.diff-content p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+/* Flow Process */
+.process-flow {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: stretch;
+}
+.process-step {
+    flex: 1;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    padding: 20px;
+    border-radius: var(--radius-md);
+    position: relative;
+}
+.process-arrow {
+    display: flex;
+    align-items: center;
+    color: var(--primary);
+}
+@media (max-width: 1024px) {
+    .process-flow {
+        flex-direction: column;
+    }
+    .process-arrow {
+        transform: rotate(90deg);
+        justify-content: center;
+        margin: 10px 0;
+    }
+}
+/* 3 columns evidence */
+.evidence-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr auto 1.5fr;
+    gap: 12px;
+    align-items: stretch;
+}
+@media (max-width: 1024px) {
+    .evidence-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    .evidence-operator {
+        transform: rotate(90deg);
+        display: flex;
+        justify-content: center;
+    }
+}
+</style>
+    
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://invamax.com/en/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Capabilities"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "INVAMAX FA™ - Factory Capability Assessment Framework",
+          "item": "https://invamax.com/en/invamax-fa.html"
+        }
+      ]
+    }
+    </script>
+    <style>
+        .capability-card-link {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 240px;
+            padding: 32px 16px;
+            text-decoration: none !important;
+            color: inherit !important;
+        }
+    </style>
+
+    <style>
+        @media (max-width: 768px) {
+            h1, h2, h3, .hero-platform h1, .hero-eyebrow, .hero-badge, .badge, .tagline, .card-title, .cta, .nowrap-desktop {
+                white-space: normal !important;
+            }
+        }
+    </style>
+
+<style>
+/* RESTORED MOBILE RULES FOR INVAMAX-FA */
+
+    @media (max-width: 768px) {
+        .hero-flow { flex-direction: column; gap: 16px; }
+        .flow-arrow { transform: rotate(90deg); }
+        .solutions-grid-5 { grid-template-columns: 1fr; }
+        .values-grid-5 { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+        .values-grid-5 { grid-template-columns: 1fr; }
+    }
+    
+</style>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2K5VXNELTZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-2K5VXNELTZ');
+    </script>
+</head>
+
+<body>
+<nav class="navbar">
+        <div class="container">
+            <a href="../en/index.html" class="logo">INVA<span>MAX</span></a>
+            <div class="nav-links">
+                <div class="nav-item"><a href="../en/index.html" class="nav-title" style="color: inherit; text-decoration: none;">Home</a></div>
+                <div class="nav-item">    
+                    <a href="#" class="nav-title" style="color: inherit; text-decoration: none;">Solutions <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i></a>
+                    <div class="nav-dropdown">
+                        <a href="../en/factory-transformation.html">Operating Model Transformation</a>
+                        <a href="../en/operate-transform.html">Factory Operations</a>
+                        <a href="../en/factory-assessment.html">Factory Capability Assessment</a>
+                        <a href="../en/focused-improvement.html">Focused Improvement</a>
+                    <a href="../en/digital-ai.html">Automation, Digitalization &amp; AI</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-title" style="color: inherit; text-decoration: none;">Capabilities <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i></a>
+                    <div class="nav-dropdown">
+                        <a href="../en/invamax-fa.html">INVAMAX FA&trade; <span style="font-weight: normal; opacity: 0.8;">&mdash; Factory Capability Assessment Framework</span></a>
+                        <a href="../en/fos.html">INVAMAX FOS&trade; <span style="font-weight: normal; opacity: 0.8;">&mdash; Factory Management Operating System</span></a>
+                        <a href="../en/lean.html">Lean &amp; Continuous Improvement</a>
+                        <a href="../en/platform.html">INVAMAX Platform <span style="font-weight: normal; opacity: 0.8;">&mdash; Digital Operations Platform</span></a>
+                    </div>
+                </div>
+                <div class="nav-item"><a href="../en/case-studies.html" class="nav-title" style="color: inherit; text-decoration: none;">Case Studies</a></div>
+                <div class="nav-item"><a href="../en/resources.html" class="nav-title" style="color: inherit; text-decoration: none;">Resources</a></div>
+                <div class="nav-item"><a href="../en/about.html" class="nav-title" style="color: inherit; text-decoration: none;">About INVAMAX</a></div>
+                
+                <div style="display: flex; flex-direction: row; align-items: center; gap: 16px; margin-left: 10px;">
+                    <div class="nav-item lang-switcher" style="display: flex; gap: 4px; align-items: center; font-size: 0.8rem;">
+                        <a href="/vi/invamax-fa.html" onclick="switchLanguage('vi');">VI</a>
+                        <span style="color: var(--border-color);">|</span>
+                        <a href="/en/invamax-fa.html" onclick="switchLanguage('en');">EN</a>
+                    </div>
+                    <a href="#" class="btn btn-primary" style="display: none; padding: 4px 14px; border-radius: 20px; font-weight: 600; font-size: 0.8rem;">Login</a>
+                </div>
+            </div>
+            <button class="mobile-menu-btn"><i data-lucide="menu"></i></button>
+        </div>
+    </nav>
+
+<main>
+
+
+    <!-- Hero -->
+    <header class="hero" style="padding: 120px 0 40px; position: relative; overflow: hidden; min-height: auto; display: block;">
+        <div class="container" style="max-width: 1200px;">
+            <div style="text-align: center;">
+                <div class="tag hero-eyebrow" style="display: inline-block; padding: 10px 24px; background: rgba(255, 102, 0, 0.1); color: var(--primary); border: 1px solid rgba(255, 102, 0, 0.2); border-radius: 40px; font-size: 1.8rem; font-weight: 600; margin-bottom: 20px; text-transform: uppercase; white-space: nowrap;">INVAMAX FA&trade; &mdash; FACTORY CAPABILITY ASSESSMENT FRAMEWORK</div>
+                <h1 style="font-size: 3.5rem; line-height: 1.2; margin-bottom: 25px; letter-spacing: -1px; max-width: 100%; margin-left: auto; margin-right: auto; text-wrap: unset;"><span style="white-space: nowrap;">Assess capability accurately. Identify gaps clearly.</span><br class="nowrap-desktop"> <span style="white-space: nowrap;">Determine priorities correctly.</span></h1>
+                <p style="font-size: 1.2rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 40px; max-width: 900px; margin-left: auto; margin-right: auto;"><span style="white-space: nowrap;"><strong style="color: white;">INVAMAX Factory Assessment&trade;</strong> is INVAMAX's comprehensive methodology for assessing factory operational capability.</span><br><br>Instead of just inspecting isolated issues, the methodology assesses the factory as <strong style="color: white;">a complete operating system</strong>, from governance foundation to production, data, technology, and continuous improvement capability.</p>
+                
+                <div style="background: rgba(255, 102, 0, 0.05); border: 1px solid rgba(255, 102, 0, 0.2); padding: 30px; margin-bottom: 40px; border-radius: 12px; max-width: 900px; margin-left: auto; margin-right: auto;">
+                    <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 20px; margin-top: 0;">The goal is to answer three questions:</p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 15px; align-items: center; justify-content: center;">
+                        <span style="color: var(--primary); font-weight: 600; font-size: 1.1rem;">Where is the factory currently?</span> <i data-lucide="arrow-right" style="color: rgba(255,255,255,0.3); width: 18px; height: 18px;"></i>
+                        <span style="color: var(--primary); font-weight: 600; font-size: 1.1rem;">What capabilities are missing?</span> <i data-lucide="arrow-right" style="color: rgba(255,255,255,0.3); width: 18px; height: 18px;"></i>
+                        <span style="color: var(--primary); font-weight: 600; font-size: 1.1rem;">What changes need to be prioritized?</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="site-section" style="padding-top: 60px; padding-bottom: 40px;">
+        <div class="container">
+            <div class="section-header text-center" style="max-width: 1000px; margin: 0 auto 50px;">
+                <h2 class="section-heading" style="font-size: 2.2rem; margin-bottom: 15px;">What does INVAMAX Factory Assessment&trade; evaluate?</h2>
+            </div>
+            
+            <div class="grid-4" style="margin-bottom: 0;">
+                <div style="flex: 0 1 calc(25% - 25px); min-width: 260px; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 30px; border-top: 3px solid var(--primary);">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 15px;">
+                        <i data-lucide="layers" style="color: var(--primary); width: 28px; height: 28px; flex-shrink: 0;"></i>
+                        <h3 style="font-size: 1.15rem; margin: 0; color: white; line-height: 1.3;">Governance Foundation</h3>
+                    </div>
+                    <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 20px;">Evaluate the clarity and effectiveness of the enterprise management foundation.</p>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="display: flex; align-items: flex-start; margin-bottom: 10px; line-height: 1.5;"><span style="color: var(--primary); margin-right: 10px;">&bull;</span> <span style="color: var(--text-muted);">Strategy and objectives</span></li><li style="display: flex; align-items: flex-start; margin-bottom: 10px; line-height: 1.5;"><span style="color: var(--primary); margin-right: 10px;">&bull;</span> <span style="color: var(--text-muted);">Organizational structure and responsibilities</span></li><li style="display: flex; align-items: flex-start; margin-bottom: 10px; line-height: 1.5;"><span style="color: var(--primary); margin-right: 10px;">&bull;</span> <span style="color: var(--text-muted);">People and team capabilities</span></li><li style="display: flex; align-items: flex-start; margin-bottom: 10px; line-height: 1.5;"><span style="color: var(--primary); margin-right: 10px;">&bull;</span> <span style="color: var(--text-muted);">Standard work</span></li>
+                    </ul>
+                </div>
+                <div style="flex: 0 1 calc(25% - 25px); min-width: 260px; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 30px; border-top: 3px solid var(--primary);">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 15px;">
+                        <i data-lucide="factory" style="color: var(--primary); width: 28px; height: 28px; flex-shrink: 0;"></i>
+                        <h3 style="font-size: 1.15rem; margin: 0; color: white; line-height: 1.3;">Factory Operations</h3>
+                    </div>
+                    <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 20px;">Evaluate the ability to convert customer demand into products stably, quickly, and efficiently.</p>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="display: flex; align-items: flex-start; margin-bottom: 10px; line-height: 1.5;"><span style="color: var(--primary); margin-right: 10px;">&bull;</span> <span style="color: var(--text-muted);">Production flow and factory layout</span></li><li style="display: flex; align-items: flex-start; margin-bottom: 10px; line-height: 1.5;"><span style="color: var(--primary); margin-right: 10px;">&bull;</span> <span style="color: var(--text-muted);">Capabilities and production planning</span></li><li style="display: flex; align-items: flex-start; margin-bottom: 10px; line-height: 1.5;"><span style="color: var(--primary); margin-right: 10px;">&bull;</span> <span style="color: var(--text-muted);">Daily management</span></li><li style="display: flex; align-items: flex-start; margin-bottom: 10px; line-height: 1.5;"><span style="color: var(--primary); margin-right: 10px;">&bull;</span> <span style="color: var(--text-muted);">Quality</span></li><li style="display: flex; align-items: flex-start; margin-bottom: 10px; line-height: 1.5;"><span style="color: var(--primary); margin-right: 10px;">&bull;</span> <span style="color: var(--text-muted);">Productivity, inventory, delivery, and bottlenecks</span></li>
+                    </ul>
+                </div>
+                <div style="flex: 0 1 calc(25% - 25px); min-width: 260px; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 30px; border-top: 3px solid var(--primary);">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 15px;">
+                        <i data-lucide="database" style="color: var(--primary); width: 28px; height: 28px; flex-shrink: 0;"></i>
+                        <h3 style="font-size: 1.15rem; margin: 0; color: white; line-height: 1.3;">Knowledge, Data, and Digitalization</h3>
+                    </div>
+                    <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 20px;">Evaluate the ability to use information and technology to support operations.</p>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="display: flex; align-items: flex-start; margin-bottom: 10px; line-height: 1.5;"><span style="color: var(--primary); margin-right: 10px;">&bull;</span> <span style="color: var(--text-muted);">Knowledge management</span></li><li style="display: flex; align-items: flex-start; margin-bottom: 10px; line-height: 1.5;"><span style="color: var(--primary); margin-right: 10px;">&bull;</span> <span style="color: var(--text-muted);">Ability to collect and utilize data</span></li><li style="display: flex; align-items: flex-start; margin-bottom: 10px; line-height: 1.5;"><span style="color: var(--primary); margin-right: 10px;">&bull;</span> <span style="color: var(--text-muted);">Level of visual management and information transparency</span></li><li style="display: flex; align-items: flex-start; margin-bottom: 10px; line-height: 1.5;"><span style="color: var(--primary); margin-right: 10px;">&bull;</span> <span style="color: var(--text-muted);">Digitalization, automation, and AI application</span></li>
+                    </ul>
+                </div>
+                <div style="flex: 0 1 calc(25% - 25px); min-width: 260px; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 30px; border-top: 3px solid var(--primary);">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 15px;">
+                        <i data-lucide="refresh-cw" style="color: var(--primary); width: 28px; height: 28px; flex-shrink: 0;"></i>
+                        <h3 style="font-size: 1.15rem; margin: 0; color: white; line-height: 1.3;">Continuous Improvement and Sustainment</h3>
+                    </div>
+                    <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 20px;">Evaluate the ability to self-detect issues, solve them, and upgrade the system over time.</p>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="display: flex; align-items: flex-start; margin-bottom: 10px; line-height: 1.5;"><span style="color: var(--primary); margin-right: 10px;">&bull;</span> <span style="color: var(--text-muted);">Problem solving</span></li><li style="display: flex; align-items: flex-start; margin-bottom: 10px; line-height: 1.5;"><span style="color: var(--primary); margin-right: 10px;">&bull;</span> <span style="color: var(--text-muted);">Kaizen and continuous improvement</span></li><li style="display: flex; align-items: flex-start; margin-bottom: 10px; line-height: 1.5;"><span style="color: var(--primary); margin-right: 10px;">&bull;</span> <span style="color: var(--text-muted);">Standardization after improvement</span></li><li style="display: flex; align-items: flex-start; margin-bottom: 10px; line-height: 1.5;"><span style="color: var(--primary); margin-right: 10px;">&bull;</span> <span style="color: var(--text-muted);">Ability to sustain the system</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="site-section" style="padding-top: 40px; padding-bottom: 60px;">
+        <div class="container">
+            <div class="section-header text-center" style="max-width: 1000px; margin: 0 auto 50px;">
+                <h2 class="section-heading" style="font-size: 2.5rem; margin-bottom: 15px;">Value Delivered to the Enterprise</h2>
+            </div>
+            
+            <div class="grid-3" style="margin-bottom: 0;">
+                <div class="card" style="background: rgba(255, 102, 0, 0.02); border: 1px solid rgba(255, 102, 0, 0.1); border-radius: 16px; padding: 30px; box-shadow: inset 0 0 20px rgba(255, 102, 0, 0.03);">
+                    <div style="display: flex; align-items: flex-start; gap: 15px; margin-bottom: 15px;">
+                        <i data-lucide="layout" style="color: var(--primary); width: 28px; height: 28px; flex-shrink: 0; margin-top: 2px;"></i>
+                        <h3 style="font-size: 1.25rem; color: white; margin: 0; line-height: 1.3;">A comprehensive picture of current capabilities</h3>
+                    </div>
+                    <div style="color: var(--text-muted); line-height: 1.6; margin: 0;">Leadership can see where the factory is strong, where it is weak, and what points are limiting efficiency or growth potential.</div>
+                </div>
+                <div class="card" style="background: rgba(255, 102, 0, 0.02); border: 1px solid rgba(255, 102, 0, 0.1); border-radius: 16px; padding: 30px; box-shadow: inset 0 0 20px rgba(255, 102, 0, 0.03);">
+                    <div style="display: flex; align-items: flex-start; gap: 15px; margin-bottom: 15px;">
+                        <i data-lucide="bar-chart-2" style="color: var(--primary); width: 28px; height: 28px; flex-shrink: 0; margin-top: 2px;"></i>
+                        <h3 style="font-size: 1.25rem; color: white; margin: 0; line-height: 1.3;">Identify capability gaps</h3>
+                    </div>
+                    <div style="color: var(--text-muted); line-height: 1.6; margin: 0;">Compare <strong style="color: white;">current capabilities</strong> with <strong style="color: white;">required capabilities</strong> to meet business goals or the desired operating model.</div>
+                </div>
+                <div class="card" style="background: rgba(255, 102, 0, 0.02); border: 1px solid rgba(255, 102, 0, 0.1); border-radius: 16px; padding: 30px; box-shadow: inset 0 0 20px rgba(255, 102, 0, 0.03);">
+                    <div style="display: flex; align-items: flex-start; gap: 15px; margin-bottom: 15px;">
+                        <i data-lucide="crosshair" style="color: var(--primary); width: 28px; height: 28px; flex-shrink: 0; margin-top: 2px;"></i>
+                        <h3 style="font-size: 1.25rem; color: white; margin: 0; line-height: 1.3;">Determine the right improvement priorities</h3>
+                    </div>
+                    <div style="color: var(--text-muted); line-height: 1.6; margin: 0;">Do not try to improve everything at once. INVAMAX helps identify issues and capabilities that need priority because they have the greatest impact on results.</div>
+                </div>
+                <div class="card" style="background: rgba(255, 102, 0, 0.02); border: 1px solid rgba(255, 102, 0, 0.1); border-radius: 16px; padding: 30px; box-shadow: inset 0 0 20px rgba(255, 102, 0, 0.03);">
+                    <div style="display: flex; align-items: flex-start; gap: 15px; margin-bottom: 15px;">
+                        <i data-lucide="briefcase" style="color: var(--primary); width: 28px; height: 28px; flex-shrink: 0; margin-top: 2px;"></i>
+                        <h3 style="font-size: 1.25rem; color: white; margin: 0; line-height: 1.3;">Basis for restructuring and investment decisions</h3>
+                    </div>
+                    <div style="color: var(--text-muted); line-height: 1.6; margin: 0;">The assessment results provide leaders with a basis when deciding on:<div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 15px; font-size: 0.85rem; color: var(--primary); font-weight: 500;"><span>Restructuring</span> <i data-lucide="arrow-right" style="width:12px; height:12px; color:rgba(255,255,255,0.3);"></i> <span>Expansion</span> <i data-lucide="arrow-right" style="width:12px; height:12px; color:rgba(255,255,255,0.3);"></i> <span>Equipment investment</span> <i data-lucide="arrow-right" style="width:12px; height:12px; color:rgba(255,255,255,0.3);"></i> <span>Reorganization</span> <i data-lucide="arrow-right" style="width:12px; height:12px; color:rgba(255,255,255,0.3);"></i> <span>Digitalization</span> <i data-lucide="arrow-right" style="width:12px; height:12px; color:rgba(255,255,255,0.3);"></i> <span>Operating model transformation</span></div></div>
+                </div>
+                <div class="card" style="background: rgba(255, 102, 0, 0.02); border: 1px solid rgba(255, 102, 0, 0.1); border-radius: 16px; padding: 30px; box-shadow: inset 0 0 20px rgba(255, 102, 0, 0.03);">
+                    <div style="display: flex; align-items: flex-start; gap: 15px; margin-bottom: 15px;">
+                        <i data-lucide="shield-check" style="color: var(--primary); width: 28px; height: 28px; flex-shrink: 0; margin-top: 2px;"></i>
+                        <h3 style="font-size: 1.25rem; color: white; margin: 0; line-height: 1.3;">Basis for assessing suppliers or investment targets</h3>
+                    </div>
+                    <div style="color: var(--text-muted); line-height: 1.6; margin: 0;">The methodology can also be used to objectively assess a factory's operational capability before <strong style="color: white;">ordering, partnering, increasing volume, or investing</strong>.</div>
+                </div>
+                <div class="card" style="background: rgba(255, 102, 0, 0.02); border: 1px solid rgba(255, 102, 0, 0.1); border-radius: 16px; padding: 30px; box-shadow: inset 0 0 20px rgba(255, 102, 0, 0.03);">
+                    <div style="display: flex; align-items: flex-start; gap: 15px; margin-bottom: 15px;">
+                        <i data-lucide="map" style="color: var(--primary); width: 28px; height: 28px; flex-shrink: 0; margin-top: 2px;"></i>
+                        <h3 style="font-size: 1.25rem; color: white; margin: 0; line-height: 1.3;">Formulate a factory upgrade roadmap</h3>
+                    </div>
+                    <div style="color: var(--text-muted); line-height: 1.6; margin: 0;">The final output is not just a score or assessment report, but:<div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 15px; font-size: 0.85rem; color: var(--primary); font-weight: 500;"><span>Current state</span> <i data-lucide="arrow-right" style="width:12px; height:12px; color:rgba(255,255,255,0.3);"></i> <span>Capability gap</span> <i data-lucide="arrow-right" style="width:12px; height:12px; color:rgba(255,255,255,0.3);"></i> <span>Priorities</span> <i data-lucide="arrow-right" style="width:12px; height:12px; color:rgba(255,255,255,0.3);"></i> <span>Direction for improvement</span> <i data-lucide="arrow-right" style="width:12px; height:12px; color:rgba(255,255,255,0.3);"></i> <span>Transformation roadmap</span></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" style="padding: 80px 0; text-align: center; border-top: 1px solid rgba(255,102,0,0.2);">
+        <div class="container" style="max-width: 1200px;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 25px;">From current state assessment to actionable decisions</h2>
+            <p style="font-size: 1.2rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 40px; margin-left: auto; margin-right: auto; max-width: 100%;"><strong style="color: white;">INVAMAX Factory Assessment&trade;</strong> helps transform what is happening on the shop floor into a structured picture so leaders know clearly: where they are, where they need to go, and where to start <span style="white-space: nowrap;">making changes.</span></p>
+            
+            <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+                <a href="../en/factory-assessment.html" class="btn btn-primary">Learn about Factory Capability Assessment <i data-lucide="arrow-right" style="width: 18px; margin-left: 8px;"></i></a>
+                <a href="#" onclick="openContactModal(); return false;" class="btn btn-outline" style="border: 1px solid rgba(255, 102, 0, 0.4);">Talk to INVAMAX</a>
+            </div>
+        </div>
+    </section>
+
+
+</main>
+
+<footer class="site-footer" style="padding: 0 0 30px 0; margin-top: 80px;">
+    <div class="container">
+        <div class="footer-grid" style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 40px;">
+            <!-- Cột 1: Logo -->
+            <div class="footer-col" style="text-align: center;">
+                <div style="margin-bottom: 0;">
+                    <a href="../en/index.html" class="logo" style="display: inline-block; font-size: 2.4rem; line-height: 1; margin-bottom: 5px;">INVA<span>MAX</span></a>
+                </div>
+                <p style="color: var(--text-muted); line-height: 1.6; max-width: 320px; margin: 0 auto;">Factory Operations & Operating Model Transformation Partner</p>
+            <h5 style="color: white; margin-bottom: 16px; margin-top: 32px; font-size: 0.95rem; font-weight: 600;">Connect with us</h5>
+                <div class="social-links" style="display: flex; gap: 8px; justify-content: center;">
+                    <a href="https://www.linkedin.com/in/xuannhattran/" target="_blank" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 54px; height: 54px;    border-radius: 50%; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='#0A66C2'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    </a>
+                    <a href="https://www.youtube.com/@NguoiXayNen" target="_blank" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 54px; height: 54px;    border-radius: 50%; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='#ff0000'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                    </a>
+                    <a href="https://www.facebook.com/invamax.vanhanhtinhgon" target="_blank" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 54px; height: 54px;    border-radius: 50%; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='#1877F2'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                    </a>
+                    <a href="https://zalo.me/0988911869" target="_blank" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 54px; height: 54px;    border-radius: 50%; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='#0068FF'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
+                        <span style="font-size: 11px; font-weight: 800; font-family: 'Inter', sans-serif;">Zalo</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Cột 2: Solutions -->
+            <div class="footer-col">
+                <h4>Solutions</h4>
+                <div class="footer-links">
+                    <a href="../en/factory-transformation.html">Operating Model Transformation</a>
+                    <a href="../en/operate-transform.html">Factory Operations</a>
+                    <a href="../en/factory-assessment.html">Factory Capability Assessment</a>
+                    <a href="../en/focused-improvement.html">Focused Improvement</a>
+                    <a href="../en/digital-ai.html">Automation, Digitalization &amp; AI</a>
+                </div>
+            </div>
+            
+            <!-- Cột 3: Capabilities -->
+            <div class="footer-col">
+                <h4>Capabilities</h4>
+                <div class="footer-links">
+                    <a href="../en/invamax-fa.html">INVAMAX FA&trade;</a>
+                    <a href="../en/fos.html">INVAMAX FOS&trade;</a>
+                    <a href="../en/lean.html" style="white-space: nowrap;">Lean &amp; Continuous Improvement</a>
+                    <a href="../en/platform.html">INVAMAX Platform</a>
+                </div>
+            </div>
+            
+            <!-- Cột 4: Contact -->
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p style="font-weight: 600; color: white; margin-bottom: 16px; font-size: 0.95rem;">INVAMAX INVESTMENT AND DEVELOPMENT CO., LTD</p>
+                <div class="contact-info" style="margin-bottom: 16px;">
+                    <div class="contact-item">
+                        <i data-lucide="file-text"></i>
+                        <span>Tax ID: 0202236953</span>
+                    </div>
+                    <div class="contact-item">
+                        <i data-lucide="phone"></i>
+                        <span>0988.911.869</span>
+                    </div>
+                    <div class="contact-item">
+                        <i data-lucide="mail"></i>
+                        <span>info@invamax.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i data-lucide="map-pin"></i>
+                        <span>Dong Loi Hamlet, Vinh Thinh Commune, Hai Phong, Vietnam</span>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+        
+        <div class="footer-bottom" style="text-align: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 24px; margin-top: 24px;">
+            <p style="color: var(--text-muted);">&copy; 2026 INVAMAX. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+
+    
+    
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeContactModal()" style="font-size: 24px; line-height: 1; font-weight: bold;">&times;</button>
+            <h2 style="font-size: 1.5rem; color: var(--primary); margin-bottom: 10px;">Request a Consultation</h2>
+            <p style="color: #64748b; margin-bottom: 20px; font-size: 0.95rem;">Please leave your information, an INVAMAX expert will contact you shortly.</p>
+            
+            <form id="leadForm" onsubmit="submitForm(event)">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Full Name *</label>
+                        <input type="text" name="hoTen" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label>Job Title *</label>
+                        <input type="text" name="chucDanh" required placeholder="Director / Manager">
+                    </div>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Phone Number *</label>
+                        <input type="tel" name="soDienThoai" required placeholder="0988...">
+                    </div>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" name="email" required placeholder="email@congty.com">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Factory / Company Name *</label>
+                    <input type="text" name="tenNhaMay" required placeholder="XYZ Company Ltd.">
+                </div>
+                
+                <div class="form-group">
+                    <label>Factory Address *</label>
+                    <input type="text" name="diaChi" required placeholder="Industrial Park, Province...">
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Industry *</label>
+                        <select name="linhVuc" required>
+                            <option value="">-- Select Industry --</option>
+                            <option value="Wood / Furniture">Wood / Furniture</option>
+                            <option value="Mechanical / Metal">Mechanical / Metal</option>
+                            <option value="Apparel / Footwear">Apparel / Footwear</option>
+                            <option value="Plastic / Rubber">Plastic / Rubber</option>
+                            <option value="Food / Beverage">Food / Beverage</option>
+                            <option value="Electronics / Refrigeration">Electronics / Refrigeration</option>
+                            <option value="Construction Materials">Construction Materials</option>
+                            <option value="Packaging / Printing">Packaging / Printing</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Company Size *</label>
+                        <select name="quyMo" required>
+                            <option value="">-- Select Size --</option>
+                            <option value="Under 50 employees">Under 50 employees</option>
+                            <option value="50 ~ 100 employees">50 ~ 100 employees</option>
+                            <option value="101 ~ 200 employees">101 ~ 200 employees</option>
+                            <option value="Over 200 employees">Over 200 employees</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Consultation Details *</label>
+                    <textarea name="noiDung" rows="3" required placeholder="Briefly describe your goals or current factory issues..."></textarea>
+                </div>
+                
+                <button type="submit" id="btnSubmitForm" class="btn btn-outline" style="width: 100%; margin-top: 10px; transition: all 0.3s ease;">
+                    <i data-lucide="send"></i> Submit Request
+                </button>
+            </form>
+            
+            <div id="formSuccess" style="display: none; text-align: center; padding: 30px 0;">
+                <i data-lucide="check-circle" style="color: #22c55e; width: 64px; height: 64px; margin-bottom: 15px; margin: 0 auto;"></i>
+                <h3 style="color: #16a34a; font-size: 1.3rem; margin-top: 15px;">Submitted successfully!</h3>
+                <p style="color: #475569; margin-top: 10px;">Thank you. An INVAMAX expert will contact you shortly.</p>
+                <button type="button" class="btn btn-outline" style="margin-top: 20px; transition: all 0.3s ease;" onclick="closeContactModal()">Close Window</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        lucide.createIcons({ attrs: { "stroke-width": 1 } });
+        
+        // Modal functionality
+        window.onclick = function(event) {
+            var modal = document.getElementById('contactModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>INVAMAX Platform - Nền tảng Vận hành Số Nhà máy | INVAMAX</title>
+    <meta name="description" content="Nền tảng công nghệ INVAMAX Platform giúp số hóa quy trình, quản trị dữ liệu thời gian thực và tự động hóa các tác vụ lặp lại.">
+    
+    <link rel="canonical" href="https://invamax.com/vi/platform.html">
+    <link rel="alternate" hreflang="vi" href="https://invamax.com/vi/platform.html">
+    <link rel="alternate" hreflang="en" href="https://invamax.com/en/platform.html">
+    <link rel="alternate" hreflang="x-default" href="https://invamax.com/en/platform.html">
+    
+    <meta property="og:title" content="INVAMAX Platform - Nền tảng Vận hành Số Nhà máy | INVAMAX">
+    <meta property="og:description" content="Nền tảng công nghệ INVAMAX Platform giúp số hóa quy trình, quản trị dữ liệu thời gian thực và tự động hóa các tác vụ lặp lại.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://invamax.com/vi/platform.html">
+    <meta property="og:image" content="https://invamax.com/assets/images/logo.png">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="INVAMAX Platform - Nền tảng Vận hành Số Nhà máy | INVAMAX">
+    <meta name="twitter:description" content="Nền tảng công nghệ INVAMAX Platform giúp số hóa quy trình, quản trị dữ liệu thời gian thực và tự động hóa các tác vụ lặp lại.">
+    <meta name="twitter:image" content="https://invamax.com/assets/images/logo.png">
+    
+    
+    
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        /* Local Styles for Platform Page */
+        .section-platform {
+            padding: 80px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .hero-platform {
+            padding: 140px 0 80px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .platform-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: var(--radius-md);
+            padding: 32px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+        .platform-card:hover {
+            border-color: rgba(255, 102, 0, 0.4);
+            background: rgba(255,255,255,0.03);
+            transform: translateY(-4px);
+        }
+        .statement-box {
+            padding: 24px 32px;
+            border: 1px solid rgba(255, 102, 0, 0.3);
+            background: rgba(255,255,255,0.02);
+            border-radius: var(--radius-md);
+            text-align: center;
+            margin: 32px auto;
+            max-width: 800px;
+        }
+        .statement-box p {
+            color: var(--text-white);
+            font-weight: 500;
+            margin: 0;
+            font-size: 1.15rem;
+            line-height: 1.6;
+        }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+        .dev-badge {
+            display: inline-block;
+            border: 1px solid rgba(255, 102, 0, 0.4);
+            color: var(--primary);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            background: rgba(255, 102, 0, 0.05);
+            margin-bottom: 24px;
+        }
+        .flow-step-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin: 40px auto 0;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            max-width: 600px;
+        }
+        /* Capability Flow Styles */
+        .cap-step {
+            flex: 1;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: var(--radius-md);
+            padding: 20px 16px;
+            text-align: center;
+        }
+        .cap-step-tag { color: var(--primary); font-size: 0.9rem; font-weight: 700; margin-bottom: 12px; }
+        .cap-step-action { color: var(--text-white); font-size: 1.1rem; font-weight: 600; margin-bottom: 12px; text-transform: uppercase; }
+        .cap-flow-container {
+            display: flex;
+            align-items: stretch;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        .cap-flow-arrow {
+            display: flex;
+            align-items: center;
+            color: rgba(255,255,255,0.2);
+        }
+        /* Vertical Flow (Hero & Section 1) */
+        .v-flow-box {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: var(--radius-sm);
+            padding: 16px;
+            color: var(--text-white);
+            font-weight: 600;
+            letter-spacing: 1px;
+            font-size: 0.95rem;
+            margin: 0 auto;
+            max-width: 280px;
+        }
+        .v-flow-arrow {
+            color: rgba(255,255,255,0.2);
+            font-size: 12px;
+            margin: 12px 0;
+        }
+        @media (max-width: 768px) {
+            .cap-flow-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .cap-flow-arrow {
+                justify-content: center;
+                padding: 8px 0;
+            }
+            .cap-flow-arrow svg {
+                transform: rotate(90deg);
+            }
+        }
+        svg.lucide { stroke-width: 1px !important; }
+    </style>
+    
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Trang chủ",
+          "item": "https://invamax.com/vi/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Năng lực"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "INVAMAX Platform - Nền tảng Vận hành Số Nhà máy",
+          "item": "https://invamax.com/vi/platform.html"
+        }
+      ]
+    }
+    </script>
+    <style>
+        .capability-card-link {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 240px;
+            padding: 32px 16px;
+            text-decoration: none !important;
+            color: inherit !important;
+        }
+    </style>
+
+    <style>
+        @media (max-width: 768px) {
+            h1, h2, h3, .hero-platform h1, .hero-eyebrow, .hero-badge, .badge, .tagline, .card-title, .cta, .nowrap-desktop {
+                white-space: normal !important;
+            }
+        }
+    </style>
+
+<style>
+/* RESTORED MOBILE RULES FOR PLATFORM */
+
+    @media (max-width: 768px) {
+        .grid-2 { grid-template-columns: 1fr; }
+        .cap-flow-container { flex-direction: column; align-items: stretch; }
+        .cap-flow-arrow { justify-content: center; padding: 8px 0; }
+        .cap-flow-arrow svg { transform: rotate(90deg); }
+    }
+    
+</style>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2K5VXNELTZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-2K5VXNELTZ');
+    </script>
+</head>
+<body>
+<nav class="navbar">
+        <div class="container">
+            <a href="../vi/index.html" class="logo">INVA<span>MAX</span></a>
+            <div class="nav-links">
+                <div class="nav-item"><a href="../vi/index.html" class="nav-title" style="color: inherit; text-decoration: none;">Trang chủ</a></div>
+                <div class="nav-item">    
+                    <a href="#" class="nav-title" style="color: inherit; text-decoration: none;">Giải pháp <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i></a>
+                    <div class="nav-dropdown">
+                        <a href="../vi/factory-transformation.html">Chuyển đổi Mô hình Vận hành</a>
+                        <a href="../vi/operate-transform.html">Điều hành Nhà máy</a>
+                        <a href="../vi/factory-assessment.html">Đánh giá Năng lực Nhà máy</a>
+                        <a href="../vi/focused-improvement.html">Cải tiến Trọng điểm</a>
+                    <a href="../vi/digital-ai.html">Tự động hoá, Số hoá &amp; AI cho Sản xuất</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-title" style="color: inherit; text-decoration: none;">Năng lực <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i></a>
+                    <div class="nav-dropdown">
+                        <a href="../vi/invamax-fa.html">INVAMAX FA&trade; <span style="font-weight: normal; opacity: 0.8;">&mdash; Khung Đánh giá Năng lực Nhà máy</span></a>
+                        <a href="../vi/fos.html">INVAMAX FOS&trade; <span style="font-weight: normal; opacity: 0.8;">&mdash; Hệ điều hành Quản trị Nhà máy</span></a>
+                        <a href="../vi/lean.html">Lean &amp; Cải tiến Liên tục</a>
+                        <a href="../vi/platform.html" class="active">INVAMAX Platform <span style="font-weight: normal; opacity: 0.8;">&mdash; Nền tảng Vận hành Số</span></a>
+                    </div>
+                </div>
+                <div class="nav-item"><a href="../vi/case-studies.html" class="nav-title" style="color: inherit; text-decoration: none;">Case Study</a></div>
+                <div class="nav-item"><a href="../vi/resources.html" class="nav-title" style="color: inherit; text-decoration: none;">Tài nguyên</a></div>
+                <div class="nav-item"><a href="../vi/about.html" class="nav-title" style="color: inherit; text-decoration: none;">Về INVAMAX</a></div>
+                
+                <div style="display: flex; flex-direction: row; align-items: center; gap: 16px; margin-left: 10px;">
+                    <div class="nav-item lang-switcher" style="display: flex; gap: 4px; align-items: center; font-size: 0.8rem;">
+                        <a href="/vi/platform.html" onclick="switchLanguage('vi');" class="" style="color: var(--primary); font-weight: bold; padding: 0;">VI</a>
+                        <span style="color: var(--border-color);">|</span>
+                        <a href="/en/platform.html" onclick="switchLanguage('en');" class="" style="color: var(--text-muted); padding: 0; opacity: 0.7;">EN</a>
+                    </div>
+                    <a href="#" class="btn btn-primary" style="display: none; padding: 4px 14px; border-radius: 20px; font-weight: 600; font-size: 0.8rem;">Đăng nhập</a>
+                </div>
+            </div>
+            <button class="mobile-menu-btn"><i data-lucide="menu"></i></button>
+        </div>
+    </nav>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="hero-platform">
+            <div class="container">
+                <div style="max-width: 1200px; margin: 0 auto; text-align: center; display: flex; flex-direction: column; align-items: center;">
+                    <div class="tag hero-eyebrow" style="display: inline-block; padding: 10px 24px; background: rgba(255, 102, 0, 0.1); color: var(--primary); border: 1px solid rgba(255, 102, 0, 0.2); border-radius: 40px; font-size: 1.8rem; font-weight: 600; margin-bottom: 24px; text-transform: uppercase; white-space: nowrap;">INVAMAX PLATFORM &mdash; NỀN TẢNG VẬN HÀNH SỐ</div>
+                    
+                    <h1 style=" font-size: 2.8rem; line-height: 1.3; font-weight: 700; margin-bottom: 24px; color: var(--text-white);">Đưa dòng vận hành của nhà máy lên một nền tảng số</h1>
+                    
+                    <div class="dev-badge" style="margin-bottom: 24px;">ĐANG PHÁT TRIỂN &middot; MODULE ĐẦU TIÊN: INVAMAX FLOW</div>
+                    
+                    <p style="font-size: 1.1rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0;">INVAMAX Platform là nền tảng vận hành số do INVAMAX phát triển, hỗ trợ số hóa dòng công việc, dữ liệu và hoạt động quản trị trong nhà máy.<br><br>INVAMAX Flow là module đầu tiên của INVAMAX Platform, được phát triển để quản lý Order Flow và Money Flow trong doanh nghiệp sản xuất.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 1 -->
+        
+
+        <!-- SECTION 2: FLOW -->
+        <section id="flow" class="section-platform">
+            <div class="container">
+                <div style="text-align: center; margin-bottom: 48px;">
+                    <h2 style="font-size: 2.4rem; color: var(--text-white); margin-bottom: 8px;">INVAMAX Flow</h2>
+                    <p style="color: var(--primary); font-size: 1.1rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px;">Module đầu tiên của INVAMAX Platform</p>
+                    <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 800px; margin: 24px auto 0 auto; line-height: 1.6;">INVAMAX Flow được phát triển để giúp doanh nghiệp sản xuất quản lý hai dòng quan trọng liên quan trực tiếp đến hoạt động kinh doanh và vận hành.</p>
+                </div>
+                
+                <div class="grid-2">
+                    <div class="platform-card">
+                        <div style="display: flex; align-items: center; margin-bottom: 16px;">
+                            <i data-lucide="package" style="color: var(--primary); width: 24px; height: 24px; margin-right: 12px;"></i>
+                            <h3 style="color: var(--text-white); font-size: 1.5rem; margin: 0;">Order Flow</h3>
+                        </div>
+                        <p style="color: var(--primary); font-size: 0.9rem; text-transform: uppercase; font-weight: 600; margin-bottom: 16px;">Dòng đơn hàng</p>
+                        <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.6; margin: 0;">Quản lý dòng đơn hàng từ khi tiếp nhận đến khi hoàn thành, giúp các bên liên quan nhìn thấy trạng thái và tiến độ của đơn hàng trong cùng một hệ thống.</p>
+                    </div>
+                    
+                    <div class="platform-card">
+                        <div style="display: flex; align-items: center; margin-bottom: 16px;">
+                            <i data-lucide="circle-dollar-sign" style="color: var(--primary); width: 24px; height: 24px; margin-right: 12px;"></i>
+                            <h3 style="color: var(--text-white); font-size: 1.5rem; margin: 0;">Money Flow</h3>
+                        </div>
+                        <p style="color: var(--primary); font-size: 0.9rem; text-transform: uppercase; font-weight: 600; margin-bottom: 16px;">Dòng tiền</p>
+                        <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.6; margin: 0;">Quản lý dòng tiền gắn với hoạt động kinh doanh, giúp doanh nghiệp theo dõi các khoản cần thu, cần chi và tình trạng tài chính liên quan đến đơn hàng.</p>
+                    </div>
+                </div>
+                
+                <div class="flow-step-line">
+                    <div style="text-align: center;">
+                        <span style="color: var(--text-white); font-weight: 600; display: block; margin-bottom: 4px;">ORDER</span>
+                        <span style="font-size: 0.8rem;">Đơn hàng</span>
+                    </div>
+                    <i data-lucide="arrow-right" style="color: rgba(255,255,255,0.2); width: 16px;"></i>
+                    <div style="text-align: center;">
+                        <span style="color: var(--text-white); font-weight: 600; display: block; margin-bottom: 4px;">EXECUTION</span>
+                        <span style="font-size: 0.8rem;">Thực hiện</span>
+                    </div>
+                    <i data-lucide="arrow-right" style="color: rgba(255,255,255,0.2); width: 16px;"></i>
+                    <div style="text-align: center;">
+                        <span style="color: var(--text-white); font-weight: 600; display: block; margin-bottom: 4px;">DELIVERY</span>
+                        <span style="font-size: 0.8rem;">Giao hàng</span>
+                    </div>
+                    <i data-lucide="arrow-right" style="color: rgba(255,255,255,0.2); width: 16px;"></i>
+                    <div style="text-align: center;">
+                        <span style="color: var(--text-white); font-weight: 600; display: block; margin-bottom: 4px;">MONEY</span>
+                        <span style="font-size: 0.8rem;">Dòng tiền</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3 -->
+        
+
+        <!-- SECTION 4 -->
+        
+
+        <!-- CTA SECTION -->
+        <section class="section-platform" style="border-bottom: none; text-align: center;">
+            <div class="container">
+                <h2 style="font-size: 2.2rem; color: var(--text-white); margin-bottom: 24px; max-width: 800px; margin-left: auto; margin-right: auto;">Bắt đầu từ dòng vận hành quan trọng nhất</h2>
+                
+                <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 700px; margin: 0 auto 40px auto; line-height: 1.6;">INVAMAX đang phát triển Platform từng bước, bắt đầu với INVAMAX Flow để quản lý Order Flow và Money Flow trong doanh nghiệp sản xuất.</p>
+                
+                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                    <a href="#flow" class="btn btn-primary" style="padding: 14px 32px; font-size: 1.05rem;">Tìm hiểu INVAMAX Flow <i data-lucide="arrow-up" style="width: 18px; margin-left: 8px;"></i></a>
+                    <a href="#" onclick="openContactModal(); return false;" class="btn btn-outline" style="padding: 14px 32px; font-size: 1.05rem; border: 1px solid rgba(255, 102, 0, 0.4); color: var(--primary);">Trao đổi với INVAMAX</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer" style="padding: 0 0 30px 0; margin-top: 80px;">
+    <div class="container">
+        <div class="footer-grid" style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 40px;">
+            <!-- Cột 1: Logo -->
+            <div class="footer-col" style="text-align: center;">
+                <div style="margin-bottom: 0;">
+                    <a href="../vi/index.html" class="logo" style="display: inline-block; font-size: 2.4rem; line-height: 1; margin-bottom: 5px;">INVA<span>MAX</span></a>
+                </div>
+                <p style="color: var(--text-muted); line-height: 1.6; max-width: 320px; margin: 0 auto;">Đối tác điều hành & Chuyển đổi mô hình vận hành nhà máy</p>
+            <h5 style="color: white; margin-bottom: 16px; margin-top: 32px; font-size: 0.95rem; font-weight: 600;">Kết nối với chúng tôi</h5>
+                <div class="social-links" style="display: flex; gap: 8px; justify-content: center;">
+                    <a href="https://www.linkedin.com/in/xuannhattran/" target="_blank" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 54px; height: 54px;    border-radius: 50%; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='#0A66C2'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    </a>
+                    <a href="https://www.youtube.com/@NguoiXayNen" target="_blank" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 54px; height: 54px;    border-radius: 50%; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='#ff0000'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                    </a>
+                    <a href="https://www.facebook.com/invamax.vanhanhtinhgon" target="_blank" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 54px; height: 54px;    border-radius: 50%; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='#1877F2'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                    </a>
+                    <a href="https://zalo.me/0988911869" target="_blank" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 54px; height: 54px;    border-radius: 50%; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='#0068FF'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
+                        <span style="font-size: 11px; font-weight: 800; font-family: 'Inter', sans-serif;">Zalo</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Cột 2: Giải pháp -->
+            <div class="footer-col">
+                <h4>Giải pháp</h4>
+                <div class="footer-links">
+                    <a href="../vi/factory-transformation.html">Chuyển đổi Mô hình Vận hành</a>
+                    <a href="../vi/operate-transform.html">Điều hành Nhà máy</a>
+                    <a href="../vi/factory-assessment.html">Đánh giá Năng lực Nhà máy</a>
+                    <a href="../vi/focused-improvement.html">Cải tiến Trọng điểm</a>
+                    <a href="../vi/digital-ai.html">Tự động hoá, Số hoá &amp; AI cho Sản xuất</a>
+                </div>
+            </div>
+            
+            <!-- Cột 3: Năng lực -->
+            <div class="footer-col">
+                <h4>Năng lực</h4>
+                <div class="footer-links">
+                    <a href="../vi/invamax-fa.html">INVAMAX FA&trade;</a>
+                    <a href="../vi/fos.html">INVAMAX FOS&trade;</a>
+                    <a href="../vi/lean.html" style="white-space: nowrap;">Lean &amp; Cải tiến Liên tục</a>
+                    <a href="../vi/platform.html">INVAMAX Platform</a>
+                </div>
+            </div>
+            
+            <!-- Cột 4: Liên hệ -->
+            <div class="footer-col">
+                <h4>Liên hệ</h4>
+                <p style="font-weight: 600; color: white; margin-bottom: 16px; font-size: 0.95rem;">CÔNG TY TNHH ĐẦU TƯ VÀ PHÁT TRIỂN INVAMAX</p>
+                <div class="contact-info" style="margin-bottom: 16px;">
+                    <div class="contact-item">
+                        <i data-lucide="file-text"></i>
+                        <span>MST: 0202236953</span>
+                    </div>
+                    <div class="contact-item">
+                        <i data-lucide="phone"></i>
+                        <span>0988.911.869</span>
+                    </div>
+                    <div class="contact-item">
+                        <i data-lucide="mail"></i>
+                        <span>info@invamax.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i data-lucide="map-pin"></i>
+                        <span>Thôn Đông Lôi, xã Vĩnh Thịnh, TP Hải Phòng</span>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+        
+        <div class="footer-bottom" style="text-align: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 24px; margin-top: 24px;">
+            <p style="color: var(--text-muted);">&copy; 2026 INVAMAX. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+    
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeContactModal()" style="font-size: 24px; line-height: 1; font-weight: bold;">&times;</button>
+            <h2 style="font-size: 1.5rem; color: var(--primary); margin-bottom: 10px;">Đăng ký tư vấn</h2>
+            <p style="color: #64748b; margin-bottom: 20px; font-size: 0.95rem;">Vui lòng để lại thông tin, chuyên gia INVAMAX sẽ liên hệ lại với bạn.</p>
+            
+            <form id="leadForm" onsubmit="submitForm(event)">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Họ và tên *</label>
+                        <input type="text" name="hoTen" required placeholder="Nguyễn Văn A">
+                    </div>
+                    <div class="form-group">
+                        <label>Chức danh *</label>
+                        <input type="text" name="chucDanh" required placeholder="Giám đốc / Trưởng phòng">
+                    </div>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Số điện thoại *</label>
+                        <input type="tel" name="soDienThoai" required placeholder="0988...">
+                    </div>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" name="email" required placeholder="email@congty.com">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Tên nhà máy / Công ty *</label>
+                    <input type="text" name="tenNhaMay" required placeholder="Công ty TNHH XYZ">
+                </div>
+                
+                <div class="form-group">
+                    <label>Địa chỉ nhà máy *</label>
+                    <input type="text" name="diaChi" required placeholder="KCN abc, Tỉnh xyz...">
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Lĩnh vực sản xuất *</label>
+                        <select name="linhVuc" required>
+                            <option value="">-- Chọn lĩnh vực --</option>
+                            <option value="Gỗ / nội thất">Gỗ / nội thất</option>
+                            <option value="Cơ khí / kim loại">Cơ khí / kim loại</option>
+                            <option value="May mặc / da giày">May mặc / da giày</option>
+                            <option value="Nhựa / cao su">Nhựa / cao su</option>
+                            <option value="Thực phẩm / đồ uống">Thực phẩm / đồ uống</option>
+                            <option value="Điện tử / điện lạnh">Điện tử / điện lạnh</option>
+                            <option value="Vật liệu xây dựng">Vật liệu xây dựng</option>
+                            <option value="Bao bì / in ấn">Bao bì / in ấn</option>
+                            <option value="Khác">Khác</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Quy mô nhân sự *</label>
+                        <select name="quyMo" required>
+                            <option value="">-- Chọn quy mô --</option>
+                            <option value="Dưới 50 người">Dưới 50 người</option>
+                            <option value="50 ~ 100 người">50 ~ 100 người</option>
+                            <option value="101 ~ 200 người">101 ~ 200 người</option>
+                            <option value="Trên 200 người">Trên 200 người</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Nội dung cần tư vấn *</label>
+                    <textarea name="noiDung" rows="3" required placeholder="Mô tả sơ bộ về định hướng, vấn đề hiện tại của nhà máy..."></textarea>
+                </div>
+                
+                <button type="submit" id="btnSubmitForm" class="btn btn-outline" style="width: 100%; margin-top: 10px; transition: all 0.3s ease;">
+                    <i data-lucide="send"></i> Gửi Đề Nghị
+                </button>
+            </form>
+            
+            <div id="formSuccess" style="display: none; text-align: center; padding: 30px 0;">
+                <i data-lucide="check-circle" style="color: #22c55e; width: 64px; height: 64px; margin-bottom: 15px; margin: 0 auto;"></i>
+                <h3 style="color: #16a34a; font-size: 1.3rem; margin-top: 15px;">Gửi thành công!</h3>
+                <p style="color: #475569; margin-top: 10px;">Cảm ơn bạn. Chuyên gia INVAMAX sẽ sớm liên hệ lại.</p>
+                <button type="button" class="btn btn-outline" style="margin-top: 20px; transition: all 0.3s ease;" onclick="closeContactModal()">Đóng cửa sổ</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        lucide.createIcons({ attrs: { "stroke-width": 1 } });
+    </script>
+</body>
+</html>

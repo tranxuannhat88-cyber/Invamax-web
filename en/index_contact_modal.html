@@ -1,0 +1,85 @@
+<div id="contactModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeContactModal()" style="font-size: 24px; line-height: 1; font-weight: bold;">&times;</button>
+            <h2 style="font-size: 1.5rem; color: var(--primary); margin-bottom: 10px;">Request a Consultation</h2>
+            <p style="color: #64748b; margin-bottom: 20px; font-size: 0.95rem;">Please leave your information, an INVAMAX expert will contact you.</p>
+            
+            <form id="leadForm" onsubmit="submitForm(event)">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Full Name *</label>
+                        <input type="text" name="hoTen" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label>Job Title *</label>
+                        <input type="text" name="chucDanh" required placeholder="Director / Manager">
+                    </div>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Phone Number *</label>
+                        <input type="tel" name="soDienThoai" required placeholder="0988...">
+                    </div>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" name="email" required placeholder="email@congty.com">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Factory / Company Name *</label>
+                    <input type="text" name="tenNhaMay" required placeholder="XYZ Company Ltd.">
+                </div>
+                
+                <div class="form-group">
+                    <label>Factory Address *</label>
+                    <input type="text" name="diaChi" required placeholder="Industrial Park, Province...">
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Industry *</label>
+                        <select name="linhVuc" required>
+                            <option value="">-- Select Industry --</option>
+                            <option value="Wood / Furniture">Wood / Furniture</option>
+                            <option value="Mechanical / Metal">Mechanical / Metal</option>
+                            <option value="Apparel / Footwear">Apparel / Footwear</option>
+                            <option value="Plastic / Rubber">Plastic / Rubber</option>
+                            <option value="Food / Beverage">Food / Beverage</option>
+                            <option value="Electronics / Refrigeration">Electronics / Refrigeration</option>
+                            <option value="Construction Materials">Construction Materials</option>
+                            <option value="Packaging / Printing">Packaging / Printing</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Company Size *</label>
+                        <select name="quyMo" required>
+                            <option value="">-- Select Size --</option>
+                            <option value="Under 50 employees">Under 50 employees</option>
+                            <option value="50 ~ 100 employees">50 ~ 100 employees</option>
+                            <option value="101 ~ 200 employees">101 ~ 200 employees</option>
+                            <option value="Over 200 employees">Over 200 employees</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Consultation Details *</label>
+                    <textarea name="noiDung" rows="3" required placeholder="Briefly describe your goals or current factory issues..."></textarea>
+                </div>
+                
+                <button type="submit" id="btnSubmitForm" class="btn btn-outline" style="width: 100%; margin-top: 10px; transition: all 0.3s ease;">
+                    <i data-lucide="send"></i> Submit Request
+                </button>
+            </form>
+            
+            <div id="formSuccess" style="display: none; text-align: center; padding: 30px 0;">
+                <i data-lucide="check-circle" style="color: #22c55e; width: 64px; height: 64px; margin-bottom: 15px; margin: 0 auto;"></i>
+                <h3 style="color: #16a34a; font-size: 1.3rem; margin-top: 15px;">Submitted successfully!</h3>
+                <p style="color: #475569; margin-top: 10px;">Thank you. An INVAMAX expert will contact you shortly.</p>
+                <button type="button" class="btn btn-outline" style="margin-top: 20px; transition: all 0.3s ease;" onclick="closeContactModal()">Close Window</button>
+            </div>
+        </div>
+    </div>
