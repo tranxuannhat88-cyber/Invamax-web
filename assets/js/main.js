@@ -127,21 +127,23 @@ function closeContactModal() {
 }
 
 // Thay URL Web App của Google Apps Script vào đây
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwINtrEt8nfP0lzCeTKAbmCgUzsgGs_EkGdmEKjQQfxKubCoIAnhivJK0mNnuHFd4Ds/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwvGpLm47P92er4imU5-rp4hhvg-lvo8MVbEXbz99k9bBA0N9W48uQEIWKbLf6KRd1-/exec";
 
 async function submitForm(e) {
     e.preventDefault();
     
-    
-    const form = document.getElementById('leadForm');
-    const btn = document.getElementById('btnSubmitForm');
+    const form = e.target;
+    const btn = form.querySelector('button[type="submit"]');
     const formData = new FormData(form);
     
     let data = { formType: 'contact' };
     formData.forEach((value, key) => data[key] = value);
     
-    btn.innerHTML = 'Đang gửi...';
-    btn.disabled = true;
+    if(btn) {
+        btn.dataset.originalText = btn.innerHTML;
+        btn.innerHTML = 'Đang gửi...';
+        btn.disabled = true;
+    }
     
     try {
         const response = await fetch(GOOGLE_SCRIPT_URL, {
@@ -154,18 +156,21 @@ async function submitForm(e) {
         
         const result = await response.json();
         if (result.status === 'success') {
-            document.getElementById('leadForm').style.display = 'none';
-            document.getElementById('formSuccess').style.display = 'block';
+            alert('Gửi yêu cầu thành công! Chuyên gia của INVAMAX sẽ sớm liên hệ với bạn.');
+            form.reset();
+            const modal = form.closest('.modal');
+            if(modal) modal.style.display = 'none';
         } else {
             throw new Error(result.message || "Lỗi không xác định");
         }
     } catch(err) {
-        alert("Lỗi chi tiết: " + err.message + "\n\n(Vui lòng chụp ảnh thông báo này hoặc nhấn F12 xem Console)");
+        alert("Lỗi: Không thể gửi thông tin. Vui lòng thử lại sau.");
         console.error(err);
     } finally {
-        btn.innerHTML = '<i data-lucide="send"></i> Gửi Đề Nghị';
-        btn.disabled = false;
-        lucide.createIcons();
+        if(btn) {
+            btn.innerHTML = btn.dataset.originalText || 'Gửi yêu cầu';
+            btn.disabled = false;
+        }
     }
 }
 
@@ -212,16 +217,27 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 });
 
-// Language Switcher Toggle (UI Only Placeholder)
-document.addEventListener('DOMContentLoaded', () => {
-    const langSwitchers = document.querySelectorAll('.lang-switcher a');
-    langSwitchers.forEach(langBtn => {
-        langBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            const lang = e.target.textContent.trim();
-            if (lang === 'EN') {
-                alert('English version is coming soon!');
-            }
-        });
-    });
-});
+
+
+
+// Language Switcher Logic
+window.switchLanguage = function(lang) {
+    const currentPath = window.location.pathname;
+    
+    // Only process if we're dealing with /vi/ or /en/
+    if (lang === 'en') {
+        if (currentPath.includes('/vi/')) {
+            window.location.href = currentPath.replace('/vi/', '/en/');
+        } else if (!currentPath.includes('/en/')) {
+            // Fallback for root or unexpected paths
+            window.location.href = '/en/index.html';
+        }
+    } else if (lang === 'vi') {
+        if (currentPath.includes('/en/')) {
+            window.location.href = currentPath.replace('/en/', '/vi/');
+        } else if (!currentPath.includes('/vi/')) {
+            // Fallback for root or unexpected paths
+            window.location.href = '/vi/index.html';
+        }
+    }
+};
