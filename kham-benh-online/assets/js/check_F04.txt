@@ -1,0 +1,3 @@
+orm).entries());             let phone = formObj['F04'] || '0945530699'; // Tùy chỉnh id theo câu số đi
+5530699'; // Tùy chỉnh id theo câu số điện thoại (F04)             phone = phone.replace(/\s+/g, '');  
+F02', contact);     const phone = findValByMaCau('F04', contact); // Zalo phone      document.getElemen

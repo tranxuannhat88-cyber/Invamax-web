@@ -1,0 +1,1277 @@
+a4-wrapper {
+
+
+
+    width: 100%;
+
+
+
+    overflow-x: auto;
+
+
+
+    display: flex;
+
+
+
+    flex-direction: column;
+
+
+
+    align-items: center;
+
+
+
+    background: #f1f5f9;
+
+
+
+    padding: 20px 0;
+
+
+
+}
+
+
+
+
+
+
+
+.a4-page {
+
+
+
+    width: 100%;
+
+
+
+    max-width: 210mm;
+
+
+
+    min-height: 297mm;
+
+
+
+    margin: 0 auto 30px;
+
+
+
+    background: #ffffff;
+
+
+
+    color: #1f2937;
+
+
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+
+
+
+    box-sizing: border-box;
+
+
+
+    display: flex;
+
+
+
+    flex-direction: column;
+
+
+
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+
+
+    border: 1px solid #e2e8f0;
+
+
+
+    page-break-after: always;
+
+
+
+    page-break-inside: avoid;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.a4-title-center {
+
+
+
+    text-align: center;
+
+
+
+    font-weight: bold;
+
+
+
+    font-size: 16px;
+
+
+
+    color: #0f172a;
+
+
+
+    letter-spacing: 1px;
+
+
+
+}
+
+
+
+
+
+
+
+.a4-header-right {
+
+
+
+    font-size: 11px;
+
+
+
+    font-weight: bold;
+
+
+
+    color: #f97316;
+
+
+
+    text-align: right;
+
+
+
+}
+
+
+
+
+
+
+
+.a4-content {
+
+
+
+    flex-grow: 1;
+
+
+
+    padding: 20px;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.a4-grid-2 {
+
+
+
+    display: grid;
+
+
+
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
+
+
+    gap: 20px;
+
+
+
+}
+
+
+
+
+
+
+
+.a4-box {
+
+
+
+    background: #f8fafc;
+
+
+
+    border-radius: 24px;
+
+
+
+    padding: 12px;
+
+
+
+    border: 1px solid #e2e8f0;
+
+
+
+}
+
+
+
+
+
+
+
+.a4-box h3 {
+
+
+
+    margin: 0 0 15px 0;
+
+
+
+    font-size: 13px;
+
+
+
+    text-transform: uppercase;
+
+
+
+    color: #475569;
+
+
+
+    border-bottom: 1px solid #e2e8f0;
+
+
+
+    padding-bottom: 8px;
+
+
+
+}
+
+
+
+
+
+
+
+.a4-table-info {
+
+
+
+    width: 100%;
+
+
+
+    border-collapse: collapse;
+
+
+
+    font-size: 13px;
+
+
+
+}
+
+
+
+
+
+
+
+.a4-table-info td {
+
+
+
+    padding: 8px 0;
+
+
+
+    border-bottom: 1px solid #e2e8f0;
+
+
+
+}
+
+
+
+
+
+
+
+.a4-table-info tr td:first-child {
+
+
+
+    color: #64748b;
+
+
+
+    width: 40%;
+
+
+
+}
+
+
+
+
+
+
+
+.a4-flex-3 {
+
+
+
+    display: flex;
+
+
+
+    gap: 15px;
+
+
+
+}
+
+
+
+
+
+
+
+.a4-issue-card {
+
+
+
+    flex: 1;
+
+
+
+    background: #ffffff;
+
+
+
+    border-radius: 24px;
+
+
+
+    padding: 10px;
+
+
+
+    text-align: center;
+
+
+
+    border: 1px solid #e2e8f0;
+
+
+
+}
+
+
+
+
+
+
+
+.a4-issue-card .circle-num {
+
+
+
+    width: 30px;
+
+
+
+    height: 30px;
+
+
+
+    background: #f97316;
+
+
+
+    color: white;
+
+
+
+    border-radius: 50%;
+
+
+
+    display: flex;
+
+
+
+    align-items: center;
+
+
+
+    justify-content: center;
+
+
+
+    font-weight: bold;
+
+
+
+    margin: 0 auto 10px;
+
+
+
+}
+
+
+
+
+
+
+
+.a4-flex-8 {
+
+
+
+    display: flex;
+
+
+
+    flex-wrap: wrap;
+
+
+
+    gap: 10px;
+
+
+
+    justify-content: center;
+
+
+
+}
+
+
+
+
+
+
+
+.a4-waste-pill {
+
+
+
+    background: #ffffff;
+
+
+
+    border: 1px solid #e2e8f0;
+
+
+
+    padding: 5px 10px;
+
+
+
+    border-radius: 20px;
+
+
+
+    font-size: 11px;
+
+
+
+    display: flex;
+
+
+
+    flex-direction: column;
+
+
+
+    align-items: center;
+
+
+
+    width: calc(25% - 10px);
+
+
+
+}
+
+
+
+
+
+
+
+.a4-waste-pill span {
+
+
+
+    font-weight: bold;
+
+
+
+    color: #f97316;
+
+
+
+    font-size: 13px;
+
+
+
+}
+
+
+
+
+
+
+
+.a4-heatmap-grid {
+
+
+
+    display: grid;
+
+
+
+    grid-template-columns: repeat(4, 1fr);
+
+
+
+    gap: 10px;
+
+
+
+}
+
+
+
+
+
+
+
+.a4-heat-cell {
+
+
+
+    border-radius: 24px;
+
+
+
+    padding: 10px;
+
+
+
+    text-align: center;
+
+
+
+    display: flex;
+
+
+
+    flex-direction: column;
+
+
+
+    align-items: center;
+
+
+
+    justify-content: center;
+
+
+
+    min-height: 80px;
+
+
+
+    color: #000;
+
+
+
+}
+
+
+
+
+
+
+
+.a4-heat-cell.good { background: #10b981; }
+
+
+
+.a4-heat-cell.fair { background: #84cc16; }
+
+
+
+.a4-heat-cell.warn { background: #f59e0b; }
+
+
+
+.a4-heat-cell.bad { background: #f97316; color: #fff; }
+
+
+
+.a4-heat-cell.critical { background: #ef4444; color: #fff; }
+
+
+
+
+
+
+
+.a4-heat-cell .module-name {
+
+
+
+    font-size: 11px;
+
+
+
+    font-weight: bold;
+
+
+
+    margin-bottom: 5px;
+
+
+
+}
+
+
+
+
+
+
+
+.a4-heat-cell .score {
+
+
+
+    font-size: 14px;
+
+
+
+    font-weight: bold;
+
+
+
+}
+
+
+
+
+
+
+
+.a4-table-issues {
+
+
+
+    width: 100%;
+
+
+
+    border-collapse: collapse;
+
+
+
+    font-size: 12px;
+
+
+
+}
+
+
+
+
+
+
+
+.a4-table-issues th {
+
+
+
+    background: #f8fafc;
+
+
+
+    padding: 10px;
+
+
+
+    text-align: left;
+
+
+
+    color: #475569;
+
+
+
+    border-bottom: 2px solid #e2e8f0;
+
+
+
+}
+
+
+
+
+
+
+
+.a4-table-issues td {
+
+
+
+    padding: 4px 10px;
+
+
+
+    border-bottom: 1px solid #e2e8f0;
+
+
+
+}
+
+
+
+
+
+
+
+.a4-footer {
+
+
+
+    padding: 10px 20px;
+
+
+
+    background: #f8fafc;
+
+
+
+    border-top: 1px solid #e2e8f0;
+
+
+
+    font-size: 10px;
+
+
+
+    color: #64748b;
+
+
+
+    display: flex;
+
+
+
+    justify-content: space-between;
+
+
+
+}
+
+
+
+
+
+
+
+/* PDF Export overrides */
+
+
+
+.pdf-export-mode .a4-wrapper {
+
+
+
+    background: none;
+
+
+
+    padding: 0;
+
+
+
+}
+
+
+
+.pdf-export-mode .a4-page {
+
+
+
+    box-shadow: none;
+
+
+
+    margin: 0;
+
+
+
+    border: none;
+
+
+
+    width: 210mm !important;
+
+
+
+    max-width: 210mm !important;
+
+
+
+    height: 295mm !important;
+
+
+
+    max-height: 295mm !important;
+
+
+
+    overflow: hidden;
+
+
+
+    page-break-after: always;
+
+
+
+    page-break-inside: avoid;
+
+
+
+}
+
+
+
+.pdf-export-mode .hide-in-pdf {
+
+
+
+    display: none !important;
+
+
+
+}
+
+
+
+    .a4-header {
+
+
+
+    display: flex;
+
+
+
+    justify-content: space-between;
+
+
+
+    align-items: center;
+
+
+
+    padding-bottom: 10px;
+
+
+
+    border-bottom: 2px solid #ea580c;
+
+
+
+    margin-bottom: 10px;
+
+
+
+}
+
+
+
+.a4-header > div:first-child { width: 180px; }
+
+
+
+.a4-title-center {
+
+
+
+    flex: 1; text-align: center; font-size: 16px; font-weight: bold; color: #0f172a; line-height: 1.4;
+
+
+
+}
+
+
+
+.a4-header > div:last-child { width: 180px; }
+
+
+
+
+
+
+
+.a4-section-title {
+
+
+
+    background-color: #1e293b;
+
+
+
+    color: white;
+
+
+
+    padding: 8px 15px;
+
+
+
+    font-weight: bold;
+
+
+
+    font-size: 14px;
+
+
+
+    margin-bottom: 15px;
+
+
+
+    border-radius: 0;
+
+
+
+    display: flex;
+
+
+
+    justify-content: space-between;
+
+
+
+    align-items: center;
+
+
+
+    text-transform: uppercase;
+
+
+
+}
+
+
+
+
+
+
+
+.a4-footer {
+
+
+
+    /* display: none !important; */
+
+
+
+}
+
+
+
+
+
+
+
+.a4-box {
+
+
+
+    background: #f8fafc;
+
+
+
+    border-radius: 24px;
+
+
+
+    padding: 12px;
+
+
+
+    border: 1px solid #f1f5f9;
+
+
+
+}
+
+
+
+.a4-box > h3 {
+
+
+
+    font-size: 14px;
+
+
+
+    font-weight: 800;
+
+
+
+    color: #0f172a;
+
+
+
+    margin: 0 0 15px 0;
+
+
+
+    padding-bottom: 10px;
+
+
+
+    border-bottom: 1px solid #e2e8f0;
+
+
+
+    text-transform: uppercase;
+
+
+
+}
+
+
+
+.a4-table-info {
+
+
+
+    width: 100%;
+
+
+
+    border-collapse: collapse;
+
+
+
+}
+
+
+
+.a4-table-info td {
+
+
+
+    padding: 4px 10px;
+
+
+
+    border-bottom: 1px solid #e2e8f0;
+
+
+
+    font-size: 13px;
+
+
+
+}
+
+
+
+.a4-table-info tr:last-child td {
+
+
+
+    border-bottom: none;
+
+
+
+}
+
+
+
+.a4-table-info td:first-child {
+
+
+
+    color: #64748b;
+
+
+
+    width: 135px;
+
+
+
+    white-space: nowrap;
+
+
+
+}
+
+
+
+.a4-table-info td:last-child {
+
+
+
+    font-weight: 700;
+
+
+
+    color: #0f172a;
+
+
+
+}
+
+
+
+
+
+
+
+</style>
+
+
+
+    <!-- html2pdf.js for exporting PDF -->
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+
+
+    <title>INVAMAX - Thiết kế & Chuyển đổi mô hình vận hành nhà máy thế hệ mới</title>
+
+
+
+    <meta name="description" content="INVAMAX chuyên cung cấp giải pháp vận hành tinh gá»n, hệ điá»u hành nhà máy INVAMAX FOS™, tư vấn Lean và ứng dụng AI/Digital cho nhà máy sản xuất.">
+
+
+
+    <meta property="og:title" content="INVAMAX - Thiết kế & Chuyển đổi mô hình vận hành nhà máy thế hệ mới">
+
+
+
+    <meta property="og:description" content="INVAMAX chuyên cung cấp giải pháp vận hành tinh gá»n, hệ điá»u hành nhà máy INVAMAX FOS™, tư vấn Lean và ứng dụng AI/Digital cho nhà máy sản xuất.">
+
+
+
+    <meta property="og:type" content="website">
+
+
+
+    <meta property="og:url" content="https://invamax.com/index.html">
+
+
+
+    <script type="application/ld+json">
+
+
+
+{
+
+
+
+    "@context": "https://schema.org",
+
+
+
+    "@type": "Organization",
+
+
+
+    "name": "INVAMAX",
+
+
+
+    "url": "https://invamax.com/",
+
+
+
+    "logo": "https://invamax.com/assets/images/logo.png",
+
+
+
+    "description": "Tư vấn thiết kế mô hình vận hành và Hệ điá»u hành nhà máy.",
+
+
+
+    "contactPoint": {
+
+
+
+        "@type": "ContactPoint",
+
+
+
+        "telephone": "0988911869",
+
+
+
+        "contactType": "customer service",
+
+
+
+        "email": "info@invamax.com"
+
+
+
+    }
+
+
+
+}
+
+
+
+    </script>
+
+
+
+    <meta name="google-site-verification" content=

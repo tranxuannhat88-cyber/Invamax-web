@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <title>INVAMAX | Đối tác Vận hành & Chuyển đổi Nhà máy</title>
+    <meta name="description" content="INVAMAX là đối tác vận hành và chuyển đổi dành cho doanh nghiệp sản xuất vừa và nhỏ, từ đánh giá hiện trạng và thiết kế mô hình mục tiêu đến trực tiếp tham gia vận hành và chuyển đổi nhà máy.">
+    <meta property="og:title" content="INVAMAX | Manufacturing Operations & Transformation Partner">
+    <meta property="og:description" content="INVAMAX là đối tác vận hành và chuyển đổi dành cho doanh nghiệp sản xuất vừa và nhỏ, từ đánh giá hiện trạng và thiết kế mô hình mục tiêu đến trực tiếp tham gia vận hành và chuyển đổi nhà máy.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://invamax.com/index.html">
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "INVAMAX",
+    "url": "https://invamax.com/",
+    "logo": "https://invamax.com/assets/images/logo.png",
+    "description": "Đối tác vận hành và chuyển đổi mô hình nhà máy cho doanh nghiệp sản xuất vừa và nhỏ.",
+    "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "0988911869",
+        "contactType": "customer service",
+        "email": "info@invamax.com"
+    }
+}
+    </script>
+    <meta name="google-site-verification" content="d9opRRlvn7gdYQvrvD_fqSJEh8E2KOLNiIyV_1hknA0" />
+
+    <!-- INVAMAX HOMEPAGE VISUAL SYSTEM -->
+    <style>
+        :root {
+            --home-bg-main: var(--bg-color, #0f172a); 
+            --home-bg-alt: var(--bg-dark, #0b1120);
+            --home-card-bg: rgba(255, 255, 255, 0.02);
+            --home-card-border: rgba(255, 255, 255, 0.08);
+            --home-card-border-hover: rgba(234, 88, 12, 0.4);
+            --home-text-primary: #ffffff;
+            --home-text-muted: #94a3b8;
+            --home-orange: #ea580c;
+            --home-radius-large: 16px;
+            --home-radius-card: 12px;
+        }
+        
+        .home-section {
+            padding: 80px 0;
+            background-color: var(--home-bg-main);
+            border-radius: 0 !important;
+        }
+        .home-section-alt {
+            padding: 80px 0;
+            background-color: var(--home-bg-alt);
+            border-radius: 0 !important;
+        }
+        
+        .home-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .home-h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--home-text-primary);
+            margin-bottom: 16px;
+        }
+        .home-subtitle {
+            font-size: 1.1rem;
+            color: var(--home-text-muted);
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .home-eyebrow {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--home-orange);
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+        
+        .home-card {
+            background: var(--home-card-bg);
+            border: 1px solid var(--home-card-border);
+            border-radius: var(--home-radius-card);
+            padding: 32px 24px;
+            transition: all 0.3s ease;
+            box-shadow: none !important;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+        .home-card:hover {
+            border-color: var(--home-card-border-hover);
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.03);
+        }
+        .home-card-icon-wrapper {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            background: rgba(234, 88, 12, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            border: 1px solid rgba(234, 88, 12, 0.2);
+            flex-shrink: 0;
+        }
+        .home-card-icon {
+            color: var(--home-orange);
+            width: 24px;
+            height: 24px;
+        }
+        
+        .home-quote-block {
+            background: var(--home-bg-alt);
+            border-left: 4px solid var(--home-orange);
+            padding: 24px 32px;
+            border-radius: 0 var(--home-radius-card) var(--home-radius-card) 0;
+            margin: 40px auto 0;
+            max-width: 800px;
+            text-align: left;
+        }
+        .home-quote-block p {
+            color: var(--home-text-primary);
+            font-size: 1.15rem;
+            line-height: 1.6;
+            font-weight: 500;
+            margin: 0;
+            font-style: normal;
+        }
+
+        .home-pill {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 100px;
+            padding: 6px 16px;
+            color: var(--home-text-muted);
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+        .home-pill:hover {
+            border-color: var(--home-orange);
+            color: white;
+            background: rgba(234, 88, 12, 0.1);
+        }
+        
+        .home-btn-primary {
+            background: var(--home-orange);
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            display: inline-block;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .home-btn-primary:hover {
+            background: #c2410c;
+        }
+        .home-btn-secondary {
+            background: transparent;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            display: inline-block;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .home-btn-secondary:hover {
+            border-color: white;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        @media (max-width: 768px) {
+            .home-section, .home-section-alt { padding: 56px 0; }
+            .home-h2 { font-size: 1.75rem; }
+            .home-quote-block { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">INVA<span>MAX</span></a>
+            <div class="nav-links">
+                <div class="nav-item">
+                    <a href="index.html" class="nav-title" style="color: inherit; text-decoration: none;">Trang chủ</a>
+                </div>
+                <div class="nav-item">
+                    <a href="javascript:void(0)" class="nav-title" style="color: inherit; text-decoration: none;">Vận hành &amp; Chuyển đổi <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i></a>
+                    <div class="nav-dropdown">
+                        <a href="giai-phap.html">Factory Transformation</a>
+                        <a href="operate-transform.html">Operate &amp; Transform</a>
+                        <a href="kham-benh-online/gioi-thieu.html">Đánh giá hiện trạng</a>
+                        <a href="dich-vu.html#thiet-ke">Thiết kế mô hình mục tiêu</a>
+                        <a href="dich-vu.html#fos">Cải tiến &amp; Duy trì</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="javascript:void(0)" class="nav-title" style="color: inherit; text-decoration: none;">Phương pháp <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i></a>
+                    <div class="nav-dropdown">
+                        <a href="kham-benh-online/gioi-thieu.html">INVAMAX FA™</a>
+                        <a href="dich-vu.html#fos">INVAMAX FOS™</a>
+                        <a href="dich-vu.html#ai-digital">Digital &amp; AI for Operations</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="case-study.html" class="nav-title" style="color: inherit; text-decoration: none;">Case Study</a>
+                </div>
+                <div class="nav-item">
+                    <a href="javascript:void(0)" class="nav-title" style="color: inherit; text-decoration: none;">Tài nguyên <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i></a>
+                    <div class="nav-dropdown">
+                        <a href="tri-thuc.html">Tri thức &amp; Insights</a>
+                        <a href="thu-vien.html">Template &amp; Toolkit</a>
+                        <a href="thu-vien.html">Tài liệu chuyên sâu</a>
+                        <a href="kham-benh-online/gioi-thieu.html">Công cụ đánh giá</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="javascript:void(0)" class="nav-title" style="color: inherit; text-decoration: none;">Về INVAMAX <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i></a>
+                    <div class="nav-dropdown">
+                        <a href="index.html">Giới thiệu INVAMAX</a>
+                        <a href="index.html#founder">Founder / Chuyên gia</a>
+                        <a href="index.html#cach-lam-viec">Cách chúng tôi làm việc</a>
+                        <a href="index.html#lien-he">Liên hệ</a>
+                    </div>
+                </div>
+                
+                <div class="nav-item lang-switcher" style="display: flex; gap: 8px; align-items: center; margin-left: auto;">
+                    <a href="#" class="active" style="color: var(--primary); font-weight: bold; padding: 0;">VN</a>
+                    <span style="color: var(--border-color);">|</span>
+                    <a href="#" style="color: var(--text-muted); padding: 0; opacity: 0.7;">EN</a>
+                </div>
+                <div id="auth-btn-container" style="margin-left: 15px; z-index: 100;"></div>
+                
+                <!-- CTA Button -->
+                <div class="nav-item" style="margin-left: 15px; display: flex; align-items: center;">
+                    <a href="kham-benh-online/gioi-thieu.html" style="background-color: #ea580c; color: white; padding: 8px 16px; border-radius: 6px; font-weight: bold; text-decoration: none; display: inline-block;">Đánh giá hiện trạng</a>
+                </div>
+            </div>
+            <button class="mobile-menu-btn"><i data-lucide="menu"></i></button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" style="padding: 60px 0;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 50px;">
+                <h1 class="hero-main-title" style="margin-bottom: 12px; font-size: 2.8rem; letter-spacing: -0.5px; line-height: 1.2; font-weight: 800;">
+                    Đối tác Vận hành &amp; Chuyển đổi Nhà máy<br>
+                    <span style="color: var(--home-text-muted); font-size: 1.35rem; font-weight: 500; display: inline-block; margin-top: 12px; letter-spacing: 0;">Từ vận hành phụ thuộc con người đến một hệ thống có khả năng tự vận hành và phát triển</span>
+                </h1>
+                <p style="font-size: 1rem; color: #64748b; max-width: 900px; margin: 0 auto; line-height: 1.7; font-weight: 400;">INVAMAX giúp doanh nghiệp sản xuất nâng cấp mô hình vận hành — hoặc trực tiếp tham gia điều hành khi chủ doanh nghiệp muốn chuyển giao trách nhiệm vận hành.</p>
+            </div>
+            
+            <div class="hero-content">
+                <div class="hero-text" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding-right: 15px; width: 100%;">
+                    <div style="background: rgba(255,255,255,0.02); border-left: 2px solid var(--home-orange); padding: 24px; margin-bottom: 30px; width: 100%; border-radius: 0 8px 8px 0;">
+                        <p style="font-size: 1.05rem; color: var(--home-text-primary); margin: 0 0 15px 0; line-height: 1.6;">Nhiều doanh nghiệp sản xuất không thiếu máy móc, con người hay phần mềm — nhưng hệ thống vẫn phụ thuộc quá nhiều vào người chủ và một số cá nhân chủ chốt.</p>
+                        <p style="font-size: 1.05rem; color: var(--home-text-muted); margin: 0 0 15px 0; line-height: 1.6;">INVAMAX giúp doanh nghiệp chuyển đổi từ mô hình vận hành hiện tại sang mô hình mục tiêu. Khi cần thiết, chúng tôi có thể trực tiếp tham gia điều hành để đưa mô hình đó vào thực tế.</p>
+                        <p style="font-size: 1.05rem; color: var(--home-text-muted); margin: 0; line-height: 1.6;">Quá trình này được hỗ trợ bởi INVAMAX FA&trade;, INVAMAX FOS&trade; cùng Digital &amp; AI for Operations.</p>
+                    </div>
+
+                    <div style="display: flex; flex-wrap: wrap; gap: 16px;">
+                        <a href="kham-benh-online/gioi-thieu.html" class="home-btn-primary" style="display: flex; align-items: center; gap: 8px;">
+                            <i data-lucide="activity" style="width: 20px; height: 20px;"></i> Đánh giá hiện trạng
+                        </a>
+                        <a href="#engagement-models" class="home-btn-secondary" style="display: flex; align-items: center; gap: 8px;">
+                            <i data-lucide="arrow-right" style="width: 20px; height: 20px;"></i> Khám phá cách INVAMAX đồng hành
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="hero-img-wrapper" style="display: flex; justify-content: flex-end; align-items: center;">
+                    <img src="assets/images/hero_img.jpg" alt="Mô hình vận hành nhà máy thế hệ mới" style="max-width: 90%; border-radius: var(--home-radius-large); box-shadow: 0 10px 30px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 1: Tại sao (Single Column) -->
+    <section class="home-section-alt">
+        <div class="container">
+            <div class="home-header">
+                <h2 class="home-h2">Vì sao các nhà máy cần thay đổi mô hình vận hành?</h2>
+            </div>
+            
+            <div style="max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px;">
+                
+                <!-- History Box -->
+                <div class="home-card" style="padding: 32px;">
+                    <div style="display: flex; gap: 16px; align-items: flex-start; margin-bottom: 24px;">
+                        <i data-lucide="alert-circle" style="color: var(--home-orange); width: 24px; height: 24px; flex-shrink: 0; margin-top: 2px;"></i>
+                        <p style="color: var(--home-text-primary); font-size: 1.1rem; line-height: 1.6; margin: 0; font-weight: 600;">Phần lớn các nhà máy vừa và nhỏ vẫn đang vận hành theo mô hình cũ:</p>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px 30px; padding-left: 40px;">
+                        <div style="display: flex; gap: 12px; align-items: flex-start;">
+                            <i data-lucide="users" style="color: var(--home-text-muted); width: 18px; height: 18px; flex-shrink: 0; margin-top: 3px;"></i>
+                            <span style="color: var(--home-text-muted); font-size: 1rem; line-height: 1.5;">Hoạt động hàng ngày phụ thuộc quá nhiều vào sự can thiệp trực tiếp của chủ doanh nghiệp hoặc một vài cá nhân chủ chốt.</span>
+                        </div>
+                        <div style="display: flex; gap: 12px; align-items: flex-start;">
+                            <i data-lucide="file-x" style="color: var(--home-text-muted); width: 18px; height: 18px; flex-shrink: 0; margin-top: 3px;"></i>
+                            <span style="color: var(--home-text-muted); font-size: 1rem; line-height: 1.5;">Quy trình và cơ chế vận hành thiếu chuẩn hóa.</span>
+                        </div>
+                        <div style="display: flex; gap: 12px; align-items: flex-start;">
+                            <i data-lucide="database-zap" style="color: var(--home-text-muted); width: 18px; height: 18px; flex-shrink: 0; margin-top: 3px;"></i>
+                            <span style="color: var(--home-text-muted); font-size: 1rem; line-height: 1.5;">Dữ liệu rời rạc, thiếu kết nối.</span>
+                        </div>
+                        <div style="display: flex; gap: 12px; align-items: flex-start;">
+                            <i data-lucide="network" style="color: var(--home-text-muted); width: 18px; height: 18px; flex-shrink: 0; margin-top: 3px;"></i>
+                            <span style="color: var(--home-text-muted); font-size: 1rem; line-height: 1.5;">Các hệ thống quản trị và công nghệ hoạt động riêng lẻ.</span>
+                        </div>
+                        <div style="display: flex; gap: 12px; align-items: flex-start;">
+                            <i data-lucide="layers" style="color: var(--home-text-muted); width: 18px; height: 18px; flex-shrink: 0; margin-top: 3px;"></i>
+                            <span style="color: var(--home-text-muted); font-size: 1rem; line-height: 1.5;">Bộ máy quản lý cồng kềnh, phụ thuộc nhiều vào chỉ đạo.</span>
+                        </div>
+                        <div style="display: flex; gap: 12px; align-items: flex-start;">
+                            <i data-lucide="bot-off" style="color: var(--home-text-muted); width: 18px; height: 18px; flex-shrink: 0; margin-top: 3px;"></i>
+                            <span style="color: var(--home-text-muted); font-size: 1rem; line-height: 1.5;">Khó mở rộng và khó ứng dụng AI, tự động hóa.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Zap Box -->
+                <div class="home-card" style="padding: 24px 32px; display: flex; gap: 16px; align-items: flex-start; border-color: rgba(234, 88, 12, 0.2); background: rgba(234, 88, 12, 0.02);">
+                    <i data-lucide="cpu" style="color: var(--home-orange); width: 24px; height: 24px; flex-shrink: 0; margin-top: 2px;"></i>
+                    <p style="color: var(--home-text-primary); font-size: 1.05rem; line-height: 1.65; margin: 0;">Trong khi đó, công nghệ sản xuất, Digital, AI và tự động hóa đang ngày càng mạnh hơn và dễ tiếp cận hơn. Lợi thế cạnh tranh sẽ không chỉ đến từ việc sở hữu nhiều máy móc hay phần mềm hơn, mà từ khả năng tổ chức con người, hệ thống quản trị và công nghệ thành một mô hình vận hành hiệu quả.</p>
+                </div>
+
+                <!-- Orange Box (Quote) -->
+                <div class="home-quote-block">
+                    <p>Mục tiêu của transformation không chỉ là tăng năng suất hay số hóa quy trình. Quan trọng hơn là xây dựng một doanh nghiệp có thể vận hành ổn định bằng hệ thống thay vì phụ thuộc thường xuyên vào người chủ.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: FOM -->
+    
+    <!-- NEW ENGAGEMENT MODELS SECTION -->
+    <section class="home-section">
+        <div class="container" style="text-align: center;">
+            <div style="max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px;">
+                <!-- FOM Definition -->
+                <div class="home-header" style="margin-bottom: 24px;">
+                    <h2 class="home-h2">Mô hình vận hành mục tiêu là gì?</h2>
+                    <h3 style="font-size: 1.25rem; font-weight: 600; color: var(--home-text-primary); margin-bottom: 20px;">Một mô hình vận hành phù hợp với chiến lược và thực tế của từng doanh nghiệp</h3>
+                    <p style="color: var(--home-text-muted); font-size: 1.05rem; line-height: 1.7; margin: 0 auto; text-align: center; max-width: 800px;">Mô hình vận hành mục tiêu (Target Factory Operating Model) mô tả cách doanh nghiệp cần tổ chức con người, quy trình, cơ chế quản trị, dữ liệu và công nghệ để thực hiện chiến lược một cách hiệu quả.<br><br>Không có một mô hình duy nhất phù hợp cho mọi nhà máy. INVAMAX thiết kế mô hình mục tiêu dựa trên chiến lược, sản phẩm, quy mô, năng lực và mức độ sẵn sàng của từng doanh nghiệp.</p>
+                </div>
+
+                <!-- 6 Checkmarks -->
+                <style>
+                    @media (max-width: 600px) {
+                        .checkmarks-grid { grid-template-columns: 1fr !important; }
+                    }
+                </style>
+                <div class="checkmarks-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; text-align: left; margin: 0 auto 20px; max-width: 800px; width: 100%;">
+                    <div style="display: flex; gap: 12px; align-items: flex-start;">
+                        <i data-lucide="check-circle-2" style="color: var(--home-orange); width: 22px; height: 22px; flex-shrink: 0; margin-top: 2px;"></i>
+                        <p style="color: var(--home-text-primary); margin: 0; line-height: 1.5; font-size: 1.05rem;">Vận hành hiệu quả hơn.</p>
+                    </div>
+                    <div style="display: flex; gap: 12px; align-items: flex-start;">
+                        <i data-lucide="check-circle-2" style="color: var(--home-orange); width: 22px; height: 22px; flex-shrink: 0; margin-top: 2px;"></i>
+                        <p style="color: var(--home-text-primary); margin: 0; line-height: 1.5; font-size: 1.05rem;">Chuẩn hóa và dễ mở rộng hơn.</p>
+                    </div>
+                    <div style="display: flex; gap: 12px; align-items: flex-start;">
+                        <i data-lucide="check-circle-2" style="color: var(--home-orange); width: 22px; height: 22px; flex-shrink: 0; margin-top: 2px;"></i>
+                        <p style="color: var(--home-text-primary); margin: 0; line-height: 1.5; font-size: 1.05rem;">Giảm chi phí vận hành.</p>
+                    </div>
+                    <div style="display: flex; gap: 12px; align-items: flex-start;">
+                        <i data-lucide="check-circle-2" style="color: var(--home-orange); width: 22px; height: 22px; flex-shrink: 0; margin-top: 2px;"></i>
+                        <p style="color: var(--home-text-primary); margin: 0; line-height: 1.5; font-size: 1.05rem;">Giảm sự phụ thuộc vào cá nhân.</p>
+                    </div>
+                    <div style="display: flex; gap: 12px; align-items: flex-start;">
+                        <i data-lucide="check-circle-2" style="color: var(--home-orange); width: 22px; height: 22px; flex-shrink: 0; margin-top: 2px;"></i>
+                        <p style="color: var(--home-text-primary); margin: 0; line-height: 1.5; font-size: 1.05rem;">Sẵn sàng hơn cho Digital, AI và tự động hóa.</p>
+                    </div>
+                    <div style="display: flex; gap: 12px; align-items: flex-start;">
+                        <i data-lucide="check-circle-2" style="color: var(--home-orange); width: 22px; height: 22px; flex-shrink: 0; margin-top: 2px;"></i>
+                        <p style="color: var(--home-text-primary); margin: 0; line-height: 1.5; font-size: 1.05rem;">Xây dựng môi trường làm việc bền vững hơn.</p>
+                    </div>
+                </div>
+
+                <!-- Final Statement -->
+                <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; text-align: center;">
+                    <p style="color: var(--home-text-muted); font-size: 1rem; margin-bottom: 15px; line-height: 1.6; max-width: 700px; margin-left: auto; margin-right: auto;">Mục tiêu không phải là số hóa hay tự động hóa mọi thứ, mà là lựa chọn cách vận hành phù hợp nhất để con người và công nghệ cùng phát huy hiệu quả.</p>
+                    <div style="display: inline-block; border-left: 3px solid var(--home-orange); padding-left: 16px; text-align: left;">
+                        <span style="color: var(--home-orange); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 4px;">THE GOAL</span>
+                        <p style="color: white; font-weight: 600; font-size: 1.15rem; margin: 0;">Mô hình mục tiêu chính là đích đến của quá trình chuyển đổi.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+<section id="engagement-models" class="home-section-alt">
+        <div class="container">
+            <div class="home-header">
+                <h2 class="home-h2">Hai cách INVAMAX đồng hành cùng doanh nghiệp</h2>
+                <div class="divider"></div>
+                <p class="home-subtitle">Tùy vào năng lực đội ngũ và mức độ tham gia mà chủ doanh nghiệp mong muốn, INVAMAX có thể dẫn dắt quá trình chuyển đổi hoặc trực tiếp tham gia vận hành.</p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <!-- Card 1: Transform -->
+                <div class="home-card" style="padding: 40px;">
+                    <span class="home-eyebrow" style="background: rgba(255,255,255,0.05); padding: 4px 10px; border-radius: 4px; color: var(--home-text-muted);">TRANSFORM</span>
+                    <h3 style="color: white; font-size: 1.5rem; margin-bottom: 15px; font-weight: 700; margin-top: 10px;">Chuyển đổi mô hình vận hành</h3>
+                    <p style="color: var(--home-text-primary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 15px;">Dành cho doanh nghiệp đã có đội ngũ quản lý và muốn nâng cấp cách nhà máy vận hành.</p>
+                    <p style="color: var(--home-text-muted); font-size: 1rem; line-height: 1.6; margin-bottom: 25px;">INVAMAX đánh giá hiện trạng, thiết kế mô hình mục tiêu và cùng đội ngũ doanh nghiệp triển khai chương trình chuyển đổi.</p>
+                    
+                    <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; margin-bottom: 30px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+                        <span style="color: var(--home-text-muted); font-size: 0.85rem; font-weight: 600;">Assess <i data-lucide="arrow-right" style="color: var(--home-orange); width: 14px; height: 14px; display: inline; vertical-align: middle;"></i></span>
+                        <span style="color: var(--home-text-muted); font-size: 0.85rem; font-weight: 600;">Design <i data-lucide="arrow-right" style="color: var(--home-orange); width: 14px; height: 14px; display: inline; vertical-align: middle;"></i></span>
+                        <span style="color: var(--home-text-muted); font-size: 0.85rem; font-weight: 600;">Transform <i data-lucide="arrow-right" style="color: var(--home-orange); width: 14px; height: 14px; display: inline; vertical-align: middle;"></i></span>
+                        <span style="color: var(--home-text-muted); font-size: 0.85rem; font-weight: 600;">Improve &amp; Sustain</span>
+                    </div>
+                    
+                    <div style="margin-top: auto;">
+                        <a href="giai-phap.html" style="color: white; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; transition: color 0.2s;" onmouseover="this.style.color='var(--home-orange)'" onmouseout="this.style.color='white'">Xem chương trình chuyển đổi <i data-lucide="arrow-right" style="width: 18px; height: 18px;"></i></a>
+                    </div>
+                </div>
+
+                <!-- Card 2: Operate & Transform -->
+                <div class="home-card" style="padding: 40px; border-top: 3px solid var(--home-orange); background: rgba(234, 88, 12, 0.015);">
+                    <span class="home-eyebrow" style="background: rgba(234, 88, 12, 0.1); padding: 4px 10px; border-radius: 4px;">OPERATE &amp; TRANSFORM</span>
+                    <h3 style="color: white; font-size: 1.5rem; margin-bottom: 15px; font-weight: 700; margin-top: 10px;">Vận hành &amp; Chuyển đổi</h3>
+                    <p style="color: var(--home-text-primary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 15px;">Dành cho chủ doanh nghiệp muốn giảm hoặc rút khỏi việc điều hành trực tiếp nhưng doanh nghiệp chưa có một hệ thống đủ mạnh để tự vận hành.</p>
+                    <p style="color: var(--home-text-muted); font-size: 1rem; line-height: 1.6; margin-bottom: 25px;">INVAMAX có thể trực tiếp tham gia hoặc tiếp nhận trách nhiệm điều hành trong phạm vi được ủy quyền, ổn định hoạt động và từng bước chuyển đổi doanh nghiệp sang mô hình vận hành mục tiêu.</p>
+                    
+                    <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; margin-bottom: 30px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+                        <span style="color: var(--home-text-muted); font-size: 0.8rem; font-weight: 600;">Operate <i data-lucide="arrow-right" style="color: var(--home-orange); width: 12px; height: 12px; display: inline; vertical-align: middle;"></i></span>
+                        <span style="color: var(--home-text-muted); font-size: 0.8rem; font-weight: 600;">Stabilize <i data-lucide="arrow-right" style="color: var(--home-orange); width: 12px; height: 12px; display: inline; vertical-align: middle;"></i></span>
+                        <span style="color: var(--home-text-muted); font-size: 0.8rem; font-weight: 600;">Assess <i data-lucide="arrow-right" style="color: var(--home-orange); width: 12px; height: 12px; display: inline; vertical-align: middle;"></i></span>
+                        <span style="color: var(--home-text-muted); font-size: 0.8rem; font-weight: 600;">Transform <i data-lucide="arrow-right" style="color: var(--home-orange); width: 12px; height: 12px; display: inline; vertical-align: middle;"></i></span>
+                        <span style="color: var(--home-text-muted); font-size: 0.8rem; font-weight: 600;">Improve</span>
+                    </div>
+                    
+                    <div style="margin-top: auto;">
+                        <a href="operate-transform.html" style="color: white; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; transition: color 0.2s;" onmouseover="this.style.color='var(--home-orange)'" onmouseout="this.style.color='white'">Tìm hiểu Operate &amp; Transform <i data-lucide="arrow-right" style="width: 18px; height: 18px;"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- SECTION: TRANSFORMATION JOURNEY -->
+    <section class="home-section">
+        <style>
+            .timeline-step { cursor: default; }
+            .timeline-circle {
+                width: 60px; height: 60px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.1); background: var(--home-bg-alt); display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; position: relative; z-index: 2; transition: border-color 0.3s;
+            }
+            .timeline-step:hover .timeline-circle {
+                border-color: var(--home-orange);
+            }
+            .timeline-num {
+                color: var(--home-orange); font-size: 1.25rem; font-weight: 800; font-family: monospace;
+            }
+            @media (max-width: 768px) {
+                .timeline-line-bg { display: none; }
+                .timeline-container { grid-template-columns: 1fr !important; gap: 40px !important; }
+            }
+        </style>
+        <div class="container">
+            <div class="home-header">
+                <h2 class="home-h2">Lộ trình chuyển đổi cùng INVAMAX</h2>
+                <div class="divider"></div>
+                <p class="home-subtitle">Một lộ trình xuyên suốt từ hiểu hiện trạng đến xây dựng và duy trì mô hình vận hành mục tiêu.</p>
+            </div>
+
+            <div style="position: relative; padding-top: 20px; margin-bottom: 40px;">
+                <!-- Horizontal connecting line -->
+                <div class="timeline-line-bg" style="position: absolute; top: 50px; left: 10%; right: 10%; height: 1px; background: rgba(255,255,255,0.1); z-index: 1;"></div>
+                
+                <div class="timeline-container" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; position: relative; z-index: 2;">
+                    
+                    <!-- Step 1 -->
+                    <div class="timeline-step" style="text-align: center; padding: 0 10px;">
+                        <div class="timeline-circle">
+                            <span class="timeline-num">01</span>
+                        </div>
+                        <span class="home-eyebrow">ASSESS</span>
+                        <h3 style="color: white; font-size: 1.15rem; margin-bottom: 12px; font-weight: 700;">1. Đánh giá mô hình hiện trạng</h3>
+                        <p style="color: var(--home-text-muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">Đánh giá cách nhà máy đang thực sự vận hành, xác định điểm nghẽn, nguyên nhân cốt lõi và những khoảng trống giữa hiện trạng với yêu cầu phát triển của doanh nghiệp.<br><br><span style="font-size:0.8rem; color:var(--home-orange); font-weight: 600;">Powered by INVAMAX FA™</span></p>
+                    </div>
+                    
+                    <!-- Step 2 -->
+                    <div class="timeline-step" style="text-align: center; padding: 0 10px;">
+                        <div class="timeline-circle">
+                            <span class="timeline-num">02</span>
+                        </div>
+                        <span class="home-eyebrow">DESIGN</span>
+                        <h3 style="color: white; font-size: 1.15rem; margin-bottom: 12px; font-weight: 700;">2. Thiết kế mô hình mục tiêu</h3>
+                        <p style="color: var(--home-text-muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">Thiết kế Target Factory Operating Model phù hợp với chiến lược, sản phẩm, quy mô, năng lực và mục tiêu phát triển của doanh nghiệp.<br><br><span style="font-size:0.8rem; color:var(--home-orange); font-weight: 600;">Output: Target Operating Model</span></p>
+                    </div>
+                    
+                    <!-- Step 3 -->
+                    <div class="timeline-step" style="text-align: center; padding: 0 10px;">
+                        <div class="timeline-circle">
+                            <span class="timeline-num">03</span>
+                        </div>
+                        <span class="home-eyebrow">TRANSFORM</span>
+                        <h3 style="color: white; font-size: 1.15rem; margin-bottom: 12px; font-weight: 700;">3. Chuyển đổi mô hình vận hành</h3>
+                        <p style="color: var(--home-text-muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">Từng bước xây dựng hệ thống quản trị, chuẩn hóa cách vận hành, phát triển năng lực tổ chức và ứng dụng Digital &amp; AI để đưa mô hình mục tiêu vào hoạt động thực tế.<br><br><span style="font-size:0.8rem; color:var(--home-orange); font-weight: 600;">INVAMAX FOS™ + Digital &amp; AI<br>Typical transformation horizon: 12–24 months</span></p>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="timeline-step" style="text-align: center; padding: 0 10px;">
+                        <div class="timeline-circle">
+                            <span class="timeline-num">04</span>
+                        </div>
+                        <span class="home-eyebrow">IMPROVE & SUSTAIN</span>
+                        <h3 style="color: white; font-size: 1.15rem; margin-bottom: 12px; font-weight: 700;">4. Cải tiến & Duy trì</h3>
+                        <p style="color: var(--home-text-muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">Theo dõi hiệu quả, xây dựng năng lực cải tiến nội tại và liên tục hoàn thiện mô hình vận hành khi doanh nghiệp, sản phẩm và công nghệ thay đổi.<br><br><span style="font-size:0.8rem; color:var(--home-orange); font-weight: 600;">Improve &amp; Sustain</span></p>
+                    </div>
+                    
+                </div>
+            </div>
+            <p style="font-size: 0.95rem; color: var(--home-text-muted); font-style: italic; line-height: 1.7; font-weight: 400; margin-top: 40px; text-align: center;">Mỗi doanh nghiệp có một điểm xuất phát và tốc độ chuyển đổi khác nhau. INVAMAX thiết kế lộ trình phù hợp với mức độ sẵn sàng và mục tiêu thực tế của từng nhà máy.</p>
+        </div>
+    </section>
+    <section class="home-section-alt">
+        <div class="container">
+            <div class="home-header">
+                <h2 class="home-h2">Phương pháp & năng lực vận hành của INVAMAX</h2>
+                <h3 style="font-size: 1.25rem; color: var(--home-text-primary); font-weight: 600; margin-bottom: 30px; letter-spacing: 0;">Cùng một nền tảng được sử dụng cả khi INVAMAX dẫn dắt transformation và khi trực tiếp tham gia vận hành nhà máy.</h3>
+                <div class="divider"></div>
+                <p class="home-subtitle" style="margin-bottom: 24px;">INVAMAX kết hợp đánh giá hệ thống, hệ điều hành quản trị và công nghệ vận hành để đưa mô hình mục tiêu từ thiết kế thành cách doanh nghiệp thực sự hoạt động mỗi ngày.</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 30px;">
+                <!-- Card 1: FA -->
+                <div class="home-card">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 12px;">
+                        <i data-lucide="clipboard-check" class="home-card-icon"></i>
+                        <h4 style="color: white; font-size: 1.25rem; margin: 0; font-weight: 700;">INVAMAX FA™</h4>
+                    </div>
+                    <span class="home-eyebrow">Factory Assessment</span>
+                    <p style="color: var(--home-text-muted); line-height: 1.6; margin: 0; font-size: 1rem;">Đánh giá có cấu trúc mô hình vận hành hiện tại, xác định điểm nghẽn, nguyên nhân cốt lõi và khoảng cách cần chuyển đổi.</p>
+                </div>
+                
+                <!-- Card 2: FOS -->
+                <div class="home-card">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 12px;">
+                        <i data-lucide="workflow" class="home-card-icon"></i>
+                        <h4 style="color: white; font-size: 1.25rem; margin: 0; font-weight: 700;">INVAMAX FOS™</h4>
+                    </div>
+                    <span class="home-eyebrow">Factory Operating System</span>
+                    <p style="color: var(--home-text-muted); line-height: 1.6; margin: 0; font-size: 1rem;">Hệ điều hành quản trị giúp chuẩn hóa, hiện thực hóa và duy trì mô hình vận hành mục tiêu trong hoạt động hàng ngày.</p>
+                </div>
+
+                <!-- Card 3: Digital & AI -->
+                <div class="home-card">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 12px;">
+                        <i data-lucide="cpu" class="home-card-icon"></i>
+                        <h4 style="color: white; font-size: 1.25rem; margin: 0; font-weight: 700;">Digital & AI for Operations</h4>
+                    </div>
+                    <span class="home-eyebrow">Technology & Automation</span>
+                    <p style="color: var(--home-text-muted); line-height: 1.6; margin: 0; font-size: 1rem;">Số hóa workflow và dữ liệu, tự động hóa các công việc phù hợp và ứng dụng AI để nâng cao năng lực quản trị, phân tích và ra quyết định.</p>
+                </div>
+            </div>
+            
+            <div class="home-quote-block">
+                <p>Công nghệ không thay thế một mô hình vận hành tốt. INVAMAX sử dụng Digital và AI để tăng năng lực của hệ thống, thay vì số hóa những quy trình vốn đã không hiệu quả.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- SECTION: INVAMAX METHODS & CAPABILITIES -->
+    <section class="home-section-alt">
+        <div class="container" style="text-align: center;">
+            <div style="max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px;">
+                <!-- FOM Definition -->
+                <div class="home-header" style="margin-bottom: 24px;">
+                    <h2 class="home-h2">Mô hình vận hành mục tiêu là gì?</h2>
+                    <h3 style="font-size: 1.25rem; font-weight: 600; color: var(--home-text-primary); margin-bottom: 20px;">Một mô hình vận hành phù hợp với chiến lược và thực tế của từng doanh nghiệp</h3>
+                    <p style="color: var(--home-text-muted); font-size: 1.05rem; line-height: 1.7; margin: 0 auto; text-align: center; max-width: 800px;">Mô hình vận hành mục tiêu (Target Factory Operating Model) mô tả cách doanh nghiệp cần tổ chức con người, quy trình, cơ chế quản trị, dữ liệu và công nghệ để thực hiện chiến lược một cách hiệu quả.<br><br>Không có một mô hình duy nhất phù hợp cho mọi nhà máy. INVAMAX thiết kế mô hình mục tiêu dựa trên chiến lược, sản phẩm, quy mô, năng lực và mức độ sẵn sàng của từng doanh nghiệp.</p>
+                </div>
+
+                <!-- 6 Checkmarks -->
+                <style>
+                    @media (max-width: 600px) {
+                        .checkmarks-grid { grid-template-columns: 1fr !important; }
+                    }
+                </style>
+                <div class="checkmarks-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; text-align: left; margin: 0 auto 20px; max-width: 800px; width: 100%;">
+                    <div style="display: flex; gap: 12px; align-items: flex-start;">
+                        <i data-lucide="check-circle-2" style="color: var(--home-orange); width: 22px; height: 22px; flex-shrink: 0; margin-top: 2px;"></i>
+                        <p style="color: var(--home-text-primary); margin: 0; line-height: 1.5; font-size: 1.05rem;">Vận hành hiệu quả hơn.</p>
+                    </div>
+                    <div style="display: flex; gap: 12px; align-items: flex-start;">
+                        <i data-lucide="check-circle-2" style="color: var(--home-orange); width: 22px; height: 22px; flex-shrink: 0; margin-top: 2px;"></i>
+                        <p style="color: var(--home-text-primary); margin: 0; line-height: 1.5; font-size: 1.05rem;">Chuẩn hóa và dễ mở rộng hơn.</p>
+                    </div>
+                    <div style="display: flex; gap: 12px; align-items: flex-start;">
+                        <i data-lucide="check-circle-2" style="color: var(--home-orange); width: 22px; height: 22px; flex-shrink: 0; margin-top: 2px;"></i>
+                        <p style="color: var(--home-text-primary); margin: 0; line-height: 1.5; font-size: 1.05rem;">Giảm chi phí vận hành.</p>
+                    </div>
+                    <div style="display: flex; gap: 12px; align-items: flex-start;">
+                        <i data-lucide="check-circle-2" style="color: var(--home-orange); width: 22px; height: 22px; flex-shrink: 0; margin-top: 2px;"></i>
+                        <p style="color: var(--home-text-primary); margin: 0; line-height: 1.5; font-size: 1.05rem;">Giảm sự phụ thuộc vào cá nhân.</p>
+                    </div>
+                    <div style="display: flex; gap: 12px; align-items: flex-start;">
+                        <i data-lucide="check-circle-2" style="color: var(--home-orange); width: 22px; height: 22px; flex-shrink: 0; margin-top: 2px;"></i>
+                        <p style="color: var(--home-text-primary); margin: 0; line-height: 1.5; font-size: 1.05rem;">Sẵn sàng hơn cho Digital, AI và tự động hóa.</p>
+                    </div>
+                    <div style="display: flex; gap: 12px; align-items: flex-start;">
+                        <i data-lucide="check-circle-2" style="color: var(--home-orange); width: 22px; height: 22px; flex-shrink: 0; margin-top: 2px;"></i>
+                        <p style="color: var(--home-text-primary); margin: 0; line-height: 1.5; font-size: 1.05rem;">Xây dựng môi trường làm việc bền vững hơn.</p>
+                    </div>
+                </div>
+
+                <!-- Final Statement -->
+                <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; text-align: center;">
+                    <p style="color: var(--home-text-muted); font-size: 1rem; margin-bottom: 15px; line-height: 1.6; max-width: 700px; margin-left: auto; margin-right: auto;">Mục tiêu không phải là số hóa hay tự động hóa mọi thứ, mà là lựa chọn cách vận hành phù hợp nhất để con người và công nghệ cùng phát huy hiệu quả.</p>
+                    <div style="display: inline-block; border-left: 3px solid var(--home-orange); padding-left: 16px; text-align: left;">
+                        <span style="color: var(--home-orange); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 4px;">THE GOAL</span>
+                        <p style="color: white; font-weight: 600; font-size: 1.15rem; margin: 0;">Mô hình mục tiêu chính là đích đến của quá trình chuyển đổi.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: TẠI SAO LỰA CHỌN INVAMAX -->
+    
+    <!-- WE DON'T JUST ADVISE -->
+    <section style="padding: 60px 0; background: var(--home-bg-alt); text-align: center; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05);">
+        <div class="container">
+            <span class="home-eyebrow">FROM ADVICE TO ACCOUNTABILITY</span>
+            <h2 style="font-size: 2.2rem; font-weight: 800; color: white; margin: 10px 0 15px;">We don't just advise. We operate.</h2>
+            <p style="color: var(--home-text-muted); font-size: 1.15rem; max-width: 800px; margin: 0 auto; line-height: 1.7;">INVAMAX không chỉ thiết kế cách một nhà máy nên vận hành. Khi cần thiết, chúng tôi trực tiếp tham gia để biến mô hình đó thành thực tế.</p>
+        </div>
+    </section>
+<section class="section" style="padding: 70px 0; background: var(--bg-dark); border-radius: 16px;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <h2 style="font-size: 2.2rem; margin-bottom: 30px; font-weight: 800; color: white;">Tại sao lựa chọn INVAMAX?</h2>
+                <div class="divider"></div>
+                <p style="color: var(--text-muted); font-size: 1rem; max-width: 800px; margin: 0 auto; line-height: 1.7;">Chúng tôi không triển khai từng giải pháp riêng lẻ.<br class="desktop-only"> Chúng tôi thiết kế một hệ thống để mọi giải pháp cùng phát huy hiệu quả.</p>
+            </div>
+
+            <div class="grid-2" style="gap: 12px;">
+                
+                <!-- Card 1: Orange -->
+                <div class="layer-card" style="background: rgba(249,115,22,0.08); border: 1px solid rgba(249,115,22,0.3); border-radius: 20px; padding: 35px 30px; display: flex; gap: 25px; align-items: flex-start; position: relative; overflow: hidden; box-shadow: none; transition: transform 0.3s ease;">
+                    <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 6px; background: #f97316;"></div>
+                    <div style="width: 65px; height: 65px; background: rgba(249,115,22,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid rgba(249,115,22,0.3);">
+                        <i data-lucide="compass" style="color: #f97316; width: 32px; height: 32px;"></i>
+                    </div>
+                    <div>
+                        <h3 style="color: white; font-size: 1.4rem; margin-bottom: 12px; margin-top: 5px;">Nhìn toàn bộ hệ thống</h3>
+                        <p style="color: var(--text-muted); line-height: 1.7; margin: 0; font-size: 1.05rem;">INVAMAX không xử lý Lean, phần mềm, Digital hay AI như những dự án riêng lẻ. Chúng tôi nhìn nhà máy như một hệ thống vận hành thống nhất, nơi mọi thành phần phải hỗ trợ cùng một mô hình mục tiêu.</p>
+                    </div>
+                </div>
+                
+                <!-- Card 2: Blue -->
+                <div class="layer-card" style="background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.3); border-radius: 20px; padding: 35px 30px; display: flex; gap: 25px; align-items: flex-start; position: relative; overflow: hidden; box-shadow: none; transition: transform 0.3s ease;">
+                    <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 6px; background: #3b82f6;"></div>
+                    <div style="width: 65px; height: 65px; background: rgba(59,130,246,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid rgba(59,130,246,0.3);">
+                        <i data-lucide="target" style="color: #3b82f6; width: 32px; height: 32px;"></i>
+                    </div>
+                    <div>
+                        <h3 style="color: white; font-size: 1.4rem; margin-bottom: 12px; margin-top: 5px;">Phương pháp chuyển đổi có cấu trúc</h3>
+                        <p style="color: var(--text-muted); line-height: 1.7; margin: 0; font-size: 1.05rem;">Từ đánh giá hiện trạng, thiết kế mô hình mục tiêu đến triển khai chuyển đổi và duy trì kết quả, mỗi giai đoạn đều có mục tiêu, phương pháp và đầu ra rõ ràng.</p>
+                    </div>
+                </div>
+                
+                <!-- Card 3: Purple -->
+                <div class="layer-card" style="background: rgba(168,85,247,0.08); border: 1px solid rgba(168,85,247,0.3); border-radius: 20px; padding: 35px 30px; display: flex; gap: 25px; align-items: flex-start; position: relative; overflow: hidden; box-shadow: none; transition: transform 0.3s ease;">
+                    <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 6px; background: #a855f7;"></div>
+                    <div style="width: 65px; height: 65px; background: rgba(168,85,247,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid rgba(168,85,247,0.3);">
+                        <i data-lucide="merge" style="color: #a855f7; width: 32px; height: 32px;"></i>
+                    </div>
+                    <div>
+                        <h3 style="color: white; font-size: 1.4rem; margin-bottom: 12px; margin-top: 5px;">Kết hợp quản trị và công nghệ</h3>
+                        <p style="color: var(--text-muted); line-height: 1.7; margin: 0; font-size: 1.05rem;">INVAMAX kết hợp hệ thống quản trị với Digital, AI và tự động hóa dựa trên nhu cầu thực tế của mô hình vận hành, thay vì bắt đầu transformation bằng việc mua thêm công nghệ.</p>
+                    </div>
+                </div>
+                
+                <!-- Card 4: Green -->
+                <div class="layer-card" style="background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.3); border-radius: 20px; padding: 35px 30px; display: flex; gap: 25px; align-items: flex-start; position: relative; overflow: hidden; box-shadow: none; transition: transform 0.3s ease;">
+                    <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 6px; background: #10b981;"></div>
+                    <div style="width: 65px; height: 65px; background: rgba(16,185,129,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid rgba(16,185,129,0.3);">
+                        <i data-lucide="handshake" style="color: #10b981; width: 32px; height: 32px;"></i>
+                    </div>
+                    <div>
+                        <h3 style="color: white; font-size: 1.4rem; margin-bottom: 12px; margin-top: 5px;">Từ tư vấn đến trách nhiệm vận hành</h3>
+                        <p style="color: var(--text-muted); line-height: 1.7; margin: 0; font-size: 1.05rem;">Khi cần thiết, INVAMAX có thể trực tiếp tham gia hoặc tiếp nhận điều hành trong phạm vi được ủy quyền và cùng doanh nghiệp chịu trách nhiệm về kết quả vận hành.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: TRUNG TÂM TRI THỨC -->
+        
+    <!-- CASE STUDY -->
+    <section class="home-section-alt">
+        <div class="container" style="text-align: center;">
+            <div style="max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px;">
+                <!-- FOM Definition -->
+                <div class="home-header" style="margin-bottom: 24px;">
+                    <h2 class="home-h2">Mô hình vận hành mục tiêu là gì?</h2>
+                    <h3 style="font-size: 1.25rem; font-weight: 600; color: var(--home-text-primary); margin-bottom: 20px;">Một mô hình vận hành phù hợp với chiến lược và thực tế của từng doanh nghiệp</h3>
+                    <p style="color: var(--home-text-muted); font-size: 1.05rem; line-height: 1.7; margin: 0 auto; text-align: center; max-width: 800px;">Mô hình vận hành mục tiêu (Target Factory Operating Model) mô tả cách doanh nghiệp cần tổ chức con người, quy trình, cơ chế quản trị, dữ liệu và công nghệ để thực hiện chiến lược một cách hiệu quả.<br><br>Không có một mô hình duy nhất phù hợp cho mọi nhà máy. INVAMAX thiết kế mô hình mục tiêu dựa trên chiến lược, sản phẩm, quy mô, năng lực và mức độ sẵn sàng của từng doanh nghiệp.</p>
+                </div>
+
+                <!-- 6 Checkmarks -->
+                <style>
+                    @media (max-width: 600px) {
+                        .checkmarks-grid { grid-template-columns: 1fr !important; }
+                    }
+                </style>
+                <div class="checkmarks-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; text-align: left; margin: 0 auto 20px; max-width: 800px; width: 100%;">
+                    <div style="display: flex; gap: 12px; align-items: flex-start;">
+                        <i data-lucide="check-circle-2" style="color: var(--home-orange); width: 22px; height: 22px; flex-shrink: 0; margin-top: 2px;"></i>
+                        <p style="color: var(--home-text-primary); margin: 0; line-height: 1.5; font-size: 1.05rem;">Vận hành hiệu quả hơn.</p>
+                    </div>
+                    <div style="display: flex; gap: 12px; align-items: flex-start;">
+                        <i data-lucide="check-circle-2" style="color: var(--home-orange); width: 22px; height: 22px; flex-shrink: 0; margin-top: 2px;"></i>
+                        <p style="color: var(--home-text-primary); margin: 0; line-height: 1.5; font-size: 1.05rem;">Chuẩn hóa và dễ mở rộng hơn.</p>
+                    </div>
+                    <div style="display: flex; gap: 12px; align-items: flex-start;">
+                        <i data-lucide="check-circle-2" style="color: var(--home-orange); width: 22px; height: 22px; flex-shrink: 0; margin-top: 2px;"></i>
+                        <p style="color: var(--home-text-primary); margin: 0; line-height: 1.5; font-size: 1.05rem;">Giảm chi phí vận hành.</p>
+                    </div>
+                    <div style="display: flex; gap: 12px; align-items: flex-start;">
+                        <i data-lucide="check-circle-2" style="color: var(--home-orange); width: 22px; height: 22px; flex-shrink: 0; margin-top: 2px;"></i>
+                        <p style="color: var(--home-text-primary); margin: 0; line-height: 1.5; font-size: 1.05rem;">Giảm sự phụ thuộc vào cá nhân.</p>
+                    </div>
+                    <div style="display: flex; gap: 12px; align-items: flex-start;">
+                        <i data-lucide="check-circle-2" style="color: var(--home-orange); width: 22px; height: 22px; flex-shrink: 0; margin-top: 2px;"></i>
+                        <p style="color: var(--home-text-primary); margin: 0; line-height: 1.5; font-size: 1.05rem;">Sẵn sàng hơn cho Digital, AI và tự động hóa.</p>
+                    </div>
+                    <div style="display: flex; gap: 12px; align-items: flex-start;">
+                        <i data-lucide="check-circle-2" style="color: var(--home-orange); width: 22px; height: 22px; flex-shrink: 0; margin-top: 2px;"></i>
+                        <p style="color: var(--home-text-primary); margin: 0; line-height: 1.5; font-size: 1.05rem;">Xây dựng môi trường làm việc bền vững hơn.</p>
+                    </div>
+                </div>
+
+                <!-- Final Statement -->
+                <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; text-align: center;">
+                    <p style="color: var(--home-text-muted); font-size: 1rem; margin-bottom: 15px; line-height: 1.6; max-width: 700px; margin-left: auto; margin-right: auto;">Mục tiêu không phải là số hóa hay tự động hóa mọi thứ, mà là lựa chọn cách vận hành phù hợp nhất để con người và công nghệ cùng phát huy hiệu quả.</p>
+                    <div style="display: inline-block; border-left: 3px solid var(--home-orange); padding-left: 16px; text-align: left;">
+                        <span style="color: var(--home-orange); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 4px;">THE GOAL</span>
+                        <p style="color: white; font-weight: 600; font-size: 1.15rem; margin: 0;">Mô hình mục tiêu chính là đích đến của quá trình chuyển đổi.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+<section class="section" style="padding: 70px 0; background: var(--bg-color); border-radius: 16px;">
+        <div class="container" style="text-align: center;">
+            <div style="margin-bottom: 25px;">
+                <h2 style="font-size: 2.2rem; margin-bottom: 30px; font-weight: 800; color: white;">Trung tâm tri thức INVAMAX</h2>
+                <div style="margin-bottom: 20px;">
+                    <i data-lucide="book-open" style="color: var(--primary); width: 40px; height: 40px;"></i>
+                </div>
+                <p style="color: var(--text-muted); font-size: 1.15rem; max-width: 800px; margin: 0 auto; line-height: 1.7;">Kiến thức, case study, công cụ và tài liệu thực hành dành cho những người đang xây dựng, vận hành và chuyển đổi hệ thống sản xuất.<br><br>Khám phá các bài viết chuyên môn, kinh nghiệm thực tế, Template &amp; Toolkit và nội dung về Factory Transformation, vận hành sản xuất, Digital và AI.</p>
+            </div>
+            
+            <div style="display: flex; justify-content: center; gap: 12px; margin-bottom: 40px; flex-wrap: wrap;">
+                    <span style="background: rgba(255,255,255,0.05); color: white; border: 1px solid rgba(255,255,255,0.1); padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 0.95rem;">Bài viết</span>
+                    <span style="background: rgba(255,255,255,0.05); color: white; border: 1px solid rgba(255,255,255,0.1); padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 0.95rem;">Case Study</span>
+                    <span style="background: rgba(255,255,255,0.05); color: white; border: 1px solid rgba(255,255,255,0.1); padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 0.95rem;">Toolkit & Tài liệu</span>
+                    <span style="background: rgba(255,255,255,0.05); color: white; border: 1px solid rgba(255,255,255,0.1); padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 0.95rem;">Video</span>
+                </div>
+                
+                <a href="tri-thuc.html" class="btn btn-outline-custom" style="padding: 14px 30px; font-size: 1.1rem; border-radius: 24px; display: inline-flex; align-items: center; gap: 10px; text-decoration: none;">
+                    Khám phá Trung tâm Tri thức <i data-lucide="arrow-right" style="width: 18px; height: 18px;"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: CTA CUỐI TRANG -->
+    <section class="section" style="padding: 60px 0; background: var(--bg-color); text-align: center; border-top: 1px solid rgba(255,255,255,0.05);">
+        <div class="container">
+            <h2 style="font-size: 2.2rem; margin-bottom: 20px; font-weight: 800; color: white;">Bạn đang muốn thay đổi cách doanh nghiệp được vận hành?</h2>
+            <p style="color: var(--text-muted); font-size: 1.15rem; max-width: 800px; margin: 0 auto; line-height: 1.7;">Bắt đầu bằng việc lựa chọn mức độ INVAMAX cần tham gia cùng doanh nghiệp.</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 700px; margin: 40px auto 0;">
+                <div style="background: rgba(0,0,0,0.3); padding: 25px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); text-align: center;">
+                    <p style="color: #94a3b8; font-size: 0.95rem; margin-bottom: 15px; font-weight: 600;">Bạn vẫn muốn trực tiếp điều hành</p>
+                    <a href="kham-benh-online/gioi-thieu.html" class="btn btn-primary" style="background: var(--primary); color: white; padding: 12px 24px; border-radius: 8px; font-weight: 700; font-size: 1.05rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; width: 100%; justify-content: center; border: none; cursor: pointer; transition: background 0.3s;" onmouseover="this.style.background='#e86100';" onmouseout="this.style.background='var(--primary)';"><i data-lucide="activity"></i> Đánh giá hiện trạng</a>
+                </div>
+                <div style="background: rgba(0,0,0,0.3); padding: 25px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); text-align: center;">
+                    <p style="color: #94a3b8; font-size: 0.95rem; margin-bottom: 15px; font-weight: 600;">Bạn muốn INVAMAX trực tiếp tham gia điều hành</p>
+                    <a href="operate-transform.html" class="btn btn-primary" style="background: white; color: var(--bg-darker); padding: 12px 24px; border-radius: 8px; font-weight: 700; font-size: 1.05rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; width: 100%; justify-content: center; border: none; cursor: pointer; transition: background 0.3s;" onmouseover="this.style.background='#e2e8f0';" onmouseout="this.style.background='white';"><i data-lucide="arrow-right"></i> Trao đổi về Operate &amp; Transform</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <!-- Cột 1: Logo -->
+            <div class="footer-col" style="text-align: center;">
+                <div style="margin-bottom: 0;">
+                    <a href="index.html" class="logo" style="display: inline-block; font-size: 2.4rem; line-height: 1; margin-bottom: 5px;">INVA<span>MAX</span></a>
+                </div>
+                <p class="text-muted" style="line-height: 1.6; max-width: 280px; margin: 0 auto;">Đối tác Vận hành & Chuyển đổi Nhà máy</p>
+            </div>
+            
+            <!-- Cột 2: Giải pháp -->
+            <div class="footer-col">
+                <h4>Vận hành & Chuyển đổi</h4>
+                <div class="footer-links">
+                    <a href="giai-phap.html">Factory Transformation</a>
+                    <a href="operate-transform.html">Operate &amp; Transform</a>
+                    <a href="kham-benh-online/gioi-thieu.html">Đánh giá hiện trạng</a>
+                    <a href="dich-vu.html#thiet-ke">Thiết kế mô hình mục tiêu</a>
+                    <a href="dich-vu.html#fos">Cải tiến &amp; Duy trì</a>
+                </div>
+            </div>
+            
+            <!-- Cột 3: Tri thức -->
+            <div class="footer-col">
+                <h4>Phương pháp</h4>
+                <div class="footer-links">
+                    <a href="kham-benh-online/gioi-thieu.html">INVAMAX FA™</a>
+                    <a href="dich-vu.html#fos">INVAMAX FOS™</a>
+                    <a href="dich-vu.html#ai-digital">Digital &amp; AI for Operations</a>
+                    <a href="tri-thuc.html" style="margin-top: 10px; font-weight: bold; color: white;">Tài nguyên</a>
+                    <a href="case-study.html">Case Study</a>
+                    <a href="thu-vien.html">Template &amp; Toolkit</a>
+                </div>
+            </div>
+            
+            <!-- Cột 4: Liên hệ -->
+            <div class="footer-col">
+                <h4>Liên hệ</h4>
+                <p style="font-weight: 600; color: white; margin-bottom: 16px; font-size: 0.95rem;">CÔNG TY TNHH ĐẦU TƯ VÀ PHÁT TRIỂN INVAMAX</p>
+                <div class="contact-info" style="margin-bottom: 24px;">
+                    <div class="contact-item">
+                        <i data-lucide="file-text"></i>
+                        <span>MST: 0202236953</span>
+                    </div>
+                    <div class="contact-item">
+                        <i data-lucide="phone"></i>
+                        <span>0988.911.869</span>
+                    </div>
+                    <div class="contact-item">
+                        <i data-lucide="mail"></i>
+                        <span>info@invamax.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i data-lucide="map-pin"></i>
+                        <span>Thôn Đông Lôi, xã Vĩnh Thịnh, TP Hải Phòng</span>
+                    </div>
+                </div>
+                
+                <h5 style="color: white; margin-bottom: 12px; font-size: 0.95rem; font-weight: 600;">Kết nối với chúng tôi</h5>
+                <div class="social-links" style="display: flex; gap: 12px;">
+                    <a href="https://zalo.me/0988911869" target="_blank" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='#0068FF'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
+                        <span style="font-size: 11px; font-weight: 800; font-family: 'Inter', sans-serif;">Zalo</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/xuannhattran/" target="_blank" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='#0A66C2'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    </a>
+                    <a href="https://www.facebook.com/invamax.vanhanhtinhgon" target="_blank" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='#1877F2'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                    </a>
+                    <a href="https://www.youtube.com/@NguoiXayNen" target="_blank" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='#ff0000'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom" style="text-align: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 24px; margin-top: 40px;">
+            <p style="font-size: 0.85rem; color: rgba(255,255,255,0.4); margin-bottom: 8px; letter-spacing: 0.5px;">Manufacturing Operations & Transformation Partner</p>
+            <p style="color: var(--text-muted);">&copy; 2026 INVAMAX. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeContactModal()" style="font-size: 24px; line-height: 1; font-weight: bold;">&times;</button>
+            <h2 style="font-size: 1.5rem; color: var(--primary); margin-bottom: 10px;">Đăng ký tư vấn</h2>
+            <p style="color: #64748b; margin-bottom: 20px; font-size: 0.95rem;">Vui lòng để lại thông tin, chuyên gia INVAMAX sẽ liên hệ lại với bạn trong 24h.</p>
+            
+            <form id="leadForm" onsubmit="submitForm(event)">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Họ và tên *</label>
+                        <input type="text" name="hoTen" required placeholder="Nguyễn Văn A">
+                    </div>
+                    <div class="form-group">
+                        <label>Chức danh *</label>
+                        <input type="text" name="chucDanh" required placeholder="Giám đốc / Trưởng phòng">
+                    </div>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Số điện thoại *</label>
+                        <input type="tel" name="soDienThoai" required placeholder="0988...">
+                    </div>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" name="email" required placeholder="email@congty.com">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Tên nhà máy / Công ty *</label>
+                    <input type="text" name="tenNhaMay" required placeholder="Công ty TNHH XYZ">
+                </div>
+                
+                <div class="form-group">
+                    <label>Địa chỉ nhà máy *</label>
+                    <input type="text" name="diaChi" required placeholder="KCN abc, Tỉnh xyz...">
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Lĩnh vực sản xuất *</label>
+                        <select name="linhVuc" required>
+                            <option value="">-- Chọn lĩnh vực --</option>
+                            <option value="Gỗ / nội thất">Gỗ / nội thất</option>
+                            <option value="Cơ khí / kim loại">Cơ khí / kim loại</option>
+                            <option value="May mặc / da giày">May mặc / da giày</option>
+                            <option value="Nhựa / cao su">Nhựa / cao su</option>
+                            <option value="Thực phẩm / đồ uống">Thực phẩm / đồ uống</option>
+                            <option value="Điện tử / điện lạnh">Điện tử / điện lạnh</option>
+                            <option value="Vật liệu xây dựng">Vật liệu xây dựng</option>
+                            <option value="Bao bì / in ấn">Bao bì / in ấn</option>
+                            <option value="Khác">Khác</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Quy mô nhân sự *</label>
+                        <select name="quyMo" required>
+                            <option value="Dưới 50 người">Dưới 50 người</option>
+                            <option value="50 ~ 100 người">50 ~ 100 người</option>
+                            <option value="101 ~ 200 người">101 ~ 200 người</option>
+                            <option value="Trên 200 người">Trên 200 người</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Nội dung cần tư vấn *</label>
+                    <textarea name="noiDung" rows="3" required placeholder="Mô tả sơ bộ về định hướng, vấn đề hiện tại của nhà máy..."></textarea>
+                </div>
+                
+                <button type="submit" id="btnSubmitForm" class="btn btn-outline" style="width: 100%; margin-top: 10px; transition: all 0.3s ease;">
+                    <i data-lucide="send"></i> Gửi Đề Nghị
+                </button>
+            </form>
+            
+            <div id="formSuccess" style="display: none; text-align: center; padding: 30px 0;">
+                <i data-lucide="check-circle" style="color: #22c55e; width: 64px; height: 64px; margin-bottom: 15px; margin: 0 auto;"></i>
+                <h3 style="color: #16a34a; font-size: 1.3rem; margin-top: 15px;">Gửi thành công!</h3>
+                <p style="color: #475569; margin-top: 10px;">Cảm ơn bạn. Chuyên gia INVAMAX sẽ sớm liên hệ lại.</p>
+                <button type="button" class="btn btn-outline" style="margin-top: 20px; transition: all 0.3s ease;" onclick="closeContactModal()">Đóng cửa sổ</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- LOGIN MODAL -->
+    <style>
+        .login-modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(8px);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .login-modal-overlay.active {
+            opacity: 1;
+        }
+        .login-modal {
+            background: rgba(255, 255, 255, 0.95);
+            width: 90%;
+            max-width: 400px;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+        .login-modal-overlay.active .login-modal {
+            transform: translateY(0);
+        }
+        .login-close {
+            position: absolute;
+            top: 15px; right: 15px;
+            cursor: pointer;
+            color: #64748b;
+            font-size: 20px;
+            transition: color 0.2s;
+        }
+        .login-close:hover { color: #0f172a; }
+        
+        .auth-tabs {
+            display: flex;
+            border-bottom: 2px solid #e2e8f0;
+            margin-bottom: 20px;
+        }
+        .auth-tab {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            font-weight: 600;
+            color: #64748b;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px;
+            transition: all 0.2s;
+        }
+        .auth-tab.active {
+            color: #ea580c;
+            border-bottom: 2px solid #ea580c;
+        }
+        .auth-form {
+            display: none;
+        }
+        .auth-form.active {
+            display: block;
+        }
+        .auth-input-group {
+            margin-bottom: 15px;
+        }
+        .auth-input-group label {
+            display: block;
+            font-size: 0.85rem;
+            color: #475569;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        .auth-input-group input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-family: inherit;
+            box-sizing: border-box;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .auth-input-group input:focus {
+            border-color: #ea580c;
+        }
+        .auth-btn {
+            width: 100%;
+            padding: 12px;
+            background: #ea580c;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .auth-btn:hover { background: #c2410c; }
+        .auth-divider {
+            display: flex; align-items: center; text-align: center; margin: 20px 0; color: #94a3b8; font-size: 0.85rem;
+        }
+        .auth-divider::before, .auth-divider::after {
+            content: ''; flex: 1; border-bottom: 1px solid #e2e8f0;
+        }
+        .auth-divider::before { margin-right: 10px; }
+        .auth-divider::after { margin-left: 10px; }
+        .g_id_signin {
+            display: flex; justify-content: center;
+        }
+    </style>
+    
+    <div class="login-modal-overlay" id="login-modal">
+        <div class="login-modal">
+            <div class="login-close" onclick="hideLoginModal()" style="font-size: 28px; line-height: 1; margin-top: -5px;">&times;</div>
+            
+            <div style="text-align: center; margin-bottom: 20px;">
+                <div style="font-size: 24px; font-weight: 900; color: #0f172a;">INVA<span style="color:#ea580c">MAX</span></div>
+                
+            </div>
+            
+            <div class="auth-tabs">
+                <div class="auth-tab active" id="tab-login" onclick="switchAuthTab('login')">Đăng nhập</div>
+                <div class="auth-tab" id="tab-register" onclick="switchAuthTab('register')">Tạo tài khoản</div>
+            </div>
+            
+            <!-- Login Form -->
+            <form class="auth-form active" id="form-login" onsubmit="handleLogin(event)">
+                <div class="auth-input-group">
+                    <label>Email</label>
+                    <input type="email" id="login-email" required placeholder="Nhập email...">
+                </div>
+                <div class="auth-input-group">
+                    <label>Mật khẩu</label>
+                    <input type="password" id="login-pass" required placeholder="Nhập mật khẩu...">
+                </div>
+                <button type="submit" class="auth-btn">Đăng nhập</button>
+            </form>
+            
+            <!-- Register Form -->
+            <form class="auth-form" id="form-register" onsubmit="handleRegister(event)">
+                <div class="auth-input-group">
+                    <label>Họ và tên</label>
+                    <input type="text" id="reg-name" required placeholder="Tên của bạn...">
+                </div>
+                <div class="auth-input-group">
+                    <label>Email</label>
+                    <input type="email" id="reg-email" required placeholder="Nhập email...">
+                </div>
+                <div class="auth-input-group">
+                    <label>Mật khẩu</label>
+                    <input type="password" id="reg-pass" required placeholder="Tạo mật khẩu...">
+                </div>
+                <button type="submit" class="auth-btn">Đăng ký tài khoản</button>
+            </form>
+            
+            <div class="auth-divider">hoặc</div>
+            
+            <!-- Google Sign-In -->
+            <div id="g_id_onload"
+                 data-client_id="811195724214-e0v9q3g64q5c18u5t51vqg0t3fdfpq47.apps.googleusercontent.com"
+                 data-context="use"
+                 data-ux_mode="popup"
+                 data-callback="handleCredentialResponse"
+                 data-auto_prompt="false">
+            </div>
+            <div class="g_id_signin"
+                 data-type="standard"
+                 data-shape="rectangular"
+                 data-theme="outline"
+                 data-text="signin_with"
+                 data-size="large"
+                 data-logo_alignment="left">
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="assets/js/auth.js"></script>
+
+</body>
+</html>

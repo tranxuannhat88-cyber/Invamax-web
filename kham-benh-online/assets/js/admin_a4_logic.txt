@@ -1,0 +1,35 @@
+        if (el_waste_analysis && scores.top3Wastes) {
+            el_waste_analysis.innerHTML = scores.top3Wastes.map(modName => {
+                let aiImpact = "Điểm nghẽn gây lãng phí nguồn lực cần khắc phục.";
+                if (aiJsonData.diagnostic && aiJsonData.diagnostic.top3WasteImpacts) {
+                    const found = aiJsonData.diagnostic.top3WasteImpacts.find(x => x.module && x.module.toLowerCase() === modName.toLowerCase());
+                    if (found) aiImpact = found.impact;
+                }
+                return `
+                <div style="flex: 1; background: #fff1f2; border: 1px solid #ffe4e6; padding: 15px; border-radius: 8px; border-top: 4px solid #e11d48; display: flex; flex-direction: column;">
+                    <div style="font-weight: 800; color: #be123c; font-size: 13px; margin-bottom: 8px; text-transform: uppercase;">${modName}</div>
+                    <div style="font-size: 12px; color: #4c0519; line-height: 1.5; flex: 1;">${aiImpact}</div>
+                </div>`;
+            }).join('');
+        }
+
+        const el_symp_analysis = document.getElementById('a4-symptoms-analysis');
+        if (el_symp_analysis && scores.top3Symptoms) {
+            el_symp_analysis.innerHTML = scores.top3Symptoms.map(modName => {
+                let aiImpact = "Dấu hiệu bất thường cần theo dõi và xử lý.";
+                if (aiJsonData.diagnostic && aiJsonData.diagnostic.top3SymptomImpacts) {
+                    const found = aiJsonData.diagnostic.top3SymptomImpacts.find(x => x.module && x.module.toLowerCase() === modName.toLowerCase());
+                    if (found) aiImpact = found.impact;
+                }
+                return `
+                <div style="flex: 1; background: #fff7ed; border: 1px solid #ffedd5; padding: 15px; border-radius: 8px; border-top: 4px solid #ea580c; display: flex; flex-direction: column;">
+                    <div style="font-weight: 800; color: #c2410c; font-size: 13px; margin-bottom: 8px; text-transform: uppercase;">${modName}</div>
+                    <div style="font-size: 12px; color: #7c2d12; line-height: 1.5; flex: 1;">${aiImpact}</div>
+                </div>`;
+            }).join('');
+        }
+
+        const el_top3_fos = document.getElementById('a4-top3-fos');
+        if (el_top3_fos && scores.top3FOS) {
+            el_top3_fos.innerHTML = scores.top3FOS.map(modName => {
+                const modInfo = getModuleInfo(modName);

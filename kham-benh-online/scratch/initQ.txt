@@ -1,0 +1,33 @@
+function initQuestions() {
+    try {
+        if (typeof AppQuestions === 'undefined') {
+            alert('LỖI NGHIÊM TRỌNG: AppQuestions không được định nghĩa. Vui lòng tải lại trang hoặc kiểm tra file questions_data.js');
+            return;
+        } else if (!AppQuestions.partA || AppQuestions.partA.length === 0) {
+            alert('LỖI: AppQuestions.partA trống. Dữ liệu chưa được nạp đúng.');
+            return;
+        } else {
+            console.log('AppQuestions loaded successfully:', AppQuestions);
+        }
+    } catch(e) {
+        alert('Lỗi khi kiểm tra AppQuestions: ' + e.message);
+        return;
+    }
+    function renderGroup(groupId, questions) {
+        const container = document.getElementById(groupId);
+        if (!container) return;
+        
+        container.innerHTML = questions.map((q, index) => {
+            let inputHtml = '';
+            let isRequired = q.batBuoc ? 'required' : '';
+            
+            let loai = (q.loaiTraLoi || '').toLowerCase();
+            
+            if (loai.includes('văn bản')) {
+                if (q.id === 'E04') {
+                    inputHtml = `<textarea name="${q.id}" class="form-control" placeholder="${q.huongDan || ''}" rows="3" ${isRequired}></textarea>`;
+                } else {
+                    inputHtml = `<input type="text" name="${q.id}" class="form-control" placeholder="${q.huongDan || ''}" ${isRequired}>`;
+                }
+            } else if (loai === 'điền số') {
+                inputHtml = `<in

@@ -1,0 +1,51 @@
+NỀN FOS - HƯỚNG DẪN TÍNH ĐIỂM KHÁM BỆNH NHÀ MÁY,,,,,
+,,,,,
+Phần,Đối tượng tính,Công thức,Trọng số,Kết quả đầu ra,Ghi chú triển khai
+A. Thông tin nhà máy,Không tính điểm,Không áp dụng,0,Dữ liệu bối cảnh,Dùng để cá nhân hóa báo cáo và phân nhóm nhà máy.
+B. 8 lãng phí,16 câu / 8 nhóm,Điểm lãng phí = AVERAGE(2 câu trong nhóm),1 cho mọi câu,8 điểm lãng phí (0-4),Thứ tự hiển thị theo DOWNTIME.
+B. Tổng hợp 8 lãng phí,8 điểm nhóm,Điểm phần B = AVERAGE(8 điểm lãng phí),Không nhân thêm,Điểm triệu chứng (0-4),Không cộng thẳng 16 câu nếu đã tính điểm nhóm.
+C. 8 dấu hiệu bất thường,24 câu / 8 nhóm,Điểm dấu hiệu = AVERAGE(3 câu trong nhóm),Trọng số theo nhóm,8 điểm dấu hiệu (0-4),Mỗi nhóm có 3 câu; trọng số nhóm dùng khi tính điểm tổng phần C.
+C. Tổng hợp dấu hiệu,8 điểm nhóm,Điểm phần C = SUM(Điểm nhóm × Trọng số nhóm) / SUM(Trọng số nhóm),1-3 theo nhóm,Điểm dấu hiệu bất thường (0-4),Không nhân trọng số hai lần.
+D. 11 Module NỀN FOS,33 câu / 11 module,Điểm module = SUM(Điểm câu × Trọng số câu) / SUM(Trọng số câu trong module),1-3 theo câu,11 điểm module (0-4),Tính riêng từng module trước khi tính tổng hợp.
+D. Tổng hợp 11 module,11 điểm module,Điểm phần D = AVERAGE(11 điểm module),Không dùng trọng số module ở V1.0,Điểm nguyên nhân hệ thống (0-4),Giữ các module có ảnh hưởng ngang nhau ở cấp tổng hợp.
+E. Mục tiêu ưu tiên,Không tính điểm,Không áp dụng,0,Dữ liệu cá nhân hóa,Dùng để ưu tiên nội dung phân tích và đề xuất.
+F. Người nhận báo cáo,Không tính điểm,Không áp dụng,0,Thông tin nhận báo cáo,F05 là checkbox đồng ý sử dụng thông tin và liên hệ.
+,,,,,
+,,,,,
+THANG ĐIỂM CHUNG 0-4,,,,,
+Điểm,Mức độ bệnh,Ý nghĩa chung,,,
+0,Khỏe mạnh,Tốt nhất / hầu như không có vấn đề,,,
+1,Cảnh báo nhẹ,Có một số điểm cần theo dõi,,,
+2,Mắc bệnh,Đã ảnh hưởng đến vận hành,,,
+3,Bệnh nặng,Ảnh hưởng rõ và xảy ra thường xuyên,,,
+4,Nguy kịch,Rất nghiêm trọng / hầu như chưa thiết lập hoặc thực hiện,,,
+,,,,,
+3 BỘ ĐÁP ÁN ÁP DỤNG CHO 11 MODULE,,,,,
+Bộ,Áp dụng cho module,Bản chất đánh giá,Thang trả lời 0 → 4,,
+A,"Core, People, Flow, Standard, Capacity",Mức trưởng thành của hệ thống,"0: Thiết lập đầy đủ, triển khai nhất quán, phát huy hiệu quả → 4: Hầu như chưa thiết lập hoặc chưa triển khai",,
+B,"Daily Management, Quality, Kaizen, Sustain",Hiệu lực thực thi,"0: Thực hiện rất hiệu quả, tạo kết quả rõ ràng → 4: Hầu như chưa thực hiện",,
+C,"Knowledge, Digital",Mức độ ứng dụng,"0: Áp dụng rộng rãi, hỗ trợ hiệu quả → 4: Hầu như chưa áp dụng",,
+,,,,,
+CÔNG THỨC CHUẨN CHO HỆ THỐNG,,,,,
+Điểm nhóm / module,WeightedScore = SUM(score_i × weight_i) / SUM(weight_i),,,,
+Điểm phần B,WasteOverall = AVERAGE(Waste_1 ... Waste_8),,,,
+Điểm phần C,SignOverall = SUM(SignScore_j × SignWeight_j) / SUM(SignWeight_j),,,,
+Điểm phần D,ModuleOverall = AVERAGE(Module_1 ... Module_11),,,,
+Quy tắc làm tròn,Làm tròn 2 chữ số thập phân cho dữ liệu; 1 chữ số khi hiển thị trên báo cáo,,,,
+,,,,,
+ĐIỂM TỔNG THỂ NHÀ MÁY,,,,,
+Chỉ số,Công thức / Giá trị,Trọng số,Khoảng điểm,Ý nghĩa,Ghi chú triển khai
+Điểm triệu chứng - WasteOverall,AVERAGE(Waste_1 ... Waste_8),20%,0-4,Mức độ lãng phí đang biểu hiện,Nguồn: Phần B
+Điểm dấu hiệu - SignOverall,SUM(SignScore_j × SignWeight_j) / SUM(SignWeight_j),30%,0-4,Mức độ bất thường tại hiện trường,Nguồn: Phần C
+Điểm nguyên nhân hệ thống - ModuleOverall,AVERAGE(Module_1 ... Module_11),50%,0-4,Mức độ yếu của hệ thống quản trị,Nguồn: Phần D
+Điểm bệnh tổng thể - FactoryDiseaseScore,WasteOverall×20% + SignOverall×30% + ModuleOverall×50%,100%,0-4,Điểm tổng thể; càng cao càng nghiêm trọng,Lưu 2 chữ số; hiển thị 1 chữ số
+Chỉ số sức khỏe - FactoryHealthIndex,100 × (1 - FactoryDiseaseScore / 4),,0-100,Càng cao càng khỏe,Dùng cho gauge sức khỏe dạng 0-100 nếu cần
+Cảnh báo cục bộ,Nếu bất kỳ Waste/Sign/Module >= 3.50 thì gắn cờ HIGH_RISK,,Boolean,Ngăn điểm trung bình che khuất vấn đề nghiêm trọng,Không tự đổi cấp độ tổng thể; hiển thị cảnh báo riêng
+,,,,,
+PHÂN LOẠI 5 CẤP ĐỘ BỆNH,,,,,
+Khoảng FactoryDiseaseScore,Cấp độ,Màu,Khuyến nghị mặc định,,
+0.00 - 0.80,Khỏe mạnh,Xanh,Duy trì tiêu chuẩn và cải tiến liên tục.,,
+>0.80 - 1.60,Cảnh báo,Vàng,Kiểm tra các khu vực có điểm cao và xử lý sớm.,,
+>1.60 - 2.40,Mắc bệnh,Cam nhạt,Đánh giá chuyên sâu và lập kế hoạch cải tiến ưu tiên.,,
+>2.40 - 3.20,Bệnh nặng,Cam đỏ,Triển khai cải tiến có chủ sở hữu và theo dõi hằng ngày.,,
+>3.20 - 4.00,Nguy kịch,Đỏ,Xác minh hiện trường toàn diện và xử lý vấn đề trọng yếu.,,

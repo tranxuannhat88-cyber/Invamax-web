@@ -1,0 +1,21 @@
+
+    const el_waste_top3 = document.getElementById('a4-waste-analysis');
+    if (el_waste_top3) {
+        const top3 = res.wasteScores.slice(0, 3);
+        el_waste_top3.innerHTML = top3.map((item, idx) => {
+            const confLight = getLightColorConfig(item.score);
+            const confDark = getColorConfig(item.score, false);
+            return `<div style="flex:1; border-radius:8px; background:${confLight.bg}; border:1px solid ${confLight.border}; padding:10px 12px; display:flex; flex-direction:column; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
+                    <div style="display:flex; align-items:flex-start; flex:1; margin-right:10px;">
+                        <div style="width:28px; height:28px; border-radius:50%; background:${confLight.color}; color:white; font-weight:bold; display:flex; justify-content:center; align-items:center; margin-right:10px; flex-shrink:0;">${idx+1}</div>
+                        <div style="font-size:14px; font-weight:bold; color:#1e293b; line-height:1.4; padding-top:2px;">${item.module}</div>
+                    </div>
+                    <div style="font-size:18px; font-weight:900; color:#1e293b; white-space:nowrap; flex-shrink:0;">${item.score} <span style="font-size:11px; color:#94a3b8; font-weight:normal;">/ 100</span></div>
+                </div>
+                <div style="font-size:12px; font-weight:bold; color:${confLight.color}; margin-bottom:4px;">Mức độ: ${confDark.trendText.toUpperCase()}</div>
+                <div style="font-size:13px; color:#475569; line-height:1.6;"><span style="font-weight:bold;">Tác động:</span> ${(() => {
+                    let aiImpact = getWasteImpact(item.module);
+                    if (res.diagnostic && res.diagnostic.top3WastesImpacts) {
+                        const found = res.diagnostic.top3WastesImpacts.find(x => x.waste.toLowerCase() === item.module.toLowerCase());
+                        if (found) aiImpact = found.impact;

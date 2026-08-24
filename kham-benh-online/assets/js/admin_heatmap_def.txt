@@ -1,0 +1,20 @@
+    const renderHeatmapGroup = (containerId, modulesList, scoresArr) => {
+        const container = document.getElementById(containerId);
+        if(!container) return;
+        const html = modulesList.map(modName => {
+            const item = scoresArr.find(x => x.module === modName) || {score: 0};
+            const modInfo = getModuleInfo(modName);
+            const conf = getColorConfig(item.score, true); // true for Health score
+            
+            return `
+            <div style="flex: 1; background: ${conf.bg}; color: ${conf.text}; border-radius: 6px; padding: 8px 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: space-between;">
+                <div style="font-size: 26px; opacity: 0.25;">
+                    <i class="fas ${modInfo.icon}"></i>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 10px; font-weight: bold; line-height: 1.2; margin-bottom: 2px; text-transform: uppercase;">${modName}</div>
+                    <div style="font-size: 10px; font-weight: 600; line-height: 1.2; margin-bottom: 2px; opacity: 0.9;">(${modInfo.vi})</div>
+                    <div style="font-size: 22px; font-weight: 900; line-height: 1;">${item.score}</div>
+                </div>
+            </div>`;
+        }).join('');

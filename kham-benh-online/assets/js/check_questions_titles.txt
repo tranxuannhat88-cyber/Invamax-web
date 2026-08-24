@@ -1,0 +1,42 @@
+---
+    "F01",
+    "F - Thông tin nhận kết quả khám bệnh",
+    "PI01",
+    "",
+    "Họ và tên",
+    "",
+---
+    "F02",
+    "F - Thông tin nhận kết quả khám bệnh",
+    "PI02",
+    "",
+    "Chức vụ",
+    "",
+---
+    "F03",
+    "F - Thông tin nhận kết quả khám bệnh",
+    "PI03",
+    "",
+    "Email nhận báo cáo",
+    "",
+---
+    "F04",
+    "F - Thông tin nhận kết quả khám bệnh",
+    "PI04",
+    "",
+    "Số điện thoại",
+    "",
+---
+    "F05",
+    "F - Thông tin nhận kết quả khám bệnh",
+    "PI05",
+    "",
+    "Check box: Tôi đồng ý để INVAMAX sử dụng thông tin trên nhằm gửi báo cáo, tư vấn và các thông tin liên quan đến chương trình Khám bệnh Nhà máy.",
+    "",
+---
+    // Handle descriptive rows (like F01 preceding row)
+    if (maCau === '' && row[1] && row[1].length > 20) {
+        AppQuestions[currentPart].description = row[1];
+        continue;
+    }
+

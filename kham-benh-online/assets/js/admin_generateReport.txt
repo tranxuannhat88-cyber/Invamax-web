@@ -1,0 +1,11 @@
+async function generateReport() {
+    const jsonText = document.getElementById('jsonData').value.trim();
+    if (!jsonText) { Swal.fire('Lỗi', 'Vui lòng dán JSON dữ liệu thô', 'error'); return; }
+
+    let isMock = false;
+    const apiKey = document.getElementById('apiKey').value.trim();
+    if (!apiKey) { isMock = true; }
+
+    let rawAnswers;
+    try { rawAnswers = JSON.parse(jsonText); } 
+    catch (e)

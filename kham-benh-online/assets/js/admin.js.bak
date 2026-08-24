@@ -1,0 +1,842 @@
+const AI_CONFIG = {
+    profile: "NEN_FOS_EXPERT",
+    promptVersion: "NFE-SP-1.0",
+    knowledgeVersion: "NFE-KB-1.0",
+    mappingVersion: "NFE-MAP-1.0",
+    scoringVersion: "NFE-SCORE-1.0",
+    model: "gemini-3.5-flash"
+};
+
+const KNOWLEDGE_BASE_TEXT = `NỀN FOS KNOWLEDGE BASE:
+1. 11 Module NỀN FOS (bắt buộc đúng thứ tự): Knowledge, Digital, Quality, People, Flow, Standard, Capacity, Daily Management, Core, Sustain, Kaizen.
+2. Từ vựng chuẩn: Dùng 'Lãng phí nguồn lực' (không dùng Non-utilized Talent). Dùng 'Quy trình thừa' (không dùng Gia công thừa).
+3. Tuyệt đối không bịa nguyên nhân gốc (Root Cause) nếu thiếu dữ liệu đầu vào.`;
+
+document.addEventListener('DOMContentLoaded', () => {
+    const p = document.getElementById('conf-profile');
+    if(p) {
+        p.innerText = AI_CONFIG.profile;
+        document.getElementById('conf-prompt').innerText = AI_CONFIG.promptVersion;
+        document.getElementById('conf-kb').innerText = KNOWLEDGE_BASE_TEXT ? `Connected (${AI_CONFIG.knowledgeVersion})` : 'Not Connected';
+        document.getElementById('conf-kb').style.color = KNOWLEDGE_BASE_TEXT ? '#10b981' : '#ef4444';
+        document.getElementById('conf-model').innerText = AI_CONFIG.model;
+    }
+});
+
+function saveAuditLog(logData) {
+    let logs = JSON.parse(localStorage.getItem('fos_audit_logs') || '[]');
+    logs.unshift(logData);
+    if (logs.length > 50) logs.pop();
+    localStorage.setItem('fos_audit_logs', JSON.stringify(logs));
+}
+
+function showAuditLogs() {
+    let logs = JSON.parse(localStorage.getItem('fos_audit_logs') || '[]');
+    if (logs.length === 0) {
+        Swal.fire('Audit Logs', 'Chưa có log nào.', 'info');
+        return;
+    }
+    let html = '<div style="max-height: 400px; overflow-y: auto; text-align: left; font-size: 12px; font-family: monospace;">';
+    logs.forEach(l => {
+        html += `<div style="border-bottom: 1px solid #ccc; padding: 10px 0;">
+            <strong>Time:</strong> ${new Date(l.generatedAt).toLocaleString()}<br>
+            <strong>Request ID:</strong> ${l.requestId}<br>
+            <strong>Model:</strong> ${l.model}<br>
+            <strong>Prompt Hash:</strong> ${l.promptHash}<br>
+            <strong>Status:</strong> <span style="color:${l.error ? 'red' : 'green'}">${l.error ? 'FAILED' : 'SUCCESS'}</span> (Retries: ${l.retries})<br>
+            <strong>Processing Time:</strong> ${l.processingTimeMs} ms<br>
+            ${l.error ? `<strong>Error:</strong> ${l.error}<br>` : ''}
+            <details><summary style="cursor:pointer; color:#3b82f6;">Xem Chi Tiết Input/Output</summary>
+               <strong>Input Hash:</strong> ${l.inputHash}<br>
+               <strong>Output JSON:</strong>
+               <pre style="background:#f1f5f9; padding:5px; border-radius:4px;">${JSON.stringify(l.output, null, 2)}</pre>
+            </details>
+        </div>`;
+    });
+    html += '</div>';
+    Swal.fire({ title: 'AI Audit Logs', html: html, width: 800 });
+}
+
+function simpleHash(str) {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+        const char = str.charCodeAt(i);
+        hash = (hash << 5) - hash + char;
+        hash &= hash; 
+    }
+    return new Uint32Array([hash])[0].toString(36);
+}
+
+async function testAIProfile() {
+    if (!KNOWLEDGE_BASE_TEXT) {
+        Swal.fire('Lỗi', 'CONFIGURATION_NOT_VALID: Thiếu Knowledge Base.', 'error');
+        return;
+    }
+    
+    const apiKey = document.getElementById('apiKey')?.value;
+    if (!apiKey) {
+        Swal.fire('Lỗi', 'Vui lòng nhập API Key để chạy Test.', 'error');
+        return;
+    }
+    
+    Swal.fire({
+        title: 'Đang kiểm tra AI Profile...',
+        html: 'Gửi Test Payload tới Gemini (Ép lỗi & Kiểm tra chuẩn từ vựng)...',
+        allowOutsideClick: false,
+        didOpen: () => { Swal.showLoading(); }
+    });
+
+    const testPayload = {
+        factoryHealthIndex: null,
+        diseaseScore: null,
+        top3Wastes: ["Non-utilized Talent", "Gia công thừa", "Chờ đợi"],
+        top3Symptoms: [],
+        businessPriority: null
+    };
+
+    const systemPrompt = `BẠN LÀ CHUYÊN GIA TƯ VẤN QUẢN TRỊ SẢN XUẤT TINH GỌN (LEAN MANUFACTURING) VÀ HỆ ĐIỀU HÀNH FOS CỦA INVAMAX.
+TUÂN THỦ KIẾN THỨC SAU:
+${KNOWLEDGE_BASE_TEXT}
+
+Dữ liệu đầu vào (Cố tình thiếu & sai chuẩn):
+${JSON.stringify(testPayload, null, 2)}
+
+YÊU CẦU TEST:
+1. Trả về đúng JSON theo Schema ở dưới.
+2. Liệt kê đủ 11 module FOS trong mảng "modulesList" thuộc phần "diagnostic".
+3. Phát hiện lỗi từ vựng ở top3Wastes và sửa thành đúng chuẩn NỀN FOS trong phần "diagnostic.correctedWastes" (Phải dùng đúng "Lãng phí nguồn lực" và "Quy trình thừa").
+4. Ở phần "consulting.rootCauses", nếu đầu vào không có thông tin để suy luận, phải để mảng rỗng (không được bịa).
+
+JSON SCHEMA BẮT BUỘC:
+{
+  "diagnostic": { "modulesList": ["Tên module..."], "correctedWastes": ["Tên đã sửa..."] },
+  "consulting": { "rootCauses": [] },
+  "report": { "status": "TEST_MODE" }
+}`;
+
+    try {
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${AI_CONFIG.model}:generateContent?key=${apiKey}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                contents: [{ parts: [{ text: systemPrompt }] }],
+                generationConfig: { temperature: 0.1, response_mime_type: "application/json" }
+            })
+        });
+
+        if (!response.ok) throw new Error("API Error: " + response.statusText);
+        const aiData = await response.json();
+        const jsonText = aiData.candidates[0].content.parts[0].text;
+        const result = JSON.parse(jsonText);
+
+        let errors = [];
+        const requiredModules = ["Knowledge", "Digital", "Quality", "People", "Flow", "Standard", "Capacity", "Daily Management", "Core", "Sustain", "Kaizen"];
+        
+        if (!result.diagnostic || !result.diagnostic.modulesList || result.diagnostic.modulesList.join(',') !== requiredModules.join(',')) {
+            errors.push("- Sai 11 module hoặc sai thứ tự.");
+        }
+        
+        const wastes = result.diagnostic?.correctedWastes || [];
+        if (!wastes.includes("Lãng phí nguồn lực") || !wastes.includes("Quy trình thừa")) {
+            errors.push("- Không nhận diện và sửa đúng từ vựng chuẩn (Lãng phí nguồn lực, Quy trình thừa).");
+        }
+
+        if (result.consulting && result.consulting.rootCauses && result.consulting.rootCauses.length > 0) {
+            errors.push("- AI bịa nguyên nhân gốc (Root Cause) khi thiếu dữ liệu đầu vào.");
+        }
+
+        if (errors.length === 0) {
+            Swal.fire('PASS', 'AI Profile đã vượt qua mọi bài kiểm tra khắt khe của NỀN FOS Expert!', 'success');
+        } else {
+            Swal.fire('FAIL', 'AI Profile trượt bài test:<br><br>' + errors.join('<br>'), 'error');
+        }
+
+    } catch (e) {
+        Swal.fire('Lỗi', 'Test thất bại: ' + e.message, 'error');
+    }
+}
+// admin.js
+const LS_API_KEY = 'openai_api_key';
+
+document.addEventListener('DOMContentLoaded', async () => {
+    // Load API Key
+    const savedKey = localStorage.getItem(LS_API_KEY);
+    if (savedKey) document.getElementById('apiKey').value = savedKey;
+});
+
+function saveApiKey() {
+    const key = document.getElementById('apiKey').value.trim();
+    if (key) {
+        localStorage.setItem(LS_API_KEY, key);
+        Swal.fire('Thành công', 'Đã lưu API Key!', 'success');
+    }
+}
+
+// Replicate calculateResults from app_combined.js
+function calculateResults(answers) {
+    const getGroupScore = (group) => {
+        let totalWeightedScore = 0;
+        let totalWeights = 0;
+        
+        group.forEach(q => {
+            if (answers[q.id] !== undefined && q.trongSo !== undefined && q.trongSo > 0) {
+                const ansStr = String(answers[q.id]);
+                if (ansStr.trim() !== "") {
+                    let score = 0;
+                    if (q.loaiTraLoi === 'Thang điểm 0-4' || (q.dapAn && q.dapAn.length > 0 && !q.loaiTraLoi.includes('Nhiều lựa chọn'))) {
+                        score = parseInt(ansStr);
+                    } else {
+                        score = parseInt(ansStr);
+                    }
+                    if (!isNaN(score)) {
+                        totalWeightedScore += score * q.trongSo;
+                        totalWeights += q.trongSo;
+                    }
+                }
+            }
+        });
+        
+        return totalWeights > 0 ? (totalWeightedScore / totalWeights) : 0;
+    };
+
+    let wScore = getGroupScore(AppQuestions.partB);
+    let sScore = getGroupScore(AppQuestions.partC);
+    let mScore = getGroupScore(AppQuestions.partD);
+    
+    // Scale 0-4 to 0-100 (where 4 = worst = 100)
+    let warningScore = ((wScore * 0.4 + sScore * 0.4 + mScore * 0.2) / 4) * 100;
+    warningScore = Math.round(warningScore);
+
+    const wasteScores = [];
+    const wasteModules = [...new Set(AppQuestions.partB.map(q => q.nhom))];
+    wasteModules.forEach(module => {
+        const questions = AppQuestions.partB.filter(q => q.nhom === module);
+        wasteScores.push({
+            module: module,
+            score: isNaN(getGroupScore(questions)) ? 0 : Math.round((getGroupScore(questions) / 4) * 100)
+        });
+    });
+
+    const fosScores = [];
+    const fosModules = [...new Set(AppQuestions.partD.map(q => q.nhom))];
+    fosModules.forEach(module => {
+        const questions = AppQuestions.partD.filter(q => q.nhom === module);
+        fosScores.push({
+            module: module,
+            score: isNaN(getGroupScore(questions)) ? 0 : Math.round((getGroupScore(questions) / 4) * 100)
+        });
+    });
+
+    let assessmentLevel = "";
+    let generalAssessment = "";
+    let diseases = [];
+    let nextSteps = "";
+
+    let healthScore = 100 - warningScore;
+
+    if (healthScore >= 80) {
+        assessmentLevel = "Khỏe mạnh";
+        generalAssessment = "Hệ thống vận hành trơn tru, tiêu chuẩn được duy trì tốt. Doanh nghiệp có nền tảng vững chắc để mở rộng hoặc chuyển đổi số.";
+        diseases = ["Không phát hiện bệnh nghiêm trọng"];
+        nextSteps = "Tiếp tục cải tiến liên tục (Kaizen) và bắt đầu số hóa các quy trình cốt lõi.";
+    } else if (healthScore >= 60) {
+        assessmentLevel = "Cảnh báo nhẹ";
+        generalAssessment = "Hệ thống cơ bản hoạt động nhưng đã xuất hiện các điểm nghẽn và lãng phí rải rác. Nếu không xử lý kịp thời có thể làm giảm biên lợi nhuận.";
+        diseases = ["Lãng phí tiềm ẩn", "Quy trình chưa chuẩn hóa đồng bộ"];
+        nextSteps = "Tập trung chuẩn hóa quy trình tại các điểm nghẽn, đào tạo lại nhân sự về tiêu chuẩn.";
+    } else if (healthScore >= 40) {
+        assessmentLevel = "Mắc bệnh (Cần điều trị)";
+        generalAssessment = "Rối loạn hệ thống hiện diện rõ. Lãng phí xảy ra thường xuyên làm tăng chi phí và ảnh hưởng đến tiến độ, chất lượng giao hàng.";
+        diseases = ["Tắc nghẽn cục bộ", "Lỗi và làm lại thường xuyên", "Chỉ số OEE thấp"];
+        nextSteps = "Thực hiện dự án cải tiến điểm (Kaizen Blitz) tại khu vực yếu nhất, xây dựng lại hệ thống đo lường hiệu quả.";
+    } else if (healthScore >= 20) {
+        assessmentLevel = "Bệnh nặng (Nguy hiểm)";
+        generalAssessment = "Hệ thống vận hành lỏng lẻo, chi phí sản xuất mất kiểm soát. Doanh nghiệp đang đối mặt với rủi ro lớn về dòng tiền và phàn nàn từ khách hàng.";
+        diseases = ["Rối loạn luồng chảy", "Mất kiểm soát chất lượng diện rộng", "Tồn kho quá mức/Thiếu vật tư liên tục"];
+        nextSteps = "Cần chuyên gia can thiệp ngay lập tức. Tái thiết lập luồng giá trị và áp dụng các biện pháp kiểm soát khẩn cấp.";
+    } else {
+        assessmentLevel = "Báo động đỏ (Nguy kịch)";
+        generalAssessment = "Hệ thống đang trong tình trạng khủng hoảng. Rủi ro đứt gãy dây chuyền cực kỳ cao và gây thiệt hại nghiêm trọng.";
+        diseases = ["Mất kiểm soát hoàn toàn chất lượng và tiến độ", "Đứt gãy toàn bộ chuỗi cung ứng nội bộ", "Thiếu hụt hoàn toàn khả năng quản trị hiện trường"];
+        nextSteps = "Dừng ngay các hoạt động lãng phí, triệu tập ban lãnh đạo để tái cơ cấu toàn diện hệ thống quản lý.";
+    }
+
+    const sortDesc = (a, b) => b.score - a.score;
+    wasteScores.sort(sortDesc);
+    fosScores.sort(sortDesc);
+
+    const top3Wastes = wasteScores.slice(0, 3).map(item => item.module);
+    const top3FOS = fosScores.slice(0, 3).map(item => item.module);
+
+    return { warningScore, assessmentLevel, generalAssessment, diseases, nextSteps, top3Wastes, top3FOS, wasteScores, fosScores };
+}
+
+async function generateReport() {
+    const jsonText = document.getElementById('jsonData').value.trim();
+    if (!jsonText) { Swal.fire('Lỗi', 'Vui lòng dán JSON dữ liệu thô', 'error'); return; }
+
+    let isMock = false;
+    const apiKey = document.getElementById('apiKey').value.trim();
+    if (!apiKey) { isMock = true; }
+
+    let rawAnswers;
+    try { rawAnswers = JSON.parse(jsonText); } 
+    catch (e) { Swal.fire('Lỗi', 'JSON không hợp lệ.', 'error'); return; }
+
+    document.getElementById('ai-loading').style.display = 'block';
+    document.getElementById('report-preview').style.display = 'none';
+
+    try {
+        const scores = calculateResults(rawAnswers);
+        
+        let factoryInfo = {}; AppQuestions.partA.forEach(q => { factoryInfo[q.id] = rawAnswers[q.id]; });
+        let contactInfo = {}; AppQuestions.partF.forEach(q => { contactInfo[q.id] = rawAnswers[q.id]; });
+
+        renderPreliminary(scores, factoryInfo, contactInfo, rawAnswers);
+
+        let aiJsonData = null;
+
+        if (isMock) {
+            document.getElementById('ai-loading').style.display = 'none';
+            Swal.fire('Chế độ xem trước', 'Hệ thống dùng dữ liệu mẫu (Chưa nhập API Key).', 'info');
+            
+            aiJsonData = {
+                diagnostic: { summary: "Dữ liệu mẫu", keyFindings: [] },
+                consulting: {
+                    rootCauses: [ {issue: "Mẫu 1", why5: ["Why1", "Why2"], impact: "Tác động mẫu"} ],
+                    priorityMatrix: { quickWins: ["Giải pháp nhanh"], buildSystem: ["Hệ thống lâu dài"] },
+                    solutions: [ {title: "Giải pháp 1", objective: "Mục tiêu 1", actions: ["Hành động"], resources: "Nguồn lực", risks: "Rủi ro"} ],
+                    roadmap: {
+                        phase30Days: {goal: "Mục tiêu 30", actions: ["Hành động 30"]},
+                        phase60Days: {goal: "Mục tiêu 60", actions: ["Hành động 60"]},
+                        phase90Days: {goal: "Mục tiêu 90", actions: ["Hành động 90"]}
+                    },
+                    raci: [ {task: "Công việc mẫu", R: "GD", A: "TP", C: "QC", I: "TV"} ],
+                    sustainControls: ["Cơ chế 1"]
+                }
+            };
+            renderDetailedReport(aiJsonData);
+            document.getElementById('report-preview').style.display = 'block';
+            initCharts(scores);
+            return;
+        }
+
+        // Prepare System Payload
+        const systemPayload = {
+            factoryHealthIndex: 100 - scores.warningScore,
+            diseaseScore: scores.warningScore,
+            assessmentLevel: scores.assessmentLevel,
+            top3Wastes: scores.top3Wastes,
+            top3Symptoms: scores.diseases,
+            top3ModulesFOS: scores.top3FOS,
+            wasteScores: scores.wasteScores,
+            fosScores: scores.fosScores,
+            businessPriority: {
+                priority12Months: rawAnswers['E01'] || '',
+                keyGoal6Months: rawAnswers['E02'] || '',
+                biggestObstacle: rawAnswers['E04'] || ''
+            }
+        };
+
+        const systemPrompt = `BẠN LÀ CHUYÊN GIA TƯ VẤN QUẢN TRỊ SẢN XUẤT TINH GỌN (LEAN MANUFACTURING) VÀ HỆ ĐIỀU HÀNH FOS CỦA INVAMAX.
+
+Hệ thống đã thu thập dữ liệu, tính điểm và mapping kết quả của nhà máy như sau:
+${JSON.stringify(systemPayload, null, 2)}
+
+YÊU CẦU: Bạn hãy hoạt động tuần tự qua 3 MODE sau để phân tích và lập kế hoạch cho nhà máy:
+
+MODE 1 = DIAGNOSTIC
+- Phân tích dữ liệu được cung cấp. Xác định tình trạng nhà máy và tóm tắt các vấn đề nổi bật. Không đề xuất giải pháp.
+
+MODE 2 = CONSULTING
+- Phân tích nguyên nhân gốc rễ (Root Cause Analysis). Xác định các vấn đề ưu tiên.
+- Đề xuất giải pháp đột phá. Xây dựng Roadmap 30-60-90 ngày. Đề xuất chỉ số đo lường (KPI).
+
+MODE 3 = REPORT
+- Tổng hợp thành báo cáo hoàn chỉnh dựa trên kết quả của MODE 1 và 2. TUYỆT ĐỐI KHÔNG phân tích lại dữ liệu, KHÔNG thay đổi kết quả của CONSULTING.
+
+TRẢ VỀ KẾT QUẢ DƯỚI DẠNG JSON. BẮT BUỘC dùng JSON Schema sau:
+{
+  "diagnostic": { "summary": "Tóm tắt tình trạng (1 đoạn)", "keyFindings": ["Phát hiện 1"], "confidence": 90, "fieldVerificationRequired": true },
+  "consulting": {
+    "rootCauses": [ {"issue": "Vấn đề", "why5": ["Tại sao 1"], "impact": "Tác động"} ],
+    "priorityMatrix": { "quickWins": ["Giải pháp 1"], "buildSystem": ["Giải pháp 1"] },
+    "solutions": [ {"title": "Tên giải pháp", "objective": "Mục tiêu", "actions": ["Hành động 1"], "resources": "Nguồn lực", "risks": "Rủi ro"} ],
+    "roadmap": {
+       "phase30Days": {"goal": "Mục tiêu", "actions": ["Hành động"]},
+       "phase60Days": {"goal": "Mục tiêu", "actions": ["Hành động"]},
+       "phase90Days": {"goal": "Mục tiêu", "actions": ["Hành động"]}
+    },
+    "raci": [ {"task": "Công việc", "R": "Vai trò", "A": "Vai trò", "C": "Vai trò", "I": "Vai trò"} ],
+    "sustainControls": ["Cơ chế 1"]
+  },
+  "report": { "status": "Hoàn thành", "verificationCheck": "Đã khớp" }
+}`;
+
+        // Fetch API with Retry Logic
+        let retries = 2;
+        let success = false;
+        
+        while (retries >= 0 && !success) {
+            try {
+                console.log(`[Diagnostic, Consulting, Report] Gọi AI Engine... (Còn ${retries} lần thử)`);
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: systemPrompt }] }],
+                        generationConfig: { temperature: 0.7, response_mime_type: "application/json" }
+                    })
+                });
+
+                const aiData = await response.json();
+                if (aiData.error) throw new Error(aiData.error.message);
+                if (!aiData.candidates || aiData.candidates.length === 0) throw new Error('Không nhận được phản hồi từ AI.');
+                
+                const aiText = aiData.candidates[0].content.parts[0].text;
+                aiJsonData = JSON.parse(aiText);
+                console.log('[Diagnostic] Thành công:', aiJsonData.diagnostic);
+                console.log('[Consulting] Thành công:', aiJsonData.consulting);
+                console.log('[Report] Thành công:', aiJsonData.report);
+                success = true;
+            } catch (err) {
+                console.error("Lỗi AI Engine:", err);
+                retries--;
+                if (retries < 0) {
+                    Swal.fire('Lỗi API', 'Lỗi từ máy chủ Google (Thử lại thất bại): ' + err.message, 'error');
+                    document.getElementById('ai-loading').style.display = 'none';
+                    return;
+                }
+            }
+        }
+
+        renderDetailedReport(aiJsonData);
+        
+        // Update Code Placeholders
+        const code = document.getElementById('a4-code-1').innerText;
+        document.querySelectorAll('.a4-code-placeholder').forEach(el => el.innerText = code);
+
+        document.getElementById('ai-loading').style.display = 'none';
+        document.getElementById('report-preview').style.display = 'block';
+
+        initCharts(scores);
+
+    } catch (e) {
+        console.error(e);
+        Swal.fire('Lỗi hệ thống', e.toString(), 'error');
+        document.getElementById('ai-loading').style.display = 'none';
+    }
+}
+
+function renderDetailedReport(json, metadata) {
+    if (!json || !json.diagnostic || !json.consulting || !json.report) {
+        console.error("Invalid JSON structure", json);
+        return;
+    }
+    const aiHtml = `
+<div class="a4-page">
+    <div class="a4-header">
+        <div><div class="a4-logo" style="font-size: 22px; font-weight: 800; color: #0f172a;">INVA<span style="color:#f97316;">MAX</span></div></div>
+        <div class="a4-title-center">BÁO CÁO CHI TIẾT<br>GIẢI PHÁP & LỘ TRÌNH</div>
+        <div style="width: 160px;"></div>
+    </div>
+    <div class="a4-content">
+        <div class="a4-section-title">6. PHÂN TÍCH NGUYÊN NHÂN GỐC RỄ (ROOT CAUSE ANALYSIS) <span style="float:right">Trang 6 / 10</span></div>
+        <div class="a4-box" style="margin-bottom: 20px;">
+            <div style="color: #ef4444; font-weight: bold; margin-bottom: 10px;"><i class="fas fa-exclamation-triangle"></i> MỐI LIÊN KẾT HỆ THỐNG</div>
+            <p style="font-size: 13px; line-height: 1.6; color: #334155; margin: 0;">${json.diagnostic.summary}</p>
+        </div>
+        <div class="a4-grid-2" style="grid-template-columns: 1fr 1fr 1fr; gap: 15px;">
+            ${(json.consulting.rootCauses || []).map(rc => `
+                <div class="a4-box" style="padding: 12px; background: #fff; border: 1px solid #e2e8f0; border-radius: 6px;">
+                    <h4 style="color: #ea580c; font-size: 13px; margin: 0 0 10px 0; border-bottom: 1px dashed #cbd5e1; padding-bottom: 5px;">${rc.issue}</h4>
+                    <p style="font-size: 11px; color: #475569; margin: 0 0 8px 0;"><strong>Tác động:</strong> ${rc.impact}</p>
+                    <div style="background: #f8fafc; padding: 8px; border-radius: 4px; font-size: 11px; color: #64748b;">
+                        <strong style="color:#0f172a;">Phân tích 5-Why:</strong><br>
+                        ${(rc.why5 || []).map((w, idx) => `<div style="margin-top:4px;">${idx+1}. ${w}</div>`).join('')}
+                    </div>
+                </div>
+            `).join('')}
+        </div>
+    </div>
+    <div class="a4-footer">INVAMAX www.invamax.com | Mã báo cáo: <span class="a4-code-placeholder"></span> | Trang 6 / 10</div>
+</div>
+
+<div class="a4-page">
+    <div class="a4-header">
+        <div><div class="a4-logo" style="font-size: 22px; font-weight: 800; color: #0f172a;">INVA<span style="color:#f97316;">MAX</span></div></div>
+        <div class="a4-title-center">BÁO CÁO CHI TIẾT<br>GIẢI PHÁP & LỘ TRÌNH</div>
+        <div style="width: 160px;"></div>
+    </div>
+    <div class="a4-content">
+        <div class="a4-section-title">7. MA TRẬN ƯU TIÊN & XẾP HẠNG VẤN ĐỀ <span style="float:right">Trang 7 / 10</span></div>
+        <div class="a4-grid-2" style="margin-bottom: 20px;">
+            <div class="a4-box" style="border-left: 4px solid #ef4444; background: #fff;">
+                <h4 style="color: #ef4444; margin: 0 0 10px 0; font-size: 13px;">Ưu tiên cao nhất (Quick Wins)</h4>
+                <ul style="font-size: 12px; color: #334155; padding-left: 20px; line-height: 1.6; margin: 0;">
+                    ${(json.consulting.priorityMatrix?.quickWins || []).map(q => `<li>${q}</li>`).join('')}
+                </ul>
+            </div>
+            <div class="a4-box" style="border-left: 4px solid #3b82f6; background: #fff;">
+                <h4 style="color: #3b82f6; margin: 0 0 10px 0; font-size: 13px;">Chiến lược dài hạn (Build System)</h4>
+                <ul style="font-size: 12px; color: #334155; padding-left: 20px; line-height: 1.6; margin: 0;">
+                    ${(json.consulting.priorityMatrix?.buildSystem || []).map(q => `<li>${q}</li>`).join('')}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="a4-footer">INVAMAX www.invamax.com | Mã báo cáo: <span class="a4-code-placeholder"></span> | Trang 7 / 10</div>
+</div>
+
+<div class="a4-page">
+    <div class="a4-header">
+        <div><div class="a4-logo" style="font-size: 22px; font-weight: 800; color: #0f172a;">INVA<span style="color:#f97316;">MAX</span></div></div>
+        <div class="a4-title-center">BÁO CÁO CHI TIẾT<br>GIẢI PHÁP & LỘ TRÌNH</div>
+        <div style="width: 160px;"></div>
+    </div>
+    <div class="a4-content">
+        <div class="a4-section-title">8. CHI TIẾT GIẢI PHÁP ĐỘT PHÁ (SOLUTION DETAILS) <span style="float:right">Trang 8 / 10</span></div>
+        <div class="a4-grid-2">
+            ${(json.consulting.solutions || []).map(sol => `
+                <div class="a4-box" style="background: #fff; padding: 15px;">
+                    <h4 style="color: #ea580c; font-size: 13px; margin: 0 0 10px 0;"><i class="fas fa-tools"></i> ${sol.title}</h4>
+                    <div style="font-size: 12px; color: #475569; line-height: 1.6;">
+                        <p style="margin: 0 0 5px 0;"><strong>Mục tiêu:</strong> ${sol.objective}</p>
+                        <p style="margin: 0 0 5px 0;"><strong>Hành động:</strong></p>
+                        <ul style="margin: 0 0 10px 0; padding-left: 20px;">
+                            ${(sol.actions || []).map(a => `<li>${a}</li>`).join('')}
+                        </ul>
+                        <p style="margin: 0 0 5px 0;"><strong>Nguồn lực:</strong> ${sol.resources}</p>
+                        <p style="margin: 0;"><strong>Rủi ro & Kiểm soát:</strong> ${sol.risks}</p>
+                    </div>
+                </div>
+            `).join('')}
+        </div>
+    </div>
+    <div class="a4-footer">INVAMAX www.invamax.com | Mã báo cáo: <span class="a4-code-placeholder"></span> | Trang 8 / 10</div>
+</div>
+
+<div class="a4-page">
+    <div class="a4-header">
+        <div><div class="a4-logo" style="font-size: 22px; font-weight: 800; color: #0f172a;">INVA<span style="color:#f97316;">MAX</span></div></div>
+        <div class="a4-title-center">BÁO CÁO CHI TIẾT<br>GIẢI PHÁP & LỘ TRÌNH</div>
+        <div style="width: 160px;"></div>
+    </div>
+    <div class="a4-content">
+        <div class="a4-section-title">9. LỘ TRÌNH TRIỂN KHAI 30-60-90 NGÀY <span style="float:right">Trang 9 / 10</span></div>
+        <div class="a4-box" style="padding: 0; overflow: hidden; border: 1px solid #e2e8f0; background: #fff;">
+            <table class="a4-table-issues" style="margin: 0;">
+                <thead style="background: #0f172a; color: white;">
+                    <tr>
+                        <th style="color: white; width: 25%;">Giai đoạn</th>
+                        <th style="color: white;">Mục tiêu</th>
+                        <th style="color: white;">Hành động cốt lõi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="background: #fefce8; color: #ca8a04; font-weight: bold; border-right: 1px solid #e2e8f0;">30 Ngày Đầu (Ổn định)</td>
+                        <td style="border-right: 1px solid #e2e8f0; font-size: 12px; color: #334155; padding: 10px;">${json.consulting.roadmap?.phase30Days?.goal || ''}</td>
+                        <td style="font-size: 11px; color: #475569; padding: 10px;">
+                            <ul style="padding-left: 15px; margin: 0;">${(json.consulting.roadmap?.phase30Days?.actions || []).map(a => `<li>${a}</li>`).join('')}</ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="background: #f0fdf4; color: #16a34a; font-weight: bold; border-right: 1px solid #e2e8f0;">60 Ngày (Chuẩn hóa)</td>
+                        <td style="border-right: 1px solid #e2e8f0; font-size: 12px; color: #334155; padding: 10px;">${json.consulting.roadmap?.phase60Days?.goal || ''}</td>
+                        <td style="font-size: 11px; color: #475569; padding: 10px;">
+                            <ul style="padding-left: 15px; margin: 0;">${(json.consulting.roadmap?.phase60Days?.actions || []).map(a => `<li>${a}</li>`).join('')}</ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="background: #f8fafc; color: #3b82f6; font-weight: bold; border-right: 1px solid #e2e8f0;">90 Ngày (Duy trì)</td>
+                        <td style="border-right: 1px solid #e2e8f0; font-size: 12px; color: #334155; padding: 10px;">${json.consulting.roadmap?.phase90Days?.goal || ''}</td>
+                        <td style="font-size: 11px; color: #475569; padding: 10px;">
+                            <ul style="padding-left: 15px; margin: 0;">${(json.consulting.roadmap?.phase90Days?.actions || []).map(a => `<li>${a}</li>`).join('')}</ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="a4-footer">INVAMAX www.invamax.com | Mã báo cáo: <span class="a4-code-placeholder"></span> | Trang 9 / 10</div>
+</div>
+
+<div class="a4-page">
+    <div class="a4-header">
+        <div><div class="a4-logo" style="font-size: 22px; font-weight: 800; color: #0f172a;">INVA<span style="color:#f97316;">MAX</span></div></div>
+        <div class="a4-title-center">BÁO CÁO CHI TIẾT<br>GIẢI PHÁP & LỘ TRÌNH</div>
+        <div style="width: 160px;"></div>
+    </div>
+    <div class="a4-content">
+        <div class="a4-section-title">10. CƠ CHẾ TRIỂN KHAI VÀ DUY TRÌ (RACI & SUSTAIN) <span style="float:right">Trang 10 / 10</span></div>
+        
+        <div class="a4-box" style="margin-bottom: 20px; background: #fff;">
+            <h4 style="margin: 0 0 10px 0; font-size: 13px; color: #1e293b;"><i class="fas fa-users"></i> MA TRẬN PHÂN CÔNG (RACI)</h4>
+            <table class="a4-table-issues" style="font-size: 11px; border: 1px solid #e2e8f0;">
+                <thead style="background: #f1f5f9;">
+                    <tr>
+                        <th style="padding:8px;">Công việc</th>
+                        <th style="text-align: center; padding:8px;">Giám đốc</th>
+                        <th style="text-align: center; padding:8px;">Trưởng phòng</th>
+                        <th style="text-align: center; padding:8px;">Tổ trưởng</th>
+                        <th style="text-align: center; padding:8px;">Chuyên gia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${(json.consulting.raci || []).map(r => `
+                    <tr>
+                        <td style="color: #334155; padding:8px;">${r.task}</td>
+                        <td style="text-align: center; font-weight: bold; padding:8px; color: ${r.R === 'Giám đốc' || r.A === 'Giám đốc' ? '#ea580c' : '#64748b'};">${r.R || '-'}</td>
+                        <td style="text-align: center; font-weight: bold; padding:8px; color: ${r.A === 'Trưởng phòng' || r.R === 'Trưởng phòng' ? '#ea580c' : '#64748b'};">${r.A || '-'}</td>
+                        <td style="text-align: center; font-weight: bold; padding:8px;">${r.C || '-'}</td>
+                        <td style="text-align: center; font-weight: bold; padding:8px;">${r.I || '-'}</td>
+                    </tr>
+                    `).join('')}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="a4-box" style="background: #fff;">
+            <h4 style="margin: 0 0 10px 0; font-size: 13px; color: #1e293b;"><i class="fas fa-shield-alt"></i> CƠ CHẾ KIỂM SOÁT VÀ DUY TRÌ (SUSTAIN)</h4>
+            <ul style="font-size: 12px; color: #475569; padding-left: 20px; line-height: 1.6; margin: 0;">
+                ${(json.consulting.sustainControls || []).map(c => `<li>${c}</li>`).join('')}
+            </ul>
+        </div>
+    </div>
+    <div class="a4-footer">INVAMAX www.invamax.com | Mã báo cáo: <span class="a4-code-placeholder"></span> | Trang 10 / 10</div>
+</div>
+    `;
+    
+    if (metadata) {
+        aiHtml += `
+        <div style="text-align: center; font-size: 10px; color: #94a3b8; padding: 20px; background: #f8fafc; font-family: monospace;">
+            Generated by ${metadata.aiProfile} – Prompt ${metadata.promptVersion} – Knowledge ${metadata.knowledgeVersion} | Model: ${metadata.model} | ReqID: ${metadata.requestId}
+        </div>
+        `;
+    }
+    
+    document.getElementById('detailed-report').innerHTML = aiHtml;
+}
+
+
+
+function renderPreliminary(res, factoryInfo, contactInfo, rawAnswers) {
+    // Basic replacements
+    document.getElementById('a4-company').innerText = factoryInfo['A01'] || 'Không rõ';
+    document.getElementById('a4-product').innerText = factoryInfo['A04'] || 'Không rõ';
+    document.getElementById('a4-name').innerText = contactInfo['F01'] || 'Không rõ';
+    document.getElementById('a4-job').innerText = contactInfo['F02'] || 'Không rõ';
+    const phone = contactInfo['F04'] || '';
+    document.getElementById('a4-phone').innerText = phone || 'Không rõ';
+
+    const dateStr = new Date().toLocaleDateString('vi-VN').replace(/\//g, '');
+    const code = `FOS-${dateStr}-${Math.floor(Math.random()*1000)}`;
+    for(let i=1; i<=5; i++) {
+        const el = document.getElementById(`a4-code-${i}`) || document.getElementById(`a4-code-f${i}`);
+        if(el) el.innerText = code;
+    }
+
+    const healthScore = 100 - res.warningScore;
+    document.getElementById('a4-score-text').innerText = `${healthScore} / 100`; // Sửa lại thành healthScore
+    document.getElementById('a4-level-text').innerText = `MỨC ĐỘ: ${res.assessmentLevel.toUpperCase()}`;
+
+    // Colors
+    const scoreTextEl = document.getElementById('a4-score-text');
+    if (healthScore >= 80) scoreTextEl.style.color = '#10b981';
+    else if (healthScore >= 60) scoreTextEl.style.color = '#eab308';
+    else if (healthScore >= 40) scoreTextEl.style.color = '#f97316';
+    else if (healthScore >= 20) scoreTextEl.style.color = '#ef4444';
+    else scoreTextEl.style.color = '#334155';
+
+    document.getElementById('a4-general-desc').innerText = res.generalAssessment;
+    document.getElementById('a4-recommendation-text').innerText = "HÀNH ĐỘNG KHUYẾN NGHỊ: " + res.nextSteps;
+
+    const top3IssuesEl = document.getElementById('a4-top-3-issues');
+    if (top3IssuesEl) {
+        top3IssuesEl.innerHTML = res.diseases.map(disease => `
+            <div class="a4-issue-card">
+                <i class="fas fa-exclamation-triangle" style="color: #ef4444; font-size: 24px; margin-bottom: 10px;"></i>
+                <div class="title" style="font-weight: bold; color: #1e293b;">${disease}</div>
+            </div>
+        `).join('');
+    }
+
+    const fosShortfallsEl = document.getElementById('a4-top3-fos');
+    if (fosShortfallsEl) {
+        fosShortfallsEl.innerHTML = res.top3FOS.map(item => `
+            <div class="a4-issue-card" style="background: #fff1f2; color: #e11d48; padding: 12px; margin-bottom: 10px; border-radius: 6px; font-weight: bold; border-left: 4px solid #e11d48; display: flex; align-items: center; justify-content: space-between;">
+                <span>${item}</span>
+                <i class="fas fa-exclamation-circle"></i>
+            </div>
+        `).join('');
+    }
+
+    // Generate QR
+    const amount = 990000;
+    const bankId = 'MB';
+    const accountNo = '5757658888';
+    const accountName = 'INVAMAX';
+    let cleanPhone = (phone || '0945530699').replace(/\s+/g, '');
+    const addInfo = 'KBM ' + cleanPhone;
+    const qrUrl = `https://img.vietqr.io/image/${bankId}-${accountNo}-qr_only.png?amount=${amount}&addInfo=${encodeURIComponent(addInfo)}&accountName=${encodeURIComponent(accountName)}`;
+    
+    const qrImgInline = document.getElementById('a4-qr-img-inline');
+    if (qrImgInline) { qrImgInline.src = qrUrl; }
+    const qrPhoneInline = document.getElementById('a4-qr-phone-inline');
+    if (qrPhoneInline) { qrPhoneInline.innerText = cleanPhone; }
+}
+
+function initCharts(res) {
+    // 1. Gauge Chart
+    const ctxGauge = document.getElementById('gaugeChart');
+    if (ctxGauge) {
+        if(window.gaugeChartInstance) window.gaugeChartInstance.destroy();
+        
+        window.gaugeChartInstance = new Chart(ctxGauge, {
+            type: 'doughnut',
+            data: {
+                datasets: [{
+                    data: [20, 20, 20, 20, 20],
+                    backgroundColor: ['#334155', '#ef4444', '#f97316', '#eab308', '#10b981'],
+                    borderWidth: 0,
+                    circumference: 180,
+                    rotation: 270,
+                    needleValue: 100 - res.warningScore
+                }]
+            },
+            options: {
+                animation: false,
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '70%',
+                plugins: { legend: { display: false }, tooltip: { enabled: false } }
+            },
+            plugins: [{
+                id: 'gaugeNeedle',
+                afterDatasetDraw(chart) {
+                    const { ctx, chartArea: { width, height } } = chart;
+                    ctx.save();
+                    const needleValue = chart.data.datasets[0].needleValue;
+                    const angle = Math.PI + (needleValue / 100) * Math.PI;
+                    const cx = chart.chartArea.left + width / 2;
+                    const cy = chart.chartArea.top + height;
+
+                    ctx.translate(cx, cy);
+                    ctx.rotate(angle);
+                    ctx.beginPath();
+                    ctx.moveTo(0, -5);
+                    ctx.lineTo(height - 20, 0);
+                    ctx.lineTo(0, 5);
+                    ctx.fillStyle = '#1e293b';
+                    ctx.fill();
+                    ctx.restore();
+                    
+                    ctx.beginPath();
+                    ctx.arc(cx, cy, 8, 0, Math.PI * 2);
+                    ctx.fillStyle = '#1e293b';
+                    ctx.fill();
+                    ctx.restore();
+                }
+            }]
+        });
+    }
+
+    // 2. Radar Chart
+    const ctxRadar = document.getElementById('radarChart');
+    if (ctxRadar) {
+        if(window.radarChartInstance) window.radarChartInstance.destroy();
+        window.radarChartInstance = new Chart(ctxRadar, {
+            type: 'radar',
+            data: {
+                labels: res.wasteScores.map(w => w.module),
+                datasets: [{
+                    label: 'Điểm Lãng Phí',
+                    data: res.wasteScores.map(w => w.score),
+                    backgroundColor: 'rgba(234, 88, 12, 0.2)',
+                    borderColor: '#ea580c',
+                    pointBackgroundColor: '#ea580c',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                animation: false,
+                scales: {
+                    r: { min: 0, max: 100, ticks: { display: false } }
+                },
+                plugins: { legend: { display: false } }
+            }
+        });
+    }
+
+    // 3. Heatmap
+    const heatmapEl = document.getElementById('a4-heatmap');
+    if (heatmapEl) {
+        heatmapEl.innerHTML = res.fosScores.map(f => {
+            let color = '#10b981';
+            if (f.score > 80) color = '#ef4444';
+            else if (f.score > 60) color = '#f97316';
+            else if (f.score > 40) color = '#eab308';
+            return '<div class="a4-heat-cell" style="background: ' + color + ';"><div class="module-name" style="color: white;">' + f.module + '</div><div class="score" style="color: white;">' + f.score + '</div></div>';
+        }).join('');
+    }
+
+    // 4. Waste Scores
+    const wasteScoresEl = document.getElementById('a4-waste-scores');
+    if (wasteScoresEl) {
+        wasteScoresEl.innerHTML = res.wasteScores.map(w => {
+            let color = '#10b981';
+            if (w.score > 80) color = '#ef4444';
+            else if (w.score > 60) color = '#f97316';
+            else if (w.score > 40) color = '#eab308';
+            return '<div class="a4-heat-cell" style="background: ' + color + ';"><div class="module-name" style="color: white;">' + w.module + '</div><div class="score" style="color: white;">' + w.score + '</div></div>';
+        }).join('');
+    }
+}
+
+function exportPDF(type = 'chi-tiet') {
+    const element = document.getElementById('pdf-container');
+    const companyName = document.getElementById('a4-company').innerText.replace(/\s+/g, '_');
+    
+    // Add classes for CSS logic
+    element.classList.add('pdf-export-mode');
+    if (type === 'chi-tiet') {
+        element.classList.add('pdf-export-chi-tiet');
+    }
+    
+    // Configure visibility
+    const pages = element.querySelectorAll('.a4-page');
+    const paywallBox = document.getElementById('paywall-box');
+    const qrCodeBox = document.getElementById('qr-code-box');
+    
+    if (type === 'so-bo') {
+        for (let i = 5; i < pages.length; i++) {
+            if (pages[i]) pages[i].style.display = 'none';
+        }
+    } else if (type === 'chi-tiet') {
+        if (paywallBox) paywallBox.style.display = 'none';
+        if (qrCodeBox) qrCodeBox.style.display = 'none';
+    }
+    
+    const filename = type === 'so-bo' ? `Bao_Cao_So_Bo_INVAMAX_${companyName}.pdf` : `Bao_Cao_Chi_Tiet_INVAMAX_${companyName}.pdf`;
+
+    var opt = {
+        margin:       0,
+        filename:     filename,
+        image:        { type: 'jpeg', quality: 1 },
+        html2canvas:  { scale: 2, useCORS: true, logging: false },
+        jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
+
+    html2pdf().set(opt).from(element).save().then(() => {
+        // Restore display
+        for (let i = 5; i < pages.length; i++) {
+            if (pages[i]) pages[i].style.display = '';
+        }
+        if (paywallBox) paywallBox.style.display = '';
+        if (qrCodeBox) qrCodeBox.style.display = '';
+        element.classList.remove('pdf-export-mode');
+        element.classList.remove('pdf-export-chi-tiet');
+    });
+}
+

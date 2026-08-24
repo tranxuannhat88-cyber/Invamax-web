@@ -1,0 +1,38 @@
+--- LABOR LOGIC ---
+const laborEl = document.getElementById('a4-labor-structure');
+    if (laborEl) {
+        if (totalLabor > 0) {
+            const pDirect = Math.round((numDirect / totalLabor) * 100);
+            const pIndirect = Math.round((numIndirect / totalLabor) * 100);
+            const pManager = 100 - pDirect - pIndirect;
+            
+            laborEl.innerHTML = `
+                <div style="flex: 1; background: white; border: 1px solid #e2e8f0; border-radius: 6px; padding: 6px 10px; text-align: center; box-shadow: 0 1px 2px rgba(0,0,0,0.02);">
+                    <div style="font-size: 11px; color: #64748b; font-weight: bold; margin-bottom: 2px; text-transform: uppercase;">Lao động trực tiếp</div>
+                    <div style="font-size: 18px; font-weight: 800; color: #1e293b; margin-bottom: 0px;">${numDirect}</div>
+                    <div style="font-size: 15px; color: #f97316; font-weight: 800;">${pDirect}%</div>
+                </div>
+                <div style="flex: 1; background: white; border: 1px solid #e2e8f0; border-radius: 6px; padding: 6px 10px; text-align: center; box-shadow: 0 1px 2px rgba(0,0,0,0.02);">
+                    <div style="font-size: 11px; color: #64748b; font-weight: bold; margin-bottom: 2px; text-transform: uppercase;">Lao động gián tiếp</div>
+                    <div style="font-size: 18px; font-weight: 800; color: #1e293b; margin-bottom: 0px;">${numIndirect}</div>
+                    <div style="font-size: 15px; color: #f97316; font-weight: 800;">${pIndirect}%</div>
+                </div>
+                <div style="flex: 1; background: white; border: 1px solid #e2e8f0; border-radius: 6px; padding: 6px 10px; text-align: center; box-shadow: 0 1px 2px rgba(0,0,0,0.02);">
+                    <div style="font-size: 11px; color: #64748b; font-weight: bold; margin-bottom: 2px; text-transform: uppercase;">Lao động quản lý</div>
+                    <div style="font-size: 18px; font-weight: 800; color: #1e293b; margin-bottom: 0px;">${numManager}</div>
+                    <div style="font-size: 15px; color: #f97316; font-weight: 800;">${Math.round((numManager/totalLabor)*100)}%</div>
+                </div>
+                <div style="flex: 1; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 6px; padding: 6px 10px; text-align: center;">
+                    <div style="font-size: 11px; color: #64748b; font-weight: bold; margin-bottom: 2px; text-transform: uppercase;">Tổng lao động</div>
+                    <div style="font-size: 18px; font-weight: 800; color: #1e293b; margin-bottom: 0px;">${totalLabor}</div>
+                    <div style="font-size: 15px; color: #94a3b8; font-weight: 800;">100%</div>
+                </div>
+            `;
+        } else {
+            laborEl.innerHTML = `
+                <div style="width: 100%; text-align: center; padding: 10px; color: #94a3b8; font-size: 12px; font-style: italic;">
+                    Chưa có thông tin cơ cấu lao động
+                </div>
+            `;
+        }
+

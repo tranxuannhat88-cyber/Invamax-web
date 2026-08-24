@@ -1,0 +1,72 @@
+async function submitForm() {
+    if (!validateStep(6)) {
+        return;
+    }
+    const originalBtnText = btnSubmit.innerHTML;
+    btnSubmit.innerHTML = `<i data-lucide="loader" class="spin"></i> Đang phân tích dữ liệu...`;
+    btnSubmit.disabled = true;
+
+    const formData = new FormData(form);
+    const formObj = Object.fromEntries(formData.entries());
+    
+    // Handle Part E checkboxes (multiple choice)
+    AppQuestions.partE.forEach(q => {
+        let loai = (q.loaiTraLoi || '').toLowerCase();
+        if (loai.includes('nhiều lựa chọn') || loai.includes('tối đa')) {
+            formObj[q.id] = formData.getAll(q.id).join(', ');
+        }
+    });
+
+    const diagnosticAnswers = {};
+    const questionIds = [
+        ...AppQuestions.partB, 
+        ...AppQuestions.partC, 
+        ...AppQuestions.partD
+    ].map(q => q.id);
+
+    questionIds.forEach(id => {
+        if (formObj[id] !== undefined) {
+            diagnosticAnswers[id] = formObj[id];
+        }
+    });
+
+    const results = calculateResults(diagnosticAnswers);
+
+    let factoryInfo = {};
+    AppQuestions.partA.forEach(q => {
+        factoryInfo[q.id] = formObj[q.id];
+    });
+
+    let contactInfo = {};
+    AppQuestions.partF.forEach(q => {
+        contactInfo[q.id] = formObj[q.id];
+    });
+    
+    let priorityInfo = {};
+    AppQuestions.partE.forEach(q => {
+        priorityInfo[q.id] = formObj[q.id];
+    });
+
+    const payload = {
+        factoryInfo: factoryInfo,
+        contactInfo: contactInfo,
+        priorityInfo: priorityInfo,
+        rawAnswers: formObj,
+        scores: results
+    };
+
+        const reportId = 'IVM-' + Math.floor(100000 + Math.random() * 900000);
+    payload.reportId = reportId;
+    payload.timestamp = new Date().toISOString();
+
+    const isSuccess = await submitDataToGoogleSheet(payload);
+
+    btnSubmit.innerHTML = originalBtnText;
+    btnSubmit.disabled = false;
+    
+    // Save to history
+    let history = [];
+    try {
+        const histRaw = localStorage.getItem('invamax_history');
+        if (histRaw) history = JSON.parse(histRaw);
+    } catch

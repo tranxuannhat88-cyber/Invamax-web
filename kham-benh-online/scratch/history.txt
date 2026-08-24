@@ -1,0 +1,2 @@
+Line 1387: <i data-lucide="history" style="width: 16px; height: 16px;"></i> Lịch sử
+Line 2269: <h2 style="font-size: 1.5rem; margin-bottom: 20px; color: white; display: flex; align-items: center; gap: 10px;"><i data-lucide="history"></i> L?ch s? n?p kh?o sát</h2>

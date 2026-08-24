@@ -1,0 +1,35 @@
+            </div>`;
+        }).join('');
+        container.innerHTML = html;
+    };
+    
+    renderHeatmapGroup('a4-heatmap-group-a', ['Core', 'People', 'Flow'], res.fosScores);
+    renderHeatmapGroup('a4-heatmap-group-b', ['Standard', 'Capacity', 'Daily Management', 'Quality'], res.fosScores);
+    renderHeatmapGroup('a4-heatmap-group-c', ['Knowledge', 'Digital'], res.fosScores);
+    renderHeatmapGroup('a4-heatmap-group-d', ['Kaizen', 'Sustain'], res.fosScores);
+
+    // top3 fos moved to generateReport
+
+    // Generate QR
+    const amount = 990000;
+    const bankId = 'MB';
+    const accountNo = '5757658888';
+    const accountName = 'INVAMAX';
+    let cleanPhone = (phone || '0945530699').replace(/\s+/g, '');
+    const addInfo = 'KBM ' + cleanPhone;
+    const qrUrl = `https://img.vietqr.io/image/${bankId}-${accountNo}-qr_only.png?amount=${amount}&addInfo=${encodeURIComponent(addInfo)}&accountName=${encodeURIComponent(accountName)}`;
+    
+    const qrImgInline = document.getElementById('a4-qr-img-inline');
+    if (qrImgInline) { qrImgInline.src = qrUrl; }
+    const qrPhoneInline = document.getElementById('a4-qr-phone-inline');
+    if (qrPhoneInline) { qrPhoneInline.innerText = cleanPhone; }
+}
+
+function renderDetailedReport(json, metadata) {
+    if (!json) return;
+    const el = document.getElementById('detailed-report');
+    if (!el) return;
+    
+    const styles = `
+        <style>
+            .p610-box { border: 1px solid #e2e8f0; border-radius: 8px; background: white; margin-bottom: 15px; overflow: hidden; }

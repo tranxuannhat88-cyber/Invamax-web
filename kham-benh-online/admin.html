@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css?v=2">
     <link rel="stylesheet" href="assets/css/a4_report.css">
     
     <!-- Scripts -->
@@ -36,7 +36,8 @@
             <h1><i class="fas fa-file-pdf"></i> ADMIN - XUẤT BÁO CÁO FOS</h1>
             <div>
                 <button onclick="exportPDF('so-bo')" class="btn btn-primary" style="background: #10b981; border: none; padding: 10px 15px; color: white; border-radius: 24px; cursor: pointer; font-weight: bold; margin-right: 10px;"><i class="fas fa-download"></i> Tải báo cáo sơ bộ</button>
-                <button onclick="exportPDF('chi-tiet')" class="btn btn-primary" style="background: #ea580c; border: none; padding: 10px 15px; color: white; border-radius: 24px; cursor: pointer; font-weight: bold;"><i class="fas fa-download"></i> Tải báo cáo chi tiết</button>
+                <button onclick="exportPDF('chi-tiet')" class="btn btn-primary" style="background: #ea580c; border: none; padding: 10px 15px; color: white; border-radius: 24px; cursor: pointer; font-weight: bold; margin-right: 10px;"><i class="fas fa-download"></i> Tải báo cáo chi tiết</button>
+                <button onclick="logout()" class="btn btn-primary" style="background: #ef4444; border: none; padding: 10px 15px; color: white; border-radius: 24px; cursor: pointer; font-weight: bold;"><i class="fas fa-sign-out-alt"></i> Đăng xuất</button>
             </div>
         </div>
 
@@ -506,13 +507,10 @@
 <div id="detailed-report"></div>
 
 <script src="assets/js/questions_data.js"></script>
+<script src="assets/js/auth.js"></script>
 <script src="assets/js/admin.js"></script>
 
 </body>
-</html>
-
-
-
 
 
 

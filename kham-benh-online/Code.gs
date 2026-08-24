@@ -29,7 +29,120 @@ function onOpen() {
 function doPost(e) {
   try {
     const payload = JSON.parse(e.postData.contents);
-    const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SHEET_NAME);
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    
+    // --- AUTHENTICATION ACTIONS ---
+    if (payload.action === 'register') {
+      let sheet = ss.getSheetByName('Khách hàng');
+      if (!sheet) {
+        sheet = ss.insertSheet('Khách hàng');
+        sheet.appendRow(['Thời gian', 'Họ tên', 'Email', 'Mật khẩu', 'Nguồn']);
+        sheet.getRange(1, 1, 1, 5).setFontWeight('bold').setBackground('#f3f4f6');
+        sheet.setFrozenRows(1);
+      }
+      
+      // Check if email already exists
+      const data = sheet.getDataRange().getValues();
+      for (let i = 1; i < data.length; i++) {
+        if (data[i][2] === payload.email) {
+          return ContentService.createTextOutput(JSON.stringify({ "status": "error", "message": "Email đã tồn tại" })).setMimeType(ContentService.MimeType.JSON);
+        }
+      }
+      
+      // Register
+      sheet.appendRow([new Date(), payload.name, payload.email, payload.password, 'Email']);
+      return ContentService.createTextOutput(JSON.stringify({ "status": "success", "message": "Đăng ký thành công" })).setMimeType(ContentService.MimeType.JSON);
+    }
+    
+    if (payload.action === 'login') {
+      const sheet = ss.getSheetByName('Khách hàng');
+      if (!sheet) {
+        return ContentService.createTextOutput(JSON.stringify({ "status": "error", "message": "Sai email hoặc mật khẩu" })).setMimeType(ContentService.MimeType.JSON);
+      }
+      
+      const data = sheet.getDataRange().getValues();
+      let found = false;
+      let userName = '';
+      for (let i = 1; i < data.length; i++) {
+        if (data[i][2] === payload.email && data[i][3] === payload.password) {
+          found = true;
+          userName = data[i][1];
+          break;
+        }
+      }
+      
+      if (found) {
+        logLogin(ss, payload.email);
+        return ContentService.createTextOutput(JSON.stringify({ "status": "success", "name": userName })).setMimeType(ContentService.MimeType.JSON);
+      } else {
+        return ContentService.createTextOutput(JSON.stringify({ "status": "error", "message": "Sai email hoặc mật khẩu" })).setMimeType(ContentService.MimeType.JSON);
+      }
+    }
+    
+    if (payload.action === 'google_login') {
+      let sheet = ss.getSheetByName('Khách hàng');
+      if (!sheet) {
+        sheet = ss.insertSheet('Khách hàng');
+        sheet.appendRow(['Thời gian', 'Họ tên', 'Email', 'Mật khẩu', 'Nguồn']);
+        sheet.getRange(1, 1, 1, 5).setFontWeight('bold').setBackground('#f3f4f6');
+        sheet.setFrozenRows(1);
+      }
+      
+      const data = sheet.getDataRange().getValues();
+      let found = false;
+      for (let i = 1; i < data.length; i++) {
+        if (data[i][2] === payload.email) {
+          found = true;
+          break;
+        }
+      }
+      
+      if (!found) {
+        sheet.appendRow([new Date(), payload.name, payload.email, '', 'Google']);
+      }
+      
+      logLogin(ss, payload.email);
+      return ContentService.createTextOutput(JSON.stringify({ "status": "success" })).setMimeType(ContentService.MimeType.JSON);
+    }
+    
+    
+    if (payload.action === 'get_history') {
+      const sheet = ss.getSheetByName(SHEET_NAME);
+      if (!sheet) {
+        return ContentService.createTextOutput(JSON.stringify({ "status": "success", "data": [] })).setMimeType(ContentService.MimeType.JSON);
+      }
+      
+      const data = sheet.getDataRange().getValues();
+      const history = [];
+      
+      for (let i = 1; i < data.length; i++) {
+        // Cột K (index 10) là Email
+        if (data[i][10] === payload.email) {
+          try {
+             // Cột cuối cùng (data[i].length - 1) là raw JSON của submission
+             const rawStr = data[i][data[i].length - 1];
+             if (rawStr && rawStr.startsWith('{')) {
+                 const rawObj = JSON.parse(rawStr);
+                 history.push({
+                     timestamp: data[i][0],
+                     companyName: data[i][1],
+                     warningScore: data[i][12],
+                     level: data[i][13],
+                     rawAnswers: rawObj
+                 });
+             }
+          } catch(e) {}
+        }
+      }
+      
+      // Sắp xếp mới nhất lên đầu
+      history.reverse();
+      
+      return ContentService.createTextOutput(JSON.stringify({ "status": "success", "data": history })).setMimeType(ContentService.MimeType.JSON);
+    }
+
+    // --- DEFAULT ACTION (SUBMIT FORM) ---
+    const sheet = ss.getSheetByName(SHEET_NAME);
     
     // Nếu sheet trống, tự động tạo Header
     if (sheet.getLastRow() === 0) {
@@ -49,18 +162,18 @@ function doPost(e) {
 
     const rowData = [
       new Date(), // Thời gian
-      payload.factoryInfo.name || "",
-      payload.factoryInfo.industry || "",
-      payload.factoryInfo.mainProduct || "",
-      payload.factoryInfo.address || "",
-      payload.factoryInfo.years || "",
-      payload.factoryInfo.scale || "",
+      payload.factoryInfo.A01 || "", // Tên công ty
+      payload.factoryInfo.A02 || "", // Ngành nghề
+      payload.factoryInfo.A03 || "", // Sản phẩm chính
+      payload.factoryInfo.A04 || "", // Địa chỉ
+      payload.factoryInfo.A05 || "", // Số năm HĐ
+      payload.factoryInfo.A06 || "", // Quy mô
       
-      payload.contactInfo.name || "",
-      payload.contactInfo.jobTitle || "",
-      payload.contactInfo.phone || "",
-      payload.contactInfo.email || "",
-      payload.contactInfo.priority || "",
+      payload.contactInfo.F01 || "", // Họ tên
+      payload.contactInfo.F02 || "", // Chức vụ
+      payload.contactInfo.F04 || "", // Điện thoại (F04)
+      payload.contactInfo.F03 || "", // Email (F03)
+      payload.priorityInfo.E01 || "", // Ưu tiên (E01)
       
       payload.scores.warningScore || 0,
       payload.scores.assessmentLevel || "",
@@ -81,6 +194,18 @@ function doPost(e) {
       .setMimeType(ContentService.MimeType.JSON);
   }
 }
+
+function logLogin(ss, email) {
+  let sheet = ss.getSheetByName('Nhật ký đăng nhập');
+  if (!sheet) {
+    sheet = ss.insertSheet('Nhật ký đăng nhập');
+    sheet.appendRow(['Thời gian', 'Email']);
+    sheet.getRange(1, 1, 1, 2).setFontWeight('bold').setBackground('#f3f4f6');
+    sheet.setFrozenRows(1);
+  }
+  sheet.appendRow([new Date(), email]);
+}
+
 
 // Xử lý request OPTIONS (CORS preflight) nếu fetch dùng application/json
 function doOptions(e) {

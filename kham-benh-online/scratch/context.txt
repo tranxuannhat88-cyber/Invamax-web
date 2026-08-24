@@ -1,0 +1,47 @@
+Entries(new FormData(form).entries());
+            let phone = formObj['F04'] || '0945530699'; // Tùy chỉnh id theo câu số điện thoại (F04)
+            phone = phone.replace(/\s+/g, '');
+            phonePlaceholder.innerText = phone;
+            const amount = 990000;
+            const bankId = 'MB';
+            const accountNo = '5757658888';
+            const accountName = 'INVAMAX';
+            const addInfo = 'KBM ' + phone;
+            const qrUrl = `https://img.vietqr.io/image/${bankId}-${accountNo}-qr_only.png?amount=${amount}&addInfo=${encodeURIComponent(addInfo)}&accountName=${encodeURIComponent(accountName)}`;
+            qrImg.src = qrUrl;
+            modal.style.display = "flex";
+        });
+
+        spanClose.addEventListener('click', () => {
+            modal.style.display = "none";
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        });
+    }
+
+    const btnDownload = document.getElementById('a4-btn-download');
+    if(btnDownload) {
+        
+    }
+}
+
+// Call initQuestions immediately or on DOMContentLoaded
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initQuestions);
+} else {
+    initQuestions();
+}
+
+btnNext.addEventListener('click', () => {
+    if (validateStep(currentStep)) {
+        currentStep++;
+        updateUI();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+});
+
+btnPrev.a

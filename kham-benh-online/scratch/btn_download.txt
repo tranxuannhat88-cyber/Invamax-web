@@ -1,0 +1,33 @@
+btnDownload.addEventListener('click', () => {
+            const resultElement = document.querySelector(`.form-step[data-step="${totalSteps}"]`);
+            resultElement.classList.add('pdf-export-mode');
+            
+            const ctaBox = resultElement.querySelector('.cta-box');
+            if (ctaBox) ctaBox.style.display = 'none';
+
+            var opt = {
+                margin:       0,
+                filename:     'INVAMAX_Bao_Cao_So_Bo.pdf',
+                image:        { type: 'jpeg', quality: 1 },
+                pagebreak:    { mode: 'css' },
+        html2canvas:  { scale: 2, useCORS: true, logging: false, backgroundColor: '#ffffff' },
+                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            const originalText = btnDownload.innerText;
+            btnDownload.innerText = 'Đang tạo PDF...';
+            
+            setTimeout(() => {
+                html2pdf().set(opt).from(resultElement).save().then(() => {
+                    if (ctaBox) ctaBox.style.display = 'block'; 
+                    btnDownload.innerText = originalText;
+                    resultElement.classList.remove('pdf-export-mode');
+                }).catch(e => {
+                    console.error('Lỗi khi tạo PDF:', e);
+                    if (ctaBox) ctaBox.style.display = 'block';
+                    btnDownload.innerText = originalText;
+                    resultElement.classList.remove('pdf-export-mode');
+                    alert('Có lỗi xảy ra khi tạo PDF. Vui lòng thử lại.');
+                });
+            }, 500);
+        }

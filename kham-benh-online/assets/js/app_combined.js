@@ -48,11 +48,24 @@ function calculateResults(answers) {
     const fosModules = [...new Set(AppQuestions.partD.map(q => q.nhom))];
     fosModules.forEach(module => {
         const questions = AppQuestions.partD.filter(q => q.nhom === module);
+        // Convert to 0-100 where 100 is excellent (original 0 is excellent)
         fosScores.push({
+            module: module,
+            score: isNaN(getGroupScore(questions)) ? 100 : 100 - Math.round((getGroupScore(questions) / 4) * 100)
+        });
+    });
+
+    const symptomsScores = [];
+    const symptomsModules = [...new Set(AppQuestions.partC.map(q => q.nhom))];
+    symptomsModules.forEach(module => {
+        const questions = AppQuestions.partC.filter(q => q.nhom === module);
+        symptomsScores.push({
             module: module,
             score: isNaN(getGroupScore(questions)) ? 0 : Math.round((getGroupScore(questions) / 4) * 100)
         });
     });
+    symptomsScores.sort((a,b) => b.score - a.score);
+    const top3Symptoms = symptomsScores.slice(0, 3).map(item => item.module);
 
     let assessmentLevel = "";
     let generalAssessment = "";
@@ -90,12 +103,17 @@ function calculateResults(answers) {
 
     const sortDesc = (a, b) => b.score - a.score;
     wasteScores.sort(sortDesc);
-    fosScores.sort(sortDesc);
+    fosScores.sort((a, b) => a.score - b.score);
 
     const top3Wastes = wasteScores.slice(0, 3).map(item => item.module);
     const top3FOS = fosScores.slice(0, 3).map(item => item.module);
 
-    return { warningScore, assessmentLevel, generalAssessment, diseases, nextSteps, top3Wastes, top3FOS, wasteScores, fosScores };
+    
+    let pWaste = Math.round((wScore / 4) * 100);
+    let pSymptoms = Math.round((sScore / 4) * 100);
+    let pFos = 100 - Math.round((mScore / 4) * 100);
+    return { warningScore, assessmentLevel, generalAssessment, diseases, nextSteps, top3Wastes, top3FOS, wasteScores, fosScores, symptomsScores, top3Symptoms, pWaste, pSymptoms, pFos };
+    
 }
 
 const GAS_URL = "https://script.google.com/macros/s/AKfycbxA0w8vMs95Aswa2nOKhM8EJs2U5Y2nFj4pG_goURBGTDt0w0tJNQlecGsQD9uno0FLnA/exec"; 
@@ -128,7 +146,22 @@ const progressBar = document.getElementById('progress-bar');
 const totalSteps = formSteps.length;
 let currentStep = 1;
 
-document.addEventListener('DOMContentLoaded', () => {
+// Run initialization immediately since script is at the bottom of the body
+function initQuestions() {
+    try {
+        if (typeof AppQuestions === 'undefined') {
+            alert('LỖI NGHIÊM TRỌNG: AppQuestions không được định nghĩa. Vui lòng tải lại trang hoặc kiểm tra file questions_data.js');
+            return;
+        } else if (!AppQuestions.partA || AppQuestions.partA.length === 0) {
+            alert('LỖI: AppQuestions.partA trống. Dữ liệu chưa được nạp đúng.');
+            return;
+        } else {
+            console.log('AppQuestions loaded successfully:', AppQuestions);
+        }
+    } catch(e) {
+        alert('Lỗi khi kiểm tra AppQuestions: ' + e.message);
+        return;
+    }
     function renderGroup(groupId, questions) {
         const container = document.getElementById(groupId);
         if (!container) return;
@@ -204,12 +237,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }).join('');
     }
 
-    renderGroup('partA-container', AppQuestions.partA);
-    renderGroup('partB-container', AppQuestions.partB);
-    renderGroup('partC-container', AppQuestions.partC);
-    renderGroup('partD-container', AppQuestions.partD);
-    renderGroup('partE-container', AppQuestions.partE);
-    renderGroup('partF-container', AppQuestions.partF);
+    try {
+        renderGroup('partA-container', AppQuestions.partA);
+        renderGroup('partB-container', AppQuestions.partB);
+        renderGroup('partC-container', AppQuestions.partC);
+        renderGroup('partD-container', AppQuestions.partD);
+        renderGroup('partE-container', AppQuestions.partE);
+        renderGroup('partF-container', AppQuestions.partF);
+    } catch(e) {
+        alert('Lỗi khi render câu hỏi: ' + e.message);
+    }
 
     if (AppQuestions.partF && AppQuestions.partF.description) {
         const descEl = document.getElementById('partF-description');
@@ -249,7 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const report = history.find(r => r.reportId === reportIdToView);
         if (report) {
             localStorage.setItem(LS_KEY, JSON.stringify({ currentStep: totalSteps, formObj: report.rawAnswers }));
-            loadDraft();
+            // loadDraft();
             renderResults(report);
             updateUI();
             window.history.replaceState({}, document.title, "index.html");
@@ -258,13 +295,18 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = "gioi-thieu.html";
         }
     } else {
-        loadDraft();
+        localStorage.removeItem(LS_KEY); // form always blank
         updateUI();
     }
 
 
-    form.addEventListener('change', saveDraft);
-    form.addEventListener('input', saveDraft);
+    let draftTimeout;
+    const debouncedSaveDraft = () => {
+        clearTimeout(draftTimeout);
+        draftTimeout = setTimeout(saveDraft, 500);
+    };
+    form.addEventListener('change', debouncedSaveDraft);
+    form.addEventListener('input', debouncedSaveDraft);
 
     const modal = document.getElementById('paymentModal');
     const btnShow = document.getElementById('btn-show-payment');
@@ -301,41 +343,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const btnDownload = document.getElementById('a4-btn-download');
     if(btnDownload) {
-        btnDownload.addEventListener('click', () => {
-            const resultElement = document.querySelector(`.form-step[data-step="${totalSteps}"]`);
-            resultElement.classList.add('pdf-export-mode');
-            
-            const ctaBox = resultElement.querySelector('.cta-box');
-            if (ctaBox) ctaBox.style.display = 'none';
-
-            var opt = {
-                margin:       0,
-                filename:     'INVAMAX_Bao_Cao_So_Bo.pdf',
-                image:        { type: 'jpeg', quality: 1 },
-                pagebreak:    { mode: 'css' },
-        html2canvas:  { scale: 2, useCORS: true, logging: false, backgroundColor: '#ffffff' },
-                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
-            };
-
-            const originalText = btnDownload.innerText;
-            btnDownload.innerText = 'Đang tạo PDF...';
-            
-            setTimeout(() => {
-                html2pdf().set(opt).from(resultElement).save().then(() => {
-                    if (ctaBox) ctaBox.style.display = 'block'; 
-                    btnDownload.innerText = originalText;
-                    resultElement.classList.remove('pdf-export-mode');
-                }).catch(e => {
-                    console.error('Lỗi khi tạo PDF:', e);
-                    if (ctaBox) ctaBox.style.display = 'block';
-                    btnDownload.innerText = originalText;
-                    resultElement.classList.remove('pdf-export-mode');
-                    alert('Có lỗi xảy ra khi tạo PDF. Vui lòng thử lại.');
-                });
-            }, 500);
-        });
+        
     }
-});
+}
+
+// Call initQuestions immediately or on DOMContentLoaded
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initQuestions);
+} else {
+    initQuestions();
+}
 
 btnNext.addEventListener('click', () => {
     if (validateStep(currentStep)) {
@@ -465,10 +482,19 @@ function loadDraft() {
                             const radio = Array.from(form.elements[key]).find(r => r.value === data.formObj[key]);
                             if (radio) radio.checked = true;
                         } else if (el.type === 'checkbox' || (el.length && el[0].type === 'checkbox')) {
-                            const arr = Array.isArray(data.formObj[key]) ? data.formObj[key] : [data.formObj[key]];
+                            let val = data.formObj[key];
+                            let arr = [];
+                            if (Array.isArray(val)) {
+                                arr = val;
+                            } else if (typeof val === 'string') {
+                                arr = val.split(',').map(s => s.trim());
+                            } else {
+                                arr = [val];
+                            }
+                            
                             const checkboxes = document.querySelectorAll(`input[name="${key}"]`);
                             checkboxes.forEach(cb => {
-                                if(arr.includes(cb.value)) {
+                                if(arr.includes(cb.value.trim())) {
                                     cb.checked = true;
                                 }
                             });
@@ -581,14 +607,626 @@ async function submitForm() {
 }
 
 function renderResults(payload) {
-    if (typeof renderPreliminary === 'function') {
-        renderPreliminary(payload.scores, payload.factoryInfo, payload.contactInfo, payload.rawAnswers);
-        if (typeof initCharts === 'function') {
-            initCharts(payload.scores);
+    renderRawDataReview(payload.scores, payload.rawAnswers);
+    const res = payload.scores;
+    const info = payload.factoryInfo;
+    const contact = payload.contactInfo;
+
+    const findValByMaCau = (maCau, dataObj) => {
+        for (const [key, partArray] of Object.entries(AppQuestions)) {
+            if (Array.isArray(partArray)) {
+                const q = partArray.find(x => x.maCau === maCau);
+                if (q && dataObj[q.id] !== undefined) {
+                    return dataObj[q.id];
+                }
+            }
         }
-    } else {
-        console.error("renderPreliminary is not defined. admin.js might not be loaded.");
+        return '---';
+    };
+
+    // Trang 1
+    const companyName = findValByMaCau('A01', info);
+    const mainProduct = findValByMaCau('A04', info);
+    const contactName = findValByMaCau('F01', contact);
+    const jobTitle = findValByMaCau('F02', contact);
+    const phone = findValByMaCau('F04', contact); // Zalo phone
+
+    document.getElementById('a4-company').innerText = companyName || '---';
+    document.getElementById('a4-product').innerText = mainProduct || '---';
+    document.getElementById('a4-name').innerText = contactName || '---';
+    document.getElementById('a4-job').innerText = jobTitle || '---';
+    document.getElementById('a4-phone').innerText = phone || '---';
+    
+    document.getElementById('a4-general-desc').innerText = res.generalAssessment;
+
+    const laborEl = document.getElementById('a4-labor-structure');
+    if (laborEl) {
+        const numDirect = parseInt(findValByMaCau('A06', info)) || 0;
+        const numIndirect = parseInt(findValByMaCau('A07', info)) || 0;
+        const numManager = parseInt(findValByMaCau('A08', info)) || 0;
+        const totalLabor = numDirect + numIndirect + numManager;
+        
+        if (totalLabor > 0) {
+            const pDirect = Math.round((numDirect / totalLabor) * 100);
+            const pIndirect = Math.round((numIndirect / totalLabor) * 100);
+            const pManager = 100 - pDirect - pIndirect;
+            
+            laborEl.innerHTML = `
+                <div style="flex: 1; background: white; border: 1px solid #e2e8f0; border-radius: 6px; padding: 6px 10px; text-align: center; box-shadow: 0 1px 2px rgba(0,0,0,0.02);">
+                    <div style="font-size: 11px; color: #64748b; font-weight: bold; margin-bottom: 2px; text-transform: uppercase;">Lao động trực tiếp</div>
+                    <div style="font-size: 18px; font-weight: 800; color: #1e293b; margin-bottom: 0px;">${numDirect}</div>
+                    <div style="font-size: 15px; color: #f97316; font-weight: 800;">${pDirect}%</div>
+                </div>
+                <div style="flex: 1; background: white; border: 1px solid #e2e8f0; border-radius: 6px; padding: 6px 10px; text-align: center; box-shadow: 0 1px 2px rgba(0,0,0,0.02);">
+                    <div style="font-size: 11px; color: #64748b; font-weight: bold; margin-bottom: 2px; text-transform: uppercase;">Lao động gián tiếp</div>
+                    <div style="font-size: 18px; font-weight: 800; color: #1e293b; margin-bottom: 0px;">${numIndirect}</div>
+                    <div style="font-size: 15px; color: #f97316; font-weight: 800;">${pIndirect}%</div>
+                </div>
+                <div style="flex: 1; background: white; border: 1px solid #e2e8f0; border-radius: 6px; padding: 6px 10px; text-align: center; box-shadow: 0 1px 2px rgba(0,0,0,0.02);">
+                    <div style="font-size: 11px; color: #64748b; font-weight: bold; margin-bottom: 2px; text-transform: uppercase;">Lao động quản lý</div>
+                    <div style="font-size: 18px; font-weight: 800; color: #1e293b; margin-bottom: 0px;">${numManager}</div>
+                    <div style="font-size: 15px; color: #f97316; font-weight: 800;">${Math.round((numManager/totalLabor)*100)}%</div>
+                </div>
+                <div style="flex: 1; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 6px; padding: 6px 10px; text-align: center;">
+                    <div style="font-size: 11px; color: #64748b; font-weight: bold; margin-bottom: 2px; text-transform: uppercase;">Tổng lao động</div>
+                    <div style="font-size: 18px; font-weight: 800; color: #1e293b; margin-bottom: 0px;">${totalLabor}</div>
+                    <div style="font-size: 15px; color: #94a3b8; font-weight: 800;">100%</div>
+                </div>
+            `;
+        } else {
+            laborEl.innerHTML = `
+                <div style="width: 100%; text-align: center; padding: 10px; color: #94a3b8; font-size: 12px; font-style: italic;">
+                    Chưa có thông tin cơ cấu lao động
+                </div>
+            `;
+        }
     }
+
+    const c1 = getColorConfig(res.pWaste, false);
+    const c2 = getColorConfig(res.pSymptoms, false);
+    const c3 = getColorConfig(res.pFos, false);
+
+    const cardsContainer = document.getElementById('a4-metric-cards');
+    if (cardsContainer) {
+        cardsContainer.innerHTML = `
+            <div style="display: flex; align-items: center; width: 32%; border-radius: 8px; padding: 8px 12px; box-sizing: border-box; background: ${c1.bg}; color: ${c1.text}; border: 1px solid rgba(0,0,0,0.1); box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                <div style="font-size: 38px; margin-right: 15px;"><i class="fas fa-trash-alt"></i></div>
+                <div style="display: flex; flex-direction: column; align-items: center; flex: 1;">
+                    <div style="font-size: 10px; font-weight: bold; text-transform: uppercase; text-align: center; opacity: 0.9;">TỔNG THỂ LÃNG PHÍ</div>
+                    <div style="font-size: 28px; font-weight: 900; margin: 2px 0;">${res.pWaste} / 100</div>
+                    <div style="font-size: 11px; opacity: 0.9; text-align: center;"><i class="fas ${c1.icon}"></i> <span>${c1.trendText}</span></div>
+                </div>
+            </div>
+            <div style="display: flex; align-items: center; width: 32%; border-radius: 8px; padding: 8px 12px; box-sizing: border-box; background: ${c2.bg}; color: ${c2.text}; border: 1px solid rgba(0,0,0,0.1); box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                <div style="font-size: 38px; margin-right: 15px;"><i class="fas fa-virus"></i></div>
+                <div style="display: flex; flex-direction: column; align-items: center; flex: 1;">
+                    <div style="font-size: 10px; font-weight: bold; text-transform: uppercase; text-align: center; opacity: 0.9;">DẤU HIỆU BẤT THƯỜNG</div>
+                    <div style="font-size: 28px; font-weight: 900; margin: 2px 0;">${res.pSymptoms} / 100</div>
+                    <div style="font-size: 11px; opacity: 0.9; text-align: center;"><i class="fas ${c2.icon}"></i> <span>${c2.trendText}</span></div>
+                </div>
+            </div>
+            <div style="display: flex; align-items: center; width: 32%; border-radius: 8px; padding: 8px 12px; box-sizing: border-box; background: ${c3.bg}; color: ${c3.text}; border: 1px solid rgba(0,0,0,0.1); box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                <div style="font-size: 38px; margin-right: 15px;"><i class="fas fa-heartbeat"></i></div>
+                <div style="display: flex; flex-direction: column; align-items: center; flex: 1;">
+                    <div style="font-size: 10px; font-weight: bold; text-transform: uppercase; text-align: center; opacity: 0.9;">BỆNH LÝ HỆ THỐNG</div>
+                    <div style="font-size: 28px; font-weight: 900; margin: 2px 0;">${res.pFos} / 100</div>
+                    <div style="font-size: 11px; opacity: 0.9; text-align: center;"><i class="fas ${c3.icon}"></i> <span>${c3.trendText}</span></div>
+                </div>
+            </div>
+        `;
+    }
+
+    let levelText = "";
+    let levelColor = "";
+    let recText = "";
+    const s = res.warningScore; 
+    const healthPercent = 100 - s;
+
+    if(s <= 20) { 
+        levelText = "KHỎE MẠNH"; levelColor = "#10b981"; 
+        recText = "Khuyến nghị: Duy trì tiêu chuẩn và tập trung cải tiến liên tục.";
+    }
+    else if(s <= 40) { 
+        levelText = "CẢNH BÁO"; levelColor = "#eab308"; 
+        recText = "Khuyến nghị: Kiểm tra các khu vực có điểm cao để ngăn vấn đề lan rộng.";
+    }
+    else if(s <= 60) { 
+        levelText = "MẮC BỆNH"; levelColor = "#f97316"; 
+        recText = "Khuyến nghị: Thực hiện đánh giá chuyên sâu và lập kế hoạch cải tiến ưu tiên.";
+    }
+    else if(s <= 80) { 
+        levelText = "BỆNH NẶNG"; levelColor = "#ef4444"; 
+        recText = "Khuyến nghị: Triển khai chương trình cải tiến có người chịu trách nhiệm và theo dõi hàng ngày.";
+    }
+    else { 
+        levelText = "NGUY KỊCH"; levelColor = "#334155"; 
+        recText = "Khuyến nghị: Ưu tiên đánh giá hiện trường toàn diện và xử lý các vấn đề trọng yếu trước khi mở rộng cải tiến.";
+    }
+    
+    document.getElementById('a4-level-text').innerText = `MỨC ĐỘ: ${levelText}`;
+    document.getElementById('a4-level-text').style.color = levelColor;
+    document.getElementById('a4-score-text').innerText = `${healthPercent} / 100`;
+    document.getElementById('a4-score-text').style.color = levelColor;
+
+    const recTextEl = document.getElementById('a4-recommendation-text');
+    if(recTextEl) {
+        recTextEl.innerText = recText;
+        recTextEl.style.color = levelColor;
+    }
+    
+    const top3IssuesEl = document.getElementById('a4-top-3-issues');
+    if (top3IssuesEl) {
+        top3IssuesEl.innerHTML = res.diseases.map(disease => `
+            <div class="a4-issue-card">
+                <i class="fas fa-exclamation-triangle" style="color: #ef4444; font-size: 24px; margin-bottom: 10px;"></i>
+                <div class="title" style="font-weight: bold; color: #1e293b;">${disease}</div>
+            </div>
+        `).join('');
+    }
+
+    const fosShortfallsEl = document.getElementById('a4-top3-fos');
+    if (fosShortfallsEl) {
+        fosShortfallsEl.innerHTML = res.top3FOS.map(item => `
+            <div class="a4-issue-card" style="background: #fff1f2; color: #e11d48; padding: 12px; margin-bottom: 10px; border-radius: 6px; font-weight: bold; border-left: 4px solid #e11d48; display: flex; align-items: center; justify-content: space-between;">
+                <span>${item}</span>
+                <i class="fas fa-exclamation-circle"></i>
+            </div>
+        `).join('');
+    }
+
+    setTimeout(() => {
+        if (typeof initCharts === 'function') initCharts(res);
+    }, 100);
+
+    // QR Code for the PDF Report inline
+    const amount = 990000;
+    const bankId = 'MB';
+    const accountNo = '5757658888';
+    const accountName = 'INVAMAX';
+    let cleanPhone = (phone || '0945530699').replace(/\s+/g, '');
+    const addInfo = 'KBM ' + cleanPhone;
+    const qrUrl = `https://img.vietqr.io/image/${bankId}-${accountNo}-qr_only.png?amount=${amount}&addInfo=${encodeURIComponent(addInfo)}&accountName=${encodeURIComponent(accountName)}`;
+    
+    const qrImgInline = document.getElementById('a4-qr-img-inline-client');
+    if (qrImgInline) {
+        qrImgInline.src = qrUrl;
+    }
+    const qrPhoneInline = document.getElementById('a4-qr-phone-inline-client');
+    if (qrPhoneInline) {
+        qrPhoneInline.innerText = cleanPhone;
+    }
+    
+    // Generate a pseudo Report ID and populate the footer
+    const d = new Date();
+    const pseudoId = 'KBM-' + d.getFullYear().toString().slice(2) + (d.getMonth()+1).toString().padStart(2, '0') + d.getDate().toString().padStart(2, '0') + '-' + Math.floor(Math.random()*1000).toString().padStart(3, '0');
+    
+    for (let i = 1; i <= 7; i++) {
+        const el = document.getElementById('a4-code-f' + i);
+        if (el) el.innerText = pseudoId;
+    }
+}
+
+function initCharts(res) {
+    // 1. Gauge Chart
+    const ctxGauge = document.getElementById('gaugeChart');
+    if (ctxGauge) {
+        // Destroy existing chart if any
+        if(window.gaugeChartInstance) window.gaugeChartInstance.destroy();
+        
+        window.gaugeChartInstance = new Chart(ctxGauge, {
+            type: 'doughnut',
+            data: {
+                datasets: [{
+                    data: [20, 20, 20, 20, 20],
+                    backgroundColor: ['#10b981', '#eab308', '#f97316', '#ef4444', '#334155'],
+                    borderWidth: 0,
+                    circumference: 180,
+                    rotation: 270,
+                    needleValue: res.warningScore
+                }]
+            },
+            options: {
+                animation: false,
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '70%',
+                plugins: { legend: { display: false }, tooltip: { enabled: false } }
+            },
+            plugins: [{
+                id: 'gaugeNeedle',
+                afterDatasetDraw(chart) {
+                    const { ctx, chartArea: { width, height } } = chart;
+                    ctx.save();
+                    const needleValue = chart.data.datasets[0].needleValue;
+                    const angle = Math.PI + (needleValue / 100) * Math.PI;
+                    const cx = chart.chartArea.left + width / 2;
+                    const cy = chart.chartArea.top + height;
+
+                    ctx.translate(cx, cy);
+                    ctx.rotate(angle);
+                    ctx.beginPath();
+                    ctx.moveTo(0, -5);
+                    ctx.lineTo(height - 20, 0);
+                    ctx.lineTo(0, 5);
+                    ctx.fillStyle = '#1e293b';
+                    ctx.fill();
+                    ctx.restore();
+                    
+                    ctx.beginPath();
+                    ctx.arc(cx, cy, 8, 0, Math.PI * 2);
+                    ctx.fillStyle = '#1e293b';
+                    ctx.fill();
+                    ctx.restore();
+                }
+            }]
+        });
+    }
+
+    // 2. Radar Chart
+    const ctxRadar = document.getElementById('radarChart');
+    if (ctxRadar) {
+        if(window.radarChartInstance) window.radarChartInstance.destroy();
+        window.radarChartInstance = new Chart(ctxRadar, {
+            type: 'radar',
+            data: {
+                labels: res.wasteScores.map(w => w.module),
+                datasets: [{
+                    label: 'Điểm Lãng Phí',
+                    data: res.wasteScores.map(w => w.score),
+                    backgroundColor: 'rgba(234, 88, 12, 0.2)',
+                    borderColor: '#ea580c',
+                    pointBackgroundColor: '#ea580c',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                animation: false,
+                scales: {
+                    r: { min: 0, max: 100, ticks: { display: false } }
+                },
+                plugins: { legend: { display: false } }
+            }
+        });
+    }
+    
+    const radarSymCtx = document.getElementById('radarSymptomsChart');
+    if (radarSymCtx && res.symptomsScores) {
+        if (window.radarSymChartInst) window.radarSymChartInst.destroy();
+        window.radarSymChartInst = new Chart(radarSymCtx, {
+            type: 'radar',
+            data: {
+                labels: res.symptomsScores.map(w => w.module),
+                datasets: [{
+                    label: 'Mức độ',
+                    data: res.symptomsScores.map(w => w.score),
+                    backgroundColor: 'rgba(234, 88, 12, 0.2)',
+                    borderColor: '#ea580c',
+                    pointBackgroundColor: '#ea580c',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                animation: false,
+                scales: {
+                    r: { min: 0, max: 100, ticks: { display: false } }
+                },
+                plugins: { legend: { display: false } }
+            }
+        });
+    }
+
+    // Render advanced A4 UI components
+    if (typeof renderAdvancedUI === 'function') {
+        renderAdvancedUI(res);
+    }
+    
+    
+    
+    // Add default Quick Wins for client preview
+    const quickWinsEl = document.getElementById('a4-quick-wins');
+    if (quickWinsEl && res.top3FOS && res.top3FOS.length >= 1) {
+        quickWinsEl.innerHTML = `
+            <li style="margin-bottom: 8px;"><strong>Đào tạo nhận thức cơ bản về Lãng phí:</strong> Mở ngay 1 buổi họp toàn xưởng để định nghĩa lại các Lãng phí (Wastes) đang tồn đọng tại ${res.top3FOS[0]} và ${res.top3FOS[1] || 'các công đoạn'}.</li>
+            <li style="margin-bottom: 8px;"><strong>Thiết lập quản lý trực quan (Visual Management):</strong> Dán nhãn, kẻ vạch, quy định rõ ràng vị trí vật tư tại khu vực dễ xảy ra lỗi nhất.</li>
+            <li style="margin-bottom: 8px;"><strong>Áp dụng họp giao ban 10 phút (Daily Huddle):</strong> Quản đốc/Tổ trưởng cần đứng họp 10 phút đầu ca để rà soát mục tiêu sản lượng và chất lượng.</li>
+            <li style="margin-bottom: 8px;"><strong>Xác định Nút thắt (Bottleneck):</strong> Đo thời gian thao tác tại trạm đang bị ùn ứ nhiều nhất để cân bằng lại nhịp điệu (Takt Time).</li>
+            <li style="margin-bottom: 8px;"><strong>Tiêu chuẩn hóa thao tác (SOP):</strong> Viết ra 1 tờ giấy A4 duy nhất quy trình thao tác chuẩn cho công đoạn hay bị lỗi nhất và dán ngay trước mặt công nhân.</li>
+        `;
+    }
+}
+
+
+
+function renderRawDataReview(scores, rawAnswers) {
+    const el1 = document.getElementById('a4-raw-data-review');
+    const el2 = document.getElementById('a4-raw-data-review-2');
+    
+    if(!el1 || !el2 || !scores || !scores.top3FOS || !rawAnswers) {
+        if(el1) {
+            el1.innerHTML = `<div style="color:red; padding:10px; font-weight:bold;">
+                DEBUG EARLY RETURN:<br>
+                el1: ${!!el1}<br>
+                el2: ${!!el2}<br>
+                scores: ${!!scores}<br>
+                top3FOS: ${scores ? !!scores.top3FOS : 'null'}<br>
+                rawAnswers: ${!!rawAnswers}
+            </div>`;
+        }
+        return;
+    }
+    
+    try {
+
+    const moduleMapping = {
+        "Flow": { wastes: ["Sản xuất thừa", "Chờ đợi", "Vận chuyển", "Tồn kho"], symptoms: ["Trì hoãn và tiến độ chậm", "Thông tin phối hợp không thông suốt"] },
+        "Capacity": { wastes: ["Chờ đợi", "Không khai thác hết nguồn lực"], symptoms: ["Kế hoạch bất ổn", "Quản trị hiện trường mang tính chữa cháy"] },
+        "Standard": { wastes: ["Lỗi và làm lại", "Thao tác", "Gia công thừa"], symptoms: ["Dữ liệu và quyết định thiếu tin cậy", "Môi trường làm việc thiếu an toàn, lộn xộn"] },
+        "Quality": { wastes: ["Lỗi và làm lại"], symptoms: ["Dữ liệu và quyết định thiếu tin cậy"] },
+        "People": { wastes: ["Không khai thác hết nguồn lực", "Thao tác"], symptoms: ["Quản trị hiện trường mang tính chữa cháy"] },
+        "Daily Management": { wastes: ["Chờ đợi", "Gia công thừa"], symptoms: ["Quản trị hiện trường mang tính chữa cháy", "Thông tin phối hợp không thông suốt"] },
+        "Sustain": { wastes: ["Không khai thác hết nguồn lực"], symptoms: ["Môi trường làm việc thiếu an toàn, lộn xộn"] },
+        "Kaizen": { wastes: ["Gia công thừa"], symptoms: ["Dữ liệu và quyết định thiếu tin cậy"] },
+        "Knowledge": { wastes: ["Lỗi và làm lại", "Không khai thác hết nguồn lực"], symptoms: ["Dữ liệu và quyết định thiếu tin cậy"] },
+        "Digital": { wastes: ["Chờ đợi"], symptoms: ["Dữ liệu và quyết định thiếu tin cậy", "Thông tin phối hợp không thông suốt"] },
+        "Core": { wastes: ["Không khai thác hết nguồn lực"], symptoms: ["Kế hoạch bất ổn"] }
+    };
+
+    const top3 = scores.top3FOS; 
+    let html1 = '';
+    let html2 = '';
+    
+    top3.forEach((module, index) => {
+        const qFOS = AppQuestions.partD.filter(q => q.nhom === module);
+        const mapData = moduleMapping[module] || { wastes: [], symptoms: [] };
+        
+        let relatedSymptoms = (scores.symptomsScores || []).filter(s => mapData.symptoms.includes(s.module)).sort((a,b)=>b.score - a.score);
+        let relatedWastes = (scores.wasteScores || []).filter(w => mapData.wastes.includes(w.module)).sort((a,b)=>b.score - a.score);
+
+        if (relatedSymptoms.length === 0 && scores.symptomsScores) { relatedSymptoms = scores.symptomsScores.slice(0, 2); }
+        if (relatedWastes.length === 0 && scores.wasteScores) { relatedWastes = scores.wasteScores.slice(0, 2); }
+
+        const renderQList = (qList) => {
+            if(!qList || qList.length === 0) return '<div style="color:#94a3b8; font-style:italic;">Không có dữ liệu</div>';
+            return qList.map(q => {
+                let ansText = rawAnswers[q.id] !== undefined ? rawAnswers[q.id] : 'Chưa trả lời';
+                const ansIdx = parseInt(ansText);
+                if(q.dapAn && q.dapAn.length > 0 && !isNaN(ansIdx) && q.loaiTraLoi !== 'Điền số') {
+                    if(q.dapAn[ansIdx] !== undefined) ansText = q.dapAn[ansIdx];
+                }
+                if (Array.isArray(rawAnswers[q.id])) {
+                    ansText = rawAnswers[q.id].map(idx => {
+                        const i = parseInt(idx);
+                        return (!isNaN(i) && q.dapAn[i]) ? q.dapAn[i] : idx;
+                    }).join(', ');
+                }
+                return `<div style="margin-bottom: 8px; border-bottom: 1px dashed #e2e8f0; padding-bottom: 6px;">
+                            <div style="font-weight: 500; margin-bottom: 4px; color: #334155; line-height: 1.3;">${q.cauHoi}</div>
+                            <div style="color: #ef4444; font-size: 10px; font-weight: bold;"><i class="fas fa-check-circle" style="margin-right:4px;"></i>KH Chọn: ${ansText}</div>
+                        </div>`;
+            }).join('');
+        };
+
+        const renderRelated = (items, type) => {
+            if(!items || items.length === 0) return '<div style="color:#94a3b8; font-style:italic;">Không có dữ liệu</div>';
+            return items.map(item => `
+                <div style="margin-bottom: 10px; background: white; border: 1px solid #f1f5f9; padding: 8px; border-radius: 6px;">
+                    <div style="font-weight: bold; color: #334155; margin-bottom: 4px;">${item.module}</div>
+                    <div style="color: #ef4444; font-size: 10px; font-weight: bold;">Điểm ${type}: ${item.score}/100</div>
+                </div>
+            `).join('');
+        };
+
+        let cardHtml = `
+        <div style="background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; font-size: 10px; margin-bottom: 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+            <div style="color: #0f172a; font-weight: 900; font-size: 13px; margin-bottom: 10px; border-bottom: 2px solid #e2e8f0; padding-bottom: 5px; text-transform: uppercase;">KHÁM MODULE: <span style="color:#ef4444;">${module}</span></div>
+            <div style="display: flex; gap: 15px;">
+                <div style="flex: 3;">
+                    <div style="color: #475569; font-size: 9px; text-transform: uppercase; margin-bottom: 8px; font-weight: bold; background: #f8fafc; padding: 4px; border-radius: 4px;">1. ĐÁNH GIÁ MODULE</div>
+                    ${renderQList(qFOS)}
+                </div>
+                <div style="flex: 2; border-left: 1px dashed #cbd5e1; padding-left: 15px;">
+                    <div style="color: #b45309; font-size: 9px; text-transform: uppercase; margin-bottom: 8px; font-weight: bold; background: #fef3c7; padding: 4px; border-radius: 4px;">2. DẤU HIỆU LIÊN QUAN</div>
+                    ${renderRelated(relatedSymptoms, "bất thường")}
+                </div>
+                <div style="flex: 2; border-left: 1px dashed #cbd5e1; padding-left: 15px;">
+                    <div style="color: #c2410c; font-size: 9px; text-transform: uppercase; margin-bottom: 8px; font-weight: bold; background: #ffedd5; padding: 4px; border-radius: 4px;">3. LÃNG PHÍ LIÊN QUAN</div>
+                    ${renderRelated(relatedWastes, "lãng phí")}
+                </div>
+            </div>
+        </div>
+        `;
+        
+        if (index < 2) {
+            html1 += cardHtml;
+        } else {
+            html2 += cardHtml;
+        }
+    });
+    
+    el1.innerHTML = html1 || `<div style="color:blue; padding:10px; font-weight:bold;">html1 is empty. top3FOS length: ${top3.length}</div>`;
+    el2.innerHTML = html2;
+    
+    } catch (e) {
+        if (el1) {
+            el1.innerHTML = `<div style="color:red; padding:10px; font-weight:bold;">Error in renderRawDataReview: ${e.message}</div>`;
+        }
+    }
+}
+
+
+const getColorConfig = (score, isHealth) => {
+        let normalizedDisease = isHealth ? (100 - score) : score;
+        
+        let bg = '', text = '', icon = '', trendText = '';
+        if (normalizedDisease >= 80) {
+            bg = '#334155'; text = '#ffffff'; icon = 'fa-skull-crossbones'; trendText = 'Nguy kịch, mất kiểm soát';
+        } else if (normalizedDisease >= 60) {
+            bg = '#ef4444'; text = '#ffffff'; icon = 'fa-exclamation-triangle'; trendText = 'Nghiêm trọng, cần xử lý gấp';
+        } else if (normalizedDisease >= 40) {
+            bg = '#f97316'; text = '#ffffff'; icon = 'fa-exclamation-circle'; trendText = 'Có bệnh, phát sinh vấn đề';
+        } else if (normalizedDisease >= 20) {
+            bg = '#facc15'; text = '#1e293b'; icon = 'fa-info-circle'; trendText = 'Cảnh báo, cần cải thiện';
+        } else {
+            bg = '#10b981'; text = '#ffffff'; icon = 'fa-check-circle'; trendText = 'Khỏe mạnh, tối ưu tốt';
+        }
+        
+        return { bg, text, icon, trendText };
+    };
+const getWasteImpact = (wasteName) => {
+    const w = wasteName.toLowerCase();
+        if(w.includes('chờ đợi')) return 'Gây tắc nghẽn dòng chảy, tăng thời gian chu kỳ và chi phí nhân công, giảm năng suất.';
+        if(w.includes('tồn kho')) return 'Tốn diện tích, chi phí vốn, khó kiểm soát và dễ phát sinh lỗi.';
+        if(w.includes('vận chuyển')) return 'Tiêu tốn thời gian, nguy cơ hỏng hóc, không tạo ra giá trị gia tăng.';
+        if(w.includes('thao tác')) return 'Gây mệt mỏi cho công nhân, giảm năng suất lao động.';
+        if(w.includes('quy trình') || w.includes('gia công')) return 'Lãng phí vật tư, hao mòn máy móc, không mang lại giá trị cho khách hàng.';
+        if(w.includes('dư thừa') || w.includes('sản xuất thừa')) return 'Nguồn gốc của mọi lãng phí khác, ứ đọng vốn.';
+        if(w.includes('lỗi') || w.includes('khuyết tật')) return 'Tăng chi phí sửa chữa, ảnh hưởng giao hàng và uy tín khách hàng.';
+        if(w.includes('nguồn lực') || w.includes('năng lực') || w.includes('talent')) return 'Lãng phí chất xám, giảm động lực làm việc của nhân viên.';
+        return 'Lãng phí làm giảm hiệu quả hoạt động chung của hệ thống.';
+    };
+const getModuleInfo = (modName) => {
+    const m = modName.toLowerCase();
+    if(m.includes('core')) return {vi: 'Cốt lõi', icon: 'fa-bullseye'};
+    if(m.includes('people')) return {vi: 'Con người', icon: 'fa-users'};
+    if(m.includes('flow')) return {vi: 'Dòng chảy', icon: 'fa-water'};
+    if(m.includes('standard')) return {vi: 'Tiêu chuẩn', icon: 'fa-ruler-combined'};
+    if(m.includes('capacity')) return {vi: 'Năng lực', icon: 'fa-cogs'};
+    if(m.includes('daily management')) return {vi: 'Quản trị hằng ngày', icon: 'fa-calendar-check'};
+    if(m.includes('quality')) return {vi: 'Chất lượng', icon: 'fa-check-circle'};
+    if(m.includes('knowledge')) return {vi: 'Tri thức', icon: 'fa-book-open'};
+    if(m.includes('digital')) return {vi: 'Số hóa', icon: 'fa-laptop-code'};
+    if(m.includes('kaizen')) return {vi: 'Cải tiến', icon: 'fa-arrow-trend-up'};
+    if(m.includes('sustain')) return {vi: 'Duy trì', icon: 'fa-shield-alt'};
+    return {vi: modName, icon: 'fa-layer-group'};
+};
+
+const getSymptomIcon = (symptomName) => {
+    const s = symptomName.toLowerCase();
+    if(s.includes('thông tin')) return 'fa-unlink';
+    if(s.includes('dữ liệu')) return 'fa-database';
+    if(s.includes('chữa cháy')) return 'fa-fire-extinguisher';
+    if(s.includes('cải tiến')) return 'fa-history';
+    if(s.includes('kế hoạch')) return 'fa-calendar-times';
+    if(s.includes('tiêu chuẩn')) return 'fa-ruler-combined';
+    if(s.includes('nguồn lực')) return 'fa-battery-empty';
+    if(s.includes('dòng chảy')) return 'fa-pause-circle';
+    return 'fa-exclamation-circle';
+};
+
+const getWasteIcon = (wasteName) => {
+    const w = wasteName.toLowerCase();
+        if(w.includes('chờ đợi')) return 'fa-clock';
+        if(w.includes('tồn kho')) return 'fa-boxes';
+        if(w.includes('vận chuyển')) return 'fa-truck';
+        if(w.includes('thao tác')) return 'fa-people-carry';
+        if(w.includes('quy trình') || w.includes('gia công')) return 'fa-cogs';
+        if(w.includes('dư thừa') || w.includes('sản xuất thừa')) return 'fa-industry';
+        if(w.includes('lỗi') || w.includes('khuyết tật')) return 'fa-exclamation-triangle';
+        if(w.includes('nguồn lực') || w.includes('năng lực') || w.includes('talent')) return 'fa-user-times';
+        return 'fa-trash-alt';
+    };
+const getLightColorConfig = (score) => {
+        if (score >= 80) return { bg: '#f8fafc', border: '#e2e8f0', color: '#334155' };
+        if (score >= 60) return { bg: '#fef2f2', border: '#fee2e2', color: '#ef4444' };
+        if (score >= 40) return { bg: '#fff7ed', border: '#ffedd5', color: '#ea580c' };
+        if (score >= 20) return { bg: '#fefce8', border: '#fef08a', color: '#eab308' };
+        return { bg: '#f0fdf4', border: '#dcfce7', color: '#10b981' };
+    };
+
+
+function renderAdvancedUI(res) {
+    const renderScoresList = (containerId, scores, color) => {
+        const container = document.getElementById(containerId);
+        if(!container) return;
+        container.innerHTML = scores.map(item => `
+            <div style="display:flex;justify-content:space-between;border-bottom:1px solid #f1f5f9;padding:8px 0;font-size:12px;">
+                <span style="color:#475569;font-weight:bold;">${item.module}</span>
+                <span style="color:${color};font-weight:bold;">${item.score}/100</span>
+            </div>
+        `).join('');
+    };
+    
+    const el_waste_scores = document.getElementById('a4-waste-scores');
+    if (el_waste_scores) {
+        el_waste_scores.innerHTML = res.wasteScores.map(item => {
+            const conf = getColorConfig(item.score, false);
+            return `<div style="flex:1; border-radius:6px; background:${conf.bg}; border:1px solid ${conf.bg}; padding:10px 2px; display:flex; flex-direction:column; align-items:center; text-align:center; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
+                <div style="font-size:22px; color:${conf.text}; margin-bottom:8px;"><i class="fas ${getWasteIcon(item.module)}"></i></div>
+                <div style="flex: 1; font-size:10px; font-weight:bold; color:${conf.text}; margin-bottom:8px; display:flex; align-items:center; justify-content:center; line-height:1.3; width: 100%; word-break: break-word;">${item.module}</div>
+                <div style="font-size:16px; font-weight:900; color:${conf.text}; margin-top: auto;">${item.score}</div>
+            </div>`;
+        }).join('');
+    }
+
+    const el_waste_top3 = document.getElementById('a4-waste-analysis');
+    if (el_waste_top3) {
+        const top3 = res.wasteScores.slice(0, 3);
+        el_waste_top3.innerHTML = top3.map((item, idx) => {
+            const confLight = getLightColorConfig(item.score);
+            const confDark = getColorConfig(item.score, false);
+            return `<div style="flex:1; border-radius:8px; background:${confLight.bg}; border:1px solid ${confLight.border}; padding:10px 12px; display:flex; flex-direction:column; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
+                    <div style="display:flex; align-items:flex-start; flex:1; margin-right:10px;">
+                        <div style="width:28px; height:28px; border-radius:50%; background:${confLight.color}; color:white; font-weight:bold; display:flex; justify-content:center; align-items:center; margin-right:10px; flex-shrink:0;">${idx+1}</div>
+                        <div style="font-size:14px; font-weight:bold; color:#1e293b; line-height:1.4; padding-top:2px;">${item.module}</div>
+                    </div>
+                    <div style="font-size:18px; font-weight:900; color:#1e293b; white-space:nowrap; flex-shrink:0;">${item.score} <span style="font-size:11px; color:#94a3b8; font-weight:normal;">/ 100</span></div>
+                </div>
+                <div style="font-size:12px; font-weight:bold; color:${confLight.color}; margin-bottom:4px;">Mức độ: ${confDark.trendText.toUpperCase()}</div>
+                <div style="font-size:13px; color:#475569; line-height:1.6;"><span style="font-weight:bold;">Tác động:</span> ${(() => {
+                    let aiImpact = getWasteImpact(item.module);
+                    if (res.diagnostic && res.diagnostic.top3WastesImpacts) {
+                        const found = res.diagnostic.top3WastesImpacts.find(x => x.waste.toLowerCase() === item.module.toLowerCase());
+                        if (found) aiImpact = found.impact;
+                    }
+                    return aiImpact;
+                })()}</div>
+            </div>`;
+        }).join('');
+    }
+    
+    const el_symp_scores = document.getElementById('a4-symptoms-scores');
+    if (el_symp_scores && res.symptomsScores) {
+        el_symp_scores.innerHTML = res.symptomsScores.map(item => {
+            const conf = getColorConfig(item.score, false);
+            return `<div style="flex:1; border-radius:6px; background:${conf.bg}; border:1px solid ${conf.bg}; padding:10px 2px; display:flex; flex-direction:column; align-items:center; text-align:center; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
+                <div style="font-size:22px; color:${conf.text}; margin-bottom:8px;"><i class="fas ${getSymptomIcon(item.module)}"></i></div>
+                <div style="flex: 1; font-size:10px; font-weight:bold; color:${conf.text}; margin-bottom:8px; display:flex; align-items:center; justify-content:center; line-height:1.3; width: 100%; word-break: break-word;">${item.module}</div>
+                <div style="font-size:16px; font-weight:900; color:${conf.text}; margin-top: auto;">${item.score}</div>
+            </div>`;
+        }).join('');
+    }
+    
+    // Render Heatmap Groups
+    const renderHeatmapGroup = (containerId, modulesList, scoresArr) => {
+        const container = document.getElementById(containerId);
+        if(!container) return;
+        const html = modulesList.map(modName => {
+            const item = scoresArr.find(x => x.module === modName) || {score: 0};
+            const modInfo = getModuleInfo(modName);
+            const conf = getColorConfig(item.score, true); // true for Health score
+            
+            return `
+            <div style="flex: 1; background: ${conf.bg}; color: ${conf.text}; border-radius: 6px; padding: 8px 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: space-between;">
+                <div style="font-size: 26px; opacity: 0.25;">
+                    <i class="fas ${modInfo.icon}"></i>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 10px; font-weight: bold; line-height: 1.2; margin-bottom: 2px; text-transform: uppercase;">${modName}</div>
+                    <div style="font-size: 10px; font-weight: 600; line-height: 1.2; margin-bottom: 2px; opacity: 0.9;">(${modInfo.vi})</div>
+                    <div style="font-size: 22px; font-weight: 900; line-height: 1;">${item.score}</div>
+                </div>
+            </div>`;
+        }).join('');
+        container.innerHTML = html;
+    };
+    
+    renderHeatmapGroup('a4-heatmap-group-a', ['Core', 'People', 'Flow'], res.fosScores);
+    renderHeatmapGroup('a4-heatmap-group-b', ['Standard', 'Capacity', 'Daily Management', 'Quality'], res.fosScores);
+    renderHeatmapGroup('a4-heatmap-group-c', ['Knowledge', 'Digital'], res.fosScores);
+    renderHeatmapGroup('a4-heatmap-group-d', ['Kaizen', 'Sustain'], res.fosScores);
+
+    // top3 fos moved to generateReport
 }
 
 
@@ -601,8 +1239,214 @@ window.editAnswers = function() {
     saveDraft();
     
     const toast = document.createElement('div');
-    toast.innerHTML = 'B?n d� v�o ch? d? CH?NH S?A. C�c l?a ch?n cu c?a b?n d� du?c n?p s?n.';
+    toast.innerHTML = 'Bạn đã vào chế độ CHỈNH SỬA. Các lựa chọn cũ của bạn đã được nạp sẵn.';
     toast.style.cssText = 'position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: #f59e0b; color: white; padding: 15px 20px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 9999; font-weight: bold; text-align: center;';
     document.body.appendChild(toast);
     setTimeout(() => { toast.style.opacity = '0'; setTimeout(() => toast.remove(), 500); }, 3000);
+};
 
+
+function exportPDF() {
+    const element = document.getElementById('report-a4-wrapper');
+    const companyEl = document.getElementById('a4-company');
+    const companyName = companyEl ? companyEl.innerText.replace(/\s+/g, '_') : 'Company';
+    
+    // Save current scroll position and scroll to top to prevent html2canvas blank space issue
+    const currentScrollY = window.scrollY;
+    window.scrollTo(0, 0);
+
+    // Add classes for CSS logic
+    document.body.classList.add('pdf-export-mode'); 
+    element.classList.add('pdf-export-mode');
+    
+    const oldPadding = element.style.padding;
+    const oldGap = element.style.gap;
+    const oldBackground = element.style.background;
+    element.style.padding = '0';
+    element.style.gap = '0';
+    element.style.background = 'white';
+
+    // Find all pages
+    const pages = element.querySelectorAll('.a4-page');
+    
+    // Hide pages starting from index 5 for the preliminary report (sơ bộ)
+    for (let i = 5; i < pages.length; i++) {
+        if (pages[i]) pages[i].style.display = 'none';
+    }
+
+    // Ensure the last visible page doesn't page-break
+    const lastVisibleIndex = Math.min(4, pages.length - 1);
+    if (pages.length > 0 && pages[lastVisibleIndex]) {
+        pages[lastVisibleIndex].style.setProperty('page-break-after', 'auto', 'important');
+    }
+
+    const filename = "Bao_Cao_So_Bo_INVAMAX_" + companyName + ".pdf";
+
+    var opt = {
+        margin:       0,
+        filename:     filename,
+        image:        { type: 'jpeg', quality: 1 },
+        pagebreak:    { mode: 'css' },
+        html2canvas:  { scale: 2, useCORS: true, logging: false, scrollY: 0 },
+        jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
+
+    const floatDiv = document.getElementById('floating-actions');
+    if (floatDiv) floatDiv.style.display = 'none';
+    
+    const controlsDiv = document.getElementById('a4-pdf-controls');
+    if (controlsDiv) controlsDiv.style.display = 'none';
+
+    html2pdf().set(opt).from(element).save().then(() => {
+        document.body.classList.remove('pdf-export-mode'); 
+        element.classList.remove('pdf-export-mode');
+        element.style.padding = oldPadding;
+        element.style.gap = oldGap;
+        element.style.background = oldBackground;
+        
+        // Restore hidden pages
+        for (let i = 5; i < pages.length; i++) {
+            if (pages[i]) pages[i].style.display = '';
+        }
+
+        if (pages.length > 0 && pages[lastVisibleIndex]) {
+            pages[lastVisibleIndex].style.removeProperty('page-break-after');
+        }
+
+        if (floatDiv) floatDiv.style.display = 'flex';
+        if (controlsDiv) controlsDiv.style.display = 'flex';
+        
+        // Restore scroll position
+        window.scrollTo(0, currentScrollY);
+    }).catch(e => {
+        console.error('Lỗi khi tạo PDF:', e);
+        document.body.classList.remove('pdf-export-mode'); 
+        element.classList.remove('pdf-export-mode');
+        for (let i = 5; i < pages.length; i++) {
+            if (pages[i]) pages[i].style.display = '';
+        }
+        if (floatDiv) floatDiv.style.display = 'flex';
+        if (controlsDiv) controlsDiv.style.display = 'flex';
+        window.scrollTo(0, currentScrollY);
+        alert('Có lỗi xảy ra khi tạo PDF. Vui lòng thử lại.');
+    });
+}
+
+
+
+
+// --- HISTORY MODAL LOGIC ---
+window.historyRecords = [];
+
+window.showHistoryModal = async function() {
+    const user = JSON.parse(localStorage.getItem('invamax_user'));
+    if (!user || user.role !== 'customer') {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Chưa đăng nhập',
+            text: 'Vui lòng quay lại Trang chủ để Đăng nhập trước khi xem Lịch sử.',
+            confirmButtonText: 'Quay lại Trang chủ'
+        }).then(() => {
+            window.location.href = '../index.html';
+        });
+        return;
+    }
+    
+    document.getElementById('history-modal').style.display = 'flex';
+    const container = document.getElementById('history-list-container');
+    container.innerHTML = '<div style="text-align: center; color: #64748b; padding: 20px;"><i class="fas fa-spinner fa-spin"></i> Đang tải...</div>';
+    
+    try {
+        const response = await fetch(GAS_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify({ action: 'get_history', email: user.email })
+        });
+        const res = await response.json();
+        
+        if (res.status === 'success') {
+            window.historyRecords = res.data;
+            if (window.historyRecords.length === 0) {
+                container.innerHTML = '<div style="text-align: center; color: #64748b; padding: 20px;">Chưa có lịch sử khám bệnh.</div>';
+                return;
+            }
+            
+            let html = '';
+            window.historyRecords.forEach((record, index) => {
+                const date = new Date(record.timestamp).toLocaleString('vi-VN');
+                const company = record.companyName || 'Công ty không xác định';
+                html += `
+                    <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 15px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <div style="font-weight: bold; color: #0f172a; margin-bottom: 5px; font-size: 16px;">${company}</div>
+                            <div style="font-size: 13px; color: #64748b;">Thời gian: ${date}</div>
+                            <div style="font-size: 13px; color: #64748b; margin-top: 4px;">Điểm cảnh báo: <span style="font-weight:bold; color: #ea580c;">${record.warningScore}</span> | Mức độ: <span style="font-weight:bold; color: #10b981;">${record.level}</span></div>
+                        </div>
+                        <button onclick="loadHistoryRecord(${index})" style="background: #ea580c; border: none; color: white; padding: 8px 15px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 6px rgba(234, 88, 12, 0.2);">Xem lại</button>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        } else {
+            container.innerHTML = '<div style="text-align: center; color: #ef4444; padding: 20px;">Không thể tải lịch sử.</div>';
+        }
+    } catch(e) {
+        container.innerHTML = `<div style="text-align: center; color: #ef4444; padding: 20px;">Lỗi kết nối: ${e.message}</div>`;
+    }
+}
+
+window.hideHistoryModal = function() {
+    document.getElementById('history-modal').style.display = 'none';
+}
+
+window.addEventListener('click', (event) => {
+    const historyModal = document.getElementById('history-modal');
+    if (event.target == historyModal) {
+        historyModal.style.display = 'none';
+    }
+});
+
+window.loadHistoryRecord = function(index) {
+    const record = window.historyRecords[index];
+    if (!record || !record.rawAnswers) return;
+    
+    // Clear form visually first by resetting form
+    document.getElementById('assessmentForm').reset();
+    
+    // Restore raw answers
+    const rawAnswers = record.rawAnswers;
+    for (let key in rawAnswers) {
+        const el = document.getElementById('assessmentForm').elements[key];
+        if (el) {
+            if (el.type === 'radio') {
+                const radio = Array.from(document.getElementById('assessmentForm').elements[key]).find(r => r.value === rawAnswers[key]);
+                if (radio) radio.checked = true;
+            } else if (el.type === 'checkbox' || (el.length && el[0].type === 'checkbox')) {
+                let val = rawAnswers[key];
+                let arr = Array.isArray(val) ? val : (typeof val === 'string' ? val.split(',').map(s => s.trim()) : [val]);
+                const checkboxes = document.querySelectorAll(`input[name="${key}"]`);
+                checkboxes.forEach(cb => {
+                    if(arr.includes(cb.value.trim())) {
+                        cb.checked = true;
+                    }
+                });
+            } else {
+                el.value = rawAnswers[key];
+            }
+        }
+    }
+    
+    hideHistoryModal();
+    
+    // Jump to step 1
+    currentStep = 1;
+    updateUI();
+    
+    Swal.fire({
+        icon: 'success',
+        title: 'Đã tải lịch sử',
+        text: 'Dữ liệu khám bệnh cũ đã được điền vào bảng khảo sát.',
+        timer: 1500,
+        showConfirmButton: false
+    });
+}

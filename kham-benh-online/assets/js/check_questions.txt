@@ -1,0 +1,36 @@
+---
+  ],
+  [
+    "F01",
+    "F - Thông tin nhận kết quả khám bệnh",
+    "PI01",
+---
+  ],
+  [
+    "F02",
+    "F - Thông tin nhận kết quả khám bệnh",
+    "PI02",
+---
+  ],
+  [
+    "F03",
+    "F - Thông tin nhận kết quả khám bệnh",
+    "PI03",
+---
+  ],
+  [
+    "F04",
+    "F - Thông tin nhận kết quả khám bệnh",
+    "PI04",
+---
+  ],
+  [
+    "F05",
+    "F - Thông tin nhận kết quả khám bệnh",
+    "PI05",
+---
+    if (!currentPart) continue;
+
+    // Handle descriptive rows (like F01 preceding row)
+    if (maCau === '' && row[1] && row[1].length > 20) {
+        AppQuestions[currentPart].description = row[1];

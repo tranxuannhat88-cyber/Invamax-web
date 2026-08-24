@@ -36,7 +36,7 @@
 
 
 
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css?v=2">
 
 
 
@@ -1224,6 +1224,30 @@
 
 
 
+
+/* Overwrite pdf-export-mode to match admin.html */
+.pdf-export-mode .a4-wrapper {
+    background: transparent !important;
+    padding: 0 !important;
+    gap: 0 !important;
+    margin: 0 !important;
+}
+.pdf-export-mode .a4-page {
+    box-shadow: none !important;
+    margin: 0 !important;
+    border: none !important;
+    width: 210mm !important;
+    max-width: 210mm !important;
+    height: 297mm !important; /* Changed to 297mm to perfectly match A4 */
+    max-height: 297mm !important;
+    overflow: hidden !important;
+    page-break-after: auto !important;
+    page-break-inside: avoid !important;
+    page-break-before: avoid !important;
+}
+.pdf-export-mode .a4-page:last-child {
+    page-break-after: auto !important;
+}
 </style>
 
 
@@ -1344,7 +1368,7 @@
 
 
 
-        <div style="display: flex; justify-content: flex-start; margin-bottom: 10px; padding-top: 20px;">
+        <div style="display: flex; justify-content: flex-start; margin-bottom: 10px; padding-top: 20px; position: relative; z-index: 1000;">
 
 
 
@@ -1380,15 +1404,7 @@
 
 
 
-            <button id="btn-show-history" type="button" style="position: absolute; right: 20px; top: 20px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 0.9rem; transition: all 0.3s ease;">
-
-
-
-                <i data-lucide="history" style="width: 16px; height: 16px;"></i> Lịch sử
-
-
-
-            </button>
+            <button id="btn-show-history" onclick="showHistoryModal()" style="position: absolute; right: 20px; top: 20px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 8px 15px; border-radius: 20px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px; z-index: 1000;"><i data-lucide="history"></i> Lịch sử khám bệnh</button>
 
 
 
@@ -1484,7 +1500,7 @@
 
 
 
-                    <p style="color: var(--text-muted); margin-bottom: 24px;">ÄÃ¡nh giá mức độ xuất hiện của 8 loại lãng phí tại xưởng của bạn.</p>
+                    <p style="color: var(--text-muted); margin-bottom: 24px;">Đánh giá mức độ xuất hiện của 8 loại lãng phí tại xưởng của bạn.</p>
 
 
 
@@ -1512,7 +1528,7 @@
 
 
 
-                    <p style="color: var(--text-muted); margin-bottom: 24px;">ÄÃ¡nh giá các dấu hiệu bất thÆ°á»ng ảnh hưởng đến vận hành.</p>
+                    <p style="color: var(--text-muted); margin-bottom: 24px;">Đánh giá các dấu hiệu bất thÆ°á»ng ảnh hưởng đến vận hành.</p>
 
 
 
@@ -1540,7 +1556,7 @@
 
 
 
-                    <p style="color: var(--text-muted); margin-bottom: 24px;">ÄÃ¡nh giá mức độ trưởng thành của hệ thống quản trị.</p>
+                    <p style="color: var(--text-muted); margin-bottom: 24px;">Đánh giá mức độ trưởng thành của hệ thống quản trị.</p>
 
 
 
@@ -1716,7 +1732,7 @@
 
                                         <div style="text-align: left; font-size: 13px; color: #475569;">
 
-                                            <div style="margin-bottom: 12px;"><span style="display:inline-block; width:16px; height:16px; border-radius:50%; background:#10b981; margin-right:10px; vertical-align:middle;"></span> <strong>Khá»e mạnh (0 - 19)</strong></div>
+                                            <div style="margin-bottom: 12px;"><span style="display:inline-block; width:16px; height:16px; border-radius:50%; background:#10b981; margin-right:10px; vertical-align:middle;"></span> <strong>Khỏe mạnh (0 - 19)</strong></div>
 
                                             <div style="margin-bottom: 12px;"><span style="display:inline-block; width:16px; height:16px; border-radius:50%; background:#eab308; margin-right:10px; vertical-align:middle;"></span> <strong>Cảnh báo (20 - 39)</strong></div>
 
@@ -1744,7 +1760,7 @@
 
                                 <div class="a4-box" style="text-align: center; margin-bottom: 15px; padding: 10px;">
 
-                                    <h4 style="color: #0f172a; margin-bottom: 8px; font-size: 14px; font-weight: 800; text-transform: uppercase;">CHẨN ÄOÃN SƠ BỘ</h4>
+                                    <h4 style="color: #0f172a; margin-bottom: 8px; font-size: 14px; font-weight: 800; text-transform: uppercase;">CHẨN ĐOÁN SƠ BỘ</h4>
 
                                     <p id="a4-general-desc" style="font-size: 13px; color: #0f172a; line-height: 1.6; margin: 0;"></p>
 
@@ -1776,6 +1792,228 @@
 
 
 
+<!-- Trang 2 -->
+                        <div class="a4-page">
+                            <div class="a4-header" style="display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 12px; border-bottom: 2px solid #ea580c; margin-bottom: 25px;">
+        <div style="width: 250px;">
+            <div class="a4-logo" style="font-size: 26px; font-weight: 900; color: #0f172a; letter-spacing: 1px; margin-bottom: 2px;">INVAMAX</div>
+            <div style="font-size: 13px; font-weight: bold; color: #ea580c;">Factory Diagnosis&trade;</div>
+        </div>
+        <div style="flex: 1; text-align: right;">
+            <div style="font-size: 18px; font-weight: 800; color: #1e293b; text-transform: uppercase;">HỒ SƠ KHÁM BỆNH NHÀ MÁY ONLINE</div>
+            <div style="font-size: 12px; font-weight: 600; color: #64748b; margin-top: 4px;">THEO HỆ ĐIỀU HÀNH INVAMAX FOS</div>
+        </div>
+    </div>
+                            <div class="a4-content">
+                                <div class="a4-section-title">2. BẢN ĐỒ 8 LÃNG PHÍ & PHÂN TÍCH LÃNG PHÍ</div>
+                                
+                                <div class="a4-box" style="margin-bottom: 10px; text-align: center;">
+                                    <h3>BẢN ĐỒ 8 LÃNG PHÍ</h3>
+                                    <div style="height: 200px; width: 100%; display: flex; justify-content: center; align-items: center; margin-top: 0px;">
+                                        <canvas id="radarChart"></canvas>
+                                    </div>
+                                </div>
+                                
+                                <div class="a4-box" style="margin-bottom: 10px;">
+                                    <h3 style="text-align: center; margin-bottom: 10px;">TỔNG HỢP MỨC ĐỘ LÃNG PHÍ</h3>
+                                    <div id="a4-waste-scores" style="display: flex; gap: 8px; justify-content: space-between;">
+                                        <!-- JS will populate 8 cards -->
+                                    </div>
+                                </div>
+
+                                <div class="a4-box">
+                                    <h3 style="text-align: center; margin-bottom: 10px;">CHẨN ĐOÁN SƠ BỘ LÃNG PHÍ (TOP 3)</h3>
+                                    <div id="a4-waste-analysis" style="display: flex; gap: 15px;">
+                                        <!-- JS will populate 3 cards -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a4-footer" style="display: flex; justify-content: space-between; align-items: center; padding-top: 15px; border-top: 1px solid #e2e8f0; margin-top: auto; font-size: 11px; color: #64748b; font-weight: 500;">
+        <div style="display: flex; gap: 12px;">
+            <span style="font-weight: bold; color: #0f172a;">INVAMAX</span>
+            <span>|</span>
+            <span style="color: #ea580c; font-weight: bold;">Factory Diagnosis&trade;</span>
+            <span>|</span>
+            <span>invamax.com</span>
+        </div>
+        <div>Mã báo cáo: <span id="a4-code-f2" style="font-weight: bold; color: #1e293b;"></span> &nbsp;|&nbsp; Trang 2 / 10</div>
+    </div>
+                        </div>
+                        
+<!-- Trang 3 -->
+                        <div class="a4-page">
+                            <div class="a4-header" style="display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 12px; border-bottom: 2px solid #ea580c; margin-bottom: 25px;">
+        <div style="width: 250px;">
+            <div class="a4-logo" style="font-size: 26px; font-weight: 900; color: #0f172a; letter-spacing: 1px; margin-bottom: 2px;">INVAMAX</div>
+            <div style="font-size: 13px; font-weight: bold; color: #ea580c;">Factory Diagnosis&trade;</div>
+        </div>
+        <div style="flex: 1; text-align: right;">
+            <div style="font-size: 18px; font-weight: 800; color: #1e293b; text-transform: uppercase;">HỒ SƠ KHÁM BỆNH NHÀ MÁY ONLINE</div>
+            <div style="font-size: 12px; font-weight: 600; color: #64748b; margin-top: 4px;">THEO HỆ ĐIỀU HÀNH INVAMAX FOS</div>
+        </div>
+    </div>
+                            <div class="a4-content">
+                                <div class="a4-section-title">3. BẢN ĐỒ DẤU HIỆU BẤT THƯỜNG & PHÂN TÍCH</div>
+                                <div class="a4-box" style="margin-bottom: 10px; text-align: center;">
+                                    <h3>BẢN ĐỒ 8 DẤU HIỆU BẤT THƯỜNG</h3>
+                                    <div style="height: 200px; width: 100%; display: flex; justify-content: center; align-items: center; margin-top: 0px;">
+                                        <canvas id="radarSymptomsChart"></canvas>
+                                    </div>
+                                </div>
+                                <div class="a4-box" style="margin-bottom: 10px;">
+                                    <h3 style="text-align: center; margin-bottom: 10px;">TỔNG HỢP MỨC ĐỘ BẤT THƯỜNG</h3>
+                                    <div id="a4-symptoms-scores" style="display: flex; gap: 8px; justify-content: space-between;">
+                                        <!-- JS will populate -->
+                                    </div>
+                                </div>
+                                <div class="a4-box">
+                                    <h3 style="text-align: center; margin-bottom: 10px;">CHẨN ĐOÁN SƠ BỘ DẤU HIỆU BẤT THƯỜNG (TOP 3)</h3>
+                                    <div id="a4-symptoms-analysis" style="display: flex; gap: 15px;">
+                                        <!-- JS will populate -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a4-footer" style="display: flex; justify-content: space-between; align-items: center; padding-top: 15px; border-top: 1px solid #e2e8f0; margin-top: auto; font-size: 11px; color: #64748b; font-weight: 500;">
+        <div style="display: flex; gap: 12px;">
+            <span style="font-weight: bold; color: #0f172a;">INVAMAX</span>
+            <span>|</span>
+            <span style="color: #ea580c; font-weight: bold;">Factory Diagnosis&trade;</span>
+            <span>|</span>
+            <span>invamax.com</span>
+        </div>
+        <div>Mã báo cáo: <span id="a4-code-f3" style="font-weight: bold; color: #1e293b;"></span> &nbsp;|&nbsp; Trang 3 / 10</div>
+    </div>
+                        </div>
+
+<!-- Trang 4 -->
+                        <div class="a4-page">
+                            <div class="a4-header" style="display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 12px; border-bottom: 2px solid #ea580c; margin-bottom: 25px;">
+        <div style="width: 250px;">
+            <div class="a4-logo" style="font-size: 26px; font-weight: 900; color: #0f172a; letter-spacing: 1px; margin-bottom: 2px;">INVAMAX</div>
+            <div style="font-size: 13px; font-weight: bold; color: #ea580c;">Factory Diagnosis&trade;</div>
+        </div>
+        <div style="flex: 1; text-align: right;">
+            <div style="font-size: 18px; font-weight: 800; color: #1e293b; text-transform: uppercase;">HỒ SƠ KHÁM BỆNH NHÀ MÁY ONLINE</div>
+            <div style="font-size: 12px; font-weight: 600; color: #64748b; margin-top: 4px;">THEO HỆ ĐIỀU HÀNH INVAMAX FOS</div>
+        </div>
+    </div>
+                            <div class="a4-content">
+                                <div class="a4-section-title">4. HEATMAP 11 MODULE INVAMAX FOS</div>
+                                <div style="font-size: 11px; font-weight: bold; text-align: center; margin-bottom: 10px; color: #475569; background: #f8fafc; padding: 10px; border-radius: 24px; border: 1px solid #e2e8f0;">
+                                    THANG ĐIỂM: 0 - Rất tệ | 25 - Kém | 50 - Trung bình | 75 - Tốt | 100 - Xuất sắc
+                                </div>
+                                
+                                <div style="background: #f0fdf4; border: 1px solid #dcfce7; border-radius: 24px; padding: 8px 12px; margin-bottom: 10px;">
+                                    <div style="font-weight: bold; color: #059669; font-size: 12px; margin-bottom: 8px;"><i class="fas fa-layer-group"></i> A. NỀN MÓNG QUẢN TRỊ</div>
+                                    <div style="display: flex; gap: 15px;" id="a4-heatmap-group-a">
+                                        <!-- JS will populate -->
+                                    </div>
+                                </div>
+                                
+                                <div style="background: #fff7ed; border: 1px solid #ffedd5; border-radius: 24px; padding: 8px 12px; margin-bottom: 10px;">
+                                    <div style="font-weight: bold; color: #ea580c; font-size: 12px; margin-bottom: 8px;"><i class="fas fa-cogs"></i> B. VẬN HÀNH SẢN XUẤT</div>
+                                    <div style="display: flex; gap: 15px;" id="a4-heatmap-group-b">
+                                        <!-- JS will populate -->
+                                    </div>
+                                </div>
+                                
+                                                                <div style="display: flex; gap: 12px; margin-bottom: 12px;">
+                                    <div style="flex: 1; background: #f0f9ff; border: 1px solid #e0f2fe; border-radius: 24px; padding: 12px;">
+                                        <div style="font-weight: bold; color: #0284c7; font-size: 11px; margin-bottom: 8px;"><i class="fas fa-brain"></i> C. TRI THỨC & SỐ HÓA</div>
+                                        <div style="display: flex; gap: 8px;" id="a4-heatmap-group-c"></div>
+                                    </div>
+                                    <div style="flex: 1; background: #faf5ff; border: 1px solid #f3e8ff; border-radius: 24px; padding: 12px;">
+                                        <div style="font-weight: bold; color: #7e22ce; font-size: 11px; margin-bottom: 8px;"><i class="fas fa-sync-alt"></i> D. CẢI TIẾN & DUY TRÌ</div>
+                                        <div style="display: flex; gap: 8px;" id="a4-heatmap-group-d"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="a4-box" style="margin-top: 15px;">
+                                    <h3 style="font-size: 13px; text-transform: uppercase;">NHẬN ĐỊNH CỦA INVAMAX</h3>
+                                    <p id="a4-fos-analysis" style="font-size:13px; color:#475569; line-height:1.6; margin-bottom:15px;"></p>
+                                    <div id="a4-top3-fos" style="margin-top: 10px; font-size: 13px; color: #1e293b;">
+                                        <!-- JS will populate -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="a4-footer" style="display: flex; justify-content: space-between; align-items: center; padding-top: 15px; border-top: 1px solid #e2e8f0; margin-top: auto; font-size: 11px; color: #64748b; font-weight: 500;">
+        <div style="display: flex; gap: 12px;">
+            <span style="font-weight: bold; color: #0f172a;">INVAMAX</span>
+            <span>|</span>
+            <span style="color: #ea580c; font-weight: bold;">Factory Diagnosis&trade;</span>
+            <span>|</span>
+            <span>invamax.com</span>
+        </div>
+        <div>Mã báo cáo: <span id="a4-code-f4" style="font-weight: bold; color: #1e293b;"></span> &nbsp;|&nbsp; Trang 4 / 10</div>
+    </div>
+                        </div>
+
+<!-- Trang 5 -->
+                        <div class="a4-page">
+                            <div class="a4-header" style="display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 12px; border-bottom: 2px solid #ea580c; margin-bottom: 25px;">
+        <div style="width: 250px;">
+            <div class="a4-logo" style="font-size: 26px; font-weight: 900; color: #0f172a; letter-spacing: 1px; margin-bottom: 2px;">INVAMAX</div>
+            <div style="font-size: 13px; font-weight: bold; color: #ea580c;">Factory Diagnosis&trade;</div>
+        </div>
+        <div style="flex: 1; text-align: right;">
+            <div style="font-size: 18px; font-weight: 800; color: #1e293b; text-transform: uppercase;">HỒ SƠ KHÁM BỆNH NHÀ MÁY ONLINE</div>
+            <div style="font-size: 12px; font-weight: 600; color: #64748b; margin-top: 4px;">THEO HỆ ĐIỀU HÀNH INVAMAX FOS</div>
+        </div>
+    </div>
+                            <div class="a4-content">
+                                <div class="a4-section-title">5. BẰNG CHỨNG KHẢO SÁT (PHẦN 1)</div>
+                                <div class="a4-box" style="margin-bottom: 10px;">
+                                    <h3 style="margin-bottom: 15px; font-size: 13px;">BẰNG CHỨNG KHẢO SÁT (MODULE 1 & 2)</h3>
+                                    <div id="a4-raw-data-review" style="margin-bottom: 10px;"></div>
+                                </div>
+                            </div>
+                            <div class="a4-footer" style="display: flex; justify-content: space-between; align-items: center; padding-top: 15px; border-top: 1px solid #e2e8f0; margin-top: auto; font-size: 11px; color: #64748b; font-weight: 500;">
+        <div style="display: flex; gap: 12px;">
+            <span style="font-weight: bold; color: #0f172a;">INVAMAX</span>
+            <span>|</span>
+            <span style="color: #ea580c; font-weight: bold;">Factory Diagnosis&trade;</span>
+            <span>|</span>
+            <span>invamax.com</span>
+        </div>
+        <div>Mã báo cáo: <span id="a4-code-f5" style="font-weight: bold; color: #1e293b;"></span> &nbsp;|&nbsp; Trang 5 / 10</div>
+    </div>
+                        </div>
+
+<!-- Trang 6 -->
+                        <div class="a4-page">
+                            <div class="a4-header" style="display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 12px; border-bottom: 2px solid #ea580c; margin-bottom: 25px;">
+        <div style="width: 250px;">
+            <div class="a4-logo" style="font-size: 26px; font-weight: 900; color: #0f172a; letter-spacing: 1px; margin-bottom: 2px;">INVAMAX</div>
+            <div style="font-size: 13px; font-weight: bold; color: #ea580c;">Factory Diagnosis&trade;</div>
+        </div>
+        <div style="flex: 1; text-align: right;">
+            <div style="font-size: 18px; font-weight: 800; color: #1e293b; text-transform: uppercase;">HỒ SƠ KHÁM BỆNH NHÀ MÁY ONLINE</div>
+            <div style="font-size: 12px; font-weight: 600; color: #64748b; margin-top: 4px;">THEO HỆ ĐIỀU HÀNH INVAMAX FOS</div>
+        </div>
+    </div>
+                            <div class="a4-content">
+                                <div class="a4-section-title">5. BẰNG CHỨNG KHẢO SÁT (PHẦN 2) & TOP 5 QUICK WINS</div>
+                                <div class="a4-box" style="margin-bottom: 10px;">
+                                    <h3 style="margin-bottom: 15px; font-size: 13px;">BẰNG CHỨNG KHẢO SÁT (MODULE 3)</h3>
+                                    <div id="a4-raw-data-review-2" style="margin-bottom: 10px;"></div>
+                                </div>
+                                <div class="a4-box">
+                                    <h3 style="margin-bottom: 15px; font-size: 13px;">TOP 5 HÀNH ĐỘNG TRIỂN KHAI SỚM</h3>
+                                    <ul id="a4-quick-wins" style="font-size: 12px; color: #475569; padding-left: 20px; line-height: 1.8;"></ul>
+                                </div>
+                            </div>
+                            <div class="a4-footer" style="display: flex; justify-content: space-between; align-items: center; padding-top: 15px; border-top: 1px solid #e2e8f0; margin-top: auto; font-size: 11px; color: #64748b; font-weight: 500;">
+        <div style="display: flex; gap: 12px;">
+            <span style="font-weight: bold; color: #0f172a;">INVAMAX</span>
+            <span>|</span>
+            <span style="color: #ea580c; font-weight: bold;">Factory Diagnosis&trade;</span>
+            <span>|</span>
+            <span>invamax.com</span>
+        </div>
+        <div>Mã báo cáo: <span id="a4-code-f6" style="font-weight: bold; color: #1e293b;"></span> &nbsp;|&nbsp; Trang 6 / 10</div>
+    </div>
+                        </div>
+
 <!-- Trang 7 (Preview) -->
 
                         <div class="a4-page page-7">
@@ -1802,7 +2040,7 @@
 
                             <div class="a4-content">
 
-                                <div class="a4-section-title">6. BÃO CÃO CHI TIẾT</div>
+                                <div class="a4-section-title">6. BÁO CÁO CHI TIẾT</div>
 
                                 <div class="a4-box" style="padding: 0; overflow: hidden; border: 1px solid #f97316; margin-bottom: 10px; border-radius: 16px;">
 
@@ -1816,7 +2054,7 @@
 
                                         <div style="padding: 12px 15px; flex-grow: 1;">
 
-                                            <div style="font-weight: bold; color: #1e293b; font-size: 14px;">PHÂN TÃCH NGUYÊN NHÂN & CHUỖI TÃC Äá»˜NG</div>
+                                            <div style="font-weight: bold; color: #1e293b; font-size: 14px;">PHÂN TÁCH NGUYÊN NHÂN & CHUỖI TÁC ĐỘNG</div>
 
                                             <div style="font-size: 12px; color: #475569; margin-top: 4px;">Phân tích nguyên nhân trực tiếp – hệ thống – gốc cho 3 vấn Ä‘á» ưu tiên kết nối với 11 module INVAMAX FOS.</div>
 
@@ -1838,9 +2076,9 @@
 
                                         <div style="padding: 12px 15px; flex-grow: 1;">
 
-                                            <div style="font-weight: bold; color: #1e293b; font-size: 14px;">MA TRẬN VẤN Äá»€ ƯU TIÊN</div>
+                                            <div style="font-weight: bold; color: #1e293b; font-size: 14px;">MA TRẬN VẤN ĐỀ ƯU TIÊN</div>
 
-                                            <div style="font-size: 12px; color: #475569; margin-top: 4px;">ÄÃ¡nh giá và xếp hạng vấn Ä‘á» theo mức độ tác động, tần suất, khả năng kiểm soát và mức độ nghiêm trá»ng.</div>
+                                            <div style="font-size: 12px; color: #475569; margin-top: 4px;">Đánh giá và xếp hạng vấn Ä‘á» theo mức độ tác động, tần suất, khả năng kiểm soát và mức độ nghiêm trọng.</div>
 
                                         </div>
 
@@ -1860,7 +2098,7 @@
 
                                         <div style="padding: 12px 15px; flex-grow: 1;">
 
-                                            <div style="font-weight: bold; color: #1e293b; font-size: 14px;">KẾ HOẠCH ÄIỀU TRỊ ƯU TIÊN</div>
+                                            <div style="font-weight: bold; color: #1e293b; font-size: 14px;">KẾ HOẠCH ĐIỀU TRỊ ƯU TIÊN</div>
 
                                             <div style="font-size: 12px; color: #475569; margin-top: 4px;">Chi tiết giải pháp cho 3 vấn Ä‘á» ưu tiên: mục tiêu, cách làm, nguồn lực, chỉ số, rủi ro và tiêu chí nghiệm thu.</div>
 
@@ -1882,7 +2120,7 @@
 
                                         <div style="padding: 12px 15px; flex-grow: 1;">
 
-                                            <div style="font-weight: bold; color: #1e293b; font-size: 14px;">PHÃC Äá»’ ÄIỀU TRỊ 30-60 NGÀY</div>
+                                            <div style="font-weight: bold; color: #1e293b; font-size: 14px;">PHÁC ĐỒ ĐIỀU TRỊ 30-60 NGÀY</div>
 
                                             <div style="font-size: 12px; color: #475569; margin-top: 4px;">Kế hoạch hành động theo 3 giai đoạn: Ã¡Â»â€n định – Chuẩn hóa – Duy trì và số hóa phù hợp.</div>
 
@@ -1906,7 +2144,7 @@
 
                                             <div style="font-weight: bold; color: #1e293b; font-size: 14px;">KẾT LUẬN & BƯỚC TIẾP THEO</div>
 
-                                            <div style="font-size: 12px; color: #475569; margin-top: 4px;">Phân công trách nhiệm (RACI), KPI theo dõi, tần suất há»p, cơ chế duy trì và kiểm soát hiệu quả bá»n vững.</div>
+                                            <div style="font-size: 12px; color: #475569; margin-top: 4px;">Phân công trách nhiệm (RACI), KPI theo dõi, tần suất họp, cơ chế duy trì và kiểm soát hiệu quả bền vững.</div>
 
                                         </div>
 
@@ -1934,11 +2172,11 @@
 
                                     <div style="flex-grow: 1;">
 
-                                        <h4 style="color: #10b981; margin-bottom: 8px; font-size: 14px; text-transform: uppercase;">THANH TOÃN Äá»‚ NHẬN BÃO CÃO CHẨN ÄOÃN CHUYÊN SÂU</h4>
+                                        <h4 style="color: #10b981; margin-bottom: 8px; font-size: 14px; text-transform: uppercase;">THANH TOÃN đề‚ NHẬN BÁO CÁO CHẨN ĐOÁN CHUYÊN SÂU</h4>
 
                                         <div style="margin-bottom: 10px; font-size: 13px; color: #475569; line-height: 1.6;">
 
-                                            <strong>Số tiá»n:</strong> <span style="color: #e11d48; font-weight: bold;">990,000 VNÄ</span>/ báo cáo<br>
+                                            <strong>Số tiền:</strong> <span style="color: #e11d48; font-weight: bold;">990,000 VNĐ</span>/ báo cáo<br>
 
                                             <strong>Số tài khoản:</strong> 5757658888<br>
 
@@ -1966,7 +2204,7 @@
 
                                         <img id="a4-qr-img-inline-client" src="" style="width: 100%; border-radius: 20px;" alt="QR Thanh toán">
 
-                                        <div style="color: black; font-weight: bold; font-size: 13px; margin-top: 5px;">990,000 VNÄ</div>
+                                        <div style="color: black; font-weight: bold; font-size: 13px; margin-top: 5px;">990,000 VNĐ</div>
 
                                         <div style="color: #444; font-size: 10px; margin-top: 2px;">KBM <span id="a4-qr-phone-inline-client" style="font-weight: bold; color: #e11d48;"></span></div>
 
@@ -1990,13 +2228,13 @@
 
                             <button type="button" id="a4-btn-download" onclick="exportPDF()" class="btn btn-outline" style="flex: 1; font-size: 15px; padding: 10px; border-color: #f97316; color: #f97316; justify-content: center; background: white; border-radius: 16px;">
 
-                                <i data-lucide="download"></i> TẢI BÃO CÃO SƠ BỘ MIỄN PHÃ (PDF)
+                                <i data-lucide="download"></i> TẢI BÁO CÁO SƠ BỘ MIỄN PHÃ (PDF)
 
                             </button>
 
                             <button type="button" id="btn-show-payment" class="btn btn-primary" style="flex: 1; font-size: 15px; padding: 10px; justify-content: center;">
 
-                                <i data-lucide="unlock"></i> NHẬN BÃO CÃO CHI TIẾT
+                                <i data-lucide="unlock"></i> NHẬN BÁO CÁO CHI TIẾT
 
                             </button>
 
@@ -2110,7 +2348,7 @@
 
 
 
-                Phí xuất báo cáo: <strong style="color: var(--primary); font-size: 1.3rem;">990,000 VNÄ</strong>
+                Phí xuất báo cáo: <strong style="color: var(--primary); font-size: 1.3rem;">990,000 VNĐ</strong>
 
 
 
@@ -2130,7 +2368,7 @@
 
 
 
-                    <p style="margin-bottom: 10px; font-size: 1.1rem;">Ngân hàng: <strong>MB (Ngân hàng Quân Äá»™i)</strong></p>
+                    <p style="margin-bottom: 10px; font-size: 1.1rem;">Ngân hàng: <strong>MB (Ngân hàng Quân Đội)</strong></p>
 
 
 
@@ -2186,7 +2424,7 @@
 
 
 
-                        <p style="font-weight: 600; font-size: 1.05rem; color: #e11d48;">Số tiá»n: 990.000 VNÄ</p>
+                        <p style="font-weight: 600; font-size: 1.05rem; color: #e11d48;">Số tiền: 990.000 VNĐ</p>
 
 
 
@@ -2258,25 +2496,7 @@
 
 
 
-        <!-- History Modal -->
-
-    <div class="modal-overlay" id="historyModal" style="align-items: center; justify-content: center;">
-
-        <div class="modal-content" style="max-width: 700px; margin: 0; padding: 24px; max-height: 95vh; overflow-y: auto; background-color: #1E2E25; border: 1px solid #2A3F33; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75); border-radius: 16px;">
-
-            <button class="modal-close" id="closeHistoryModal" style="font-size: 32px; color: #fff; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.1); border-radius: 50%; padding-bottom: 4px; float: right; border: none; cursor: pointer;">&times;</button>
-
-            <h2 style="font-size: 1.5rem; margin-bottom: 20px; color: white; display: flex; align-items: center; gap: 10px;"><i data-lucide="history"></i> L?ch s? n?p kh?o sát</h2>
-
-            <div id="history-list" style="display: flex; flex-direction: column; gap: 15px;">
-
-                <!-- History items will be injected here -->
-
-            </div>
-
-        </div>
-
-    </div>
+        
 
 
 
@@ -2304,7 +2524,205 @@
 
     <script src="assets/js/questions_data.js"></script>
 
-    <script src="assets/js/app_combined.js"></script>
+    <script src="assets/js/app_combined.js?v=2"></script>
+
+
+    <!-- LOGIN MODAL -->
+    <style>
+        .login-modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(8px);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .login-modal-overlay.active {
+            opacity: 1;
+        }
+        .login-modal {
+            background: rgba(255, 255, 255, 0.95);
+            width: 90%;
+            max-width: 400px;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+        .login-modal-overlay.active .login-modal {
+            transform: translateY(0);
+        }
+        .login-close {
+            position: absolute;
+            top: 15px; right: 15px;
+            cursor: pointer;
+            color: #64748b;
+            font-size: 20px;
+            transition: color 0.2s;
+        }
+        .login-close:hover { color: #0f172a; }
+        
+        .auth-tabs {
+            display: flex;
+            border-bottom: 2px solid #e2e8f0;
+            margin-bottom: 20px;
+        }
+        .auth-tab {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            font-weight: 600;
+            color: #64748b;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px;
+            transition: all 0.2s;
+        }
+        .auth-tab.active {
+            color: #ea580c;
+            border-bottom: 2px solid #ea580c;
+        }
+        .auth-form {
+            display: none;
+        }
+        .auth-form.active {
+            display: block;
+        }
+        .auth-input-group {
+            margin-bottom: 15px;
+        }
+        .auth-input-group label {
+            display: block;
+            font-size: 0.85rem;
+            color: #475569;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        .auth-input-group input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-family: inherit;
+            box-sizing: border-box;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .auth-input-group input:focus {
+            border-color: #ea580c;
+        }
+        .auth-btn {
+            width: 100%;
+            padding: 12px;
+            background: #ea580c;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .auth-btn:hover { background: #c2410c; }
+        .auth-divider {
+            display: flex; align-items: center; text-align: center; margin: 20px 0; color: #94a3b8; font-size: 0.85rem;
+        }
+        .auth-divider::before, .auth-divider::after {
+            content: ''; flex: 1; border-bottom: 1px solid #e2e8f0;
+        }
+        .auth-divider::before { margin-right: 10px; }
+        .auth-divider::after { margin-left: 10px; }
+        .g_id_signin {
+            display: flex; justify-content: center;
+        }
+    </style>
+    
+    <div class="login-modal-overlay" id="login-modal">
+        <div class="login-modal">
+            <div class="login-close" onclick="hideLoginModal()" style="font-size: 28px; line-height: 1; margin-top: -5px;">&times;</div>
+            
+            <div style="text-align: center; margin-bottom: 20px;">
+                <div style="font-size: 24px; font-weight: 900; color: #0f172a;">INVA<span style="color:#ea580c">MAX</span></div>
+                <div style="font-size: 12px; color: #64748b; font-weight: 600;">Factory Diagnosis&trade;</div>
+            </div>
+            
+            <div class="auth-tabs">
+                <div class="auth-tab active" id="tab-login" onclick="switchAuthTab('login')">Đăng nhập</div>
+                <div class="auth-tab" id="tab-register" onclick="switchAuthTab('register')">Tạo tài khoản</div>
+            </div>
+            
+            <!-- Login Form -->
+            <form class="auth-form active" id="form-login" onsubmit="handleLogin(event)">
+                <div class="auth-input-group">
+                    <label>Email</label>
+                    <input type="email" id="login-email" required placeholder="Nhập email...">
+                </div>
+                <div class="auth-input-group">
+                    <label>Mật khẩu</label>
+                    <input type="password" id="login-pass" required placeholder="Nhập mật khẩu...">
+                </div>
+                <button type="submit" class="auth-btn">Đăng nhập</button>
+            </form>
+            
+            <!-- Register Form -->
+            <form class="auth-form" id="form-register" onsubmit="handleRegister(event)">
+                <div class="auth-input-group">
+                    <label>Họ và tên</label>
+                    <input type="text" id="reg-name" required placeholder="Tên của bạn...">
+                </div>
+                <div class="auth-input-group">
+                    <label>Email</label>
+                    <input type="email" id="reg-email" required placeholder="Nhập email...">
+                </div>
+                <div class="auth-input-group">
+                    <label>Mật khẩu</label>
+                    <input type="password" id="reg-pass" required placeholder="Tạo mật khẩu...">
+                </div>
+                <button type="submit" class="auth-btn">Đăng ký tài khoản</button>
+            </form>
+            
+            <div class="auth-divider">hoặc</div>
+            
+            <!-- Google Sign-In -->
+            <div id="g_id_onload"
+                 data-client_id="811195724214-e0v9q3g64q5c18u5t51vqg0t3fdfpq47.apps.googleusercontent.com"
+                 data-context="use"
+                 data-ux_mode="popup"
+                 data-callback="handleCredentialResponse"
+                 data-auto_prompt="false">
+            </div>
+            <div class="g_id_signin"
+                 data-type="standard"
+                 data-shape="rectangular"
+                 data-theme="outline"
+                 data-text="signin_with"
+                 data-size="large"
+                 data-logo_alignment="left">
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="assets/js/auth.js"></script>
+
+
+    <!-- History Modal -->
+    <div class="history-modal-overlay" id="history-modal" style="display: none; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); z-index: 1000; padding: 20px;">
+        <div class="login-modal" style="background: white; border-radius: 24px; width: 100%; max-width: 600px; padding: 30px; position: relative; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); max-height: 80vh; display: flex; flex-direction: column;">
+            <div class="login-close" onclick="hideHistoryModal()" style="position: absolute; top: 20px; right: 20px; cursor: pointer; color: #94a3b8; font-size: 28px; line-height: 1; margin-top: -5px;">&times;</div>
+            <h2 style="font-size: 1.5rem; margin-bottom: 20px; color: #0f172a; text-align: center;"><i data-lucide="history" style="display: inline-block; vertical-align: middle; margin-right: 8px;"></i> Lịch sử Khám bệnh</h2>
+            <div id="history-list-container" style="overflow-y: auto; flex-grow: 1; padding-right: 10px;">
+                <div style="text-align: center; color: #64748b; padding: 20px;"><i class="fas fa-spinner fa-spin"></i> Đang tải...</div>
+            </div>
+        </div>
+    </div>
 
 </body>
 

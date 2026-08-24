@@ -127,7 +127,7 @@ function closeContactModal() {
 }
 
 // Thay URL Web App của Google Apps Script vào đây
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwvGpLm47P92er4imU5-rp4hhvg-lvo8MVbEXbz99k9bBA0N9W48uQEIWKbLf6KRd1-/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxlNhvfg0YdRpQ5LsaqhsGUb6hb6d2oZsdY-56Y2CfbJWOQlYLiaEQmmaDV94Xx92I/exec";
 
 async function submitForm(e) {
     e.preventDefault();

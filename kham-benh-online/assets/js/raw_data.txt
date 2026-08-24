@@ -1,0 +1,19 @@
+function renderRawDataReview(scores, rawAnswers) {
+    const el1 = document.getElementById('a4-raw-data-review');
+    const el2 = document.getElementById('a4-raw-data-review-2');
+    
+    if(!el1 || !el2 || !scores || !scores.top3FOS || !rawAnswers) {
+        if(el1) {
+            el1.innerHTML = `<div style="color:red; padding:10px; font-weight:bold;">
+                DEBUG EARLY RETURN:<br>
+                el1: ${!!el1}<br>
+                el2: ${!!el2}<br>
+                scores: ${!!scores}<br>
+                top3FOS: ${scores ? !!scores.top3FOS : 'null'}<br>
+                rawAnswers: ${!!rawAnswers}
+            </div>`;
+        }
+        return;
+    }
+    
+    try {

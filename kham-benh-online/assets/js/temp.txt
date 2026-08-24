@@ -1,0 +1,9 @@
+Line 1407: <button id="btn-show-history" onclick="showHistoryModal()" style="position: absolute; right: 20px; top: 20px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 8px 15px; border-radius: 20px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px; z-index: 100;"><i data-lucide="history"></i> Lịch sử khám bệnh</button>
+Line 2331: <div class="modal-overlay" id="paymentModal" style="align-items: center; justify-content: center;">
+Line 2479: <div id="floating-actions" class="hide-in-pdf" style="display: none; position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: #1e293b; padding: 15px 25px; border-radius: 50px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); z-index: 1000; gap: 15px; align-items: center; border: 1px solid rgba(255,255,255,0.1);">
+Line 2532: .login-modal-overlay {
+Line 2537: z-index: 10000;
+Line 2544: .login-modal-overlay.active {
+Line 2558: .login-modal-overlay.active .login-modal {
+Line 2646: <div class="login-modal-overlay" id="login-modal">
+Line 2717: <div class="login-modal-overlay" id="history-modal" style="display: none; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); z-index: 1000; padding: 20px;">
