@@ -3,583 +3,708 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/style.css">
+
+    <title>INVAMAX | Chuyển đổi Vận hành - Thay đổi Vị thế Thị trường</title>
+    <meta name="description" content="INVAMAX là đối tác Điều hành & Chuyển đổi Mô hình Vận hành, giúp doanh nghiệp sản xuất nâng cao hiệu quả và năng lực cạnh tranh.">
+    
+    <link rel="canonical" href="https://invamax.com/vi/">
+    <link rel="alternate" hreflang="vi" href="https://invamax.com/vi/">
+    <link rel="alternate" hreflang="en" href="https://invamax.com/en/">
+    <link rel="alternate" hreflang="x-default" href="https://invamax.com/en/">
+    
+    <meta property="og:title" content="INVAMAX | Chuyển đổi Vận hành - Thay đổi Vị thế Thị trường">
+    <meta property="og:description" content="INVAMAX là đối tác Điều hành & Chuyển đổi Mô hình Vận hành, giúp doanh nghiệp sản xuất nâng cao hiệu quả và năng lực cạnh tranh.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://invamax.com/vi/">
+    <meta property="og:image" content="https://invamax.com/assets/images/logo.png">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="INVAMAX | Chuyển đổi Vận hành - Thay đổi Vị thế Thị trường">
+    <meta name="twitter:description" content="INVAMAX là đối tác Điều hành & Chuyển đổi Mô hình Vận hành, giúp doanh nghiệp sản xuất nâng cao hiệu quả và năng lực cạnh tranh.">
+    <meta name="twitter:image" content="https://invamax.com/assets/images/logo.png">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "INVAMAX",
+      "legalName": "INVAMAX INVESTMENT AND DEVELOPMENT CO., LTD",
+      "url": "https://invamax.com",
+      "logo": "https://invamax.com/assets/images/logo.png",
+      "description": "INVAMAX là đối tác Điều hành & Chuyển đổi Mô hình Vận hành dành cho doanh nghiệp sản xuất.",
+      "telephone": "0988.911.869",
+      "email": "info@invamax.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Thôn Đông Lôi, xã Vĩnh Thịnh",
+        "addressLocality": "TP Hải Phòng",
+        "addressCountry": "VN"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/invamax",
+        "https://www.facebook.com/invamax"
+      ]
+    }
+    </script>
+    
+    
+    <link rel="stylesheet" href="../assets/css/style.css">
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    <title>INVAMAX - Thiết kế & Chuyển đổi mô hình vận hành nhà máy thế hệ mới</title>
-    <meta name="description" content="INVAMAX chuyên cung cấp giải pháp vận hành tinh gọn, hệ điều hành nhà máy INVAMAX FOS™, tư vấn Lean và ứng dụng AI/Digital cho nhà máy sản xuất.">
-    <meta property="og:title" content="INVAMAX - Thiết kế & Chuyển đổi mô hình vận hành nhà máy thế hệ mới">
-    <meta property="og:description" content="INVAMAX chuyên cung cấp giải pháp vận hành tinh gọn, hệ điều hành nhà máy INVAMAX FOS™, tư vấn Lean và ứng dụng AI/Digital cho nhà máy sản xuất.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://invamax.com/index.html">
-    <script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "INVAMAX",
-    "url": "https://invamax.com/",
-    "logo": "https://invamax.com/assets/images/logo.png",
-    "description": "Tư vấn thiết kế mô hình vận hành và Hệ điều hành nhà máy.",
-    "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "0988911869",
-        "contactType": "customer service",
-        "email": "info@invamax.com"
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for the new homepage structure */
+        .hero-section {
+            padding: 120px 0 60px 0;
+            position: relative;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        @media (max-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .hero-eyebrow {
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            display: block;
+        }
+        .hero-h1 {
+            font-size: 3.5rem;
+            line-height: 1.15;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--text-white);
+            text-wrap: balance;
+        }
+        
+        .hero-desc {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 32px;
+            max-width: 90%;
+        }
+        /* Simulated Hero Image Placeholder */
+        .hero-image-placeholder {
+            background: linear-gradient(145deg, rgba(255,255,255,0.02) 0%, rgba(0,0,0,0.5) 100%);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: var(--radius-lg);
+            height: 450px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .hero-image-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            z-index: 1;
+        }
+        .mock-card {
+            position: absolute;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: var(--radius-sm);
+            padding: 12px;
+            z-index: 2;
+        }
+        /* Flow under hero */
+        .hero-flow {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        .flow-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 12px;
+            flex: 1;
+        }
+        .flow-arrow {
+            color: var(--text-muted);
+            opacity: 0.5;
+        }
+        @media (max-width: 768px) {
+            .flow-arrow {
+                transform: rotate(90deg);
+            }
+        }
+        /* Solutions Grid: 3 top, 2 bottom centered */
+        .solutions-grid-top {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+        .solutions-grid-bottom {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        @media (max-width: 992px) {
+            .solutions-grid-top, .solutions-grid-bottom {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 100%;
+            }
+        }
+        
+        .solution-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: var(--radius-md);
+            padding: 30px 24px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .solution-card:hover {
+            border-color: rgba(255, 102, 0, 0.3);
+            background: rgba(255,255,255,0.03);
+            transform: translateY(-2px);
+        }
+        .solution-number {
+            color: var(--primary);
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .solution-icon {
+            color: var(--text-white);
+            margin-bottom: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .solution-title {
+            color: var(--text-white);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            text-align: center;
+        }
+        .solution-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            flex-grow: 1;
+            margin-bottom: 24px;
+        }
+        .solution-link {
+            color: var(--primary);
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        /* Values Grid */
+        .value-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .value-card:hover {
+            border-color: rgba(255, 102, 0, 0.4);
+            box-shadow: 0 0 20px rgba(255, 102, 0, 0.15);
+            transform: translateY(-2px);
+        }
+        .value-title {
+            color: var(--text-white);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        /* Capability Flow */
+        .cap-flow {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 40px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 24px;
+            border-radius: var(--radius-lg);
+        }
+        .cap-flow-box {
+            flex: 1;
+            text-align: center;
+        }
+        .cap-flow-arrow {
+            color: var(--text-muted);
+            opacity: 0.5;
+        }
+        @media (max-width: 768px) {
+            .cap-flow-arrow { transform: rotate(90deg); margin: 10px 0;}
+        }
+        /* CTA Cards */
+        .cta-choice-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: var(--radius-md);
+            padding: 30px 24px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .cta-choice-title {
+            color: var(--text-white);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        /* Hero */
+        .hero-h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.2; color: var(--text-white); margin-bottom: 32px; }
+        .hero-desc { font-size: 1.15rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 32px; }
+        .badge-label { display: inline-block; padding: 6px 16px; border: 1px solid rgba(255, 102, 0, 0.3); border-radius: 20px; color: var(--primary); font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 24px; background: rgba(255, 102, 0, 0.05); }
+        /* RESTORED FIXES */
+        .hero-content { display: block !important; }
+        .grid-custom-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .feature-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 20px 16px; border-radius: var(--radius-lg); transition: transform 0.3s ease, border-color 0.3s ease; }
+        .feature-card:hover { border-color: rgba(255, 102, 0, 0.5); transform: translateY(-4px); box-shadow: 0 0 25px rgba(255, 102, 0, 0.15); }
+        .feature-card h3 { color: var(--text-white); font-size: 1.25rem; margin-bottom: 16px; font-weight: 600; }
+        .feature-highlight { color: var(--primary); font-weight: 600; margin-top: 16px; }
+        .section-heading {
+            font-size: 2.5rem;
+            color: var(--text-white);
+            margin-bottom: 16px;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        
+        /* 5 Column Grid for Solutions */
+        .solutions-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+        @media (max-width: 1200px) {
+            .solutions-grid-5 { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 992px) {
+            .solutions-grid-5 { grid-template-columns: repeat(2, 1fr); }
+        }
+        
+        @media (max-width: 992px) {
+            h2[style*="white-space: nowrap"] {
+                white-space: normal !important;
+            }
+        }
+        .nowrap-desktop { white-space: nowrap; }
+        @media (max-width: 1400px) {
+            .nowrap-desktop { white-space: normal !important; }
+        }
+    </style>
+    
+    <style>
+        .capability-card-link {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 240px;
+            padding: 32px 16px;
+            text-decoration: none !important;
+            color: inherit !important;
+        }
+    </style>
+
+    <style>
+        @media (max-width: 768px) {
+            h1, h2, h3, .hero-platform h1, .hero-eyebrow, .hero-badge, .badge, .tagline, .card-title, .cta, .nowrap-desktop {
+                white-space: normal !important;
+            }
+        }
+    </style>
+
+<style>
+/* RESTORED MOBILE RULES FOR INDEX */
+
+    @media (max-width: 768px) {
+        .hero-flow { flex-direction: column; gap: 20px; }
+        .flow-arrow { transform: rotate(90deg); }
+        .solutions-grid-top, .solutions-grid-bottom { grid-template-columns: 1fr; }
+        .cap-flow { flex-direction: column; }
+        .cap-flow-arrow { transform: rotate(90deg); margin: 10px 0; }
+        .section-heading { font-size: 1.8rem; }
+        .solutions-grid-5 { grid-template-columns: 1fr; }
     }
-}
+    
+</style>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2K5VXNELTZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-2K5VXNELTZ');
     </script>
-    <meta name="google-site-verification" content="d9opRRlvn7gdYQvrvD_fqSJEh8E2KOLNiIyV_1hknA0" />
 </head>
 <body>
-    <!-- Navbar -->
     <nav class="navbar">
         <div class="container">
-            <a href="index.html" class="logo">INVA<span>MAX</span></a>
+            <a href="../vi/index.html" class="logo">INVA<span>MAX</span></a>
             <div class="nav-links">
-                <div class="nav-item">
-                    <a href="index.html" class="nav-title" style="color: inherit; text-decoration: none;">GIỚI THIỆU</a>
-                </div>
-                <div class="nav-item">
-                    <a href="javascript:void(0)" class="nav-title" style="color: inherit; text-decoration: none;">GIẢI PHÁP <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i></a>
+                <div class="nav-item"><a href="../vi/index.html" class="nav-title" style="color: inherit; text-decoration: none;">Trang chủ</a></div>
+                <div class="nav-item">    
+                    <a href="#" class="nav-title" style="color: inherit; text-decoration: none;">Giải pháp <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i></a>
                     <div class="nav-dropdown">
-                            <a href="giai-phap.html" style="font-weight: 800; color: #ea580c; border-bottom: 1px solid #f1f5f9; margin-bottom: 5px; padding-bottom: 10px;">Lộ trình chuyển đổi</a>
-                        <a href="dich-vu.html#kham-benh">Khám bệnh Nhà máy</a>
-<a href="kham-benh-online/gioi-thieu.html" style="text-align: left !important; padding-left: 45px !important; font-size: 0.82rem !important; font-weight: 400 !important; color: #94a3b8 !important; padding-top: 5px !important; padding-bottom: 5px !important; transition: color 0.2s;" onmouseover="this.style.color='#f97316'" onmouseout="this.style.color='#94a3b8'">- Khám bệnh online</a>
-<a href="kham-benh-truc-tiep/gioi-thieu.html" style="text-align: left !important; padding-left: 45px !important; font-size: 0.82rem !important; font-weight: 400 !important; color: #94a3b8 !important; padding-top: 5px !important; padding-bottom: 5px !important; transition: color 0.2s;" onmouseover="this.style.color='#f97316'" onmouseout="this.style.color='#94a3b8'">- Khám bệnh trực tiếp</a>
-                        <a href="dich-vu.html#thiet-ke">Mô hình vận hành nhà máy</a>
-                        <a href="dich-vu.html#fos">Hệ điều hành nhà máy</a>
-                        <a href="dich-vu.html#ai-digital">Số hoá &amp; AI vận hành</a>
-                        <a href="san-pham.html">Thiết bị hỗ trợ sản xuất</a>
+                        <a href="../vi/factory-transformation.html">Chuyển đổi Mô hình Vận hành</a>
+                        <a href="../vi/operate-transform.html">Điều hành Nhà máy</a>
+                        <a href="../vi/factory-assessment.html">Đánh giá Năng lực Nhà máy</a>
+                        <a href="../vi/focused-improvement.html">Cải tiến Trọng điểm</a>
+                    <a href="../vi/digital-ai.html">Tự động hoá, Số hoá &amp; AI cho Sản xuất</a>
                     </div>
                 </div>
                 <div class="nav-item">
-                    <a href="javascript:void(0)" class="nav-title" style="color: inherit; text-decoration: none;">TRI THỨC <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i></a>
+                    <a href="#" class="nav-title" style="color: inherit; text-decoration: none;">Năng lực <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i></a>
                     <div class="nav-dropdown">
-                            <a href="tri-thuc.html" style="font-weight: 800; color: #ea580c; border-bottom: 1px solid #f1f5f9; margin-bottom: 5px; padding-bottom: 10px;">Trung tâm tri thức</a>
-                        <a href="kien-thuc.html">Bài viết</a>
-                        <a href="case-study.html">Case Study</a>
-                            <a href="thu-vien.html">Toolkit & Tài liệu</a>
-                            <a href="video.html">Video</a>
+                        <a href="../vi/invamax-fa.html">INVAMAX FA&trade; <span style="font-weight: normal; opacity: 0.8;">&mdash; Khung Đánh giá Năng lực Nhà máy</span></a>
+                        <a href="../vi/fos.html">INVAMAX FOS&trade; <span style="font-weight: normal; opacity: 0.8;">&mdash; Hệ điều hành Quản trị Nhà máy</span></a>
+                        <a href="../vi/lean.html">Lean &amp; Cải tiến Liên tục</a>
+                        <a href="../vi/platform.html">INVAMAX Platform <span style="font-weight: normal; opacity: 0.8;">&mdash; Nền tảng Vận hành Số</span></a>
                     </div>
                 </div>
-                            <div class="nav-item lang-switcher" style="display: flex; gap: 8px; align-items: center; margin-left: auto;">
-                    <a href="#" class="active" style="color: var(--primary); font-weight: bold; padding: 0;">VN</a>
-                    <span style="color: var(--border-color);">|</span>
-                    <a href="#" style="color: var(--text-muted); padding: 0; opacity: 0.7;">EN</a>
+                <div class="nav-item"><a href="../vi/case-studies.html" class="nav-title" style="color: inherit; text-decoration: none;">Case Study</a></div>
+                <div class="nav-item"><a href="../vi/resources.html" class="nav-title" style="color: inherit; text-decoration: none;">Tài nguyên</a></div>
+                <div class="nav-item"><a href="../vi/about.html" class="nav-title" style="color: inherit; text-decoration: none;">Về INVAMAX</a></div>
+                
+                <div style="display: flex; flex-direction: row; align-items: center; gap: 16px; margin-left: 10px;">
+                    <div class="nav-item lang-switcher" style="display: flex; gap: 4px; align-items: center; font-size: 0.8rem;">
+                        <a href="/vi/" onclick="switchLanguage('vi');" class="active" style="color: var(--primary); font-weight: bold; padding: 0;">VI</a>
+                        <span style="color: var(--border-color);">|</span>
+                        <a href="/en/" onclick="switchLanguage('en');" class="" style="color: var(--text-muted); padding: 0; opacity: 0.7;">EN</a>
+                    </div>
+                    <a href="#" class="btn btn-primary" style="display: none; padding: 4px 14px; border-radius: 20px; font-weight: 600; font-size: 0.8rem;">Đăng nhập</a>
                 </div>
             </div>
             <button class="mobile-menu-btn"><i data-lucide="menu"></i></button>
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
-    <section class="hero">
+<main>
+
+
+    <!-- 1. HERO / ĐỊNH VỊ CHIẾN LƯỢC -->
+    <section class="hero-section">
         <div class="container">
-            <div style="text-align: center; margin-bottom: 10px;">
-                <h1 class="hero-main-title" style="margin-bottom: 5px; font-size: 2.6rem; letter-spacing: 0.5px; line-height: 1.3;">
-                    Thiết kế mô hình vận hành nhà máy thế hệ mới<br>
-                    <span style="color: var(--primary); font-size: 1.6rem; font-weight: 700; display: inline-block; margin-top: 5px; letter-spacing: 1px;">INVAMAX Factory Operating Model™ (IFOM™)</span>
-                </h1>
-                <p style="font-size: 0.95rem; color: #cbd5e1; max-width: 900px; margin: 15px auto 25px; line-height: 1.7; font-weight: 400; font-style: italic;">Thiết kế một mô hình vận hành nơi con người, hệ thống quản trị, Digital, AI và tự động hóa<br class="desktop-only"> phối hợp nhịp nhàng để đạt hiệu quả cao với chi phí thấp và con người làm việc bền vững hơn.</p>
+            <div class="hero-grid">
+                <div class="hero-content" style="display: block !important;">
+                    <span class="hero-eyebrow">INVAMAX — FACTORY TRANSFORMATION</span>
+                    <h1 class="hero-h1" style="display: block !important;"><span style="white-space: nowrap;">Chuyển đổi mô hình vận hành,</span><br><span style="white-space: nowrap;">thay đổi vị thế thị trường</span></h1>
+                    <p class="section-desc-large" style="margin-left: 0; max-width: 900px; color: var(--text-muted);">INVAMAX là đối tác Điều hành & Chuyển đổi Mô hình Vận hành dành cho doanh nghiệp sản xuất, giúp xây dựng năng lực cạnh tranh mới và tạo nền tảng cho vị thế cao hơn trên thị trường.</p>
+                    
+                    <div style="margin-top: 24px; padding-left: 16px; border-left: 3px solid var(--primary); margin-bottom: 40px;">
+                        <p style="color: var(--primary); font-weight: 600; font-size: 1.1rem; margin: 0;">Thay đổi vị thế thị trường bắt đầu từ năng lực bên trong doanh nghiệp.</p>
+                    </div>
+
+                    <div class="cta-buttons" style="display: flex; gap: 16px; flex-wrap: wrap;">
+                        <a href="../vi/factory-transformation.html" class="btn btn-primary" style="padding: 16px 32px; font-size: 1.1rem; font-weight: 600;">Khám phá Chuyển đổi mô hình vận hành nhà máy</a>
+                        <a href="#" onclick="openContactModal(); return false;" class="btn btn-outline" style="padding: 16px 32px; font-size: 1.1rem; font-weight: 600; border: 1px solid var(--primary);">Trao đổi với INVAMAX</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img width="600" height="400" fetchpriority="high" src="../assets/images/hero_factory_system_transparent.png" alt="Mô hình vận hành nhà máy" style="width: 100%; max-width: 600px; opacity: 0.9;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. ÁP LỰC CẠNH TRANH -->
+    <section class="site-section">
+        <div class="container" style="max-width: 1200px; margin: 0 auto;">
+            <h2 class="section-heading text-center" style="margin-bottom: 24px; white-space: nowrap;">Thị trường không đứng yên, đối thủ của bạn cũng vậy</h2>
+            <p style="font-size: 1.15rem; line-height: 1.8; color: var(--text-muted); text-align: center; margin-bottom: 48px;">Một doanh nghiệp có thể đang có vị thế tốt hôm nay, nhưng điều đó không đảm bảo vị thế của ngày mai.<br><br><span class="nowrap-desktop">Khi đối thủ phục vụ khách hàng tốt hơn, vận hành hiệu quả hơn hoặc đổi mới nhanh hơn, khoảng cách cạnh tranh sẽ bắt đầu thay đổi.</span></p>
+
+            <div class="highlight-statement text-center" style="padding: 32px 24px;">
+                <strong style="font-size: 1.3rem;">Doanh nghiệp của bạn muốn thay đổi vị thế thị trường — hay để đối thủ thay đổi nó trước?</strong>
+            </div>
+
+            
+        </div>
+    </section>
+
+    <!-- 3. CHIẾN LƯỢC INVAMAX — 3 MẶT TRẬN -->
+    <section class="site-section">
+        <div class="container">
+            <div class="text-center" style="max-width: 100%; margin: 0 auto;">
+                <h2 class="section-heading">Muốn thay đổi vị thế thị trường,<br>doanh nghiệp cần thay đổi trên <span style="white-space: nowrap;">ba mặt trận</span></h2>
             </div>
             
-            <div class="hero-content">
-                <div class="hero-text" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding-right: 15px; width: 100%;">
-                    <div style="background: rgba(249,115,22,0.1); border-left: 2px solid rgba(249,115,22,0.4); padding: 15px; margin-bottom: 15px; width: 100%; border-radius: 0 8px 8px 0;">
-                                                <p style="font-size: 1.05rem; color: #cbd5e1; margin: 0 0 15px 0; line-height: 1.6;">Sản xuất đang bước vào một kỷ nguyên mới, nơi lợi thế cạnh tranh không còn đến từ việc đầu tư nhiều máy móc hay phần mềm hơn, mà từ việc sở hữu một <strong style="color: white;">Mô hình vận hành</strong> phù hợp với chiến lược phát triển của doanh nghiệp.</p>
-                        <p style="font-size: 1.05rem; color: #cbd5e1; margin: 0; line-height: 1.6;">INVAMAX đồng hành cùng doanh nghiệp từ chẩn đoán hiện trạng, thiết kế mô hình vận hành, xây dựng hệ thống quản trị đến từng bước ứng dụng Digital, AI và tự động hóa vào thực tiễn sản xuất.</p>
-                    </div>
-
-                    <style>
-                        .hero-cta-btn {
-                            font-size: 1.05rem; 
-                            padding: 14px 28px; 
-                            border-radius: 24px; 
-                            font-weight: 600; 
-                            display: flex; 
-                            align-items: center; 
-                            gap: 10px;
-                            transition: all 0.3s ease;
-                            text-decoration: none;
-                        }
-                        .btn-primary-custom {
-                            background: transparent;
-                            color: var(--primary);
-                            border: 1px solid rgba(249,115,22,0.4);
-                            box-shadow: none;
-                        }
-                        .btn-primary-custom:hover {
-                            background: var(--primary);
-                            color: white;
-                            transform: translateY(-2px);
-                            box-shadow: 0 15px 25px rgba(249,115,22,0.4);
-                        }
-                        .btn-primary-custom:hover i { color: white; }
-                        .btn-outline-custom { background: transparent; border: 1px solid rgba(249,115,22,0.4); color: var(--primary);
-                        }
-                        .btn-outline-custom i { color: var(--primary); }
-                        .btn-outline-custom:hover {
-                            background: var(--primary);
-                            color: white;
-                            transform: translateY(-2px);
-                            box-shadow: 0 10px 20px rgba(249,115,22,0.3);
-                        }
-                        .btn-outline-custom:hover i { color: white; }
-                    </style>
-                    <div style="display: flex; flex-wrap: wrap; gap: 15px;">
-                        <a href="dich-vu.html#kham-benh" class="hero-cta-btn btn-outline-custom">
-                            <i data-lucide="activity" style="width: 20px; height: 20px;"></i> Khám bệnh Nhà máy
-                        </a>
-                        <a href="giai-phap.html" class="hero-cta-btn btn-outline-custom">
-                            <i data-lucide="arrow-right" style="width: 20px; height: 20px;"></i> Khám phá Giải pháp
-                        </a>
-                    </div>
+            <div class="grid-custom-3" style="margin-top: 48px;">
+                <div class="feature-card">
+                    <div style="margin-bottom: 16px;"><i data-lucide="users" style="color: var(--primary); width: 36px; height: 36px;"></i></div>
+                    <h3>01. Trải nghiệm khách hàng</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 1.05rem;">Sản phẩm &middot; Chất lượng &middot; Giao hàng &middot; Dịch vụ</p>
+                    <p class="feature-highlight">Tạo ra sản phẩm, chất lượng, tốc độ và dịch vụ khiến khách hàng lựa chọn doanh nghiệp thay vì đối thủ.</p>
                 </div>
                 
-                <div class="hero-img-wrapper" style="display: flex; justify-content: flex-end; align-items: center;">
-                    <img src="assets/images/hero_img.jpg" alt="Mô hình vận hành nhà máy thế hệ mới" style="max-width: 90%; border-radius: 20px; box-shadow: 0 15px 30px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05);">
+                <div class="feature-card">
+                    <div style="margin-bottom: 16px;"><i data-lucide="activity" style="color: var(--primary); width: 36px; height: 36px;"></i></div>
+                    <h3>02. Hiệu quả kinh tế vận hành</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 1.05rem;">Năng suất &middot; Chi phí &middot; Tồn kho &middot; Chất lượng &middot; Vốn &middot; Giao hàng</p>
+                    <p class="feature-highlight">Tạo ra nhiều giá trị hơn với cùng hoặc ít nguồn lực hơn.</p>
                 </div>
+
+                <div class="feature-card">
+                    <div style="margin-bottom: 16px;"><i data-lucide="lightbulb" style="color: var(--primary); width: 36px; height: 36px;"></i></div>
+                    <h3>03. Nghiên cứu & Đổi mới</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 1.05rem;">Nhu cầu &middot; Thiết kế &middot; Thử nghiệm &middot; Sản xuất hóa &middot; Ra thị trường</p>
+                    <p class="feature-highlight">Liên tục tạo ra sản phẩm, phương thức và năng lực mới trước khi lợi thế hiện tại mất đi.</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 60px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 16px;">
+                <div style="font-size: 0.9rem; font-weight: 600; letter-spacing: 1px; color: var(--text-muted);">
+                    TRẢI NGHIỆM KHÁCH HÀNG &nbsp;+&nbsp; HIỆU QUẢ KINH TẾ VẬN HÀNH &nbsp;+&nbsp; NGHIÊN CỨU & ĐỔI MỚI
+                </div>
+                <div style="color: rgba(255,255,255,0.2);">&darr;</div>
+                <div style="font-size: 1.1rem; font-weight: 700; color: var(--text-white); letter-spacing: 2px;">
+                    VỊ THẾ CẠNH TRANH
+                </div>
+                
+                <p style="font-size: 1.1rem; color: var(--text-light); margin-top: 24px; max-width: 100%;">Ba mặt trận khác nhau, nhưng đều phụ thuộc vào năng lực của cùng một hệ thống vận hành.</p>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 1: Tại sao (Single Column) -->
-    <section class="section section-darker" style="padding: 70px 0;">
+    <!-- 4. TỪ MÔ HÌNH VẬN HÀNH CŨ ĐẾN MỚI -->
+    <section class="site-section">
         <div class="container">
-            <div style="text-align: center; margin-bottom: 30px;">
-                <h2 style="font-size: 2.2rem; margin-bottom: 30px; font-weight: 800; color: white;">Vì sao các nhà máy cần thay đổi mô hình vận hành?</h2>
-                <div class="divider"></div>
+            <div class="text-center" style="max-width: 100%; margin: 0 auto;">
+                <h2 class="section-heading">Muốn tạo ra kết quả mới,<br>không thể tiếp tục vận hành <span style="white-space: nowrap;">bằng mô hình cũ</span></h2>
+                <p class="section-desc" style="color: var(--text-muted);">Khi chiến lược và yêu cầu cạnh tranh thay đổi, mô hình vận hành cũng phải thay đổi theo.</p>
+            </div>
+
+            <div style="margin-top: 48px; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;">
+                <p style="font-size: 1.15rem; color: var(--text-muted); line-height: 1.7;">INVAMAX không chỉ tối ưu mô hình hiện tại. Chúng tôi cùng doanh nghiệp thiết kế và chuyển đổi sang một mô hình vận hành phù hợp hơn với vị thế doanh nghiệp muốn đạt tới.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="solutions" class="site-section" >
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-heading text-center" style="margin-bottom: 16px;">5 Giải pháp của INVAMAX</h2>
+                <p class="section-desc-large text-center" style="margin-left: auto; margin-right: auto; max-width: 800px; margin-bottom: 48px; color: var(--text-muted);">Từ đánh giá, cải tiến, chuyển đổi đến điều hành và số hóa vận hành.</p>
             </div>
             
-            <div style="max-width: 1050px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px;">
-                
-                <!-- History Box -->
-                <div style="display: flex; gap: 18px; align-items: flex-start; background: rgba(255,255,255,0.03); padding: 15px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); transition: background 0.3s ease;">
-                    <i data-lucide="history" style="color: #ef4444; width: 28px; height: 28px; flex-shrink: 0; margin-top: 2px;"></i>
-                    <div style="flex-grow: 1;">
-                        <p style="color: #e2e8f0; font-size: 1.15rem; line-height: 1.65; margin: 0 0 15px 0;">Phần lớn các nhà máy vừa và nhỏ vẫn đang vận hành theo mô hình cũ:</p>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px 20px;">
-                            <div style="display: flex; gap: 12px; align-items: flex-start;">
-                                <i data-lucide="users" style="color: #ef4444; width: 18px; height: 18px; flex-shrink: 0; margin-top: 3px; opacity: 0.9;"></i>
-                                <span style="color: #cbd5e1; font-size: 1rem; line-height: 1.5;">Phụ thuộc vào kinh nghiệm của con người.</span>
-                            </div>
-                            <div style="display: flex; gap: 12px; align-items: flex-start;">
-                                <i data-lucide="file-x" style="color: #ef4444; width: 18px; height: 18px; flex-shrink: 0; margin-top: 3px; opacity: 0.9;"></i>
-                                <span style="color: #cbd5e1; font-size: 1rem; line-height: 1.5;">Quy trình và cơ chế vận hành thiếu chuẩn hóa.</span>
-                            </div>
-                            <div style="display: flex; gap: 12px; align-items: flex-start;">
-                                <i data-lucide="database-zap" style="color: #ef4444; width: 18px; height: 18px; flex-shrink: 0; margin-top: 3px; opacity: 0.9;"></i>
-                                <span style="color: #cbd5e1; font-size: 1rem; line-height: 1.5;">Dữ liệu rời rạc, thiếu kết nối.</span>
-                            </div>
-                            <div style="display: flex; gap: 12px; align-items: flex-start;">
-                                <i data-lucide="network" style="color: #ef4444; width: 18px; height: 18px; flex-shrink: 0; margin-top: 3px; opacity: 0.9;"></i>
-                                <span style="color: #cbd5e1; font-size: 1rem; line-height: 1.5;">Các hệ thống quản trị và công nghệ hoạt động riêng lẻ.</span>
-                            </div>
-                            <div style="display: flex; gap: 12px; align-items: flex-start;">
-                                <i data-lucide="layers" style="color: #ef4444; width: 18px; height: 18px; flex-shrink: 0; margin-top: 3px; opacity: 0.9;"></i>
-                                <span style="color: #cbd5e1; font-size: 1rem; line-height: 1.5;">Bộ máy quản lý cồng kềnh, phụ thuộc nhiều vào chỉ đạo.</span>
-                            </div>
-                            <div style="display: flex; gap: 12px; align-items: flex-start;">
-                                <i data-lucide="bot-off" style="color: #ef4444; width: 18px; height: 18px; flex-shrink: 0; margin-top: 3px; opacity: 0.9;"></i>
-                                <span style="color: #cbd5e1; font-size: 1rem; line-height: 1.5;">Khó mở rộng và khó ứng dụng AI, tự động hóa.</span>
-                            </div>
-                        </div>
-                    </div>
+            <!-- Hàng 1: 3 Cards -->
+            <div class="solutions-grid-5">
+                <!-- 01 -->
+                <div class="solution-card">
+                    <div class="solution-number">01</div>
+                    <i data-lucide="network" class="solution-icon" style="width: 36px; height: 36px;"></i>
+                    <h3 class="solution-title">Chuyển đổi<br>Mô hình Vận hành</h3>
+                    <p class="solution-desc">Thiết kế và triển khai mô hình vận hành phù hợp với mục tiêu phát triển tiếp theo của nhà máy.</p>
+                    <a href="../vi/factory-transformation.html" class="solution-link">Tìm hiểu <i data-lucide="arrow-right" style="width: 16px;"></i></a>
+                </div>
+                <!-- 02 -->
+                <div class="solution-card">
+                    <div class="solution-number">02</div>
+                    <i class="solution-icon" data-lucide="users" style="width: 36px; height: 36px;"></i>
+                    <h3 class="solution-title">Điều hành<br>Nhà máy</h3>
+                    <p class="solution-desc">INVAMAX tham gia hoặc tiếp nhận trách nhiệm điều hành trong phạm vi được thống nhất.</p>
+                    <a href="../vi/operate-transform.html" class="solution-link">Tìm hiểu <i data-lucide="arrow-right" style="width: 16px;"></i></a>
+                </div>
+                <!-- 03 -->
+                <div class="solution-card">
+                    <div class="solution-number">03</div>
+                    <i class="solution-icon" data-lucide="clipboard-check" style="width: 36px; height: 36px;"></i>
+                    <h3 class="solution-title">Đánh giá<br>Năng lực Nhà máy</h3>
+                    <p class="solution-desc">Xác định năng lực hiện tại, khoảng trống, rủi ro và các ưu tiên cần cải thiện.</p>
+                    <a href="../vi/factory-assessment.html" class="solution-link">Tìm hiểu <i data-lucide="arrow-right" style="width: 16px;"></i></a>
                 </div>
 
-                <!-- Zap Box -->
-                <div style="display: flex; gap: 18px; align-items: flex-start; background: rgba(255,255,255,0.03); padding: 15px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); transition: background 0.3s ease;">
-                    <i data-lucide="zap" style="color: #3b82f6; width: 28px; height: 28px; flex-shrink: 0; margin-top: 2px;"></i>
-                    <p style="color: #e2e8f0; font-size: 1.15rem; line-height: 1.65; margin: 0;">Trong khi đó, môi trường kinh doanh đang thay đổi nhanh chưa từng có. Robot, AI và tự động hóa ngày càng mạnh hơn nhưng cũng ngày càng dễ tiếp cận hơn. Khoảng cách cạnh tranh sẽ không còn nằm ở quy mô doanh nghiệp mà ở năng lực xây dựng một hệ thống vận hành hiệu quả.</p>
+                <!-- 04 -->
+                <div class="solution-card">
+                    <div class="solution-number">04</div>
+                    <i class="solution-icon" data-lucide="trending-up" style="width: 36px; height: 36px;"></i>
+                    <h3 class="solution-title">Cải tiến<br>Trọng điểm</h3>
+                    <p class="solution-desc">Tập trung giải quyết những vấn đề cụ thể về năng suất, chất lượng, giao hàng, dòng chảy hoặc chi phí.</p>
+                    <a href="../vi/focused-improvement.html" class="solution-link">Tìm hiểu <i data-lucide="arrow-right" style="width: 16px;"></i></a>
                 </div>
-
-                <!-- Orange Box -->
-                <div style="margin-top: 30px; text-align: center;">
-                    <p style="color: #cbd5e1; margin: 0; font-weight: 400; line-height: 1.7; font-size: 0.95rem; font-style: italic;">Doanh nghiệp chuyển đổi sớm sẽ tạo ra lợi thế lớn về năng suất, chất lượng, chi phí và tốc độ phát triển. <strong style="color: #cbd5e1;">Doanh nghiệp chậm thay đổi hoặc không chịu chuyển đổi mô hình sẽ ngày càng khó cạnh tranh, thậm chí bị đào thải khỏi chuỗi cung ứng.</strong></p>
+                <!-- 05 -->
+                <div class="solution-card">
+                    <div class="solution-number">05</div>
+                    <i class="solution-icon" data-lucide="cpu" style="width: 36px; height: 36px;"></i>
+                    <h3 class="solution-title">Digital & AI<br>cho Sản xuất</h3>
+                    <p class="solution-desc">Số hóa quy trình, tổ chức dữ liệu, tự động hóa và ứng dụng AI vào những điểm tạo giá trị cho vận hành.</p>
+                    <a href="../vi/digital-ai.html" class="solution-link">Tìm hiểu <i data-lucide="arrow-right" style="width: 16px;"></i></a>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- SECTION: FOM -->
-    <section class="section" style="padding: 70px 0; background: var(--bg-color); border-radius: 16px;">
-        <div class="container" style="text-align: center;">
-            <div style="max-width: 1050px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px;">
-                <!-- FOM Definition -->
-                <div style="text-align: center;">
-                    <h2 style="font-size: 2rem; font-weight: 800; color: white; margin-bottom: 10px;">Mô hình vận hành nhà máy thế hệ mới là gì?</h2>
-                    <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--primary); margin-bottom: 10px;">INVAMAX Factory Operating Model™ (IFOM™)</h3>
-                    <p style="color: #e2e8f0; font-size: 1rem; line-height: 1.7; margin-bottom: 8px; text-align: center;"><strong style="color: white;">IFOM™</strong> là mô hình vận hành nhà máy thế hệ mới <strong>do INVAMAX thiết kế</strong>, trong đó con người, hệ thống quản trị, Digital, AI và tự động hóa được thiết kế để phối hợp như một chỉnh thể thống nhất, giúp doanh nghiệp:</p>
-                </div>
-
-                <!-- 6 Checkmarks -->
-                <style>
-                    @media (max-width: 600px) {
-                        .checkmarks-grid { grid-template-columns: 1fr !important; }
-                    }
-                </style>
-                <div class="checkmarks-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; background: rgba(255,255,255,0.02); padding: 15px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); text-align: left;">
-                    <div style="display: flex; gap: 15px; align-items: flex-start;">
-                        <i data-lucide="check-circle-2" style="color: #10b981; width: 24px; height: 24px; flex-shrink: 0; margin-top: 2px;"></i>
-                        <p style="color: var(--text-muted); margin: 0; line-height: 1.5; font-size: 1.1rem;">Vận hành hiệu quả hơn.</p>
-                    </div>
-                    <div style="display: flex; gap: 15px; align-items: flex-start;">
-                        <i data-lucide="check-circle-2" style="color: #10b981; width: 24px; height: 24px; flex-shrink: 0; margin-top: 2px;"></i>
-                        <p style="color: var(--text-muted); margin: 0; line-height: 1.5; font-size: 1.1rem;">Chuẩn hóa và dễ mở rộng hơn.</p>
-                    </div>
-                    <div style="display: flex; gap: 15px; align-items: flex-start;">
-                        <i data-lucide="check-circle-2" style="color: #10b981; width: 24px; height: 24px; flex-shrink: 0; margin-top: 2px;"></i>
-                        <p style="color: var(--text-muted); margin: 0; line-height: 1.5; font-size: 1.1rem;">Giảm chi phí vận hành.</p>
-                    </div>
-                    <div style="display: flex; gap: 15px; align-items: flex-start;">
-                        <i data-lucide="check-circle-2" style="color: #10b981; width: 24px; height: 24px; flex-shrink: 0; margin-top: 2px;"></i>
-                        <p style="color: var(--text-muted); margin: 0; line-height: 1.5; font-size: 1.1rem;">Giảm sự phụ thuộc vào cá nhân.</p>
-                    </div>
-                    <div style="display: flex; gap: 15px; align-items: flex-start;">
-                        <i data-lucide="check-circle-2" style="color: #10b981; width: 24px; height: 24px; flex-shrink: 0; margin-top: 2px;"></i>
-                        <p style="color: var(--text-muted); margin: 0; line-height: 1.5; font-size: 1.1rem;">Nâng cao khả năng ứng dụng AI và tự động hóa.</p>
-                    </div>
-                    <div style="display: flex; gap: 15px; align-items: flex-start;">
-                        <i data-lucide="check-circle-2" style="color: #10b981; width: 24px; height: 24px; flex-shrink: 0; margin-top: 2px;"></i>
-                        <p style="color: var(--text-muted); margin: 0; line-height: 1.5; font-size: 1.1rem;">Xây dựng môi trường làm việc bền vững với ít áp lực hơn cho con người.</p>
-                    </div>
-                </div>
-
-                <!-- Green Box -->
-                <div style="background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.8); border-left: 4px solid #10b981; padding: 15px 20px; border-radius: 0 12px 12px 0; text-align: center; margin-top: 25px; margin-bottom: 30px;">
-                    <p style="color: #cbd5e1; margin: 0; font-weight: 400; line-height: 1.7; font-size: 0.95rem; font-style: italic;">Đây sẽ là cuộc cạnh tranh giữa những doanh nghiệp biết xây dựng hệ thống vận hành bằng Robot & AI với những doanh nghiệp vẫn phụ thuộc chủ yếu vào lao động thủ công.</p>
-                </div>
-                
-                <p style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.7; font-weight: 400; font-style: italic; margin-top: 10px; text-align: center;">Muốn xây dựng Nhà máy thế hệ mới, trước hết cần một Mô hình vận hành phù hợp.</p>
-
-            </div>
-        </div>
-    </section>
-
-<!-- SECTION 2.5: INVAMAX FOS -->
-    <section class="section" style="padding: 70px 0; background: var(--bg-darker); border-radius: 16px;">
-        <style>
-            @media (max-width: 768px) {
-                .fos-grid { grid-template-columns: 1fr !important; }
-            }
-        </style>
+<section id="capabilities" class="site-section" style="border-top: 1px solid rgba(255,255,255,0.05);">
         <div class="container">
-            <div style="text-align: center; margin-bottom: 30px;">
-                <h2 style="font-size: 2.2rem; margin-bottom: 5px; font-weight: 800; color: white;">Hệ điều hành nhà máy</h2>
-                <h3 style="font-size: 1.6rem; color: var(--primary); font-weight: 700; margin-bottom: 30px; letter-spacing: 1px;">INVAMAX Factory Operating System (INVAMAX FOS™)</h3>
-                <div class="divider"></div>
-                <p style="color: var(--text-muted); font-size: 1rem; max-width: 1000px; margin: 0 auto; line-height: 1.7;">Chuẩn hóa cách nhà máy vận hành để con người, quy trình, dữ liệu, Digital và AI phối hợp như một hệ thống thống nhất.</p>
-            </div>
-
-            <div style="max-width: 1200px; margin: 0 auto 50px auto; text-align: center;">
-                <p style="font-size: 1.1rem; color: #e2e8f0; line-height: 1.7; margin-bottom: 20px;"><strong>INVAMAX FOS™</strong> là hệ điều hành nhà máy do INVAMAX phát triển nhằm giúp doanh nghiệp xây dựng, vận hành<br class="desktop-only"> và liên tục cải tiến Factory Operating Model™.</p>
-                
-                <p style="font-size: 1.1rem; color: #cbd5e1; line-height: 1.7;">Khác với các phương pháp quản trị chỉ tập trung vào từng công cụ hoặc từng chương trình cải tiến riêng lẻ,<br class="desktop-only">
-INVAMAX FOS™ hướng tới việc xây dựng một hệ thống vận hành thống nhất, nơi mọi thành phần phối hợp với nhau theo cùng một cơ chế.</p>
-            </div>
-
-            <div style="margin-bottom: 8px; text-align: center;">
-                <h3 style="color: white; font-size: 1.3rem; margin-bottom: 8px;">INVAMAX FOS™ được phát triển trên ba nền tảng:</h3>
-            </div>
-
-<style>
-/* Custom neon glow for FOS cards */
-.layer-card-lean:hover {
-    transform: translateY(-7px) !important;
-    box-shadow: 0 15px 50px rgba(249,115,22, 0.4), inset 0 0 25px rgba(249,115,22, 0.2) !important;
-    border-color: rgba(249,115,22, 0.8) !important;
-    filter: brightness(1.1) !important;
-}
-.layer-card-vovi:hover {
-    transform: translateY(-7px) !important;
-    box-shadow: 0 15px 50px rgba(59,130,246, 0.4), inset 0 0 25px rgba(59,130,246, 0.2) !important;
-    border-color: rgba(59,130,246, 0.8) !important;
-    filter: brightness(1.1) !important;
-}
-.layer-card-ai:hover {
-    transform: translateY(-7px) !important;
-    box-shadow: 0 15px 50px rgba(168,85,247, 0.4), inset 0 0 25px rgba(168,85,247, 0.2) !important;
-    border-color: rgba(168,85,247, 0.8) !important;
-    filter: brightness(1.1) !important;
-}
-</style>
-            <div class="fos-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 30px;">
-                <div class="layer-card layer-card-lean" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; padding: 20px 15px; text-align: left; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: transform 0.3s ease;">
-                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 12px;">
-                        <div style="width: 48px; height: 48px; min-width: 48px; background: rgba(249,115,22,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0;">
-                            <i data-lucide="trending-up" style="color: var(--primary); width: 24px; height: 24px;"></i>
-                        </div>
-                        <h4 style="color: white; font-size: 1.15rem; margin: 0; text-align: left;">Tư duy Lean</h4>
-                    </div>
-                    <p style="color: var(--text-muted); line-height: 1.5; margin: 0; font-size: 0.95rem; text-align: left;">Nhằm loại bỏ lãng phí, tối ưu dòng chảy và nâng cao hiệu quả vận hành.</p>
-                </div>
-                
-                <div class="layer-card layer-card-vovi" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; padding: 20px 15px; text-align: left; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: transform 0.3s ease;">
-                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 12px;">
-                        <div style="width: 48px; height: 48px; min-width: 48px; background: rgba(59,130,246,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0;">
-                            <i data-lucide="infinity" style="color: #3b82f6; width: 24px; height: 24px;"></i>
-                        </div>
-                        <h4 style="color: white; font-size: 1.15rem; margin: 0; text-align: left;">Triết lý Vô vi</h4>
-                    </div>
-                    <p style="color: var(--text-muted); line-height: 1.5; margin: 0; font-size: 0.95rem; text-align: left;">Thiết kế hệ thống vận hành thuận theo quy luật, để công việc diễn ra tự nhiên, đúng cơ chế và ít cần sự can thiệp của quản lý.</p>
-                </div>
-
-                <div class="layer-card layer-card-ai" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; padding: 20px 15px; text-align: left; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: transform 0.3s ease;">
-                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 12px;">
-                        <div style="width: 48px; height: 48px; min-width: 48px; background: rgba(168,85,247,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0;">
-                            <i data-lucide="cpu" style="color: #a855f7; width: 24px; height: 24px;"></i>
-                        </div>
-                        <h4 style="color: white; font-size: 1.15rem; margin: 0; text-align: left;">Digital, AI & Tự động hóa</h4>
-                    </div>
-                    <p style="color: var(--text-muted); line-height: 1.5; margin: 0; font-size: 0.95rem; text-align: left;">Nhằm nâng cao năng lực quản trị, hỗ trợ ra quyết định và giải phóng con người khỏi các công việc lặp lại.</p>
-                </div>
+            <div class="section-header">
+                <h2 class="section-heading text-center" style="margin-bottom: 16px;">Năng lực của INVAMAX</h2>
+                <p class="section-desc-large text-center" style="margin-left: auto; margin-right: auto; max-width: 800px; margin-bottom: 48px; color: var(--text-muted);">Phương pháp, hệ điều hành, công cụ cải tiến và nền tảng số để triển khai thực tế.</p>
             </div>
             
-            <div style="text-align: center; max-width: 1200px; margin: 0 auto; padding: 0 15px;">
-                <p style="font-size: 0.95rem; color: #cbd5e1; font-style: italic; line-height: 1.7; margin: 0; font-weight: 400;">Mục tiêu của INVAMAX FOS™ không phải là khiến con người làm việc nhiều hơn, mà là xây dựng một hệ thống tốt hơn<br class="desktop-only">
-để doanh nghiệp vận hành hiệu quả hơn, chi phí thấp hơn và con người làm việc với ít áp lực hơn.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 3: LỘ TRÌNH CHUYỂN ĐỔI (HORIZONTAL) -->
-    <section class="section" style="padding: 20px 0; ">
-        <style>
-            .timeline-step {
-                cursor: pointer;
-            }
-            .timeline-circle {
-                box-shadow: none;
-                transition: all 0.3s ease;
-            }
-            .timeline-icon {
-                color: white;
-                transition: all 0.3s ease;
-            }
-            .timeline-title {
-                transition: color 0.3s ease;
-            }
-            .timeline-step:hover .timeline-circle {
-                border-color: var(--primary) !important;
-                box-shadow: 0 0 25px rgba(249,115,22,0.6);
-                transform: scale(1.1);
-                /* background removed to prevent transparency revealing the line */
-            }
-            .timeline-step:hover .timeline-icon {
-                color: var(--primary) !important;
-            }
-            .timeline-step:hover .timeline-title {
-                color: var(--primary) !important;
-            }
-        </style>
-        <div class="container">
-            <div style="text-align: center; margin-bottom: 70px;">
-                <h2 style="font-size: 2.2rem; margin-bottom: 30px; font-weight: 800; color: white;">Lộ trình chuyển đổi cùng INVAMAX</h2>
-                <div class="divider"></div>
-                <p style="color: var(--text-muted); font-size: 1.15rem; max-width: 800px; margin: 0 auto; line-height: 1.7;">Một lộ trình xuyên suốt từ chẩn đoán đến vận hành.</p>
-            </div>
-
-            <div style="position: relative; padding-top: 10px; margin-bottom: 40px;">
-                <!-- Horizontal connecting line -->
-                <div class="timeline-line"></div>
-                
-                <div class="timeline-container">
-                    
-                    <!-- Step 1 -->
-                    <div class="timeline-step" style="text-align: center; padding: 0 5px;">
-                        <div class="timeline-circle" style="width: 70px; height: 70px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.3); background: var(--bg-dark); display: flex; align-items: center; justify-content: center; margin: 0 auto 25px;">
-                            <i data-lucide="activity" class="timeline-icon" style="width: 28px; height: 28px;"></i>
-                        </div>
-                        <h3 class="timeline-title" style="color: white; font-size: 1.25rem; margin-bottom: 15px; font-weight: 700;">1. Khám bệnh Nhà máy</h3>
-                        <p style="color: #94a3b8; font-size: 1rem; line-height: 1.6; margin: 0;">Đánh giá hiện trạng, xác định điểm nghẽn và phát hiện các nguyên nhân cốt lõi đang ảnh hưởng đến hiệu quả vận hành.</p>
-                    </div>
-                    
-                    <!-- Step 2 -->
-                    <div class="timeline-step" style="text-align: center; padding: 0 5px;">
-                        <div class="timeline-circle" style="width: 70px; height: 70px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.3); background: var(--bg-dark); display: flex; align-items: center; justify-content: center; margin: 0 auto 25px;">
-                            <i data-lucide="layout-dashboard" class="timeline-icon" style="width: 28px; height: 28px;"></i>
-                        </div>
-                        <h3 class="timeline-title" style="color: white; font-size: 1.25rem; margin-bottom: 15px; font-weight: 700;">2. Thiết kế & Chuyển đổi</h3>
-                        <p style="color: #94a3b8; font-size: 1rem; line-height: 1.6; margin: 0;">Thiết kế Mô hình vận hành phù hợp với chiến lược, quy mô và mục tiêu phát triển của doanh nghiệp.</p>
-                    </div>
-                    
-                    <!-- Step 3 -->
-                    <div class="timeline-step" style="text-align: center; padding: 0 5px;">
-                        <div class="timeline-circle" style="width: 70px; height: 70px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.3); background: var(--bg-dark); display: flex; align-items: center; justify-content: center; margin: 0 auto 25px;">
-                            <i data-lucide="cpu" class="timeline-icon" style="width: 28px; height: 28px;"></i>
-                        </div>
-                        <h3 class="timeline-title" style="color: white; font-size: 1.25rem; margin-bottom: 15px; font-weight: 700;">3. Xây dựng INVAMAX FOS™</h3>
-                        <p style="color: #94a3b8; font-size: 1rem; line-height: 1.6; margin: 0;">Chuẩn hóa quy trình, dữ liệu và cơ chế quản trị để hình thành một hệ điều hành nhà máy thống nhất và bền vững.</p>
-                    </div>
-
-                    <!-- Step 4 -->
-                    <div class="timeline-step" style="text-align: center; padding: 0 5px;">
-                        <div class="timeline-circle" style="width: 70px; height: 70px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.3); background: var(--bg-dark); display: flex; align-items: center; justify-content: center; margin: 0 auto 25px;">
-                            <i data-lucide="brain-circuit" class="timeline-icon" style="width: 28px; height: 28px;"></i>
-                        </div>
-                        <h3 class="timeline-title" style="color: white; font-size: 1.25rem; margin-bottom: 15px; font-weight: 700;">4. Số hoá & AI vận hành</h3>
-                        <p style="color: #94a3b8; font-size: 1rem; line-height: 1.6; margin: 0;">Ứng dụng Digital, AI và tự động hóa vào các bài toán thực tế trong quản lý và vận hành sản xuất.</p>
-                    </div>
-                    
-                    <!-- Step 5 -->
-                    <div class="timeline-step" style="text-align: center; padding: 0 5px;">
-                        <div class="timeline-circle" style="width: 70px; height: 70px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.3); background: var(--bg-dark); display: flex; align-items: center; justify-content: center; margin: 0 auto 25px;">
-                            <i data-lucide="box" class="timeline-icon" style="width: 28px; height: 28px;"></i>
-                        </div>
-                        <h3 class="timeline-title" style="color: white; font-size: 1.25rem; margin-bottom: 15px; font-weight: 700;">5. INVAMAX Supply Hub</h3>
-                        <p style="color: #94a3b8; font-size: 1rem; line-height: 1.6; margin: 0;">Kết nối doanh nghiệp với hệ sinh thái chuyên gia, thiết bị, vật tư và giải pháp nhằm hỗ trợ triển khai, vận hành và phát triển hệ thống.</p>
-                    </div>
-                </div>
-            </div>
-            <p style="font-size: 0.95rem; color: #cbd5e1; font-style: italic; line-height: 1.7; font-weight: 400; margin-top: 40px; text-align: center;">Không phải mọi doanh nghiệp đều cần triển khai đầy đủ tất cả các bước. INVAMAX sẽ đồng hành theo nhu cầu và mức độ sẵn sàng của từng nhà máy.</p>
-        </div>
-    </section>
-
-    <!-- SECTION 4: TẠI SAO LỰA CHỌN INVAMAX -->
-    <section class="section" style="padding: 70px 0; background: var(--bg-dark); border-radius: 16px;">
-        <div class="container">
-            <div style="text-align: center; margin-bottom: 30px;">
-                <h2 style="font-size: 2.2rem; margin-bottom: 30px; font-weight: 800; color: white;">Tại sao lựa chọn INVAMAX?</h2>
-                <div class="divider"></div>
-                <p style="color: var(--text-muted); font-size: 1rem; max-width: 800px; margin: 0 auto; line-height: 1.7;">Chúng tôi không triển khai từng giải pháp riêng lẻ.<br class="desktop-only"> Chúng tôi thiết kế một hệ thống để mọi giải pháp cùng phát huy hiệu quả.</p>
-            </div>
-
-            <div class="grid-2" style="gap: 12px;">
-                
-                <!-- Card 1: Orange -->
-                <div class="layer-card" style="background: rgba(249,115,22,0.08); border: 1px solid rgba(249,115,22,0.3); border-radius: 20px; padding: 35px 30px; display: flex; gap: 25px; align-items: flex-start; position: relative; overflow: hidden; box-shadow: none; transition: transform 0.3s ease;">
-                    <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 6px; background: #f97316;"></div>
-                    <div style="width: 65px; height: 65px; background: rgba(249,115,22,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid rgba(249,115,22,0.3);">
-                        <i data-lucide="compass" style="color: #f97316; width: 32px; height: 32px;"></i>
-                    </div>
-                    <div>
-                        <h3 style="color: white; font-size: 1.4rem; margin-bottom: 12px; margin-top: 5px;">Thiết kế hệ thống, không tối ưu từng phần</h3>
-                        <p style="color: var(--text-muted); line-height: 1.7; margin: 0; font-size: 1.05rem;">Chúng tôi không triển khai Lean, AI hay Digital như những dự án độc lập. INVAMAX thiết kế một hệ thống vận hành hoàn chỉnh, nơi mọi thành phần được xây dựng để phối hợp nhịp nhàng và hỗ trợ lẫn nhau.</p>
-                    </div>
-                </div>
-                
-                <!-- Card 2: Blue -->
-                <div class="layer-card" style="background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.3); border-radius: 20px; padding: 35px 30px; display: flex; gap: 25px; align-items: flex-start; position: relative; overflow: hidden; box-shadow: none; transition: transform 0.3s ease;">
-                    <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 6px; background: #3b82f6;"></div>
-                    <div style="width: 65px; height: 65px; background: rgba(59,130,246,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid rgba(59,130,246,0.3);">
-                        <i data-lucide="target" style="color: #3b82f6; width: 32px; height: 32px;"></i>
-                    </div>
-                    <div>
-                        <h3 style="color: white; font-size: 1.4rem; margin-bottom: 12px; margin-top: 5px;">Hệ phương pháp riêng</h3>
-                        <p style="color: var(--text-muted); line-height: 1.7; margin: 0; font-size: 1.05rem;">INVAMAX phát triển hệ phương pháp gồm Factory Diagnosis™, Factory Operating Model™ và Factory Operating System™, tạo nên một lộ trình chuyển đổi rõ ràng từ chẩn đoán đến vận hành.</p>
-                    </div>
-                </div>
-                
-                <!-- Card 3: Purple -->
-                <div class="layer-card" style="background: rgba(168,85,247,0.08); border: 1px solid rgba(168,85,247,0.3); border-radius: 20px; padding: 35px 30px; display: flex; gap: 25px; align-items: flex-start; position: relative; overflow: hidden; box-shadow: none; transition: transform 0.3s ease;">
-                    <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 6px; background: #a855f7;"></div>
-                    <div style="width: 65px; height: 65px; background: rgba(168,85,247,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid rgba(168,85,247,0.3);">
-                        <i data-lucide="merge" style="color: #a855f7; width: 32px; height: 32px;"></i>
-                    </div>
-                    <div>
-                        <h3 style="color: white; font-size: 1.4rem; margin-bottom: 12px; margin-top: 5px;">Kết hợp quản trị và công nghệ</h3>
-                        <p style="color: var(--text-muted); line-height: 1.7; margin: 0; font-size: 1.05rem;">Chúng tôi tích hợp Lean, Digital, AI và tự động hóa thành một hệ thống thống nhất, thay vì triển khai từng giải pháp riêng lẻ.</p>
-                    </div>
-                </div>
-                
-                <!-- Card 4: Green -->
-                <div class="layer-card" style="background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.3); border-radius: 20px; padding: 35px 30px; display: flex; gap: 25px; align-items: flex-start; position: relative; overflow: hidden; box-shadow: none; transition: transform 0.3s ease;">
-                    <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 6px; background: #10b981;"></div>
-                    <div style="width: 65px; height: 65px; background: rgba(16,185,129,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid rgba(16,185,129,0.3);">
-                        <i data-lucide="handshake" style="color: #10b981; width: 32px; height: 32px;"></i>
-                    </div>
-                    <div>
-                        <h3 style="color: white; font-size: 1.4rem; margin-bottom: 12px; margin-top: 5px;">Xây dựng năng lực nội tại</h3>
-                        <p style="color: var(--text-muted); line-height: 1.7; margin: 0; font-size: 1.05rem;">Thay vì chỉ xử lý vấn đề trước mắt, INVAMAX giúp doanh nghiệp xây dựng một hệ thống có khả năng tự vận hành, tự cải tiến, hướng tới một nhà máy linh hoạt, hiệu quả và bền vững.</p>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 5: TRUNG TÂM TRI THỨC -->
-        <section class="section" style="padding: 70px 0; background: var(--bg-color); border-radius: 16px;">
-        <div class="container" style="text-align: center;">
-            <div style="margin-bottom: 25px;">
-                <h2 style="font-size: 2.2rem; margin-bottom: 30px; font-weight: 800; color: white;">Trung tâm tri thức INVAMAX</h2>
-                <div style="margin-bottom: 20px;">
-                    <i data-lucide="book-open" style="color: var(--primary); width: 40px; height: 40px;"></i>
-                </div>
-                <p style="color: var(--text-muted); font-size: 1.15rem; max-width: 800px; margin: 0 auto; line-height: 1.7;">Kiến thức, công cụ và kinh nghiệm thực tiễn dành cho nhà quản lý sản xuất.<br>Khám phá hệ thống bài viết chuyên môn, case study, toolkit, tài liệu thực hành và video về quản trị sản xuất, Factory Operating Model™, INVAMAX FOS™, Lean, AI và chuyển đổi mô hình vận hành nhà máy.</p>
-            </div>
-            
-            <div style="display: flex; justify-content: center; gap: 12px; margin-bottom: 40px; flex-wrap: wrap;">
-                    <span style="background: rgba(255,255,255,0.05); color: white; border: 1px solid rgba(255,255,255,0.1); padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 0.95rem;">Bài viết</span>
-                    <span style="background: rgba(255,255,255,0.05); color: white; border: 1px solid rgba(255,255,255,0.1); padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 0.95rem;">Case Study</span>
-                    <span style="background: rgba(255,255,255,0.05); color: white; border: 1px solid rgba(255,255,255,0.1); padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 0.95rem;">Toolkit & Tài liệu</span>
-                    <span style="background: rgba(255,255,255,0.05); color: white; border: 1px solid rgba(255,255,255,0.1); padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 0.95rem;">Video</span>
-                </div>
-                
-                <a href="tri-thuc.html" class="btn btn-outline-custom" style="padding: 14px 30px; font-size: 1.1rem; border-radius: 24px; display: inline-flex; align-items: center; gap: 10px; text-decoration: none;">
-                    Khám phá Trung tâm Tri thức <i data-lucide="arrow-right" style="width: 18px; height: 18px;"></i>
+            <div class="grid-4" style="margin-bottom: 40px;">
+                <!-- FA -->
+                <a href="../vi/invamax-fa.html"  class="value-card capability-card-link" >
+                    <div style="width: 56px; height: 56px; border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px auto; font-size: 1.2rem; font-weight: 700; color: var(--text-white);">FA&trade;</div>
+                    <h3 style="color: var(--text-white); font-size: 1.1rem; margin-bottom: 8px;">INVAMAX FA&trade;</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0 0 4px 0;">Khung Đánh giá<br>Năng lực Nhà máy</p>
+                    <p style="color: rgba(255,255,255,0.3); font-size: 0.75rem; margin-bottom: 24px;">được phát triển bởi INVAMAX</p>
+                    <div style="color: var(--primary); font-size: 0.9rem; font-weight: 600; margin-top: auto; display: flex; align-items: center; gap: 4px;">Tìm hiểu <i data-lucide="arrow-right" style="width: 14px;"></i></div>
+                </a>
+                <!-- FOS -->
+                <a href="../vi/fos.html"  class="value-card capability-card-link" >
+                    <div style="width: 56px; height: 56px; border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px auto; font-size: 1.2rem; font-weight: 700; color: var(--text-white);">FOS&trade;</div>
+                    <h3 style="color: var(--text-white); font-size: 1.1rem; margin-bottom: 8px;">INVAMAX FOS&trade;</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0 0 4px 0;">Hệ điều hành<br>Quản trị Nhà máy</p>
+                    <p style="color: rgba(255,255,255,0.3); font-size: 0.75rem; margin-bottom: 24px;">được phát triển bởi INVAMAX</p>
+                    <div style="color: var(--primary); font-size: 0.9rem; font-weight: 600; margin-top: auto; display: flex; align-items: center; gap: 4px;">Tìm hiểu <i data-lucide="arrow-right" style="width: 14px;"></i></div>
+                </a>
+                <!-- Lean -->
+                <a href="../vi/lean.html"  class="value-card capability-card-link" >
+                    <div style="width: 56px; height: 56px; border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px auto;"><i data-lucide="bar-chart-2" style="color: var(--text-white); width: 24px; height: 24px;"></i></div>
+                    <h3 style="color: var(--text-white); font-size: 1.1rem; margin-bottom: 8px;">Lean & Cải tiến<br>Liên tục</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px; padding: 0 10px;">Phương pháp và bộ công cụ quản trị, cải tiến sản xuất</p>
+                    <div style="color: var(--primary); font-size: 0.9rem; font-weight: 600; margin-top: auto; display: flex; align-items: center; gap: 4px;">Tìm hiểu <i data-lucide="arrow-right" style="width: 14px;"></i></div>
+                </a>
+                <!-- Platform -->
+                <a href="../vi/platform.html"  class="value-card capability-card-link" >
+                    <div style="width: 56px; height: 56px; border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px auto;"><i data-lucide="cloud" style="color: var(--text-white); width: 24px; height: 24px;"></i></div>
+                    <h3 style="color: var(--text-white); font-size: 1.1rem; margin-bottom: 8px;">INVAMAX Platform</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0 0 24px 0;">Nền tảng<br>Vận hành Số</p>
+                    <div style="color: var(--primary); font-size: 0.9rem; font-weight: 600; margin-top: auto; display: flex; align-items: center; gap: 4px;">Tìm hiểu <i data-lucide="arrow-right" style="width: 14px;"></i></div>
                 </a>
             </div>
-        </div>
-    </section>
-
-    <!-- SECTION 6: CTA CUỐI TRANG -->
-    <section class="section" style="padding: 25px 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.05);">
-        <div class="container">
-            <div class="footer-cta" style="max-width: 750px; margin: 0 auto;">
-                <h2 style="font-size: 1.25rem; margin-bottom: 15px; font-weight: 900; color: white; line-height: 1.3;">Bắt đầu từ việc hiểu đúng hiện trạng nhà máy</h2>
-                
-                <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6; margin-bottom: 20px;">Đăng ký Chương trình Khám bệnh Nhà máy để đánh giá sức khỏe hệ thống vận hành, nhận báo cáo chẩn đoán và xác định những lĩnh vực cần ưu tiên trước khi đầu tư vào các chương trình cải tiến, chuyển đổi hoặc ứng dụng AI.</p>
-                
-                <a href="dich-vu.html#kham-benh" class="btn-primary-custom" style="display: inline-flex; padding: 10px 20px; font-size: 1rem; font-weight: bold; border-radius: 24px; text-decoration: none; align-items: center; gap: 10px;">
-                    <i data-lucide="activity"></i> Khám bệnh Nhà máy
-                </a>
+            
+            <!-- Flow -->
+            <div class="cap-flow">
+                <div class="cap-flow-box">
+                    <div style="font-weight: 600; color: var(--text-white); margin-bottom: 8px; display: flex; align-items: center; justify-content: center; gap: 8px;"><i data-lucide="clipboard-check" style="width: 18px;"></i> INVAMAX FA&trade;</div>
+                    <div style="font-size: 0.9rem; color: var(--text-muted);">Đánh giá</div>
+                </div>
+                <i data-lucide="arrow-right" class="cap-flow-arrow"></i>
+                <div class="cap-flow-box">
+                    <div style="font-weight: 600; color: var(--text-white); margin-bottom: 8px; display: flex; align-items: center; justify-content: center; gap: 8px;"><i data-lucide="settings" style="width: 18px;"></i> INVAMAX FOS&trade; +<br>Lean & Cải tiến</div>
+                    <div style="font-size: 0.9rem; color: var(--text-muted);">Thiết kế & Cải tiến Hệ thống</div>
+                </div>
+                <i data-lucide="arrow-right" class="cap-flow-arrow"></i>
+                <div class="cap-flow-box">
+                    <div style="font-weight: 600; color: var(--text-white); margin-bottom: 8px; display: flex; align-items: center; justify-content: center; gap: 8px;"><i data-lucide="cloud" style="width: 18px;"></i> INVAMAX Platform</div>
+                    <div style="font-size: 0.9rem; color: var(--text-muted);">Số hóa & Duy trì Vận hành</div>
+                </div>
             </div>
         </div>
     </section>
+
+
+
+    <!-- 7. CTA CUỐI -->
+    <section class="site-section">
+        <div class="container text-center" style="max-width: 1200px;">
+            <h2 class="section-heading" style="font-size: 1.8rem; max-width: 900px; margin: 0 auto 24px auto; line-height: 1.4;">INVAMAX đang tìm kiếm những doanh nghiệp sản xuất<br>có tham vọng thay đổi vị thế trong ngành để cùng triển khai<br><span class="nowrap-desktop">chương trình Chuyển đổi Mô hình Vận hành Nhà máy.</span></h2>
+            <p style="font-size: 1.15rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 16px; max-width: 1000px; margin-left: auto; margin-right: auto;">Chúng tôi ưu tiên những doanh nghiệp có đối thủ cạnh tranh rõ ràng, ban lãnh đạo trực tiếp tham gia<br class="nowrap-desktop"> và sẵn sàng thay đổi hệ thống thực sự — không chỉ thực hiện một dự án cải tiến ngắn hạn.</p>
+            <p style="font-size: 1.15rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto;">Mục tiêu là cùng xây một năng lực vận hành mới đủ sức tạo ra lợi thế cạnh tranh mới.</p>
+            
+            <div class="cta-buttons" style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                <a href="../vi/factory-transformation.html" class="btn btn-primary" style="padding: 16px 32px; font-size: 1.1rem; font-weight: 600;">Khám phá Chuyển đổi mô hình vận hành nhà máy</a>
+                <a href="#" onclick="openContactModal(); return false;" class="btn btn-outline" style="padding: 16px 32px; font-size: 1.1rem; font-weight: 600; border: 1px solid var(--primary);">Trao đổi với INVAMAX</a>
+            </div>
+        </div>
+    </section>
+
+<!-- Footer -->
     
-    <section style="background: var(--bg-darker); padding: 40px 0 50px 0; text-align: center; border-radius: 16px;">
-        <div class="container">
-            <a href="index.html" class="btn btn-outline" style="display: inline-flex; padding: 12px 30px; font-size: 1.05rem; border-radius: 30px; text-decoration: none; align-items: center; gap: 8px; border: 1px solid rgba(255,255,255,0.1); color: var(--text-muted); transition: all 0.3s ease; transition: all 0.3s ease;" onmouseover="this.style.color='white'; this.style.borderColor='var(--primary)';" onmouseout="this.style.color='var(--text-muted)'; this.style.borderColor='rgba(255,255,255,0.1)';">
-                <i data-lucide="arrow-left" style="width: 18px; height: 18px;"></i> Quay lại trang chủ
-            </a>
-        </div>
-    </section>
+</main>
 
-<footer class="footer">
+<footer class="site-footer" style="padding: 0 0 30px 0; margin-top: 80px;">
     <div class="container">
-        <div class="footer-grid">
+        <div class="footer-grid" style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 40px;">
             <!-- Cột 1: Logo -->
             <div class="footer-col" style="text-align: center;">
                 <div style="margin-bottom: 0;">
-                    <a href="index.html" class="logo" style="display: inline-block; font-size: 2.4rem; line-height: 1; margin-bottom: 5px;">INVA<span>MAX</span></a>
+                    <a href="../vi/index.html" class="logo" style="display: inline-block; font-size: 2.4rem; line-height: 1; margin-bottom: 5px;">INVA<span>MAX</span></a>
                 </div>
-                <p class="text-muted" style="line-height: 1.6; max-width: 280px; margin: 0 auto;">Thiết kế mô hình vận hành. Chuẩn hóa hệ thống. Sẵn sàng cho AI.</p>
+                <p style="color: var(--text-muted); line-height: 1.6; max-width: 320px; margin: 0 auto;">Đối tác điều hành & Chuyển đổi mô hình vận hành nhà máy</p>
+            <h5 style="color: white; margin-bottom: 16px; margin-top: 32px; font-size: 0.95rem; font-weight: 600;">Kết nối với chúng tôi</h5>
+                <div class="social-links" style="display: flex; gap: 8px; justify-content: center;">
+                    <a href="https://www.linkedin.com/in/xuannhattran/" target="_blank" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 54px; height: 54px;    border-radius: 50%; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='#0A66C2'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    </a>
+                    <a href="https://www.youtube.com/@NguoiXayNen" target="_blank" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 54px; height: 54px;    border-radius: 50%; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='#ff0000'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                    </a>
+                    <a href="https://www.facebook.com/invamax.vanhanhtinhgon" target="_blank" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 54px; height: 54px;    border-radius: 50%; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='#1877F2'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                    </a>
+                    <a href="https://zalo.me/0988911869" target="_blank" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 54px; height: 54px;    border-radius: 50%; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='#0068FF'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
+                        <span style="font-size: 11px; font-weight: 800; font-family: 'Inter', sans-serif;">Zalo</span>
+                    </a>
+                </div>
             </div>
             
             <!-- Cột 2: Giải pháp -->
             <div class="footer-col">
                 <h4>Giải pháp</h4>
                 <div class="footer-links">
-                    <a href="dich-vu.html#kham-benh">Khám bệnh Nhà máy</a>
-<a href="kham-benh-online/gioi-thieu.html" style="text-align: left !important; padding-left: 45px !important; font-size: 0.82rem !important; font-weight: 400 !important; color: #94a3b8 !important; padding-top: 5px !important; padding-bottom: 5px !important; transition: color 0.2s;" onmouseover="this.style.color='#f97316'" onmouseout="this.style.color='#94a3b8'">- Khám bệnh online</a>
-<a href="kham-benh-truc-tiep/gioi-thieu.html" style="text-align: left !important; padding-left: 45px !important; font-size: 0.82rem !important; font-weight: 400 !important; color: #94a3b8 !important; padding-top: 5px !important; padding-bottom: 5px !important; transition: color 0.2s;" onmouseover="this.style.color='#f97316'" onmouseout="this.style.color='#94a3b8'">- Khám bệnh trực tiếp</a>
-                    <a href="dich-vu.html#thiet-ke">Mô hình vận hành nhà máy</a>
-                    <a href="dich-vu.html#fos">Hệ điều hành nhà máy</a>
-                    <a href="dich-vu.html#ai-digital">Số hoá & AI vận hành</a>
-                    <a href="san-pham.html">Thiết bị hỗ trợ sản xuất</a>
+                    <a href="../vi/factory-transformation.html">Chuyển đổi Mô hình Vận hành</a>
+                    <a href="../vi/operate-transform.html">Điều hành Nhà máy</a>
+                    <a href="../vi/factory-assessment.html">Đánh giá Năng lực Nhà máy</a>
+                    <a href="../vi/focused-improvement.html">Cải tiến Trọng điểm</a>
+                    <a href="../vi/digital-ai.html">Tự động hoá, Số hoá &amp; AI cho Sản xuất</a>
                 </div>
             </div>
             
-            <!-- Cột 3: Tri thức -->
+            <!-- Cột 3: Năng lực -->
             <div class="footer-col">
-                <h4>Tri thức</h4>
+                <h4>Năng lực</h4>
                 <div class="footer-links">
-                    <a href="kien-thuc.html">Bài viết</a>
-                    <a href="case-study.html">Case Study</a>
-                            <a href="thu-vien.html">Toolkit & Tài liệu</a>
-                            <a href="video.html">Video</a>
+                    <a href="../vi/invamax-fa.html">INVAMAX FA&trade;</a>
+                    <a href="../vi/fos.html">INVAMAX FOS&trade;</a>
+                    <a href="../vi/lean.html" style="white-space: nowrap;">Lean &amp; Cải tiến Liên tục</a>
+                    <a href="../vi/platform.html">INVAMAX Platform</a>
                 </div>
             </div>
             
@@ -587,7 +712,7 @@ INVAMAX FOS™ hướng tới việc xây dựng một hệ thống vận hành 
             <div class="footer-col">
                 <h4>Liên hệ</h4>
                 <p style="font-weight: 600; color: white; margin-bottom: 16px; font-size: 0.95rem;">CÔNG TY TNHH ĐẦU TƯ VÀ PHÁT TRIỂN INVAMAX</p>
-                <div class="contact-info" style="margin-bottom: 24px;">
+                <div class="contact-info" style="margin-bottom: 16px;">
                     <div class="contact-item">
                         <i data-lucide="file-text"></i>
                         <span>MST: 0202236953</span>
@@ -606,42 +731,35 @@ INVAMAX FOS™ hướng tới việc xây dựng một hệ thống vận hành 
                     </div>
                 </div>
                 
-                <h5 style="color: white; margin-bottom: 12px; font-size: 0.95rem; font-weight: 600;">Kết nối với chúng tôi</h5>
-                <div class="social-links" style="display: flex; gap: 12px;">
-                    <a href="https://zalo.me/0988911869" target="_blank" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='#0068FF'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
-                        <span style="font-size: 11px; font-weight: 800; font-family: 'Inter', sans-serif;">Zalo</span>
-                    </a>
-                    <a href="https://www.linkedin.com/in/xuannhattran/" target="_blank" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='#0A66C2'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                    </a>
-                    <a href="https://www.facebook.com/invamax.vanhanhtinhgon" target="_blank" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='#1877F2'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-                    </a>
-                    <a href="https://www.youtube.com/@NguoiXayNen" target="_blank" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='#ff0000'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
-                    </a>
-                </div>
+                
             </div>
         </div>
         
-        <div class="footer-bottom" style="text-align: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 24px; margin-top: 40px;">
-            <p style="font-size: 0.85rem; color: rgba(255,255,255,0.4); margin-bottom: 8px; letter-spacing: 0.5px;">INVAMAX Factory Diagnosis&trade; &bull; Factory Operating Model&trade; &bull; Factory Operating System&trade;</p>
+        <div class="footer-bottom" style="text-align: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 24px; margin-top: 24px;">
             <p style="color: var(--text-muted);">&copy; 2026 INVAMAX. All rights reserved.</p>
         </div>
     </div>
 </footer>
 
-    <script src="assets/js/main.js"></script>
-    <script>
-        lucide.createIcons();
-    </script>
+    
+
+    
+
+    <!-- Contact Modal -->
+    
+
+    
+    
+
+    
+
 
     <!-- Contact Modal -->
     <div id="contactModal" class="modal-overlay">
         <div class="modal-content">
             <button class="modal-close" onclick="closeContactModal()" style="font-size: 24px; line-height: 1; font-weight: bold;">&times;</button>
             <h2 style="font-size: 1.5rem; color: var(--primary); margin-bottom: 10px;">Đăng ký tư vấn</h2>
-            <p style="color: #64748b; margin-bottom: 20px; font-size: 0.95rem;">Vui lòng để lại thông tin, chuyên gia INVAMAX sẽ liên hệ lại với bạn trong 24h.</p>
+            <p style="color: #64748b; margin-bottom: 20px; font-size: 0.95rem;">Vui lòng để lại thông tin, chuyên gia INVAMAX sẽ liên hệ lại với bạn.</p>
             
             <form id="leadForm" onsubmit="submitForm(event)">
                 <div class="form-grid">
@@ -695,6 +813,7 @@ INVAMAX FOS™ hướng tới việc xây dựng một hệ thống vận hành 
                     <div class="form-group">
                         <label>Quy mô nhân sự *</label>
                         <select name="quyMo" required>
+                            <option value="">-- Chọn quy mô --</option>
                             <option value="Dưới 50 người">Dưới 50 người</option>
                             <option value="50 ~ 100 người">50 ~ 100 người</option>
                             <option value="101 ~ 200 người">101 ~ 200 người</option>
@@ -722,5 +841,9 @@ INVAMAX FOS™ hướng tới việc xây dựng một hệ thống vận hành 
         </div>
     </div>
 
+    <script src="../assets/js/main.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>
