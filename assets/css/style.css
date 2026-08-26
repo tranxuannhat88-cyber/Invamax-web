@@ -1491,3 +1491,15 @@ svg.lucide {
         padding: 16px !important;
     }
 }
+
+@media (max-width: 768px) {
+    /* Fix articles grid on mobile */
+    .articles-grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    /* Ensure article title is readable */
+    .articles-hero h1 {
+        font-size: 2.2rem !important;
+    }
+}
