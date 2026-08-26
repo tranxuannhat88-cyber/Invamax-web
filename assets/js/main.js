@@ -222,22 +222,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Language Switcher Logic
 window.switchLanguage = function(lang) {
-    const currentPath = window.location.pathname;
+    let currentPath = window.location.pathname;
     
-    // Only process if we're dealing with /vi/ or /en/
     if (lang === 'en') {
-        if (currentPath.includes('/vi/')) {
-            window.location.href = currentPath.replace('/vi/', '/en/');
+        if (currentPath === '/' || currentPath === '/index.html') {
+            window.location.href = '/en/';
+        } else if (currentPath.includes('/vi/')) {
+            let newPath = currentPath.replace('/vi/', '/en/');
+            if (newPath === '/en/index.html') newPath = '/en/';
+            window.location.href = newPath;
         } else if (!currentPath.includes('/en/')) {
-            // Fallback for root or unexpected paths
-            window.location.href = '/en/index.html';
+            window.location.href = '/en/';
         }
     } else if (lang === 'vi') {
         if (currentPath.includes('/en/')) {
-            window.location.href = currentPath.replace('/en/', '/vi/');
-        } else if (!currentPath.includes('/vi/')) {
-            // Fallback for root or unexpected paths
-            window.location.href = '/vi/index.html';
+            let newPath = currentPath.replace('/en/', '/vi/');
+            if (newPath === '/vi/index.html' || newPath === '/vi/') newPath = '/';
+            window.location.href = newPath;
+        } else if (!currentPath.includes('/vi/') && currentPath !== '/') {
+            window.location.href = '/';
         }
     }
 };
