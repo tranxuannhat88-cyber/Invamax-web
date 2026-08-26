@@ -176,8 +176,10 @@
         }
         
         .solution-card {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.05);
+            background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+            border: 1px solid rgba(255,255,255,0.12);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            backdrop-filter: blur(10px);
             border-radius: var(--radius-md);
             padding: 30px 24px;
             transition: all 0.3s ease;
@@ -186,9 +188,10 @@
             height: 100%;
         }
         .solution-card:hover {
-            border-color: rgba(255, 102, 0, 0.3);
-            background: rgba(255,255,255,0.03);
-            transform: translateY(-2px);
+            border-color: rgba(255, 102, 0, 0.6);
+            background: linear-gradient(145deg, rgba(255, 102, 0, 0.08), rgba(255,255,255,0.02));
+            transform: translateY(-5px);
+            box-shadow: 0 15px 45px rgba(255, 102, 0, 0.25);
         }
         .solution-number {
             color: var(--primary);
