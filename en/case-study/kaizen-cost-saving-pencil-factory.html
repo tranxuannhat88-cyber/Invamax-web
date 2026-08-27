@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Case Study: 42.3% Productivity Increase at Pencil Factory | INVAMAX</title>
-    <meta name="description" content="Case study on productivity improvement at a pencil factory: direct labor productivity increased from 742 to 1,056 UPH during 2022-2025 through operating system improvements.">
+    <title>Case Study: 432,873 USD Cost Improvement at Pencil Factory | INVAMAX</title>
+    <meta name="description" content="Kaizen Case study at a pencil manufacturing plant with 432,873 USD/year recorded improvement value during 2022–2025.">
     
     <link rel="canonical" href="https://invamax.com/en/">
     <link rel="alternate" hreflang="vi" href="https://invamax.com/vi/">
@@ -398,28 +398,39 @@
 
     <style>
     .grid-custom-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .grid-custom-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
     .feature-card { background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.12); padding: 24px 16px; border-radius: var(--radius-lg); backdrop-filter: blur(10px); box-shadow: 0 15px 35px rgba(0,0,0,0.4); transition: all 0.3s ease; }
     .feature-card:hover { border-color: rgba(255, 102, 0, 0.6); background: linear-gradient(145deg, rgba(255, 102, 0, 0.08), rgba(255,255,255,0.02)); transform: translateY(-5px); box-shadow: 0 15px 45px rgba(255, 102, 0, 0.25); }
-    .feature-card h3 { color: var(--text-white); margin-bottom: 16px; font-weight: 600; text-align: center; }
-    .section-heading {
-        font-size: 2.5rem;
-        color: var(--text-white);
-        margin-bottom: 16px;
-        line-height: 1.2;
+    .feature-card h3 { color: var(--text-white); margin-bottom: 16px; font-weight: 600; text-align: left; line-height: 1.4; }
+    .section-heading { font-size: 2.5rem; color: var(--text-white); margin-bottom: 16px; line-height: 1.2; }
+    .flow-arrow { display: flex; align-items: center; justify-content: center; color: var(--primary); padding: 10px; }
+    @media (max-width: 1200px) {
+        .grid-custom-4 { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 992px) {
         .grid-custom-3 { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 768px) {
-        .grid-custom-3 { grid-template-columns: 1fr !important; gap: 16px !important; }
+        .grid-custom-3, .grid-custom-4 { grid-template-columns: 1fr !important; gap: 16px !important; }
         .feature-card { padding: 16px !important; }
+        .flow-container { flex-direction: column; }
+        .flow-arrow { transform: rotate(90deg); padding: 5px; }
     }
-    </style>
-    <style>
-    .grid-custom-6 { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
-    @media (max-width: 1200px) { .grid-custom-6 { grid-template-columns: repeat(3, 1fr); gap: 20px; } }
-    @media (max-width: 768px) { .grid-custom-6 { grid-template-columns: repeat(2, 1fr); gap: 16px; } }
-    </style>
+    
+
+.roadmap-wrapper { position: relative; }
+.roadmap-grid { position: relative; z-index: 2; }
+.roadmap-item { display: flex; flex-direction: column; }
+.roadmap-item .feature-card { flex-grow: 1; margin-top: 30px; }
+.roadmap-point { text-align: center; position: relative; display: flex; flex-direction: column; align-items: center; }
+.roadmap-point .dot { width: 20px; height: 20px; background: #0f172a; border: 3px solid var(--primary); border-radius: 50%; margin: 0 auto 12px auto; box-shadow: 0 0 10px rgba(255, 102, 0, 0.4); position: relative; z-index: 3; }
+.roadmap-point .year { color: var(--primary); font-size: 2rem; font-weight: 800; line-height: 1; font-family: inherit; }
+@media (min-width: 993px) {
+    .roadmap-wrapper::before { content: ''; position: absolute; top: 10px; left: 12.5%; right: 12.5%; height: 2px; background: rgba(255, 102, 0, 0.4); z-index: 1; }
+}
+
+</style>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
@@ -473,140 +484,112 @@
     <!-- HERO -->
     <section class="site-section" style="padding: 120px 0 60px 0;">
         <div class="container text-center">
-            <div style="font-size: 1.25rem; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 24px;">CASE STUDY 01</div>
+            <div style="font-size: 1.25rem; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 24px;">CASE STUDY 02</div>
             <div style="display: inline-block; padding: 6px 16px; border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px; font-weight: 500; letter-spacing: 1px;">
-                INVAMAX FOS | Productivity Improvement | 2022–2025
+                INVAMAX FOS | Kaizen & Cost Improvement | 2022–2025
             </div>
             <h1 class="hero-h1" style="font-size: 3.5rem; font-weight: 800; color: var(--text-white); line-height: 1.2; margin-bottom: 24px; max-width: 1000px; margin-left: auto; margin-right: auto;">
-                <span style="color: var(--primary);">42.3% Productivity Increase</span> at Pencil Factory
+                <span style="color: var(--primary);">432,873 USD/year</span> Improvement Value at Pencil Factory
             </h1>
             
             <p style="font-size: 1.25rem; color: var(--text-muted); max-width: 700px; margin: 0 auto 60px auto; line-height: 1.6;">
-                From 742 to 1,056 UPH after 4 years of continuous operating system improvement.
+                4 years of continuously eliminating waste, optimizing resources, and improving the operating system.
             </p>
 
-            <div class="grid-custom-3" style="max-width: 900px; margin: 0 auto;">
+            <div class="grid-custom-3" style="max-width: 900px; margin: 0 auto; margin-bottom: 24px;">
                 <div class="feature-card" style="text-align: center; padding: 32px 24px;">
-                    <div style="font-size: 3.5rem; font-weight: 800; color: var(--primary); margin-bottom: 12px; line-height: 1;">+42.3%</div>
-                    <div style="font-size: 1.1rem; color: var(--text-white); font-weight: 600;">Labor Productivity</div>
+                    <div style="font-size: 2.8rem; font-weight: 800; color: var(--primary); margin-bottom: 12px; line-height: 1;">432,873 <span style="font-size: 1.5rem;">USD/year</span></div>
+                    <div style="font-size: 1.1rem; color: var(--text-white); font-weight: 600;">Total recorded value 2022–2025</div>
                 </div>
                 <div class="feature-card" style="text-align: center; padding: 32px 24px;">
-                    <div style="font-size: 3.5rem; font-weight: 800; color: var(--primary); margin-bottom: 12px; line-height: 1;">1,056</div>
-                    <div style="font-size: 1.1rem; color: var(--text-white); font-weight: 600;">UPH (Units/Labor/Hour)</div>
+                    <div style="font-size: 3.5rem; font-weight: 800; color: var(--primary); margin-bottom: 12px; line-height: 1;">217</div>
+                    <div style="font-size: 1.1rem; color: var(--text-white); font-weight: 600;">Kaizens applied 2022–2025</div>
                 </div>
                 <div class="feature-card" style="text-align: center; padding: 32px 24px;">
-                    <div style="font-size: 3.5rem; font-weight: 800; color: var(--primary); margin-bottom: 12px; line-height: 1;">4 Years</div>
-                    <div style="font-size: 1.1rem; color: var(--text-white); font-weight: 600;">Continuous Improvement</div>
+                    <div style="font-size: 3.5rem; font-weight: 800; color: var(--primary); margin-bottom: 12px; line-height: 1;">4 years</div>
+                    <div style="font-size: 1.1rem; color: var(--text-white); font-weight: 600;">Continuous improvement</div>
                 </div>
             </div>
+            <p style="font-size: 0.95rem; color: var(--text-muted); max-width: 800px; margin: 0 auto; font-style: italic;">
+                * The value is recorded as annualized savings in each year's report, not accumulated cash value over 4 years.
+            </p>
         </div>
     </section>
 
     <!-- CHART -->
     <section class="site-section" style="padding-top: 20px;">
         <div class="container">
-            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); border-radius: var(--radius-lg); padding: 40px; position: relative; max-width: 1000px; margin: 0 auto;">
-                <div style="position: absolute; top: 20px; right: 30px; display: flex; align-items: center; gap: 8px;">
-                    <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--primary);"></div>
-                    <span style="color: var(--text-muted); font-size: 0.9rem; font-weight: 500;">Productivity (UPH)</span>
+            <div style="background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 15px 35px rgba(0,0,0,0.4); backdrop-filter: blur(10px); border-radius: var(--radius-lg); padding: 40px; position: relative; max-width: 1000px; margin: 0 auto;">
+                <h3 style="text-align: center; color: var(--text-white); font-size: 1.5rem; margin-bottom: 30px; font-weight: 700;">Recorded Improvement Value 2022–2025</h3>
+                <div style="position: absolute; top: 90px; right: 40px; display: flex; align-items: center; gap: 8px;">
+                    <div style="width: 12px; height: 12px; border-radius: 2px; background: var(--primary);"></div>
+                    <span style="color: var(--text-muted); font-size: 0.9rem; font-weight: 500;">USD/year</span>
                 </div>
                 <div style="height: 400px; width: 100%;">
-                    <canvas id="productivityChart"></canvas>
+                    <canvas id="savingsChart"></canvas>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- BÀI TOÁN -->
+        <!-- 4 YEARS -->
     <section class="site-section">
         <div class="container">
-            <div style="max-width: 800px; margin: 0 auto;">
-                <h2 class="section-heading text-center" style="margin-bottom: 40px;">The Problem</h2>
-                <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 24px;">At a pencil manufacturing plant, productivity is not only limited by the workers' speed but also by multiple factors in the operating system: management structure, resource allocation, lost time during shifts, bottlenecks between stages, layout, and production flow.</p>
-                <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-white); margin-bottom: 40px; font-weight: 500;">Therefore, the goal is not to demand workers to work faster, but to:</p>
-                
-                <div style="background: rgba(255,255,255,0.03); border-left: 4px solid var(--primary); padding: 32px 40px; border-radius: 0 var(--radius-lg) var(--radius-lg) 0;">
-                    <p style="font-size: 1.4rem; font-weight: 600; color: var(--text-white); margin: 0; line-height: 1.6; font-style: italic;">"Eliminate factors that make one labor hour generate less value than the system's actual capacity."</p>
+            <h2 class="section-heading text-center" style="margin-bottom: 60px;">11 High-Value Kaizen Cases</h2>
+            
+            <div style="background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 15px 35px rgba(0,0,0,0.4); backdrop-filter: blur(10px); border-radius: var(--radius-lg); padding: 40px; position: relative; max-width: 1000px; margin: 0 auto;">
+                <div style="position: absolute; top: 20px; right: 40px; display: flex; align-items: center; gap: 8px;">
+                    <div style="width: 12px; height: 12px; border-radius: 2px; background: var(--primary);"></div>
+                    <span style="color: var(--text-muted); font-size: 0.9rem; font-weight: 500;">USD/year</span>
+                </div>
+                <div style="height: 500px; width: 100%;">
+                    <canvas id="kaizenChart"></canvas>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- GIẢI PHÁP -->
-    <section class="site-section" style="background-color: var(--bg-darker);">
-        <div class="container">
-            <h2 class="section-heading text-center" style="margin-bottom: 60px;">System Improvement Over Task Improvement</h2>
+    <!-- FLOW -->
+    <section class="site-section">
+        <div class="container text-center">
+            <h2 class="section-heading" style="margin-bottom: 60px;">How Improvement Creates Value</h2>
             
-            <div class="grid-custom-6" style="row-gap: 24px;">
-                <div class="feature-card" style="padding: 24px 16px;">
-                    <div class="solution-number" style="font-size: 2rem; color: var(--primary); font-weight: 800; margin-bottom: 12px; line-height: 1;">01</div>
-                    <h3 style="text-align: left; margin-bottom: 8px; font-size: 1.15rem; line-height: 1.3;">Production<br>Organization</h3>
-                    <p style="color: var(--text-muted); line-height: 1.5; font-size: 0.9rem;">Reorganize stage management and increase resource coordination capacity.</p>
+            <div class="flow-container" style="display: flex; justify-content: center; align-items: stretch; flex-wrap: wrap; margin-bottom: 60px; max-width: 1000px; margin-left: auto; margin-right: auto;">
+                <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 16px 20px; border-radius: var(--radius-md); font-weight: 600; color: var(--text-white); text-align: center; flex: 1; min-width: 130px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <i data-lucide="eye" style="margin-bottom: 12px; color: var(--primary);"></i>
+                    Spotting Waste
                 </div>
-                
-                <div class="feature-card" style="padding: 24px 16px;">
-                    <div class="solution-number" style="font-size: 2rem; color: var(--primary); font-weight: 800; margin-bottom: 12px; line-height: 1;">02</div>
-                    <h3 style="text-align: left; margin-bottom: 8px; font-size: 1.15rem; line-height: 1.3;">Manpower &<br>Capacity</h3>
-                    <p style="color: var(--text-muted); line-height: 1.5; font-size: 0.9rem;">Measure actual productivity, control labor hours and deploy personnel based on demand.</p>
+                <div class="flow-arrow" style="align-self: center;"><i data-lucide="arrow-right"></i></div>
+                <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 16px 20px; border-radius: var(--radius-md); font-weight: 600; color: var(--text-white); text-align: center; flex: 1; min-width: 130px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <i data-lucide="search" style="margin-bottom: 12px; color: var(--primary);"></i>
+                    Root Cause
                 </div>
-
-                <div class="feature-card" style="padding: 24px 16px;">
-                    <div class="solution-number" style="font-size: 2rem; color: var(--primary); font-weight: 800; margin-bottom: 12px; line-height: 1;">03</div>
-                    <h3 style="text-align: left; margin-bottom: 8px; font-size: 1.15rem; line-height: 1.3;">Flow</h3>
-                    <p style="color: var(--text-muted); line-height: 1.5; font-size: 0.9rem;">Improve layout, resolve bottlenecks and shorten the production flow.</p>
+                <div class="flow-arrow" style="align-self: center;"><i data-lucide="arrow-right"></i></div>
+                <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 16px 20px; border-radius: var(--radius-md); font-weight: 600; color: var(--text-white); text-align: center; flex: 1; min-width: 130px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <i data-lucide="wrench" style="margin-bottom: 12px; color: var(--primary);"></i>
+                    Kaizen Test
                 </div>
-
-                <div class="feature-card" style="padding: 24px 16px;">
-                    <div class="solution-number" style="font-size: 2rem; color: var(--primary); font-weight: 800; margin-bottom: 12px; line-height: 1;">04</div>
-                    <h3 style="text-align: left; margin-bottom: 8px; font-size: 1.15rem; line-height: 1.3;">Waste<br>Elimination</h3>
-                    <p style="color: var(--text-muted); line-height: 1.5; font-size: 0.9rem;">Reduce waiting, transportation, motion and non-value-adding tasks.</p>
+                <div class="flow-arrow" style="align-self: center;"><i data-lucide="arrow-right"></i></div>
+                <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 16px 20px; border-radius: var(--radius-md); font-weight: 600; color: var(--text-white); text-align: center; flex: 1; min-width: 130px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <i data-lucide="bar-chart-2" style="margin-bottom: 12px; color: var(--primary);"></i>
+                    Measure Impact
                 </div>
-
-                <div class="feature-card" style="padding: 24px 16px;">
-                    <div class="solution-number" style="font-size: 2rem; color: var(--primary); font-weight: 800; margin-bottom: 12px; line-height: 1;">05</div>
-                    <h3 style="text-align: left; margin-bottom: 8px; font-size: 1.15rem; line-height: 1.3;">Standard &<br>Kaizen</h3>
-                    <p style="color: var(--text-muted); line-height: 1.5; font-size: 0.9rem;">Standardize effective solutions and replicate them across other stages.</p>
+                <div class="flow-arrow" style="align-self: center;"><i data-lucide="arrow-right"></i></div>
+                <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 16px 20px; border-radius: var(--radius-md); font-weight: 600; color: var(--text-white); text-align: center; flex: 1; min-width: 130px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <i data-lucide="file-check" style="margin-bottom: 12px; color: var(--primary);"></i>
+                    Standardize
                 </div>
-
-                <div class="feature-card" style="padding: 24px 16px;">
-                    <div class="solution-number" style="font-size: 2rem; color: var(--primary); font-weight: 800; margin-bottom: 12px; line-height: 1;">06</div>
-                    <h3 style="text-align: left; margin-bottom: 8px; font-size: 1.15rem; line-height: 1.3;">Digital</h3>
-                    <p style="color: var(--text-muted); line-height: 1.5; font-size: 0.9rem;">Digitize shop-floor production data to support Daily Management.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- KẾT QUẢ -->
-    <section class="site-section" style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-        <div class="container text-center" style="max-width: 900px; margin: 0 auto;">
-            <h2 style="font-size: 5rem; font-weight: 800; color: var(--text-white); margin-bottom: 16px; line-height: 1;">742 <span style="color: rgba(255,255,255,0.2); font-weight: 300;">&rarr;</span> 1,056 <span style="font-size: 2.5rem; color: var(--primary);">UPH</span></h2>
-            <p style="font-size: 1.6rem; color: var(--primary); font-weight: 700; margin-bottom: 60px; letter-spacing: -0.5px;">+42.3% direct labor productivity</p>
-            
-            <div style="display: flex; justify-content: space-around; gap: 20px; margin-bottom: 60px; flex-wrap: wrap; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 40px 20px; border-radius: var(--radius-lg);">
-                <div style="flex: 1; min-width: 120px;">
-                    <div style="color: var(--text-muted); font-size: 1.1rem; font-weight: 600; margin-bottom: 8px;">2022</div>
-                    <div style="font-size: 1.5rem; color: var(--text-white); font-weight: 700;">742 UPH</div>
-                </div>
-                <div style="flex: 1; min-width: 120px; position: relative;">
-                    <div style="position: absolute; left: 0; top: 20%; bottom: 20%; width: 1px; background: rgba(255,255,255,0.1);"></div>
-                    <div style="color: var(--text-muted); font-size: 1.1rem; font-weight: 600; margin-bottom: 8px;">2023</div>
-                    <div style="font-size: 1.5rem; color: var(--text-white); font-weight: 700;">860 UPH</div>
-                </div>
-                <div style="flex: 1; min-width: 120px; position: relative;">
-                    <div style="position: absolute; left: 0; top: 20%; bottom: 20%; width: 1px; background: rgba(255,255,255,0.1);"></div>
-                    <div style="color: var(--text-muted); font-size: 1.1rem; font-weight: 600; margin-bottom: 8px;">2024</div>
-                    <div style="font-size: 1.5rem; color: var(--text-white); font-weight: 700;">937 UPH</div>
-                </div>
-                <div style="flex: 1; min-width: 120px; position: relative;">
-                    <div style="position: absolute; left: 0; top: 20%; bottom: 20%; width: 1px; background: rgba(255, 102, 0, 0.3);"></div>
-                    <div style="color: var(--primary); font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;">2025</div>
-                    <div style="font-size: 1.8rem; color: var(--text-white); font-weight: 800;">1,056 UPH</div>
+                <div class="flow-arrow" style="align-self: center;"><i data-lucide="arrow-right"></i></div>
+                <div style="background: rgba(255, 102, 0, 0.1); border: 1px solid rgba(255, 102, 0, 0.3); padding: 16px 20px; border-radius: var(--radius-md); font-weight: 600; color: var(--text-white); text-align: center; flex: 1; min-width: 130px; display: flex; flex-direction: column; align-items: center; box-shadow: 0 0 20px rgba(255, 102, 0, 0.15);">
+                    <i data-lucide="copy" style="margin-bottom: 12px; color: var(--primary);"></i>
+                    Replicate
                 </div>
             </div>
 
             <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-muted); max-width: 800px; margin: 0 auto; text-align: justify;">
-                The result does not come from a single Kaizen event, but from a <strong>continuous process of improving organization, manpower utilization, flow, work standards, and operational data</strong> (2022–2025).
+                Improvement value does not come from a single large project.<br><br>
+                Over 4 years, the factory continuously addressed various forms of waste: redundant manpower, waiting time, transportation, suboptimal layouts, material consumption, downtime, and unnecessary tasks.<br><br>
+                When improvements are measured, standardized, and replicated, small changes on the shop floor accumulate into significant value for the entire system.
             </p>
         </div>
     </section>
@@ -616,13 +599,21 @@
         <div class="container text-center">
             <div style="max-width: 1000px; margin: 0 auto 60px auto;">
                 <h2 style="font-size: 2.5rem; font-weight: 700; color: var(--text-white); line-height: 1.4; margin-bottom: 32px;">
-                    “Increasing productivity doesn't mean making people run faster.<br>
-                    It means making the operating system run lighter.”
+                    “432,873 USD/year doesn't come from a mega project.<br>
+                    It is the result of a series of problems being spotted, solved, and replicated.”
                 </h2>
+                <div style="display: inline-block; padding: 12px 32px; border: 1px solid rgba(255, 102, 0, 0.3); border-radius: 40px; color: var(--primary); font-weight: 600; font-size: 1.15rem; letter-spacing: 1px; background: rgba(234, 88, 12, 0.05);">
+                    INVAMAX FOS — Build a solid foundation, operate with ease.
+                </div>
             </div>
 
-            <div style="display: flex; justify-content: center; margin-bottom: 40px;">
-                <a href="#" onclick="openContactModal(); return false;" class="btn btn-primary" style="padding: 16px 40px; font-weight: 600; font-size: 1.15rem;">Talk to INVAMAX</a>
+            <div style="max-width: 800px; margin: 0 auto; padding: 56px 40px;">
+                <h2 style="font-size: 2rem; font-weight: 700; color: var(--text-white); margin-bottom: 16px;">Where is your factory losing money?</h2>
+                <p style="font-size: 1.15rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 40px;">Not all waste appears on financial statements. It can hide in manpower, waiting times, layout, inventory, motion, downtime, or production flow.</p>
+                
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <a href="#" onclick="openContactModal(); return false;" class="btn btn-primary" style="padding: 16px 40px; font-weight: 600; font-size: 1.15rem;">Talk to INVAMAX</a>
+                </div>
             </div>
         </div>
     </section>
@@ -630,36 +621,63 @@
     <!-- CHART JS INIT -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const ctx = document.getElementById('productivityChart').getContext('2d');
-            
-            let gradient = ctx.createLinearGradient(0, 0, 0, 400);
-            gradient.addColorStop(0, 'rgba(234, 88, 12, 0.4)');
-            gradient.addColorStop(1, 'rgba(234, 88, 12, 0.0)');
-            
+            const valuePlugin = {
+                id: 'valuePlugin',
+                afterDatasetsDraw: (chart, args, options) => {
+                    const ctx = chart.ctx;
+                    ctx.font = 'bold 13px Inter, sans-serif';
+
+                    chart.data.datasets.forEach((dataset, i) => {
+                        const meta = chart.getDatasetMeta(i);
+                        meta.data.forEach((bar, index) => {
+                            const data = dataset.data[index];
+                            let numStr = new Intl.NumberFormat('en-US').format(data);
+                            
+                            if (chart.config.options.indexAxis === 'y') {
+                                ctx.textAlign = 'left';
+                                ctx.textBaseline = 'middle';
+                                
+                                // Draw number in orange
+                                ctx.fillStyle = '#ea580c';
+                                ctx.fillText(numStr, bar.x + 8, bar.y);
+                                
+                                // Draw year in white
+                                if (dataset.years && dataset.years[index]) {
+                                    let numWidth = ctx.measureText(numStr).width;
+                                    ctx.fillStyle = '#ffffff';
+                                    ctx.fillText(' (' + dataset.years[index] + ')', bar.x + 8 + numWidth, bar.y);
+                                }
+                            } else {
+                                ctx.textAlign = 'center';
+                                ctx.textBaseline = 'bottom';
+                                ctx.fillStyle = '#ea580c';
+                                ctx.fillText(numStr, bar.x, bar.y - 8);
+                            }
+                        });
+                    });
+                }
+            };
+
+            const ctx = document.getElementById('savingsChart').getContext('2d');
             const data = {
                 labels: ['2022', '2023', '2024', '2025'],
                 datasets: [{
-                    label: 'Productivity (UPH)',
-                    data: [742, 860, 937, 1056],
-                    borderColor: '#ea580c',
-                    backgroundColor: gradient,
-                    borderWidth: 4,
-                    pointBackgroundColor: '#18231E',
-                    pointBorderColor: '#ea580c',
-                    pointBorderWidth: 3,
-                    pointRadius: 6,
-                    pointHoverRadius: 8,
-                    fill: true,
-                    tension: 0.3
+                    label: 'Value (USD/year)',
+                    data: [192200, 69343, 58110, 113220],
+                    backgroundColor: '#ea580c',
+                    borderRadius: 6,
+                    barPercentage: 0.6,
                 }]
             };
             
-            const config = {
-                type: 'line',
+            new Chart(ctx, {
+                type: 'bar',
                 data: data,
+                plugins: [valuePlugin],
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
+                    layout: { padding: { top: 30 } },
                     plugins: {
                         legend: { display: false },
                         tooltip: {
@@ -671,18 +689,75 @@
                             padding: 16,
                             displayColors: false,
                             callbacks: {
-                                label: function(context) { return context.parsed.y + ' UPH'; }
+                                label: function(context) { return new Intl.NumberFormat('en-US').format(context.parsed.y) + ' USD'; }
                             }
                         }
                     },
                     scales: {
-                        y: { beginAtZero: false, min: 600, grid: { color: 'rgba(255, 255, 255, 0.05)', drawBorder: false }, ticks: { color: '#94a3b8', font: { size: 13 }, padding: 10 } },
-                        x: { grid: { display: false, drawBorder: false }, ticks: { color: '#94a3b8', font: { size: 15, weight: 'bold' }, padding: 10 } }
-                    },
-                    interaction: { intersect: false, mode: 'index' },
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: 'rgba(255, 255, 255, 0.05)', drawBorder: false },
+                            ticks: { color: '#94a3b8', font: { size: 13, weight: '600' }, callback: function(value) { return value / 1000 + 'k'; } },
+                            suggestedMax: 220000
+                        },
+                        x: {
+                            grid: { display: false, drawBorder: false },
+                            ticks: { color: '#ffffff', font: { size: 14, weight: 'bold' } }
+                        }
+                    }
                 }
-            };
-            new Chart(ctx, config);
+            });
+
+            const ctxKaizen = document.getElementById('kaizenChart').getContext('2d');
+            new Chart(ctxKaizen, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        '01. Replicating Manpower Optimization', '02. MF#7 Manpower Structure Optimization', '03. Shift to Stage-Based Management', '04. Paint Stage Manpower Reduction', '05. MF#8,9 Manpower Optimization', '06. Acetone Consumption Reduction', '07. Working Time Control', '08. Finishing Stage Manpower Reduction', '09. Sanding & Shaping Machine Integration', '10. Sawdust System Operation Time Reduction', '11. Cutting – Printing Machine Shortening'
+                    ],
+                    datasets: [{
+                        label: 'Value (USD/year)',
+                        data: [113220, 71468, 35734, 30629, 29388, 27993, 22291, 22040, 18000, 13000, 12000],
+                        years: ['2025', '2022', '2022', '2022', '2023', '2022', '2022', '2023', '2024', '2024', '2024'],
+                        backgroundColor: '#ea580c',
+                        borderRadius: 4,
+                        barPercentage: 0.6,
+                    }]
+                },
+                plugins: [valuePlugin],
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    layout: { padding: { right: 100 } },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: 'rgba(15, 23, 42, 0.95)',
+                            titleColor: '#94a3b8',
+                            titleFont: { size: 14 },
+                            bodyColor: '#ffffff',
+                            bodyFont: { size: 16, weight: 'bold' },
+                            padding: 12,
+                            displayColors: false,
+                            callbacks: {
+                                label: function(context) { return new Intl.NumberFormat('en-US').format(context.parsed.x) + ' USD'; }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { color: 'rgba(255, 255, 255, 0.05)', drawBorder: false },
+                            ticks: { color: '#94a3b8', font: { size: 13 }, callback: function(val) { return val/1000 + 'k'; } },
+                            suggestedMax: 130000
+                        },
+                        y: {
+                            grid: { display: false, drawBorder: false },
+                            ticks: { color: '#ffffff', font: { size: 13, weight: '600' } }
+                        }
+                    }
+                }
+            });
         });
     </script>
 </main>
@@ -693,7 +768,7 @@
             <!-- Cột 1: Logo -->
             <div class="footer-col" style="text-align: center;">
                 <div style="margin-bottom: 0;">
-                    <a href="/en/" class="logo" style="display: inline-block; font-size: 2.4rem; line-height: 1; margin-bottom: 5px;">INVA<span>MAX</span></a>
+                    <a href="/en/case-studies.html" class="logo" style="display: inline-block; font-size: 2.4rem; line-height: 1; margin-bottom: 5px;">INVA<span>MAX</span></a>
                 </div>
                 <p style="color: var(--text-muted); line-height: 1.6; max-width: 320px; margin: 0 auto;">Manufacturing Operations & Transformation Partner</p>
             <h5 style="color: white; margin-bottom: 16px; margin-top: 32px; font-size: 0.95rem; font-weight: 600;">Connect with us</h5>

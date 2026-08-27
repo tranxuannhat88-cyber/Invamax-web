@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Case Study: 432.873 USD giá trị cải tiến tại nhà máy sản xuất bút chì | INVAMAX</title>
+    <meta name="description" content="Case study Kaizen tại nhà máy sản xuất bút chì với 432.873 USD/năm giá trị cải tiến được ghi nhận trong giai đoạn 2022–2025 từ tối ưu nhân lực, dòng chảy, thiết bị, vật tư và vận hành.">
+    
+    <link rel="canonical" href="https://invamax.com/">
+    <link rel="alternate" hreflang="vi" href="https://invamax.com/">
+    <link rel="alternate" hreflang="en" href="https://invamax.com/en/">
+    <link rel="alternate" hreflang="x-default" href="https://invamax.com/en/">
+    
+    <meta property="og:title" content="INVAMAX | Chuyển đổi Vận hành - Thay đổi Vị thế Thị trường">
+    <meta property="og:description" content="INVAMAX là đối tác Điều hành & Chuyển đổi Mô hình Vận hành, giúp doanh nghiệp sản xuất nâng cao hiệu quả và năng lực cạnh tranh.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://invamax.com/vi/">
+    <meta property="og:image" content="https://invamax.com/assets/images/logo.png">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="INVAMAX | Chuyển đổi Vận hành - Thay đổi Vị thế Thị trường">
+    <meta name="twitter:description" content="INVAMAX là đối tác Điều hành & Chuyển đổi Mô hình Vận hành, giúp doanh nghiệp sản xuất nâng cao hiệu quả và năng lực cạnh tranh.">
+    <meta name="twitter:image" content="https://invamax.com/assets/images/logo.png">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "INVAMAX",
+      "legalName": "INVAMAX INVESTMENT AND DEVELOPMENT CO., LTD",
+      "url": "https://invamax.com",
+      "logo": "https://invamax.com/assets/images/logo.png",
+      "description": "INVAMAX là đối tác Điều hành & Chuyển đổi Mô hình Vận hành dành cho doanh nghiệp sản xuất.",
+      "telephone": "0988.911.869",
+      "email": "info@invamax.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Thôn Đông Lôi, xã Vĩnh Thịnh",
+        "addressLocality": "TP Hải Phòng",
+        "addressCountry": "VN"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/invamax",
+        "https://www.facebook.com/invamax"
+      ]
+    }
+    </script>
+    
+    
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for the new homepage structure */
+        .hero-section {
+            padding: 120px 0 60px 0;
+            position: relative;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        @media (max-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .hero-eyebrow {
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            display: block;
+        }
+        .hero-h1 {
+            font-size: 3.5rem;
+            line-height: 1.15;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--text-white);
+            text-wrap: balance;
+        }
+        
+        .hero-desc {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 32px;
+            max-width: 90%;
+        }
+        /* Simulated Hero Image Placeholder */
+        .hero-image-placeholder {
+            background: linear-gradient(145deg, rgba(255,255,255,0.02) 0%, rgba(0,0,0,0.5) 100%);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: var(--radius-lg);
+            height: 450px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .hero-image-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            z-index: 1;
+        }
+        .mock-card {
+            position: absolute;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: var(--radius-sm);
+            padding: 12px;
+            z-index: 2;
+        }
+        /* Flow under hero */
+        .hero-flow {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        .flow-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 12px;
+            flex: 1;
+        }
+        .flow-arrow {
+            color: var(--text-muted);
+            opacity: 0.5;
+        }
+        @media (max-width: 768px) {
+            .flow-arrow {
+                transform: rotate(90deg);
+            }
+        }
+        /* Solutions Grid: 3 top, 2 bottom centered */
+        .solutions-grid-top {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+        .solutions-grid-bottom {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        @media (max-width: 992px) {
+            .solutions-grid-top, .solutions-grid-bottom {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 100%;
+            }
+        }
+        
+        .solution-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+            border: 1px solid rgba(255,255,255,0.12);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-md);
+            padding: 30px 24px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .solution-card:hover {
+            border-color: rgba(255, 102, 0, 0.6);
+            background: linear-gradient(145deg, rgba(255, 102, 0, 0.08), rgba(255,255,255,0.02));
+            transform: translateY(-5px);
+            box-shadow: 0 15px 45px rgba(255, 102, 0, 0.25);
+        }
+        .solution-number {
+            color: var(--primary);
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .solution-icon {
+            color: var(--text-white);
+            margin-bottom: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .solution-title {
+            color: var(--text-white);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            text-align: center;
+        }
+        .solution-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            flex-grow: 1;
+            margin-bottom: 24px;
+        }
+        .solution-link {
+            color: var(--primary);
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        /* Values Grid */
+        .value-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .value-card:hover {
+            border-color: rgba(255, 102, 0, 0.4);
+            box-shadow: 0 0 20px rgba(255, 102, 0, 0.15);
+            transform: translateY(-2px);
+        }
+        .value-title {
+            color: var(--text-white);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        /* Capability Flow */
+        .cap-flow {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 40px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 24px;
+            border-radius: var(--radius-lg);
+        }
+        .cap-flow-box {
+            flex: 1;
+            text-align: center;
+        }
+        .cap-flow-arrow {
+            color: var(--text-muted);
+            opacity: 0.5;
+        }
+        @media (max-width: 768px) {
+            .cap-flow-arrow { transform: rotate(90deg); margin: 10px 0;}
+        }
+        /* CTA Cards */
+        .cta-choice-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: var(--radius-md);
+            padding: 30px 24px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .cta-choice-title {
+            color: var(--text-white);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        /* Hero */
+        .hero-h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.2; color: var(--text-white); margin-bottom: 32px; }
+        .hero-desc { font-size: 1.15rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 32px; }
+        .badge-label { display: inline-block; padding: 6px 16px; border: 1px solid rgba(255, 102, 0, 0.3); border-radius: 20px; color: var(--primary); font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 24px; background: rgba(255, 102, 0, 0.05); }
+        /* RESTORED FIXES */
+        .hero-content { display: block !important; }
+        .grid-custom-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .feature-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 20px 16px; border-radius: var(--radius-lg); transition: transform 0.3s ease, border-color 0.3s ease; }
+        .feature-card:hover { border-color: rgba(255, 102, 0, 0.5); transform: translateY(-4px); box-shadow: 0 0 25px rgba(255, 102, 0, 0.15); }
+        .feature-card h3 { color: var(--text-white); font-size: 1.25rem; margin-bottom: 16px; font-weight: 600; text-align: center; }
+        .feature-highlight { color: var(--primary); font-weight: 600; margin-top: 16px; }
+        .section-heading {
+            font-size: 2.5rem;
+            color: var(--text-white);
+            margin-bottom: 16px;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        
+        /* 5 Column Grid for Solutions */
+        .solutions-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+        @media (max-width: 1200px) {
+            .solutions-grid-5 { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 992px) {
+            .solutions-grid-5 { grid-template-columns: repeat(2, 1fr); }
+        }
+        
+        @media (max-width: 992px) {
+            h2[style*="white-space: nowrap"] {
+                white-space: normal !important;
+            }
+        }
+        .nowrap-desktop { white-space: nowrap; }
+        @media (max-width: 991px) {
+            .nowrap-desktop { white-space: normal !important; }
+        }
+    </style>
+    
+    <style>
+        .capability-card-link {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 240px;
+            padding: 32px 16px;
+            text-decoration: none !important;
+            color: inherit !important;
+        }
+    </style>
+
+    <style>
+        @media (max-width: 768px) {
+            h1, h2, h3, .hero-platform h1, .hero-eyebrow, .hero-badge, .badge, .tagline, .card-title, .cta, .nowrap-desktop {
+                white-space: normal !important;
+            }
+        }
+    </style>
+
+<style>
+/* RESTORED MOBILE RULES FOR INDEX */
+
+    @media (max-width: 768px) {
+        .hero-flow { flex-direction: column; gap: 20px; }
+        .flow-arrow { transform: rotate(90deg); }
+        .solutions-grid-top, .solutions-grid-bottom { grid-template-columns: 1fr; }
+        .cap-flow { flex-direction: column; }
+        .cap-flow-arrow { transform: rotate(90deg); margin: 10px 0; }
+        .section-heading { font-size: 1.8rem; }
+        .solutions-grid-5 { grid-template-columns: 1fr; }
+    }
+    
+</style>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2K5VXNELTZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-2K5VXNELTZ');
+    </script>
+
+<style>
+/* Additional Mobile Fixes for Homepage */
+@media (max-width: 768px) {
+    .hero-h1 { font-size: 2.2rem !important; margin-bottom: 20px !important; }
+    .grid-custom-3 { grid-template-columns: 1fr !important; gap: 16px !important; }
+    .feature-card { padding: 16px !important; }
+}
+</style>
+
+    <style>
+    .grid-custom-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .grid-custom-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .feature-card { background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.12); padding: 24px 16px; border-radius: var(--radius-lg); backdrop-filter: blur(10px); box-shadow: 0 15px 35px rgba(0,0,0,0.4); transition: all 0.3s ease; }
+    .feature-card:hover { border-color: rgba(255, 102, 0, 0.6); background: linear-gradient(145deg, rgba(255, 102, 0, 0.08), rgba(255,255,255,0.02)); transform: translateY(-5px); box-shadow: 0 15px 45px rgba(255, 102, 0, 0.25); }
+    .feature-card h3 { color: var(--text-white); margin-bottom: 16px; font-weight: 600; text-align: left; line-height: 1.4; }
+    .section-heading { font-size: 2.5rem; color: var(--text-white); margin-bottom: 16px; line-height: 1.2; }
+    .flow-arrow { display: flex; align-items: center; justify-content: center; color: var(--primary); padding: 10px; }
+    @media (max-width: 1200px) {
+        .grid-custom-4 { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 992px) {
+        .grid-custom-3 { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+        .grid-custom-3, .grid-custom-4 { grid-template-columns: 1fr !important; gap: 16px !important; }
+        .feature-card { padding: 16px !important; }
+        .flow-container { flex-direction: column; }
+        .flow-arrow { transform: rotate(90deg); padding: 5px; }
+    }
+    
+
+.roadmap-wrapper { position: relative; }
+.roadmap-grid { position: relative; z-index: 2; }
+.roadmap-item { display: flex; flex-direction: column; }
+.roadmap-item .feature-card { flex-grow: 1; margin-top: 30px; }
+.roadmap-point { text-align: center; position: relative; display: flex; flex-direction: column; align-items: center; }
+.roadmap-point .dot { width: 20px; height: 20px; background: #0f172a; border: 3px solid var(--primary); border-radius: 50%; margin: 0 auto 12px auto; box-shadow: 0 0 10px rgba(255, 102, 0, 0.4); position: relative; z-index: 3; }
+.roadmap-point .year { color: var(--primary); font-size: 2rem; font-weight: 800; line-height: 1; font-family: inherit; }
+@media (min-width: 993px) {
+    .roadmap-wrapper::before { content: ''; position: absolute; top: 10px; left: 12.5%; right: 12.5%; height: 2px; background: rgba(255, 102, 0, 0.4); z-index: 1; }
+}
+
+</style>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="/vi/case-studies.html" class="logo">INVA<span>MAX</span></a>
+            <div class="nav-links">
+                <div class="nav-item"><a href="/vi/case-studies.html" class="nav-title" style="color: inherit; text-decoration: none;">Trang chủ</a></div>
+                <div class="nav-item">    
+                    <a href="#" class="nav-title" style="color: inherit; text-decoration: none;">Giải pháp <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i></a>
+                    <div class="nav-dropdown">
+                        <a href="../../vi/factory-transformation.html">Chuyển đổi Mô hình Vận hành</a>
+                        <a href="../../vi/operate-transform.html">Điều hành Nhà máy</a>
+                        <a href="../../vi/factory-assessment.html">Đánh giá Năng lực Nhà máy</a>
+                        <a href="../../vi/focused-improvement.html">Cải tiến Trọng điểm</a>
+                    <a href="../../vi/digital-ai.html">Tự động hoá, Số hoá &amp; AI cho Sản xuất</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-title" style="color: inherit; text-decoration: none;">Năng lực <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i></a>
+                    <div class="nav-dropdown">
+                        <a href="../../vi/invamax-fa.html">INVAMAX FA&trade; <span style="font-weight: normal; opacity: 0.8;">&mdash; Khung Đánh giá Năng lực Nhà máy</span></a>
+                        <a href="../../vi/fos.html">INVAMAX FOS&trade; <span style="font-weight: normal; opacity: 0.8;">&mdash; Hệ điều hành Quản trị Nhà máy</span></a>
+                        <a href="../../vi/lean.html">Lean &amp; Cải tiến Liên tục</a>
+                        <a href="../../vi/platform.html">INVAMAX Platform <span style="font-weight: normal; opacity: 0.8;">&mdash; Nền tảng Vận hành Số</span></a>
+                    </div>
+                </div>
+                <div class="nav-item"><a href="../../vi/case-studies.html" class="nav-title" style="color: inherit; text-decoration: none;">Case Study</a></div>
+                <div class="nav-item"><a href="../../vi/resources.html" class="nav-title" style="color: inherit; text-decoration: none;">Tài nguyên</a></div>
+                <div class="nav-item"><a href="../../vi/about.html" class="nav-title" style="color: inherit; text-decoration: none;">Triết lý INVAMAX</a></div>
+                
+                <div style="display: flex; flex-direction: row; align-items: center; gap: 16px; margin-left: 10px;">
+                    <div class="nav-item lang-switcher" style="display: flex; gap: 12px; align-items: center; font-size: 0.85rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 4px 12px; background: rgba(0,0,0,0.2);">
+                        <a href="/vi/case-studies.html" onclick="switchLanguage('vi');" style="display: flex; align-items: center; text-decoration: none; padding: 0; transition: 0.3s; color: var(--primary); font-weight: 600; opacity: 1;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='1'">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" width="18" height="12" style="border-radius: 2px; margin-right: 6px; box-shadow: 0 0 2px rgba(0,0,0,0.5);" alt="VN">Tiếng Việt
+                        </a>
+                        <span style="color: rgba(255,255,255,0.2);">/</span>
+                        <a href="/en/case-studies.html" onclick="switchLanguage('en');" style="display: flex; align-items: center; text-decoration: none; padding: 0; transition: 0.3s; color: var(--text-muted); opacity: 0.7;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" width="18" height="12" style="border-radius: 2px; margin-right: 6px; box-shadow: 0 0 2px rgba(0,0,0,0.5);" alt="EN">English
+                        </a>
+                    </div>
+                    <a href="#" class="btn btn-primary" style="display: none; padding: 4px 14px; border-radius: 20px; font-weight: 600; font-size: 0.8rem;">Đăng nhập</a>
+                </div>
+            </div>
+            <button class="mobile-menu-btn"><i data-lucide="menu"></i></button>
+        </div>
+    </nav>
+
+<main>
+    <!-- HERO -->
+    <section class="site-section" style="padding: 120px 0 60px 0;">
+        <div class="container text-center">
+            <div style="font-size: 1.25rem; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 24px;">CASE STUDY 02</div>
+            <div style="display: inline-block; padding: 6px 16px; border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px; font-weight: 500; letter-spacing: 1px;">
+                INVAMAX FOS | Kaizen & Cost Improvement | 2022–2025
+            </div>
+            <h1 class="hero-h1" style="font-size: 3.5rem; font-weight: 800; color: var(--text-white); line-height: 1.2; margin-bottom: 24px; max-width: 1000px; margin-left: auto; margin-right: auto;">
+                <span style="color: var(--primary);">432.873 USD/năm</span> giá trị cải tiến tại nhà máy sản xuất bút chì
+            </h1>
+            
+            <p style="font-size: 1.25rem; color: var(--text-muted); max-width: 700px; margin: 0 auto 60px auto; line-height: 1.6;">
+                4 năm liên tục loại bỏ lãng phí, tối ưu nguồn lực và cải thiện hệ thống vận hành.
+            </p>
+
+            <div class="grid-custom-3" style="max-width: 900px; margin: 0 auto; margin-bottom: 24px;">
+                <div class="feature-card" style="text-align: center; padding: 32px 24px;">
+                    <div style="font-size: 2.8rem; font-weight: 800; color: var(--primary); margin-bottom: 12px; line-height: 1;">432.873 <span style="font-size: 1.5rem;">USD/năm</span></div>
+                    <div style="font-size: 1.1rem; color: var(--text-white); font-weight: 600;">Tổng giá trị ghi nhận 2022–2025</div>
+                </div>
+                <div class="feature-card" style="text-align: center; padding: 32px 24px;">
+                    <div style="font-size: 3.5rem; font-weight: 800; color: var(--primary); margin-bottom: 12px; line-height: 1;">217</div>
+                    <div style="font-size: 1.1rem; color: var(--text-white); font-weight: 600;">Cải tiến được áp dụng 2022–2025</div>
+                </div>
+                <div class="feature-card" style="text-align: center; padding: 32px 24px;">
+                    <div style="font-size: 3.5rem; font-weight: 800; color: var(--primary); margin-bottom: 12px; line-height: 1;">4 năm</div>
+                    <div style="font-size: 1.1rem; color: var(--text-white); font-weight: 600;">Cải tiến liên tục</div>
+                </div>
+            </div>
+            <p style="font-size: 0.95rem; color: var(--text-muted); max-width: 800px; margin: 0 auto; font-style: italic;">
+                * Giá trị được ghi nhận theo annualized saving trong báo cáo từng năm, không phải giá trị tiền mặt cộng dồn trong 4 năm.
+            </p>
+        </div>
+    </section>
+
+    <!-- CHART -->
+    <section class="site-section" style="padding-top: 20px;">
+        <div class="container">
+            <div style="background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 15px 35px rgba(0,0,0,0.4); backdrop-filter: blur(10px); border-radius: var(--radius-lg); padding: 40px; position: relative; max-width: 1000px; margin: 0 auto;">
+                <h3 style="text-align: center; color: var(--text-white); font-size: 1.5rem; margin-bottom: 30px; font-weight: 700;">Giá trị cải tiến ghi nhận 2022–2025</h3>
+                <div style="position: absolute; top: 90px; right: 40px; display: flex; align-items: center; gap: 8px;">
+                    <div style="width: 12px; height: 12px; border-radius: 2px; background: var(--primary);"></div>
+                    <span style="color: var(--text-muted); font-size: 0.9rem; font-weight: 500;">USD/năm</span>
+                </div>
+                <div style="height: 400px; width: 100%;">
+                    <canvas id="savingsChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- 4 NĂM TIẾN TRÌNH -->
+    <section class="site-section">
+        <div class="container">
+            <h2 class="section-heading text-center" style="margin-bottom: 60px;">11 Kaizen tiêu biểu có giá trị cao nhất</h2>
+            
+            <div style="background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 15px 35px rgba(0,0,0,0.4); backdrop-filter: blur(10px); border-radius: var(--radius-lg); padding: 40px; position: relative; max-width: 1000px; margin: 0 auto;">
+                <div style="position: absolute; top: 20px; right: 40px; display: flex; align-items: center; gap: 8px;">
+                    <div style="width: 12px; height: 12px; border-radius: 2px; background: var(--primary);"></div>
+                    <span style="color: var(--text-muted); font-size: 0.9rem; font-weight: 500;">USD/năm</span>
+                </div>
+                <div style="height: 500px; width: 100%;">
+                    <canvas id="kaizenChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FLOW -->
+    <section class="site-section">
+        <div class="container text-center">
+            <h2 class="section-heading" style="margin-bottom: 60px;">Cải tiến tạo giá trị như thế nào?</h2>
+            
+            <div class="flow-container" style="display: flex; justify-content: center; align-items: stretch; flex-wrap: wrap; margin-bottom: 60px; max-width: 1000px; margin-left: auto; margin-right: auto;">
+                <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 16px 20px; border-radius: var(--radius-md); font-weight: 600; color: var(--text-white); text-align: center; flex: 1; min-width: 130px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <i data-lucide="eye" style="margin-bottom: 12px; color: var(--primary);"></i>
+                    Nhìn thấy lãng phí
+                </div>
+                <div class="flow-arrow" style="align-self: center;"><i data-lucide="arrow-right"></i></div>
+                <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 16px 20px; border-radius: var(--radius-md); font-weight: 600; color: var(--text-white); text-align: center; flex: 1; min-width: 130px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <i data-lucide="search" style="margin-bottom: 12px; color: var(--primary);"></i>
+                    Xác định nguyên nhân
+                </div>
+                <div class="flow-arrow" style="align-self: center;"><i data-lucide="arrow-right"></i></div>
+                <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 16px 20px; border-radius: var(--radius-md); font-weight: 600; color: var(--text-white); text-align: center; flex: 1; min-width: 130px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <i data-lucide="wrench" style="margin-bottom: 12px; color: var(--primary);"></i>
+                    Thử nghiệm Kaizen
+                </div>
+                <div class="flow-arrow" style="align-self: center;"><i data-lucide="arrow-right"></i></div>
+                <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 16px 20px; border-radius: var(--radius-md); font-weight: 600; color: var(--text-white); text-align: center; flex: 1; min-width: 130px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <i data-lucide="bar-chart-2" style="margin-bottom: 12px; color: var(--primary);"></i>
+                    Đo hiệu quả
+                </div>
+                <div class="flow-arrow" style="align-self: center;"><i data-lucide="arrow-right"></i></div>
+                <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 16px 20px; border-radius: var(--radius-md); font-weight: 600; color: var(--text-white); text-align: center; flex: 1; min-width: 130px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <i data-lucide="file-check" style="margin-bottom: 12px; color: var(--primary);"></i>
+                    Chuẩn hóa
+                </div>
+                <div class="flow-arrow" style="align-self: center;"><i data-lucide="arrow-right"></i></div>
+                <div style="background: rgba(255, 102, 0, 0.1); border: 1px solid rgba(255, 102, 0, 0.3); padding: 16px 20px; border-radius: var(--radius-md); font-weight: 600; color: var(--text-white); text-align: center; flex: 1; min-width: 130px; display: flex; flex-direction: column; align-items: center; box-shadow: 0 0 20px rgba(255, 102, 0, 0.15);">
+                    <i data-lucide="copy" style="margin-bottom: 12px; color: var(--primary);"></i>
+                    Nhân rộng
+                </div>
+            </div>
+
+            <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-muted); max-width: 800px; margin: 0 auto; text-align: justify;">
+                Giá trị cải tiến không đến từ một dự án lớn duy nhất.<br><br>
+                Trong 4 năm, nhà máy liên tục xử lý nhiều dạng lãng phí khác nhau: nhân lực dư thừa, thời gian chờ, vận chuyển, layout chưa tối ưu, tiêu hao vật tư, downtime và công việc không còn cần thiết.<br><br>
+                Khi các cải tiến được đo lường, chuẩn hóa và nhân rộng, những thay đổi nhỏ tại hiện trường tạo thành giá trị lớn cho toàn hệ thống.
+            </p>
+        </div>
+    </section>
+
+    <!-- KEY INSIGHT & CTA -->
+    <section class="site-section" style="background: linear-gradient(180deg, var(--bg-dark) 0%, rgba(234, 88, 12, 0.05) 100%);">
+        <div class="container text-center">
+            <div style="max-width: 1000px; margin: 0 auto 60px auto;">
+                <h2 style="font-size: 2.5rem; font-weight: 700; color: var(--text-white); line-height: 1.4; margin-bottom: 32px;">
+                    “432.873 USD/năm không đến từ một dự án lớn.<br>
+                    Đó là kết quả của hàng loạt vấn đề được nhìn thấy, giải quyết và nhân rộng.”
+                </h2>
+                <div style="display: inline-block; padding: 12px 32px; border: 1px solid rgba(255, 102, 0, 0.3); border-radius: 40px; color: var(--primary); font-weight: 600; font-size: 1.15rem; letter-spacing: 1px; background: rgba(234, 88, 12, 0.05);">
+                    INVAMAX FOS — Xây nền vững, vận hành nhẹ.
+                </div>
+            </div>
+
+            <div style="max-width: 800px; margin: 0 auto; padding: 56px 40px;">
+                <h2 style="font-size: 2rem; font-weight: 700; color: var(--text-white); margin-bottom: 16px;">Nhà máy của bạn đang mất chi phí ở đâu?</h2>
+                <p style="font-size: 1.15rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 40px;">Không phải mọi lãng phí đều xuất hiện trên báo cáo tài chính. Chúng có thể nằm trong nhân lực, thời gian chờ, layout, tồn kho, thao tác, downtime hoặc dòng chảy sản xuất.</p>
+                
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <a href="#" onclick="openContactModal(); return false;" class="btn btn-primary" style="padding: 16px 40px; font-weight: 600; font-size: 1.15rem;">Trao đổi với INVAMAX</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHART JS INIT -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const valuePlugin = {
+                id: 'valuePlugin',
+                afterDatasetsDraw: (chart, args, options) => {
+                    const ctx = chart.ctx;
+                    ctx.font = 'bold 13px Inter, sans-serif';
+
+                    chart.data.datasets.forEach((dataset, i) => {
+                        const meta = chart.getDatasetMeta(i);
+                        meta.data.forEach((bar, index) => {
+                            const data = dataset.data[index];
+                            let numStr = new Intl.NumberFormat('en-US').format(data);
+                            
+                            if (chart.config.options.indexAxis === 'y') {
+                                ctx.textAlign = 'left';
+                                ctx.textBaseline = 'middle';
+                                
+                                // Draw number in orange
+                                ctx.fillStyle = '#ea580c';
+                                ctx.fillText(numStr, bar.x + 8, bar.y);
+                                
+                                // Draw year in white
+                                if (dataset.years && dataset.years[index]) {
+                                    let numWidth = ctx.measureText(numStr).width;
+                                    ctx.fillStyle = '#ffffff';
+                                    ctx.fillText(' (' + dataset.years[index] + ')', bar.x + 8 + numWidth, bar.y);
+                                }
+                            } else {
+                                ctx.textAlign = 'center';
+                                ctx.textBaseline = 'bottom';
+                                ctx.fillStyle = '#ea580c';
+                                ctx.fillText(numStr, bar.x, bar.y - 8);
+                            }
+                        });
+                    });
+                }
+            };
+
+            const ctx = document.getElementById('savingsChart').getContext('2d');
+            const data = {
+                labels: ['2022', '2023', '2024', '2025'],
+                datasets: [{
+                    label: 'Giá trị cải tiến (USD/năm)',
+                    data: [192200, 69343, 58110, 113220],
+                    backgroundColor: '#ea580c',
+                    borderRadius: 6,
+                    barPercentage: 0.6,
+                }]
+            };
+            
+            new Chart(ctx, {
+                type: 'bar',
+                data: data,
+                plugins: [valuePlugin],
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    layout: { padding: { top: 30 } },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: 'rgba(15, 23, 42, 0.95)',
+                            titleColor: '#94a3b8',
+                            titleFont: { size: 14 },
+                            bodyColor: '#ffffff',
+                            bodyFont: { size: 18, weight: 'bold' },
+                            padding: 16,
+                            displayColors: false,
+                            callbacks: {
+                                label: function(context) { return new Intl.NumberFormat('en-US').format(context.parsed.y) + ' USD'; }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: 'rgba(255, 255, 255, 0.05)', drawBorder: false },
+                            ticks: { color: '#94a3b8', font: { size: 13, weight: '600' }, callback: function(value) { return value / 1000 + 'k'; } },
+                            suggestedMax: 220000
+                        },
+                        x: {
+                            grid: { display: false, drawBorder: false },
+                            ticks: { color: '#ffffff', font: { size: 14, weight: 'bold' } }
+                        }
+                    }
+                }
+            });
+
+            const ctxKaizen = document.getElementById('kaizenChart').getContext('2d');
+            new Chart(ctxKaizen, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        '01. Nhân rộng tối ưu nhân lực', '02. Tối ưu cơ cấu nhân lực MF#7', '03. Chuyển quản lý MF sang công đoạn', '04. Giảm nhân lực công đoạn sơn', '05. Tối ưu cơ cấu nhân lực MF#8,9', '06. Giảm tiêu hao Aceton', '07. Kiểm soát thời gian làm việc', '08. Giảm nhân lực hoàn thiện', '09. Kết nối máy chuốt & tạo hình', '10. Giảm TG vận hành hệ thống mùn', '11. Rút ngắn cụm máy Gọt – In'
+                    ],
+                    datasets: [{
+                        label: 'Giá trị (USD/năm)',
+                        data: [113220, 71468, 35734, 30629, 29388, 27993, 22291, 22040, 18000, 13000, 12000],
+                        years: ['2025', '2022', '2022', '2022', '2023', '2022', '2022', '2023', '2024', '2024', '2024'],
+                        backgroundColor: '#ea580c',
+                        borderRadius: 4,
+                        barPercentage: 0.6,
+                    }]
+                },
+                plugins: [valuePlugin],
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    layout: { padding: { right: 100 } },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: 'rgba(15, 23, 42, 0.95)',
+                            titleColor: '#94a3b8',
+                            titleFont: { size: 14 },
+                            bodyColor: '#ffffff',
+                            bodyFont: { size: 16, weight: 'bold' },
+                            padding: 12,
+                            displayColors: false,
+                            callbacks: {
+                                label: function(context) { return new Intl.NumberFormat('en-US').format(context.parsed.x) + ' USD'; }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { color: 'rgba(255, 255, 255, 0.05)', drawBorder: false },
+                            ticks: { color: '#94a3b8', font: { size: 13 }, callback: function(val) { return val/1000 + 'k'; } },
+                            suggestedMax: 130000
+                        },
+                        y: {
+                            grid: { display: false, drawBorder: false },
+                            ticks: { color: '#ffffff', font: { size: 13, weight: '600' } }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</main>
+
+<footer class="site-footer" style="padding: 0 0 30px 0; margin-top: 80px;">
+    <div class="container">
+        <div class="footer-grid" style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 40px;">
+            <!-- Cột 1: Logo -->
+            <div class="footer-col" style="text-align: center;">
+                <div style="margin-bottom: 0;">
+                    <a href="/vi/case-studies.html" class="logo" style="display: inline-block; font-size: 2.4rem; line-height: 1; margin-bottom: 5px;">INVA<span>MAX</span></a>
+                </div>
+                <p style="color: var(--text-muted); line-height: 1.6; max-width: 320px; margin: 0 auto;">Đối tác điều hành & Chuyển đổi mô hình vận hành nhà máy</p>
+            <h5 style="color: white; margin-bottom: 16px; margin-top: 32px; font-size: 0.95rem; font-weight: 600;">Kết nối với chúng tôi</h5>
+                <div class="social-links" style="display: flex; gap: 8px; justify-content: center;">
+                    <a href="https://www.linkedin.com/in/xuannhattran/" target="_blank" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 54px; height: 54px;    border-radius: 50%; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='#0A66C2'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    </a>
+                    <a href="https://www.youtube.com/@NguoiXayNen" target="_blank" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 54px; height: 54px;    border-radius: 50%; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='#ff0000'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                    </a>
+                    <a href="https://www.facebook.com/invamax.vanhanhtinhgon" target="_blank" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 54px; height: 54px;    border-radius: 50%; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='#1877F2'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                    </a>
+                    <a href="https://zalo.me/0988911869" target="_blank" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 54px; height: 54px;    border-radius: 50%; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='#0068FF'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
+                        <span style="font-size: 11px; font-weight: 800; font-family: 'Inter', sans-serif;">Zalo</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Cột 2: Giải pháp -->
+            <div class="footer-col">
+                <h4>Giải pháp</h4>
+                <div class="footer-links">
+                    <a href="../../vi/factory-transformation.html">Chuyển đổi Mô hình Vận hành</a>
+                    <a href="../../vi/operate-transform.html">Điều hành Nhà máy</a>
+                    <a href="../../vi/factory-assessment.html">Đánh giá Năng lực Nhà máy</a>
+                    <a href="../../vi/focused-improvement.html">Cải tiến Trọng điểm</a>
+                    <a href="../../vi/digital-ai.html">Tự động hoá, Số hoá &amp; AI cho Sản xuất</a>
+                </div>
+            </div>
+            
+            <!-- Cột 3: Năng lực -->
+            <div class="footer-col">
+                <h4>Năng lực</h4>
+                <div class="footer-links">
+                    <a href="../../vi/invamax-fa.html">INVAMAX FA&trade;</a>
+                    <a href="../../vi/fos.html">INVAMAX FOS&trade;</a>
+                    <a href="../../vi/lean.html" >Lean &amp; Cải tiến Liên tục</a>
+                    <a href="../../vi/platform.html">INVAMAX Platform</a>
+                </div>
+            </div>
+            
+            <!-- Cột 4: Liên hệ -->
+            <div class="footer-col">
+                <h4>Liên hệ</h4>
+                <p style="font-weight: 600; color: white; margin-bottom: 16px; font-size: 0.95rem;">CÔNG TY TNHH ĐẦU TƯ VÀ PHÁT TRIỂN INVAMAX</p>
+                <div class="contact-info" style="margin-bottom: 16px;">
+                    <div class="contact-item">
+                        <i data-lucide="file-text"></i>
+                        <span>MST: 0202236953</span>
+                    </div>
+                    <div class="contact-item">
+                        <i data-lucide="phone"></i>
+                        <span>0988.911.869</span>
+                    </div>
+                    <div class="contact-item">
+                        <i data-lucide="mail"></i>
+                        <span>info@invamax.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i data-lucide="map-pin"></i>
+                        <span>Thôn Đông Lôi, xã Vĩnh Thịnh, TP Hải Phòng</span>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+        
+        <div class="footer-bottom" style="text-align: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 24px; margin-top: 24px;">
+            <p style="color: var(--text-muted);">&copy; 2026 INVAMAX. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+<!-- Contact Modal -->
+    
+
+    
+    
+
+    
+
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeContactModal()" style="font-size: 24px; line-height: 1; font-weight: bold;">&times;</button>
+            <h2 style="font-size: 1.5rem; color: var(--primary); margin-bottom: 10px;">Đăng ký tư vấn</h2>
+            <p style="color: #64748b; margin-bottom: 20px; font-size: 0.95rem;">Vui lòng để lại thông tin, chuyên gia INVAMAX sẽ liên hệ lại với bạn.</p>
+            
+            <form id="leadForm" onsubmit="submitForm(event)">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Họ và tên *</label>
+                        <input type="text" name="hoTen" required placeholder="Nguyễn Văn A">
+                    </div>
+                    <div class="form-group">
+                        <label>Chức danh *</label>
+                        <input type="text" name="chucDanh" required placeholder="Giám đốc / Trưởng phòng">
+                    </div>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Số điện thoại *</label>
+                        <input type="tel" name="soDienThoai" required placeholder="0988...">
+                    </div>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" name="email" required placeholder="email@congty.com">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Tên nhà máy / Công ty *</label>
+                    <input type="text" name="tenNhaMay" required placeholder="Công ty TNHH XYZ">
+                </div>
+                
+                <div class="form-group">
+                    <label>Địa chỉ nhà máy *</label>
+                    <input type="text" name="diaChi" required placeholder="KCN abc, Tỉnh xyz...">
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Lĩnh vực sản xuất *</label>
+                        <select name="linhVuc" required>
+                            <option value="">-- Chọn lĩnh vực --</option>
+                            <option value="Gỗ / nội thất">Gỗ / nội thất</option>
+                            <option value="Cơ khí / kim loại">Cơ khí / kim loại</option>
+                            <option value="May mặc / da giày">May mặc / da giày</option>
+                            <option value="Nhựa / cao su">Nhựa / cao su</option>
+                            <option value="Thực phẩm / đồ uống">Thực phẩm / đồ uống</option>
+                            <option value="Điện tử / điện lạnh">Điện tử / điện lạnh</option>
+                            <option value="Vật liệu xây dựng">Vật liệu xây dựng</option>
+                            <option value="Bao bì / in ấn">Bao bì / in ấn</option>
+                            <option value="Khác">Khác</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Quy mô nhân sự *</label>
+                        <select name="quyMo" required>
+                            <option value="">-- Chọn quy mô --</option>
+                            <option value="Dưới 50 người">Dưới 50 người</option>
+                            <option value="50 ~ 100 người">50 ~ 100 người</option>
+                            <option value="101 ~ 200 người">101 ~ 200 người</option>
+                            <option value="Trên 200 người">Trên 200 người</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Nội dung cần tư vấn *</label>
+                    <textarea name="noiDung" rows="3" required placeholder="Mô tả sơ bộ về định hướng, vấn đề hiện tại của nhà máy..."></textarea>
+                </div>
+                
+                <button type="submit" id="btnSubmitForm" class="btn btn-outline" style="width: 100%; margin-top: 10px; transition: all 0.3s ease;">
+                    <i data-lucide="send"></i> Gửi Đề Nghị
+                </button>
+            </form>
+            
+            <div id="formSuccess" style="display: none; text-align: center; padding: 30px 0;">
+                <i data-lucide="check-circle" style="color: #22c55e; width: 64px; height: 64px; margin-bottom: 15px; margin: 0 auto;"></i>
+                <h3 style="color: #16a34a; font-size: 1.3rem; margin-top: 15px;">Gửi thành công!</h3>
+                <p style="color: #475569; margin-top: 10px;">Cảm ơn bạn. Chuyên gia INVAMAX sẽ sớm liên hệ lại.</p>
+                <button type="button" class="btn btn-outline" style="margin-top: 20px; transition: all 0.3s ease;" onclick="closeContactModal()">Đóng cửa sổ</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../assets/js/main.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
