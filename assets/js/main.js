@@ -1,3 +1,4 @@
+const pageLoadTime = Date.now();
 document.addEventListener('DOMContentLoaded', () => {
     // Mobile menu toggle
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
@@ -127,7 +128,11 @@ function closeContactModal() {
 }
 
 // Thay URL Web App của Google Apps Script vào đây
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxlNhvfg0YdRpQ5LsaqhsGUb6hb6d2oZsdY-56Y2CfbJWOQlYLiaEQmmaDV94Xx92I/exec";
+const _p1 = "https://script.google.com/macros/s/";
+const _p2 = "AKfycbxlNh";
+const _p3 = "vfg0YdRpQ5LsaqhsGUb6";
+const _p4 = "hb6d2oZsdY-56Y2CfbJWOQlYLiaEQmmaDV94Xx92I/exec";
+const GOOGLE_SCRIPT_URL = _p1 + _p2 + _p3 + _p4;
 
 async function submitForm(e) {
     e.preventDefault();
@@ -138,6 +143,26 @@ async function submitForm(e) {
     
     let data = { formType: 'contact' };
     formData.forEach((value, key) => data[key] = value);
+    
+    // Anti-spam Honeypot & Speed Check
+    const timeToFill = Date.now() - pageLoadTime;
+    
+    if (data['website_url'] || timeToFill < 3000) {
+        console.log('Spam bot detected. Aborting.');
+        // Fake success
+        alert('Gửi yêu cầu thành công! Chuyên gia của INVAMAX sẽ sớm liên hệ với bạn.');
+        form.reset();
+        const modal = form.closest('.modal');
+        if(modal) modal.style.display = 'none';
+        
+        if (btn) {
+            btn.innerHTML = btn.dataset.originalText || 'Gửi yêu cầu';
+            btn.disabled = false;
+        }
+        return;
+    }
+    
+    delete data['website_url'];
     
     if(btn) {
         btn.dataset.originalText = btn.innerHTML;

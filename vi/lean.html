@@ -525,6 +525,11 @@
             <p style="color: #64748b; margin-bottom: 20px; font-size: 0.95rem;">Vui lòng để lại thông tin, chuyên gia INVAMAX sẽ liên hệ lại với bạn.</p>
             
             <form id="leadForm" onsubmit="submitForm(event)">
+                <!-- Anti-spam Honeypot -->
+                <div style="opacity: 0; position: absolute; top: 0; left: 0; height: 0; width: 0; z-index: -1; overflow: hidden;">
+                    <label for="website_url">Website URL</label>
+                    <input type="text" id="website_url" name="website_url" tabindex="-1" autocomplete="off">
+                </div>
                 <div class="form-grid">
                     <div class="form-group">
                         <label>Họ và tên *</label>
