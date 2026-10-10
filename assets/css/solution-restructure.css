@@ -104,8 +104,14 @@
 }
 
 .ivrs .ivrs-copy {
-    max-width: 640px;
+    max-width: 780px;
     padding: 56px 0 50px;
+}
+
+@media (min-width: 769px) {
+    .nowrap-desktop {
+        white-space: nowrap !important;
+    }
 }
 
 .ivrs .ivrs-hero h1 {
