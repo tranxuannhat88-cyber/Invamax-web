@@ -466,30 +466,35 @@ footer{padding:46px 0 22px}.footer-grid{grid-template-columns:1.55fr 1.35fr 1.4f
     align-items: center !important;
     justify-content: flex-start !important;
     gap: 8px !important;
-    color: #bac9d1 !important;
+    height: 22px !important;
+    color: #ffffff !important;
     font-size: 12px !important;
-    line-height: 1.5 !important;
+    line-height: 1 !important;
     white-space: nowrap !important;
 }
 
 .contact-item svg {
-    color: var(--orange, #ff6600) !important;
-    stroke: var(--orange, #ff6600) !important;
+    color: #ffffff !important;
+    stroke: #ffffff !important;
     flex-shrink: 0 !important;
     width: 15px !important;
     height: 15px !important;
-    display: inline-block !important;
+    display: block !important;
 }
 
-.contact-item a {
-    color: #bac9d1 !important;
+.contact-item a,
+.contact-item span {
+    color: #ffffff !important;
     text-decoration: none !important;
-    display: inline-block !important;
-    transition: color 0.15s ease !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    line-height: 1 !important;
+    transition: opacity 0.15s ease !important;
 }
 
 .contact-item a:hover {
-    color: var(--orange, #ff6600) !important;
+    color: #ffffff !important;
+    opacity: 0.8 !important;
 }
 
 @media (max-width: 900px) {
