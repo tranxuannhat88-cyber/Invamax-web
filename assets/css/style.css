@@ -141,12 +141,12 @@ section[id], div[id] {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(24, 35, 30, 0.85);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background-color: rgba(9, 28, 24, 0.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     z-index: 1000;
-    border-bottom: 1px solid var(--border-color);
-    transition: var(--transition);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s ease;
 }
 
 .navbar .container {
@@ -154,38 +154,50 @@ section[id], div[id] {
     justify-content: space-between;
     align-items: center;
     height: 80px;
+    width: 100%;
+    max-width: 1380px;
+    padding: 0 36px;
+    margin: 0 auto;
+    box-sizing: border-box;
 }
 
-.logo {
-    font-size: 3rem;
+.navbar .logo {
+    font-size: 2.2rem;
     font-weight: 800;
-    color: var(--text-white) !important;
+    color: #ffffff !important;
     letter-spacing: 1px;
+    text-decoration: none;
+    line-height: 1;
+    display: flex;
+    align-items: center;
 }
 
-.logo span {
-    color: var(--primary);
+.navbar .logo span {
+    color: var(--orange, #ff6b00);
 }
 
 .nav-links {
     display: flex;
-    gap: 16px;
+    gap: 22px;
     margin-left: auto;
-    align-items: center; justify-content: flex-start;
+    align-items: center;
+    list-style: none;
+    margin: 0 0 0 auto;
+    padding: 0;
 }
 
 .nav-links a {
-    color: var(--text-light);
+    color: #dbe4df;
     font-weight: 500;
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     position: relative;
-    text-align: center;
+    text-decoration: none;
     line-height: 1.3;
+    transition: color 0.2s ease;
 }
 
-.nav-links a:hover,
-.nav-links a.active {
-    color: var(--primary);
+.nav-links a:hover {
+    color: var(--orange, #ff6b00);
 }
 
 .nav-links a::after {
@@ -195,22 +207,117 @@ section[id], div[id] {
     left: 0;
     width: 0;
     height: 2px;
-    background-color: var(--primary);
-    transition: var(--transition);
+    background-color: var(--orange, #ff6b00);
+    transition: width 0.3s ease;
 }
 
-.nav-links a:hover::after,
-.nav-links a.active::after {
+.nav-links a:hover::after {
     width: 100%;
+}
+
+.nav-item {
+    position: relative;
+    padding: 10px 0;
+}
+
+.nav-title {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.92rem;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #dbe4df;
+}
+
+.nav-item:hover .nav-title {
+    color: var(--orange, #ff6b00) !important;
+}
+
+.nav-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #0d201b;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
+    padding: 10px;
+    min-width: 290px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    z-index: 1001;
+}
+
+.nav-item:hover .nav-dropdown {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.nav-dropdown a {
+    color: #c5d2cb !important;
+    text-decoration: none !important;
+    padding: 10px 16px !important;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1.4;
+    white-space: nowrap;
+    text-align: left;
+}
+
+.nav-dropdown a::after {
+    display: none !important;
+}
+
+.nav-dropdown a:hover {
+    background: rgba(255, 102, 0, 0.14);
+    color: var(--orange, #ff6b00) !important;
+}
+
+.lang-switcher {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    font-size: 0.85rem;
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 20px;
+    padding: 4px 12px;
+    background: rgba(0,0,0,0.25);
+    margin-left: 6px;
+    white-space: nowrap;
+}
+
+.lang-switcher a {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
+    color: #c5d2cb;
+    font-weight: 500;
+    line-height: 1;
+}
+
+.lang-switcher a::after {
+    display: none !important;
+}
+
+.lang-switcher a:hover,
+.lang-switcher a.active {
+    color: var(--orange, #ff6b00);
 }
 
 .mobile-menu-btn {
     display: none;
     background: none;
     border: none;
-    color: var(--text-white) !important;
-    font-size: 1.5rem;
+    color: #fff;
     cursor: pointer;
+    padding: 8px;
 }
 
 /* Hero Section */
@@ -510,34 +617,53 @@ section[id], div[id] {
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 980px) {
     .nav-links {
         display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background-color: #0d201b;
+        padding: 24px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+        gap: 10px;
+        align-items: stretch;
     }
-    
+    .nav-links.active {
+        display: flex;
+    }
     .mobile-menu-btn {
         display: block;
     }
-    
-    /* Fix mobile dropdown */
     .nav-dropdown {
         position: static !important;
         transform: none !important;
         box-shadow: none !important;
         border: none !important;
-        padding-left: 20px !important;
+        padding-left: 18px !important;
         background: transparent !important;
         width: 100% !important;
-        margin-top: 10px;
+        margin-top: 6px;
     }
     .nav-item:hover .nav-dropdown {
-        display: none; /* Disable hover on mobile */
+        display: none;
     }
     .nav-item.open .nav-dropdown {
         display: flex !important;
         flex-direction: column;
-        gap: 5px;
+        gap: 6px;
     }
+    .lang-switcher {
+        justify-content: center;
+        padding: 8px;
+        margin: 10px 0;
+    }
+}
+
+@media (max-width: 768px) {
 
     
     .hero-text h1 {
@@ -1003,60 +1129,7 @@ section[id], div[id] {
     border-color: rgba(255, 255, 255, 0.4) !important;
 }
 
-/* Dropdown Menu Styles */
-.nav-item {
-    position: relative;
-    padding: 10px 0;
-}
-.nav-dropdown {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--bg-card);
-    border: none;
-    border-radius: 24px;
-    padding: 10px;
-    min-width: 250px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-    z-index: 1000;
-}
-.nav-item:hover .nav-dropdown {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-.nav-dropdown a {
-    color: var(--text-light) !important;
-    text-decoration: none !important;
-    padding: 10px 15px !important;
-    border-radius: 24px;
-    transition: all 0.3s ease;
-    display: block;
-    font-size: 0.95rem;
-    font-weight: 500;
-    line-height: 1.4;
-    white-space: nowrap;
-    text-align: left !important;
-}
-.nav-dropdown a:hover {
-    background: rgba(249, 115, 22, 0.1);
-    color: var(--primary) !important;
-}
-.nav-title {
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    transition: color 0.3s;
-}
-.nav-item:hover .nav-title {
-    color: var(--primary) !important;
-}
+
 
 /* Diagnosis Card Hover Effect */
 .diagnosis-card {
@@ -1233,29 +1306,7 @@ section[id], div[id] {
 }
 
 
-/* OVERRIDE NAVBAR FOR COMPACT RIGHT ALIGNMENT (GLOBAL) */
-.navbar .container {
-    justify-content: space-between !important;
-}
-.nav-links {
-    flex-grow: 0 !important;
-    width: auto !important;
-    margin-left: auto !important;
-    gap: 20px !important;
-    justify-content: flex-end !important;
-}
-.nav-links .nav-item {
-    margin: 0 !important;
-    padding: 10px 0 !important;
-    flex: 0 0 auto !important;
-}
-.nav-item.lang-switcher {
-    margin-left: 10px !important;
-    margin-right: 10px !important;
-}
-#auth-btn-container {
-    margin-left: 0 !important;
-}
+
 
 
 /* GLOBAL SITE VISUAL SYSTEM */
@@ -1418,29 +1469,7 @@ section[id], div[id] {
             .site-quote-block { padding: 20px; }
         }
     
-        /* OVERRIDE NAVBAR FOR COMPACT RIGHT ALIGNMENT */
-        .navbar .container {
-            justify-content: space-between !important;
-        }
-        .nav-links {
-            flex-grow: 0 !important;
-            width: auto !important;
-            margin-left: auto !important;
-            gap: 20px !important;
-            justify-content: flex-end !important;
-        }
-        .nav-links .nav-item {
-            margin: 0 !important;
-            padding: 10px 0 !important;
-            flex: 0 0 auto !important;
-        }
-        .nav-item.lang-switcher {
-            margin-left: 10px !important;
-            margin-right: 10px !important;
-        }
-        #auth-btn-container {
-            margin-left: 0 !important;
-        }
+
 
     
 /* Make all Lucide icons thinner */
