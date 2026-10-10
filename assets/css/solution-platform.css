@@ -10,3 +10,164 @@
 .ifp-cta{background:linear-gradient(90deg,rgba(3,23,18,.98) 0%,rgba(3,23,18,.96) 42%,rgba(3,23,18,.92) 74%,rgba(3,23,18,.82) 100%),#061b15;padding:0;color:#fff;position:relative;overflow:hidden}.ifp-cta:before{content:'';position:absolute;inset:0;background:url('../platform/cta-bg.jpg') center/cover no-repeat;opacity:.34;mix-blend-mode:screen}.ifp-cta-grid{position:relative;display:grid;grid-template-columns:43% 27% 30%;align-items:center;gap:20px;min-height:212px;padding:28px 0}.ifp-cta-copy{position:relative;z-index:1}.ifp-cta-copy h2{color:#fff;margin-bottom:10px}.ifp-cta-copy p:not(.ifp-kicker){color:#d2ddd6;font-size:15px;max-width:520px}.ifp-cta-image{display:flex;justify-content:center;align-items:flex-end;position:relative;z-index:1}.ifp-cta-image img{max-width:240px;width:100%;display:block;filter:drop-shadow(0 14px 24px rgba(0,0,0,.32))}.ifp-cta-note{position:relative;z-index:1;font-size:28px;line-height:1.18;font-weight:700;color:#fff}.ifp-cta-note:before{content:'/';display:inline-block;color:var(--orange);font-size:86px;line-height:.7;vertical-align:middle;margin-right:12px}
 @media (max-width:1100px){.ifp-hero-grid,.ifp-platform-grid,.ifp-problems-grid,.ifp-cta-grid{grid-template-columns:1fr}.ifp-hero-grid{padding:10px 0 0;min-height:auto}.ifp-hero-copy{padding:48px 0 10px}.ifp-hero-art{justify-content:center;padding:0 0 18px}.ifp-strip-grid{grid-template-columns:repeat(2,1fr)}.ifp-strip article:nth-child(2):after{display:none}.ifp-problem-cards{grid-template-columns:repeat(2,1fr)}.ifp-cap-grid{grid-template-columns:repeat(3,1fr)}.ifp-step-row{grid-template-columns:1fr 1fr;gap:18px}.ifp-step-row>i{display:none}.ifp-goal-grid{grid-template-columns:repeat(2,1fr)}.ifp-cta-grid{padding:32px 0}.ifp-cta-note{font-size:24px}.ifp-cta-note:before{font-size:72px}}
 @media (max-width:720px){.ifp-shell{width:calc(100% - 32px)}.ifp-page h2{font-size:34px}.ifp-hero h1{font-size:48px}.ifp-hero h2{font-size:26px}.ifp-hero-copy>p:not(.ifp-kicker),.ifp-copy p,.ifp-workflow-lead{font-size:15px}.ifp-strip-grid{grid-template-columns:1fr}.ifp-strip article{padding:14px 0}.ifp-strip article:after{display:none!important}.ifp-problem-cards,.ifp-cap-grid,.ifp-goal-grid{grid-template-columns:1fr}.ifp-step-row{grid-template-columns:1fr}.ifp-cap-card,.ifp-goal-grid article{min-height:auto}.ifp-cta-grid{grid-template-columns:1fr;gap:14px;min-height:auto}.ifp-cta-image{justify-content:flex-start}.ifp-cta-note{font-size:22px}.ifp-btn{width:100%}}
+
+
+/* Footer bottom copyright center alignment */
+.footer-bottom {
+    justify-content: center !important;
+    text-align: center !important;
+}
+
+/* Footer grid balance */
+.footer-grid {
+    grid-template-columns: 1.4fr 1fr 1fr 0.8fr 2fr !important;
+    gap: 24px !important;
+}
+
+/* Footer brand & Social links under brand */
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+}
+
+.social-links {
+    display: flex !important;
+    gap: 8px !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+}
+
+.social-links a {
+    color: #94a3b8 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 50% !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    transition: all 0.3s ease !important;
+    text-decoration: none !important;
+    flex-shrink: 0 !important;
+}
+
+.social-links a:hover {
+    transform: translateY(-2px) !important;
+}
+
+/* Footer contact section matching other columns (Về chúng tôi, Giải pháp, Năng lực) */
+.footer-company-name {
+    font-weight: 600 !important;
+    color: #ffffff !important;
+    margin-bottom: 12px !important;
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+    white-space: nowrap !important;
+    font-family: inherit !important;
+}
+
+.contact-info {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+}
+
+.contact-item {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 8px !important;
+    height: 22px !important;
+    color: #bac9d1 !important;
+    font-size: 12px !important;
+    line-height: 1.65 !important;
+    white-space: nowrap !important;
+    font-family: inherit !important;
+}
+
+.contact-item svg {
+    color: #bac9d1 !important;
+    stroke: #bac9d1 !important;
+    flex-shrink: 0 !important;
+    width: 15px !important;
+    height: 15px !important;
+    display: block !important;
+}
+
+.contact-item a,
+.contact-item span {
+    color: #bac9d1 !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    font-size: 12px !important;
+    line-height: 1.65 !important;
+    font-family: inherit !important;
+    transition: color 0.2s ease !important;
+}
+
+.contact-item a:hover {
+    color: var(--orange) !important;
+    opacity: 1 !important;
+}
+
+@media (max-width: 900px) {
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 28px !important;
+    }
+}
+
+@media (max-width: 560px) {
+    .footer-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+
+
+
+/* Match footer styling across all pages */
+footer {
+    background: #0d201b !important;
+    padding: 46px 0 22px !important;
+}
+.footer-brand img {
+    width: 195px !important;
+    background: #fff !important;
+    padding: 9px 12px !important;
+    border-radius: 4px !important;
+    max-width: 205px !important;
+}
+.footer-brand p {
+    font-size: 12px !important;
+    line-height: 1.65 !important;
+    color: #b7c7d0 !important;
+    margin-top: 8px !important;
+}
+.footer-grid h4 {
+    font-size: 13px !important;
+    margin: 4px 0 17px !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+}
+.footer-grid a:not(.logo) {
+    display: block !important;
+    font-size: 12px !important;
+    line-height: 1.65 !important;
+    color: #bac9d1 !important;
+    margin-bottom: 8px !important;
+    text-decoration: none !important;
+}
+.footer-grid a:not(.logo):hover {
+    color: var(--orange, #ff6600) !important;
+}
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
+    margin-top: 35px !important;
+    padding-top: 18px !important;
+    font-size: 11px !important;
+    color: #8c9aa5 !important;
+    text-align: center !important;
+}
