@@ -388,3 +388,24 @@ footer{padding:46px 0 22px}.footer-grid{grid-template-columns:1.55fr 1.35fr 1.4f
         padding-bottom: 60px !important;
     }
 }
+
+
+/* Hero eyebrow dash on right */
+.hero .eyebrow:after {
+    content: ' —';
+    margin-left: 8px;
+}
+
+/* Partner section styling for transferred content and buttons */
+.partner .actions {
+    margin-top: 24px;
+}
+.partner .btn-outline {
+    color: #17251e !important;
+    border: 1.5px solid #17251e !important;
+    background: transparent !important;
+}
+.partner .btn-outline:hover {
+    background: #17251e !important;
+    color: #ffffff !important;
+}
