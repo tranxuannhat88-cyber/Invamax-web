@@ -1,34 +1,519 @@
-/* Scoped INVAMAX solution page. No changes to site's shared header/footer. */
-.ivrs{--deep:#15241d;--deep2:#0c1c17;--orange:#ff6900;--ink:#14211c;--mute:#66716b;color:var(--ink);font-family:Inter,'Be Vietnam Pro',Arial,sans-serif;font-size:14px;line-height:1.55;background:#fff;overflow:hidden}.ivrs *{box-sizing:border-box}.ivrs .ivrs-wrap{width:min(1200px,calc(100% - 56px));margin-inline:auto}.ivrs h1,.ivrs h2,.ivrs h3,.ivrs p{margin:0}.ivrs h1,.ivrs h2,.ivrs h3{letter-spacing:-.028em;line-height:1.22}.ivrs a{text-decoration:none}.ivrs .ivrs-label{font-size:11px;font-weight:800;letter-spacing:.105em;color:var(--orange);margin:0 0 12px}.ivrs h2{font-size:clamp(24px,2.5vw,34px);font-weight:800}.ivrs .ivrs-support{color:var(--mute);margin-top:15px;max-width:470px}.ivrs .ivrs-section{padding:53px 0}.ivrs .ivrs-hero{position:relative;background:var(--deep2);color:#fff}.ivrs .ivrs-hero-picture{position:absolute;inset:0 0 0 43%;background:url('../images/home/restructure.jpg') center 48% /cover no-repeat}.ivrs .ivrs-hero-picture:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--deep2) 0%,rgba(12,28,23,.72) 22%,rgba(12,28,23,.08) 72%)}.ivrs .ivrs-hero-main{min-height:340px;display:flex;align-items:center;position:relative;z-index:1}.ivrs .ivrs-copy{max-width:640px;padding:48px 0}.ivrs .ivrs-hero h1{font-size:clamp(30px,3.4vw,46px);font-weight:800;margin-bottom:15px}.ivrs .ivrs-desc{color:#d9e3dc;max-width:565px;font-size:14px}.ivrs .ivrs-buttons{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}.ivrs .ivrs-button{display:inline-flex;align-items:center;justify-content:center;gap:13px;padding:11px 21px;min-height:44px;border-radius:100px;font-size:12px;font-weight:750;transition:background .18s,transform .18s}.ivrs .ivrs-button:hover{transform:translateY(-1px)}.ivrs .ivrs-button-primary{background:var(--orange);color:#fff}.ivrs .ivrs-button-alt{border:1px solid var(--orange);color:#fff;background:#07161166}.ivrs .ivrs-strip{background:#10221b;color:#fff}.ivrs .ivrs-strip-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:19px 0}.ivrs .ivrs-strip-grid>div{display:flex;align-items:center;gap:12px}.ivrs .ivrs-strip-icon{flex:none;width:36px;height:36px;border:1px solid #5c7165;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:20px}.ivrs .ivrs-strip b,.ivrs .ivrs-strip small{display:block}.ivrs .ivrs-strip b{font-size:12px}.ivrs .ivrs-strip small{font-size:11px;color:#b9c7bf;margin-top:2px}.ivrs .ivrs-issues-layout{display:grid;grid-template-columns:1fr 1.15fr;gap:55px;align-items:center}.ivrs .ivrs-issue-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.ivrs .ivrs-issue-grid>div{background:#f5f7f6;min-height:86px;border-radius:7px;padding:14px;display:flex;flex-direction:column;justify-content:center;gap:7px;font-size:12px;font-weight:600}.ivrs .ivrs-issue-grid span{font-size:19px;color:var(--ink);line-height:1}.ivrs .ivrs-approach{background:var(--deep2);color:#fff}.ivrs .ivrs-approach-inner{min-height:255px;display:grid;grid-template-columns:1fr 1fr;position:relative}.ivrs .ivrs-approach-text{position:relative;z-index:2;padding:41px 25px 38px 0}.ivrs .ivrs-approach-text h2{max-width:520px}.ivrs .ivrs-approach-text>p:not(.ivrs-label){max-width:560px;color:#d2dcd6;margin-top:15px;font-size:13px}.ivrs .ivrs-approach-image{background:linear-gradient(90deg,var(--deep2),transparent 40%),url('../images/home/operations.jpg') center 43% /cover no-repeat}.ivrs .ivrs-tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:20px}.ivrs .ivrs-tags span{border:1px solid #6c796f;border-radius:100px;padding:5px 12px;font-size:11px}.ivrs .ivrs-process h2,.ivrs .ivrs-offers h2{margin-bottom:26px}.ivrs .ivrs-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:15px}.ivrs .ivrs-steps article{position:relative;padding:3px 8px 0 0}.ivrs .ivrs-steps article:not(:last-child):after{content:'›';position:absolute;right:1px;top:6px;color:var(--orange);font-size:25px}.ivrs .ivrs-steps article>span{width:34px;height:34px;display:grid;place-items:center;background:var(--orange);color:#fff;border-radius:50%;font-size:11px;font-weight:800;margin-bottom:11px}.ivrs .ivrs-steps h3{font-size:14px;margin-bottom:7px}.ivrs .ivrs-steps p{color:var(--mute);font-size:12px}.ivrs .ivrs-goals{background:#f5f6f5}.ivrs .ivrs-goals-layout{display:grid;grid-template-columns:1fr 1.4fr;gap:35px;align-items:center}.ivrs .ivrs-goal-grid{display:grid;grid-template-columns:repeat(4,1fr)}.ivrs .ivrs-goal-grid>div{padding:10px 16px;border-left:1px solid #dce1dc}.ivrs .ivrs-goal-grid strong{display:block;color:var(--orange);font-weight:800;font-size:clamp(23px,2.15vw,31px);letter-spacing:-.04em;line-height:1.1;margin-bottom:10px;white-space:nowrap}.ivrs .ivrs-goal-grid span{font-size:12px;display:block}.ivrs .ivrs-note{font-size:11px;color:#67736b;margin-top:14px!important}.ivrs .ivrs-offer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.ivrs .ivrs-offer-grid article{background:#f6f7f6;padding:22px;border:1px solid #edf0ee;border-radius:9px;display:flex;flex-direction:column;min-height:173px}.ivrs .ivrs-offer-grid article>span{color:var(--orange);font-size:11px;font-weight:800}.ivrs .ivrs-offer-grid h3{font-size:17px;margin:10px 0}.ivrs .ivrs-offer-grid p{font-size:12px;color:var(--mute);margin-bottom:12px}.ivrs .ivrs-offer-grid a{color:var(--orange);font-size:12px;font-weight:700;margin-top:auto}.ivrs .ivrs-cta{background:linear-gradient(90deg,#0d2119f5,#10231bc5 68%,#10231b7b),url('../images/home/factory-cta.jpg') center/cover;color:#fff;padding:42px 0}.ivrs .ivrs-cta-inner{display:flex;align-items:center;justify-content:space-between;gap:20px}.ivrs .ivrs-cta h2{font-size:clamp(23px,2.4vw,32px)}.ivrs .ivrs-cta p:not(.ivrs-label){color:#d1dbd4;margin-top:8px}
-@media(max-width:900px){.ivrs .ivrs-issues-layout{grid-template-columns:1fr;gap:26px}.ivrs .ivrs-goals-layout{grid-template-columns:1fr;gap:24px}.ivrs .ivrs-steps{gap:9px}.ivrs .ivrs-steps h3{font-size:12px}.ivrs .ivrs-hero-picture{left:35%}}
-@media(max-width:650px){.ivrs .ivrs-wrap{width:calc(100% - 36px)}.ivrs .ivrs-section{padding:42px 0}.ivrs .ivrs-hero-main{min-height:395px}.ivrs .ivrs-hero-picture{left:0;opacity:.64}.ivrs .ivrs-hero-picture:after{background:linear-gradient(90deg,#0c1c17f5,#0c1c17b3)}.ivrs .ivrs-copy{padding:48px 0}.ivrs .ivrs-hero h1{font-size:32px}.ivrs .ivrs-strip-grid{grid-template-columns:repeat(2,1fr);gap:18px 12px}.ivrs .ivrs-issue-grid{grid-template-columns:repeat(2,1fr)}.ivrs .ivrs-approach-inner{display:block}.ivrs .ivrs-approach-image{position:absolute;inset:0;opacity:.24}.ivrs .ivrs-approach-text{padding:45px 0}.ivrs .ivrs-steps{grid-template-columns:1fr;gap:0}.ivrs .ivrs-steps article{padding:0 0 18px 50px;min-height:58px}.ivrs .ivrs-steps article>span{position:absolute;left:0;top:0}.ivrs .ivrs-steps article:not(:last-child):after{content:'';position:absolute;left:16px;top:37px;bottom:4px;border-left:1px solid #ff69004d}.ivrs .ivrs-steps h3{font-size:14px}.ivrs .ivrs-goal-grid{grid-template-columns:repeat(2,1fr);row-gap:18px}.ivrs .ivrs-offer-grid{grid-template-columns:1fr}.ivrs .ivrs-offer-grid article{min-height:0}.ivrs .ivrs-cta-inner{display:block}.ivrs .ivrs-cta .ivrs-button{margin-top:21px}}
-@media(max-width:390px){.ivrs .ivrs-buttons{display:grid}.ivrs .ivrs-strip-grid b{font-size:11px}.ivrs .ivrs-strip-icon{width:31px;height:31px}.ivrs .ivrs-goal-grid strong{font-size:26px}}
+/* ========================================================
+   INVAMAX SOLUTION: TÁI CẤU TRÚC VÀ NÂNG CẤP VẬN HÀNH NHÀ MÁY
+   Scoped entirely within .ivrs. Preserves shared header/footer.
+   Harmonized typography & font sizes matching Brand Guidelines.
+   ======================================================== */
 
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap');
 
-/* Navbar spacing & text color overrides for light background sections */
+.ivrs {
+    --deep: #15241d;
+    --deep2: #0c1c17;
+    --orange: #ff6900;
+    --ink: #18241e;
+    --mute: #5b655f;
+    font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, Arial, sans-serif !important;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ink);
+    background: #fff;
+    overflow: hidden;
+}
+
+.ivrs * {
+    box-sizing: border-box;
+}
+
+.ivrs h1, .ivrs h2, .ivrs h3, .ivrs p {
+    margin: 0;
+}
+
+.ivrs a {
+    text-decoration: none;
+}
+
+.ivrs .ivrs-wrap {
+    width: min(1200px, calc(100% - 56px));
+    margin-inline: auto;
+}
+
+/* Kicker / Eyebrow */
+.ivrs .ivrs-label {
+    font-size: 11px !important;
+    font-weight: 800 !important;
+    letter-spacing: .12em !important;
+    color: var(--orange) !important;
+    margin: 0 0 12px;
+    display: flex;
+    align-items: center;
+}
+
+.ivrs .ivrs-label::before {
+    content: '—';
+    margin-right: 8px;
+}
+
+/* Headings */
+.ivrs h2 {
+    font-size: clamp(25px, 2.6vw, 36px) !important;
+    font-weight: 800 !important;
+    line-height: 1.24 !important;
+    letter-spacing: -0.025em !important;
+    margin-bottom: 13px;
+}
+
+.ivrs .ivrs-support {
+    color: var(--mute) !important;
+    margin-top: 15px;
+    max-width: 480px;
+    font-size: 14px !important;
+    line-height: 1.65 !important;
+}
+
+.ivrs .ivrs-section {
+    padding: 60px 0;
+}
+
+/* 1. HERO */
 .ivrs .ivrs-hero {
-    padding-top: 80px !important;
+    position: relative;
+    background: var(--deep2);
+    color: #fff;
+    padding-top: 80px !important; /* Space for fixed navbar */
 }
 
-.ivrs .ivrs-issues h2,
-.ivrs .ivrs-process h2,
-.ivrs .ivrs-process h3,
-.ivrs .ivrs-goals h2,
-.ivrs .ivrs-offers h2,
-.ivrs .ivrs-offers h3 {
-    color: var(--ink) !important;
+.ivrs .ivrs-hero-picture {
+    position: absolute;
+    inset: 0 0 0 43%;
+    background: url('../images/home/restructure.jpg') center 48% / cover no-repeat;
 }
 
-.ivrs .ivrs-hero h1,
-.ivrs .ivrs-approach h2,
-.ivrs .ivrs-cta h2 {
+.ivrs .ivrs-hero-picture::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, var(--deep2) 0%, rgba(12, 28, 23, .72) 22%, rgba(12, 28, 23, .08) 72%);
+}
+
+.ivrs .ivrs-hero-main {
+    min-height: 385px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.ivrs .ivrs-copy {
+    max-width: 640px;
+    padding: 56px 0 50px;
+}
+
+.ivrs .ivrs-hero h1 {
+    font-size: clamp(34px, 3.8vw, 48px) !important;
+    font-weight: 800 !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.025em !important;
+    margin-bottom: 16px;
     color: #ffffff !important;
 }
 
-.ivrs .ivrs-issue-grid > div {
-    color: var(--ink) !important;
+.ivrs .ivrs-desc {
+    color: #d4dfd9 !important;
+    max-width: 565px;
+    font-size: 15px !important;
+    line-height: 1.8 !important;
+}
+
+.ivrs .ivrs-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 24px;
 }
 
 .ivrs .ivrs-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 22px !important;
+    min-height: 46px !important;
+    border-radius: 28px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    transition: background .2s, transform .2s;
     cursor: pointer;
+}
+
+.ivrs .ivrs-button:hover {
+    transform: translateY(-2px);
+}
+
+.ivrs .ivrs-button-primary {
+    background: var(--orange);
+    color: #fff !important;
+}
+
+.ivrs .ivrs-button-primary:hover {
+    background: #eb5f00;
+}
+
+.ivrs .ivrs-button-alt {
+    border: 1px solid var(--orange);
+    color: #fff !important;
+    background: rgba(7, 22, 17, 0.4);
+}
+
+.ivrs .ivrs-button-alt:hover {
+    background: rgba(255, 105, 0, 0.15);
+}
+
+/* 2. BENEFITS STRIP */
+.ivrs .ivrs-strip {
+    background: #10221b;
+    color: #fff;
+}
+
+.ivrs .ivrs-strip-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+    padding: 20px 0;
+}
+
+.ivrs .ivrs-strip-grid > div {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.ivrs .ivrs-strip-icon {
+    flex: none;
+    width: 38px;
+    height: 38px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: var(--orange);
+    font-size: 19px;
+}
+
+.ivrs .ivrs-strip b, .ivrs .ivrs-strip small {
+    display: block;
+}
+
+.ivrs .ivrs-strip b {
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+.ivrs .ivrs-strip small {
+    font-size: 11px;
+    color: #b9c7bf;
+    margin-top: 2px;
+}
+
+/* 3. ISSUES / PROBLEMS */
+.ivrs .ivrs-issues-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 55px;
+    align-items: center;
+}
+
+.ivrs .ivrs-issue-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.ivrs .ivrs-issue-grid > div {
+    background: #f6f8f7;
+    border: 1px solid #edf1ee;
+    min-height: 100px;
+    border-radius: 9px;
+    padding: 16px 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    line-height: 1.5 !important;
+    color: var(--ink) !important;
+}
+
+.ivrs .ivrs-issue-grid span {
+    font-size: 19px;
+    color: var(--orange);
+    line-height: 1;
+}
+
+/* 4. APPROACH */
+.ivrs .ivrs-approach {
+    background: var(--deep2);
+    color: #fff;
+}
+
+.ivrs .ivrs-approach-inner {
+    min-height: 330px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+}
+
+.ivrs .ivrs-approach-text {
+    position: relative;
+    z-index: 2;
+    padding: 48px 25px 48px 0;
+    align-self: center;
+}
+
+.ivrs .ivrs-approach-text h2 {
+    max-width: 520px;
+    color: #ffffff !important;
+}
+
+.ivrs .ivrs-approach-text > p:not(.ivrs-label) {
+    max-width: 560px;
+    color: #d2dcd6;
+    margin-top: 15px;
+    font-size: 14px !important;
+    line-height: 1.7 !important;
+}
+
+.ivrs .ivrs-approach-image {
+    background: linear-gradient(90deg, var(--deep2), transparent 40%), url('../images/home/operations.jpg') center 43% / cover no-repeat;
+}
+
+.ivrs .ivrs-tags {
+    display: flex;
+    gap: 9px;
+    flex-wrap: wrap;
+    margin-top: 22px;
+}
+
+.ivrs .ivrs-tags span {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    padding: 7px 14px;
+    font-size: 12px !important;
+}
+
+/* 5. PROCESS STEPS */
+.ivrs .ivrs-process h2, .ivrs .ivrs-offers h2 {
+    margin-bottom: 30px;
+    color: var(--ink) !important;
+}
+
+.ivrs .ivrs-steps {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+}
+
+.ivrs .ivrs-steps article {
+    border-top: 2px solid #f6af80;
+    padding: 19px 7px 0 0;
+    position: relative;
+}
+
+.ivrs .ivrs-steps article:not(:last-child)::after {
+    content: '›';
+    position: absolute;
+    right: 1px;
+    top: 6px;
+    color: var(--orange);
+    font-size: 25px;
+}
+
+.ivrs .ivrs-steps article > span {
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    background: var(--orange);
+    color: #fff;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+.ivrs .ivrs-steps h3 {
+    font-size: 15px !important;
+    line-height: 1.45 !important;
+    margin-bottom: 9px;
+    color: var(--ink) !important;
+    font-weight: 700 !important;
+}
+
+.ivrs .ivrs-steps p {
+    color: var(--mute) !important;
+    font-size: 13px !important;
+    line-height: 1.7 !important;
+}
+
+/* 6. GOALS / TARGETS */
+.ivrs .ivrs-goals {
+    background: #f5f6f5;
+}
+
+.ivrs .ivrs-goals h2 {
+    color: var(--ink) !important;
+}
+
+.ivrs .ivrs-goals-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 35px;
+    align-items: center;
+}
+
+.ivrs .ivrs-goal-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.ivrs .ivrs-goal-grid > div {
+    padding: 12px 18px;
+    border-left: 1px solid #dce1dc;
+}
+
+.ivrs .ivrs-goal-grid strong {
+    display: block;
+    color: var(--orange);
+    font-weight: 800;
+    font-size: clamp(25px, 2.4vw, 31px) !important;
+    letter-spacing: -.03em;
+    line-height: 1.15;
+    margin-bottom: 8px;
+    white-space: nowrap;
+}
+
+.ivrs .ivrs-goal-grid span {
+    font-size: 13px !important;
+    display: block;
+    color: var(--ink);
+}
+
+.ivrs .ivrs-note {
+    font-size: 12px !important;
+    color: var(--mute);
+    margin-top: 16px !important;
+}
+
+/* 7. OFFERS / PACKAGES */
+.ivrs .ivrs-offer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.ivrs .ivrs-offer-grid article {
+    background: #f6f7f6;
+    padding: 24px;
+    border: 1px solid #edf0ee;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    min-height: 180px;
+}
+
+.ivrs .ivrs-offer-grid article > span {
+    color: var(--orange);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .08em;
+}
+
+.ivrs .ivrs-offer-grid h3 {
+    font-size: 19px !important;
+    line-height: 1.35 !important;
+    margin: 12px 0 10px;
+    color: var(--ink) !important;
+    font-weight: 800 !important;
+}
+
+.ivrs .ivrs-offer-grid p {
+    font-size: 13px !important;
+    line-height: 1.65 !important;
+    color: var(--mute);
+    margin-bottom: 14px;
+}
+
+.ivrs .ivrs-offer-grid a {
+    color: #e96103;
+    font-size: 13px;
+    font-weight: 700;
+    margin-top: auto;
+}
+
+/* 8. CTA */
+.ivrs .ivrs-cta {
+    background: linear-gradient(90deg, #0d2119f5, #10231bc5 68%, #10231b7b), url('../images/home/factory-cta.jpg') center / cover;
+    color: #fff;
+    padding: 52px 0;
+}
+
+.ivrs .ivrs-cta-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.ivrs .ivrs-cta h2 {
+    font-size: clamp(25px, 2.6vw, 34px) !important;
+    color: #ffffff !important;
+}
+
+.ivrs .ivrs-cta p:not(.ivrs-label) {
+    color: #d1dbd4;
+    margin-top: 8px;
+    font-size: 14px !important;
+}
+
+/* RESPONSIVE DESIGN */
+@media(max-width: 900px) {
+    .ivrs .ivrs-issues-layout { grid-template-columns: 1fr; gap: 26px; }
+    .ivrs .ivrs-goals-layout { grid-template-columns: 1fr; gap: 24px; }
+    .ivrs .ivrs-steps { gap: 9px; }
+    .ivrs .ivrs-steps h3 { font-size: 13px; }
+    .ivrs .ivrs-hero-picture { left: 35%; }
+}
+
+@media(max-width: 650px) {
+    .ivrs .ivrs-wrap { width: calc(100% - 36px); }
+    .ivrs .ivrs-section { padding: 48px 0; }
+    .ivrs .ivrs-hero-main { min-height: 395px; }
+    .ivrs .ivrs-hero-picture { left: 0; opacity: .64; }
+    .ivrs .ivrs-hero-picture::after { background: linear-gradient(90deg, #0c1c17f5, #0c1c17b3); }
+    .ivrs .ivrs-copy { padding: 50px 0; }
+    .ivrs .ivrs-hero h1 { font-size: 34px !important; }
+    .ivrs .ivrs-strip-grid { grid-template-columns: repeat(2, 1fr); gap: 18px 12px; }
+    .ivrs .ivrs-issue-grid { grid-template-columns: repeat(2, 1fr); }
+    .ivrs .ivrs-approach-inner { display: block; }
+    .ivrs .ivrs-approach-image { position: absolute; inset: 0; opacity: .24; }
+    .ivrs .ivrs-approach-text { padding: 45px 0; }
+    .ivrs .ivrs-steps { grid-template-columns: 1fr; gap: 0; }
+    .ivrs .ivrs-steps article { padding: 0 0 18px 50px; min-height: 58px; }
+    .ivrs .ivrs-steps article > span { position: absolute; left: 0; top: 0; }
+    .ivrs .ivrs-steps article:not(:last-child)::after { content: ''; position: absolute; left: 16px; top: 37px; bottom: 4px; border-left: 1px solid #ff69004d; }
+    .ivrs .ivrs-steps h3 { font-size: 14px; }
+    .ivrs .ivrs-goal-grid { grid-template-columns: repeat(2, 1fr); row-gap: 18px; }
+    .ivrs .ivrs-offer-grid { grid-template-columns: 1fr; }
+    .ivrs .ivrs-offer-grid article { min-height: 0; }
+    .ivrs .ivrs-cta-inner { display: block; }
+    .ivrs .ivrs-cta .ivrs-button { margin-top: 21px; }
+    .ivrs h2 { font-size: 26px !important; }
+}
+
+@media(max-width: 390px) {
+    .ivrs .ivrs-buttons { display: grid; }
+    .ivrs .ivrs-strip-grid b { font-size: 12px; }
+    .ivrs .ivrs-strip-icon { width: 34px; height: 34px; }
+    .ivrs .ivrs-goal-grid strong { font-size: 26px; }
 }

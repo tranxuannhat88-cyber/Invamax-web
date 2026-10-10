@@ -4,13 +4,15 @@
    Font and typography harmonized with Homepage & Brand Guidelines.
    ======================================================== */
 
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap');
+
 .ivop {
     --bg: #15241e;
     --deep: #10201a;
     --orange: #ff6900;
     --ink: #18241e;
     --muted: #5b655f;
-    font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+    font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, Arial, sans-serif !important;
     font-size: 15px;
     line-height: 1.65;
     color: var(--ink);
