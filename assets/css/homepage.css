@@ -418,8 +418,8 @@ footer{padding:46px 0 22px}.footer-grid{grid-template-columns:1.55fr 1.35fr 1.4f
 
 /* Footer grid balance */
 .footer-grid {
-    grid-template-columns: 1.5fr 1fr 1fr 0.9fr 1.8fr !important;
-    gap: 26px !important;
+    grid-template-columns: 1.4fr 1fr 1fr 0.8fr 2fr !important;
+    gap: 24px !important;
 }
 
 /* Footer brand & Social links under brand */
@@ -458,33 +458,33 @@ footer{padding:46px 0 22px}.footer-grid{grid-template-columns:1.55fr 1.35fr 1.4f
 .contact-info {
     display: flex !important;
     flex-direction: column !important;
-    gap: 12px !important;
+    gap: 8px !important;
 }
 
 .contact-item {
     display: flex !important;
     align-items: center !important;
     justify-content: flex-start !important;
-    gap: 10px !important;
+    gap: 8px !important;
     color: #bac9d1 !important;
     font-size: 12px !important;
     line-height: 1.5 !important;
+    white-space: nowrap !important;
 }
 
-.contact-item i,
 .contact-item svg {
     color: var(--orange, #ff6600) !important;
     stroke: var(--orange, #ff6600) !important;
     flex-shrink: 0 !important;
-    width: 18px !important;
-    height: 18px !important;
+    width: 15px !important;
+    height: 15px !important;
     display: inline-block !important;
-    vertical-align: middle !important;
 }
 
 .contact-item a {
-    color: inherit !important;
+    color: #bac9d1 !important;
     text-decoration: none !important;
+    display: inline-block !important;
     transition: color 0.15s ease !important;
 }
 
