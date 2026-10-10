@@ -416,3 +416,19 @@ footer{padding:46px 0 22px}.footer-grid{grid-template-columns:1.55fr 1.35fr 1.4f
     text-align: center !important;
 }
 
+/* Footer address harmonized with phone & email links */
+.footer-address {
+    font-size: 12px !important;
+    color: #bac9d1 !important;
+    line-height: 1.65 !important;
+    margin: 0 !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
+}
+.footer-address svg {
+    margin-top: 3px;
+    flex-shrink: 0;
+    color: #bac9d1;
+}
+
