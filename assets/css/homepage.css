@@ -409,3 +409,10 @@ footer{padding:46px 0 22px}.footer-grid{grid-template-columns:1.55fr 1.35fr 1.4f
     background: #17251e !important;
     color: #ffffff !important;
 }
+
+/* Footer bottom copyright center alignment */
+.footer-bottom {
+    justify-content: center !important;
+    text-align: center !important;
+}
+
