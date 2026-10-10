@@ -76,8 +76,11 @@ footer{padding:46px 0 22px}.footer-grid{grid-template-columns:1.55fr 1.35fr 1.4f
     justify-content: space-between;
     align-items: center;
     height: 80px;
-    width: min(1200px, calc(100% - 40px));
+    width: 100%;
+    max-width: 1380px;
+    padding: 0 36px;
     margin: 0 auto;
+    box-sizing: border-box;
 }
 .navbar .logo {
     font-size: 2.2rem;
@@ -94,7 +97,7 @@ footer{padding:46px 0 22px}.footer-grid{grid-template-columns:1.55fr 1.35fr 1.4f
 }
 .nav-links {
     display: flex;
-    gap: 16px;
+    gap: 22px;
     margin-left: auto;
     align-items: center;
     list-style: none;
