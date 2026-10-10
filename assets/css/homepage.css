@@ -416,44 +416,68 @@ footer{padding:46px 0 22px}.footer-grid{grid-template-columns:1.55fr 1.35fr 1.4f
     text-align: center !important;
 }
 
-/* Footer grid balance so address has adequate room */
+/* Footer grid balance so address fits on 1 clean line */
 .footer-grid {
-    grid-template-columns: 1.5fr 1.3fr 1.35fr 0.85fr 1.6fr !important;
+    grid-template-columns: 1.35fr 1.05fr 1.15fr 0.75fr 1.9fr !important;
+    gap: 20px !important;
 }
 
 /* Footer contact items - strict vertical alignment of text and icons */
+.footer-contact-link,
 .footer-contact-item {
     display: flex !important;
-    align-items: flex-start !important;
+    align-items: center !important;
     gap: 8px !important;
     font-size: 12px !important;
     color: #bac9d1 !important;
     line-height: 1.65 !important;
     margin-bottom: 8px !important;
     text-decoration: none !important;
+    white-space: nowrap !important;
+    transition: color 0.15s ease !important;
 }
-.footer-contact-item:hover, .footer-contact-item:hover span {
-    color: var(--orange) !important;
+
+.footer-contact-link:hover,
+.footer-contact-item:hover,
+.footer-contact-link:hover span,
+.footer-contact-item:hover span {
+    color: var(--orange, #ff6600) !important;
 }
-.footer-contact-item:hover .footer-ci svg {
-    color: var(--orange) !important;
+
+.footer-contact-link:hover .footer-ci,
+.footer-contact-item:hover .footer-ci {
+    fill: var(--orange, #ff6600) !important;
+    color: var(--orange, #ff6600) !important;
 }
+
 .footer-ci {
-    width: 16px !important;
-    min-width: 16px !important;
-    height: 20px !important;
+    width: 14px !important;
+    min-width: 14px !important;
+    height: 14px !important;
+    min-height: 14px !important;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
     flex-shrink: 0 !important;
-    font-size: 13px !important;
-    color: #bac9d1 !important;
+    fill: currentColor !important;
+    color: inherit !important;
+    transition: fill 0.15s ease, color 0.15s ease !important;
 }
-.footer-ci svg {
-    display: block;
-    width: 13px;
-    height: 13px;
-    color: #bac9d1;
-    transition: color 0.2s;
+
+@media (max-width: 850px) {
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-contact-link,
+    .footer-contact-item {
+        white-space: normal !important;
+        align-items: flex-start !important;
+    }
+    .footer-ci {
+        margin-top: 3px !important;
+    }
 }
 
