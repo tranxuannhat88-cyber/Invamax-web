@@ -416,19 +416,44 @@ footer{padding:46px 0 22px}.footer-grid{grid-template-columns:1.55fr 1.35fr 1.4f
     text-align: center !important;
 }
 
-/* Footer address harmonized with phone & email links */
-.footer-address {
+/* Footer grid balance so address has adequate room */
+.footer-grid {
+    grid-template-columns: 1.5fr 1.3fr 1.35fr 0.85fr 1.6fr !important;
+}
+
+/* Footer contact items - strict vertical alignment of text and icons */
+.footer-contact-item {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
     font-size: 12px !important;
     color: #bac9d1 !important;
     line-height: 1.65 !important;
-    margin: 0 !important;
-    display: flex !important;
-    align-items: flex-start !important;
-    gap: 6px !important;
+    margin-bottom: 8px !important;
+    text-decoration: none !important;
 }
-.footer-address svg {
-    margin-top: 3px;
-    flex-shrink: 0;
+.footer-contact-item:hover, .footer-contact-item:hover span {
+    color: var(--orange) !important;
+}
+.footer-contact-item:hover .footer-ci svg {
+    color: var(--orange) !important;
+}
+.footer-ci {
+    width: 16px !important;
+    min-width: 16px !important;
+    height: 20px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+    font-size: 13px !important;
+    color: #bac9d1 !important;
+}
+.footer-ci svg {
+    display: block;
+    width: 13px;
+    height: 13px;
     color: #bac9d1;
+    transition: color 0.2s;
 }
 
