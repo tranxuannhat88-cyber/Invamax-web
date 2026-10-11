@@ -49,9 +49,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/style.css?v=13">
+    <link rel="stylesheet" href="../assets/css/style.css?v=14">
     <link rel="stylesheet" href="../assets/css/navbar.css?v=11">
-    <link rel="stylesheet" href="../assets/css/solution-operations.css">
+    <link rel="stylesheet" href="../assets/css/solution-operations.css?v=2">
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     
@@ -150,138 +150,340 @@
     </nav>
 
 <main class="ivop" id="ivop-top">
+  <!-- HERO BANNER – GIẢI PHÁP ĐIỀU HÀNH NHÀ MÁY -->
   <section class="ivop-hero">
     <div class="ivop-wrap ivop-hero-grid">
       <div class="ivop-hero-content">
         <p class="ivop-kicker">GIẢI PHÁP CỦA INVAMAX</p>
-        <h1>Điều hành<br><span>nhà máy</span></h1>
-        <p>INVAMAX trực tiếp tham gia điều hành hoặc cử giám đốc điều hành, giúp nhà máy ổn định hoạt động, cải thiện hiệu quả và phát triển đội ngũ kế cận.</p>
+        <h1>Điều hành nhà máy</h1>
+        <p>INVAMAX trực tiếp tham gia điều hành, ổn định vận hành hôm nay và xây dựng năng lực để doanh nghiệp tự chủ ngày mai.</p>
         <div class="ivop-actions">
-          <a class="ivop-button primary" href="#" onclick="openContactModal(); return false;">Đăng ký tư vấn <span>↗</span></a>
-          <a class="ivop-button outline" href="#ivop-models">Hình thức hợp tác <span>↓</span></a>
+          <a class="ivop-button primary" href="#" onclick="openContactModal(); return false;">Trao đổi với INVAMAX <span aria-hidden="true">&rarr;</span></a>
+          <a class="ivop-button outline" href="#ivop-models">Xem hình thức hợp tác</a>
         </div>
       </div>
       <div class="ivop-hero-image" role="img" aria-label="Đội ngũ kỹ sư trao đổi dữ liệu vận hành tại nhà máy"></div>
     </div>
   </section>
 
-  <section class="ivop-benefits">
-    <div class="ivop-wrap ivop-benefits-grid">
-      <div><span class="ivop-emoji">◎</span><strong>Ổn định vận hành</strong></div>
-      <div><span class="ivop-emoji">↗</span><strong>Kiểm soát năng suất và chi phí</strong></div>
-      <div><span class="ivop-emoji">◇</span><strong>Nâng cao chất lượng</strong></div>
-      <div><span class="ivop-emoji">♧</span><strong>Xây dựng đội ngũ tự chủ</strong></div>
+  <!-- SECTION 01 – KHI NÀO DOANH NGHIỆP CẦN THUÊ INVAMAX ĐIỀU HÀNH NHÀ MÁY? -->
+  <section class="ivop-section" id="ivop-when">
+    <div class="ivop-wrap">
+      <div class="ivop-section-header">
+        <p class="ivop-kicker">THÁCH THỨC DOANH NGHIỆP THƯỜNG GẶP</p>
+        <h2>Khi nào doanh nghiệp cần thuê INVAMAX điều hành nhà máy?</h2>
+      </div>
+
+      <div class="ivop-when-grid">
+        <!-- Card 01 -->
+        <article class="ivop-when-card">
+          <div class="ivop-card-head">
+            <div class="ivop-when-icon">
+              <i data-lucide="user"></i>
+            </div>
+            <h3>Chủ doanh nghiệp muốn rút khỏi điều hành trực tiếp</h3>
+          </div>
+          <p>Tập trung cho chiến lược, thị trường và đầu tư nhưng vẫn giữ quyền kiểm soát nhà máy.</p>
+        </article>
+
+        <!-- Card 02 -->
+        <article class="ivop-when-card">
+          <div class="ivop-card-head">
+            <div class="ivop-when-icon">
+              <i data-lucide="users"></i>
+            </div>
+            <h3>Doanh nghiệp thiếu năng lực điều hành phù hợp</h3>
+          </div>
+          <p>Chưa có giám đốc nhà máy phù hợp hoặc bộ máy điều hành chưa ổn định.</p>
+        </article>
+
+        <!-- Card 03 -->
+        <article class="ivop-when-card">
+          <div class="ivop-card-head">
+            <div class="ivop-when-icon">
+              <i data-lucide="trending-up"></i>
+            </div>
+            <h3>Cần điều hành kết hợp nâng cấp vận hành</h3>
+          </div>
+          <p>Vừa duy trì hoạt động sản xuất, vừa cải tiến hệ thống và phát triển đội ngũ.</p>
+        </article>
+      </div>
     </div>
   </section>
 
-  <section class="ivop-section ivop-problems">
-    <div class="ivop-wrap ivop-two">
-      <div>
-        <p class="ivop-kicker">KHI NÀO NHÀ MÁY CẦN HỖ TRỢ?</p>
-        <h2>Cần một đội ngũ điều hành đủ năng lực để tạo thay đổi</h2>
-        <p class="ivop-muted">Giải pháp phù hợp khi doanh nghiệp cần ổn định sản xuất, thay đổi mô hình quản lý hoặc bổ sung năng lực điều hành trong giai đoạn chuyển tiếp.</p>
+  <!-- SECTION 02 – HÌNH THỨC HỢP TÁC -->
+  <section class="ivop-section ivop-models-section" id="ivop-models">
+    <div class="ivop-wrap">
+      <div class="ivop-section-header">
+        <p class="ivop-kicker">GIẢI PHÁP CỦA CHÚNG TÔI</p>
+        <h2>INVAMAX cung cấp giải pháp điều hành như thế nào?</h2>
+        <p class="ivop-section-desc">Tùy theo nhu cầu và điều kiện thực tế, doanh nghiệp có thể lựa chọn một trong hai hình thức hợp tác với INVAMAX.</p>
       </div>
-      <div class="ivop-problem-grid">
-        <div><span>01</span>Vận hành thường xuyên phát sinh sự cố</div>
-        <div><span>02</span>Chi phí, năng suất khó kiểm soát</div>
-        <div><span>03</span>Chất lượng và giao hàng thiếu ổn định</div>
-        <div><span>04</span>Thiếu đội ngũ quản lý đủ năng lực</div>
-        <div><span>05</span>Quy trình, dữ liệu chưa đồng bộ</div>
-        <div><span>06</span>Cần chuyển đổi nhanh để đáp ứng tăng trưởng</div>
+
+      <div class="ivop-models-grid">
+        <!-- Hình thức 01 -->
+        <article class="ivop-model-card">
+          <div class="ivop-model-head">
+            <div class="ivop-model-icon">
+              <i data-lucide="factory"></i>
+            </div>
+            <div>
+              <div class="ivop-model-badge">HÌNH THỨC 01</div>
+              <h3>Thuê INVAMAX điều hành nhà máy</h3>
+            </div>
+          </div>
+          <p class="ivop-model-desc">Doanh nghiệp ký hợp đồng dịch vụ với INVAMAX. INVAMAX tổ chức nhân sự và nguồn lực để thực hiện phạm vi điều hành đã thống nhất, quản trị theo mục tiêu, KPI và cơ chế phối hợp được phê duyệt.</p>
+          <ul class="ivop-model-list">
+            <li>Ký hợp đồng dịch vụ trực tiếp với INVAMAX</li>
+            <li>INVAMAX chủ động tổ chức nhân sự và nguồn lực điều hành</li>
+            <li>Quản trị theo mục tiêu, KPI và cơ chế phối hợp được phê duyệt</li>
+          </ul>
+          <a href="#" class="ivop-model-cta" onclick="openContactModal(); return false;">Trao đổi phương án này <span aria-hidden="true">&rarr;</span></a>
+        </article>
+
+        <!-- Hình thức 02 -->
+        <article class="ivop-model-card">
+          <div class="ivop-model-head">
+            <div class="ivop-model-icon">
+              <i data-lucide="user-check"></i>
+            </div>
+            <div>
+              <div class="ivop-model-badge">HÌNH THỨC 02</div>
+              <h3>Thuê Giám đốc nhà máy do INVAMAX cử</h3>
+            </div>
+          </div>
+          <p class="ivop-model-desc">INVAMAX bố trí hoặc giới thiệu nhân sự điều hành phù hợp, kết hợp phương pháp quản trị, đào tạo đội ngũ và hỗ trợ chuyên môn. Cơ chế hợp đồng, quyền hạn và trách nhiệm được thỏa thuận cụ thể với doanh nghiệp.</p>
+          <ul class="ivop-model-list">
+            <li>Bố trí hoặc giới thiệu nhân sự điều hành phù hợp</li>
+            <li>Kết hợp phương pháp quản trị, đào tạo đội ngũ và hỗ trợ chuyên môn</li>
+            <li>Cơ chế hợp đồng, quyền hạn và trách nhiệm thỏa thuận cụ thể</li>
+          </ul>
+          <a href="#" class="ivop-model-cta" onclick="openContactModal(); return false;">Trao đổi phương án này <span aria-hidden="true">&rarr;</span></a>
+        </article>
       </div>
     </div>
   </section>
 
-  <section class="ivop-method">
-    <div class="ivop-wrap ivop-method-grid">
-      <div class="ivop-method-photo" role="img" aria-label="Người quản lý quan sát hệ thống sản xuất"></div>
-      <div class="ivop-method-text">
-        <p class="ivop-kicker">CÁCH TIẾP CẬN CỦA INVAMAX</p>
-        <h2>Điều hành thực chiến trên nền tảng INVAMAX FOS</h2>
-        <p>Không chỉ cung cấp một nhân sự quản lý. INVAMAX kết hợp con người, hệ thống quản trị và nhịp điều hành hằng ngày để tạo năng lực vận hành bền vững.</p>
-        <div class="ivop-pills">
-          <span>Trách nhiệm rõ ràng</span>
-          <span>KPI minh bạch</span>
-          <span>Đồng hành tại hiện trường</span>
-          <span>Đào tạo đội ngũ</span>
+  <!-- SECTION 03 – TẠI SAO CHỌN INVAMAX? -->
+  <section class="ivop-section ivop-why-section" id="ivop-why">
+    <div class="ivop-why-bg"></div>
+    <div class="ivop-wrap ivop-why-inner">
+      <div class="ivop-why-layout">
+        <!-- Cột trái: 4 năng lực cốt lõi -->
+        <div class="ivop-why-left">
+          <p class="ivop-kicker">LÝ DO LỰA CHỌN INVAMAX</p>
+          <h2 class="ivop-why-title">Tại sao chọn INVAMAX?</h2>
+          <p class="ivop-why-desc">INVAMAX kết hợp kinh nghiệm điều hành sản xuất thực chiến, phương pháp Lean và hệ thống quản trị có cấu trúc để giúp nhà máy vận hành hiệu quả, phát triển đội ngũ và từng bước tự chủ.</p>
+
+          <div class="ivop-why-grid">
+            <!-- 01 -->
+            <div class="ivop-why-card">
+              <div class="ivop-card-head">
+                <div class="ivop-why-icon"><i data-lucide="award"></i></div>
+                <h4>Kinh nghiệm thực chiến</h4>
+              </div>
+              <p>Hiểu công việc điều hành, tổ chức sản xuất và quản trị con người trong môi trường nhà máy.</p>
+            </div>
+
+            <!-- 02 -->
+            <div class="ivop-why-card">
+              <div class="ivop-card-head">
+                <div class="ivop-why-icon"><i data-lucide="sliders"></i></div>
+                <h4>Lean &amp; Cải tiến</h4>
+              </div>
+              <p>Nâng cao hiệu quả vận hành, tối ưu dòng chảy và sử dụng nguồn lực hợp lý.</p>
+            </div>
+
+            <!-- 03 -->
+            <div class="ivop-why-card">
+              <div class="ivop-card-head">
+                <div class="ivop-why-icon"><i data-lucide="layers"></i></div>
+                <h4>INVAMAX FOS™</h4>
+              </div>
+              <p>Thiết lập hệ thống quản trị, vận hành và cải tiến mỗi ngày.</p>
+            </div>
+
+            <!-- 04 -->
+            <div class="ivop-why-card">
+              <div class="ivop-card-head">
+                <div class="ivop-why-icon"><i data-lucide="users-round"></i></div>
+                <h4>Chuyển giao năng lực</h4>
+              </div>
+              <p>Phát triển đội ngũ quản lý nội bộ, từng bước giảm phụ thuộc vào người điều hành được cử đến.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cột phải: Thông điệp nhấn mạnh / Callout Quote -->
+        <div class="ivop-why-quote-col">
+          <div class="ivop-quote-box">
+            <span class="ivop-quote-mark">“</span>
+            <blockquote class="ivop-quote-text">Không chỉ cử người điều hành, INVAMAX còn xây dựng phương pháp, đội ngũ và hệ thống để doanh nghiệp tự chủ lâu dài.</blockquote>
+            <div class="ivop-quote-line"></div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="ivop-section ivop-process">
+  <!-- SECTION 04 – PHƯƠNG PHÁP TRIỂN KHAI CỦA INVAMAX -->
+  <section class="ivop-section ivop-process-section" id="ivop-process">
     <div class="ivop-wrap">
-      <p class="ivop-kicker">QUY TRÌNH TRIỂN KHAI</p>
-      <h2>5 bước điều hành nhà máy</h2>
-      <div class="ivop-steps">
-        <article><b>01</b><h3>Khảo sát &amp; thống nhất</h3><p>Hiện trạng, phạm vi, quyền hạn và mục tiêu.</p></article>
-        <article><b>02</b><h3>Thiết lập kế hoạch</h3><p>Ưu tiên, KPI và lộ trình 30–180 ngày.</p></article>
-        <article><b>03</b><h3>Trực tiếp điều hành</h3><p>Tổ chức thực thi, xử lý vấn đề mỗi ngày.</p></article>
-        <article><b>04</b><h3>Đo lường &amp; cải tiến</h3><p>Báo cáo định kỳ, chuẩn hóa hệ thống.</p></article>
-        <article><b>05</b><h3>Chuyển giao dần</h3><p>Đào tạo kế cận, giảm dần vai trò bên ngoài.</p></article>
+      <div class="ivop-section-header">
+        <p class="ivop-kicker">PHƯƠNG PHÁP TRIỂN KHAI</p>
+        <h2>Phương pháp triển khai của INVAMAX</h2>
+      </div>
+
+      <!-- 5 bước timeline -->
+      <div class="ivop-process-timeline">
+        <!-- Bước 01 -->
+        <div class="ivop-step-item">
+          <div class="ivop-step-num">01</div>
+          <div class="ivop-step-body">
+            <h4>Đánh giá &amp; thống nhất phạm vi</h4>
+            <p>Xác định hiện trạng, mục tiêu, KPI, quyền hạn và trách nhiệm.</p>
+          </div>
+          <div class="ivop-step-arrow"><i data-lucide="chevron-right"></i></div>
+        </div>
+
+        <!-- Bước 02 -->
+        <div class="ivop-step-item">
+          <div class="ivop-step-num">02</div>
+          <div class="ivop-step-body">
+            <h4>Thiết lập cơ chế điều hành</h4>
+            <p>Bố trí nhân sự, cơ chế phối hợp, báo cáo và ra quyết định.</p>
+          </div>
+          <div class="ivop-step-arrow"><i data-lucide="chevron-right"></i></div>
+        </div>
+
+        <!-- Bước 03 -->
+        <div class="ivop-step-item">
+          <div class="ivop-step-num">03</div>
+          <div class="ivop-step-body">
+            <h4>Điều hành &amp; nâng cấp hệ thống</h4>
+            <p>Duy trì hoạt động sản xuất, xử lý vấn đề, triển khai FOS và cải tiến.</p>
+          </div>
+          <div class="ivop-step-arrow"><i data-lucide="chevron-right"></i></div>
+        </div>
+
+        <!-- Bước 04 -->
+        <div class="ivop-step-item">
+          <div class="ivop-step-num">04</div>
+          <div class="ivop-step-body">
+            <h4>Đánh giá kết quả &amp; phát triển đội ngũ</h4>
+            <p>Theo dõi KPI, chuẩn hóa kết quả và đào tạo quản lý kế cận.</p>
+          </div>
+          <div class="ivop-step-arrow"><i data-lucide="chevron-right"></i></div>
+        </div>
+
+        <!-- Bước 05 -->
+        <div class="ivop-step-item">
+          <div class="ivop-step-num">05</div>
+          <div class="ivop-step-body">
+            <h4>Chuyển giao &amp; rút dần vai trò điều hành</h4>
+            <p>Chuyển giao trách nhiệm, chuyển sang vai trò hỗ trợ khi phù hợp.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Biểu đồ chuyển giao xu hướng (Trend Diagram) -->
+      <div class="ivop-transfer-diagram">
+        <div class="ivop-diagram-card">
+          <div class="ivop-wedge-track">
+            <!-- Wedge 1: INVAMAX điều hành giảm dần (Orange wedge) -->
+            <div class="ivop-wedge-invamax">
+              <span class="ivop-wedge-label">MỨC ĐỘ INVAMAX TRỰC TIẾP ĐIỀU HÀNH</span>
+            </div>
+            <!-- Wedge 2: Năng lực nội bộ tăng dần (Dark Green wedge) -->
+            <div class="ivop-wedge-internal">
+              <span class="ivop-wedge-label">NĂNG LỰC NỘI BỘ CỦA DOANH NGHIỆP <span class="ivop-arrow-right">&rarr;</span></span>
+            </div>
+          </div>
+          <div class="ivop-diagram-sub">
+            <span>&bull; Giai đoạn đầu: INVAMAX trực tiếp tổ chức, điều hành &amp; ổn định vận hành</span>
+            <span>&bull; Giai đoạn chuyển giao: Đội ngũ nội bộ nâng cao năng lực &amp; tự chủ lâu dài &rarr;</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="ivop-targets">
-    <div class="ivop-wrap ivop-target-grid">
-      <div>
-        <p class="ivop-kicker">MỤC TIÊU HƯỚNG TỚI</p>
-        <h2>Hiệu quả được xác định bằng KPI</h2>
-        <p class="ivop-muted">Không dùng tỷ lệ cải thiện mặc định làm cam kết. Mục tiêu cụ thể được thống nhất sau khảo sát đường cơ sở.</p>
-      </div>
-      <div class="ivop-target"><span>Chi phí</span><strong>Giảm</strong><small>theo mục tiêu thống nhất</small></div>
-      <div class="ivop-target"><span>Năng suất</span><strong>Tăng</strong><small>theo năng lực thực tế</small></div>
-      <div class="ivop-target"><span>Chất lượng</span><strong>Ổn định</strong><small>và giảm lỗi ưu tiên</small></div>
-    </div>
-  </section>
-
-  <section class="ivop-section ivop-models" id="ivop-models">
+  <!-- SECTION 05 – KẾT QUẢ DOANH NGHIỆP HƯỚNG TỚI -->
+  <section class="ivop-section ivop-results-section" id="ivop-results">
     <div class="ivop-wrap">
-      <p class="ivop-kicker">HÌNH THỨC HỢP TÁC</p>
-      <h2>Hai phương án, một mục tiêu vận hành hiệu quả</h2>
-      <div class="ivop-model-grid">
-        <article class="ivop-model featured">
-          <div class="ivop-model-num">01 · DOANH NGHIỆP THUÊ ĐƠN VỊ ĐIỀU HÀNH</div>
-          <h3>Thuê INVAMAX điều hành nhà máy</h3>
-          <p>INVAMAX nhận trách nhiệm quản trị và điều hành theo phạm vi được thỏa thuận, phối hợp cùng ban lãnh đạo để tạo kết quả.</p>
-          <ul>
-            <li>Điều hành theo phạm vi và KPI thống nhất</li>
-            <li>Triển khai hệ thống INVAMAX FOS</li>
-            <li>Huấn luyện và chuyển giao năng lực</li>
-          </ul>
-          <a href="#" onclick="openContactModal(); return false;">Trao đổi phương án <span>→</span></a>
+      <div class="ivop-section-header">
+        <p class="ivop-kicker">GIÁ TRỊ DOANH NGHIỆP NHẬN ĐƯỢC</p>
+        <h2>Kết quả doanh nghiệp hướng tới</h2>
+      </div>
+
+      <div class="ivop-results-grid">
+        <!-- Card 1 -->
+        <article class="ivop-result-card">
+          <div class="ivop-card-head">
+            <div class="ivop-result-icon"><i data-lucide="activity"></i></div>
+            <h4>Hoạt động sản xuất ổn định</h4>
+          </div>
+          <p>Duy trì sản xuất an toàn, đúng tiến độ và đạt chất lượng.</p>
         </article>
-        <article class="ivop-model">
-          <div class="ivop-model-num">02 · DOANH NGHIỆP THUÊ NHÂN SỰ ĐIỀU HÀNH</div>
-          <h3>Thuê giám đốc điều hành do INVAMAX cử</h3>
-          <p>INVAMAX giới thiệu hoặc cử nhân sự trực tiếp đảm nhiệm vai trò điều hành, kèm phương pháp quản trị và hỗ trợ chuyên môn.</p>
-          <ul>
-            <li>Vai trò, quyền hạn, quan hệ hợp đồng rõ ràng</li>
-            <li>Giám sát kết quả theo KPI được thống nhất</li>
-            <li>Đào tạo đội ngũ kế cận và chuyển tiếp</li>
-          </ul>
-          <a href="#" onclick="openContactModal(); return false;">Trao đổi phương án <span>→</span></a>
+
+        <!-- Card 2 -->
+        <article class="ivop-result-card">
+          <div class="ivop-card-head">
+            <div class="ivop-result-icon"><i data-lucide="user-check"></i></div>
+            <h4>Chủ doanh nghiệp giảm can thiệp</h4>
+          </div>
+          <p>Có thời gian tập trung cho chiến lược, thị trường và đầu tư.</p>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="ivop-result-card">
+          <div class="ivop-card-head">
+            <div class="ivop-result-icon"><i data-lucide="users"></i></div>
+            <h4>Đội ngũ quản lý trưởng thành</h4>
+          </div>
+          <p>Hình thành đội ngũ có năng lực vận hành và cải tiến.</p>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="ivop-result-card">
+          <div class="ivop-card-head">
+            <div class="ivop-result-icon"><i data-lucide="refresh-cw"></i></div>
+            <h4>Hệ thống tự vận hành và cải tiến</h4>
+          </div>
+          <p>Thiết lập cơ chế, quy trình và văn hóa cải tiến liên tục.</p>
         </article>
       </div>
-      <p class="ivop-note">Phạm vi trách nhiệm, quyền điều hành, hình thức hợp đồng và thời hạn hợp tác sẽ được thống nhất riêng cho từng doanh nghiệp.</p>
     </div>
   </section>
 
-  <section class="ivop-cta" id="ivop-contact">
+  <!-- SECTION 06 – CALL TO ACTION -->
+  <section class="ivop-cta-section" id="ivop-cta">
+    <div class="ivop-cta-bg"></div>
     <div class="ivop-wrap ivop-cta-inner">
-      <div>
-        <p class="ivop-kicker">ĐỒNG HÀNH CÙNG NHÀ MÁY</p>
-        <h2>Sẵn sàng nâng cấp năng lực điều hành?</h2>
-        <p>Trao đổi nhu cầu để INVAMAX cùng xây dựng phương án phù hợp.</p>
+      <div class="ivop-cta-content">
+        <p class="ivop-cta-kicker">HÀNH ĐỘNG NGAY</p>
+        <h2>Cần một đối tác điều hành nhà máy có phương pháp?</h2>
+        <p>Bắt đầu từ việc đánh giá đúng hiện trạng, thống nhất phạm vi điều hành và xác định lộ trình chuyển giao phù hợp với doanh nghiệp.</p>
+        <div class="ivop-cta-actions">
+          <a class="ivop-btn ivop-btn-primary" href="#" onclick="openContactModal(); return false;">Trao đổi với INVAMAX <span aria-hidden="true">&rarr;</span></a>
+          <a class="ivop-btn ivop-btn-outline" href="#" onclick="openContactModal(); return false;">Đăng ký đánh giá nhà máy</a>
+        </div>
       </div>
-      <div class="ivop-actions">
-        <a class="ivop-button primary" href="#" onclick="openContactModal(); return false;">Gửi yêu cầu tư vấn <span>↗</span></a>
-        <a class="ivop-button outline" href="tel:+84988911869">Gọi 0988 911 869</a>
+      <div class="ivop-cta-media" onclick="openIvopLightbox('../assets/images/factory-transformation-engineer.jpg', 'Kỹ sư điều hành INVAMAX tại hiện trường nhà máy')">
+        <img src="../assets/images/factory-transformation-engineer.jpg" alt="Kỹ sư điều hành INVAMAX tại hiện trường nhà máy" class="ivop-cta-img" loading="lazy">
       </div>
     </div>
   </section>
 </main>
+
+<!-- Lightbox Modal for Operations Image Inspection -->
+<div id="ivopLightbox" class="ivop-lightbox-modal" onclick="closeIvopLightbox(event)">
+  <div class="ivop-lightbox-wrap" onclick="event.stopPropagation()">
+    <button class="ivop-lightbox-close" onclick="closeIvopLightbox()" aria-label="Đóng lightbox">&times;</button>
+    <img src="" alt="" id="ivopLightboxImg" class="ivop-lightbox-img">
+    <div id="ivopLightboxCaption" class="ivop-lightbox-caption"></div>
+  </div>
+</div>
 
 <footer>
         <div class="container footer-grid">
@@ -448,8 +650,8 @@
                     <textarea name="noiDung" rows="3" required placeholder="Mô tả sơ bộ về định hướng, vấn đề hiện tại của nhà máy..."></textarea>
                 </div>
                 
-                <button type="submit" id="btnSubmitForm" class="btn btn-outline" style="width: 100%; margin-top: 10px; transition: all 0.3s ease;">
-                    <i data-lucide="send"></i> Gửi Đề Nghị
+                <button type="submit" id="btnSubmitForm" class="btn btn-primary" style="width: 100%; margin-top: 16px; background-color: var(--primary, #FF6900) !important; color: #ffffff !important; border: none; font-size: 15px; font-weight: 700; border-radius: 24px; padding: 13px 24px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(255, 105, 0, 0.35); transition: all 0.25s ease;">
+                    <i data-lucide="send" style="width: 18px; height: 18px; stroke: #ffffff;"></i> Gửi Yêu Cầu Tư Vấn
                 </button>
             </form>
             
@@ -457,7 +659,7 @@
                 <i data-lucide="check-circle" style="color: #22c55e; width: 64px; height: 64px; margin-bottom: 15px; margin: 0 auto;"></i>
                 <h3 style="color: #16a34a; font-size: 1.3rem; margin-top: 15px;">Gửi thành công!</h3>
                 <p style="color: #475569; margin-top: 10px;">Cảm ơn bạn. Chuyên gia INVAMAX sẽ sớm liên hệ lại.</p>
-                <button type="button" class="btn btn-outline" style="margin-top: 20px; transition: all 0.3s ease;" onclick="closeContactModal()">Đóng cửa sổ</button>
+                <button type="button" class="btn" style="margin-top: 20px; background: #0B211A; color: #ffffff !important; border: none; border-radius: 20px; padding: 10px 24px; font-weight: 600; cursor: pointer; transition: all 0.3s ease;" onclick="closeContactModal()">Đóng cửa sổ</button>
             </div>
         </div>
     </div>
@@ -477,7 +679,37 @@
             if (event.target == modal) {
                 modal.style.display = "none";
             }
+        };
+
+        // Lightbox functions for Operations page
+        function openIvopLightbox(src, caption) {
+            var modal = document.getElementById('ivopLightbox');
+            var img = document.getElementById('ivopLightboxImg');
+            var cap = document.getElementById('ivopLightboxCaption');
+            if (modal && img) {
+                img.src = src;
+                img.alt = caption || '';
+                if (cap) cap.textContent = caption || '';
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
         }
+
+        function closeIvopLightbox(e) {
+            if (e && e.target && e.target.classList.contains('ivop-lightbox-wrap')) return;
+            var modal = document.getElementById('ivopLightbox');
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeIvopLightbox();
+                closeContactModal();
+            }
+        });
     </script>
 </body>
 </html>

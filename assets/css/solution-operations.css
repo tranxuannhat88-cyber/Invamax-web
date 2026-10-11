@@ -1,41 +1,55 @@
 /* ========================================================
    INVAMAX SOLUTION: ĐIỀU HÀNH NHÀ MÁY (OPERATIONS)
    Scoped entirely within .ivop. Preserves shared header/footer.
-   Font and typography harmonized with Homepage & Brand Guidelines.
+   Standardized to INVAMAX Brand UI Guideline v1.1 & Tokens v1.1
    ======================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 @import url('./invamax-tokens.css');
 
 .ivop {
-    --bg: var(--iv-dark);
-    --deep: var(--iv-deep);
-    --orange: var(--iv-orange);
-    --ink: var(--iv-text);
-    --muted: var(--iv-muted);
-    font-family: var(--iv-font-family) !important;
-    font-size: var(--iv-text-body-size);
-    line-height: var(--iv-text-body-line-height);
+    --bg-dark: #0B211A;
+    --deep: #061C16;
+    --surface-green: #142921;
+    --orange: #FF6900;
+    --orange-hover: #E95E00;
+    --orange-tint: #FFF1E8;
+    --ink: #111827;
+    --muted: #667085;
+    --border: #DDE5E1;
+    --light-bg: #F8FAF9;
+    --white: #FFFFFF;
+    --card-radius: 16px;
+    --btn-radius: 12px;
+    font-family: var(--iv-font-family, 'Inter', -apple-system, BlinkMacSystemFont, sans-serif) !important;
+    font-size: 15px;
+    line-height: 1.65;
     color: var(--ink);
-    background: #fff;
-    overflow: hidden;
+    background: #ffffff;
+    overflow-x: hidden;
 }
 
 .ivop * {
     box-sizing: border-box;
 }
 
-.ivop h1, .ivop h2, .ivop h3, .ivop p {
+.ivop h1, .ivop h2, .ivop h3, .ivop h4, .ivop p {
     margin-top: 0;
 }
 
 .ivop a {
     text-decoration: none;
+    transition: all 0.25s ease;
 }
 
 .ivop-wrap {
-    width: min(var(--iv-container-max), calc(100% - 48px));
+    width: min(1240px, calc(100% - 48px));
     margin-inline: auto;
+}
+
+.ivop-section {
+    padding: 72px 0;
+    position: relative;
 }
 
 .ivop-kicker {
@@ -43,94 +57,112 @@
     font-weight: 800;
     font-size: 11px;
     letter-spacing: .12em;
-    margin-bottom: 10px;
-    display: flex;
+    margin-bottom: 12px;
+    display: inline-flex;
     align-items: center;
+    gap: 8px;
+    text-transform: uppercase;
 }
 
 .ivop-kicker::before {
     content: '—';
-    margin-right: 8px;
-}
-
-.ivop h2 {
-    font-size: clamp(25px, 2.6vw, 36px);
-    line-height: 1.22;
-    letter-spacing: -.025em;
-    margin-bottom: 13px;
     font-weight: 800;
 }
 
-.ivop-muted {
-    color: var(--muted);
+.ivop-section-header {
+    margin-bottom: 40px;
 }
 
-/* 1. HERO */
+.ivop-section-header h2 {
+    font-size: clamp(26px, 2.8vw, 36px) !important;
+    line-height: 1.25 !important;
+    letter-spacing: -.025em;
+    font-weight: 700 !important;
+    color: var(--ink) !important;
+    margin-bottom: 10px;
+}
+
+.ivop-section-desc {
+    font-size: 15.5px !important;
+    color: var(--muted) !important;
+    line-height: 1.7 !important;
+    max-width: 760px;
+    margin: 0;
+}
+
+.ivop-card-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+}
+
+/* ========================================================
+   HERO BANNER
+   ======================================================== */
 .ivop-hero {
     background: var(--deep);
     color: white;
-    padding-top: 80px !important; /* Space for fixed navbar */
+    padding-top: 80px !important;
+    position: relative;
 }
 
 .ivop-hero-grid {
     display: grid;
-    grid-template-columns: 46% 54%;
-    min-height: 385px;
+    grid-template-columns: 50% 50%;
+    min-height: 440px;
     position: relative;
 }
 
 .ivop-hero-content {
-    z-index: 1;
-    padding: 56px 24px 50px 0;
+    z-index: 2;
+    padding: 64px 32px 60px 0;
     align-self: center;
 }
 
 .ivop-hero h1 {
-    font-size: clamp(34px, 3.8vw, 48px);
+    font-size: clamp(34px, 4vw, 50px);
     line-height: 1.15;
     letter-spacing: -.025em;
-    margin: 0 0 18px;
+    margin: 0 0 16px;
     font-weight: 800;
     color: #ffffff;
 }
 
-.ivop-hero h1 span {
-    color: #ffffff;
-}
-
 .ivop-hero-content > p:not(.ivop-kicker) {
-    max-width: 510px;
+    max-width: 520px;
     color: #d4dfd9;
-    line-height: 1.8;
-    font-size: 15px;
+    line-height: 1.75;
+    font-size: 15.5px;
+    margin-bottom: 24px;
 }
 
 .ivop-hero-image {
-    background: linear-gradient(90deg, var(--deep), #10201a19 38%, transparent), url('../images/operations/operations.jpg') center / cover;
+    background: linear-gradient(90deg, var(--deep) 0%, rgba(6, 28, 22, 0.4) 30%, transparent 60%), url('../images/operations/operations.jpg') center right / cover no-repeat;
+    position: relative;
+    min-height: 100%;
 }
 
 .ivop-actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 24px;
+    gap: 14px;
+    align-items: center;
 }
 
 .ivop-button {
-    border-radius: var(--iv-radius-button);
-    min-height: var(--iv-button-height);
+    border-radius: var(--btn-radius);
+    min-height: 48px;
     padding: 0 24px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    font-family: var(--iv-font-family);
-    font-size: var(--iv-text-button-size);
-    font-weight: var(--iv-text-button-weight);
-    line-height: var(--iv-text-button-line-height);
-    transition: background .2s, transform .2s;
-    white-space: normal;
+    gap: 8px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
     cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 
 .ivop-button:hover {
@@ -139,546 +171,842 @@
 
 .ivop-button.primary {
     background: var(--orange);
-    color: white !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 14px rgba(255, 105, 0, 0.35);
 }
 
 .ivop-button.primary:hover {
-    background: var(--iv-color-orange-hover);
+    background: var(--orange-hover);
+    box-shadow: 0 6px 18px rgba(255, 105, 0, 0.45);
 }
 
 .ivop-button.outline {
-    color: white !important;
-    border: 1px solid var(--orange);
-    background: rgba(7, 22, 17, 0.4);
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .ivop-button.outline:hover {
-    background: rgba(255, 105, 0, 0.15);
+    background: rgba(255, 255, 255, 0.12);
+    border-color: #ffffff;
 }
 
-/* 2. BENEFITS STRIP */
-.ivop-benefits {
-    background: #172921;
-    color: white;
-}
-
-.ivop-benefits-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 22px;
-    padding: 20px 0;
-}
-
-.ivop-benefits-grid > div {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.ivop-benefits strong {
-    font-size: 13px;
-    line-height: 1.45;
-}
-
-.ivop-emoji {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    display: grid;
-    place-items: center;
-    font-size: 20px;
-    color: var(--orange);
-    flex: none;
-}
-
-/* 3. PROBLEMS SECTION */
-.ivop-section {
-    padding: 65px 0;
-}
-
-.ivop-two {
-    display: grid;
-    grid-template-columns: 45% 55%;
-    gap: 32px;
-    align-items: center;
-}
-
-.ivop-two > div:first-child {
-    padding-right: 24px;
-}
-
-.ivop-problems h2 {
-    color: var(--ink);
-}
-
-.ivop-problem-grid {
+/* ========================================================
+   SECTION 01: KHI NÀO DOANH NGHIỆP CẦN THUÊ INVAMAX ĐIỀU HÀNH?
+   ======================================================== */
+.ivop-when-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
+    gap: 24px;
 }
 
-.ivop-problem-grid > div {
-    background: #f6f8f7;
-    border: 1px solid #edf1ee;
-    border-radius: 9px;
-    padding: 18px 15px;
-    min-height: 108px;
-    font-size: 13px;
-    font-weight: 600;
-    line-height: 1.5;
-    color: var(--ink);
-}
-
-.ivop-problem-grid span {
-    display: block;
-    color: var(--orange);
-    font-weight: 800;
-    margin-bottom: 8px;
-    font-size: 12px;
-}
-
-/* 4. METHOD / APPROACH */
-.ivop-method {
-    background: var(--deep);
-    color: white;
-}
-
-.ivop-method-grid {
-    display: grid;
-    grid-template-columns: 43% 57%;
-    min-height: 330px;
-}
-
-.ivop-method-photo {
-    background: linear-gradient(90deg, rgba(16, 32, 26, 0.2), rgba(16, 32, 26, 0.15)), url('../images/operations/manager.jpg') 68% center / cover;
-}
-
-.ivop-method-text {
-    align-self: center;
-    padding: 48px 0 50px 54px;
-}
-
-.ivop-method-text h2 {
-    color: white;
-}
-
-.ivop-method-text p:not(.ivop-kicker) {
-    color: #c9d6cf;
-}
-
-.ivop-pills {
+.ivop-when-card {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: var(--card-radius);
+    padding: 28px 24px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
     display: flex;
-    gap: 9px;
-    flex-wrap: wrap;
-    margin-top: 22px;
+    flex-direction: column;
 }
 
-.ivop-pills span {
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 30px;
-    padding: 7px 14px;
-    font-size: 12px;
+.ivop-when-card:hover {
+    transform: translateY(-4px);
+    border-color: #cbd5e1;
+    box-shadow: 0 12px 28px rgba(11, 33, 26, 0.06);
 }
 
-/* 5. PROCESS */
-.ivop-process h2 {
-    margin-bottom: 33px;
-    color: var(--ink);
+.ivop-when-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    background: var(--orange-tint);
+    color: var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 2px 6px rgba(255, 105, 0, 0.12);
 }
 
-.ivop-steps {
+.ivop-when-icon svg {
+    width: 22px;
+    height: 22px;
+    stroke: var(--orange);
+    stroke-width: 2.4px !important;
+}
+
+.ivop-when-card h3 {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    line-height: 1.35 !important;
+    color: var(--ink) !important;
+    margin: 0;
+}
+
+.ivop-when-card p {
+    font-size: 14px !important;
+    line-height: 1.65 !important;
+    color: var(--muted) !important;
+    margin: 0;
+}
+
+/* ========================================================
+   SECTION 02: HÌNH THỨC HỢP TÁC (2 CARDS)
+   ======================================================== */
+.ivop-models-section {
+    background: var(--light-bg);
+    border-top: 1px solid #edf2ef;
+    border-bottom: 1px solid #edf2ef;
+}
+
+.ivop-models-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+}
+
+.ivop-model-card {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: var(--card-radius);
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.ivop-model-card:hover {
+    transform: translateY(-4px);
+    border-color: #cbd5e1;
+    box-shadow: 0 14px 32px rgba(11, 33, 26, 0.07);
+}
+
+.ivop-model-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.ivop-model-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: var(--orange-tint);
+    color: var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 3px 8px rgba(255, 105, 0, 0.15);
+}
+
+.ivop-model-icon svg {
+    width: 26px;
+    height: 26px;
+    stroke: var(--orange);
+    stroke-width: 2.3px !important;
+}
+
+.ivop-model-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: var(--orange);
+    margin-bottom: 4px;
+    text-transform: uppercase;
+}
+
+.ivop-model-card h3 {
+    font-size: 19px !important;
+    font-weight: 700 !important;
+    line-height: 1.3 !important;
+    color: var(--ink) !important;
+    margin: 0;
+}
+
+.ivop-model-desc {
+    font-size: 14px !important;
+    line-height: 1.7 !important;
+    color: var(--muted) !important;
+    margin-bottom: 20px;
+}
+
+.ivop-model-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-top: 1px dashed var(--border);
+    padding-top: 18px;
+}
+
+.ivop-model-list li {
+    font-size: 13.5px;
+    color: var(--ink);
+    line-height: 1.5;
+    position: relative;
+    padding-left: 20px;
+}
+
+.ivop-model-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--orange);
+}
+
+.ivop-model-cta {
+    margin-top: auto;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--orange);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.ivop-model-cta:hover {
+    color: var(--orange-hover);
+    transform: translateX(3px);
+}
+
+/* ========================================================
+   SECTION 03: TẠI SAO CHỌN INVAMAX? (DARK GREEN & QUOTE)
+   ======================================================== */
+.ivop-why-section {
+    background: var(--bg-dark);
+    color: #ffffff;
+    overflow: hidden;
+    position: relative;
+}
+
+.ivop-why-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 85% 50%, rgba(255, 105, 0, 0.08) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.ivop-why-inner {
+    position: relative;
+    z-index: 1;
+}
+
+.ivop-why-layout {
+    display: grid;
+    grid-template-columns: 58% 42%;
+    gap: 40px;
+    align-items: stretch;
+}
+
+.ivop-why-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.ivop-why-title {
+    font-size: clamp(26px, 2.8vw, 36px) !important;
+    font-weight: 700 !important;
+    line-height: 1.25 !important;
+    color: #ffffff !important;
+    margin-bottom: 12px;
+}
+
+.ivop-why-desc {
+    font-size: 15px !important;
+    color: #cbd5e1 !important;
+    line-height: 1.7 !important;
+    margin-bottom: 28px;
+    max-width: 620px;
+}
+
+.ivop-why-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 16px;
 }
 
-.ivop-steps article {
-    border-top: 2px solid #f6af80;
-    padding: 19px 7px 0 0;
+.ivop-why-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 20px 18px;
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
 }
 
-.ivop-steps b {
-    display: grid;
-    place-items: center;
-    background: var(--orange);
-    color: white;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    font-size: 12px;
-    margin-bottom: 17px;
+.ivop-why-card:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 105, 0, 0.35);
 }
 
-.ivop-steps h3 {
-    font-size: 15px;
-    line-height: 1.45;
-    margin-bottom: 9px;
-    color: var(--ink);
-    font-weight: 700;
-}
-
-.ivop-steps p {
-    color: var(--muted);
-    font-size: 13px;
-    line-height: 1.7;
-    margin-bottom: 0;
-}
-
-/* 6. TARGETS */
-.ivop-targets {
-    background: #f5f7f6;
-    padding: 42px 0;
-}
-
-.ivop-targets h2 {
-    color: var(--ink);
-}
-
-.ivop-target-grid {
-    display: grid;
-    grid-template-columns: 1.55fr repeat(3, 1fr);
-    align-items: center;
-    gap: 18px;
-}
-
-.ivop-target-grid > div:first-child p:last-child {
-    color: var(--muted);
-    font-size: 13px;
-    max-width: 420px;
-}
-
-.ivop-target {
-    background: #fff;
-    padding: 22px 18px;
+.ivop-why-icon {
+    width: 38px;
+    height: 38px;
     border-radius: 10px;
-    border: 1px solid #e8efea;
-    min-height: 135px;
-}
-
-.ivop-target span, .ivop-target small {
-    display: block;
-    color: var(--muted);
-    font-size: 12px;
-}
-
-.ivop-target strong {
-    display: block;
-    font-size: 26px;
+    background: rgba(255, 105, 0, 0.15);
     color: var(--orange);
-    margin: 6px 0;
-    line-height: 1.15;
-    font-weight: 800;
-}
-
-/* 7. MODELS */
-.ivop-models h2 {
-    margin-bottom: 28px;
-    color: var(--ink);
-}
-
-.ivop-model-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-
-.ivop-model {
-    border: 1px solid #e8ece9;
-    border-radius: 12px;
-    padding: 26px 28px;
-    background: #f9faf9;
-    display: flex;
-    flex-direction: column;
-}
-
-.ivop-model.featured {
-    border-color: #ff9a60;
-    background: linear-gradient(125deg, #fff9f4, #fff);
-}
-
-.ivop-model-num {
-    font-size: 11px;
-    letter-spacing: .08em;
-    color: var(--orange);
-    font-weight: 800;
-}
-
-.ivop-model h3 {
-    font-size: 20px;
-    line-height: 1.35;
-    margin: 13px 0 11px;
-    color: var(--ink);
-    font-weight: 800;
-}
-
-.ivop-model p {
-    color: var(--muted);
-    font-size: 13px;
-}
-
-.ivop-model ul {
-    padding-left: 19px;
-    margin: 0 0 22px;
-    font-size: 13px;
-    line-height: 2;
-    color: var(--ink);
-}
-
-.ivop-model a {
-    color: #e96103;
-    font-weight: 700;
-    font-size: 13px;
-    margin-top: auto;
-}
-
-.ivop-note {
-    font-size: 12px;
-    color: var(--muted);
-    margin: 14px 0 0;
-}
-
-/* 8. CTA */
-.ivop-cta {
-    background: linear-gradient(90deg, #0e201bee 5%, #0e201be0 55%, #0e201b90), url('../images/operations/factory.jpg') center / cover;
-    color: #fff;
-    padding: 52px 0;
-}
-
-.ivop-cta-inner {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 30px;
-}
-
-.ivop-cta-inner > div:first-child {
-    max-width: 650px;
-}
-
-.ivop-cta h2 {
-    color: white;
-}
-
-.ivop-cta p:not(.ivop-kicker) {
-    color: #d2e0d7;
-    margin-bottom: 0;
-}
-
-.ivop-cta .ivop-actions {
-    margin-top: 0;
+    justify-content: center;
     flex-shrink: 0;
 }
 
-/* RESPONSIVE DESIGN */
-@media(max-width: 950px) {
-    .ivop-hero-grid { grid-template-columns: 50% 50%; }
-    .ivop-hero-content { padding: 42px 15px 42px 0; }
-    .ivop-benefits-grid { grid-template-columns: repeat(2, 1fr); }
-    .ivop-two { grid-template-columns: 1fr; }
-    .ivop-two > div:first-child { padding-right: 0; }
-    .ivop-method-grid { grid-template-columns: 42% 58%; }
-    .ivop-method-text { padding-left: 30px; }
-    .ivop-target-grid { grid-template-columns: repeat(3, 1fr); }
-    .ivop-target-grid > div:first-child { grid-column: span 3; }
+.ivop-why-icon svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--orange);
+    stroke-width: 2.4px !important;
 }
 
-@media(max-width: 700px) {
-    .ivop-wrap { width: calc(100% - 36px); }
-    .ivop-hero-grid { display: block; min-height: 390px; }
-    .ivop-hero-image { position: absolute; inset: 0; opacity: .33; background-position: center; }
-    .ivop-hero-content { position: relative; padding: 60px 0; }
-    .ivop-hero h1 { font-size: 34px; }
-    .ivop-hero-content > p:not(.ivop-kicker) { font-size: 14px; }
-    .ivop-benefits-grid { gap: 18px 10px; }
-    .ivop-benefits strong { font-size: 12px; }
-    .ivop-emoji { width: 36px; height: 36px; font-size: 18px; }
-    .ivop-section { padding: 48px 0; }
-    .ivop-problem-grid { grid-template-columns: repeat(2, 1fr); }
-    .ivop-problem-grid > div { min-height: 100px; }
-    .ivop-method-grid { display: flex; flex-direction: column; }
-    .ivop-method-photo { height: 205px; background-position: center; }
-    .ivop-method-text { padding: 38px 0 45px; }
-    .ivop-steps { grid-template-columns: repeat(2, 1fr); }
-    .ivop-target-grid { grid-template-columns: 1fr 1fr; }
-    .ivop-target-grid > div:first-child { grid-column: span 2; }
-    .ivop-model-grid { grid-template-columns: 1fr; }
-    .ivop-cta-inner { display: block; }
-    .ivop-cta .ivop-actions { margin-top: 24px; }
-    .ivop h2 { font-size: 26px; }
+.ivop-why-card h4 {
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    margin: 0;
+    line-height: 1.35 !important;
 }
 
-@media(max-width: 420px) {
-    .ivop-benefits-grid { grid-template-columns: 1fr 1fr; }
-    .ivop-problem-grid { gap: 8px; }
-    .ivop-problem-grid > div { padding: 13px 10px; font-size: 12px; }
-    .ivop-steps { grid-template-columns: 1fr; }
-    .ivop-target-grid { grid-template-columns: 1fr; }
-    .ivop-target-grid > div:first-child { grid-column: auto; }
-    .ivop-actions { flex-direction: column; align-items: stretch; }
-    .ivop-button { width: 100%; }
-    .ivop-cta .ivop-actions { width: 100%; }
+.ivop-why-card p {
+    font-size: 13px !important;
+    line-height: 1.6 !important;
+    color: #94a3b8 !important;
+    margin: 0;
 }
 
-
-/* Footer bottom copyright center alignment */
-.footer-bottom {
-    justify-content: center !important;
-    text-align: center !important;
+/* Callout Quote Column */
+.ivop-why-quote-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-/* Footer grid balance */
-.footer-grid {
-    display: grid !important;
-    grid-template-columns: 1.4fr 1fr 1fr 0.8fr 2fr !important;
-    gap: 24px !important;
+.ivop-quote-box {
+    background: linear-gradient(145deg, rgba(20, 41, 33, 0.85) 0%, rgba(11, 33, 26, 0.95) 100%);
+    border: 1px solid rgba(255, 105, 0, 0.3);
+    border-left: 4px solid var(--orange);
+    border-radius: var(--card-radius);
+    padding: 40px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25);
+    position: relative;
 }
 
-/* Footer brand & Social links under brand */
-.footer-brand {
+.ivop-quote-mark {
+    font-family: Georgia, serif;
+    font-size: 64px;
+    line-height: 0.7;
+    color: var(--orange);
+    margin-bottom: 20px;
+    display: block;
+}
+
+.ivop-quote-text {
+    font-size: 18.5px;
+    line-height: 1.65;
+    color: #ffffff;
+    font-weight: 600;
+    margin: 0 0 18px;
+    font-style: normal;
+}
+
+.ivop-quote-line {
+    width: 48px;
+    height: 3px;
+    background: var(--orange);
+    border-radius: 2px;
+}
+
+/* ========================================================
+   SECTION 04: PHƯƠNG PHÁP TRIỂN KHAI CỦA INVAMAX (5 BƯỚC + DIAGRAM)
+   ======================================================== */
+.ivop-process-timeline {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+    margin-bottom: 32px;
+}
+
+.ivop-step-item {
+    position: relative;
     display: flex;
     flex-direction: column;
 }
 
-.social-links {
-    display: flex !important;
-    gap: 8px !important;
-    align-items: center !important;
-    flex-wrap: wrap !important;
+.ivop-step-num {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--orange);
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+    box-shadow: 0 3px 8px rgba(255, 105, 0, 0.3);
+    flex-shrink: 0;
 }
 
-.social-links a {
-    color: #94a3b8 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 44px !important;
-    height: 44px !important;
-    border-radius: 50% !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    background: rgba(255, 255, 255, 0.05) !important;
-    transition: all 0.3s ease !important;
-    text-decoration: none !important;
-    flex-shrink: 0 !important;
+.ivop-step-body {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 16px;
+    min-height: 155px;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
 }
 
-.social-links a:hover {
-    transform: translateY(-2px) !important;
+.ivop-step-item:hover .ivop-step-body {
+    transform: translateY(-3px);
+    border-color: var(--orange);
+    box-shadow: 0 8px 20px rgba(17, 24, 39, 0.05);
 }
 
-/* Footer contact section matching other columns (Về chúng tôi, Giải pháp, Năng lực) */
-.footer-company-name {
-    font-weight: 600 !important;
-    color: #ffffff !important;
-    margin-bottom: 12px !important;
-    font-size: 12px !important;
-    line-height: 1.5 !important;
-    white-space: nowrap !important;
-    font-family: inherit !important;
+.ivop-step-body h4 {
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    line-height: 1.4 !important;
+    color: var(--ink) !important;
+    margin-bottom: 8px;
 }
 
-.contact-info {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 8px !important;
-}
-
-.contact-item {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    gap: 8px !important;
-    height: 22px !important;
-    color: #bac9d1 !important;
-    font-size: 12px !important;
-    line-height: 1.65 !important;
-    white-space: nowrap !important;
-    font-family: inherit !important;
-}
-
-.contact-item svg {
-    color: #bac9d1 !important;
-    stroke: #bac9d1 !important;
-    flex-shrink: 0 !important;
-    width: 15px !important;
-    height: 15px !important;
-    display: block !important;
-}
-
-.contact-item a,
-.contact-item span {
-    color: #bac9d1 !important;
-    text-decoration: none !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    font-size: 12px !important;
-    line-height: 1.65 !important;
-    font-family: inherit !important;
-    transition: color 0.2s ease !important;
-}
-
-.contact-item a:hover {
-    color: var(--orange) !important;
-    opacity: 1 !important;
-}
-
-@media (max-width: 900px) {
-    .footer-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 28px !important;
-    }
-}
-
-@media (max-width: 560px) {
-    .footer-grid {
-        grid-template-columns: 1fr !important;
-    }
-}
-
-
-
-
-/* Match footer styling across all pages */
-footer {
-    background: #0d201b !important;
-    padding: 46px 0 22px !important;
-}
-.footer-brand img {
-    width: 195px !important;
-    background: #fff !important;
-    padding: 9px 12px !important;
-    border-radius: 4px !important;
-    max-width: 205px !important;
-}
-.footer-brand p {
-    font-size: 12px !important;
-    line-height: 1.65 !important;
-    color: #b7c7d0 !important;
-    margin-top: 8px !important;
-}
-.footer-grid h4 {
+.ivop-step-body p {
     font-size: 13px !important;
-    margin: 4px 0 17px !important;
-    color: #ffffff !important;
-    font-weight: 600 !important;
+    line-height: 1.6 !important;
+    color: var(--muted) !important;
+    margin: 0;
 }
-.footer-grid a:not(.logo) {
-    display: block !important;
-    font-size: 12px !important;
+
+.ivop-step-arrow {
+    position: absolute;
+    right: -10px;
+    top: 10px;
+    z-index: 2;
+    color: #94a3b8;
+}
+
+.ivop-step-arrow svg {
+    width: 18px;
+    height: 18px;
+    stroke-width: 2.2px;
+}
+
+/* Biểu đồ xu hướng chuyển giao (Trend Transfer Diagram) */
+.ivop-transfer-diagram {
+    margin-top: 10px;
+}
+
+.ivop-diagram-card {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: var(--card-radius);
+    padding: 20px 24px;
+    box-shadow: 0 4px 14px rgba(11, 33, 26, 0.04);
+}
+
+.ivop-wedge-track {
+    display: flex;
+    position: relative;
+    height: 52px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.ivop-wedge-invamax {
+    flex: 1 1 50%;
+    background: linear-gradient(90deg, #FF6900 0%, #ff8533 100%);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
+}
+
+.ivop-wedge-internal {
+    flex: 1 1 50%;
+    background: linear-gradient(90deg, #1e3b31 0%, #0B211A 100%);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 20px;
+    clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%);
+    margin-left: -20px;
+}
+
+.ivop-wedge-label {
+    font-size: 12.5px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ivop-diagram-sub {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+    font-size: 12.5px;
+    color: var(--muted);
+    font-weight: 500;
+}
+
+/* ========================================================
+   SECTION 05: KẾT QUẢ DOANH NGHIỆP HƯỚNG TỚI (4 CARDS)
+   ======================================================== */
+.ivop-results-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.ivop-result-card {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: var(--card-radius);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.ivop-result-card:hover {
+    transform: translateY(-4px);
+    border-color: #cbd5e1;
+    box-shadow: 0 10px 24px rgba(11, 33, 26, 0.06);
+}
+
+.ivop-result-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--orange-tint);
+    color: var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 2px 6px rgba(255, 105, 0, 0.12);
+}
+
+.ivop-result-icon svg {
+    width: 22px;
+    height: 22px;
+    stroke: var(--orange);
+    stroke-width: 2.4px !important;
+}
+
+.ivop-result-card h4 {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    line-height: 1.35 !important;
+    color: var(--ink) !important;
+    margin: 0;
+}
+
+.ivop-result-card p {
+    font-size: 13.5px !important;
     line-height: 1.65 !important;
-    color: #bac9d1 !important;
-    margin-bottom: 8px !important;
-    text-decoration: none !important;
+    color: var(--muted) !important;
+    margin: 0;
 }
-.footer-grid a:not(.logo):hover {
-    color: var(--orange, #ff6600) !important;
+
+/* ========================================================
+   SECTION 06: CALL TO ACTION (CTA)
+   ======================================================== */
+.ivop-cta-section {
+    background: var(--bg-dark);
+    position: relative;
+    padding: 72px 0;
+    overflow: hidden;
 }
-.footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
-    margin-top: 35px !important;
-    padding-top: 18px !important;
-    font-size: 11px !important;
-    color: #8c9aa5 !important;
-    text-align: center !important;
+
+.ivop-cta-bg {
+    position: absolute;
+    inset: 0;
+    background: url('../images/home/factory-cta.jpg') center / cover no-repeat;
+    opacity: 0.14;
+    mix-blend-mode: luminosity;
+    pointer-events: none;
+}
+
+.ivop-cta-inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 58% 42%;
+    gap: 40px;
+    align-items: center;
+}
+
+.ivop-cta-content {
+    max-width: 640px;
+}
+
+.ivop-cta-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .12em;
+    color: var(--orange);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.ivop-cta-kicker::before {
+    content: '—';
+    margin-right: 2px;
+}
+
+.ivop-cta-content h2 {
+    font-size: clamp(26px, 2.8vw, 36px) !important;
+    font-weight: 700 !important;
+    line-height: 1.25 !important;
+    color: #ffffff !important;
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+}
+
+.ivop-cta-content p {
+    font-size: 15px !important;
+    line-height: 1.7 !important;
+    color: #cbd5e1 !important;
+    margin-bottom: 28px;
+}
+
+.ivop-cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    align-items: center;
+}
+
+.ivop-btn {
+    border-radius: var(--btn-radius);
+    padding: 13px 26px;
+    font-size: 15px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.ivop-btn-primary {
+    background: var(--orange);
+    color: #ffffff !important;
+    box-shadow: 0 4px 14px rgba(255, 105, 0, 0.35);
+}
+
+.ivop-btn-primary:hover {
+    background: var(--orange-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(255, 105, 0, 0.45);
+}
+
+.ivop-btn-outline {
+    background: rgba(255, 255, 255, 0.06);
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+}
+
+.ivop-btn-outline:hover {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.ivop-cta-media {
+    position: relative;
+    border-radius: var(--card-radius);
+    overflow: hidden;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    height: 320px;
+    cursor: pointer;
+}
+
+.ivop-cta-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.ivop-cta-media:hover .ivop-cta-img {
+    transform: scale(1.03);
+}
+
+/* ========================================================
+   LIGHTBOX COMPONENT (Full Support: Click, Esc, Mobile)
+   ======================================================== */
+.ivop-lightbox-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: rgba(6, 28, 22, 0.94);
+    backdrop-filter: blur(8px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.ivop-lightbox-modal.active {
+    display: flex;
+    opacity: 1;
+}
+
+.ivop-lightbox-wrap {
+    position: relative;
+    max-width: 90vw;
+    max-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ivop-lightbox-img {
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: 12px;
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    object-fit: contain;
+}
+
+.ivop-lightbox-caption {
+    margin-top: 14px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.ivop-lightbox-close {
+    position: absolute;
+    top: -44px;
+    right: 0;
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    color: #ffffff;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    transition: background 0.2s;
+}
+
+.ivop-lightbox-close:hover {
+    background: var(--orange);
+}
+
+/* ========================================================
+   RESPONSIVE DESIGN (1024px, 768px, 480px, 360px)
+   ======================================================== */
+@media (max-width: 1024px) {
+    .ivop-hero-grid {
+        grid-template-columns: 55% 45%;
+    }
+    .ivop-why-layout {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    .ivop-cta-inner {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    .ivop-cta-media {
+        max-width: 520px;
+        height: 260px;
+    }
+    .ivop-results-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .ivop-hero-grid {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+    .ivop-hero-content {
+        padding: 40px 0 24px;
+    }
+    .ivop-hero-image {
+        min-height: 260px;
+        border-radius: 12px;
+        margin-bottom: 24px;
+    }
+    .ivop-when-grid {
+        grid-template-columns: 1fr;
+    }
+    .ivop-models-grid {
+        grid-template-columns: 1fr;
+    }
+    .ivop-why-grid {
+        grid-template-columns: 1fr;
+    }
+    .ivop-process-timeline {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    .ivop-step-arrow {
+        display: none;
+    }
+    .ivop-wedge-track {
+        flex-direction: column;
+        height: auto;
+    }
+    .ivop-wedge-invamax, .ivop-wedge-internal {
+        clip-path: none;
+        margin: 0;
+        padding: 14px 18px;
+        justify-content: flex-start;
+    }
+    .ivop-diagram-sub {
+        flex-direction: column;
+        gap: 6px;
+    }
+    .ivop-results-grid {
+        grid-template-columns: 1fr;
+    }
+    .ivop-cta-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .ivop-btn {
+        width: 100%;
+    }
 }
