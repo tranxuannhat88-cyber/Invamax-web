@@ -104,9 +104,56 @@
     background: var(--bg-dark, #0B211A);
     color: white;
     padding-top: 86px !important;
-    padding-bottom: 48px;
+    padding-bottom: 56px;
     position: relative;
     overflow: hidden;
+    min-height: 480px;
+    display: flex;
+    align-items: center;
+}
+
+.ivop-hero-bg-media {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 52%;
+    height: 100%;
+    z-index: 1;
+    cursor: zoom-in;
+    overflow: hidden;
+}
+
+.ivop-hero-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center right;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.ivop-hero-bg-media:hover .ivop-hero-bg-img {
+    transform: scale(1.02);
+}
+
+.ivop-hero-bg-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, 
+        #0B211A 0%, 
+        rgba(11, 33, 26, 0.96) 12%, 
+        rgba(11, 33, 26, 0.65) 28%, 
+        rgba(11, 33, 26, 0.15) 55%, 
+        transparent 75%
+    );
+    pointer-events: none;
+}
+
+.ivop-hero-wrap {
+    position: relative;
+    z-index: 2;
+    width: 100%;
 }
 
 .ivop-breadcrumb {
@@ -136,16 +183,8 @@
     font-weight: 500;
 }
 
-.ivop-hero-grid {
-    display: grid;
-    grid-template-columns: 53% 47%;
-    gap: 36px;
-    align-items: center;
-    position: relative;
-}
-
 .ivop-hero-content {
-    z-index: 2;
+    max-width: 590px;
     padding-right: 12px;
 }
 
@@ -174,29 +213,6 @@
     color: #cbd5e1 !important;
     margin-bottom: 26px !important;
     max-width: 580px;
-}
-
-.ivop-hero-media {
-    position: relative;
-    border-radius: var(--card-radius);
-    overflow: hidden;
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    height: 380px;
-    cursor: pointer;
-}
-
-.ivop-hero-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-    transition: transform 0.4s ease;
-}
-
-.ivop-hero-media:hover .ivop-hero-img {
-    transform: scale(1.03);
 }
 
 .ivop-actions {
@@ -448,7 +464,10 @@
 .ivop-why-bg {
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at 85% 50%, rgba(255, 105, 0, 0.08) 0%, transparent 60%);
+    background-image: linear-gradient(135deg, rgba(11, 33, 26, 0.94) 0%, rgba(6, 28, 22, 0.90) 100%), url('../images/home/hero-factory.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     pointer-events: none;
 }
 
@@ -457,17 +476,8 @@
     z-index: 1;
 }
 
-.ivop-why-layout {
-    display: grid;
-    grid-template-columns: 58% 42%;
-    gap: 40px;
-    align-items: stretch;
-}
-
-.ivop-why-left {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.ivop-why-header {
+    margin-bottom: 32px;
 }
 
 .ivop-why-title {
@@ -482,22 +492,32 @@
     font-size: 15px !important;
     color: #cbd5e1 !important;
     line-height: 1.7 !important;
-    margin-bottom: 28px;
-    max-width: 620px;
+    margin: 0;
+    max-width: 760px;
+}
+
+.ivop-why-main-grid {
+    display: grid;
+    grid-template-columns: 58% 42%;
+    gap: 24px;
+    align-items: stretch;
 }
 
 .ivop-why-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
+    align-items: stretch;
 }
 
 .ivop-why-card {
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 14px;
-    padding: 20px 18px;
+    padding: 22px 20px;
     transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    display: flex;
+    flex-direction: column;
 }
 
 .ivop-why-card:hover {
@@ -543,21 +563,23 @@
 /* Callout Quote Column */
 .ivop-why-quote-col {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    height: 100%;
 }
 
 .ivop-quote-box {
-    background: linear-gradient(145deg, rgba(20, 41, 33, 0.85) 0%, rgba(11, 33, 26, 0.95) 100%);
+    background: linear-gradient(145deg, rgba(20, 41, 33, 0.88) 0%, rgba(11, 33, 26, 0.96) 100%);
     border: 1px solid rgba(255, 105, 0, 0.3);
     border-left: 4px solid var(--orange);
     border-radius: var(--card-radius);
-    padding: 40px 32px;
+    padding: 36px 32px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25);
     position: relative;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
 }
 
 .ivop-quote-mark {
@@ -570,7 +592,7 @@
 }
 
 .ivop-quote-text {
-    font-size: 18.5px;
+    font-size: 18px;
     line-height: 1.65;
     color: #ffffff;
     font-weight: 600;
@@ -792,7 +814,7 @@
 .ivop-cta-section {
     background: var(--bg-dark);
     position: relative;
-    padding: 72px 0;
+    padding: 44px 0;
     overflow: hidden;
 }
 
@@ -808,6 +830,10 @@
 .ivop-cta-inner {
     position: relative;
     z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
 }
 
 .ivop-cta-content {
@@ -822,7 +848,7 @@
     font-weight: 800;
     letter-spacing: .12em;
     color: var(--orange);
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     text-transform: uppercase;
 }
 
@@ -832,25 +858,24 @@
 }
 
 .ivop-cta-content h2 {
-    font-size: clamp(26px, 2.8vw, 36px) !important;
+    font-size: clamp(24px, 2.5vw, 32px) !important;
     font-weight: 700 !important;
     line-height: 1.25 !important;
     color: #ffffff !important;
     letter-spacing: -0.02em;
-    margin-bottom: 14px;
+    margin-bottom: 8px;
 }
 
 .ivop-cta-content p {
     font-size: 15px !important;
-    line-height: 1.7 !important;
+    line-height: 1.65 !important;
     color: #cbd5e1 !important;
-    margin-bottom: 28px;
+    margin-bottom: 0;
 }
 
 .ivop-cta-actions {
     display: flex;
-    flex-wrap: wrap;
-    gap: 14px;
+    flex-shrink: 0;
     align-items: center;
 }
 
@@ -987,31 +1012,47 @@
 /* ========================================================
    RESPONSIVE DESIGN (1024px, 768px, 480px, 360px)
    ======================================================== */
+/* ========================================================
+   RESPONSIVE DESIGN (1024px, 991px, 768px, 480px, 360px)
+   ======================================================== */
 @media (max-width: 1024px) {
-    .ivop-hero-grid {
-        grid-template-columns: 55% 45%;
-    }
-    .ivop-why-layout {
+    .ivop-why-main-grid {
         grid-template-columns: 1fr;
-        gap: 32px;
+        gap: 24px;
     }
     .ivop-results-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media (max-width: 768px) {
-    .ivop-hero-grid {
-        grid-template-columns: 1fr;
-        min-height: auto;
+@media (max-width: 991px) {
+    .ivop-hero {
+        padding-top: 50px !important;
+        padding-bottom: 40px;
+        display: block;
+    }
+    .ivop-hero-bg-media {
+        position: relative;
+        top: auto;
+        right: auto;
+        bottom: auto;
+        width: 100%;
+        height: 300px;
+        margin-top: 28px;
+        border-radius: 14px;
+    }
+    .ivop-hero-bg-overlay {
+        background: linear-gradient(180deg, rgba(11, 33, 26, 0.4) 0%, transparent 60%);
     }
     .ivop-hero-content {
-        padding: 40px 0 24px;
+        max-width: 100%;
+        padding-right: 0;
     }
-    .ivop-hero-image {
-        min-height: 260px;
-        border-radius: 12px;
-        margin-bottom: 24px;
+}
+
+@media (max-width: 768px) {
+    .ivop-hero-bg-media {
+        height: 240px;
     }
     .ivop-when-grid {
         grid-template-columns: 1fr;
@@ -1046,9 +1087,13 @@
     .ivop-results-grid {
         grid-template-columns: 1fr;
     }
-    .ivop-cta-actions {
+    .ivop-cta-inner {
         flex-direction: column;
-        align-items: stretch;
+        align-items: flex-start;
+        gap: 20px;
+    }
+    .ivop-cta-actions {
+        width: 100%;
     }
     .ivop-btn {
         width: 100%;
