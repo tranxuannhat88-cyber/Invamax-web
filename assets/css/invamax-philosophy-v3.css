@@ -583,7 +583,7 @@
   overflow: hidden;
   background: linear-gradient(180deg, #051913 0%, #061e17 50%, #051913 100%);
   color: #fff;
-  padding: 64px 0;
+  padding: 64px 0 0;
 }
 
 .ivp3-human .ivp3-shell {
@@ -598,12 +598,13 @@
   display: grid;
   grid-template-columns: minmax(0, 52%) minmax(0, 48%);
   gap: 36px;
-  align-items: start;
+  align-items: stretch;
 }
 
 .ivp3-human-col-left {
   display: flex;
   flex-direction: column;
+  padding-bottom: 64px;
 }
 
 .ivp3-human-col-left h2,
@@ -769,14 +770,17 @@
   flex-shrink: 0;
 }
 
-/* Team Photo with Quote - Full-bleed to right viewport with smooth gradient transition */
+/* Team Photo with Quote - Full-bleed to right and bottom edges with smooth gradient transition */
 .ivp3-team-wrap {
   position: relative;
-  border-radius: 16px 0 0 16px;
+  border-radius: 16px 0 0 0;
   overflow: hidden;
-  height: 310px;
+  flex: 1;
+  min-height: 380px;
   width: 100%;
   margin-right: 0;
+  margin-bottom: 0;
+  display: flex;
 }
 
 .ivp3-team-wrap::before {
@@ -826,14 +830,14 @@
 }
 
 .ivp3-team-quote-card p {
-  font-size: 11.5px !important;
-  line-height: 1.5;
+  font-size: 12.5px !important;
+  line-height: 1.6;
   color: #fff !important;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .ivp3-team-quote-card strong {
-  font-size: 10.5px;
+  font-size: 11.5px !important;
   color: #ffbe8a !important;
   letter-spacing: 0.04em;
 }
