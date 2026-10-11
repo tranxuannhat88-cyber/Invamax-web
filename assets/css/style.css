@@ -242,10 +242,8 @@ section[id], div[id] {
     position: relative;
     text-decoration: none;
     line-height: 1.3;
-    transition: color 0.2s ease;
-}
-
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a.active {
     color: var(--orange, #ff6b00);
 }
 
@@ -260,7 +258,8 @@ section[id], div[id] {
     transition: width 0.3s ease;
 }
 
-.nav-links a:hover::after {
+.nav-links a:hover::after,
+.nav-links a.active::after {
     width: 100%;
 }
 
@@ -280,7 +279,8 @@ section[id], div[id] {
     color: #dbe4df;
 }
 
-.nav-item:hover .nav-title {
+.nav-item:hover .nav-title,
+.nav-title.active {
     color: var(--orange, #ff6b00) !important;
 }
 
