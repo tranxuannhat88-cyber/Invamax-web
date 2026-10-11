@@ -67,20 +67,20 @@
             line-height: 1.65;
         }
 
-        /* Horizontal Event Cards List */
+        /* 2-Column Event Cards Grid */
         .events-list {
-            display: flex;
-            flex-direction: column;
-            gap: 28px;
-            max-width: 1040px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            max-width: 1240px;
             margin: 0 auto 60px;
         }
         .event-card-horizontal {
             display: grid;
-            grid-template-columns: 420px 1fr;
+            grid-template-columns: 210px 1fr;
             background: rgba(13, 32, 27, 0.65);
             border: 1px solid rgba(255, 107, 0, 0.35);
-            border-radius: 18px;
+            border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -89,12 +89,13 @@
         .event-card-horizontal:hover {
             border-color: rgba(255, 107, 0, 0.65);
             transform: translateY(-4px);
-            box-shadow: 0 22px 42px rgba(0, 0, 0, 0.5), 0 0 24px rgba(239, 109, 28, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(239, 109, 28, 0.15);
         }
         .event-card-img-wrap {
             position: relative;
             overflow: hidden;
-            min-height: 280px;
+            height: 100%;
+            min-height: 240px;
             background: #06130f;
         }
         .event-card-img-wrap img {
@@ -105,26 +106,26 @@
             transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .event-card-horizontal:hover .event-card-img-wrap img {
-            transform: scale(1.05);
+            transform: scale(1.06);
         }
         .event-card-badge {
             position: absolute;
-            top: 18px;
-            left: 18px;
+            top: 14px;
+            left: 14px;
             background: rgba(239, 109, 28, 0.95);
             color: #ffffff;
-            font-size: 11.5px;
+            font-size: 10.5px;
             font-weight: 800;
-            padding: 5px 14px;
+            padding: 4px 10px;
             border-radius: 999px;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            letter-spacing: 0.04em;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(6px);
             z-index: 2;
         }
         .event-card-content {
-            padding: 32px 36px;
+            padding: 22px 24px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -132,75 +133,86 @@
         .event-card-status {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            font-size: 13px;
+            gap: 6px;
+            font-size: 11.5px;
             color: #10b981;
             font-weight: 600;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
+            line-height: 1.35;
         }
         .event-card-title {
-            font-size: 1.5rem;
+            font-size: 1.22rem;
             font-weight: 800;
             color: #ffffff;
             line-height: 1.35;
-            margin-bottom: 14px;
+            margin-bottom: 10px;
             letter-spacing: -0.01em;
         }
         .event-card-excerpt {
             color: var(--text-muted);
-            font-size: 0.98rem;
-            line-height: 1.65;
-            margin-bottom: 24px;
+            font-size: 0.88rem;
+            line-height: 1.55;
+            margin-bottom: 18px;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
         .event-card-footer {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding-top: 20px;
+            padding-top: 14px;
             border-top: 1px solid rgba(255, 255, 255, 0.08);
             margin-top: auto;
             flex-wrap: wrap;
-            gap: 16px;
+            gap: 10px;
         }
         .event-card-meta {
-            font-size: 13.5px;
+            font-size: 12px;
             color: #cbd5e1;
             font-weight: 500;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
         }
         .btn-event-detail {
-            padding: 10px 22px;
-            font-size: 13px;
+            padding: 7px 16px;
+            font-size: 12px;
             font-weight: 600;
             border: 1px solid var(--primary);
             color: #ffffff;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             text-decoration: none;
-            border-radius: 8px;
+            border-radius: 6px;
             background: transparent;
             transition: all 0.25s ease;
         }
         .btn-event-detail:hover {
             background: var(--primary);
             color: #ffffff;
-            box-shadow: 0 4px 16px rgba(255, 107, 0, 0.35);
-            transform: translateX(2px);
+            box-shadow: 0 4px 14px rgba(255, 107, 0, 0.35);
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 1080px) {
+            .events-list {
+                grid-template-columns: 1fr;
+                max-width: 650px;
+            }
+        }
+
+        @media (max-width: 580px) {
             .event-card-horizontal {
                 grid-template-columns: 1fr;
             }
             .event-card-img-wrap {
-                min-height: 240px;
-                max-height: 280px;
+                min-height: 200px;
+                max-height: 240px;
             }
             .event-card-content {
-                padding: 24px;
+                padding: 18px;
             }
         }
     </style>
