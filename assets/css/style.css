@@ -1003,6 +1003,31 @@ section[id], div[id] {
     .form-grid { grid-template-columns: 1fr; gap: 0; }
 }
 
+.modal-content #btnSubmitForm,
+.modal-content button[type="submit"] {
+    background-color: var(--primary, #FF6900) !important;
+    color: #ffffff !important;
+    border: none !important;
+    font-weight: 700 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    box-shadow: 0 4px 14px rgba(255, 105, 0, 0.35) !important;
+}
+
+.modal-content #btnSubmitForm:hover,
+.modal-content button[type="submit"]:hover {
+    background-color: var(--primary-hover, #e05d00) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(255, 105, 0, 0.45) !important;
+}
+
+.modal-content #btnSubmitForm svg,
+.modal-content button[type="submit"] svg {
+    stroke: #ffffff !important;
+}
+
 .hero-main-title {
     font-size: 3.5rem;
     line-height: 1.25;
