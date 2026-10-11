@@ -7,17 +7,18 @@
     font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, Arial, sans-serif !important;
 }
 
-body.light-theme {
+html, body {
     background-color: #f7f9fa !important;
+    background: #f7f9fa !important;
     color: #1e293b !important;
     font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, Arial, sans-serif !important;
     overflow-x: hidden;
 }
 
 /* Ensure navbar dark style remains intact */
-body.light-theme .navbar {
+.navbar {
     background: #091a14 !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
 /* Page Container */
