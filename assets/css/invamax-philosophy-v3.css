@@ -859,15 +859,16 @@
    ============================================================ */
 .ivp3-natural {
   background: #ffffff;
+  padding: 44px 0 !important;
 }
 
 .ivp3-natural .ivp3-shell {
-  width: min(1280px, calc(100% - 48px));
+  width: min(1320px, calc(100% - 48px));
 }
 
 .ivp3-natural-grid {
   display: grid;
-  grid-template-columns: minmax(410px, 35%) minmax(0, 1fr);
+  grid-template-columns: minmax(360px, 31%) minmax(0, 1fr);
   gap: 36px;
   align-items: center;
 }
@@ -900,12 +901,12 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
-  gap: 16px;
+  gap: 20px;
   width: 100%;
 }
 
 .state-arrow {
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 800;
   color: var(--iv-green) !important;
   text-align: center;
@@ -921,28 +922,28 @@
 }
 
 .state-card h3 {
-  font-size: 15.5px !important;
+  font-size: 16px !important;
   font-weight: 800 !important;
   line-height: 1.35;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
   color: #0f172a !important;
   letter-spacing: -0.01em;
 }
 
 .state-grid {
   display: grid;
-  grid-template-columns: 190px 1fr;
-  gap: 14px;
+  grid-template-columns: 240px 1fr;
+  gap: 16px;
   align-items: center;
 }
 
 .state-grid img {
-  width: 190px;
-  height: 230px;
+  width: 240px;
+  height: 285px;
   object-fit: cover;
   border-radius: 12px;
   border: 1px solid var(--iv-line);
-  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.07);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
 }
 
 .state-grid ul {
@@ -951,15 +952,15 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 9px;
+  gap: 12px;
 }
 
 .state-grid li {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 13.5px !important;
-  line-height: 1.42;
+  gap: 10px;
+  font-size: 14.5px !important;
+  line-height: 1.45;
   color: #1e293b !important;
   font-weight: 600;
 }
@@ -967,16 +968,16 @@
 .state-bad li i,
 .state-bad li svg {
   color: var(--iv-orange) !important;
-  width: 18px !important;
-  height: 18px !important;
+  width: 19px !important;
+  height: 19px !important;
   flex-shrink: 0;
 }
 
 .state-good li i,
 .state-good li svg {
   color: var(--iv-green) !important;
-  width: 18px !important;
-  height: 18px !important;
+  width: 19px !important;
+  height: 19px !important;
   flex-shrink: 0;
 }
 
