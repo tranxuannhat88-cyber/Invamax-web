@@ -38,7 +38,7 @@
     <link rel="stylesheet" href="../assets/css/navbar.css">
     <link rel="stylesheet" href="../assets/css/invamax-resources.css?v=1">
 </head>
-<body>
+<body class="light-theme">
 
     <nav class="navbar">
         <div class="container">
@@ -75,24 +75,48 @@
 
     <main>
         <div class="res-page-wrap">
-            <!-- Hero Header -->
-            <header class="res-hero">
-                <div class="res-hero-eyebrow">T R I &nbsp; T H Ứ C</div>
-                <h1 class="res-hero-title">Tri thức <span>INVAMAX</span></h1>
-                <p class="res-hero-subtitle">Kiến thức, công cụ và kinh nghiệm thực tiễn dành cho nhà quản lý sản xuất.</p>
+            <!-- Hero Header (Light Theme with right feature cards & factory bg) -->
+            <header class="res-hero-light">
+                <img src="../assets/images/resources/hero-light-bg.jpg" alt="INVAMAX Factory" class="res-hero-bg">
+                <div class="res-hero-grid">
+                    <div class="res-hero-left">
+                        <div class="res-hero-eyebrow">T R I &nbsp; T H Ứ C</div>
+                        <h1 class="res-hero-title">Tri thức <span>INVAMAX</span></h1>
+                        <p class="res-hero-subtitle">Kiến thức, công cụ và kinh nghiệm thực tiễn dành cho nhà quản lý sản xuất.</p>
 
-                <!-- Search and Filter Bar -->
-                <div class="res-search-filter-bar">
-                    <div class="res-search-box">
-                        <i data-lucide="search"></i>
-                        <input type="text" id="resSearchInput" placeholder="Tìm kiếm bài viết, tài liệu, video..." aria-label="Tìm kiếm">
+                        <!-- Search Bar with Orange Round Button -->
+                        <div class="res-search-wrap-light">
+                            <i data-lucide="search"></i>
+                            <input type="text" id="resSearchInput" placeholder="Tìm kiếm bài viết, tài liệu, video..." aria-label="Tìm kiếm">
+                            <button class="res-search-submit-btn" aria-label="Tìm kiếm"><i data-lucide="search" style="width: 16px; height: 16px; margin: 0;"></i></button>
+                        </div>
+
+                        <!-- Filter Pills -->
+                        <div class="res-filter-pills-light">
+                            <button class="res-pill-btn active"><i data-lucide="book-open"></i> Tất cả</button>
+                            <a href="articles.html" class="res-pill-btn"><i data-lucide="file-text"></i> Bài viết</a>
+                            <a href="#toolkit" class="res-pill-btn"><i data-lucide="download"></i> Tài liệu</a>
+                            <a href="#video" class="res-pill-btn"><i data-lucide="play-circle"></i> Video</a>
+                        </div>
                     </div>
-                    <div class="res-filter-tabs">
-                        <button class="res-tab-btn active" data-filter="all"><i data-lucide="book-open"></i> Tất cả</button>
-                        <a href="articles.html" class="res-tab-btn"><i data-lucide="file-text"></i> Bài viết</a>
-                        <a href="#toolkit" class="res-tab-btn"><i data-lucide="download"></i> Tài liệu</a>
-                        <a href="#video" class="res-tab-btn"><i data-lucide="play-circle"></i> Video</a>
-                        <a href="#topics" class="res-tab-btn"><i data-lucide="tag"></i> Chủ đề</a>
+
+                    <!-- Right 3 Feature Cards -->
+                    <div class="res-hero-feature-cards">
+                        <div class="res-feat-card">
+                            <i data-lucide="book-open" class="res-feat-icon"></i>
+                            <h3 class="res-feat-title">Kiến thức thực tiễn</h3>
+                            <p class="res-feat-desc">Từ nhà máy, cho nhà quản lý sản xuất</p>
+                        </div>
+                        <div class="res-feat-card">
+                            <i data-lucide="settings" class="res-feat-icon"></i>
+                            <h3 class="res-feat-title">Công cụ áp dụng ngay</h3>
+                            <p class="res-feat-desc">Biểu mẫu, checklist, template và hướng dẫn chi tiết</p>
+                        </div>
+                        <div class="res-feat-card">
+                            <i data-lucide="bar-chart-2" class="res-feat-icon"></i>
+                            <h3 class="res-feat-title">Kinh nghiệm đã được kiểm chứng</h3>
+                            <p class="res-feat-desc">Từ các dự án thực tế tại nhiều ngành sản xuất</p>
+                        </div>
                     </div>
                 </div>
             </header>
@@ -102,7 +126,7 @@
                 <div class="res-sec-header">
                     <div class="res-sec-title-wrap">
                         <h2 class="res-sec-title">Khám phá theo chủ đề</h2>
-                        <p class="res-sec-desc">Các chủ đề trọng tâm giúp nâng cao hiệu quả vận hành nhà máy.</p>
+                        <p class="res-sec-desc">Chọn lĩnh vực bạn quan tâm để xem các bài viết, tài liệu và video liên quan.</p>
                     </div>
                     <a href="articles.html" class="res-view-all">Xem tất cả chủ đề <i data-lucide="arrow-right"></i></a>
                 </div>
@@ -114,8 +138,8 @@
                         <div class="topic-content">
                             <i data-lucide="bar-chart-2" class="topic-icon"></i>
                             <h3 class="topic-title">Lean &amp; Cải tiến</h3>
-                            <p class="topic-desc">Phương pháp, công cụ và kinh nghiệm triển khai Lean tại nhà máy.</p>
-                            <span class="topic-link">Khám phá <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i></span>
+                            <p class="topic-desc">Phương pháp, công cụ và kinh nghiệm triển khai Lean trong nhà máy.</p>
+                            <span class="topic-circle-btn"><i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i></span>
                         </div>
                     </a>
 
@@ -123,10 +147,10 @@
                     <a href="articles.html?topic=management" class="topic-card">
                         <img src="../assets/images/resources/topic-mgmt.jpg" alt="Quản trị nhà máy" class="topic-card-bg" loading="lazy">
                         <div class="topic-content">
-                            <i data-lucide="factory" class="topic-icon"></i>
+                            <i data-lucide="users" class="topic-icon"></i>
                             <h3 class="topic-title">Quản trị nhà máy</h3>
-                            <p class="topic-desc">Mô hình, quy trình và thực tiễn quản trị vận hành hiệu quả.</p>
-                            <span class="topic-link">Khám phá <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i></span>
+                            <p class="topic-desc">Mô hình, quy trình và thực tiễn quản trị sản xuất hiệu quả.</p>
+                            <span class="topic-circle-btn"><i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i></span>
                         </div>
                     </a>
 
@@ -137,7 +161,7 @@
                             <i data-lucide="cpu" class="topic-icon"></i>
                             <h3 class="topic-title">Digital &amp; AI</h3>
                             <p class="topic-desc">Ứng dụng công nghệ số và AI trong sản xuất.</p>
-                            <span class="topic-link">Khám phá <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i></span>
+                            <span class="topic-circle-btn"><i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i></span>
                         </div>
                     </a>
 
@@ -145,10 +169,10 @@
                     <a href="articles.html?topic=cost-down" class="topic-card">
                         <img src="../assets/images/resources/topic-cost.jpg" alt="Cost Down" class="topic-card-bg" loading="lazy">
                         <div class="topic-content">
-                            <i data-lucide="trending-up" class="topic-icon"></i>
+                            <i data-lucide="trending-down" class="topic-icon"></i>
                             <h3 class="topic-title">Cost Down</h3>
-                            <p class="topic-desc">Giải pháp tối ưu chi phí và nâng cao hiệu quả sản xuất.</p>
-                            <span class="topic-link">Khám phá <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i></span>
+                            <p class="topic-desc">Giải pháp tối ưu chi phí, tăng năng suất và loại bỏ lãng phí.</p>
+                            <span class="topic-circle-btn"><i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i></span>
                         </div>
                     </a>
                 </div>
@@ -159,84 +183,84 @@
                 <div class="res-sec-header">
                     <div class="res-sec-title-wrap">
                         <h2 class="res-sec-title">Bài viết mới &amp; tiêu biểu</h2>
-                        <p class="res-sec-desc">Những góc nhìn, phương pháp và kinh nghiệm thực tiễn từ chuyên gia INVAMAX.</p>
+                        <p class="res-sec-desc">Những bài viết được quan tâm nhiều nhất, cập nhật kiến thức và kinh nghiệm thực tế từ INVAMAX.</p>
                     </div>
                     <a href="articles.html" class="res-view-all">Xem tất cả bài viết <i data-lucide="arrow-right"></i></a>
                 </div>
 
                 <div class="res-grid-4">
                     <!-- Article 1 -->
-                    <article class="art-card">
+                    <article class="art-card-light">
                         <div class="art-thumb-wrap">
                             <img src="../assets/images/resources/art-5steps.jpg" alt="5 bước triển khai Lean hiệu quả" loading="lazy">
-                            <span class="art-tag-badge"><i data-lucide="tag"></i> Lean &amp; Cải tiến</span>
+                            <span class="art-tag-badge-solid">Lean &amp; Cải tiến</span>
                         </div>
-                        <div class="art-body">
-                            <h3 class="art-title">5 bước triển khai Lean hiệu quả tại nhà máy sản xuất</h3>
-                            <p class="art-excerpt">Hướng dẫn thực tế từ các dự án triển khai Lean, giúp doanh nghiệp cải thiện năng suất và giảm lãng phí bền vững.</p>
-                            <div class="art-meta-footer">
+                        <div class="art-body-light">
+                            <h3 class="art-title-light">5 bước triển khai Lean hiệu quả tại nhà máy sản xuất</h3>
+                            <p class="art-excerpt-light">Hướng dẫn thực tế từ các dự án triển khai Lean, giúp doanh nghiệp cải thiện năng suất và giảm lãng phí bền vững.</p>
+                            <div class="art-meta-footer-light">
                                 <div class="art-meta-left">
-                                    <span class="art-meta-item"><i data-lucide="calendar" style="width: 12px; height: 12px;"></i> 10 Th10, 2024</span>
-                                    <span class="art-meta-item"><i data-lucide="clock" style="width: 12px; height: 12px;"></i> 8 phút đọc</span>
+                                    <span class="art-meta-item"><i data-lucide="calendar" style="width: 12px; height: 12px;"></i> 12 thg 10, 2026</span>
+                                    <span class="art-meta-item"><i data-lucide="eye" style="width: 12px; height: 12px;"></i> 2.4K lượt xem</span>
                                 </div>
-                                <a href="articles.html" class="art-read-now">Đọc bài &rarr;</a>
+                                <a href="articles.html" class="art-arrow-btn" aria-label="Xem bài viết"><i data-lucide="arrow-right" style="width: 15px; height: 15px;"></i></a>
                             </div>
                         </div>
                     </article>
 
                     <!-- Article 2 -->
-                    <article class="art-card">
+                    <article class="art-card-light">
                         <div class="art-thumb-wrap">
                             <img src="../assets/images/resources/art-oee.jpg" alt="Chỉ số OEE" loading="lazy">
-                            <span class="art-tag-badge"><i data-lucide="tag"></i> Quản trị nhà máy</span>
+                            <span class="art-tag-badge-solid">Quản trị nhà máy</span>
                         </div>
-                        <div class="art-body">
-                            <h3 class="art-title">Chỉ số OEE: Cách đo lường và cải thiện hiệu quả thiết bị</h3>
-                            <p class="art-excerpt">Hiểu đúng về OEE và các bước triển khai thực tế để nâng cao hiệu suất thiết bị trong nhà máy sản xuất.</p>
-                            <div class="art-meta-footer">
+                        <div class="art-body-light">
+                            <h3 class="art-title-light">Chỉ số OEE: Cách đo lường và cải thiện hiệu quả thiết bị</h3>
+                            <p class="art-excerpt-light">Hiểu đúng về OEE và các bước triển khai cải tiến hiệu quả trong nhà máy.</p>
+                            <div class="art-meta-footer-light">
                                 <div class="art-meta-left">
-                                    <span class="art-meta-item"><i data-lucide="calendar" style="width: 12px; height: 12px;"></i> 22 Th10, 2024</span>
-                                    <span class="art-meta-item"><i data-lucide="clock" style="width: 12px; height: 12px;"></i> 6 phút đọc</span>
+                                    <span class="art-meta-item"><i data-lucide="calendar" style="width: 12px; height: 12px;"></i> 10 thg 10, 2026</span>
+                                    <span class="art-meta-item"><i data-lucide="eye" style="width: 12px; height: 12px;"></i> 1.8K lượt xem</span>
                                 </div>
-                                <a href="articles.html" class="art-read-now">Đọc bài &rarr;</a>
+                                <a href="articles.html" class="art-arrow-btn" aria-label="Xem bài viết"><i data-lucide="arrow-right" style="width: 15px; height: 15px;"></i></a>
                             </div>
                         </div>
                     </article>
 
                     <!-- Article 3 -->
-                    <article class="art-card">
+                    <article class="art-card-light">
                         <div class="art-thumb-wrap">
                             <img src="../assets/images/resources/art-ai.jpg" alt="Ứng dụng AI trong sản xuất" loading="lazy">
-                            <span class="art-tag-badge"><i data-lucide="tag"></i> Digital &amp; AI</span>
+                            <span class="art-tag-badge-solid">Digital &amp; AI</span>
                         </div>
-                        <div class="art-body">
-                            <h3 class="art-title">Ứng dụng AI trong sản xuất: Cơ hội và lộ trình triển khai</h3>
-                            <p class="art-excerpt">Những ứng dụng thực tế của AI trong sản xuất và gợi ý lộ trình phù hợp cho doanh nghiệp Việt Nam.</p>
-                            <div class="art-meta-footer">
+                        <div class="art-body-light">
+                            <h3 class="art-title-light">Ứng dụng AI trong sản xuất: Cơ hội và lộ trình triển khai</h3>
+                            <p class="art-excerpt-light">Những ứng dụng thực tế của AI trong sản xuất và gợi ý lộ trình phù hợp cho doanh nghiệp Việt Nam.</p>
+                            <div class="art-meta-footer-light">
                                 <div class="art-meta-left">
-                                    <span class="art-meta-item"><i data-lucide="calendar" style="width: 12px; height: 12px;"></i> 13 Th10, 2024</span>
-                                    <span class="art-meta-item"><i data-lucide="clock" style="width: 12px; height: 12px;"></i> 7 phút đọc</span>
+                                    <span class="art-meta-item"><i data-lucide="calendar" style="width: 12px; height: 12px;"></i> 8 thg 10, 2026</span>
+                                    <span class="art-meta-item"><i data-lucide="eye" style="width: 12px; height: 12px;"></i> 1.6K lượt xem</span>
                                 </div>
-                                <a href="articles.html" class="art-read-now">Đọc bài &rarr;</a>
+                                <a href="articles.html" class="art-arrow-btn" aria-label="Xem bài viết"><i data-lucide="arrow-right" style="width: 15px; height: 15px;"></i></a>
                             </div>
                         </div>
                     </article>
 
                     <!-- Article 4 -->
-                    <article class="art-card">
+                    <article class="art-card-light">
                         <div class="art-thumb-wrap">
-                            <img src="../assets/images/resources/art-costdown.jpg" alt="7 chiến lược Cost Down" loading="lazy">
-                            <span class="art-tag-badge"><i data-lucide="tag"></i> Cost Down</span>
+                            <img src="../assets/images/resources/art-cost-10opp.jpg" alt="10 cơ hội giảm chi phí" loading="lazy">
+                            <span class="art-tag-badge-solid">Cost Down</span>
                         </div>
-                        <div class="art-body">
-                            <h3 class="art-title">7 chiến lược Cost Down dành cho nhà máy sản xuất</h3>
-                            <p class="art-excerpt">Các phương pháp và ví dụ thực tế giúp tối ưu chi phí mà vẫn đảm bảo chất lượng và hiệu suất hoạt động.</p>
-                            <div class="art-meta-footer">
+                        <div class="art-body-light">
+                            <h3 class="art-title-light">10 cơ hội giảm chi phí sản xuất nhanh chóng</h3>
+                            <p class="art-excerpt-light">Những giải pháp cost down có thể triển khai trong 3–6 tháng, dựa trên các dự án thực tế.</p>
+                            <div class="art-meta-footer-light">
                                 <div class="art-meta-left">
-                                    <span class="art-meta-item"><i data-lucide="calendar" style="width: 12px; height: 12px;"></i> 08 Th10, 2024</span>
-                                    <span class="art-meta-item"><i data-lucide="clock" style="width: 12px; height: 12px;"></i> 7 phút đọc</span>
+                                    <span class="art-meta-item"><i data-lucide="calendar" style="width: 12px; height: 12px;"></i> 5 thg 10, 2026</span>
+                                    <span class="art-meta-item"><i data-lucide="eye" style="width: 12px; height: 12px;"></i> 2.1K lượt xem</span>
                                 </div>
-                                <a href="articles.html" class="art-read-now">Đọc bài &rarr;</a>
+                                <a href="articles.html" class="art-arrow-btn" aria-label="Xem bài viết"><i data-lucide="arrow-right" style="width: 15px; height: 15px;"></i></a>
                             </div>
                         </div>
                     </article>
@@ -255,83 +279,75 @@
 
                 <div class="res-grid-4">
                     <!-- Tool 1 -->
-                    <div class="tool-card">
-                        <div class="tool-preview-wrap">
-                            <div class="tool-preview-sheet">
-                                <div class="sheet-line title"></div>
-                                <div class="sheet-line long"></div>
-                                <div class="sheet-line med"></div>
-                                <div class="sheet-line short"></div>
-                                <div class="sheet-line long"></div>
+                    <div class="tool-card-light">
+                        <div class="tool-top-row">
+                            <div class="tool-preview-box">
+                                <div class="doc-line title"></div>
+                                <div class="doc-line w-80"></div>
+                                <div class="doc-line w-60"></div>
+                                <div class="doc-line w-90"></div>
                             </div>
-                            <span class="tool-type-badge tool-badge-green">CHECKLIST</span>
-                            <span class="tool-ext-icon ext-excel">X</span>
+                            <div class="tool-header-content">
+                                <span class="tool-format-badge fmt-xlsx" style="align-self: flex-start; margin-bottom: 6px;">XLSX</span>
+                                <h3 class="tool-title-light">Checklist đánh giá hiện trạng nhà máy</h3>
+                            </div>
                         </div>
-                        <div class="tool-card-body">
-                            <h3 class="tool-title">Checklist đánh giá hiện trạng nhà máy</h3>
-                            <p class="tool-desc">Bộ checklist thực tế giúp bạn đánh giá nhanh mức độ sẵn sàng và xác định các điểm cần cải thiện.</p>
-                            <a href="#" class="tool-download-link">Tải về &rarr;</a>
-                        </div>
+                        <p class="tool-desc-light">Mẫu checklist giúp bạn rà soát hiện trạng và xác định cơ hội cải tiến.</p>
+                        <a href="#" class="tool-download-btn"><i data-lucide="download"></i> Tải xuống</a>
                     </div>
 
                     <!-- Tool 2 -->
-                    <div class="tool-card">
-                        <div class="tool-preview-wrap">
-                            <div class="tool-preview-sheet">
-                                <div class="sheet-line title"></div>
-                                <div class="sheet-line long"></div>
-                                <div class="sheet-line med"></div>
-                                <div class="sheet-line long"></div>
-                                <div class="sheet-line short"></div>
+                    <div class="tool-card-light">
+                        <div class="tool-top-row">
+                            <div class="tool-preview-box">
+                                <div class="doc-line title"></div>
+                                <div class="doc-line w-90"></div>
+                                <div class="doc-line w-50"></div>
+                                <div class="doc-line w-80"></div>
                             </div>
-                            <span class="tool-type-badge tool-badge-orange">TEMPLATE</span>
-                            <span class="tool-ext-icon ext-excel">X</span>
+                            <div class="tool-header-content">
+                                <span class="tool-format-badge fmt-docx" style="align-self: flex-start; margin-bottom: 6px;">DOCX</span>
+                                <h3 class="tool-title-light">Khung lập kế hoạch triển khai Lean (A3)</h3>
+                            </div>
                         </div>
-                        <div class="tool-card-body">
-                            <h3 class="tool-title">Template kế hoạch triển khai Lean 12 tháng</h3>
-                            <p class="tool-desc">Mẫu kế hoạch chi tiết với các giai đoạn, hoạt động và KPI tham khảo.</p>
-                            <a href="#" class="tool-download-link">Tải về &rarr;</a>
-                        </div>
+                        <p class="tool-desc-light">Mẫu A3 chuẩn giúp lập kế hoạch, triển khai và theo dõi tiến độ.</p>
+                        <a href="#" class="tool-download-btn"><i data-lucide="download"></i> Tải xuống</a>
                     </div>
 
                     <!-- Tool 3 -->
-                    <div class="tool-card">
-                        <div class="tool-preview-wrap">
-                            <div class="tool-preview-sheet">
-                                <div class="sheet-line title"></div>
-                                <div class="sheet-line med"></div>
-                                <div class="sheet-line long"></div>
-                                <div class="sheet-line short"></div>
-                                <div class="sheet-line med"></div>
+                    <div class="tool-card-light">
+                        <div class="tool-top-row">
+                            <div class="tool-preview-box">
+                                <div class="doc-line title"></div>
+                                <div class="doc-line w-80"></div>
+                                <div class="doc-line w-60"></div>
+                                <div class="doc-line w-90"></div>
                             </div>
-                            <span class="tool-type-badge tool-badge-blue">FRAMEWORK</span>
-                            <span class="tool-ext-icon ext-word">W</span>
+                            <div class="tool-header-content">
+                                <span class="tool-format-badge fmt-pdf" style="align-self: flex-start; margin-bottom: 6px;">PDF</span>
+                                <h3 class="tool-title-light">Tài liệu hướng dẫn Giảm chi phí sản xuất</h3>
+                            </div>
                         </div>
-                        <div class="tool-card-body">
-                            <h3 class="tool-title">Khung chuyển đổi số cho nhà máy sản xuất</h3>
-                            <p class="tool-desc">Framework toàn diện giúp doanh nghiệp xây dựng lộ trình chuyển đổi số phù hợp.</p>
-                            <a href="#" class="tool-download-link">Tải về &rarr;</a>
-                        </div>
+                        <p class="tool-desc-light">Hướng dẫn chi tiết phương pháp phân tích chi phí theo IPO và các công cụ thực hành.</p>
+                        <a href="#" class="tool-download-btn"><i data-lucide="download"></i> Tải xuống</a>
                     </div>
 
                     <!-- Tool 4 -->
-                    <div class="tool-card">
-                        <div class="tool-preview-wrap">
-                            <div class="tool-preview-sheet">
-                                <div class="sheet-line title"></div>
-                                <div class="sheet-line long"></div>
-                                <div class="sheet-line med"></div>
-                                <div class="sheet-line long"></div>
-                                <div class="sheet-line short"></div>
+                    <div class="tool-card-light">
+                        <div class="tool-top-row">
+                            <div class="tool-preview-box">
+                                <div class="doc-line title"></div>
+                                <div class="doc-line w-90"></div>
+                                <div class="doc-line w-60"></div>
+                                <div class="doc-line w-80"></div>
                             </div>
-                            <span class="tool-type-badge tool-badge-red">PLAYBOOK</span>
-                            <span class="tool-ext-icon ext-pdf">PDF</span>
+                            <div class="tool-header-content">
+                                <span class="tool-format-badge fmt-xlsx" style="align-self: flex-start; margin-bottom: 6px;">XLSX</span>
+                                <h3 class="tool-title-light">Biểu mẫu quản lý chỉ số OEE</h3>
+                            </div>
                         </div>
-                        <div class="tool-card-body">
-                            <h3 class="tool-title">Playbook Cost Down trong sản xuất</h3>
-                            <p class="tool-desc">Tổng hợp các phương pháp, case study và công cụ giúp tối ưu chi phí hiệu quả.</p>
-                            <a href="#" class="tool-download-link">Tải về &rarr;</a>
-                        </div>
+                        <p class="tool-desc-light">Bộ biểu mẫu theo dõi, phân tích và báo cáo OEE trong sản xuất.</p>
+                        <a href="#" class="tool-download-btn"><i data-lucide="download"></i> Tải xuống</a>
                     </div>
                 </div>
             </section>
@@ -341,115 +357,74 @@
                 <div class="res-sec-header">
                     <div class="res-sec-title-wrap">
                         <h2 class="res-sec-title">Video học nhanh</h2>
-                        <p class="res-sec-desc">Học nhanh qua hình ảnh và tình huống thực tế từ các chuyên gia của chúng tôi.</p>
+                        <p class="res-sec-desc">Học qua hình ảnh với các video hướng dẫn và chia sẻ kinh nghiệm thực tế.</p>
                     </div>
                     <a href="https://www.youtube.com/@NguoiXayNen" target="_blank" rel="noopener" class="res-view-all">Xem tất cả video <i data-lucide="arrow-right"></i></a>
                 </div>
 
                 <div class="res-grid-4">
                     <!-- Video 1 -->
-                    <div class="vid-card">
+                    <div class="vid-card-light">
                         <div class="vid-thumb-wrap">
                             <img src="../assets/images/resources/vid-intro.jpg" alt="Giới thiệu Lean Manufacturing" loading="lazy">
-                            <div class="vid-play-btn"><i data-lucide="play"></i></div>
-                            <span class="vid-duration">12:36</span>
+                            <div class="vid-play-btn-circle"><i data-lucide="play"></i></div>
+                            <span class="vid-duration-pill">12:34</span>
                         </div>
-                        <div class="vid-card-body">
-                            <h3 class="vid-title">Giới thiệu Lean Manufacturing trong 12 phút</h3>
-                            <div class="vid-meta-footer">
-                                <div class="vid-views-time">
-                                    <span><i data-lucide="eye" style="width: 12px; height: 12px;"></i> 32.4K lượt xem</span>
-                                    <span>&bull; 2 tuần trước</span>
-                                </div>
-                                <a href="https://www.youtube.com/@NguoiXayNen" target="_blank" rel="noopener" class="vid-watch-now">Xem video &rarr;</a>
+                        <div class="vid-body-light">
+                            <h3 class="vid-title-light">Giới thiệu Lean Manufacturing trong 12 phút</h3>
+                            <div class="vid-meta-footer-light">
+                                <span class="vid-meta-item"><i data-lucide="play-circle" style="width: 12px; height: 12px;"></i> 32K lượt xem</span>
+                                <span class="vid-meta-item"><i data-lucide="clock" style="width: 12px; height: 12px;"></i> 2 tuần trước</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Video 2 -->
-                    <div class="vid-card">
+                    <div class="vid-card-light">
                         <div class="vid-thumb-wrap">
                             <img src="../assets/images/resources/vid-mistakes.jpg" alt="5 lỗi thường gặp khi triển khai cải tiến" loading="lazy">
-                            <div class="vid-play-btn"><i data-lucide="play"></i></div>
-                            <span class="vid-duration">15:20</span>
+                            <div class="vid-play-btn-circle"><i data-lucide="play"></i></div>
+                            <span class="vid-duration-pill">18:20</span>
                         </div>
-                        <div class="vid-card-body">
-                            <h3 class="vid-title">5 lỗi thường gặp khi triển khai cải tiến tại nhà máy</h3>
-                            <div class="vid-meta-footer">
-                                <div class="vid-views-time">
-                                    <span><i data-lucide="eye" style="width: 12px; height: 12px;"></i> 8.5K lượt xem</span>
-                                    <span>&bull; 1 tháng trước</span>
-                                </div>
-                                <a href="https://www.youtube.com/@NguoiXayNen" target="_blank" rel="noopener" class="vid-watch-now">Xem video &rarr;</a>
+                        <div class="vid-body-light">
+                            <h3 class="vid-title-light">5 lỗi thường gặp khi triển khai cải tiến tại nhà máy</h3>
+                            <div class="vid-meta-footer-light">
+                                <span class="vid-meta-item"><i data-lucide="play-circle" style="width: 12px; height: 12px;"></i> 24K lượt xem</span>
+                                <span class="vid-meta-item"><i data-lucide="clock" style="width: 12px; height: 12px;"></i> 3 tuần trước</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Video 3 -->
-                    <div class="vid-card">
+                    <div class="vid-card-light">
                         <div class="vid-thumb-wrap">
                             <img src="../assets/images/resources/vid-ai-pred.jpg" alt="Ứng dụng AI trong dự báo sản xuất" loading="lazy">
-                            <div class="vid-play-btn"><i data-lucide="play"></i></div>
-                            <span class="vid-duration">10:18</span>
+                            <div class="vid-play-btn-circle"><i data-lucide="play"></i></div>
+                            <span class="vid-duration-pill">15:10</span>
                         </div>
-                        <div class="vid-card-body">
-                            <h3 class="vid-title">Ứng dụng AI trong dự báo sản xuất</h3>
-                            <div class="vid-meta-footer">
-                                <div class="vid-views-time">
-                                    <span><i data-lucide="eye" style="width: 12px; height: 12px;"></i> 6.3K lượt xem</span>
-                                    <span>&bull; 1 tháng trước</span>
-                                </div>
-                                <a href="https://www.youtube.com/@NguoiXayNen" target="_blank" rel="noopener" class="vid-watch-now">Xem video &rarr;</a>
+                        <div class="vid-body-light">
+                            <h3 class="vid-title-light">Ứng dụng AI trong dự báo sản xuất</h3>
+                            <div class="vid-meta-footer-light">
+                                <span class="vid-meta-item"><i data-lucide="play-circle" style="width: 12px; height: 12px;"></i> 18K lượt xem</span>
+                                <span class="vid-meta-item"><i data-lucide="clock" style="width: 12px; height: 12px;"></i> 1 tháng trước</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Video 4 -->
-                    <div class="vid-card">
+                    <div class="vid-card-light">
                         <div class="vid-thumb-wrap">
-                            <img src="../assets/images/resources/vid-case-oee.jpg" alt="Case study Cải thiện OEE" loading="lazy">
-                            <div class="vid-play-btn"><i data-lucide="play"></i></div>
-                            <span class="vid-duration">11:45</span>
+                            <img src="../assets/images/resources/vid-costdown-sys.jpg" alt="Cách xây dựng hệ thống Cost Down bền vững" loading="lazy">
+                            <div class="vid-play-btn-circle"><i data-lucide="play"></i></div>
+                            <span class="vid-duration-pill">10:45</span>
                         </div>
-                        <div class="vid-card-body">
-                            <h3 class="vid-title">Case study: Cải thiện OEE thành công sau 6 tháng</h3>
-                            <div class="vid-meta-footer">
-                                <div class="vid-views-time">
-                                    <span><i data-lucide="eye" style="width: 12px; height: 12px;"></i> 9.1K lượt xem</span>
-                                    <span>&bull; 2 tháng trước</span>
-                                </div>
-                                <a href="https://www.youtube.com/@NguoiXayNen" target="_blank" rel="noopener" class="vid-watch-now">Xem video &rarr;</a>
+                        <div class="vid-body-light">
+                            <h3 class="vid-title-light">Cách xây dựng hệ thống Cost Down bền vững</h3>
+                            <div class="vid-meta-footer-light">
+                                <span class="vid-meta-item"><i data-lucide="play-circle" style="width: 12px; height: 12px;"></i> 21K lượt xem</span>
+                                <span class="vid-meta-item"><i data-lucide="clock" style="width: 12px; height: 12px;"></i> 1 tháng trước</span>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- SECTION 5: Bottom CTA Banner -->
-            <section class="res-cta-banner">
-                <img src="../assets/images/resources/res-cta-factory.jpg" alt="Nhà máy INVAMAX" class="res-cta-banner-bg" loading="lazy">
-                
-                <div class="res-cta-content">
-                    <h2 class="res-cta-title">Khám phá giải pháp <span>nâng cao hiệu quả vận hành nhà máy</span></h2>
-                    <p class="res-cta-desc">Cùng INVAMAX xây dựng nhà máy hiệu quả hơn, thông minh hơn và sẵn sàng cho tương lai.</p>
-                    <div class="res-cta-btns">
-                        <a href="su-kien/toi-uu-chi-phi-san-xuat.html" class="btn-cta-orange">Xem tư vấn &rarr;</a>
-                        <a href="about.html" class="btn-cta-outline">Trao đổi với INVAMAX</a>
-                    </div>
-                </div>
-
-                <div class="res-cta-features">
-                    <div class="res-cta-feat-item">
-                        <div class="res-cta-feat-icon"><i data-lucide="user-check"></i></div>
-                        <div class="res-cta-feat-text">Tư vấn chuyên sâu từ chuyên gia</div>
-                    </div>
-                    <div class="res-cta-feat-item">
-                        <div class="res-cta-feat-icon"><i data-lucide="check-circle-2"></i></div>
-                        <div class="res-cta-feat-text">Giải pháp thực tiễn cho nhà máy Việt Nam</div>
-                    </div>
-                    <div class="res-cta-feat-item">
-                        <div class="res-cta-feat-icon"><i data-lucide="compass"></i></div>
-                        <div class="res-cta-feat-text">Đồng hành từ chiến lược đến triển khai</div>
                     </div>
                 </div>
             </section>
