@@ -1014,13 +1014,14 @@
   gap: 20px;
 }
 
-.ivp3-closing-copy h2 {
+.ivp3-closing-copy h2,
+.ivp3-closing-copy h2 span {
   font-size: clamp(21px, 2.3vw, 32px) !important;
   line-height: 1.3 !important;
   letter-spacing: -0.025em;
   margin-bottom: 14px;
   font-weight: 800 !important;
-  color: #fff !important;
+  color: #ffffff !important;
 }
 
 .ivp3-closing-copy p {
