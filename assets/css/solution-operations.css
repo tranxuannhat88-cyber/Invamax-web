@@ -169,7 +169,7 @@
     font-weight: 600 !important;
     line-height: 1.6 !important;
     color: #ffffff !important;
-    margin-bottom: 12px !important;
+    margin-bottom: 28px !important;
     max-width: 580px;
 }
 
@@ -455,7 +455,10 @@
     flex-direction: column;
 }
 
-.ivop-why-title {
+.ivop-why-title,
+.ivop-why-section h2,
+.ivop .ivop-why-section h2,
+.ivop-why-left h2 {
     font-size: clamp(26px, 2.8vw, 36px) !important;
     font-weight: 700 !important;
     line-height: 1.25 !important;
