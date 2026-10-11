@@ -990,12 +990,12 @@
    ============================================================ */
 .ivp3-closing {
   background: 
-    linear-gradient(90deg, rgba(5, 23, 18, 0.96) 0%, rgba(5, 23, 18, 0.90) 45%, rgba(5, 23, 18, 0.75) 100%),
+    linear-gradient(90deg, rgba(5, 23, 18, 0.82) 0%, rgba(5, 23, 18, 0.65) 45%, rgba(5, 23, 18, 0.35) 100%),
     url('../images/natural-flow.png');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  padding: 50px 0;
+  padding: 55px 0;
   color: #fff;
 }
 
