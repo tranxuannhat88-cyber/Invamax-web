@@ -105,29 +105,31 @@ i[data-lucide] svg,
     flex-direction: column;
 }
 .res-hero-eyebrow {
-    font-size: 11px;
-    font-weight: 800;
+    font-size: 12px;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.18em;
     color: #ef6d1c;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
+    display: inline-block;
 }
 .res-hero-title {
-    font-size: clamp(2.3rem, 4vw, 3.2rem);
-    font-weight: 900;
-    line-height: 1.15;
+    font-size: clamp(2.15rem, 3.4vw, 2.85rem);
+    font-weight: 800;
+    line-height: 1.2;
     color: #0f172a !important;
-    margin-bottom: 12px;
-    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+    letter-spacing: -0.015em;
 }
 .res-hero-title span {
     color: #ef6d1c;
+    font-weight: 800;
 }
 .res-hero-subtitle {
     font-size: 1.05rem;
     color: #475569;
     margin-bottom: 24px;
-    max-width: 580px;
+    max-width: 510px;
     line-height: 1.6;
 }
 
