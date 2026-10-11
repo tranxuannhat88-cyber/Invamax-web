@@ -1,8 +1,14 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+/* ============================================================
+   INVAMAX PHILOSOPHY (TRIẾT LÝ INVAMAX)
+   Typography & font sizing synchronized with INVAMAX brand standards.
+   Scoped to .ivp3. Solves background/text color collision.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap');
 
 :root {
   --iv-dark: #061c16;
-  --iv-dark-2: #092821;
+  --iv-dark-2: #08231c;
   --iv-orange: #ef6d1c;
   --iv-orange-2: #ff933e;
   --iv-green: #10b981;
@@ -15,10 +21,11 @@
 }
 
 .ivp3 {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, Arial, sans-serif !important;
   color: var(--iv-text);
-  background: #fff;
-  line-height: 1.6;
+  background: #ffffff;
+  line-height: 1.65;
+  font-size: 14.5px;
   overflow-x: hidden;
 }
 
@@ -40,15 +47,49 @@
 }
 
 .ivp3-shell {
-  width: min(1240px, calc(100% - 48px));
+  width: min(1200px, calc(100% - 48px));
   margin: 0 auto;
 }
 
+/* ============================================================
+   COLOR CONFLICT OVERRIDES (Prevent style.css white-on-white)
+   ============================================================ */
+/* Headings in WHITE sections MUST be dark */
+.ivp3-pillars h1, .ivp3-pillars h2, .ivp3-pillars h3,
+.ivp3-natural h1, .ivp3-natural h2, .ivp3-natural h3,
+.ivp3-relation-cards h3,
+.state-card h3 {
+  color: #0f172a !important;
+}
+
+/* Headings in DARK sections MUST be white */
+.ivp3-hero h1, .ivp3-hero h2, .ivp3-hero h3,
+.ivp3-human h1, .ivp3-human h2, .ivp3-human h3,
+.ivp3-closing h1, .ivp3-closing h2, .ivp3-closing h3,
+.ivp3-owner-block h3,
+.ivp3-growth-card h3 {
+  color: #ffffff !important;
+}
+
+/* Orange highlights */
+.ivp3 h1 span, .ivp3 h2 span, .ivp3 h3 span,
+.ivp3-copy-block h2 span,
+.ivp3-human-copy h2 span,
+.ivp3-hero-copy h1 span {
+  color: var(--iv-orange) !important;
+}
+
+/* Green highlight in Section 3 */
+.state-card.state-good h3 span {
+  color: var(--iv-green) !important;
+}
+
+/* Kickers & Section Index */
 .ivp3-kicker {
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  color: var(--iv-orange);
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.1em;
+  color: var(--iv-orange) !important;
   text-transform: uppercase;
   margin-bottom: 12px;
 }
@@ -58,20 +99,50 @@
   height: 4px;
   background: var(--iv-orange);
   border-radius: 999px;
-  margin: 18px 0;
+  margin: 16px 0 18px;
 }
 
+.ivp3-section-index {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.ivp3-section-index span {
+  font-size: 40px !important;
+  line-height: 1;
+  font-weight: 800 !important;
+  color: var(--iv-orange) !important;
+}
+
+.ivp3-section-index b {
+  font-size: 11px !important;
+  line-height: 1;
+  color: var(--iv-orange) !important;
+  letter-spacing: 0.08em;
+  font-weight: 800 !important;
+}
+
+.ivp3-section-index i {
+  font-style: normal;
+  color: var(--iv-orange) !important;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+/* Buttons & Links */
 .ivp3-btn-hero {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  height: 48px;
-  padding: 0 24px;
-  border-radius: 12px;
+  height: 44px;
+  padding: 0 22px;
+  border-radius: 10px;
   border: 1px solid var(--iv-orange);
-  background: rgba(6, 28, 22, 0.6);
-  color: #fff;
-  font-size: 15px;
+  background: rgba(6, 28, 22, 0.65);
+  color: #fff !important;
+  font-size: 13.5px;
   font-weight: 600;
   transition: all 0.25s ease;
   backdrop-filter: blur(4px);
@@ -79,24 +150,24 @@
 
 .ivp3-btn-hero:hover {
   background: var(--iv-orange);
-  color: #fff;
+  color: #fff !important;
 }
 
 .ivp3-btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  height: 48px;
-  padding: 0 24px;
-  border-radius: 12px;
-  font-size: 15px;
+  height: 44px;
+  padding: 0 22px;
+  border-radius: 10px;
+  font-size: 13.5px;
   font-weight: 700;
   transition: all 0.25s ease;
 }
 
 .ivp3-btn-primary {
   background: var(--iv-orange);
-  color: #fff;
+  color: #fff !important;
 }
 
 .ivp3-btn-primary:hover {
@@ -107,9 +178,9 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: var(--iv-orange);
+  color: var(--iv-orange) !important;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 13.5px;
   transition: gap 0.2s ease;
 }
 
@@ -118,41 +189,11 @@
 }
 
 .ivp3-text-link.on-dark {
-  color: var(--iv-orange-2);
+  color: var(--iv-orange-2) !important;
 }
 
 .ivp3-section {
-  padding: 72px 0;
-}
-
-.ivp3-section-index {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  margin-bottom: 12px;
-}
-
-.ivp3-section-index span {
-  font-size: 46px;
-  line-height: 1;
-  font-weight: 800;
-  color: var(--iv-orange);
-}
-
-.ivp3-section-index b {
-  font-size: 12px;
-  line-height: 1;
-  color: var(--iv-orange);
-  letter-spacing: 0.06em;
-  font-weight: 800;
-}
-
-.ivp3-section-index i {
-  font-style: normal;
-  color: var(--iv-orange);
-  font-weight: 700;
-  font-size: 14px;
-  margin-left: 2px;
+  padding: 64px 0;
 }
 
 /* ============================================================
@@ -167,17 +208,17 @@
   background-position: center right;
   background-size: cover;
   background-repeat: no-repeat;
-  padding-top: 105px !important;
-  padding-bottom: 60px;
-  min-height: 560px;
+  padding-top: 100px !important;
+  padding-bottom: 50px;
+  min-height: 540px;
 }
 
 .ivp3-hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 48%) minmax(0, 52%);
+  grid-template-columns: minmax(0, 50%) minmax(0, 50%);
   align-items: center;
   gap: 24px;
-  min-height: 480px;
+  min-height: 440px;
 }
 
 .ivp3-hero-copy {
@@ -186,78 +227,71 @@
 }
 
 .ivp3-hero-copy h1 {
-  font-size: clamp(48px, 5.2vw, 68px);
-  line-height: 1.05;
-  letter-spacing: -0.04em;
-  margin: 0 0 14px;
-  font-weight: 800;
-  color: #fff;
-}
-
-.ivp3-hero-copy h1 span {
-  color: var(--iv-orange);
+  font-size: clamp(38px, 4.2vw, 54px) !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.03em;
+  margin: 0 0 12px;
+  font-weight: 800 !important;
 }
 
 .ivp3-hero-copy h2 {
-  font-size: clamp(22px, 2.3vw, 32px);
-  line-height: 1.35;
-  color: #fff;
+  font-size: clamp(18px, 1.9vw, 26px) !important;
+  line-height: 1.38 !important;
   margin-bottom: 0;
-  font-weight: 700;
+  font-weight: 700 !important;
 }
 
 .ivp3-hero-copy p:not(.ivp3-kicker) {
-  font-size: 15px;
-  color: #cbd5e1;
-  line-height: 1.8;
+  font-size: 14px;
+  color: #cbd5e1 !important;
+  line-height: 1.75;
   max-width: 480px;
-  margin-bottom: 26px;
+  margin-bottom: 24px;
 }
 
 .ivp3-hero-media {
   position: relative;
   height: 100%;
-  min-height: 440px;
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
 }
 
 .ivp3-quote-box {
-  width: min(360px, 100%);
-  padding: 20px 24px;
-  border-radius: 16px;
+  width: min(340px, 100%);
+  padding: 18px 20px;
+  border-radius: 14px;
   background: rgba(6, 26, 20, 0.85);
   border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(12px);
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .ivp3-quote-box .mark {
-  font-size: 40px;
+  font-size: 36px;
   line-height: 1;
-  color: var(--iv-orange);
+  color: var(--iv-orange) !important;
   display: block;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
   font-family: Georgia, serif;
 }
 
 .ivp3-quote-box p {
-  font-size: 13.5px;
-  color: #fff;
-  line-height: 1.65;
-  margin-bottom: 8px;
+  font-size: 13px !important;
+  color: #ffffff !important;
+  line-height: 1.6;
+  margin-bottom: 6px;
 }
 
 .ivp3-quote-box strong {
-  font-size: 12px;
-  color: #ffbe8a;
+  font-size: 11.5px;
+  color: #ffbe8a !important;
   letter-spacing: 0.05em;
 }
 
 /* ============================================================
-   SECTION 01: BA YEU TO
+   SECTION 01: BA YEU TO (Light Background)
    ============================================================ */
 .ivp3-pillars {
   background: #ffffff;
@@ -265,35 +299,30 @@
 
 .ivp3-top-grid {
   display: grid;
-  grid-template-columns: minmax(0, 38%) minmax(0, 62%);
-  gap: 32px;
+  grid-template-columns: minmax(0, 33%) minmax(0, 67%);
+  gap: 20px;
   align-items: center;
 }
 
 .ivp3-copy-block h2 {
-  font-size: clamp(32px, 3.2vw, 44px);
-  line-height: 1.15;
-  letter-spacing: -0.03em;
-  margin-bottom: 16px;
-  font-weight: 800;
-  color: #0f172a;
-}
-
-.ivp3-copy-block h2 span {
-  color: var(--iv-orange);
+  font-size: clamp(26px, 2.6vw, 36px) !important;
+  line-height: 1.22 !important;
+  letter-spacing: -0.025em;
+  margin-bottom: 14px;
+  font-weight: 800 !important;
 }
 
 .ivp3-copy-block p {
-  font-size: 15px;
-  color: var(--iv-muted);
-  line-height: 1.75;
-  margin-bottom: 22px;
+  font-size: 14px;
+  color: var(--iv-muted) !important;
+  line-height: 1.7;
+  margin-bottom: 20px;
 }
 
-/* Diagram */
+/* Diagram Container */
 .ivp3-pillars-diagram-wrap {
   position: relative;
-  height: 460px;
+  height: 440px;
   width: 100%;
 }
 
@@ -319,7 +348,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: #fff;
+  color: #fff !important;
   border-radius: 50%;
   z-index: 4;
   cursor: default;
@@ -332,7 +361,7 @@
 
 .ivp3-pillars-diagram .node small {
   display: block;
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 800;
   letter-spacing: 0.06em;
   margin-bottom: 2px;
@@ -340,65 +369,70 @@
 
 .ivp3-pillars-diagram .node b {
   display: block;
-  font-size: 13.5px;
+  font-size: 12.5px;
   line-height: 1.25;
   font-weight: 700;
   max-width: 85%;
+  color: #fff !important;
 }
 
+/* Top Node: CHIEN LUOC */
 .ivp3-pillars-diagram .strategy {
-  width: 148px;
-  height: 148px;
+  width: 136px;
+  height: 136px;
   left: 50%;
-  top: 76px;
+  top: 68px;
   transform: translate(-50%, -50%);
   background: radial-gradient(circle at 40% 30%, #a4531d 0%, #351706 85%);
-  box-shadow: 0 0 0 10px #ffffff, 0 10px 30px rgba(164, 83, 29, 0.25);
+  box-shadow: 0 0 0 8px #ffffff, 0 8px 26px rgba(164, 83, 29, 0.25);
 }
-.ivp3-pillars-diagram .strategy small { color: #ffbe8a; }
+.ivp3-pillars-diagram .strategy small { color: #ffbe8a !important; }
 
+/* Bottom Left Node: DOI NGU */
 .ivp3-pillars-diagram .people {
-  width: 148px;
-  height: 148px;
-  left: 200px;
-  top: 320px;
+  width: 136px;
+  height: 136px;
+  left: 35%;
+  top: 310px;
   transform: translate(-50%, -50%);
   background: radial-gradient(circle at 40% 30%, #157955 0%, #06271c 85%);
-  box-shadow: 0 0 0 10px #ffffff, 0 10px 30px rgba(21, 121, 85, 0.25);
+  box-shadow: 0 0 0 8px #ffffff, 0 8px 26px rgba(21, 121, 85, 0.25);
 }
-.ivp3-pillars-diagram .people small { color: #a7f3d0; }
+.ivp3-pillars-diagram .people small { color: #a7f3d0 !important; }
 
+/* Bottom Right Node: HE THONG */
 .ivp3-pillars-diagram .system {
-  width: 148px;
-  height: 148px;
-  left: 520px;
-  top: 320px;
+  width: 136px;
+  height: 136px;
+  left: 65%;
+  top: 310px;
   transform: translate(-50%, -50%);
   background: radial-gradient(circle at 40% 30%, #1a6fd8 0%, #0c2444 85%);
-  box-shadow: 0 0 0 10px #ffffff, 0 10px 30px rgba(26, 111, 216, 0.25);
+  box-shadow: 0 0 0 8px #ffffff, 0 8px 26px rgba(26, 111, 216, 0.25);
 }
-.ivp3-pillars-diagram .system small { color: #bae6fd; }
+.ivp3-pillars-diagram .system small { color: #bae6fd !important; }
 
+/* Center Node: PHAT TRIEN BEN VUNG */
 .ivp3-pillars-diagram .center {
-  width: 154px;
-  height: 154px;
+  width: 144px;
+  height: 144px;
   left: 50%;
-  top: 220px;
+  top: 205px;
   transform: translate(-50%, -50%);
   background: radial-gradient(circle at 40% 35%, #082937 0%, #03141d 85%);
-  box-shadow: 0 0 0 10px #ffffff, 0 10px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 0 8px #ffffff, 0 10px 28px rgba(0, 0, 0, 0.2);
   z-index: 5;
 }
-.ivp3-pillars-diagram .center small { color: #94a3b8; }
-.ivp3-pillars-diagram .center b { font-size: 16px; font-weight: 800; color: #fff; }
+.ivp3-pillars-diagram .center small { color: #94a3b8 !important; }
+.ivp3-pillars-diagram .center b { font-size: 15px !important; font-weight: 800; color: #fff !important; }
 
-/* Side notes around diagram */
+/* Side Bullet Notes around Diagram - positioned with safe margins */
 .ivp3-side-notes {
   position: absolute;
-  background: #fff;
+  background: #ffffff;
   border: 1px solid var(--iv-line);
-  border-radius: 12px;
-  padding: 12px 14px;
+  border-radius: 10px;
+  padding: 10px 12px;
   box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
   z-index: 6;
 }
@@ -411,10 +445,10 @@
 
 .ivp3-side-notes li {
   position: relative;
-  padding-left: 16px;
-  font-size: 12px;
-  color: #475569;
-  line-height: 1.6;
+  padding-left: 14px;
+  font-size: 11.5px;
+  color: #475569 !important;
+  line-height: 1.55;
   font-weight: 500;
 }
 
@@ -423,61 +457,61 @@
   position: absolute;
   left: 0;
   top: -1px;
-  color: var(--iv-orange);
+  color: var(--iv-orange) !important;
   font-weight: 800;
-  font-size: 15px;
+  font-size: 14px;
 }
 
 .note-right-top {
   right: 0;
-  top: 15px;
-  width: 225px;
+  top: 10px;
+  width: 215px;
 }
 
 .note-left-bottom {
   left: 0;
-  bottom: 15px;
-  width: 200px;
+  bottom: 12px;
+  width: 185px;
 }
 
 .note-right-bottom {
   right: 0;
-  bottom: 15px;
-  width: 215px;
+  bottom: 12px;
+  width: 195px;
 }
 
-/* Relation box */
+/* Relation box at bottom of Section 1 */
 .ivp3-relation-cards {
-  margin-top: 40px;
-  padding: 24px 28px;
+  margin-top: 36px;
+  padding: 22px 26px;
   border: 1px solid var(--iv-line);
-  border-radius: 16px;
+  border-radius: 14px;
   background: #f8fafc;
 }
 
 .ivp3-relation-cards h3 {
-  font-size: 16px;
-  font-weight: 700;
-  color: #0f172a;
-  margin-bottom: 20px;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: #0f172a !important;
+  margin-bottom: 16px;
 }
 
 .ivp3-relation-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  gap: 20px;
 }
 
 .ivp3-relation-grid article {
   display: flex;
-  gap: 14px;
+  gap: 12px;
   align-items: flex-start;
 }
 
 .ivp3-relation-grid .ic-wrap {
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -487,92 +521,161 @@
 
 .ivp3-relation-grid .ic-wrap.orange {
   border: 1px solid #fed7aa;
-  color: var(--iv-orange);
+  color: var(--iv-orange) !important;
 }
 
 .ivp3-relation-grid .ic-wrap.green {
   border: 1px solid #bbf7d0;
-  color: var(--iv-green);
+  color: var(--iv-green) !important;
 }
 
 .ivp3-relation-grid .ic-wrap.blue {
   border: 1px solid #bfdbfe;
-  color: var(--iv-blue);
+  color: var(--iv-blue) !important;
 }
 
 .ivp3-relation-grid b {
   display: block;
-  font-size: 14px;
+  font-size: 13.5px !important;
   line-height: 1.35;
-  color: #0f172a;
-  margin-bottom: 4px;
-  font-weight: 700;
+  color: #0f172a !important;
+  margin-bottom: 3px;
+  font-weight: 700 !important;
 }
 
 .ivp3-relation-grid p {
   margin: 0;
-  color: var(--iv-muted);
-  font-size: 13px;
+  color: #64748b !important;
+  font-size: 12.5px !important;
   line-height: 1.5;
 }
 
 /* ============================================================
-   SECTION 02: TRIET LY CON NGUOI
+   SECTION 02: TRIET LY CON NGUOI (Dark Background)
+   Two-column harmonious grid, no blank gaps!
    ============================================================ */
 .ivp3-human {
   background: linear-gradient(180deg, #051913 0%, #061e17 50%, #051913 100%);
   color: #fff;
 }
 
-.ivp3-human-top-grid {
+.ivp3-human-main-grid {
   display: grid;
-  grid-template-columns: minmax(0, 48%) minmax(0, 52%);
-  gap: 32px;
-  align-items: center;
-  margin-bottom: 40px;
+  grid-template-columns: minmax(0, 56%) minmax(0, 44%);
+  gap: 28px;
+  align-items: start;
+}
+
+.ivp3-human-col-left {
+  display: flex;
+  flex-direction: column;
 }
 
 .ivp3-human-copy h2 {
-  font-size: clamp(32px, 3.2vw, 44px);
-  line-height: 1.15;
-  letter-spacing: -0.03em;
-  margin-bottom: 16px;
-  font-weight: 800;
-  color: #fff;
+  font-size: clamp(26px, 2.6vw, 36px) !important;
+  line-height: 1.22 !important;
+  letter-spacing: -0.025em;
+  margin-bottom: 14px;
+  font-weight: 800 !important;
 }
 
-.ivp3-human-copy h2 span {
-  color: var(--iv-orange);
-}
-
-.ivp3-human-copy p {
-  font-size: 15px;
-  color: #cbd5e1;
+.ivp3-human-lead {
+  font-size: 14px;
+  color: #cbd5e1 !important;
   line-height: 1.75;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
-/* Growth Card */
-.ivp3-growth-card {
-  padding: 22px 20px;
+.ivp3-owner-block {
+  margin-top: 26px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ivp3-owner-block h3 {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  color: #fff !important;
+  margin-bottom: 6px;
+}
+
+.ivp3-owner-block p {
+  color: #94a3b8 !important;
+  font-size: 12.5px;
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+/* 5 Owner Cards */
+.ivp3-owner-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+
+.ivp3-owner-card {
+  padding: 12px 8px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  display: flex;
+  flex-direction: column;
+}
+
+.ivp3-owner-card .card-ic {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--iv-orange) !important;
+  background: rgba(239, 109, 28, 0.12);
+  margin-bottom: 8px;
+}
+
+.ivp3-owner-card b {
+  display: block;
+  font-size: 11.5px !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+  margin-bottom: 3px;
+}
+
+.ivp3-owner-card small {
+  display: block;
+  font-size: 10px;
+  color: #94a3b8 !important;
+  line-height: 1.35;
+}
+
+/* Right Column: Growth card on top + Team photo below */
+.ivp3-human-col-right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ivp3-growth-card {
+  padding: 18px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
   background: rgba(255, 255, 255, 0.03);
 }
 
 .ivp3-growth-card h3 {
-  font-size: 15px;
-  font-weight: 600;
-  color: #fff;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #fff !important;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .ivp3-growth-flow {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 6px;
+  gap: 4px;
 }
 
 .ivp3-growth-step {
@@ -582,12 +685,12 @@
 
 .ivp3-growth-step .step-ic {
   display: flex;
-  width: 44px;
-  height: 44px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 8px;
+  margin: 0 auto 6px;
   border: 1.5px solid currentColor;
 }
 
@@ -599,23 +702,23 @@
 
 .ivp3-growth-step b {
   display: block;
-  font-size: 12px;
-  color: #fff;
-  line-height: 1.3;
-  margin-bottom: 3px;
-  font-weight: 700;
+  font-size: 11px !important;
+  color: #fff !important;
+  line-height: 1.25;
+  margin-bottom: 2px;
+  font-weight: 700 !important;
 }
 
 .ivp3-growth-step small {
   display: block;
-  font-size: 10px;
-  color: #94a3b8;
-  line-height: 1.35;
+  font-size: 9.5px;
+  color: #94a3b8 !important;
+  line-height: 1.3;
 }
 
 .ivp3-growth-flow .flow-arrow {
-  color: var(--iv-orange);
-  font-size: 16px;
+  color: var(--iv-orange) !important;
+  font-size: 14px;
   font-weight: 700;
   display: flex;
   align-items: center;
@@ -623,98 +726,36 @@
   flex-shrink: 0;
 }
 
-/* Bottom part of Section 02 */
-.ivp3-human-bottom-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 58%) minmax(0, 42%);
-  gap: 24px;
-  align-items: stretch;
-}
-
-.ivp3-owner-block h3 {
-  font-size: 18px;
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 6px;
-}
-
-.ivp3-owner-block p {
-  color: #94a3b8;
-  font-size: 13px;
-  line-height: 1.6;
-  margin-bottom: 16px;
-}
-
-.ivp3-owner-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 10px;
-}
-
-.ivp3-owner-card {
-  padding: 14px 10px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.03);
-  display: flex;
-  flex-direction: column;
-}
-
-.ivp3-owner-card .card-ic {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--iv-orange);
-  background: rgba(239, 109, 28, 0.1);
-  margin-bottom: 8px;
-}
-
-.ivp3-owner-card b {
-  display: block;
-  font-size: 12.5px;
-  color: #fff;
-  font-weight: 700;
-  margin-bottom: 4px;
-}
-
-.ivp3-owner-card small {
-  display: block;
-  font-size: 10.5px;
-  color: #94a3b8;
-  line-height: 1.4;
-}
-
+/* Team Photo with Quote */
 .ivp3-team-wrap {
   position: relative;
   border-radius: 14px;
   overflow: hidden;
-  min-height: 240px;
+  height: 250px;
 }
 
 .ivp3-team-wrap img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
 .ivp3-team-quote-card {
   position: absolute;
-  right: 14px;
-  bottom: 14px;
-  left: 14px;
-  background: rgba(5, 23, 17, 0.85);
+  right: 12px;
+  bottom: 12px;
+  left: 12px;
+  background: rgba(5, 23, 17, 0.88);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 12px;
-  padding: 14px 16px;
+  border-radius: 10px;
+  padding: 12px 14px;
 }
 
 .ivp3-team-quote-card .mark {
-  color: var(--iv-orange);
-  font-size: 32px;
+  color: var(--iv-orange) !important;
+  font-size: 28px;
   line-height: 1;
   font-family: Georgia, serif;
   display: block;
@@ -722,20 +763,20 @@
 }
 
 .ivp3-team-quote-card p {
-  font-size: 12px;
-  line-height: 1.55;
-  color: #fff;
-  margin-bottom: 6px;
+  font-size: 11.5px !important;
+  line-height: 1.5;
+  color: #fff !important;
+  margin-bottom: 4px;
 }
 
 .ivp3-team-quote-card strong {
-  font-size: 11px;
-  color: #ffbe8a;
+  font-size: 10.5px;
+  color: #ffbe8a !important;
   letter-spacing: 0.04em;
 }
 
 /* ============================================================
-   SECTION 03: THUAN TU NHIEN
+   SECTION 03: THUAN TU NHIEN (Light Background)
    ============================================================ */
 .ivp3-natural {
   background: #ffffff;
@@ -743,22 +784,22 @@
 
 .ivp3-natural-grid {
   display: grid;
-  grid-template-columns: minmax(0, 35%) minmax(0, 65%);
-  gap: 32px;
+  grid-template-columns: minmax(0, 33%) minmax(0, 67%);
+  gap: 24px;
   align-items: center;
 }
 
 .ivp3-before-after {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 36px minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) 32px minmax(0, 1fr);
   align-items: center;
-  gap: 16px;
+  gap: 14px;
 }
 
 .state-arrow {
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 800;
-  color: var(--iv-cyan);
+  color: var(--iv-cyan) !important;
   text-align: center;
   display: flex;
   align-items: center;
@@ -766,29 +807,25 @@
 }
 
 .state-card h3 {
-  font-size: 15px;
-  font-weight: 700;
+  font-size: 14px !important;
+  font-weight: 700 !important;
   line-height: 1.35;
-  margin-bottom: 12px;
-  color: #0f172a;
-}
-
-.state-card.state-good h3 span {
-  color: var(--iv-green);
+  margin-bottom: 10px;
+  color: #0f172a !important;
 }
 
 .state-grid {
   display: grid;
-  grid-template-columns: 160px 1fr;
-  gap: 14px;
+  grid-template-columns: 145px 1fr;
+  gap: 12px;
   align-items: start;
 }
 
 .state-grid img {
-  width: 160px;
-  height: 175px;
+  width: 145px;
+  height: 165px;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 8px;
   border: 1px solid var(--iv-line);
 }
 
@@ -798,35 +835,35 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 7px;
+  gap: 6px;
 }
 
 .state-grid li {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 12.5px;
+  gap: 7px;
+  font-size: 12px !important;
   line-height: 1.4;
-  color: #475569;
+  color: #334155 !important;
   font-weight: 500;
 }
 
 .state-bad li i {
-  color: var(--iv-orange);
-  width: 15px;
-  height: 15px;
+  color: var(--iv-orange) !important;
+  width: 14px;
+  height: 14px;
   flex-shrink: 0;
 }
 
 .state-good li i {
-  color: var(--iv-green);
-  width: 15px;
-  height: 15px;
+  color: var(--iv-green) !important;
+  width: 14px;
+  height: 14px;
   flex-shrink: 0;
 }
 
 /* ============================================================
-   CLOSING / CTA BANNER
+   CLOSING / CTA BANNER (Dark Background)
    ============================================================ */
 .ivp3-closing {
   background: 
@@ -835,7 +872,7 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  padding: 56px 0;
+  padding: 50px 0;
   color: #fff;
 }
 
@@ -843,51 +880,51 @@
   display: grid;
   grid-template-columns: minmax(0, 65%) minmax(0, 35%);
   align-items: center;
-  gap: 28px;
+  gap: 24px;
 }
 
 .ivp3-closing-copy h2 {
-  font-size: clamp(28px, 2.8vw, 38px);
-  line-height: 1.2;
-  letter-spacing: -0.03em;
-  margin-bottom: 14px;
-  font-weight: 800;
-  color: #fff;
+  font-size: clamp(24px, 2.5vw, 34px) !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.025em;
+  margin-bottom: 12px;
+  font-weight: 800 !important;
+  color: #fff !important;
 }
 
 .ivp3-closing-copy p {
-  font-size: 14.5px;
+  font-size: 14px;
   line-height: 1.7;
-  color: #cbd5e1;
-  max-width: 580px;
-  margin-bottom: 22px;
+  color: #cbd5e1 !important;
+  max-width: 560px;
+  margin-bottom: 20px;
 }
 
 .ivp3-closing-panel {
-  border-radius: 16px;
+  border-radius: 14px;
   background: rgba(10, 28, 22, 0.78);
   border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(8px);
-  padding: 32px 28px;
+  padding: 26px 22px;
 }
 
 .ivp3-closing-panel span {
   display: block;
-  width: 48px;
+  width: 44px;
   height: 4px;
   border-radius: 2px;
   background: var(--iv-orange);
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .ivp3-closing-panel strong {
   display: block;
-  font-size: 24px;
-  line-height: 1.3;
+  font-size: 21px !important;
+  line-height: 1.35;
   letter-spacing: -0.02em;
-  font-weight: 800;
-  color: #fff;
+  font-weight: 800 !important;
+  color: #fff !important;
 }
 
 /* ============================================================
@@ -896,8 +933,7 @@
 @media (max-width: 1080px) {
   .ivp3-hero-grid,
   .ivp3-top-grid,
-  .ivp3-human-top-grid,
-  .ivp3-human-bottom-grid,
+  .ivp3-human-main-grid,
   .ivp3-natural-grid,
   .ivp3-closing-grid {
     grid-template-columns: 1fr;
@@ -918,66 +954,66 @@
   }
 
   .ivp3-owner-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(5, 1fr);
   }
 
   .ivp3-team-wrap {
-    min-height: 280px;
+    height: 280px;
   }
 }
 
 @media (max-width: 768px) {
   .ivp3-section {
-    padding: 48px 0;
+    padding: 44px 0;
   }
 
   .ivp3-hero {
-    padding-top: 90px !important;
-    padding-bottom: 40px;
+    padding-top: 85px !important;
+    padding-bottom: 36px;
   }
 
   .ivp3-pillars-diagram-wrap {
-    height: 400px;
+    height: 380px;
   }
 
   .ivp3-pillars-diagram .strategy {
-    width: 120px;
-    height: 120px;
-    top: 60px;
+    width: 110px;
+    height: 110px;
+    top: 55px;
   }
 
   .ivp3-pillars-diagram .people {
-    width: 120px;
-    height: 120px;
-    left: 140px;
-    top: 280px;
+    width: 110px;
+    height: 110px;
+    left: 28%;
+    top: 270px;
   }
 
   .ivp3-pillars-diagram .system {
-    width: 120px;
-    height: 120px;
-    left: 360px;
-    top: 280px;
+    width: 110px;
+    height: 110px;
+    left: 72%;
+    top: 270px;
   }
 
   .ivp3-pillars-diagram .center {
-    width: 124px;
-    height: 124px;
-    top: 190px;
+    width: 116px;
+    height: 116px;
+    top: 175px;
   }
 
   .ivp3-pillars-diagram .node small {
-    font-size: 9.5px;
+    font-size: 9px;
   }
 
   .ivp3-pillars-diagram .node b {
-    font-size: 11.5px;
+    font-size: 11px !important;
   }
 
   .ivp3-side-notes {
     position: static;
     width: 100%;
-    margin-top: 12px;
+    margin-top: 10px;
   }
 
   .ivp3-relation-grid {
@@ -987,7 +1023,7 @@
   .ivp3-growth-flow {
     flex-wrap: wrap;
     justify-content: center;
-    gap: 12px;
+    gap: 10px;
   }
 
   .ivp3-growth-step {
@@ -999,7 +1035,7 @@
   }
 
   .ivp3-owner-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .ivp3-before-after {
@@ -1008,7 +1044,7 @@
 
   .state-arrow {
     transform: rotate(90deg);
-    margin: 8px 0;
+    margin: 6px 0;
   }
 
   .state-grid {
@@ -1018,7 +1054,7 @@
 
 @media (max-width: 480px) {
   .ivp3-owner-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .state-grid {
@@ -1027,6 +1063,6 @@
 
   .state-grid img {
     width: 100%;
-    height: 180px;
+    height: 170px;
   }
 }
