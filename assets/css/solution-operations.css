@@ -808,14 +808,10 @@
 .ivop-cta-inner {
     position: relative;
     z-index: 1;
-    display: grid;
-    grid-template-columns: 58% 42%;
-    gap: 40px;
-    align-items: center;
 }
 
 .ivop-cta-content {
-    max-width: 640px;
+    max-width: 680px;
 }
 
 .ivop-cta-kicker {
@@ -998,14 +994,6 @@
     .ivop-why-layout {
         grid-template-columns: 1fr;
         gap: 32px;
-    }
-    .ivop-cta-inner {
-        grid-template-columns: 1fr;
-        gap: 32px;
-    }
-    .ivop-cta-media {
-        max-width: 520px;
-        height: 260px;
     }
     .ivop-results-grid {
         grid-template-columns: repeat(2, 1fr);
