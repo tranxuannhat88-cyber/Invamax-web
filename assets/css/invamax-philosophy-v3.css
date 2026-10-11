@@ -869,11 +869,11 @@
   color: #0f172a !important;
 }
 
-.ivp3-natural .ivp3-copy-block h2 span.line-nowrap,
-.ivp3-natural .ivp3-copy-block h2 .line-nowrap {
+.ivp3-natural .ivp3-copy-block h2 span {
   color: #0f172a !important;
 }
 
+.ivp3-natural .ivp3-copy-block h2 span span,
 .ivp3-natural .ivp3-copy-block h2 span.accent,
 .ivp3-natural .ivp3-copy-block h2 .accent {
   color: var(--iv-orange) !important;
