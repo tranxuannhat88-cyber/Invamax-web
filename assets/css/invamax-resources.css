@@ -1,0 +1,804 @@
+/* ==========================================================================
+   INVAMAX KNOWLEDGE / RESOURCES HUB CSS
+   ========================================================================== */
+
+/* Base font guarantee */
+* {
+    font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, Arial, sans-serif !important;
+}
+
+body {
+    background-color: #0b1713 !important;
+    color: var(--text-light);
+    font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, Arial, sans-serif !important;
+    overflow-x: hidden;
+}
+
+/* Page Container */
+.res-page-wrap {
+    padding: 130px 0 80px;
+    max-width: 1220px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+/* Hero Section */
+.res-hero {
+    text-align: left;
+    margin-bottom: 48px;
+}
+.res-hero-eyebrow {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: #64748b;
+    margin-bottom: 8px;
+}
+.res-hero-title {
+    font-size: clamp(2.4rem, 4.5vw, 3.4rem);
+    font-weight: 900;
+    line-height: 1.15;
+    color: #ffffff !important;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+}
+.res-hero-title span {
+    color: #ff6b00;
+}
+.res-hero-subtitle {
+    font-size: 1.05rem;
+    color: #94a3b8;
+    margin-bottom: 30px;
+    max-width: 760px;
+    line-height: 1.6;
+}
+
+/* Search Bar & Filter Tabs */
+.res-search-filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    background: rgba(14, 30, 24, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50px;
+    padding: 6px 10px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    max-width: 1050px;
+}
+.res-search-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    min-width: 260px;
+    padding: 6px 14px;
+}
+.res-search-box i {
+    color: #64748b;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+.res-search-box input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    font-size: 0.95rem;
+    width: 100%;
+}
+.res-search-box input::placeholder {
+    color: #64748b;
+}
+
+.res-filter-tabs {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+.res-tab-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    border-radius: 40px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #94a3b8;
+    background: transparent;
+    border: 1px solid transparent;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+.res-tab-btn:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+}
+.res-tab-btn.active {
+    background: #ff6b00;
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(255, 107, 0, 0.35);
+}
+.res-tab-btn i {
+    width: 15px;
+    height: 15px;
+}
+
+/* Section Header Structure */
+.res-section {
+    margin-bottom: 64px;
+}
+.res-sec-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+.res-sec-title-wrap {
+    position: relative;
+    padding-left: 16px;
+}
+.res-sec-title-wrap::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 4px;
+    bottom: 4px;
+    width: 4px;
+    background: #ff6b00;
+    border-radius: 4px;
+}
+.res-sec-title {
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: #ffffff !important;
+    margin-bottom: 4px;
+    line-height: 1.3;
+}
+.res-sec-desc {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin: 0;
+}
+.res-view-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #ff6b00;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+.res-view-all:hover {
+    color: #ff8533;
+    transform: translateX(3px);
+}
+.res-view-all i {
+    width: 14px;
+    height: 14px;
+}
+
+/* 4-Column Grid */
+.res-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+/* ==========================================================================
+   SECTION 1: KHÁM PHÁ THEO CHỦ ĐỀ
+   ========================================================================== */
+.topic-card {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 22px 20px;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    background: #091a14;
+}
+.topic-card-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.45;
+    transition: transform 0.5s ease, opacity 0.3s ease;
+    z-index: 1;
+}
+.topic-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(8, 20, 16, 0.4) 0%, rgba(8, 20, 16, 0.95) 85%);
+    z-index: 2;
+}
+.topic-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 107, 0, 0.5);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 107, 0, 0.15);
+}
+.topic-card:hover .topic-card-bg {
+    transform: scale(1.08);
+    opacity: 0.55;
+}
+.topic-content {
+    position: relative;
+    z-index: 3;
+}
+.topic-icon {
+    width: 28px;
+    height: 28px;
+    color: #ff6b00;
+    margin-bottom: 12px;
+}
+.topic-title {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #ffffff !important;
+    margin-bottom: 6px;
+    line-height: 1.3;
+}
+.topic-desc {
+    font-size: 0.8rem;
+    color: #cbd5e1;
+    line-height: 1.45;
+    margin-bottom: 14px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.topic-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #ff6b00;
+}
+.topic-card:hover .topic-link {
+    color: #ff8533;
+}
+
+/* ==========================================================================
+   SECTION 2: BÀI VIẾT MỚI & TIÊU BIỂU
+   ========================================================================== */
+.art-card {
+    background: rgba(14, 30, 24, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+.art-card:hover {
+    border-color: rgba(255, 107, 0, 0.45);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4);
+}
+.art-thumb-wrap {
+    position: relative;
+    width: 100%;
+    height: 155px;
+    overflow: hidden;
+    background: #06130f;
+}
+.art-thumb-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+.art-card:hover .art-thumb-wrap img {
+    transform: scale(1.06);
+}
+.art-tag-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: rgba(11, 23, 19, 0.85);
+    border: 1px solid rgba(255, 107, 0, 0.4);
+    color: #ff944d;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    backdrop-filter: blur(4px);
+}
+.art-tag-badge i {
+    width: 12px;
+    height: 12px;
+}
+.art-body {
+    padding: 18px 18px 16px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.art-title {
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: #ffffff !important;
+    line-height: 1.45;
+    margin-bottom: 8px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 2.9em;
+}
+.art-card:hover .art-title {
+    color: #ff944d !important;
+}
+.art-excerpt {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    line-height: 1.5;
+    margin-bottom: 16px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    flex-grow: 1;
+}
+.art-meta-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11px;
+    color: #64748b;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    margin-top: auto;
+}
+.art-meta-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.art-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.art-read-now {
+    color: #ff6b00;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+}
+
+/* ==========================================================================
+   SECTION 3: TOOLKIT & TÀI LIỆU
+   ========================================================================== */
+.tool-card {
+    background: rgba(14, 30, 24, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+.tool-card:hover {
+    border-color: rgba(255, 107, 0, 0.45);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4);
+}
+.tool-preview-wrap {
+    position: relative;
+    background: #ffffff;
+    border-radius: 8px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+.tool-preview-sheet {
+    width: 80%;
+    height: 85%;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.sheet-line {
+    height: 4px;
+    background: #cbd5e1;
+    border-radius: 2px;
+}
+.sheet-line.title {
+    width: 60%;
+    background: #64748b;
+    height: 6px;
+    margin-bottom: 4px;
+}
+.sheet-line.short { width: 45%; }
+.sheet-line.med { width: 75%; }
+.sheet-line.long { width: 95%; }
+
+.tool-type-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 9.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 3px 8px;
+    border-radius: 4px;
+}
+.tool-badge-green { background: #059669; color: #ffffff; }
+.tool-badge-orange { background: #d97706; color: #ffffff; }
+.tool-badge-blue { background: #2563eb; color: #ffffff; }
+.tool-badge-red { background: #dc2626; color: #ffffff; }
+
+.tool-ext-icon {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 800;
+    color: #ffffff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+.ext-excel { background: #107c41; }
+.ext-word { background: #185abd; }
+.ext-pdf { background: #d83b01; }
+
+.tool-card-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.tool-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #ffffff !important;
+    line-height: 1.4;
+    margin-bottom: 6px;
+    min-height: 2.7em;
+}
+.tool-card:hover .tool-title {
+    color: #ff944d !important;
+}
+.tool-desc {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    line-height: 1.45;
+    margin-bottom: 14px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    flex-grow: 1;
+}
+.tool-download-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #ff6b00;
+    margin-top: auto;
+}
+
+/* ==========================================================================
+   SECTION 4: VIDEO HỌC NHANH
+   ========================================================================== */
+.vid-card {
+    background: rgba(14, 30, 24, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+.vid-card:hover {
+    border-color: rgba(255, 107, 0, 0.45);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4);
+}
+.vid-thumb-wrap {
+    position: relative;
+    width: 100%;
+    height: 145px;
+    overflow: hidden;
+    background: #06130f;
+}
+.vid-thumb-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+.vid-card:hover .vid-thumb-wrap img {
+    transform: scale(1.06);
+}
+.vid-play-btn {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(11, 23, 19, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+.vid-card:hover .vid-play-btn {
+    background: #ff6b00;
+    border-color: #ff6b00;
+    transform: scale(1.12);
+}
+.vid-play-btn i {
+    width: 18px;
+    height: 18px;
+    margin-left: 2px;
+}
+.vid-duration {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-family: monospace;
+}
+.vid-card-body {
+    padding: 16px 16px 14px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.vid-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #ffffff !important;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    min-height: 2.7em;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.vid-card:hover .vid-title {
+    color: #ff944d !important;
+}
+.vid-meta-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11px;
+    color: #64748b;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    margin-top: auto;
+}
+.vid-views-time {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.vid-watch-now {
+    color: #ff6b00;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+}
+
+/* ==========================================================================
+   SECTION 5: BOTTOM BANNER CTA
+   ========================================================================== */
+.res-cta-banner {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 56px 48px;
+    background: #081711;
+    border: 1px solid rgba(255, 107, 0, 0.35);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 107, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 80px;
+}
+.res-cta-banner-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.3;
+    z-index: 1;
+}
+.res-cta-banner::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(8, 23, 17, 0.95) 0%, rgba(8, 23, 17, 0.75) 50%, rgba(8, 23, 17, 0.85) 100%);
+    z-index: 2;
+}
+.res-cta-content {
+    position: relative;
+    z-index: 3;
+    max-width: 620px;
+}
+.res-cta-title {
+    font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+    font-weight: 800;
+    color: #ffffff !important;
+    line-height: 1.25;
+    margin-bottom: 12px;
+}
+.res-cta-title span {
+    color: #ff6b00;
+}
+.res-cta-desc {
+    font-size: 0.98rem;
+    color: #cbd5e1;
+    line-height: 1.6;
+    margin-bottom: 28px;
+}
+.res-cta-btns {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+.btn-cta-orange {
+    padding: 12px 28px;
+    background: #ff6b00;
+    color: #ffffff !important;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 999px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 18px rgba(255, 107, 0, 0.4);
+    transition: all 0.25s ease;
+}
+.btn-cta-orange:hover {
+    background: #e65a00;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 22px rgba(255, 107, 0, 0.55);
+}
+.btn-cta-outline {
+    padding: 12px 28px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #ffffff !important;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+.btn-cta-outline:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: #ffffff;
+}
+
+.res-cta-features {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    min-width: 280px;
+}
+.res-cta-feat-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+.res-cta-feat-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 107, 0, 0.4);
+    background: rgba(255, 107, 0, 0.1);
+    color: #ff6b00;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.res-cta-feat-icon i {
+    width: 18px;
+    height: 18px;
+}
+.res-cta-feat-text {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #cbd5e1;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 1.35;
+}
+
+/* ==========================================================================
+   RESPONSIVE QUERIES
+   ========================================================================== */
+@media (max-width: 1100px) {
+    .res-grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .res-page-wrap {
+        padding-top: 100px;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+    .res-search-filter-bar {
+        border-radius: 20px;
+        padding: 12px;
+    }
+    .res-grid-4 {
+        grid-template-columns: 1fr;
+    }
+    .res-cta-banner {
+        padding: 32px 24px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .res-cta-features {
+        width: 100%;
+    }
+}
