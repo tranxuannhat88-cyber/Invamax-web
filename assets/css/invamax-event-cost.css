@@ -1,0 +1,832 @@
+/* ============================================================
+   INVAMAX EVENT / COST OPTIMIZATION PROGRAM (TỐI ƯU CHI PHÍ SẢN XUẤT)
+   Synchronized with INVAMAX Brand DNA:
+   - Deep forest dark: #051913 / #08231c
+   - Energetic industrial orange: #ef6d1c / #ff6500
+   - Modern clean typography: Be Vietnam Pro
+   - Scoped under .ive-page to avoid collisions
+   ============================================================ */
+
+.ive-page {
+  font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, Arial, sans-serif !important;
+  color: #0f172a;
+  background: #f8fafc;
+  line-height: 1.65;
+  font-size: 15px;
+  overflow-x: hidden;
+}
+
+.ive-page * {
+  box-sizing: border-box;
+}
+
+.ive-shell {
+  width: min(1200px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+/* ============================================================
+   HERO BANNER
+   ============================================================ */
+.ive-hero {
+  position: relative;
+  background: 
+    linear-gradient(90deg, rgba(4, 18, 14, 0.97) 0%, rgba(4, 18, 14, 0.90) 38%, rgba(5, 25, 19, 0.65) 65%, rgba(5, 25, 19, 0.25) 90%, rgba(5, 25, 19, 0.10) 100%),
+    url('../images/campaign-hero.jpg');
+  background-position: center right;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-top: 150px;
+  padding-bottom: 75px;
+  min-height: 540px;
+  color: #fff;
+  overflow: hidden;
+}
+
+.ive-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 58%) minmax(0, 42%);
+  gap: 36px;
+  align-items: center;
+}
+
+.ive-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(239, 109, 28, 0.15);
+  border: 1px solid rgba(239, 109, 28, 0.4);
+  color: #ff933e;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: 18px;
+}
+
+.ive-hero h1 {
+  font-size: clamp(34px, 3.8vw, 48px) !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.03em;
+  font-weight: 800 !important;
+  color: #fff !important;
+  margin: 0 0 16px 0;
+}
+
+.ive-hero h1 span {
+  color: #ef6d1c !important;
+}
+
+.ive-hero-lead {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #cbd5e1 !important;
+  margin-bottom: 28px;
+  max-width: 560px;
+}
+
+.ive-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.ive-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 26px;
+  font-size: 13.5px;
+  font-weight: 700;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.ive-btn-primary {
+  background: #ef6d1c;
+  color: #fff !important;
+  box-shadow: 0 8px 20px rgba(239, 109, 28, 0.35);
+  border: none;
+}
+
+.ive-btn-primary:hover {
+  background: #d85d10;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(239, 109, 28, 0.45);
+}
+
+.ive-btn-ghost {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff !important;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+}
+
+.ive-btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+.ive-hero-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  color: #94a3b8;
+}
+
+.ive-hero-note i {
+  color: #10b981;
+}
+
+/* Hero summary card right side */
+.ive-hero-card {
+  background: rgba(10, 28, 22, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+}
+
+.ive-hero-card h3 {
+  font-size: 17px !important;
+  font-weight: 700 !important;
+  color: #fff !important;
+  margin: 0 0 18px 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ive-hero-card h3 i {
+  color: #ef6d1c;
+}
+
+.ive-hero-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.ive-stat-box {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+}
+
+.ive-stat-box span {
+  display: block;
+  font-size: 11.5px;
+  color: #94a3b8;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.ive-stat-box strong {
+  display: block;
+  font-size: 26px;
+  font-weight: 800;
+  color: #ff933e;
+  line-height: 1.1;
+}
+
+/* ============================================================
+   VALUE STRIP (SLOGAN BAND)
+   ============================================================ */
+.ive-slogan-band {
+  background: #051913;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 22px 0;
+  color: #fff;
+}
+
+.ive-slogan-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+  text-align: center;
+}
+
+.ive-slogan-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.ive-slogan-item i {
+  color: #ef6d1c;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   SECTIONS GENERAL
+   ============================================================ */
+.ive-section {
+  padding: 70px 0;
+}
+
+.ive-section-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 46px;
+}
+
+.ive-section-num {
+  display: inline-block;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: #ef6d1c;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.ive-section-title {
+  font-size: clamp(25px, 2.7vw, 34px) !important;
+  font-weight: 800 !important;
+  color: #0f172a !important;
+  line-height: 1.25 !important;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.025em;
+}
+
+.ive-section-desc {
+  font-size: 15px;
+  line-height: 1.65;
+  color: #64748b !important;
+  margin: 0;
+}
+
+/* ============================================================
+   01: OBJECTIVES / METRICS
+   ============================================================ */
+.ive-metrics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  max-width: 960px;
+  margin: 0 auto 30px;
+}
+
+.ive-metric-card {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  padding: 32px 30px;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.ive-metric-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.09);
+  border-color: #cbd5e1;
+}
+
+.ive-metric-ic {
+  width: 64px;
+  height: 64px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ive-metric-card:nth-child(1) .ive-metric-ic {
+  background: rgba(239, 109, 28, 0.12);
+  color: #ef6d1c;
+}
+
+.ive-metric-card:nth-child(2) .ive-metric-ic {
+  background: rgba(16, 185, 129, 0.12);
+  color: #10b981;
+}
+
+.ive-metric-content h3 {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  color: #64748b !important;
+  margin: 0 0 6px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.ive-metric-content strong {
+  display: block;
+  font-size: clamp(34px, 3.5vw, 42px);
+  font-weight: 900;
+  color: #0f172a;
+  line-height: 1;
+}
+
+.ive-metric-card:nth-child(1) strong { color: #ef6d1c; }
+.ive-metric-card:nth-child(2) strong { color: #10b981; }
+
+.ive-note-center {
+  text-align: center;
+  font-size: 13.5px;
+  color: #64748b;
+  font-style: italic;
+  margin: 0;
+}
+
+/* ============================================================
+   02: METHODOLOGY / 3 STEPS
+   ============================================================ */
+.ive-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+.ive-step-card {
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid #e2e8f0;
+  padding: 30px 26px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+  position: relative;
+  transition: all 0.25s ease;
+}
+
+.ive-step-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(15, 23, 42, 0.08);
+  border-color: #ef6d1c;
+}
+
+.ive-step-num {
+  font-size: 32px;
+  font-weight: 900;
+  color: #ef6d1c;
+  line-height: 1;
+  margin-bottom: 16px;
+  opacity: 0.9;
+}
+
+.ive-step-card h3 {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: #0f172a !important;
+  margin: 0 0 10px 0;
+}
+
+.ive-step-card p {
+  font-size: 14px;
+  line-height: 1.65;
+  color: #64748b !important;
+  margin: 0;
+}
+
+/* ============================================================
+   03: ELIGIBILITY / FIT CRITERIA
+   ============================================================ */
+.ive-fit-section {
+  background: #051913;
+  color: #fff;
+  padding: 70px 0;
+  position: relative;
+}
+
+.ive-fit-section .ive-section-title {
+  color: #fff !important;
+}
+
+.ive-fit-section .ive-section-desc {
+  color: #94a3b8 !important;
+}
+
+.ive-criteria-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+.ive-criterion-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 28px 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  backdrop-filter: blur(8px);
+}
+
+.ive-criterion-ic {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(16, 185, 129, 0.16);
+  color: #10b981;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ive-criterion-info h4 {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: #94a3b8 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 4px 0;
+}
+
+.ive-criterion-info strong {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+/* ============================================================
+   04: PRICING / TRANSPARENCY
+   ============================================================ */
+.ive-pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  max-width: 960px;
+  margin: 0 auto 30px;
+}
+
+.ive-pricing-card {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  padding: 34px 30px;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.05);
+  position: relative;
+  transition: all 0.25s ease;
+}
+
+.ive-pricing-card.free {
+  border-color: rgba(16, 185, 129, 0.4);
+  background: linear-gradient(180deg, #ffffff 0%, #f0fdf4 100%);
+}
+
+.ive-pricing-card.quote {
+  border-color: rgba(239, 109, 28, 0.35);
+  background: linear-gradient(180deg, #ffffff 0%, #fff7ed 100%);
+}
+
+.ive-pricing-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+
+.ive-pricing-card.free .ive-pricing-tag {
+  background: rgba(16, 185, 129, 0.15);
+  color: #059669;
+}
+
+.ive-pricing-card.quote .ive-pricing-tag {
+  background: rgba(239, 109, 28, 0.15);
+  color: #d95d10;
+}
+
+.ive-pricing-card h3 {
+  font-size: 19px !important;
+  font-weight: 700 !important;
+  color: #0f172a !important;
+  margin: 0 0 14px 0;
+}
+
+.ive-pricing-val {
+  font-size: 32px;
+  font-weight: 900;
+  margin-bottom: 12px;
+  line-height: 1;
+}
+
+.ive-pricing-card.free .ive-pricing-val { color: #10b981; }
+.ive-pricing-card.quote .ive-pricing-val { color: #ef6d1c; }
+
+.ive-pricing-card p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #64748b !important;
+  margin: 0;
+}
+
+/* ============================================================
+   05: REGISTRATION FORM SECTION
+   ============================================================ */
+.ive-reg-section {
+  background: #f1f5f9;
+  padding: 80px 0;
+}
+
+.ive-reg-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 42%) minmax(0, 58%);
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.ive-reg-intro {
+  padding-right: 20px;
+}
+
+.ive-reg-intro h2 {
+  font-size: clamp(26px, 2.8vw, 34px) !important;
+  font-weight: 800 !important;
+  color: #0f172a !important;
+  line-height: 1.25 !important;
+  margin: 0 0 14px 0;
+}
+
+.ive-reg-intro p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #475569 !important;
+  margin-bottom: 28px;
+}
+
+.ive-contact-channels {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ive-channel-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 14px 18px;
+  text-decoration: none;
+  color: #0f172a;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.ive-channel-card:hover {
+  border-color: #ef6d1c;
+  transform: translateX(4px);
+  color: #ef6d1c;
+}
+
+.ive-channel-ic {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: rgba(239, 109, 28, 0.1);
+  color: #ef6d1c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Form card */
+.ive-form-card {
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #e2e8f0;
+  padding: 36px 32px;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+}
+
+.ive-form-card h3 {
+  font-size: 20px !important;
+  font-weight: 800 !important;
+  color: #0f172a !important;
+  margin: 0 0 6px 0;
+}
+
+.ive-form-card > p {
+  font-size: 13.5px;
+  color: #64748b !important;
+  margin-bottom: 24px;
+}
+
+.ive-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.ive-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.ive-field label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.ive-field label em {
+  color: #ef6d1c;
+  font-style: normal;
+  margin-left: 2px;
+}
+
+.ive-field input,
+.ive-field select,
+.ive-field textarea {
+  width: 100%;
+  font-family: inherit;
+  font-size: 14px;
+  padding: 11px 14px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  background: #fff;
+  color: #0f172a;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+.ive-field input:focus,
+.ive-field select:focus,
+.ive-field textarea:focus {
+  border-color: #ef6d1c;
+  box-shadow: 0 0 0 3px rgba(239, 109, 28, 0.15);
+}
+
+/* Goals Selection */
+.ive-goals-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 18px;
+}
+
+.ive-goals-box legend {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 8px;
+}
+
+.ive-checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ive-check-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13.5px;
+  color: #334155;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.ive-check-item input[type="checkbox"] {
+  width: 17px;
+  height: 17px;
+  accent-color: #ef6d1c;
+  cursor: pointer;
+}
+
+.ive-consent {
+  margin-bottom: 20px;
+}
+
+.ive-btn-submit {
+  width: 100%;
+  padding: 14px;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 8px;
+  border: none;
+  background: #ef6d1c;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 8px 20px rgba(239, 109, 28, 0.35);
+}
+
+.ive-btn-submit:hover {
+  background: #d85d10;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(239, 109, 28, 0.45);
+}
+
+.ive-privacy-note {
+  font-size: 12px;
+  color: #94a3b8;
+  text-align: center;
+  margin-top: 12px;
+  margin-bottom: 0;
+}
+
+/* Success Card */
+.ive-success-card {
+  display: none;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.ive-success-card i {
+  color: #10b981;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 16px;
+  display: block;
+}
+
+.ive-success-card h3 {
+  font-size: 22px !important;
+  color: #0f172a !important;
+  font-weight: 800 !important;
+  margin-bottom: 8px;
+}
+
+.ive-success-card p {
+  color: #64748b;
+  font-size: 14.5px;
+  margin: 0;
+}
+
+/* ============================================================
+   RESPONSIVE DESIGN
+   ============================================================ */
+@media (max-width: 960px) {
+  .ive-hero-grid,
+  .ive-reg-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .ive-steps-grid,
+  .ive-criteria-grid {
+    grid-template-columns: 1fr;
+  }
+  .ive-metrics-grid,
+  .ive-pricing-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .ive-hero {
+    padding-top: 120px;
+    padding-bottom: 50px;
+  }
+  .ive-form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .ive-hero-stats {
+    grid-template-columns: 1fr;
+  }
+  .ive-metric-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+  }
+}
