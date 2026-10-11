@@ -101,24 +101,16 @@
    HERO BANNER
    ======================================================== */
 .ivop-hero {
-    background: var(--bg-dark, #0B211A);
-    color: white;
-    padding-top: 86px !important;
-    padding-bottom: 56px;
     position: relative;
+    background: var(--bg-dark, #0B211A);
+    color: #ffffff;
+    padding-top: 80px !important;
     overflow: hidden;
-    min-height: 480px;
-    display: flex;
-    align-items: center;
 }
 
 .ivop-hero-bg-media {
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 52%;
-    height: 100%;
+    inset: 0 0 0 45%;
     z-index: 1;
     cursor: zoom-in;
     overflow: hidden;
@@ -142,50 +134,25 @@
     inset: 0;
     background: linear-gradient(90deg, 
         #0B211A 0%, 
-        rgba(11, 33, 26, 0.96) 12%, 
-        rgba(11, 33, 26, 0.65) 28%, 
-        rgba(11, 33, 26, 0.15) 55%, 
-        transparent 75%
+        rgba(11, 33, 26, 0.95) 15%, 
+        rgba(11, 33, 26, 0.60) 35%, 
+        rgba(11, 33, 26, 0.15) 60%, 
+        transparent 80%
     );
     pointer-events: none;
 }
 
-.ivop-hero-wrap {
-    position: relative;
-    z-index: 2;
-    width: 100%;
-}
-
-.ivop-breadcrumb {
+.ivop-hero-main {
+    min-height: 420px;
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-size: 13px;
-    color: rgba(255, 255, 255, 0.6);
-    margin-bottom: 28px;
-}
-
-.ivop-breadcrumb a {
-    color: rgba(255, 255, 255, 0.65);
-}
-
-.ivop-breadcrumb a:hover {
-    color: var(--orange);
-}
-
-.ivop-breadcrumb-sep {
-    color: rgba(255, 255, 255, 0.35);
-    font-size: 14px;
-}
-
-.ivop-breadcrumb span:last-child {
-    color: #ffffff;
-    font-weight: 500;
+    position: relative;
+    z-index: 2;
 }
 
 .ivop-hero-content {
-    max-width: 590px;
-    padding-right: 12px;
+    max-width: 600px;
+    padding: 56px 0 50px;
 }
 
 .ivop-hero h1 {
@@ -1027,32 +994,24 @@
 
 @media (max-width: 991px) {
     .ivop-hero {
-        padding-top: 50px !important;
-        padding-bottom: 40px;
-        display: block;
+        padding-top: 70px !important;
     }
     .ivop-hero-bg-media {
-        position: relative;
-        top: auto;
-        right: auto;
-        bottom: auto;
-        width: 100%;
-        height: 300px;
-        margin-top: 28px;
-        border-radius: 14px;
+        left: 0;
+        opacity: 0.35;
     }
-    .ivop-hero-bg-overlay {
-        background: linear-gradient(180deg, rgba(11, 33, 26, 0.4) 0%, transparent 60%);
+    .ivop-hero-main {
+        min-height: 380px;
     }
     .ivop-hero-content {
         max-width: 100%;
-        padding-right: 0;
+        padding: 44px 0 40px;
     }
 }
 
 @media (max-width: 768px) {
-    .ivop-hero-bg-media {
-        height: 240px;
+    .ivop-hero h1 {
+        font-size: 32px !important;
     }
     .ivop-when-grid {
         grid-template-columns: 1fr;
