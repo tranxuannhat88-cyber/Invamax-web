@@ -29,7 +29,7 @@
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <!-- Global CSS -->
     
@@ -37,94 +37,171 @@
     <link rel="stylesheet" href="../assets/css/style.css?v=10">
     <link rel="stylesheet" href="../assets/css/navbar.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, Arial, sans-serif !important;
+        }
+        body {
+            font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, Arial, sans-serif !important;
+        }
+        h1, h2, h3, h4, h5, h6, p, span, a, button, input, select, textarea {
+            font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, Arial, sans-serif !important;
+        }
         .articles-hero {
-            padding: 120px 0 40px;
+            padding: 140px 0 60px;
             text-align: center;
         }
         .articles-hero h1 {
-            font-size: 2.4rem;
+            font-size: clamp(2.2rem, 4vw, 3rem);
             color: var(--text-white);
             margin-bottom: 16px;
-            font-weight: 700;
+            font-weight: 800;
+            letter-spacing: -0.02em;
         }
         .articles-hero p {
             color: var(--text-muted);
             font-size: 1.05rem;
-            max-width: 900px;
-            margin: 0 auto 40px auto;
-            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto 50px auto;
+            line-height: 1.65;
         }
-        .articles-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            margin-bottom: 60px;
-        }
-        .article-card {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: var(--radius-md);
-            overflow: hidden;
+
+        /* Horizontal Event Cards List */
+        .events-list {
             display: flex;
             flex-direction: column;
-            transition: all 0.3s ease;
-            text-decoration: none;
+            gap: 28px;
+            max-width: 1040px;
+            margin: 0 auto 60px;
         }
-        .article-card:hover {
-            background: rgba(255,255,255,0.04);
-            border-color: rgba(255, 102, 0, 0.3);
-            transform: translateY(-4px);
-        }
-        .article-img-wrapper {
-            width: 100%;
-            height: 200px;
+        .event-card-horizontal {
+            display: grid;
+            grid-template-columns: 420px 1fr;
+            background: rgba(13, 32, 27, 0.65);
+            border: 1px solid rgba(255, 107, 0, 0.35);
+            border-radius: 18px;
             overflow: hidden;
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: left;
         }
-        .article-img-wrapper img {
+        .event-card-horizontal:hover {
+            border-color: rgba(255, 107, 0, 0.65);
+            transform: translateY(-4px);
+            box-shadow: 0 22px 42px rgba(0, 0, 0, 0.5), 0 0 24px rgba(239, 109, 28, 0.15);
+        }
+        .event-card-img-wrap {
+            position: relative;
+            overflow: hidden;
+            min-height: 280px;
+            background: #06130f;
+        }
+        .event-card-img-wrap img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .article-card:hover .article-img-wrapper img {
+        .event-card-horizontal:hover .event-card-img-wrap img {
             transform: scale(1.05);
         }
-        .article-content {
-            padding: 24px;
+        .event-card-badge {
+            position: absolute;
+            top: 18px;
+            left: 18px;
+            background: rgba(239, 109, 28, 0.95);
+            color: #ffffff;
+            font-size: 11.5px;
+            font-weight: 800;
+            padding: 5px 14px;
+            border-radius: 999px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(6px);
+            z-index: 2;
+        }
+        .event-card-content {
+            padding: 32px 36px;
             display: flex;
             flex-direction: column;
-            flex-grow: 1;
+            justify-content: space-between;
         }
-        .article-category {
-            display: inline-block;
-            padding: 4px 12px;
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            color: var(--text-light);
-            font-size: 0.8rem;
-            margin-bottom: 16px;
-            background: rgba(255,255,255,0.05);
-            align-self: flex-start;
+        .event-card-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #10b981;
+            font-weight: 600;
+            margin-bottom: 12px;
         }
-        .article-title {
-            color: var(--text-white);
-            font-size: 1.25rem;
-            font-weight: 700;
-            line-height: 1.4;
-            margin-bottom: 16px;
+        .event-card-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1.35;
+            margin-bottom: 14px;
+            letter-spacing: -0.01em;
         }
-        .article-excerpt {
+        .event-card-excerpt {
             color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 0;
-            flex-grow: 1;
+            font-size: 0.98rem;
+            line-height: 1.65;
+            margin-bottom: 24px;
         }
-        @media (max-width: 1024px) {
-            .articles-grid { grid-template-columns: repeat(2, 1fr); }
+        .event-card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            margin-top: auto;
+            flex-wrap: wrap;
+            gap: 16px;
         }
-        @media (max-width: 768px) {
-            .articles-hero h1 { font-size: 2rem; }
+        .event-card-meta {
+            font-size: 13.5px;
+            color: #cbd5e1;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .btn-event-detail {
+            padding: 10px 22px;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1px solid var(--primary);
+            color: #ffffff;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            border-radius: 8px;
+            background: transparent;
+            transition: all 0.25s ease;
+        }
+        .btn-event-detail:hover {
+            background: var(--primary);
+            color: #ffffff;
+            box-shadow: 0 4px 16px rgba(255, 107, 0, 0.35);
+            transform: translateX(2px);
+        }
+
+        @media (max-width: 900px) {
+            .event-card-horizontal {
+                grid-template-columns: 1fr;
+            }
+            .event-card-img-wrap {
+                min-height: 240px;
+                max-height: 280px;
+            }
+            .event-card-content {
+                padding: 24px;
+            }
         }
     </style>
     
@@ -203,32 +280,34 @@
                 Các chương trình hợp tác cải tiến, hội thảo thực chiến và sự kiện đào tạo chuyên sâu về tối ưu vận hành nhà máy từ INVAMAX.
             </p>
             
-            <div class="articles-grid" style="text-align: left;">
+            <div class="events-list">
                 <!-- Event Card 1: Chương trình Tối ưu Chi phí Sản xuất -->
-                <article class="article-card" style="display: flex; flex-direction: column; background: rgba(13, 32, 27, 0.6); border: 1px solid rgba(255, 107, 0, 0.35); border-radius: 16px; overflow: hidden; box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35); transition: all 0.3s ease;">
-                    <div class="article-img-wrapper" style="height: 230px; position: relative; overflow: hidden;">
-                        <img src="../assets/images/campaign-hero.jpg" alt="Chương trình Hợp tác Tối ưu Chi phí Sản xuất" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
-                        <span style="position: absolute; top: 16px; left: 16px; background: rgba(239, 109, 28, 0.92); color: #fff; font-size: 11.5px; font-weight: 800; padding: 5px 12px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.05em; backdrop-filter: blur(4px);">
+                <article class="event-card-horizontal">
+                    <div class="event-card-img-wrap">
+                        <img src="../assets/images/campaign-hero.jpg" alt="Chương trình Hợp tác Tối ưu Chi phí Sản xuất" loading="lazy">
+                        <span class="event-card-badge">
                             Chương trình hợp tác
                         </span>
                     </div>
-                    <div class="article-content" style="padding: 26px; display: flex; flex-direction: column; flex-grow: 1;">
-                        <div style="display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: #10b981; font-weight: 600; margin-bottom: 12px;">
-                            <i data-lucide="clock" style="width: 15px; height: 15px;"></i> Đang nhận đăng ký • Miễn phí buổi trao đổi ban đầu
+                    <div class="event-card-content">
+                        <div>
+                            <div class="event-card-status">
+                                <i data-lucide="clock" style="width: 16px; height: 16px;"></i> Đang nhận đăng ký • Miễn phí buổi trao đổi ban đầu
+                            </div>
+                            <h2 class="event-card-title">
+                                Tối Ưu Chi Phí Sản Xuất
+                            </h2>
+                            <p class="event-card-excerpt">
+                                Tìm lại lợi nhuận từ chính cách nhà máy đang vận hành. Khảo sát thực tế cơ hội giảm 5–20% chi phí sản xuất và nâng cao 10–40% năng suất lao động cùng chuyên gia INVAMAX.
+                            </p>
                         </div>
-                        <h2 class="article-title" style="font-size: 1.35rem; font-weight: 700; color: #ffffff; line-height: 1.35; margin-bottom: 14px;">
-                            Tối Ưu Chi Phí Sản Xuất
-                        </h2>
-                        <p class="article-excerpt" style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.65; margin-bottom: 24px; flex-grow: 1;">
-                            Tìm lại lợi nhuận từ chính cách nhà máy đang vận hành. Khảo sát thực tế cơ hội giảm 5–20% chi phí sản xuất và nâng cao 10–40% năng suất lao động cùng chuyên gia INVAMAX.
-                        </p>
                         
-                        <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 18px; border-top: 1px solid rgba(255, 255, 255, 0.08); margin-top: auto;">
-                            <span style="font-size: 13px; color: #cbd5e1; font-weight: 500;">
-                                Quy mô: Từ 30 nhân sự
+                        <div class="event-card-footer">
+                            <span class="event-card-meta">
+                                <i data-lucide="users" style="width: 15px; height: 15px; color: #94a3b8;"></i> Quy mô: Từ 30 nhân sự
                             </span>
-                            <a href="su-kien/toi-uu-chi-phi-san-xuat.html" class="btn btn-outline" style="padding: 8px 18px; font-size: 12.5px; border-color: var(--primary); color: #fff; display: inline-flex; align-items: center; gap: 6px; text-decoration: none; border-radius: 6px;" onmouseover="this.style.background='var(--primary)'" onmouseout="this.style.background='transparent'">
-                                Xem chi tiết <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i>
+                            <a href="su-kien/toi-uu-chi-phi-san-xuat.html" class="btn-event-detail">
+                                Xem chi tiết <i data-lucide="arrow-right" style="width: 15px; height: 15px;"></i>
                             </a>
                         </div>
                     </div>
