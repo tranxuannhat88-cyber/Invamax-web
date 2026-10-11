@@ -604,7 +604,8 @@
 .ivp3-human-col-left {
   display: flex;
   flex-direction: column;
-  padding-bottom: 64px;
+  justify-content: space-between;
+  padding-bottom: 24px;
 }
 
 .ivp3-human-col-left h2,
@@ -630,7 +631,7 @@
 }
 
 .ivp3-owner-block {
-  margin-top: 26px;
+  margin-top: auto;
   padding-top: 20px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
@@ -809,37 +810,31 @@
 .ivp3-team-quote-card {
   position: absolute;
   left: 20px;
-  bottom: 18px;
+  bottom: 24px;
   max-width: 440px;
   z-index: 3;
-  background: rgba(5, 23, 17, 0.90);
+  background: rgba(5, 23, 17, 0.92);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 12px;
-  padding: 14px 18px;
+  padding: 16px 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
 }
 
-.ivp3-team-quote-card .mark {
-  color: var(--iv-orange) !important;
-  font-size: 28px;
-  line-height: 1;
-  font-family: Georgia, serif;
-  display: block;
-  margin-bottom: 2px;
-}
-
 .ivp3-team-quote-card p {
-  font-size: 12.5px !important;
-  line-height: 1.6;
+  font-size: 13px !important;
+  line-height: 1.55;
   color: #fff !important;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
+  font-style: italic;
 }
 
 .ivp3-team-quote-card strong {
+  display: block;
   font-size: 11.5px !important;
   color: #ffbe8a !important;
   letter-spacing: 0.04em;
+  font-style: normal;
 }
 
 /* ============================================================
@@ -863,6 +858,7 @@
 .line-nowrap {
   white-space: nowrap;
   display: inline-block;
+  color: #0f172a !important;
 }
 
 .ivp3-natural .ivp3-copy-block h2 {
@@ -871,6 +867,16 @@
   margin-bottom: 16px !important;
   font-weight: 800 !important;
   color: #0f172a !important;
+}
+
+.ivp3-natural .ivp3-copy-block h2 span.line-nowrap,
+.ivp3-natural .ivp3-copy-block h2 .line-nowrap {
+  color: #0f172a !important;
+}
+
+.ivp3-natural .ivp3-copy-block h2 span.accent,
+.ivp3-natural .ivp3-copy-block h2 .accent {
+  color: var(--iv-orange) !important;
 }
 
 .ivp3-before-after {
