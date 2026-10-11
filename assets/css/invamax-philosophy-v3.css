@@ -946,6 +946,10 @@
   box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
 }
 
+.state-bad .state-grid img {
+  filter: brightness(1.06) contrast(1.04);
+}
+
 .state-grid ul {
   margin: 0;
   padding: 0;
