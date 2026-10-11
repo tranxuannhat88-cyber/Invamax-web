@@ -36,67 +36,38 @@
     <link rel="icon" type="image/jpeg" href="../assets/images/favicon.jpg">
     <link rel="stylesheet" href="../assets/css/style.css?v=10">
     <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="../assets/css/invamax-resources.css?v=5">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&display=swap');
-        
-        * {
-            font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, Arial, sans-serif !important;
-        }
-        body {
-            font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, Arial, sans-serif !important;
-        }
-        h1, h2, h3, h4, h5, h6, p, span, a, button, input, select, textarea {
-            font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, Arial, sans-serif !important;
-        }
-        .articles-hero {
-            padding: 140px 0 60px;
-            text-align: center;
-        }
-        .articles-hero h1 {
-            font-size: clamp(2.2rem, 4vw, 3rem);
-            color: var(--text-white);
-            margin-bottom: 16px;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-        }
-        .articles-hero p {
-            color: var(--text-muted);
-            font-size: 1.05rem;
-            max-width: 800px;
-            margin: 0 auto 50px auto;
-            line-height: 1.65;
-        }
-
         /* 2-Column Event Cards Grid */
         .events-list {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 24px;
             max-width: 1240px;
-            margin: 0 auto 60px;
+            margin: 0 auto;
         }
         .event-card-horizontal {
             display: grid;
             grid-template-columns: 210px 1fr;
-            background: rgba(13, 32, 27, 0.65);
-            border: 1px solid rgba(255, 107, 0, 0.35);
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             text-align: left;
         }
         .event-card-horizontal:hover {
-            border-color: rgba(255, 107, 0, 0.65);
+            border-color: #ef6d1c;
             transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(239, 109, 28, 0.15);
+            box-shadow: 0 16px 32px rgba(15, 23, 42, 0.09);
         }
         .event-card-img-wrap {
             position: relative;
             overflow: hidden;
             height: 100%;
             min-height: 240px;
-            background: #06130f;
+            background: #f1f5f9;
         }
         .event-card-img-wrap img {
             width: 100%;
@@ -120,7 +91,7 @@
             border-radius: 999px;
             text-transform: uppercase;
             letter-spacing: 0.04em;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             backdrop-filter: blur(6px);
             z-index: 2;
         }
@@ -135,21 +106,25 @@
             align-items: center;
             gap: 6px;
             font-size: 11.5px;
-            color: #10b981;
-            font-weight: 600;
+            color: #059669;
+            font-weight: 700;
             margin-bottom: 10px;
             line-height: 1.35;
         }
         .event-card-title {
-            font-size: 1.22rem;
+            font-size: 1.25rem;
             font-weight: 800;
-            color: #ffffff;
+            color: #0f172a;
             line-height: 1.35;
             margin-bottom: 10px;
             letter-spacing: -0.01em;
+            transition: color 0.2s ease;
+        }
+        .event-card-horizontal:hover .event-card-title {
+            color: #ef6d1c;
         }
         .event-card-excerpt {
-            color: var(--text-muted);
+            color: #64748b;
             font-size: 0.88rem;
             line-height: 1.55;
             margin-bottom: 18px;
@@ -163,37 +138,39 @@
             align-items: center;
             justify-content: space-between;
             padding-top: 14px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            border-top: 1px solid #f1f5f9;
             margin-top: auto;
             flex-wrap: wrap;
             gap: 10px;
         }
         .event-card-meta {
             font-size: 12px;
-            color: #cbd5e1;
-            font-weight: 500;
+            color: #64748b;
+            font-weight: 600;
             display: flex;
             align-items: center;
             gap: 5px;
         }
         .btn-event-detail {
-            padding: 7px 16px;
+            padding: 8px 18px;
             font-size: 12px;
-            font-weight: 600;
-            border: 1px solid var(--primary);
+            font-weight: 700;
+            background: #ef6d1c;
             color: #ffffff;
             display: inline-flex;
             align-items: center;
             gap: 6px;
             text-decoration: none;
-            border-radius: 6px;
-            background: transparent;
+            border-radius: 8px;
+            border: none;
             transition: all 0.25s ease;
+            box-shadow: 0 4px 12px rgba(239, 109, 28, 0.25);
         }
         .btn-event-detail:hover {
-            background: var(--primary);
+            background: #e05b0a;
             color: #ffffff;
-            box-shadow: 0 4px 14px rgba(255, 107, 0, 0.35);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(239, 109, 28, 0.35);
         }
 
         @media (max-width: 1080px) {
@@ -216,27 +193,6 @@
             }
         }
     </style>
-    
-    <style>
-        .capability-card-link {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            min-height: 240px;
-            padding: 32px 16px;
-            text-decoration: none !important;
-            color: inherit !important;
-        }
-    </style>
-
-    <style>
-        @media (max-width: 768px) {
-            h1, h2, h3, .hero-platform h1, .hero-eyebrow, .hero-badge, .badge, .tagline, .card-title, .cta, .nowrap-desktop {
-                white-space: normal !important;
-            }
-        }
-    </style>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-2K5VXNELTZ"></script>
@@ -248,7 +204,7 @@
       gtag('config', 'G-2K5VXNELTZ');
     </script>
 </head>
-<body>
+<body class="light-theme">
 
     <nav class="navbar">
         <div class="container">
@@ -285,48 +241,99 @@
 
     
 <main>
-    <section class="articles-hero" style="padding: 140px 0 60px 0; min-height: auto; text-align: center;">
-        <div class="container">
-            <h1 style="font-size: clamp(2.4rem, 4vw, 3.2rem); font-weight: 800; color: var(--text-white); margin-bottom: 16px;">Sự kiện &amp; Chương trình</h1>
-            <p style="color: var(--text-muted); font-size: 1.05rem; max-width: 800px; margin: 0 auto 50px auto; line-height: 1.65;">
-                Các chương trình hợp tác cải tiến, hội thảo thực chiến và sự kiện đào tạo chuyên sâu về tối ưu vận hành nhà máy từ INVAMAX.
-            </p>
-            
-            <div class="events-list">
-                <!-- Event Card 1: Chương trình Tối ưu Chi phí Sản xuất -->
-                <article class="event-card-horizontal">
-                    <div class="event-card-img-wrap">
-                        <img src="../assets/images/campaign-hero.jpg" alt="Chương trình Hợp tác Tối ưu Chi phí Sản xuất" loading="lazy">
-                        <span class="event-card-badge">
-                            Chương trình hợp tác
-                        </span>
+    <!-- Full width Hero Header replicated exactly from Tri thức -->
+    <section class="res-hero-section-full">
+        <div class="res-hero-bg-wrap">
+            <img src="../assets/images/resources/hero-light-bg.jpg" alt="INVAMAX Factory" class="res-hero-bg">
+            <div class="res-hero-gradient-overlay"></div>
+        </div>
+        <div class="res-hero-container">
+            <div class="res-hero-grid">
+                <div class="res-hero-left">
+                    <div class="res-hero-eyebrow">SỰ KIỆN &amp; CHƯƠNG TRÌNH</div>
+                    <h1 class="res-hero-title">Sự kiện <span>INVAMAX</span></h1>
+                    <p class="res-hero-subtitle">Các chương trình hợp tác cải tiến, hội thảo thực chiến và sự kiện đào tạo chuyên sâu về tối ưu vận hành nhà máy.</p>
+
+                    <!-- Search Bar with Orange Round Button -->
+                    <div class="res-search-wrap-light">
+                        <i data-lucide="search"></i>
+                        <input type="text" id="resSearchInput" placeholder="Tìm kiếm sự kiện, chương trình..." aria-label="Tìm kiếm">
+                        <button class="res-search-submit-btn" aria-label="Tìm kiếm"><i data-lucide="search" style="width: 17px; height: 17px; margin: 0;"></i></button>
                     </div>
-                    <div class="event-card-content">
-                        <div>
-                            <div class="event-card-status">
-                                <i data-lucide="clock" style="width: 16px; height: 16px;"></i> Đang nhận đăng ký • Miễn phí buổi trao đổi ban đầu
-                            </div>
-                            <h2 class="event-card-title">
-                                Tối Ưu Chi Phí Sản Xuất
-                            </h2>
-                            <p class="event-card-excerpt">
-                                Tìm lại lợi nhuận từ chính cách nhà máy đang vận hành. Khảo sát thực tế cơ hội giảm 5–20% chi phí sản xuất và nâng cao 10–40% năng suất lao động cùng chuyên gia INVAMAX.
-                            </p>
-                        </div>
-                        
-                        <div class="event-card-footer">
-                            <span class="event-card-meta">
-                                <i data-lucide="users" style="width: 15px; height: 15px; color: #94a3b8;"></i> Quy mô: Từ 30 nhân sự
-                            </span>
-                            <a href="su-kien/toi-uu-chi-phi-san-xuat.html" class="btn-event-detail">
-                                Xem chi tiết <i data-lucide="arrow-right" style="width: 15px; height: 15px;"></i>
-                            </a>
-                        </div>
+
+                    <!-- Filter Pills -->
+                    <div class="res-filter-pills-light">
+                        <button class="res-pill-btn active"><i data-lucide="calendar"></i> Tất cả</button>
+                        <button class="res-pill-btn"><i data-lucide="users"></i> Chương trình hợp tác</button>
+                        <button class="res-pill-btn"><i data-lucide="award"></i> Hội thảo &amp; Webinar</button>
+                        <button class="res-pill-btn"><i data-lucide="book-open"></i> Đào tạo</button>
                     </div>
-                </article>
+                </div>
+
+                <!-- Right 3 Feature Cards -->
+                <div class="res-hero-feature-cards">
+                    <div class="res-feat-card">
+                        <i data-lucide="users" class="res-feat-icon"></i>
+                        <h3 class="res-feat-title">Đồng hành thực chiến</h3>
+                        <p class="res-feat-desc">Trực tiếp tại hiện trường nhà máy cùng đội ngũ chuyên gia</p>
+                    </div>
+                    <div class="res-feat-card">
+                        <i data-lucide="trending-down" class="res-feat-icon"></i>
+                        <h3 class="res-feat-title">Tối ưu chi phí 5–20%</h3>
+                        <p class="res-feat-desc">Khảo sát thực tế cơ hội cắt giảm lãng phí và hạ giá thành</p>
+                    </div>
+                    <div class="res-feat-card">
+                        <i data-lucide="award" class="res-feat-icon"></i>
+                        <h3 class="res-feat-title">Hiệu quả đo lường được</h3>
+                        <p class="res-feat-desc">Cam kết kết quả bằng các chỉ số vận hành và tài chính cụ thể</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
+
+    <div class="res-page-wrap">
+        <div class="res-sec-header" style="margin-bottom: 24px;">
+            <div class="res-sec-title-wrap">
+                <h2 class="res-sec-title">Chương trình &amp; Sự kiện nổi bật</h2>
+                <p class="res-sec-desc">Đăng ký tham gia hoặc đặt lịch trao đổi trực tiếp với chuyên gia INVAMAX.</p>
+            </div>
+        </div>
+
+        <div class="events-list">
+            <!-- Event Card 1: Chương trình Tối ưu Chi phí Sản xuất -->
+            <article class="event-card-horizontal">
+                <div class="event-card-img-wrap">
+                    <img src="../assets/images/campaign-hero.jpg" alt="Chương trình Hợp tác Tối ưu Chi phí Sản xuất" loading="lazy">
+                    <span class="event-card-badge">
+                        Chương trình hợp tác
+                    </span>
+                </div>
+                <div class="event-card-content">
+                    <div>
+                        <div class="event-card-status">
+                            <i data-lucide="clock" style="width: 16px; height: 16px;"></i> Đang nhận đăng ký • Miễn phí buổi trao đổi ban đầu
+                        </div>
+                        <h2 class="event-card-title">
+                            Tối Ưu Chi Phí Sản Xuất
+                        </h2>
+                        <p class="event-card-excerpt">
+                            Tìm lại lợi nhuận từ chính cách nhà máy đang vận hành. Khảo sát thực tế cơ hội giảm 5–20% chi phí sản xuất và nâng cao 10–40% năng suất lao động cùng chuyên gia INVAMAX.
+                        </p>
+                    </div>
+                    
+                    <div class="event-card-footer">
+                        <span class="event-card-meta">
+                            <i data-lucide="users" style="width: 15px; height: 15px; color: #64748b;"></i> Quy mô: Từ 30 nhân sự
+                        </span>
+                        <a href="su-kien/toi-uu-chi-phi-san-xuat.html" class="btn-event-detail">
+                            Xem chi tiết <i data-lucide="arrow-right" style="width: 15px; height: 15px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
 </main>
 
 
@@ -410,7 +417,51 @@
 
     <script src="../assets/js/main.js"></script>
     <script>
-        lucide.createIcons({ attrs: { "stroke-width": 1 } });
+        lucide.createIcons({ attrs: { "stroke-width": 2.2 } });
+
+        // Interactive Filter & Search
+        const searchInput = document.getElementById('resSearchInput');
+        const pillBtns = document.querySelectorAll('.res-filter-pills-light .res-pill-btn');
+        const eventCards = document.querySelectorAll('.event-card-horizontal');
+
+        function filterEvents() {
+            const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
+            const activePill = document.querySelector('.res-filter-pills-light .res-pill-btn.active');
+            const activeFilter = activePill ? activePill.innerText.trim().toLowerCase() : 'tất cả';
+
+            eventCards.forEach(card => {
+                const title = card.querySelector('.event-card-title')?.innerText.toLowerCase() || '';
+                const desc = card.querySelector('.event-card-excerpt')?.innerText.toLowerCase() || '';
+                const badge = card.querySelector('.event-card-badge')?.innerText.toLowerCase() || '';
+
+                const matchesQuery = !query || title.includes(query) || desc.includes(query) || badge.includes(query);
+                let matchesPill = true;
+                if (!activeFilter.includes('tất cả')) {
+                    if (activeFilter.includes('hợp tác')) matchesPill = badge.includes('hợp tác');
+                    else if (activeFilter.includes('hội thảo')) matchesPill = badge.includes('hội thảo') || badge.includes('webinar');
+                    else if (activeFilter.includes('đào tạo')) matchesPill = badge.includes('đào tạo');
+                }
+
+                if (matchesQuery && matchesPill) {
+                    card.style.display = 'grid';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        if (searchInput) {
+            searchInput.addEventListener('input', filterEvents);
+        }
+
+        pillBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                pillBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                filterEvents();
+            });
+        });
     </script>
 </body>
 </html>
