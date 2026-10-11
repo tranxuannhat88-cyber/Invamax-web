@@ -299,31 +299,39 @@
     border-color: #cbd5e1;
 }
 
+.ivrs .ivrs-card-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+}
+
 .ivrs .ivrs-reason-icon {
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
     border-radius: 12px;
     background: var(--orange-tint);
     color: var(--orange);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
     flex-shrink: 0;
+    box-shadow: 0 2px 6px rgba(255, 105, 0, 0.12);
 }
 
 .ivrs .ivrs-reason-icon svg {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
     stroke: var(--orange);
+    stroke-width: 2.4px !important;
 }
 
 .ivrs .ivrs-reason-card h3 {
-    font-size: 18px !important;
-    font-weight: 600 !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
     line-height: 1.35 !important;
     color: var(--ink) !important;
-    margin-bottom: 12px;
+    margin: 0;
 }
 
 .ivrs .ivrs-reason-card p {
@@ -582,20 +590,22 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 14px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 6px rgba(255, 105, 0, 0.12);
 }
 
 .ivrs .ivrs-why-icon svg {
     width: 20px;
     height: 20px;
     stroke: var(--orange);
+    stroke-width: 2.4px !important;
 }
 
 .ivrs .ivrs-why-card h4 {
     font-size: 15px !important;
     font-weight: 700 !important;
     color: var(--ink) !important;
-    margin-bottom: 8px;
+    margin: 0;
     line-height: 1.35 !important;
 }
 
@@ -751,13 +761,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 18px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 6px rgba(255, 105, 0, 0.12);
 }
 
 .ivrs .ivrs-value-icon svg {
     width: 22px;
     height: 22px;
     stroke: var(--orange);
+    stroke-width: 2.4px !important;
 }
 
 .ivrs .ivrs-value-card h4 {
@@ -765,7 +777,7 @@
     font-weight: 700 !important;
     line-height: 1.35 !important;
     color: var(--ink) !important;
-    margin-bottom: 10px;
+    margin: 0;
 }
 
 .ivrs .ivrs-value-card p {
