@@ -236,8 +236,8 @@
 }
 
 .ivp3-hero-copy h2 {
-  font-size: clamp(18px, 1.9vw, 24px) !important;
-  line-height: 1.4 !important;
+  font-size: clamp(20px, 2.2vw, 26px) !important;
+  line-height: 1.35 !important;
   margin-bottom: 0 !important;
   font-weight: 700 !important;
   color: #ffffff !important;
@@ -246,9 +246,13 @@
 .ivp3-hero-copy p:not(.ivp3-kicker) {
   font-size: 14px;
   color: #cbd5e1 !important;
-  line-height: 1.75;
-  max-width: 480px;
-  margin-bottom: 24px;
+  line-height: 1.7;
+  max-width: 510px;
+  margin-bottom: 12px;
+}
+
+.ivp3-hero-copy p:not(.ivp3-kicker):last-child {
+  margin-bottom: 0;
 }
 
 .ivp3-hero-media {
