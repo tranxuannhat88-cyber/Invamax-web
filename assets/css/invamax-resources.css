@@ -133,15 +133,18 @@ i[data-lucide] svg,
     color: var(--iv-muted);
     margin-bottom: 16px;
     max-width: 530px;
-    line-height: 1.6;
+    line-height: 1.5;
 }
 
-/* Combined Action Bar: Filter Pills + Search Bar on the Same Row */
+/* Combined Action Bar: Filter Pills + Search Bar on the Same Row across container */
 .res-hero-action-bar {
     display: flex;
     align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 18px;
+    flex-wrap: nowrap;
+    width: 100%;
 }
 
 /* Category Filter Pills (Light Theme) */
@@ -149,7 +152,7 @@ i[data-lucide] svg,
     display: flex;
     align-items: center;
     gap: 8px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     margin: 0;
 }
 .res-pill-btn {
@@ -837,5 +840,16 @@ svg.res-feat-icon {
     }
     .res-grid-4 {
         grid-template-columns: 1fr;
+    }
+    .res-hero-action-bar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+    .res-filter-pills-light {
+        flex-wrap: wrap;
+    }
+    .res-search-wrap-light {
+        width: 100%;
     }
 }
