@@ -4,28 +4,29 @@
    Scoped to .ivp3. Solves background/text color collision.
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('./invamax-tokens.css');
 
 :root {
-  --iv-dark: #061c16;
-  --iv-dark-2: #08231c;
-  --iv-orange: #ef6d1c;
-  --iv-orange-2: #ff933e;
+  --iv-dark: var(--iv-color-dark-green);
+  --iv-dark-2: var(--iv-color-deep-green);
+  --iv-orange: var(--iv-color-orange);
+  --iv-orange-2: var(--iv-color-orange);
   --iv-green: #10b981;
   --iv-blue: #2563eb;
   --iv-cyan: #06b6d4;
-  --iv-text: #0f172a;
-  --iv-muted: #64748b;
-  --iv-line: #e2e8f0;
-  --iv-bg: #f8fafc;
+  --iv-text: var(--iv-color-text-primary);
+  --iv-muted: var(--iv-color-text-secondary);
+  --iv-line: var(--iv-color-border);
+  --iv-bg: var(--iv-color-light);
 }
 
 .ivp3 {
-  font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, Arial, sans-serif !important;
+  font-family: var(--iv-font-family) !important;
   color: var(--iv-text);
   background: #ffffff;
-  line-height: 1.65;
-  font-size: 14.5px;
+  line-height: var(--iv-text-body-line-height);
+  font-size: var(--iv-text-body-size);
   overflow-x: hidden;
 }
 
@@ -47,7 +48,7 @@
 }
 
 .ivp3-shell {
-  width: min(1200px, calc(100% - 48px));
+  width: min(var(--iv-container-max), calc(100% - 48px));
   margin: 0 auto;
 }
 

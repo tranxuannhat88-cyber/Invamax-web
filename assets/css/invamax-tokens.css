@@ -1,0 +1,90 @@
+/* INVAMAX Brand UI Guideline v1.1 – canonical CSS tokens */
+:root {
+  --iv-font-family: "Inter", Arial, Helvetica, sans-serif;
+  --iv-color-dark-green: #0B211A;
+  --iv-color-deep-green: #061C16;
+  --iv-color-surface-green: #20352D;
+  --iv-color-orange: #FF6900;
+  --iv-color-orange-hover: #E95E00;
+  --iv-color-orange-tint: #FFF1E8;
+  --iv-color-light: #F5F7F6;
+  --iv-color-white: #FFFFFF;
+  --iv-color-text-primary: #111827;
+  --iv-color-text-secondary: #667085;
+  --iv-color-border: #DDE5E1;
+  --iv-color-surface-subtle: #EEF3F0;
+  --iv-text-display-size: 56px;
+  --iv-text-display-weight: 800;
+  --iv-text-display-line-height: 1.1;
+  --iv-text-h1-size: 48px;
+  --iv-text-h1-weight: 700;
+  --iv-text-h1-line-height: 1.15;
+  --iv-text-h2-size: 36px;
+  --iv-text-h2-weight: 700;
+  --iv-text-h2-line-height: 1.2;
+  --iv-text-h3-size: 28px;
+  --iv-text-h3-weight: 700;
+  --iv-text-h3-line-height: 1.25;
+  --iv-text-h4-size: 22px;
+  --iv-text-h4-weight: 600;
+  --iv-text-h4-line-height: 1.3;
+  --iv-text-h5-size: 18px;
+  --iv-text-h5-weight: 600;
+  --iv-text-h5-line-height: 1.35;
+  --iv-text-body-lg-size: 18px;
+  --iv-text-body-lg-weight: 400;
+  --iv-text-body-lg-line-height: 1.7;
+  --iv-text-body-size: 16px;
+  --iv-text-body-weight: 400;
+  --iv-text-body-line-height: 1.7;
+  --iv-text-body-sm-size: 14px;
+  --iv-text-body-sm-weight: 400;
+  --iv-text-body-sm-line-height: 1.6;
+  --iv-text-caption-size: 12px;
+  --iv-text-caption-weight: 400;
+  --iv-text-caption-line-height: 1.5;
+  --iv-text-button-size: 16px;
+  --iv-text-button-weight: 600;
+  --iv-text-button-line-height: 1.2;
+  --iv-text-menu-size: 16px;
+  --iv-text-menu-weight: 600;
+  --iv-text-menu-line-height: 1.2;
+  --iv-space-xs: 8px;
+  --iv-space-sm: 12px;
+  --iv-space-md: 16px;
+  --iv-space-lg: 24px;
+  --iv-space-xl: 32px;
+  --iv-space-2xl: 48px;
+  --iv-space-3xl: 64px;
+  --iv-radius-button: 12px;
+  --iv-radius-card: 16px;
+  --iv-radius-input: 16px;
+  --iv-radius-modal: 20px;
+  --iv-radius-pill: 999px;
+  --iv-container-max: 1240px;
+  --iv-section-gap: 64px;
+  --iv-button-min-height: 44px;
+  --iv-button-height: 48px;
+  /* Convenient aliases (match v1.1 naming) */
+  --iv-dark: var(--iv-color-dark-green);
+  --iv-deep: var(--iv-color-deep-green);
+  --iv-orange: var(--iv-color-orange);
+  --iv-light: var(--iv-color-light);
+  --iv-white: var(--iv-color-white);
+  --iv-text: var(--iv-color-text-primary);
+  --iv-muted: var(--iv-color-text-secondary);
+  --iv-border: var(--iv-color-border);
+}
+
+/* Responsive overrides; 767px is an implementation breakpoint */
+@media (max-width: 767px) {
+:root {
+  --iv-text-display-size: 40px;
+  --iv-text-h1-size: 32px;
+  --iv-text-h2-size: 28px;
+  --iv-text-h3-size: 24px;
+  --iv-text-h4-size: 20px;
+  --iv-text-body-size: 16px;
+  --iv-section-gap: 32px;
+}
+}

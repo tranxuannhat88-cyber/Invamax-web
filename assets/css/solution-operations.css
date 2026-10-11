@@ -4,17 +4,18 @@
    Font and typography harmonized with Homepage & Brand Guidelines.
    ======================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('./invamax-tokens.css');
 
 .ivop {
-    --bg: #15241e;
-    --deep: #10201a;
-    --orange: #ff6900;
-    --ink: #18241e;
-    --muted: #5b655f;
-    font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, Arial, sans-serif !important;
-    font-size: 15px;
-    line-height: 1.65;
+    --bg: var(--iv-dark);
+    --deep: var(--iv-deep);
+    --orange: var(--iv-orange);
+    --ink: var(--iv-text);
+    --muted: var(--iv-muted);
+    font-family: var(--iv-font-family) !important;
+    font-size: var(--iv-text-body-size);
+    line-height: var(--iv-text-body-line-height);
     color: var(--ink);
     background: #fff;
     overflow: hidden;
@@ -33,7 +34,7 @@
 }
 
 .ivop-wrap {
-    width: min(1220px, calc(100% - 64px));
+    width: min(var(--iv-container-max), calc(100% - 48px));
     margin-inline: auto;
 }
 
@@ -116,15 +117,17 @@
 }
 
 .ivop-button {
-    border-radius: 28px;
-    min-height: 46px;
-    padding: 10px 22px;
+    border-radius: var(--iv-radius-button);
+    min-height: var(--iv-button-height);
+    padding: 0 24px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    font-size: 13px;
-    font-weight: 700;
+    font-family: var(--iv-font-family);
+    font-size: var(--iv-text-button-size);
+    font-weight: var(--iv-text-button-weight);
+    line-height: var(--iv-text-button-line-height);
     transition: background .2s, transform .2s;
     white-space: normal;
     cursor: pointer;
@@ -140,7 +143,7 @@
 }
 
 .ivop-button.primary:hover {
-    background: #eb5f00;
+    background: var(--iv-color-orange-hover);
 }
 
 .ivop-button.outline {

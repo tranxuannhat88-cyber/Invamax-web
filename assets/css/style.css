@@ -1,28 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('./invamax-tokens.css');
+@import url('./invamax-components.css');
+
 h1, h2, h3, h4, h5, h6, .section-heading, .section-heading-large {
     text-wrap: balance;
 }
-@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&display=swap');
 
 :root {
-    --primary: #FF6B00;
-    --primary-hover: #E65A00;
-    --bg-dark: #18231E;
-    --bg-darker: #111A15;
-    --bg-card: #1E2E25;
-    --bg-card-hover: #26382D;
-    --text-white: #FFFFFF;
-    --text-light: #E0E5E2;
-    --text-muted: #8D9993;
-    --border-color: rgba(255, 255, 255, 0.1);
+    --primary: var(--iv-orange);
+    --primary-hover: var(--iv-color-orange-hover);
+    --bg-dark: var(--iv-dark);
+    --bg-darker: var(--iv-deep);
+    --bg-card: var(--iv-color-surface-green);
+    --bg-card-hover: #263e34;
+    --text-white: var(--iv-white);
+    --text-light: var(--iv-light);
+    --text-muted: var(--iv-muted);
+    --border-color: var(--iv-border);
+    --border-dark: rgba(221, 229, 225, 0.15);
     
-    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.12), 0 4px 6px -2px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.08);
     
-    --radius-sm: 12px;
-    --radius-md: 16px;
-    --radius-lg: 24px;
-    --radius-full: 9999px;
+    --radius-sm: var(--iv-space-xs);
+    --radius-md: var(--iv-radius-button);
+    --radius-lg: var(--iv-radius-card);
+    --radius-full: var(--iv-radius-pill);
     
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -31,20 +35,58 @@ h1, h2, h3, h4, h5, h6, .section-heading, .section-heading-large {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: var(--iv-font-family);
 }
 
 body {
-    font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+    font-family: var(--iv-font-family);
     background-color: var(--bg-dark);
     color: var(--text-light);
-    line-height: 1.6;
+    line-height: 1.7;
+    font-size: var(--iv-text-body-size);
     overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    color: var(--text-white) !important;
-    font-weight: 700;
-    line-height: 1.2;
+h1 {
+    font-size: var(--iv-text-h1-size);
+    font-weight: var(--iv-text-h1-weight);
+    line-height: var(--iv-text-h1-line-height);
+    color: var(--text-white);
+}
+
+h2 {
+    font-size: var(--iv-text-h2-size);
+    font-weight: var(--iv-text-h2-weight);
+    line-height: var(--iv-text-h2-line-height);
+    color: var(--text-white);
+}
+
+h3 {
+    font-size: var(--iv-text-h3-size);
+    font-weight: var(--iv-text-h3-weight);
+    line-height: var(--iv-text-h3-line-height);
+    color: var(--text-white);
+}
+
+h4 {
+    font-size: var(--iv-text-h4-size);
+    font-weight: var(--iv-text-h4-weight);
+    line-height: var(--iv-text-h4-line-height);
+    color: var(--text-white);
+}
+
+h5 {
+    font-size: var(--iv-text-h5-size);
+    font-weight: var(--iv-text-h5-weight);
+    line-height: var(--iv-text-h5-line-height);
+    color: var(--text-white);
+}
+
+h6 {
+    font-size: var(--iv-text-h5-size);
+    font-weight: var(--iv-text-h5-weight);
+    line-height: var(--iv-text-h5-line-height);
+    color: var(--text-white);
 }
 
 a {
@@ -70,7 +112,7 @@ img {
 /* Utilities */
 .container {
     width: 100%;
-    max-width: 1440px;
+    max-width: var(--iv-container-max);
     margin: 0 auto;
     padding: 0 24px;
 }
@@ -90,48 +132,55 @@ section[id], div[id] {
 }
 
 .section {
-    padding: 2.5rem 0;
+    padding: var(--iv-section-gap) 0;
 }
 
 .section-darker {
     background-color: var(--bg-darker);
 }
 
-/* Buttons */
+/* Buttons - INVAMAX Brand DNA v1.1 */
 .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 12px 24px;
-    border-radius: var(--radius-full);
-    font-weight: 600;
-    font-size: 1rem;
+    min-height: var(--iv-button-height);
+    padding: 0 24px;
+    border-radius: var(--iv-radius-button);
+    font-family: var(--iv-font-family);
+    font-weight: var(--iv-text-button-weight);
+    font-size: var(--iv-text-button-size);
+    line-height: var(--iv-text-button-line-height);
     cursor: pointer;
     transition: var(--transition);
     border: none;
     gap: 8px;
+    text-decoration: none;
 }
 
 .btn-primary {
     background-color: var(--primary);
     color: var(--text-white) !important;
+    border: 1px solid var(--primary);
 }
 
 .btn-primary:hover {
     background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
     color: var(--text-white) !important;
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px -10px var(--primary);
+    box-shadow: 0 8px 16px -4px rgba(255, 105, 0, 0.4);
 }
 
 .btn-outline {
     background-color: transparent;
-    color: var(--primary);
-    border: 1px solid var(--primary);
+    color: var(--text-white);
+    border: 1px solid var(--border-color);
 }
 
 .btn-outline:hover {
-    background-color: var(--primary);
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: var(--text-white);
     color: var(--text-white) !important;
 }
 

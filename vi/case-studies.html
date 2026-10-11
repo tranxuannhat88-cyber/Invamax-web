@@ -27,6 +27,10 @@
     
     
     <link rel="icon" type="image/jpeg" href="../assets/images/favicon.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/invamax-tokens.css">
     <link rel="stylesheet" href="../assets/css/style.css?v=10">
     <link rel="stylesheet" href="../assets/css/navbar.css">
     <link rel="stylesheet" href="../assets/css/invamax-resources.css?v=5">
@@ -50,9 +54,9 @@
 }
 .feature-card { 
     background: #ffffff !important; 
-    border: 1px solid #e2e8f0 !important; 
+    border: 1px solid var(--iv-border) !important; 
     padding: 28px 24px !important; 
-    border-radius: 16px !important; 
+    border-radius: var(--iv-radius-card) !important; 
     box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
     display: flex;
     flex-direction: column;
@@ -60,13 +64,13 @@
     transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; 
 }
 .feature-card:hover { 
-    border-color: #ef6d1c !important; 
+    border-color: var(--iv-orange) !important; 
     transform: translateY(-4px); 
     box-shadow: 0 16px 32px rgba(15, 23, 42, 0.08); 
 }
 .cs-badge-top {
     font-size: 0.75rem;
-    color: #94a3b8;
+    color: var(--iv-muted);
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -74,7 +78,7 @@
 }
 .cs-category {
     font-size: 0.85rem;
-    color: #ef6d1c;
+    color: var(--iv-orange);
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -83,17 +87,17 @@
 .cs-title {
     font-size: 1.22rem !important;
     font-weight: 800 !important;
-    color: #0f172a !important;
+    color: var(--iv-text) !important;
     line-height: 1.4 !important;
     margin-bottom: 14px !important;
     text-align: left !important;
     transition: color 0.2s ease;
 }
 .feature-card:hover .cs-title {
-    color: #ef6d1c !important;
+    color: var(--iv-orange) !important;
 }
 .cs-desc {
-    color: #64748b !important;
+    color: var(--iv-muted) !important;
     font-size: 0.92rem !important;
     line-height: 1.6 !important;
     margin-bottom: 24px !important;
@@ -103,7 +107,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    color: #ef6d1c !important;
+    color: var(--iv-orange) !important;
     font-weight: 700;
     font-size: 0.92rem;
     margin-top: auto;

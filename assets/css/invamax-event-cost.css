@@ -3,16 +3,19 @@
    Synchronized with INVAMAX Brand DNA:
    - Deep forest dark: #051913 / #08231c
    - Energetic industrial orange: #ef6d1c / #ff6500
-   - Modern clean typography: Be Vietnam Pro
+   - Modern clean typography: Inter
    - Scoped under .ive-page to avoid collisions
    ============================================================ */
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('./invamax-tokens.css');
+
 .ive-page {
-  font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, Arial, sans-serif !important;
-  color: #0f172a;
-  background: #f8fafc;
-  line-height: 1.65;
-  font-size: 15px;
+  font-family: var(--iv-font-family) !important;
+  color: var(--iv-text);
+  background: var(--iv-light);
+  line-height: var(--iv-text-body-line-height);
+  font-size: var(--iv-text-body-size);
   overflow-x: hidden;
 }
 
@@ -21,7 +24,7 @@
 }
 
 .ive-shell {
-  width: min(1200px, calc(100% - 48px));
+  width: min(var(--iv-container-max), calc(100% - 48px));
   margin: 0 auto;
 }
 
@@ -100,26 +103,29 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 13px 26px;
-  font-size: 13.5px;
-  font-weight: 700;
-  border-radius: 6px;
+  padding: 0 24px;
+  min-height: var(--iv-button-height);
+  font-family: var(--iv-font-family);
+  font-size: var(--iv-text-button-size);
+  font-weight: var(--iv-text-button-weight);
+  line-height: var(--iv-text-button-line-height);
+  border-radius: var(--iv-radius-button);
   text-decoration: none;
   transition: all 0.25s ease;
   cursor: pointer;
 }
 
 .ive-btn-primary {
-  background: #ef6d1c;
+  background: var(--iv-orange);
   color: #fff !important;
-  box-shadow: 0 8px 20px rgba(239, 109, 28, 0.35);
+  box-shadow: 0 8px 20px rgba(255, 105, 0, 0.35);
   border: none;
 }
 
 .ive-btn-primary:hover {
-  background: #d85d10;
+  background: var(--iv-color-orange-hover);
   transform: translateY(-2px);
-  box-shadow: 0 12px 24px rgba(239, 109, 28, 0.45);
+  box-shadow: 0 12px 24px rgba(255, 105, 0, 0.45);
 }
 
 .ive-btn-ghost {
@@ -735,12 +741,15 @@
 
 .ive-btn-submit {
   width: 100%;
-  padding: 14px;
-  font-size: 15px;
-  font-weight: 700;
-  border-radius: 8px;
+  padding: 0 24px;
+  min-height: var(--iv-button-height);
+  font-family: var(--iv-font-family);
+  font-size: var(--iv-text-button-size);
+  font-weight: var(--iv-text-button-weight);
+  line-height: var(--iv-text-button-line-height);
+  border-radius: var(--iv-radius-button);
   border: none;
-  background: #ef6d1c;
+  background: var(--iv-orange);
   color: #fff;
   cursor: pointer;
   transition: all 0.25s ease;
@@ -748,13 +757,13 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  box-shadow: 0 8px 20px rgba(239, 109, 28, 0.35);
+  box-shadow: 0 8px 20px rgba(255, 105, 0, 0.35);
 }
 
 .ive-btn-submit:hover {
-  background: #d85d10;
+  background: var(--iv-color-orange-hover);
   transform: translateY(-2px);
-  box-shadow: 0 12px 26px rgba(239, 109, 28, 0.45);
+  box-shadow: 0 12px 26px rgba(255, 105, 0, 0.45);
 }
 
 .ive-privacy-note {

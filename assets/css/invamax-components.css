@@ -1,0 +1,17 @@
+/* Optional INVAMAX UI utilities. Prefix iv- prevents conflicts with existing sites/apps. */
+.iv-ui { font-family: var(--iv-font-family); color: var(--iv-text); }
+.iv-container { width: min(var(--iv-container-max), calc(100% - 32px)); margin-inline: auto; }
+.iv-section { padding-block: var(--iv-section-gap); }
+.iv-title-display { font-size: var(--iv-text-display-size); font-weight: var(--iv-text-display-weight); line-height: var(--iv-text-display-line-height); }
+.iv-title-h1 { font-size: var(--iv-text-h1-size); font-weight: var(--iv-text-h1-weight); line-height: var(--iv-text-h1-line-height); }
+.iv-title-h2 { font-size: var(--iv-text-h2-size); font-weight: var(--iv-text-h2-weight); line-height: var(--iv-text-h2-line-height); }
+.iv-title-h3 { font-size: var(--iv-text-h3-size); font-weight: var(--iv-text-h3-weight); line-height: var(--iv-text-h3-line-height); }
+.iv-body { font-size: var(--iv-text-body-size); font-weight: var(--iv-text-body-weight); line-height: var(--iv-text-body-line-height); }
+.iv-caption { font-size: var(--iv-text-caption-size); font-weight: var(--iv-text-caption-weight); line-height: var(--iv-text-caption-line-height); color: var(--iv-muted); }
+.iv-card { background: var(--iv-white); color: var(--iv-text); border: 1px solid var(--iv-border); border-radius: var(--iv-radius-card); padding: var(--iv-space-lg); }
+.iv-button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: var(--iv-button-min-height); padding: 0 20px; border-radius: var(--iv-radius-button); font: var(--iv-text-button-weight) var(--iv-text-button-size)/var(--iv-text-button-line-height) var(--iv-font-family); cursor: pointer; text-decoration: none; }
+.iv-button--primary { color: var(--iv-white); background: var(--iv-orange); border: 1px solid var(--iv-orange); }
+.iv-button--primary:hover { background: var(--iv-color-orange-hover); }
+.iv-button--secondary { color: var(--iv-dark); background: transparent; border: 1px solid var(--iv-border); }
+.iv-input { box-sizing: border-box; min-height: 44px; padding: 10px 14px; font: 400 var(--iv-text-body-size)/1.5 var(--iv-font-family); border: 1px solid var(--iv-border); border-radius: var(--iv-radius-input); background: var(--iv-white); color: var(--iv-text); }
+.iv-button:focus-visible, .iv-input:focus-visible { outline: 3px solid var(--iv-orange); outline-offset: 2px; }
