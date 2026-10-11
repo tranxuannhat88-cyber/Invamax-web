@@ -51,7 +51,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css?v=14">
     <link rel="stylesheet" href="../assets/css/navbar.css?v=11">
-    <link rel="stylesheet" href="../assets/css/solution-operations.css?v=2">
+    <link rel="stylesheet" href="../assets/css/solution-operations.css?v=3">
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     
@@ -152,17 +152,30 @@
 <main class="ivop" id="ivop-top">
   <!-- HERO BANNER – GIẢI PHÁP ĐIỀU HÀNH NHÀ MÁY -->
   <section class="ivop-hero">
-    <div class="ivop-wrap ivop-hero-grid">
-      <div class="ivop-hero-content">
-        <p class="ivop-kicker">GIẢI PHÁP CỦA INVAMAX</p>
-        <h1>Điều hành nhà máy</h1>
-        <p>INVAMAX trực tiếp tham gia điều hành, ổn định vận hành hôm nay và xây dựng năng lực để doanh nghiệp tự chủ ngày mai.</p>
-        <div class="ivop-actions">
-          <a class="ivop-button primary" href="#" onclick="openContactModal(); return false;">Trao đổi với INVAMAX <span aria-hidden="true">&rarr;</span></a>
-          <a class="ivop-button outline" href="#ivop-models">Xem hình thức hợp tác</a>
+    <div class="ivop-wrap">
+      <div class="ivop-breadcrumb">
+        <a href="../vi/">Trang chủ</a>
+        <span class="ivop-breadcrumb-sep">&rsaquo;</span>
+        <a href="#">Giải pháp</a>
+        <span class="ivop-breadcrumb-sep">&rsaquo;</span>
+        <span>Điều hành nhà máy</span>
+      </div>
+
+      <div class="ivop-hero-grid">
+        <div class="ivop-hero-content">
+          <div class="ivop-kicker">GIẢI PHÁP CỦA INVAMAX</div>
+          <h1>Điều hành nhà máy</h1>
+          <p class="ivop-hero-message">INVAMAX trực tiếp tham gia điều hành, ổn định vận hành hôm nay và xây dựng năng lực để doanh nghiệp tự chủ ngày mai.</p>
+          <p class="ivop-hero-desc">INVAMAX cung cấp giải pháp điều hành nhà máy kết hợp nâng cấp hệ thống quản trị, cải tiến hoạt động và phát triển đội ngũ, giúp doanh nghiệp duy trì hiệu quả vận hành và từng bước giảm phụ thuộc vào nhân sự điều hành bên ngoài.</p>
+          <div class="ivop-actions">
+            <a class="ivop-button primary" href="#" onclick="openContactModal(); return false;">Trao đổi với INVAMAX <span aria-hidden="true">&rarr;</span></a>
+            <a class="ivop-button outline" href="#ivop-models">Xem hình thức hợp tác</a>
+          </div>
+        </div>
+        <div class="ivop-hero-media" onclick="openIvopLightbox('../assets/images/operations/operations.jpg', 'Đội ngũ chuyên gia và kỹ sư điều hành nhà máy INVAMAX')">
+          <img src="../assets/images/operations/operations.jpg" alt="Đội ngũ chuyên gia và kỹ sư điều hành nhà máy INVAMAX" class="ivop-hero-img" loading="lazy">
         </div>
       </div>
-      <div class="ivop-hero-image" role="img" aria-label="Đội ngũ kỹ sư trao đổi dữ liệu vận hành tại nhà máy"></div>
     </div>
   </section>
 

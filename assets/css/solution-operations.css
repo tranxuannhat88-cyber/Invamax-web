@@ -101,46 +101,102 @@
    HERO BANNER
    ======================================================== */
 .ivop-hero {
-    background: var(--deep);
+    background: var(--bg-dark, #0B211A);
     color: white;
-    padding-top: 80px !important;
+    padding-top: 86px !important;
+    padding-bottom: 48px;
     position: relative;
+    overflow: hidden;
+}
+
+.ivop-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 28px;
+}
+
+.ivop-breadcrumb a {
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.ivop-breadcrumb a:hover {
+    color: var(--orange);
+}
+
+.ivop-breadcrumb-sep {
+    color: rgba(255, 255, 255, 0.35);
+    font-size: 14px;
+}
+
+.ivop-breadcrumb span:last-child {
+    color: #ffffff;
+    font-weight: 500;
 }
 
 .ivop-hero-grid {
     display: grid;
-    grid-template-columns: 50% 50%;
-    min-height: 440px;
+    grid-template-columns: 53% 47%;
+    gap: 36px;
+    align-items: center;
     position: relative;
 }
 
 .ivop-hero-content {
     z-index: 2;
-    padding: 64px 32px 60px 0;
-    align-self: center;
+    padding-right: 12px;
 }
 
 .ivop-hero h1 {
-    font-size: clamp(34px, 4vw, 50px);
-    line-height: 1.15;
+    font-size: clamp(34px, 3.8vw, 48px);
+    line-height: 1.16;
     letter-spacing: -.025em;
     margin: 0 0 16px;
     font-weight: 800;
     color: #ffffff;
 }
 
-.ivop-hero-content > p:not(.ivop-kicker) {
-    max-width: 520px;
-    color: #d4dfd9;
-    line-height: 1.75;
-    font-size: 15.5px;
-    margin-bottom: 24px;
+.ivop-hero-message {
+    font-size: 16.5px !important;
+    font-weight: 600 !important;
+    line-height: 1.6 !important;
+    color: #ffffff !important;
+    margin-bottom: 12px !important;
+    max-width: 580px;
 }
 
-.ivop-hero-image {
-    background: linear-gradient(90deg, var(--deep) 0%, rgba(6, 28, 22, 0.4) 30%, transparent 60%), url('../images/operations/operations.jpg') center right / cover no-repeat;
+.ivop-hero-desc {
+    font-size: 14.5px !important;
+    font-weight: 400 !important;
+    line-height: 1.7 !important;
+    color: #cbd5e1 !important;
+    margin-bottom: 26px !important;
+    max-width: 580px;
+}
+
+.ivop-hero-media {
     position: relative;
-    min-height: 100%;
+    border-radius: var(--card-radius);
+    overflow: hidden;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    height: 380px;
+    cursor: pointer;
+}
+
+.ivop-hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.ivop-hero-media:hover .ivop-hero-img {
+    transform: scale(1.03);
 }
 
 .ivop-actions {
