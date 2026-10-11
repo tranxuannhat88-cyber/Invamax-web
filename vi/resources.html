@@ -36,7 +36,7 @@
     <link rel="icon" type="image/jpeg" href="../assets/images/favicon.jpg">
     <link rel="stylesheet" href="../assets/css/style.css?v=10">
     <link rel="stylesheet" href="../assets/css/navbar.css">
-    <link rel="stylesheet" href="../assets/css/invamax-resources.css?v=2">
+    <link rel="stylesheet" href="../assets/css/invamax-resources.css?v=4">
 </head>
 <body class="light-theme">
 
@@ -74,10 +74,13 @@
     </nav>
 
     <main>
-        <div class="res-page-wrap">
-            <!-- Hero Header (Exact match to light mockup) -->
-            <header class="res-hero-light">
+        <!-- Full width Hero Header with background stretching to the right edge of screen -->
+        <section class="res-hero-section-full">
+            <div class="res-hero-bg-wrap">
                 <img src="../assets/images/resources/hero-light-bg.jpg" alt="INVAMAX Factory" class="res-hero-bg">
+                <div class="res-hero-gradient-overlay"></div>
+            </div>
+            <div class="res-hero-container">
                 <div class="res-hero-grid">
                     <div class="res-hero-left">
                         <div class="res-hero-eyebrow">T R I &nbsp; T H Ứ C</div>
@@ -88,7 +91,7 @@
                         <div class="res-search-wrap-light">
                             <i data-lucide="search"></i>
                             <input type="text" id="resSearchInput" placeholder="Tìm kiếm bài viết, tài liệu, video..." aria-label="Tìm kiếm">
-                            <button class="res-search-submit-btn" aria-label="Tìm kiếm"><i data-lucide="search" style="width: 16px; height: 16px; margin: 0;"></i></button>
+                            <button class="res-search-submit-btn" aria-label="Tìm kiếm"><i data-lucide="search" style="width: 17px; height: 17px; margin: 0;"></i></button>
                         </div>
 
                         <!-- Filter Pills -->
@@ -119,7 +122,10 @@
                         </div>
                     </div>
                 </div>
-            </header>
+            </div>
+        </section>
+
+        <div class="res-page-wrap">
 
             <!-- SECTION 1: Khám phá theo chủ đề -->
             <section class="res-section" id="topics">
@@ -511,7 +517,7 @@
 
     <script src="../assets/js/main.js"></script>
     <script>
-        lucide.createIcons({ attrs: { "stroke-width": 1 } });
+        lucide.createIcons({ attrs: { "stroke-width": 2.2 } });
     </script>
 </body>
 </html>

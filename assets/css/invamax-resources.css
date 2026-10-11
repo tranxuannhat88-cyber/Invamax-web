@@ -15,50 +15,89 @@ html, body {
     overflow-x: hidden;
 }
 
+/* Sharp, bold Lucide SVG Icon Rendering */
+svg.lucide,
+i[data-lucide] svg,
+.lucide {
+    stroke-width: 2.2px !important;
+    stroke-linecap: round !important;
+    stroke-linejoin: round !important;
+    shape-rendering: geometricPrecision;
+}
+
 /* Ensure navbar dark style remains intact */
 .navbar {
     background: #091a14 !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
-/* Page Container */
+/* Page Container for below-hero content */
 .res-page-wrap {
-    padding: 100px 0 80px;
-    max-width: 1220px;
+    padding: 44px 24px 80px;
+    max-width: 1240px;
     margin: 0 auto;
-    padding-left: 24px;
-    padding-right: 24px;
 }
 
 /* ==========================================================================
-   HERO SECTION (Light Theme with right feature cards & factory bg)
+   HERO SECTION (Full screen bleed right edge & Light Theme)
    ========================================================================== */
-.res-hero-light {
+.res-hero-section-full {
     position: relative;
-    padding: 40px 0 36px;
-    margin-bottom: 40px;
-    border-radius: 20px;
+    width: 100%;
+    background: #ffffff;
+    padding-top: 110px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid #e9edf2;
     overflow: hidden;
 }
+
+/* Background image reaching 100% to the right edge of viewport */
+.res-hero-bg-wrap {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 55vw;
+    min-width: 580px;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
 .res-hero-bg {
     position: absolute;
-    right: 0;
     top: 0;
-    width: 60%;
+    right: 0;
+    width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.16;
-    z-index: 1;
-    pointer-events: none;
-    mask-image: linear-gradient(to right, transparent 0%, black 70%);
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 70%);
+    object-position: right top;
+    opacity: 0.32;
+    mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.3) 15%, rgba(0, 0, 0, 0.95) 55%, black 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.3) 15%, rgba(0, 0, 0, 0.95) 55%, black 100%);
 }
+
+.res-hero-gradient-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+    pointer-events: none;
+}
+
+.res-hero-container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 2;
+}
+
 .res-hero-grid {
     position: relative;
     z-index: 2;
     display: grid;
     grid-template-columns: 1.15fr 0.85fr;
-    gap: 36px;
+    gap: 40px;
     align-items: center;
 }
 .res-hero-left {
@@ -105,11 +144,17 @@ html, body {
     margin-bottom: 18px;
 }
 .res-search-wrap-light i {
-    color: #94a3b8;
-    width: 18px;
-    height: 18px;
+    color: #64748b;
+    width: 20px;
+    height: 20px;
     margin-right: 12px;
     flex-shrink: 0;
+    display: flex;
+    align-items: center;
+}
+.res-search-wrap-light i svg {
+    stroke: #64748b !important;
+    stroke-width: 2.2px !important;
 }
 .res-search-wrap-light input {
     flex: 1;
@@ -141,6 +186,10 @@ html, body {
     background: #e05b0a;
     transform: scale(1.05);
 }
+.res-search-submit-btn svg {
+    stroke: #ffffff !important;
+    stroke-width: 2.5px !important;
+}
 
 /* Category Filter Pills (Light Theme) */
 .res-filter-pills-light {
@@ -152,7 +201,7 @@ html, body {
 .res-pill-btn {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 7px;
     padding: 7px 16px;
     border-radius: 40px;
     font-size: 13px;
@@ -176,48 +225,69 @@ html, body {
     box-shadow: 0 4px 12px rgba(239, 109, 28, 0.3);
 }
 .res-pill-btn i {
-    width: 14px;
-    height: 14px;
+    width: 15px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+}
+.res-pill-btn svg {
+    stroke-width: 2.2px !important;
 }
 
 /* Hero Right 3 Feature Cards */
 .res-hero-feature-cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
+    gap: 16px;
 }
 .res-feat-card {
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border: 1px solid #e2e8f0;
-    border-radius: 14px;
-    padding: 22px 16px;
-    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.04);
+    border-radius: 16px;
+    padding: 24px 18px 22px;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.05);
     display: flex;
     flex-direction: column;
     text-align: left;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 .res-feat-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 32px rgba(15, 23, 42, 0.09);
+    border-color: #cbd5e1;
 }
 .res-feat-icon {
-    width: 32px;
-    height: 32px;
-    color: #ef6d1c;
-    margin-bottom: 14px;
+    width: 38px !important;
+    height: 38px !important;
+    color: #ef6d1c !important;
+    margin-bottom: 16px;
+    display: block;
+    flex-shrink: 0;
+}
+.res-feat-icon svg,
+svg.res-feat-icon {
+    width: 38px !important;
+    height: 38px !important;
+    stroke: #ef6d1c !important;
+    stroke-width: 2.4px !important;
+    stroke-linecap: round !important;
+    stroke-linejoin: round !important;
+    shape-rendering: geometricPrecision;
 }
 .res-feat-title {
-    font-size: 0.95rem;
+    font-size: 1.02rem;
     font-weight: 800;
-    color: #0f172a;
+    color: #0f172a !important;
     line-height: 1.35;
     margin-bottom: 8px;
+    letter-spacing: -0.01em;
 }
 .res-feat-desc {
-    font-size: 0.78rem;
+    font-size: 0.8125rem;
     color: #64748b;
-    line-height: 1.5;
+    line-height: 1.55;
     margin: 0;
 }
 
@@ -720,10 +790,19 @@ html, body {
 }
 
 @media (max-width: 768px) {
+    .res-hero-section-full {
+        padding-top: 86px;
+        padding-bottom: 32px;
+    }
+    .res-hero-bg-wrap {
+        width: 100%;
+        opacity: 0.18;
+    }
     .res-page-wrap {
-        padding-top: 90px;
+        padding-top: 24px;
         padding-left: 16px;
         padding-right: 16px;
+        padding-bottom: 60px;
     }
     .res-hero-feature-cards {
         grid-template-columns: 1fr;
