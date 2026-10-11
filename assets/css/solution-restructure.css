@@ -61,6 +61,7 @@
     line-height: 1.24 !important;
     letter-spacing: -0.025em !important;
     margin-bottom: 13px;
+    color: var(--ink) !important;
 }
 
 .ivrs .ivrs-support {
