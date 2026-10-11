@@ -36,287 +36,8 @@
     <link rel="icon" type="image/jpeg" href="../assets/images/favicon.jpg">
     <link rel="stylesheet" href="../assets/css/style.css?v=10">
     <link rel="stylesheet" href="../assets/css/navbar.css">
-    <style>
-        /* BASE & HERO */
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-        }
-        .about-hero {
-            padding: 100px 0 60px;
-            text-align: center;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-        .about-eyebrow {
-            color: var(--primary);
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 16px;
-            display: inline-block;
-        }
-        .about-hero h1 {
-            font-size: 2.8rem;
-            color: var(--text-white);
-            margin-bottom: 24px;
-            font-weight: 800;
-            line-height: 1.2;
-            max-width: 950px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .about-hero-desc {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 16px;
-            max-width: 850px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .about-hero-statement {
-            padding: 24px;
-            border-left: 3px solid var(--primary);
-            background: rgba(255,255,255,0.02);
-            max-width: 850px;
-            margin: 32px auto 0;
-            text-align: left;
-        }
-        .about-hero-statement p {
-            color: var(--text-white);
-            font-weight: 600;
-            font-size: 1.25rem;
-            margin: 0;
-            line-height: 1.6;
-        }
-        /* SECTION STYLING */
-        .section-about {
-            padding: 100px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-        .section-about-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .section-heading {
-            font-size: 2.2rem;
-            color: var(--text-white);
-            margin-bottom: 16px;
-            font-weight: 700;
-            line-height: 1.3;
-        }
-        .section-subheading {
-            font-size: 1.2rem;
-            color: var(--primary);
-            font-weight: 500;
-            margin-bottom: 40px;
-            line-height: 1.5;
-        }
-        .about-text {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 24px;
-        }
-        .core-statement {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: var(--text-white);
-            margin: 48px 0;
-            line-height: 1.5;
-            text-align: center;
-        }
-        /* LIST STYLING */
-        .about-list {
-            list-style: none;
-            padding: 0;
-            margin: 32px 0;
-        }
-        .about-list li {
-            position: relative;
-            padding-left: 24px;
-            margin-bottom: 16px;
-            color: var(--text-muted);
-            font-size: 1.05rem;
-            line-height: 1.6;
-        }
-        .about-list li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: var(--primary);
-            font-weight: bold;
-            font-size: 1.5rem;
-            line-height: 1;
-            top: -2px;
-        }
-        /* FLOW & VISUALS */
-        .visual-flow {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 16px;
-            margin: 48px 0;
-            padding: 32px;
-            background: rgba(255,255,255,0.02);
-            border-radius: var(--radius-md);
-            border: 1px dashed rgba(255,255,255,0.1);
-        }
-        .flow-item {
-            color: var(--text-white);
-            font-weight: 600;
-            font-size: 0.95rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            text-align: center;
-        }
-        .flow-arrow {
-            color: var(--primary);
-        }
-        .word-highlight {
-            color: var(--text-white);
-            font-weight: 600;
-        }
-        .highlight-tags {
-            text-align: center;
-            margin: 40px 0;
-            color: var(--primary);
-            font-weight: 600;
-            font-size: 0.95rem;
-            letter-spacing: 1.5px;
-            line-height: 2;
-        }
-        /* MÔ HÌNH QUẢN LÝ (DOANH NGHIỆP TRONG DOANH NGHIỆP) */
-        .management-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 20px;
-            margin: 48px 0;
-        }
-        @media (max-width: 992px) {
-            .management-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        @media (max-width: 576px) {
-            .management-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        .m-card {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.05);
-            padding: 24px;
-            border-radius: var(--radius-sm);
-            border-left: 3px solid var(--primary);
-        }
-        .m-card-title {
-            color: var(--text-white);
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .m-card-desc {
-            color: var(--text-muted);
-            font-size: 1rem;
-            margin: 0;
-            line-height: 1.6;
-        }
-        .vertical-flow {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 16px;
-            margin: 48px 0;
-            padding: 40px;
-            background: rgba(255,255,255,0.02);
-            border-radius: var(--radius-md);
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-        .v-item {
-            color: var(--text-white);
-            font-weight: 700;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            text-align: center;
-        }
-        .v-group {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .v-group-item {
-            color: var(--text-light);
-            font-weight: 500;
-            font-size: 0.95rem;
-            letter-spacing: 0.5px;
-            background: rgba(255,255,255,0.05);
-            padding: 8px 16px;
-            border-radius: 20px;
-        }
-        .v-operator {
-            color: var(--primary);
-            font-weight: 700;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-        }
-        /* ĐỊNH HƯỚNG VISUAL */
-        .equation-flow {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 16px;
-            margin: 48px 0;
-        }
-        .eq-item {
-            color: var(--text-white);
-            font-weight: 600;
-            font-size: 1.05rem;
-            letter-spacing: 1px;
-            padding: 12px 24px;
-            background: rgba(255,255,255,0.03);
-            border-radius: var(--radius-sm);
-            width: 100%;
-            text-align: center;
-            max-width: 400px;
-        }
-        .eq-result {
-            background: var(--primary);
-            color: var(--text-white);
-            font-weight: 700;
-            border: none;
-        }
-        .eq-outcomes {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 16px;
-            margin-top: 24px;
-        }
-        .eq-outcome-item {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            font-weight: 500;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            text-align: center;
-        }
-        @media (max-width: 768px) {
-            .section-heading { font-size: 1.8rem; }
-            .core-statement { font-size: 1.2rem; margin: 32px 0; }
-            .visual-flow { padding: 24px 16px; gap: 8px; flex-direction: column; }
-            .flow-arrow { transform: rotate(90deg); margin: 8px 0; }
-            .cta-buttons { flex-direction: column; }
-            .cta-buttons a { width: 100%; text-align: center; }
-        }
-    </style>
+    <link rel="stylesheet" href="../assets/css/invamax-philosophy-v3.css">
+    
     
     <style>
         .capability-card-link {
@@ -384,222 +105,203 @@
         </div>
     </nav>
 
-    <main>
-        <!-- HERO -->
-        <section class="about-hero">
-            <div class="container">
-                <span class="about-eyebrow">TRIẾT LÝ INVAMAX</span>
-                <h1>Xây một môi trường vận hành nơi hệ thống và con người cùng phát triển</h1>
-                
-                <p class="about-hero-desc">INVAMAX được hình thành từ thực tế quản lý và vận hành trong các doanh nghiệp sản xuất FDI — nơi năng suất, chất lượng, chi phí và kỷ luật vận hành luôn phải được duy trì ở mức cao.</p>
-                <p class="about-hero-desc">Từ nền tảng thực tế đó, INVAMAX kết hợp phương pháp quản trị sản xuất Lean với một triết lý quản trị lấy con người và dòng vận hành thực tế làm trung tâm.</p>
-                
-                <div class="about-hero-statement">
-                    <p>Một hệ thống tốt không bắt con người phải cố gắng nhiều hơn. Nó giúp công việc diễn ra tự nhiên hơn, ít áp lực hơn và tạo ra kết quả tốt hơn.</p>
-                </div>
-            </div>
-        </section>
+    <main class="ivp3" id="ivp3-top">
+  <section class="ivp3-hero">
+    <div class="ivp3-shell ivp3-hero-grid">
+      <div class="ivp3-hero-copy">
+        <p class="ivp3-kicker">VỀ CHÚNG TÔI</p>
+        <h1>Triết lý <span>INVAMAX</span></h1>
+        <h2>Xây nền quản trị vững chắc<br>Phát triển con người<br>Kiến tạo vận hành bền vững</h2>
+        <div class="ivp3-divider"></div>
+        <p>INVAMAX tin rằng một doanh nghiệp sản xuất chỉ có thể phát triển bền vững khi chiến lược đúng, đội ngũ có năng lực và hệ thống vận hành hiệu quả. Chúng tôi đồng hành cùng doanh nghiệp để xây dựng nền tảng đó, bắt đầu từ con người và dựa trên sự hiểu biết sâu sắc về thực tế nhà máy.</p>
+        <a class="ivp3-btn ivp3-btn-primary" href="#ivp3-pillars">Tìm hiểu triết lý của chúng tôi <span>→</span></a>
+      </div>
+      <div class="ivp3-hero-media">
+        <img src="../assets/images/hero-engineer.png" alt="Kỹ sư INVAMAX trong nhà máy tự động hóa">
+        <div class="ivp3-quote-box">
+          <span class="mark">“</span>
+          <p>Một nhà máy tốt không chỉ tạo ra sản phẩm. Đó là nơi con người phát triển, hệ thống vận hành hiệu quả và giá trị được tạo ra mỗi ngày.</p>
+          <strong>— INVAMAX</strong>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- SECTION 01: TỪ THỰC TẾ NHÀ MÁY -->
-        <section class="section-about">
-            <div class="container">
-                <div class="section-about-content">
-                    <span class="about-eyebrow">01 &mdash; NỀN TẢNG THỰC TẾ</span>
-                    <h2 class="section-heading">Từ thực tế nhà máy</h2>
-                    <p class="section-subheading">Không bắt đầu từ lý thuyết quản trị</p>
-                    
-                    <p class="about-text">INVAMAX được phát triển từ những vấn đề thực sự xảy ra trong nhà máy: áp lực sản lượng, chất lượng, giao hàng, chi phí, phối hợp giữa các bộ phận và năng lực của đội ngũ quản lý.</p>
-                    <p class="about-text">Thực tế đó tạo nên một nguyên tắc rất rõ:</p>
-                    
-                    <div class="core-statement" style="border-left: 2px solid var(--primary); padding-left: 24px; text-align: left; margin: 32px 0;">
-                        Không thiết kế hệ thống từ những gì 'nên có'.<br>Thiết kế từ cách công việc thực sự diễn ra.
-                    </div>
-                    
-                    <p class="about-text">Lean cung cấp cho INVAMAX tư duy về dòng chảy, lãng phí, tiêu chuẩn và cải tiến liên tục.</p>
-                    <p class="about-text">Nhưng mục tiêu cuối cùng không phải là 'làm Lean'.</p>
-                    <p class="about-text">Mục tiêu là tạo ra một môi trường vận hành đơn giản hơn, ổn định hơn và hiệu quả hơn.</p>
-                </div>
-            </div>
-        </section>
+  <section class="ivp3-section ivp3-pillars" id="ivp3-pillars">
+    <div class="ivp3-shell">
+      <div class="ivp3-top-grid">
+        <div class="ivp3-copy-block">
+          <div class="ivp3-section-index"><span>01</span><b>TRIẾT LÝ INVAMAX</b></div>
+          <h2>Ba yếu tố quyết định<br>sự <span>phát triển bền vững</span><br>của doanh nghiệp</h2>
+          <p>Sự phát triển bền vững của doanh nghiệp được xây dựng trên ba trụ cột có mối quan hệ chặt chẽ với nhau: Chiến lược, Đội ngũ và Hệ thống. Thiếu một trong ba yếu tố, doanh nghiệp sẽ khó có thể phát triển lâu dài.</p>
+          <a class="ivp3-text-link" href="#ivp3-human">Tìm hiểu chi tiết <span>→</span></a>
+        </div>
+        <div class="ivp3-pillars-diagram-wrap">
+          <div class="ivp3-pillars-diagram">
+            <div class="node strategy"><small>CHIẾN LƯỢC</small><b>Xác định hướng đi</b></div>
+            <div class="node people"><small>ĐỘI NGŨ</small><b>Tạo ra năng lực thực thi</b></div>
+            <div class="node system"><small>HỆ THỐNG</small><b>Duy trì và nhân rộng kết quả</b></div>
+            <div class="node center"><small>PHÁT TRIỂN</small><b>BỀN VỮNG</b></div>
+            <svg viewBox="0 0 600 360" class="ivp3-lines" aria-hidden="true">
+              <defs>
+                <marker id="arrow-orange" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#ef6d1c"></path></marker>
+                <marker id="arrow-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0f7c53"></path></marker>
+                <marker id="arrow-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2d73d5"></path></marker>
+              </defs>
+              <path d="M300 72 C415 72, 470 145, 470 228" stroke="#ef6d1c" stroke-width="4" fill="none" marker-end="url(#arrow-orange)"/>
+              <path d="M414 246 C370 318, 230 318, 186 246" stroke="#2d73d5" stroke-width="4" fill="none" marker-end="url(#arrow-blue)"/>
+              <path d="M132 228 C132 145, 185 72, 300 72" stroke="#0f7c53" stroke-width="4" fill="none" marker-end="url(#arrow-green)"/>
+            </svg>
+          </div>
+          <div class="ivp3-side-notes note-right-top">
+            <ul>
+              <li>Xác định mục tiêu và giá trị</li>
+              <li>Lựa chọn cách cạnh tranh</li>
+              <li>Ưu tiên nguồn lực</li>
+              <li>Chuyển hóa thành hành động cụ thể</li>
+            </ul>
+          </div>
+          <div class="ivp3-side-notes note-left-bottom">
+            <ul>
+              <li>Hiểu mục tiêu chung</li>
+              <li>Chủ động giải quyết vấn đề</li>
+              <li>Phối hợp hiệu quả</li>
+              <li>Không ngừng phát triển</li>
+            </ul>
+          </div>
+          <div class="ivp3-side-notes note-right-bottom">
+            <ul>
+              <li>Tổ chức công việc hiệu quả</li>
+              <li>Phân bổ trách nhiệm rõ ràng</li>
+              <li>Kiểm soát và minh bạch</li>
+              <li>Thích ứng khi phát triển</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="ivp3-relation-cards">
+        <h3>Mối quan hệ của ba yếu tố</h3>
+        <div class="ivp3-relation-grid">
+          <article>
+            <span class="ic orange">▥</span>
+            <div><b>Chiến lược đúng<br>nhưng thiếu đội ngũ</b><p>Không thể thực thi.</p></div>
+          </article>
+          <article>
+            <span class="ic green">◉</span>
+            <div><b>Đội ngũ giỏi<br>nhưng thiếu hệ thống</b><p>Khó duy trì và nhân rộng kết quả.</p></div>
+          </article>
+          <article>
+            <span class="ic blue">⚙</span>
+            <div><b>Hệ thống tốt<br>nhưng thiếu chiến lược</b><p>Vận hành hiệu quả nhưng có thể đi sai hướng.</p></div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- SECTION 02: THUẬN TỰ NHIÊN -->
-        <section class="section-about">
-            <div class="container">
-                <div class="section-about-content">
-                    <span class="about-eyebrow">02 &mdash; TRIẾT LÝ VẬN HÀNH</span>
-                    <h2 class="section-heading">Thuận tự nhiên</h2>
-                    <p class="section-subheading">Hiệu quả cao không đồng nghĩa với áp lực cao</p>
-                    
-                    <p class="about-text">Con người có giới hạn về thời gian, sự chú ý và năng lượng.</p>
-                    <p class="about-text">Một tổ chức phải liên tục dựa vào thúc ép, theo sát và xử lý khẩn cấp để đạt kết quả là một tổ chức chưa được thiết kế tốt.</p>
-                    <p class="about-text">INVAMAX theo đuổi triết lý thuận tự nhiên: thiết kế công việc và hệ thống sao cho những điều đúng trở nên dễ thực hiện hơn.</p>
-                    
-                    <ul class="about-list">
-                        <li>Công việc có dòng chảy rõ ràng.</li>
-                        <li>Trách nhiệm phù hợp với quyền hạn.</li>
-                        <li>Thông tin đến đúng người, đúng thời điểm.</li>
-                        <li>Vấn đề được nhìn thấy sớm.</li>
-                        <li>Người quản lý không phải kiểm soát mọi việc.</li>
-                        <li>Nhân viên có khả năng chủ động xử lý công việc.</li>
-                    </ul>
-                    
-                    <div class="core-statement" style="color: var(--primary);">
-                        Mục tiêu không phải làm cho con người chạy nhanh hơn.<br>Mục tiêu là loại bỏ những thứ khiến họ phải chạy.
-                    </div>
-                </div>
-            </div>
-        </section>
+  <section class="ivp3-section ivp3-human" id="ivp3-human">
+    <div class="ivp3-shell ivp3-human-grid">
+      <div class="ivp3-human-copy">
+        <div class="ivp3-section-index"><span>02</span><b>TRIẾT LÝ INVAMAX</b></div>
+        <h2>Triết lý về <span>con người</span><br>trong doanh nghiệp</h2>
+        <p>Con người không chỉ là nguồn lực. Con người là chủ thể tạo ra giá trị. Doanh nghiệp phải là môi trường để mỗi cá nhân học hỏi, phát triển năng lực, nâng cao trách nhiệm và trưởng thành cùng tổ chức.</p>
+        <a class="ivp3-text-link on-dark" href="#ivp3-natural">Tìm hiểu chi tiết <span>→</span></a>
+        <div class="ivp3-owner-block">
+          <h3>Doanh nghiệp trong doanh nghiệp</h3>
+          <p>Mỗi người quản lý được nhìn nhận như người chủ của một đơn vị tạo giá trị bên trong doanh nghiệp, với 5 yếu tố cốt lõi:</p>
+          <div class="ivp3-owner-grid">
+            <article><span>◎</span><b>Mục tiêu</b><small>Hiểu rõ kết quả cần đạt</small></article>
+            <article><span>◉</span><b>Đội ngũ</b><small>Xây dựng và phát triển con người</small></article>
+            <article><span>▤</span><b>Nguồn lực</b><small>Quản lý hiệu quả nguồn lực</small></article>
+            <article><span>⚡</span><b>Quyền chủ động</b><small>Ra quyết định trong phạm vi trách nhiệm</small></article>
+            <article><span>🛡</span><b>Trách nhiệm</b><small>Chịu trách nhiệm về kết quả</small></article>
+          </div>
+        </div>
+      </div>
+      <div class="ivp3-human-visual">
+        <div class="ivp3-growth-card">
+          <h3>Quá trình phát triển của mỗi cá nhân</h3>
+          <div class="ivp3-growth-flow">
+            <div><span>📖</span><b>Học hỏi</b><small>Tiếp thu kiến thức và kinh nghiệm</small></div>
+            <i>→</i>
+            <div><span>⚙</span><b>Làm chủ công việc</b><small>Nâng cao năng lực và trách nhiệm</small></div>
+            <i>→</i>
+            <div><span>💎</span><b>Tạo giá trị</b><small>Đóng góp cho doanh nghiệp</small></div>
+            <i>→</i>
+            <div><span>🤝</span><b>Nhận lại giá trị</b><small>Thu nhập, cơ hội, sự ghi nhận</small></div>
+            <i>→</i>
+            <div><span>📈</span><b>Tiếp tục phát triển</b><small>Hướng tới tầm cao mới</small></div>
+          </div>
+        </div>
+        <div class="ivp3-team-image-wrap">
+          <img src="../assets/images/human-team.png" alt="Đội ngũ kỹ sư và công nhân đang trao đổi trong nhà máy">
+          <div class="ivp3-team-quote">
+            <span class="mark">“</span>
+            <p>Một doanh nghiệp mạnh không phải là nơi một vài người giỏi phải gánh cả hệ thống. Đó là nơi hệ thống giúp nhiều người có thể trở nên giỏi hơn.</p>
+            <strong>— INVAMAX</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- SECTION 03: CON NGƯỜI & TRAO ĐỔI GIÁ TRỊ -->
-        <section class="section-about">
-            <div class="container">
-                <div class="section-about-content">
-                    <span class="about-eyebrow">03 &mdash; CON NGƯỜI</span>
-                    <h2 class="section-heading">Con người không chỉ là nguồn lực</h2>
-                    <p class="section-subheading">Công việc phải là môi trường để con người trưởng thành</p>
-                    
-                    <p class="about-text">INVAMAX tin rằng doanh nghiệp không chỉ là nơi sử dụng năng lực của con người.</p>
-                    <p class="about-text">Doanh nghiệp cũng phải là nơi năng lực đó được hình thành và phát triển.</p>
-                    
-                    <div class="visual-flow">
-                        <span class="flow-item">HỌC HỎI</span>
-                        <i data-lucide="arrow-right" class="flow-arrow"></i>
-                        <span class="flow-item">LÀM CHỦ CÔNG VIỆC</span>
-                        <i data-lucide="arrow-right" class="flow-arrow"></i>
-                        <span class="flow-item">TẠO GIÁ TRỊ</span>
-                        <i data-lucide="arrow-right" class="flow-arrow"></i>
-                        <span class="flow-item">NHẬN LẠI GIÁ TRỊ</span>
-                        <i data-lucide="arrow-right" class="flow-arrow"></i>
-                        <span class="flow-item">TIẾP TỤC PHÁT TRIỂN</span>
-                    </div>
-                    
-                    <p class="about-text">Giá trị được trao đổi không chỉ là tiền lương.</p>
-                    <p class="about-text">Đó còn là kiến thức, kỹ năng, kinh nghiệm, cơ hội, trách nhiệm và sự trưởng thành.</p>
-                    <p class="about-text">Khi cá nhân phát triển cùng với tổ chức, mối quan hệ giữa doanh nghiệp và người lao động không chỉ dừng lại ở việc trao đổi sức lao động.</p>
-                    <p class="about-text">Nó trở thành quá trình cùng nhau tạo ra và trao đổi giá trị.</p>
-                    
-                    <div class="highlight-tags">
-                        KIẾN THỨC &nbsp;&middot;&nbsp; KỸ NĂNG &nbsp;&middot;&nbsp; KINH NGHIỆM &nbsp;&middot;&nbsp; CƠ HỘI &nbsp;&middot;&nbsp; TRÁCH NHIỆM &nbsp;&middot;&nbsp; SỰ TRƯỞNG THÀNH
-                    </div>
-                </div>
-            </div>
-        </section>
+  <section class="ivp3-section ivp3-natural" id="ivp3-natural">
+    <div class="ivp3-shell ivp3-natural-grid">
+      <div class="ivp3-copy-block">
+        <div class="ivp3-section-index"><span>03</span><b>TRIẾT LÝ INVAMAX</b></div>
+        <h2>Triết lý <span>thuận tự nhiên</span><br>trong hệ thống sản xuất</h2>
+        <p>Hiệu quả cao không đồng nghĩa với áp lực cao. INVAMAX theo đuổi triết lý Thuận tự nhiên: thiết kế hệ thống sản xuất phù hợp với quy luật vận hành thực tế, khả năng của con người và dòng chảy của công việc.</p>
+        <a class="ivp3-text-link" href="#ivp3-closing">Tìm hiểu chi tiết <span>→</span></a>
+      </div>
+      <div class="ivp3-before-after">
+        <article class="state-card state-bad">
+          <h3>Từ vận hành nhiều áp lực…</h3>
+          <div class="state-grid">
+            <img src="../assets/images/natural-chaos.png" alt="Xưởng sản xuất hỗn loạn, nhiều áp lực">
+            <ul>
+              <li>Chờ đợi gián đoạn</li>
+              <li>Thúc ép tiến độ</li>
+              <li>Xử lý sự cố liên tục</li>
+              <li>Áp lực cho con người</li>
+              <li>Khó duy trì lâu dài</li>
+            </ul>
+          </div>
+        </article>
+        <div class="state-arrow">→</div>
+        <article class="state-card state-good">
+          <h3>…đến vận hành thuận tự nhiên</h3>
+          <div class="state-grid">
+            <img src="../assets/images/natural-flow.png" alt="Nhà máy thông minh, vận hành thông suốt">
+            <ul>
+              <li>Dòng chảy thông suốt</li>
+              <li>Trách nhiệm rõ ràng</li>
+              <li>Thông tin đúng thời điểm</li>
+              <li>Chủ động và phát triển</li>
+              <li>Cải tiến hằng ngày</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
 
-        <!-- SECTION 04: DOANH NGHIỆP TRONG DOANH NGHIỆP -->
-        <section class="section-about">
-            <div class="container">
-                <div class="section-about-content">
-                    <span class="about-eyebrow">04 &mdash; MÔ HÌNH QUẢN LÝ</span>
-                    <h2 class="section-heading">Doanh nghiệp trong doanh nghiệp</h2>
-                    <p class="section-subheading">Mỗi người quản lý là người chủ của một đơn vị tạo giá trị</p>
-                    
-                    <p class="about-text">INVAMAX hướng tới một mô hình trong đó người quản lý không chỉ là người nhận chỉ đạo và phân công công việc cho cấp dưới.</p>
-                    <p class="about-text">Mỗi người quản lý được nhìn nhận như người chủ của một doanh nghiệp nhỏ bên trong doanh nghiệp lớn.</p>
-                    
-                    <div class="management-grid">
-                        <div class="m-card">
-                            <div class="m-card-title">MỤC TIÊU</div>
-                            <p class="m-card-desc">Hiểu rõ đơn vị phải tạo ra kết quả gì.</p>
-                        </div>
-                        <div class="m-card">
-                            <div class="m-card-title">ĐỘI NGŨ</div>
-                            <p class="m-card-desc">Xây dựng và phát triển những con người do mình phụ trách.</p>
-                        </div>
-                        <div class="m-card">
-                            <div class="m-card-title">NGUỒN LỰC</div>
-                            <p class="m-card-desc">Quản lý thời gian, con người, thiết bị và nguồn lực được giao.</p>
-                        </div>
-                        <div class="m-card">
-                            <div class="m-card-title">QUYỀN CHỦ ĐỘNG</div>
-                            <p class="m-card-desc">Có không gian ra quyết định trong phạm vi trách nhiệm.</p>
-                        </div>
-                        <div class="m-card">
-                            <div class="m-card-title">TRÁCH NHIỆM</div>
-                            <p class="m-card-desc">Chịu trách nhiệm về kết quả của toàn bộ đơn vị.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="vertical-flow">
-                        <div class="v-item">MỤC TIÊU</div>
-                        <i data-lucide="arrow-down" class="v-operator"></i>
-                        <div class="v-group">
-                            <div class="v-group-item">ĐỘI NGŨ</div>
-                            <div class="v-operator">+</div>
-                            <div class="v-group-item">NGUỒN LỰC</div>
-                            <div class="v-operator">+</div>
-                            <div class="v-group-item">QUYỀN CHỦ ĐỘNG</div>
-                        </div>
-                        <i data-lucide="arrow-down" class="v-operator"></i>
-                        <div class="v-item">KẾT QUẢ</div>
-                        <i data-lucide="arrow-down" class="v-operator"></i>
-                        <div class="v-item" style="color: var(--primary);">GIÁ TRỊ CHO TOÀN HỆ THỐNG</div>
-                    </div>
-                    
-                    <div class="core-statement">
-                        Tự chủ không có nghĩa là hoạt động riêng lẻ. Tự chủ nghĩa là biết mình phải tạo ra giá trị gì cho toàn hệ thống.
-                    </div>
-                    
-                    <p class="about-text" style="text-align: center;">Mỗi đơn vị vì vậy vừa có khả năng tự chủ, vừa phải kết nối và trao đổi giá trị với các đơn vị khác.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION 05: ĐIỀU INVAMAX MUỐN XÂY DỰNG -->
-        <section class="section-about">
-            <div class="container">
-                <div class="section-about-content">
-                    <span class="about-eyebrow">05 &mdash; ĐỊNH HƯỚNG</span>
-                    <h2 class="section-heading">Điều INVAMAX muốn xây dựng</h2>
-                    <p class="section-subheading">Một cách vận hành tốt hơn cho nhà máy &mdash; và một môi trường tốt hơn cho con người</p>
-                    
-                    <p class="about-text">INVAMAX không hướng tới việc tạo thêm một phương pháp quản trị mới để doanh nghiệp phải học.</p>
-                    <p class="about-text">Điều chúng tôi muốn xây là một cách tiếp cận kết hợp những gì đã được kiểm chứng trong thực tế sản xuất với một cách nhìn nhân bản hơn về tổ chức và con người.</p>
-                    
-                    <div class="equation-flow">
-                        <div class="eq-item">KỶ LUẬT VẬN HÀNH FDI</div>
-                        <div class="v-operator">+</div>
-                        <div class="eq-item">TƯ DUY LEAN</div>
-                        <div class="v-operator">+</div>
-                        <div class="eq-item">TRIẾT LÝ THUẬN TỰ NHIÊN</div>
-                        <div class="v-operator">+</div>
-                        <div class="eq-item">SỰ PHÁT TRIỂN &amp; TỰ CHỦ CỦA CON NGƯỜI</div>
-                        <i data-lucide="arrow-down" class="v-operator"></i>
-                        <div class="eq-item eq-result">MỘT TỔ CHỨC TỐT HƠN</div>
-                    </div>
-                    
-                    <div class="eq-outcomes">
-                        <span class="eq-outcome-item">HIỆU QUẢ HƠN</span>
-                        <span class="eq-outcome-item">&middot;</span>
-                        <span class="eq-outcome-item">ÍT PHỤ THUỘC HƠN</span>
-                        <span class="eq-outcome-item">&middot;</span>
-                        <span class="eq-outcome-item">ÍT ÁP LỰC KHÔNG CẦN THIẾT HƠN</span>
-                        <span class="eq-outcome-item">&middot;</span>
-                        <span class="eq-outcome-item">CÓ KHẢ NĂNG TỰ PHÁT TRIỂN TỐT HƠN</span>
-                    </div>
-                    
-                    <div class="core-statement" style="margin-top: 60px;">
-                        Một doanh nghiệp mạnh không phải là nơi một vài người giỏi phải gánh cả hệ thống. Đó là nơi hệ thống giúp nhiều người có thể trở nên giỏi hơn.
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA SECTION -->
-        <section class="section-about" style="border-bottom: none; text-align: center;">
-            <div class="container">
-                <div class="section-about-content">
-                    <h2 style="font-size: 2.2rem; color: var(--text-white); margin-bottom: 24px;">Xây một nhà máy tốt hơn cũng là xây một môi trường tốt hơn cho con người</h2>
-                    <p class="about-text" style="margin-bottom: 48px;">INVAMAX tiếp tục kiểm chứng và phát triển những tư tưởng này thông qua công việc thực tế tại các doanh nghiệp sản xuất.</p>
-                    
-                    <div class="cta-buttons" style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-                        <a href="../vi/index.html#solutions" class="btn btn-primary" style="padding: 14px 32px; font-size: 1.05rem;">Khám phá Giải pháp</a>
-                        <a href="../vi/index.html#capabilities" class="btn btn-outline" style="border: 1px solid rgba(255, 102, 0, 0.4); color: var(--primary); padding: 14px 32px; font-size: 1.05rem;">Khám phá Năng lực</a>
-                        <a href="#" onclick="openContactModal(); return false;" class="btn btn-outline" style="border: 1px solid rgba(255,255,255,0.1); color: var(--text-light); padding: 14px 32px; font-size: 1.05rem;">Trao đổi với INVAMAX</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+  <section class="ivp3-closing" id="ivp3-closing">
+    <div class="ivp3-shell ivp3-closing-grid">
+      <div class="ivp3-closing-copy">
+        <h2>Cùng INVAMAX kiến tạo<br>những nhà máy vận hành bền vững</h2>
+        <p>Chúng tôi đồng hành cùng doanh nghiệp để xây dựng chiến lược đúng, phát triển đội ngũ và thiết kế hệ thống vận hành hiệu quả, phù hợp với thực tế của từng nhà máy.</p>
+        <a class="ivp3-btn ivp3-btn-primary" href="#" onclick="openContactModal(); return false;">Liên hệ với INVAMAX <span>→</span></a>
+      </div>
+      <div class="ivp3-closing-image">
+        <img src="../assets/images/smart-supervisor.png" alt="Kỹ sư giám sát trong nhà máy tự động hóa">
+      </div>
+      <div class="ivp3-closing-panel">
+        <span></span>
+        <strong>Better Operation<br>for Sustainable Growth</strong>
+      </div>
+    </div>
+  </section>
+</main>
 
     <footer>
         <div class="container footer-grid">
