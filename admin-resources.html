@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INVAMAX Admin - Quản lý Tài liệu & Toolkit</title>
+    <link rel="icon" type="image/jpeg" href="assets/images/favicon.jpg">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/invamax-tokens.css">
+    <link rel="stylesheet" href="assets/css/invamax-resources.css">
+
+    <style>
+        :root {
+            --admin-bg: #0B211A;
+            --admin-surface: #132E25;
+            --admin-border: rgba(255, 255, 255, 0.1);
+            --admin-orange: #FF6900;
+            --admin-orange-hover: #E05D00;
+            --admin-card-bg: #ffffff;
+            --admin-text-dark: #0F1E19;
+            --admin-text-muted: #64748b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: #f1f5f9;
+            color: #0f172a;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Top Navigation */
+        .admin-nav {
+            background: var(--admin-bg);
+            color: #ffffff;
+            padding: 16px 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px solid var(--admin-orange);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+
+        .admin-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        .admin-logo-text {
+            font-size: 22px;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+        }
+        .admin-logo-text span { color: var(--admin-orange); }
+
+        .admin-badge {
+            background: rgba(255, 105, 0, 0.15);
+            color: var(--admin-orange);
+            border: 1px solid rgba(255, 105, 0, 0.3);
+            font-size: 11px;
+            font-weight: 800;
+            padding: 3px 8px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .admin-nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-nav-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 13.5px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-nav-outline:hover {
+            background: rgba(255, 255, 255, 0.16);
+            color: #ffffff;
+        }
+
+        .btn-logout {
+            background: rgba(239, 68, 68, 0.15);
+            color: #fca5a5;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+        .btn-logout:hover {
+            background: rgba(239, 68, 68, 0.3);
+            color: #ffffff;
+        }
+
+        /* Container Layout */
+        .admin-body {
+            max-width: 1240px;
+            width: 100%;
+            margin: 24px auto;
+            padding: 0 20px;
+            flex: 1;
+        }
+
+        /* Stat Header */
+        .admin-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 18px 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            background: rgba(255, 105, 0, 0.1);
+            color: var(--admin-orange);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .stat-info h4 {
+            font-size: 13px;
+            color: var(--admin-text-muted);
+            font-weight: 600;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .stat-info .stat-number {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--admin-text-dark);
+        }
+
+        /* Main Grid: Form Left, List Right */
+        .admin-main-grid {
+            display: grid;
+            grid-template-columns: 420px 1fr;
+            gap: 24px;
+            align-items: start;
+        }
+
+        @media (max-width: 1024px) {
+            .admin-main-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Panels */
+        .admin-panel {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+            overflow: hidden;
+        }
+
+        .panel-header {
+            padding: 18px 22px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #fafafa;
+        }
+
+        .panel-header h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--admin-text-dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .panel-body {
+            padding: 22px;
+        }
+
+        /* Form Controls */
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 13.5px;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 7px;
+        }
+        .form-label span.req { color: #ef4444; }
+
+        .form-input, .form-textarea, .form-select {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #0f172a;
+            outline: none;
+            transition: all 0.2s;
+            background: #ffffff;
+        }
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
+            border-color: var(--admin-orange);
+            box-shadow: 0 0 0 3px rgba(255, 105, 0, 0.15);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        /* Tabs for File Source */
+        .tab-buttons {
+            display: flex;
+            gap: 6px;
+            background: #f1f5f9;
+            padding: 4px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 7px 10px;
+            font-size: 12.5px;
+            font-weight: 600;
+            border: none;
+            background: transparent;
+            color: #64748b;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        .tab-btn.active {
+            background: #ffffff;
+            color: var(--admin-text-dark);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+        }
+
+        /* File Dropzone */
+        .dropzone {
+            border: 2px dashed #cbd5e1;
+            border-radius: 10px;
+            padding: 20px 14px;
+            text-align: center;
+            cursor: pointer;
+            background: #f8fafc;
+            transition: all 0.2s;
+            position: relative;
+        }
+        .dropzone:hover, .dropzone.dragover {
+            border-color: var(--admin-orange);
+            background: rgba(255, 105, 0, 0.04);
+        }
+        .dropzone i {
+            font-size: 28px;
+            color: var(--admin-orange);
+            margin-bottom: 8px;
+            display: block;
+        }
+        .dropzone p {
+            font-size: 13px;
+            color: #475569;
+            margin-bottom: 4px;
+        }
+        .dropzone span {
+            font-size: 11.5px;
+            color: #94a3b8;
+        }
+        .dropzone input[type="file"] {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
+        }
+
+        .file-selected-box {
+            margin-top: 10px;
+            padding: 10px 14px;
+            background: #ecfdf5;
+            border: 1px solid #a7f3d0;
+            border-radius: 8px;
+            font-size: 13px;
+            color: #065f46;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 12px 18px;
+            background: var(--admin-orange);
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(255, 105, 0, 0.3);
+            transition: all 0.2s;
+        }
+        .btn-submit:hover {
+            background: var(--admin-orange-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-cancel {
+            width: 100%;
+            padding: 10px;
+            background: #e2e8f0;
+            color: #475569;
+            border: none;
+            border-radius: 8px;
+            font-size: 13.5px;
+            font-weight: 600;
+            margin-top: 8px;
+            cursor: pointer;
+            display: none;
+        }
+
+        /* Table & Cards in Right Panel */
+        .doc-list-empty {
+            text-align: center;
+            padding: 40px 20px;
+            color: #94a3b8;
+        }
+        .doc-list-empty i {
+            font-size: 36px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .doc-item-row {
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 16px 18px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            background: #ffffff;
+            transition: all 0.2s;
+        }
+        .doc-item-row:hover {
+            border-color: #cbd5e1;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        }
+
+        .doc-main-info {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            flex: 1;
+        }
+
+        .doc-preview-thumb {
+            width: 44px;
+            height: 54px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 6px 4px;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            flex-shrink: 0;
+        }
+
+        .doc-texts h4 {
+            font-size: 15px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 4px;
+        }
+        .doc-texts p {
+            font-size: 13px;
+            color: #64748b;
+            line-height: 1.5;
+            margin-bottom: 6px;
+        }
+        .doc-meta-tags {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            color: #94a3b8;
+        }
+
+        .doc-row-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .action-icon-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            background: #ffffff;
+            color: #475569;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+        .action-icon-btn:hover {
+            background: #f8fafc;
+            color: var(--admin-orange);
+            border-color: var(--admin-orange);
+        }
+        .action-icon-btn.btn-delete:hover {
+            background: #fef2f2;
+            color: #dc2626;
+            border-color: #fca5a5;
+        }
+
+        /* Login Modal / Overlay */
+        .auth-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(11, 33, 26, 0.95);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .auth-card {
+            background: #ffffff;
+            width: 100%;
+            max-width: 420px;
+            border-radius: 18px;
+            padding: 36px 32px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+            text-align: center;
+        }
+
+        .auth-logo {
+            font-size: 28px;
+            font-weight: 900;
+            color: #0B211A;
+            margin-bottom: 6px;
+        }
+        .auth-logo span { color: var(--admin-orange); }
+
+        .auth-desc {
+            font-size: 14px;
+            color: #64748b;
+            margin-bottom: 26px;
+        }
+
+        .auth-error {
+            background: #fef2f2;
+            color: #991b1b;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 13px;
+            margin-bottom: 16px;
+            display: none;
+        }
+
+        /* Toast notification */
+        .toast-msg {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #0f172a;
+            color: #ffffff;
+            padding: 14px 22px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 2000;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .toast-msg.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .toast-msg.success { background: #065f46; border-left: 4px solid #10b981; }
+        .toast-msg.error { background: #991b1b; border-left: 4px solid #ef4444; }
+    </style>
+</head>
+<body>
+
+    <!-- AUTHENTICATION OVERLAY -->
+    <div id="authOverlay" class="auth-overlay">
+        <div class="auth-card">
+            <div class="auth-logo">INVA<span>MAX</span></div>
+            <p class="auth-desc">Đăng nhập tài khoản Admin để quản lý và tải tài liệu lên website</p>
+
+            <div id="authError" class="auth-error">
+                <i class="fa fa-circle-exclamation"></i> Mật khẩu không chính xác!
+            </div>
+
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="form-group" style="text-align: left;">
+                    <label class="form-label">Tài khoản (Email)</label>
+                    <input type="text" id="adminUser" class="form-input" value="admin@invamax.com" required>
+                </div>
+                <div class="form-group" style="text-align: left; margin-bottom: 24px;">
+                    <label class="form-label">Mật khẩu Admin</label>
+                    <input type="password" id="adminPass" class="form-input" placeholder="Nhập mật khẩu..." required autofocus>
+                    <small style="color: #94a3b8; font-size: 11.5px; margin-top: 5px; display: block;">(Mặc định: <code>invamax2026</code>)</small>
+                </div>
+                <button type="submit" class="btn-submit">
+                    <i class="fa fa-lock-open"></i> Đăng nhập Admin
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ADMIN NAVIGATION -->
+    <header class="admin-nav">
+        <a href="vi/resources.html" class="admin-brand">
+            <span class="admin-logo-text">INVA<span>MAX</span></span>
+            <span class="admin-badge">Admin Toolkit</span>
+        </a>
+        <div class="admin-nav-actions">
+            <a href="vi/resources.html#toolkit" target="_blank" class="btn-nav-outline">
+                <i class="fa fa-arrow-up-right-from-square"></i> Xem trang Web
+            </a>
+            <button onclick="handleLogout()" class="btn-nav-outline btn-logout">
+                <i class="fa fa-power-off"></i> Đăng xuất
+            </button>
+        </div>
+    </header>
+
+    <!-- ADMIN MAIN BODY -->
+    <main class="admin-body">
+        <!-- Quick Stats -->
+        <section class="admin-stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fa fa-folder-open"></i></div>
+                <div class="stat-info">
+                    <h4>Tổng tài liệu</h4>
+                    <div class="stat-number" id="statTotalDocs">0</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon" style="background: rgba(16, 185, 129, 0.1); color: #10b981;"><i class="fa fa-file-excel"></i></div>
+                <div class="stat-info">
+                    <h4>Biểu mẫu Excel (XLSX)</h4>
+                    <div class="stat-number" id="statXlsxDocs">0</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon" style="background: rgba(59, 130, 246, 0.1); color: #3b82f6;"><i class="fa fa-file-word"></i></div>
+                <div class="stat-info">
+                    <h4>Khung tài liệu Word / PDF</h4>
+                    <div class="stat-number" id="statOtherDocs">0</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon" style="background: rgba(99, 102, 241, 0.1); color: #6366f1;"><i class="fa fa-cloud-arrow-down"></i></div>
+                <div class="stat-info">
+                    <h4>Tổng lượt tải</h4>
+                    <div class="stat-number" id="statTotalDownloads">0</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Layout: Form + List -->
+        <div class="admin-main-grid">
+            <!-- LEFT COLUMN: ADD / EDIT FORM -->
+            <section class="admin-panel">
+                <div class="panel-header">
+                    <h3 id="formPanelTitle"><i class="fa fa-circle-plus" style="color: var(--admin-orange);"></i> Thêm tài liệu mới</h3>
+                </div>
+                <div class="panel-body">
+                    <form id="docForm" onsubmit="handleSaveDoc(event)">
+                        <input type="hidden" id="editDocId" value="">
+
+                        <!-- Title -->
+                        <div class="form-group">
+                            <label class="form-label" for="docTitle">Tên tài liệu / Bộ công cụ <span class="req">*</span></label>
+                            <input type="text" id="docTitle" class="form-input" placeholder="VD: Checklist đánh giá hiện trạng nhà máy" required>
+                        </div>
+
+                        <!-- Format Tag -->
+                        <div class="form-group">
+                            <label class="form-label" for="docFormat">Định dạng file hiển thị <span class="req">*</span></label>
+                            <select id="docFormat" class="form-select" required>
+                                <option value="XLSX">Excel (.XLSX)</option>
+                                <option value="DOCX">Word (.DOCX)</option>
+                                <option value="PDF">Tài liệu PDF (.PDF)</option>
+                                <option value="PPTX">PowerPoint (.PPTX)</option>
+                                <option value="ZIP">Tệp nén (.ZIP / .RAR)</option>
+                            </select>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="form-group">
+                            <label class="form-label" for="docDesc">Mô tả ngắn tài liệu <span class="req">*</span></label>
+                            <textarea id="docDesc" class="form-textarea" placeholder="Tóm tắt 1-2 câu về nội dung và lợi ích tài liệu mang lại cho doanh nghiệp..." required></textarea>
+                        </div>
+
+                        <!-- File Upload Source Tabs -->
+                        <div class="form-group">
+                            <label class="form-label">Tải tệp đính kèm hoặc dán link <span class="req">*</span></label>
+                            
+                            <div class="tab-buttons">
+                                <button type="button" class="tab-btn active" id="tabUploadBtn" onclick="switchFileTab('upload')">
+                                    <i class="fa fa-upload"></i> Tải file từ máy tính
+                                </button>
+                                <button type="button" class="tab-btn" id="tabLinkBtn" onclick="switchFileTab('link')">
+                                    <i class="fa fa-link"></i> Link Drive / Tải ngoài
+                                </button>
+                            </div>
+
+                            <!-- Tab 1: Local File Upload -->
+                            <div id="fileUploadContainer">
+                                <div class="dropzone" id="dropzoneBox">
+                                    <i class="fa fa-cloud-arrow-up"></i>
+                                    <p><strong>Kéo thả tệp vào đây</strong> hoặc bấm để chọn</p>
+                                    <span>Hỗ trợ .xlsx, .docx, .pdf, .zip (tối đa 25MB)</span>
+                                    <input type="file" id="docFileInput" onchange="handleFileSelect(event)">
+                                </div>
+                                <div id="selectedFileInfo" class="file-selected-box" style="display: none;">
+                                    <span id="selectedFileName"><i class="fa fa-check"></i> Đã chọn file</span>
+                                    <button type="button" onclick="clearSelectedFile()" style="background:none;border:none;color:#ef4444;cursor:pointer;font-weight:bold;">Xóa</button>
+                                </div>
+                            </div>
+
+                            <!-- Tab 2: External Link Input -->
+                            <div id="fileLinkContainer" style="display: none;">
+                                <input type="url" id="docFileUrl" class="form-input" placeholder="https://drive.google.com/file/d/... hoặc link tải trực tiếp">
+                                <small style="color: #64748b; font-size: 12px; margin-top: 4px; display: block;">
+                                    Dán link chia sẻ (Google Drive, Onedrive, Dropbox...) với quyền <em>Bất kỳ ai có liên kết đều có thể xem/tải</em>.
+                                </small>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn-submit" id="btnSubmitDoc">
+                            <i class="fa fa-floppy-disk"></i> Lưu &amp; Đăng lên Website
+                        </button>
+                        <button type="button" class="btn-cancel" id="btnCancelEdit" onclick="cancelEdit()">
+                            Hủy chỉnh sửa
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- RIGHT COLUMN: DOCUMENT LIST & PREVIEW -->
+            <section class="admin-panel">
+                <div class="panel-header">
+                    <h3><i class="fa fa-list-check" style="color: var(--admin-orange);"></i> Danh sách tài liệu trên Website</h3>
+                    <div style="display: flex; gap: 8px;">
+                        <button onclick="exportJSONBackup()" class="btn-nav-outline" style="background: #f1f5f9; color: #334155; border-color: #cbd5e1; font-size: 12.5px; padding: 6px 12px;" title="Tải file sao lưu JSON">
+                            <i class="fa fa-file-export"></i> Sao lưu JSON
+                        </button>
+                        <button onclick="resetDefaultDocs()" class="btn-nav-outline" style="background: #f1f5f9; color: #dc2626; border-color: #fca5a5; font-size: 12.5px; padding: 6px 12px;" title="Khôi phục lại 4 tài liệu gốc">
+                            <i class="fa fa-rotate-left"></i> Khôi phục gốc
+                        </button>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div id="docsListContainer">
+                        <!-- Rendered by JavaScript -->
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="adminToast" class="toast-msg">
+        <i class="fa fa-circle-check"></i>
+        <span id="toastText">Thao tác thành công!</span>
+    </div>
+
+    <!-- STORE & CONTROLLER SCRIPT -->
+    <script src="assets/js/toolkit-store.js"></script>
+    <script>
+        // State variables
+        let currentFileBase64 = null;
+        let currentFileName = null;
+        let currentFileSize = null;
+        let activeTab = 'upload'; // 'upload' | 'link'
+
+        // Authentication Logic
+        const ADMIN_PASS_KEY = 'invamax_admin_secret_v1';
+        const DEFAULT_PASS = 'invamax2026';
+
+        function checkAuth() {
+            const isAuth = sessionStorage.getItem('invamax_admin_logged');
+            if (isAuth === 'true') {
+                document.getElementById('authOverlay').style.display = 'none';
+                renderDashboard();
+            } else {
+                document.getElementById('authOverlay').style.display = 'flex';
+            }
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const pass = document.getElementById('adminPass').value.trim();
+            const storedPass = localStorage.getItem(ADMIN_PASS_KEY) || DEFAULT_PASS;
+
+            if (pass === storedPass) {
+                sessionStorage.setItem('invamax_admin_logged', 'true');
+                document.getElementById('authOverlay').style.display = 'none';
+                showToast('Đăng nhập quản trị thành công!', 'success');
+                renderDashboard();
+            } else {
+                document.getElementById('authError').style.display = 'block';
+            }
+        }
+
+        function handleLogout() {
+            sessionStorage.removeItem('invamax_admin_logged');
+            document.getElementById('authOverlay').style.display = 'flex';
+            document.getElementById('adminPass').value = '';
+            document.getElementById('authError').style.display = 'none';
+        }
+
+        // Switch File Tab
+        function switchFileTab(tab) {
+            activeTab = tab;
+            const uploadBtn = document.getElementById('tabUploadBtn');
+            const linkBtn = document.getElementById('tabLinkBtn');
+            const uploadBox = document.getElementById('fileUploadContainer');
+            const linkBox = document.getElementById('fileLinkContainer');
+
+            if (tab === 'upload') {
+                uploadBtn.classList.add('active');
+                linkBtn.classList.remove('active');
+                uploadBox.style.display = 'block';
+                linkBox.style.display = 'none';
+            } else {
+                linkBtn.classList.add('active');
+                uploadBtn.classList.remove('active');
+                uploadBox.style.display = 'none';
+                linkBox.style.display = 'block';
+            }
+        }
+
+        // Handle File Selection (convert to Base64 data URL for instant standalone downloads)
+        function handleFileSelect(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            // Check file size (25MB limit)
+            if (file.size > 25 * 1024 * 1024) {
+                alert('Tệp có dung lượng quá lớn (hơn 25MB). Vui lòng dùng tab "Link Drive / Tải ngoài" để dán liên kết tải.');
+                e.target.value = '';
+                return;
+            }
+
+            currentFileName = file.name;
+            currentFileSize = (file.size / (1024 * 1024)).toFixed(2) + ' MB';
+
+            // Auto detect format tag
+            const ext = file.name.split('.').pop().toUpperCase();
+            const formatSelect = document.getElementById('docFormat');
+            if (['XLSX', 'XLS'].includes(ext)) formatSelect.value = 'XLSX';
+            else if (['DOCX', 'DOC'].includes(ext)) formatSelect.value = 'DOCX';
+            else if (['PDF'].includes(ext)) formatSelect.value = 'PDF';
+            else if (['PPTX', 'PPT'].includes(ext)) formatSelect.value = 'PPTX';
+            else if (['ZIP', 'RAR'].includes(ext)) formatSelect.value = 'ZIP';
+
+            // Read file
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                currentFileBase64 = event.target.result;
+                document.getElementById('dropzoneBox').style.display = 'none';
+                document.getElementById('selectedFileInfo').style.display = 'flex';
+                document.getElementById('selectedFileName').innerHTML = `<i class="fa fa-file" style="margin-right:6px;"></i> <strong>${file.name}</strong> (${currentFileSize})`;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function clearSelectedFile() {
+            currentFileBase64 = null;
+            currentFileName = null;
+            currentFileSize = null;
+            document.getElementById('docFileInput').value = '';
+            document.getElementById('dropzoneBox').style.display = 'block';
+            document.getElementById('selectedFileInfo').style.display = 'none';
+        }
+
+        // Save Document (Create or Update)
+        function handleSaveDoc(e) {
+            e.preventDefault();
+
+            const editId = document.getElementById('editDocId').value;
+            const title = document.getElementById('docTitle').value.trim();
+            const format = document.getElementById('docFormat').value;
+            const desc = document.getElementById('docDesc').value.trim();
+
+            let fileUrl = '#';
+            let fileName = currentFileName || '';
+
+            if (activeTab === 'upload') {
+                if (currentFileBase64) {
+                    fileUrl = currentFileBase64;
+                } else if (!editId) {
+                    alert('Vui lòng chọn 1 tệp tài liệu để tải lên!');
+                    return;
+                }
+            } else {
+                const link = document.getElementById('docFileUrl').value.trim();
+                if (!link && !editId) {
+                    alert('Vui lòng nhập đường dẫn tải tệp (link Google Drive, Onedrive...)!');
+                    return;
+                }
+                fileUrl = link || '#';
+                fileName = title;
+            }
+
+            const docData = {
+                title,
+                format,
+                desc,
+                fileUrl,
+                fileName,
+                fileSize: currentFileSize || '1 MB',
+                status: 'published'
+            };
+
+            if (editId) {
+                docData.id = editId;
+                // Preserve original fileUrl if not re-uploaded
+                const existing = INVAMAX_TOOLKIT_STORE.getAll().find(t => t.id === editId);
+                if (existing && fileUrl === '#') {
+                    docData.fileUrl = existing.fileUrl;
+                    docData.fileName = existing.fileName;
+                }
+            }
+
+            INVAMAX_TOOLKIT_STORE.saveItem(docData);
+            showToast(editId ? 'Đã cập nhật tài liệu thành công!' : 'Đã đăng tài liệu mới lên website!', 'success');
+            
+            cancelEdit();
+            renderDashboard();
+        }
+
+        // Edit Document
+        function startEditDoc(id) {
+            const doc = INVAMAX_TOOLKIT_STORE.getAll().find(t => t.id === id);
+            if (!doc) return;
+
+            document.getElementById('editDocId').value = doc.id;
+            document.getElementById('docTitle').value = doc.title;
+            document.getElementById('docFormat').value = doc.format || 'PDF';
+            document.getElementById('docDesc').value = doc.desc || '';
+
+            if (doc.fileUrl && doc.fileUrl.startsWith('http')) {
+                switchFileTab('link');
+                document.getElementById('docFileUrl').value = doc.fileUrl;
+            } else {
+                switchFileTab('upload');
+            }
+
+            document.getElementById('formPanelTitle').innerHTML = '<i class="fa fa-pen-to-square" style="color: var(--admin-orange);"></i> Chỉnh sửa tài liệu';
+            document.getElementById('btnSubmitDoc').innerHTML = '<i class="fa fa-check"></i> Cập nhật thay đổi';
+            document.getElementById('btnCancelEdit').style.display = 'block';
+
+            // Scroll to form
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function cancelEdit() {
+            document.getElementById('editDocId').value = '';
+            document.getElementById('docForm').reset();
+            clearSelectedFile();
+            document.getElementById('formPanelTitle').innerHTML = '<i class="fa fa-circle-plus" style="color: var(--admin-orange);"></i> Thêm tài liệu mới';
+            document.getElementById('btnSubmitDoc').innerHTML = '<i class="fa fa-floppy-disk"></i> Lưu &amp; Đăng lên Website';
+            document.getElementById('btnCancelEdit').style.display = 'none';
+        }
+
+        // Delete Document
+        function deleteDoc(id, title) {
+            if (confirm(`Bạn có chắc chắn muốn xóa tài liệu "${title}" khỏi website?`)) {
+                INVAMAX_TOOLKIT_STORE.deleteItem(id);
+                showToast(`Đã xóa tài liệu "${title}"!`, 'error');
+                renderDashboard();
+            }
+        }
+
+        // Render Dashboard Stats & List
+        function renderDashboard() {
+            const docs = INVAMAX_TOOLKIT_STORE.getAll();
+
+            // Stats
+            document.getElementById('statTotalDocs').innerText = docs.length;
+            const xlsxCount = docs.filter(d => (d.format || '').toUpperCase() === 'XLSX').length;
+            document.getElementById('statXlsxDocs').innerText = xlsxCount;
+            document.getElementById('statOtherDocs').innerText = docs.length - xlsxCount;
+            const totalDl = docs.reduce((sum, d) => sum + (d.downloads || 0), 0);
+            document.getElementById('statTotalDownloads').innerText = totalDl;
+
+            // List Render
+            const container = document.getElementById('docsListContainer');
+            if (docs.length === 0) {
+                container.innerHTML = `
+                    <div class="doc-list-empty">
+                        <i class="fa fa-folder-open"></i>
+                        <p>Chưa có tài liệu nào. Hãy điền form bên trái để đăng tài liệu đầu tiên!</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = docs.map(doc => {
+                const fmt = (doc.format || 'PDF').toUpperCase();
+                let badgeClass = 'fmt-pdf';
+                if (['XLSX', 'XLS', 'EXCEL'].includes(fmt)) badgeClass = 'fmt-xlsx';
+                else if (['DOCX', 'DOC', 'WORD'].includes(fmt)) badgeClass = 'fmt-docx';
+
+                const downloadAttr = doc.fileUrl && doc.fileUrl.startsWith('data:') ? `download="${doc.fileName || 'tai-lieu'}"` : `target="_blank" rel="noopener"`;
+
+                return `
+                    <div class="doc-item-row">
+                        <div class="doc-main-info">
+                            <div class="doc-preview-thumb">
+                                <div class="doc-line title"></div>
+                                <div class="doc-line w-80"></div>
+                                <div class="doc-line w-60"></div>
+                            </div>
+                            <div class="doc-texts">
+                                <h4>
+                                    <span class="tool-format-badge ${badgeClass}" style="margin-right: 6px;">${fmt}</span>
+                                    ${escapeHTML(doc.title)}
+                                </h4>
+                                <p>${escapeHTML(doc.desc || '')}</p>
+                                <div class="doc-meta-tags">
+                                    <span><i class="fa fa-calendar"></i> ${doc.createdAt || 'Mới'}</span>
+                                    <span><i class="fa fa-download"></i> ${doc.downloads || 0} lượt tải</span>
+                                    ${doc.fileName ? `<span><i class="fa fa-file"></i> ${escapeHTML(doc.fileName)}</span>` : ''}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="doc-row-actions">
+                            <a href="${doc.fileUrl || '#'}" ${downloadAttr} class="action-icon-btn" title="Tải thử file" onclick="INVAMAX_TOOLKIT_STORE.handleDownload('${doc.id}', event)">
+                                <i class="fa fa-download"></i>
+                            </a>
+                            <button type="button" class="action-icon-btn" title="Chỉnh sửa" onclick="startEditDoc('${doc.id}')">
+                                <i class="fa fa-pen"></i>
+                            </button>
+                            <button type="button" class="action-icon-btn btn-delete" title="Xóa tài liệu" onclick="deleteDoc('${doc.id}', '${escapeHTML(doc.title)}')">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Export JSON Backup
+        function exportJSONBackup() {
+            const docs = INVAMAX_TOOLKIT_STORE.getAll();
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(docs, null, 2));
+            const dlAnchor = document.createElement('a');
+            dlAnchor.setAttribute("href", dataStr);
+            dlAnchor.setAttribute("download", `invamax-toolkits-backup-${new Date().toISOString().split('T')[0]}.json`);
+            dlAnchor.click();
+            showToast('Đã xuất file sao lưu JSON!', 'success');
+        }
+
+        // Reset to Default
+        function resetDefaultDocs() {
+            if (confirm('Bạn có chắc chắn muốn khôi phục lại 4 tài liệu mẫu ban đầu?')) {
+                INVAMAX_TOOLKIT_STORE.resetToDefault();
+                showToast('Đã khôi phục dữ liệu gốc!', 'success');
+                renderDashboard();
+            }
+        }
+
+        // Toast Helper
+        function showToast(msg, type = 'success') {
+            const toast = document.getElementById('adminToast');
+            const text = document.getElementById('toastText');
+            toast.className = `toast-msg show ${type}`;
+            text.innerText = msg;
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        function escapeHTML(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
+        // Init
+        document.addEventListener('DOMContentLoaded', checkAuth);
+    </script>
+</body>
+</html>
