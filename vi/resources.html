@@ -532,7 +532,16 @@
             </div>
             <div class="doc-preview-modal-body">
                 <div class="doc-preview-banner">
-                    <img id="previewModalThumb" src="../assets/images/resources/topic-mgmt.jpg" alt="Thumbnail">
+                    <div class="doc-preview-thumb-box" id="previewModalThumbContainer" style="display: flex; align-items: center; justify-content: center;">
+                        <img id="previewModalThumb" src="" alt="Thumbnail" style="display: none; width: 84px; height: 104px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+                        <div id="previewModalDefaultIcon" class="tool-preview-box" style="display: none; width: 84px; height: 104px; padding: 12px 10px;">
+                            <div class="doc-line title"></div>
+                            <div class="doc-line w-80"></div>
+                            <div class="doc-line w-60"></div>
+                            <div class="doc-line w-90"></div>
+                            <div class="doc-line w-50"></div>
+                        </div>
+                    </div>
                     <div class="doc-preview-info">
                         <h4 id="previewModalDocName">Tên tài liệu</h4>
                         <p id="previewModalDesc">Mô tả chi tiết tài liệu...</p>
@@ -544,16 +553,30 @@
                     </div>
                 </div>
 
-                <!-- Iframe or PDF preview container -->
+                <!-- Iframe or PDF preview container with Toolbar -->
                 <div id="previewIframeContainer" class="doc-preview-iframe-wrap" style="display: none;">
+                    <div class="doc-preview-toolbar">
+                        <div class="preview-toolbar-left">
+                            <span class="preview-indicator-dot"></span>
+                            <span id="previewToolbarDocName" style="font-size: 13px; font-weight: 700; color: #1e293b;">Bản xem trực tiếp tài liệu</span>
+                        </div>
+                        <div class="preview-toolbar-right" style="display: flex; gap: 8px;">
+                            <a id="previewOpenTabBtn" href="#" target="_blank" rel="noopener" class="preview-tool-btn" title="Mở sang tab mới toàn màn hình">
+                                <i data-lucide="external-link"></i> Toàn màn hình
+                            </a>
+                            <a id="previewDirectDownloadBtn" href="#" class="preview-tool-btn primary" title="Tải tệp này về máy">
+                                <i data-lucide="download"></i> Tải về máy
+                            </a>
+                        </div>
+                    </div>
                     <iframe id="previewIframe" src="about:blank" title="Xem trước nội dung"></iframe>
                 </div>
 
                 <!-- Fallback notice for office/binary files -->
-                <div id="previewOfficeNotice" style="background: #f8fafc; border: 1.5px dashed #cbd5e1; border-radius: 12px; padding: 24px; text-align: center; margin-top: 10px;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 10px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
-                    <h4 style="font-size: 15px; font-weight: 700; color: #1e293b; margin-bottom: 6px;">Bản xem trước trực quan</h4>
-                    <p style="font-size: 13px; color: #64748b; max-width: 480px; margin: 0 auto 16px;">Tài liệu này ở định dạng văn bản chuẩn của INVAMAX. Bạn có thể tải ngay tệp gốc về máy để sử dụng đầy đủ công thức và nội dung biểu mẫu.</p>
+                <div id="previewOfficeNotice" style="background: #f8fafc; border: 1.5px dashed #cbd5e1; border-radius: 12px; padding: 28px 20px; text-align: center; margin-top: 10px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 12px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+                    <h4 style="font-size: 16px; font-weight: 700; color: #1e293b; margin-bottom: 6px;">Bản xem trước trực quan</h4>
+                    <p style="font-size: 13.5px; color: #64748b; max-width: 500px; margin: 0 auto 16px; line-height: 1.5;">Tài liệu này ở định dạng chuẩn của INVAMAX. Bạn có thể tải ngay tệp gốc về máy để sử dụng trọn vẹn mọi công thức và nội dung biểu mẫu.</p>
                 </div>
             </div>
             <div class="doc-preview-modal-footer">
@@ -565,10 +588,19 @@
         </div>
     </div>
 
-    <script src="../assets/js/toolkit-store.js?v=4"></script>
+    <!-- PDF.js Vendor Script for Native Browser PDF Rendering and Thumbnails -->
+    <script src="../assets/js/vendor/pdf.min.js"></script>
+    <script>
+        if (window.pdfjsLib) {
+            pdfjsLib.GlobalWorkerOptions.workerSrc = '../assets/js/vendor/pdf.worker.min.js';
+        }
+    </script>
+    <script src="../assets/js/toolkit-store.js?v=6"></script>
     <script src="../assets/js/main.js"></script>
     <script>
         lucide.createIcons({ attrs: { "stroke-width": 2.2 } });
+
+        let activePreviewBlobUrl = null;
 
         // Preview Modal Controls
         async function openDocPreviewModal(item) {
@@ -578,17 +610,19 @@
             document.getElementById('previewModalDocName').innerText = item.title;
             document.getElementById('previewModalDesc').innerText = item.desc || '';
             
-            // Thumbnail
+            // Thumbnail: Chỉ hiển thị ảnh thực tế nếu có, tuyệt đối không dùng ảnh mẫu ngẫu nhiên
             const thumbImg = document.getElementById('previewModalThumb');
-            let thumbSrc = item.thumbnail || '';
+            const defaultIcon = document.getElementById('previewModalDefaultIcon');
             const fmt = (item.format || 'PDF').toUpperCase();
-            if (!thumbSrc) {
-                if (['XLSX', 'XLS'].includes(fmt)) thumbSrc = '../assets/images/resources/topic-mgmt.jpg';
-                else if (['DOCX', 'DOC'].includes(fmt)) thumbSrc = '../assets/images/resources/topic-lean.jpg';
-                else if (['PDF'].includes(fmt)) thumbSrc = '../assets/images/resources/topic-cost.jpg';
-                else thumbSrc = '../assets/images/resources/art-oee.jpg';
+
+            if (item.thumbnail && item.thumbnail.trim() !== '') {
+                thumbImg.src = item.thumbnail;
+                thumbImg.style.display = 'block';
+                defaultIcon.style.display = 'none';
+            } else {
+                thumbImg.style.display = 'none';
+                defaultIcon.style.display = 'flex';
             }
-            thumbImg.src = thumbSrc;
 
             // Format badge
             const fmtBadge = document.getElementById('previewModalFormat');
@@ -600,9 +634,21 @@
 
             // Download Button Setup
             const dlBtn = document.getElementById('previewModalDownloadBtn');
+            const directDlBtn = document.getElementById('previewDirectDownloadBtn');
+            const openTabBtn = document.getElementById('previewOpenTabBtn');
+            const toolbarDocName = document.getElementById('previewToolbarDocName');
+
+            toolbarDocName.innerText = item.fileName || item.title;
+
             let downloadUrl = item.fileUrl;
             if (downloadUrl && downloadUrl.startsWith('idb:')) {
                 downloadUrl = await INVAMAX_TOOLKIT_STORE.getFileFromDB(item.id);
+            }
+
+            // Dọn dẹp Blob URL trước đó nếu có
+            if (activePreviewBlobUrl) {
+                URL.revokeObjectURL(activePreviewBlobUrl);
+                activePreviewBlobUrl = null;
             }
 
             if (downloadUrl && downloadUrl !== '#') {
@@ -624,17 +670,51 @@
             const iframe = document.getElementById('previewIframe');
             const officeNotice = document.getElementById('previewOfficeNotice');
 
-            if (downloadUrl && (downloadUrl.startsWith('data:application/pdf') || (downloadUrl.startsWith('http') && !downloadUrl.includes('drive.google.com/file/d/')))) {
-                iframe.src = downloadUrl;
-                iframeWrap.style.display = 'block';
-                officeNotice.style.display = 'none';
+            const isPdf = fmt === 'PDF' || (downloadUrl && downloadUrl.startsWith('data:application/pdf')) || (item.fileName && item.fileName.toLowerCase().endsWith('.pdf'));
+
+            if (downloadUrl && isPdf && downloadUrl.startsWith('data:')) {
+                // Chuyển DataURL Base64 lớn thành Blob URL để trình duyệt hiển thị PDF mượt mà không bị trắng màn hình
+                const blobUrl = INVAMAX_TOOLKIT_STORE.base64ToBlobUrl(downloadUrl, 'application/pdf');
+                if (blobUrl) {
+                    activePreviewBlobUrl = blobUrl;
+                    iframe.src = blobUrl + '#view=FitH&toolbar=1';
+                    iframeWrap.style.display = 'block';
+                    officeNotice.style.display = 'none';
+
+                    openTabBtn.href = blobUrl;
+                    openTabBtn.style.display = 'inline-flex';
+
+                    directDlBtn.href = blobUrl;
+                    directDlBtn.setAttribute('download', item.fileName || (item.title + '.pdf'));
+                    directDlBtn.style.display = 'inline-flex';
+                } else {
+                    iframe.src = 'about:blank';
+                    iframeWrap.style.display = 'none';
+                    officeNotice.style.display = 'block';
+                }
             } else if (downloadUrl && downloadUrl.includes('drive.google.com')) {
-                // Convert Google Drive view link if possible
+                // Link Google Drive
                 let embedUrl = downloadUrl.replace(/\/view(\?usp=sharing)?$/, '/preview');
                 iframe.src = embedUrl;
                 iframeWrap.style.display = 'block';
                 officeNotice.style.display = 'none';
+
+                openTabBtn.href = downloadUrl;
+                openTabBtn.style.display = 'inline-flex';
+                directDlBtn.href = downloadUrl;
+                directDlBtn.style.display = 'inline-flex';
+            } else if (downloadUrl && downloadUrl.startsWith('http')) {
+                // Link web trực tiếp
+                iframe.src = downloadUrl;
+                iframeWrap.style.display = 'block';
+                officeNotice.style.display = 'none';
+
+                openTabBtn.href = downloadUrl;
+                openTabBtn.style.display = 'inline-flex';
+                directDlBtn.href = downloadUrl;
+                directDlBtn.style.display = 'inline-flex';
             } else {
+                // File office nhị phân nội bộ (xlsx, docx)
                 iframe.src = 'about:blank';
                 iframeWrap.style.display = 'none';
                 officeNotice.style.display = 'block';
@@ -656,6 +736,10 @@
                 modal.classList.remove('show');
                 const iframe = document.getElementById('previewIframe');
                 if (iframe) iframe.src = 'about:blank';
+                if (activePreviewBlobUrl) {
+                    URL.revokeObjectURL(activePreviewBlobUrl);
+                    activePreviewBlobUrl = null;
+                }
                 document.body.style.overflow = '';
             }
         }

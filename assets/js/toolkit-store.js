@@ -149,10 +149,10 @@ const INVAMAX_TOOLKIT_STORE = (function () {
                 return DEFAULT_TOOLKITS;
             }
 
-            // Dọn sạch các thumbnail tự gán bậy trước đó từ các phiên bản trước
+            // Dọn sạch các thumbnail giả lập topic- từ phiên bản trước
             let needsUpdate = false;
             data = data.map(item => {
-                if (item.thumbnail && item.thumbnail.includes('../assets/images/resources/topic-')) {
+                if (item.thumbnail && (item.thumbnail.includes('../assets/images/resources/topic-') || item.thumbnail.includes('assets/images/resources/topic-') || item.thumbnail.includes('topic-mgmt') || item.thumbnail.includes('topic-cost') || item.thumbnail.includes('topic-lean'))) {
                     needsUpdate = true;
                     const copy = { ...item };
                     delete copy.thumbnail;
@@ -169,6 +169,118 @@ const INVAMAX_TOOLKIT_STORE = (function () {
         } catch (e) {
             console.warn('[ToolkitStore] Không thể đọc từ localStorage, dùng mặc định:', e);
             return DEFAULT_TOOLKITS;
+        }
+    }
+
+    // Chuyển đổi Data URL Base64 thành Blob URL (blob:http...) để iframe hiển thị PDF mượt mà không bị chặn
+    function base64ToBlobUrl(base64Data, contentType = 'application/pdf') {
+        if (!base64Data) return null;
+        if (base64Data.startsWith('blob:') || base64Data.startsWith('http://') || base64Data.startsWith('https://')) {
+            return base64Data;
+        }
+        try {
+            const parts = base64Data.split(';base64,');
+            const base64Str = parts.length > 1 ? parts[1] : parts[0];
+            const binaryStr = window.atob(base64Str);
+            const len = binaryStr.length;
+            const bytes = new Uint8Array(len);
+            for (let i = 0; i < len; i++) {
+                bytes[i] = binaryStr.charCodeAt(i);
+            }
+            const blob = new Blob([bytes], { type: contentType });
+            return URL.createObjectURL(blob);
+        } catch (err) {
+            console.error('[ToolkitStore] Lỗi khi tạo Blob URL từ Base64:', err);
+            return null;
+        }
+    }
+
+    // Trích xuất ảnh trang 1 của file PDF thực tế làm Thumbnail bằng PDF.js
+    async function generatePdfThumbnail(pdfSource, targetWidth = 260) {
+        if (!window.pdfjsLib) {
+            console.warn('[ToolkitStore] PDF.js chưa được nạp, bỏ qua trích xuất thumbnail.');
+            return null;
+        }
+        try {
+            let loadingTask;
+            if (typeof pdfSource === 'string' && pdfSource.startsWith('data:')) {
+                const parts = pdfSource.split(';base64,');
+                const base64Str = parts.length > 1 ? parts[1] : parts[0];
+                const binaryStr = window.atob(base64Str);
+                const len = binaryStr.length;
+                const bytes = new Uint8Array(len);
+                for (let i = 0; i < len; i++) {
+                    bytes[i] = binaryStr.charCodeAt(i);
+                }
+                loadingTask = pdfjsLib.getDocument({ data: bytes });
+            } else {
+                loadingTask = pdfjsLib.getDocument(pdfSource);
+            }
+
+            const pdf = await loadingTask.promise;
+            const page = await pdf.getPage(1);
+            const unscaledViewport = page.getViewport({ scale: 1 });
+            const scale = targetWidth / unscaledViewport.width;
+            const viewport = page.getViewport({ scale: scale });
+
+            const canvas = document.createElement('canvas');
+            canvas.width = Math.floor(viewport.width);
+            canvas.height = Math.floor(viewport.height);
+            const ctx = canvas.getContext('2d');
+
+            await page.render({
+                canvasContext: ctx,
+                viewport: viewport
+            }).promise;
+
+            const thumbData = canvas.toDataURL('image/jpeg', 0.85);
+            return thumbData;
+        } catch (err) {
+            console.warn('[ToolkitStore] Lỗi trích xuất thumbnail PDF trang 1:', err);
+            return null;
+        }
+    }
+
+    // Tự động kiểm tra và sinh thumbnail trang 1 cho các tài liệu PDF thực tế chưa có thumbnail
+    async function autoGenerateMissingThumbnails() {
+        if (!window.pdfjsLib) return;
+        try {
+            const items = getAll();
+            let hasChanged = false;
+
+            for (let i = 0; i < items.length; i++) {
+                const item = items[i];
+                const isPdf = (item.format || '').toUpperCase() === 'PDF' || (item.fileName && item.fileName.toLowerCase().endsWith('.pdf'));
+                
+                // Nếu là PDF và chưa có thumbnail thực tế
+                if (isPdf && !item.thumbnail) {
+                    let fileData = item.fileUrl;
+                    if (fileData && fileData.startsWith('idb:')) {
+                        fileData = await getFileFromDB(item.id);
+                    }
+                    if (fileData && (fileData.startsWith('data:application/pdf') || fileData.startsWith('data:'))) {
+                        const thumb = await generatePdfThumbnail(fileData);
+                        if (thumb) {
+                            item.thumbnail = thumb;
+                            hasChanged = true;
+                        }
+                    }
+                }
+            }
+
+            if (hasChanged) {
+                saveAll(items);
+                // Cập nhật lại giao diện trên trang resources nếu đang mở
+                if (typeof document !== 'undefined' && document.querySelector('#toolkit .res-grid-4')) {
+                    initResourcesPage();
+                }
+                // Cập nhật lại giao diện trên trang admin nếu đang mở
+                if (typeof renderDashboard === 'function') {
+                    renderDashboard();
+                }
+            }
+        } catch (e) {
+            console.warn('[ToolkitStore] autoGenerateMissingThumbnails error:', e);
         }
     }
 
@@ -470,7 +582,10 @@ const INVAMAX_TOOLKIT_STORE = (function () {
         getFileFromDB,
         getFileDownloadUrl,
         hasRealFile,
-        initResourcesPage
+        initResourcesPage,
+        base64ToBlobUrl,
+        generatePdfThumbnail,
+        autoGenerateMissingThumbnails
     };
 })();
 
@@ -480,5 +595,11 @@ if (typeof document !== 'undefined') {
         if (document.querySelector('#toolkit .res-grid-4')) {
             INVAMAX_TOOLKIT_STORE.initResourcesPage();
         }
+        // Tự động quét và sinh thumbnail thực tế nếu có tài liệu PDF chưa có ảnh bìa
+        setTimeout(() => {
+            if (typeof INVAMAX_TOOLKIT_STORE.autoGenerateMissingThumbnails === 'function') {
+                INVAMAX_TOOLKIT_STORE.autoGenerateMissingThumbnails();
+            }
+        }, 300);
     });
 }

@@ -906,6 +906,29 @@
                             </div>
                         </div>
 
+                        <!-- Thumbnail / Real Document Cover -->
+                        <div class="form-group">
+                            <label class="form-label" style="display: flex; justify-content: space-between; align-items: center;">
+                                <span>Ảnh bìa / Thumbnail thực tế</span>
+                                <small style="font-weight: normal; color: #059669;" id="thumbAutoNotice">Tự động tạo nếu là file PDF</small>
+                            </label>
+                            <div id="thumbPreviewBox" style="display: none; align-items: center; gap: 12px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
+                                <img id="thumbPreviewImg" src="" alt="Thumbnail preview" style="width: 50px; height: 64px; object-fit: cover; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+                                <div style="flex: 1; font-size: 12px;">
+                                    <strong style="color: #059669; display: block;">✓ Đã có ảnh bìa thực tế</strong>
+                                    <span id="thumbPreviewNote" style="color: #64748b;">Trích xuất từ trang 1 của file</span>
+                                </div>
+                                <button type="button" onclick="clearSelectedThumbnail()" style="background: none; border: none; color: #ef4444; font-size: 12px; font-weight: 600; cursor: pointer;">Xóa ảnh</button>
+                            </div>
+                            <div style="display: flex; gap: 8px;">
+                                <label for="docThumbInput" class="btn-action" style="flex: 1; text-align: center; cursor: pointer; background: #ffffff; border: 1px dashed #cbd5e1; padding: 8px; border-radius: 6px; font-size: 12px; color: #475569; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                                    Chọn ảnh bìa từ máy tính (nếu muốn)
+                                </label>
+                                <input type="file" id="docThumbInput" accept="image/*" style="display: none;" onchange="handleThumbnailSelect(event)">
+                            </div>
+                        </div>
+
                         <!-- Submit Button -->
                         <button type="submit" class="btn-submit" id="btnSubmitDoc">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
@@ -1020,6 +1043,29 @@
                             <span id="modalExistingFileText">Hiện chưa có file thực tế được đính kèm.</span>
                         </div>
                     </div>
+
+                    <!-- Modal Thumbnail / Real Document Cover -->
+                    <div class="form-group" style="margin-top: 14px;">
+                        <label class="form-label" style="display: flex; justify-content: space-between; align-items: center;">
+                            <span>Ảnh bìa / Thumbnail thực tế</span>
+                            <small style="font-weight: normal; color: #059669;" id="modalThumbAutoNotice">Tự động trích xuất nếu tải file PDF</small>
+                        </label>
+                        <div id="modalThumbPreviewBox" style="display: none; align-items: center; gap: 12px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
+                            <img id="modalThumbPreviewImg" src="" alt="Thumbnail preview" style="width: 50px; height: 64px; object-fit: cover; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+                            <div style="flex: 1; font-size: 12px;">
+                                <strong style="color: #059669; display: block;">✓ Đã có ảnh bìa thực tế</strong>
+                                <span id="modalThumbPreviewNote" style="color: #64748b;">Trích xuất từ trang 1 của file</span>
+                            </div>
+                            <button type="button" onclick="clearModalSelectedThumbnail()" style="background: none; border: none; color: #ef4444; font-size: 12px; font-weight: 600; cursor: pointer;">Xóa ảnh</button>
+                        </div>
+                        <div style="display: flex; gap: 8px;">
+                            <label for="modalDocThumbInput" class="btn-action" style="flex: 1; text-align: center; cursor: pointer; background: #ffffff; border: 1px dashed #cbd5e1; padding: 8px; border-radius: 6px; font-size: 12px; color: #475569; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                                Chọn ảnh bìa từ máy tính (nếu muốn)
+                            </label>
+                            <input type="file" id="modalDocThumbInput" accept="image/*" style="display: none;" onchange="handleModalThumbnailSelect(event)">
+                        </div>
+                    </div>
                 </div>
                 <div class="edit-modal-footer">
                     <button type="button" class="btn-action" onclick="closeQuickEditModal()" style="padding: 10px 16px;">Hủy bỏ</button>
@@ -1038,13 +1084,20 @@
         <span id="toastText">Thao tác thành công!</span>
     </div>
 
-    <!-- STORE & CONTROLLER SCRIPT -->
-    <script src="assets/js/toolkit-store.js"></script>
+    <!-- STORE & CONTROLLER SCRIPT WITH PDF.JS -->
+    <script src="assets/js/vendor/pdf.min.js"></script>
+    <script>
+        if (window.pdfjsLib) {
+            pdfjsLib.GlobalWorkerOptions.workerSrc = 'assets/js/vendor/pdf.worker.min.js';
+        }
+    </script>
+    <script src="assets/js/toolkit-store.js?v=6"></script>
     <script>
         // State variables
         let currentFileBase64 = null;
         let currentFileName = null;
         let currentFileSize = null;
+        let currentThumbnail = null;
         let activeTab = 'upload'; // 'upload' | 'link'
         let currentEditingId = null;
 
@@ -1052,6 +1105,7 @@
         let modalFileBase64 = null;
         let modalFileName = null;
         let modalFileSize = null;
+        let modalThumbnail = null;
         let modalActiveTab = 'upload';
         let directUploadTargetId = null;
 
@@ -1064,6 +1118,10 @@
             if (isAuth === 'true') {
                 document.getElementById('authOverlay').style.display = 'none';
                 renderDashboard();
+                // Tự động quét và tạo thumbnail trang 1 cho các file PDF đã upload
+                if (typeof INVAMAX_TOOLKIT_STORE.autoGenerateMissingThumbnails === 'function') {
+                    INVAMAX_TOOLKIT_STORE.autoGenerateMissingThumbnails();
+                }
             } else {
                 document.getElementById('authOverlay').style.display = 'flex';
             }
@@ -1079,6 +1137,9 @@
                 document.getElementById('authOverlay').style.display = 'none';
                 showToast('Đăng nhập quản trị thành công!', 'success');
                 renderDashboard();
+                if (typeof INVAMAX_TOOLKIT_STORE.autoGenerateMissingThumbnails === 'function') {
+                    INVAMAX_TOOLKIT_STORE.autoGenerateMissingThumbnails();
+                }
             } else {
                 document.getElementById('authError').style.display = 'block';
             }
@@ -1112,7 +1173,69 @@
             }
         }
 
-        // Handle File Selection (convert to Base64 data URL)
+        // Thumbnail Helpers (Left Form)
+        function handleThumbnailSelect(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(evt) {
+                currentThumbnail = evt.target.result;
+                displayThumbnailPreview(currentThumbnail, 'Đã chọn ảnh từ máy tính');
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function displayThumbnailPreview(src, note = 'Ảnh bìa thực tế') {
+            const box = document.getElementById('thumbPreviewBox');
+            const img = document.getElementById('thumbPreviewImg');
+            const noteEl = document.getElementById('thumbPreviewNote');
+            if (box && img) {
+                img.src = src;
+                if (noteEl) noteEl.innerText = note;
+                box.style.display = 'flex';
+            }
+        }
+
+        function clearSelectedThumbnail() {
+            currentThumbnail = null;
+            const box = document.getElementById('thumbPreviewBox');
+            const input = document.getElementById('docThumbInput');
+            if (box) box.style.display = 'none';
+            if (input) input.value = '';
+        }
+
+        // Thumbnail Helpers (Modal)
+        function handleModalThumbnailSelect(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(evt) {
+                modalThumbnail = evt.target.result;
+                displayModalThumbnailPreview(modalThumbnail, 'Đã chọn ảnh từ máy tính');
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function displayModalThumbnailPreview(src, note = 'Ảnh bìa thực tế') {
+            const box = document.getElementById('modalThumbPreviewBox');
+            const img = document.getElementById('modalThumbPreviewImg');
+            const noteEl = document.getElementById('modalThumbPreviewNote');
+            if (box && img) {
+                img.src = src;
+                if (noteEl) noteEl.innerText = note;
+                box.style.display = 'flex';
+            }
+        }
+
+        function clearModalSelectedThumbnail() {
+            modalThumbnail = null;
+            const box = document.getElementById('modalThumbPreviewBox');
+            const input = document.getElementById('modalDocThumbInput');
+            if (box) box.style.display = 'none';
+            if (input) input.value = '';
+        }
+
+        // Handle File Selection (convert to Base64 data URL & auto-extract PDF thumbnail)
         function handleFileSelect(e) {
             const file = e.target.files[0];
             if (!file) return;
@@ -1136,11 +1259,20 @@
             else if (['ZIP', 'RAR'].includes(ext)) formatSelect.value = 'ZIP';
 
             const reader = new FileReader();
-            reader.onload = function(event) {
+            reader.onload = async function(event) {
                 currentFileBase64 = event.target.result;
                 document.getElementById('dropzoneBox').style.display = 'none';
                 document.getElementById('selectedFileInfo').style.display = 'flex';
                 document.getElementById('selectedFileName').innerHTML = `<strong>${file.name}</strong> (${currentFileSize})`;
+
+                // Nếu là file PDF, tự động trích xuất trang 1 làm thumbnail thực tế
+                if (ext === 'PDF' && typeof INVAMAX_TOOLKIT_STORE.generatePdfThumbnail === 'function') {
+                    const thumb = await INVAMAX_TOOLKIT_STORE.generatePdfThumbnail(currentFileBase64);
+                    if (thumb) {
+                        currentThumbnail = thumb;
+                        displayThumbnailPreview(thumb, 'Đã tự động tạo từ trang 1 của file PDF');
+                    }
+                }
             };
             reader.readAsDataURL(file);
         }
@@ -1193,13 +1325,22 @@
                 status: 'published'
             };
 
+            if (currentThumbnail) {
+                docData.thumbnail = currentThumbnail;
+            }
+
             if (editId) {
                 docData.id = editId;
                 const existing = INVAMAX_TOOLKIT_STORE.getAll().find(t => t.id === editId);
-                if (existing && fileUrl === '#') {
-                    docData.fileUrl = existing.fileUrl;
-                    docData.fileName = existing.fileName;
-                    docData.fileSize = existing.fileSize;
+                if (existing) {
+                    if (fileUrl === '#') {
+                        docData.fileUrl = existing.fileUrl;
+                        docData.fileName = existing.fileName;
+                        docData.fileSize = existing.fileSize;
+                    }
+                    if (!currentThumbnail && existing.thumbnail) {
+                        docData.thumbnail = existing.thumbnail;
+                    }
                 }
             }
 
@@ -1235,7 +1376,7 @@
             }
         }
 
-        // Handle Modal File Selection (Base64)
+        // Handle Modal File Selection (Base64 & auto PDF thumbnail)
         function handleModalFileSelect(e) {
             const file = e.target.files[0];
             if (!file) return;
@@ -1259,11 +1400,20 @@
             else if (['ZIP', 'RAR'].includes(ext)) formatSelect.value = 'ZIP';
 
             const reader = new FileReader();
-            reader.onload = function(event) {
+            reader.onload = async function(event) {
                 modalFileBase64 = event.target.result;
                 document.getElementById('modalDropzoneBox').style.display = 'none';
                 document.getElementById('modalSelectedFileInfo').style.display = 'flex';
                 document.getElementById('modalSelectedFileName').innerHTML = `<strong>${file.name}</strong> (${modalFileSize})`;
+
+                // Tự động tạo ảnh bìa nếu là PDF
+                if (ext === 'PDF' && typeof INVAMAX_TOOLKIT_STORE.generatePdfThumbnail === 'function') {
+                    const thumb = await INVAMAX_TOOLKIT_STORE.generatePdfThumbnail(modalFileBase64);
+                    if (thumb) {
+                        modalThumbnail = thumb;
+                        displayModalThumbnailPreview(thumb, 'Đã tự động tạo từ trang 1 của file PDF');
+                    }
+                }
             };
             reader.readAsDataURL(file);
         }
@@ -1283,11 +1433,18 @@
             if (!doc) return;
 
             clearModalSelectedFile();
+            clearModalSelectedThumbnail();
 
             document.getElementById('modalDocId').value = doc.id;
             document.getElementById('modalDocTitle').value = doc.title;
             document.getElementById('modalDocFormat').value = doc.format || 'PDF';
             document.getElementById('modalDocDesc').value = doc.desc || '';
+
+            // Thumbnail
+            if (doc.thumbnail && doc.thumbnail.trim() !== '') {
+                modalThumbnail = doc.thumbnail;
+                displayModalThumbnailPreview(doc.thumbnail, 'Ảnh bìa hiện tại');
+            }
 
             const isDataUrl = doc.fileUrl && doc.fileUrl.startsWith('data:');
             const isIdbUrl = doc.fileUrl && doc.fileUrl.startsWith('idb:');
@@ -1321,6 +1478,7 @@
         function closeQuickEditModal() {
             document.getElementById('quickEditModal').classList.remove('show');
             clearModalSelectedFile();
+            clearModalSelectedThumbnail();
         }
 
         // Handle Quick Edit Modal Save
@@ -1341,6 +1499,10 @@
                 format,
                 desc
             };
+
+            if (modalThumbnail !== null) {
+                updatedData.thumbnail = modalThumbnail;
+            }
 
             // Process uploaded file or external link
             if (modalActiveTab === 'upload' && modalFileBase64) {
@@ -1373,6 +1535,14 @@
             document.getElementById('docFormat').value = doc.format || 'PDF';
             document.getElementById('docDesc').value = doc.desc || '';
 
+            // Thumbnail
+            if (doc.thumbnail && doc.thumbnail.trim() !== '') {
+                currentThumbnail = doc.thumbnail;
+                displayThumbnailPreview(doc.thumbnail, 'Ảnh bìa hiện tại');
+            } else {
+                clearSelectedThumbnail();
+            }
+
             if (doc.fileUrl && doc.fileUrl.startsWith('http')) {
                 switchFileTab('link');
                 document.getElementById('docFileUrl').value = doc.fileUrl;
@@ -1401,6 +1571,7 @@
             document.getElementById('editDocId').value = '';
             document.getElementById('docForm').reset();
             clearSelectedFile();
+            clearSelectedThumbnail();
             document.getElementById('editModeBanner').classList.remove('show');
             document.getElementById('formPanelTitle').innerHTML = `
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--admin-orange)" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
@@ -1453,14 +1624,22 @@
                 const downloadAttr = doc.fileUrl && doc.fileUrl.startsWith('data:') ? `download="${doc.fileName || 'tai-lieu'}"` : `target="_blank" rel="noopener"`;
                 const isEditing = currentEditingId === doc.id;
 
-                const thumbSrc = doc.thumbnail || (['XLSX', 'XLS'].includes(fmt) ? 'assets/images/resources/topic-mgmt.jpg' : (['DOCX', 'DOC'].includes(fmt) ? 'assets/images/resources/topic-lean.jpg' : 'assets/images/resources/topic-cost.jpg'));
+                const hasRealThumb = !!(doc.thumbnail && doc.thumbnail.trim());
+                const thumbHTML = hasRealThumb ? `
+                    <div class="doc-preview-thumb" style="padding: 0; overflow: hidden; width: 56px; height: 68px; border-radius: 8px; border: 1px solid #cbd5e1; box-shadow: 0 2px 6px rgba(0,0,0,0.06);">
+                        <img src="${doc.thumbnail}" alt="${escapeHTML(doc.title)}" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                ` : `
+                    <div class="doc-preview-thumb" style="width: 56px; height: 68px; border-radius: 8px; background: #f8fafc; border: 1px solid #cbd5e1; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 4px; padding: 6px;">
+                        <span style="font-size: 11px; font-weight: 800; color: ${['XLSX', 'XLS'].includes(fmt) ? '#166534' : (['DOCX', 'DOC'].includes(fmt) ? '#1e40af' : '#991b1b')};">${fmt}</span>
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" style="color: #94a3b8;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    </div>
+                `;
 
                 return `
                     <div class="doc-item-row ${isEditing ? 'is-editing' : ''}">
                         <div class="doc-main-info">
-                            <div class="doc-preview-thumb" style="padding: 0; overflow: hidden; width: 56px; height: 68px; border-radius: 8px;">
-                                <img src="${thumbSrc}" alt="${escapeHTML(doc.title)}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'">
-                            </div>
+                            ${thumbHTML}
                             <div class="doc-texts">
                                 <h4>
                                     <span class="tool-format-badge ${badgeClass}">${fmt}</span>
