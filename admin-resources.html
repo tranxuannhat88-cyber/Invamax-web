@@ -543,6 +543,19 @@
             transform: translateY(-1px);
         }
 
+        /* Nút Upload tài liệu */
+        .btn-action-upload {
+            background: #eff6ff;
+            color: #1d4ed8;
+            border-color: #bfdbfe;
+        }
+        .btn-action-upload:hover {
+            background: #dbeafe;
+            border-color: #93c5fd;
+            color: #1e40af;
+            transform: translateY(-1px);
+        }
+
         /* Nút Chỉnh sửa */
         .btn-action-edit {
             background: #fff7ed;
@@ -964,10 +977,48 @@
                         <textarea id="modalDocDesc" class="form-textarea" required></textarea>
                     </div>
 
+                    <!-- File upload / Attachment for Modal -->
                     <div class="form-group">
-                        <label class="form-label" for="modalDocLink">Đường dẫn tải file (Link tải trực tiếp hoặc Drive)</label>
-                        <input type="text" id="modalDocLink" class="form-input" placeholder="https://drive.google.com/...">
-                        <small style="color: #64748b; font-size: 11.5px; margin-top: 4px; display: block;">Nếu tải file mới từ máy tính, bạn có thể dùng form bên trái.</small>
+                        <label class="form-label">Tệp đính kèm hoặc Đường dẫn tải</label>
+                        <div style="display: flex; gap: 8px; margin-bottom: 10px;">
+                            <button type="button" class="file-type-btn active" id="modalTabUploadBtn" onclick="switchModalFileTab('upload')">
+                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                                Tải file từ máy tính
+                            </button>
+                            <button type="button" class="file-type-btn" id="modalTabLinkBtn" onclick="switchModalFileTab('link')">
+                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                                Link Drive / Tải ngoài
+                            </button>
+                        </div>
+
+                        <!-- Modal File Upload Box -->
+                        <div id="modalFileUploadContainer">
+                            <div class="dropzone" id="modalDropzoneBox" style="padding: 16px;">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                                <p style="font-weight: 600; font-size: 13px;">Kéo thả tệp vào đây <span style="font-weight: normal; color: var(--admin-orange);">hoặc bấm để chọn</span></p>
+                                <span>Hỗ trợ .xlsx, .docx, .pdf, .zip (tối đa 25MB)</span>
+                                <input type="file" id="modalFileInput" accept=".xlsx,.xls,.docx,.doc,.pdf,.pptx,.ppt,.zip,.rar" onchange="handleModalFileSelect(event)">
+                            </div>
+                            <div id="modalSelectedFileInfo" class="file-selected-box" style="display: none;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                                    <span id="modalSelectedFileName">Tên file đã chọn</span>
+                                </div>
+                                <button type="button" onclick="clearModalSelectedFile()" style="background: none; border: none; color: #dc2626; cursor: pointer; font-size: 12px; font-weight: 600;">Gỡ bỏ</button>
+                            </div>
+                        </div>
+
+                        <!-- Modal Link Input Box -->
+                        <div id="modalFileLinkContainer" style="display: none;">
+                            <input type="text" id="modalDocLink" class="form-input" placeholder="https://drive.google.com/... hoặc link tải trực tiếp">
+                            <small style="color: #64748b; font-size: 11.5px; margin-top: 4px; display: block;">Dán link Google Drive hoặc OneDrive ở chế độ công khai.</small>
+                        </div>
+
+                        <!-- Existing File Notice -->
+                        <div id="modalExistingFileNotice" style="margin-top: 8px; font-size: 12px; color: #64748b; display: flex; align-items: center; gap: 6px;">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                            <span id="modalExistingFileText">Hiện chưa có file thực tế được đính kèm.</span>
+                        </div>
                     </div>
                 </div>
                 <div class="edit-modal-footer">
@@ -996,6 +1047,13 @@
         let currentFileSize = null;
         let activeTab = 'upload'; // 'upload' | 'link'
         let currentEditingId = null;
+
+        // Modal File State variables
+        let modalFileBase64 = null;
+        let modalFileName = null;
+        let modalFileSize = null;
+        let modalActiveTab = 'upload';
+        let directUploadTargetId = null;
 
         // Authentication Logic
         const ADMIN_PASS_KEY = 'invamax_admin_secret_v1';
@@ -1152,22 +1210,112 @@
             renderDashboard();
         }
 
+        // Switch Modal File Tab
+        function switchModalFileTab(tab) {
+            modalActiveTab = tab;
+            const uploadBtn = document.getElementById('modalTabUploadBtn');
+            const linkBtn = document.getElementById('modalTabLinkBtn');
+            const uploadBox = document.getElementById('modalFileUploadContainer');
+            const linkBox = document.getElementById('modalFileLinkContainer');
+
+            if (tab === 'upload') {
+                uploadBtn.classList.add('active');
+                linkBtn.classList.remove('active');
+                uploadBox.style.display = 'block';
+                linkBox.style.display = 'none';
+            } else {
+                linkBtn.classList.add('active');
+                uploadBtn.classList.remove('active');
+                uploadBox.style.display = 'none';
+                linkBox.style.display = 'block';
+            }
+        }
+
+        // Handle Modal File Selection (Base64)
+        function handleModalFileSelect(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            if (file.size > 25 * 1024 * 1024) {
+                alert('Tệp có dung lượng quá lớn (hơn 25MB). Vui lòng dùng tab "Link Drive / Tải ngoài" để dán liên kết tải.');
+                e.target.value = '';
+                return;
+            }
+
+            modalFileName = file.name;
+            modalFileSize = (file.size / (1024 * 1024)).toFixed(2) + ' MB';
+
+            // Auto detect format tag in modal
+            const ext = file.name.split('.').pop().toUpperCase();
+            const formatSelect = document.getElementById('modalDocFormat');
+            if (['XLSX', 'XLS'].includes(ext)) formatSelect.value = 'XLSX';
+            else if (['DOCX', 'DOC'].includes(ext)) formatSelect.value = 'DOCX';
+            else if (['PDF'].includes(ext)) formatSelect.value = 'PDF';
+            else if (['PPTX', 'PPT'].includes(ext)) formatSelect.value = 'PPTX';
+            else if (['ZIP', 'RAR'].includes(ext)) formatSelect.value = 'ZIP';
+
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                modalFileBase64 = event.target.result;
+                document.getElementById('modalDropzoneBox').style.display = 'none';
+                document.getElementById('modalSelectedFileInfo').style.display = 'flex';
+                document.getElementById('modalSelectedFileName').innerHTML = `<strong>${file.name}</strong> (${modalFileSize})`;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function clearModalSelectedFile() {
+            modalFileBase64 = null;
+            modalFileName = null;
+            modalFileSize = null;
+            document.getElementById('modalFileInput').value = '';
+            document.getElementById('modalDropzoneBox').style.display = 'block';
+            document.getElementById('modalSelectedFileInfo').style.display = 'none';
+        }
+
         // Open Quick Edit Modal
-        function openQuickEditModal(id) {
+        function openQuickEditModal(id, focusUpload = false) {
             const doc = INVAMAX_TOOLKIT_STORE.getAll().find(t => t.id === id);
             if (!doc) return;
+
+            clearModalSelectedFile();
 
             document.getElementById('modalDocId').value = doc.id;
             document.getElementById('modalDocTitle').value = doc.title;
             document.getElementById('modalDocFormat').value = doc.format || 'PDF';
             document.getElementById('modalDocDesc').value = doc.desc || '';
-            document.getElementById('modalDocLink').value = (doc.fileUrl && doc.fileUrl.startsWith('data:') ? '' : (doc.fileUrl || ''));
+
+            const isDataUrl = doc.fileUrl && doc.fileUrl.startsWith('data:');
+            const isWebLink = doc.fileUrl && (doc.fileUrl.startsWith('http://') || doc.fileUrl.startsWith('https://'));
+            const hasRealFile = isDataUrl || isWebLink;
+
+            const existingNotice = document.getElementById('modalExistingFileText');
+            if (hasRealFile) {
+                existingNotice.innerHTML = `<span style="color: #059669; font-weight: 600;">✓ Đã có file thực tế:</span> ${escapeHTML(doc.fileName || 'Tệp đính kèm')} (${doc.fileSize || 'Đã tải'})`;
+            } else {
+                existingNotice.innerHTML = `<span style="color: #d97706; font-weight: 600;">⚠ Chưa có file tải thực tế đính kèm.</span> Bạn hãy chọn file từ máy tính ở trên để đính kèm ngay!`;
+            }
+
+            if (isWebLink) {
+                switchModalFileTab('link');
+                document.getElementById('modalDocLink').value = doc.fileUrl;
+            } else {
+                switchModalFileTab('upload');
+                document.getElementById('modalDocLink').value = '';
+            }
 
             document.getElementById('quickEditModal').classList.add('show');
+
+            if (focusUpload) {
+                setTimeout(() => {
+                    document.getElementById('modalFileInput').click();
+                }, 150);
+            }
         }
 
         function closeQuickEditModal() {
             document.getElementById('quickEditModal').classList.remove('show');
+            clearModalSelectedFile();
         }
 
         // Handle Quick Edit Modal Save
@@ -1189,13 +1337,19 @@
                 desc
             };
 
-            if (link) {
+            // Process uploaded file or external link
+            if (modalActiveTab === 'upload' && modalFileBase64) {
+                updatedData.fileUrl = modalFileBase64;
+                updatedData.fileName = modalFileName || (title + '.' + format.toLowerCase());
+                updatedData.fileSize = modalFileSize || '1 MB';
+            } else if (modalActiveTab === 'link' && link) {
                 updatedData.fileUrl = link;
+                updatedData.fileName = title;
             }
 
             INVAMAX_TOOLKIT_STORE.saveItem(updatedData);
             closeQuickEditModal();
-            showToast(`Đã lưu thay đổi cho "${title}" thành công!`, 'success');
+            showToast(`Đã lưu tài liệu "${title}" thành công!`, 'success');
             renderDashboard();
         }
 
@@ -1314,11 +1468,15 @@
                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                                         ${doc.downloads || 0} lượt tải
                                     </span>
-                                    ${doc.fileName ? `
-                                    <span>
+                                    ${(doc.fileUrl && doc.fileUrl !== '#') ? `
+                                    <span style="color: #059669; font-weight: 600; background: #ecfdf5; padding: 2px 8px; border-radius: 4px; border: 1px solid #a7f3d0;">
                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                                        ${escapeHTML(doc.fileName)}
-                                    </span>` : ''}
+                                        ${escapeHTML(doc.fileName || 'Đã có file tải')} (${doc.fileSize || 'Đã tải'})
+                                    </span>` : `
+                                    <span style="color: #d97706; font-weight: 600; background: #fffbeb; padding: 2px 8px; border-radius: 4px; border: 1px solid #fde68a;">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                                        Chưa có file thực tế (Bấm "Upload file" để up)
+                                    </span>`}
                                 </div>
                             </div>
                         </div>
@@ -1330,6 +1488,12 @@
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                                 Tải thử
                             </a>
+
+                            <!-- Nút Upload tài liệu thực tế -->
+                            <button type="button" class="btn-action btn-action-upload" title="Tải tệp thực tế từ máy tính lên cho tài liệu này" onclick="openQuickEditModal('${doc.id}', true)">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                                Upload file
+                            </button>
 
                             <!-- Nút Chỉnh sửa (Mở popup hoặc form sửa) -->
                             <button type="button" class="btn-action btn-action-edit" title="Chỉnh sửa nội dung tài liệu này" onclick="openQuickEditModal('${doc.id}')">
