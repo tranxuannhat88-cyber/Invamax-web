@@ -148,8 +148,36 @@ const INVAMAX_TOOLKIT_STORE = (function () {
                 localStorage.setItem(STORAGE_KEY, JSON.stringify(DEFAULT_TOOLKITS));
                 return DEFAULT_TOOLKITS;
             }
-            const data = JSON.parse(raw);
-            return Array.isArray(data) && data.length > 0 ? data : DEFAULT_TOOLKITS;
+            let data = JSON.parse(raw);
+            if (!Array.isArray(data) || data.length === 0) {
+                return DEFAULT_TOOLKITS;
+            }
+
+            // Đồng bộ thumbnail tự động cho các tài liệu cũ đã lưu trong localStorage
+            let needsUpdate = false;
+            data = data.map(item => {
+                const defaultMatch = DEFAULT_TOOLKITS.find(d => d.id === item.id);
+                if (!item.thumbnail && defaultMatch && defaultMatch.thumbnail) {
+                    needsUpdate = true;
+                    return { ...item, thumbnail: defaultMatch.thumbnail };
+                }
+                if (!item.thumbnail) {
+                    const fmt = (item.format || 'PDF').toUpperCase();
+                    let thumb = '../assets/images/resources/topic-mgmt.jpg';
+                    if (['DOCX', 'DOC'].includes(fmt)) thumb = '../assets/images/resources/topic-lean.jpg';
+                    else if (['PDF'].includes(fmt)) thumb = '../assets/images/resources/topic-cost.jpg';
+                    else if (['XLSX', 'XLS'].includes(fmt)) thumb = '../assets/images/resources/art-oee.jpg';
+                    needsUpdate = true;
+                    return { ...item, thumbnail: thumb };
+                }
+                return item;
+            });
+
+            if (needsUpdate) {
+                saveAll(data);
+            }
+
+            return data;
         } catch (e) {
             console.warn('[ToolkitStore] Không thể đọc từ localStorage, dùng mặc định:', e);
             return DEFAULT_TOOLKITS;
