@@ -717,34 +717,39 @@ svg.res-feat-icon {
     flex-grow: 1;
 }
 
-/* Action Buttons Container: Xem tài liệu + Tải xuống */
+/* Action Buttons Container: Xem tài liệu + Tải xuống (Vừa vặn trên 1 dòng) */
 .tool-card-actions {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 10px;
+    gap: 8px;
     margin-top: auto;
-    padding-top: 14px;
+    padding-top: 12px;
     border-top: 1px solid #f1f5f9;
 }
 .tool-btn-preview {
+    flex: 1;
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    font-size: 12.5px;
+    justify-content: center;
+    gap: 5px;
+    font-size: 11px;
     font-weight: 700;
+    white-space: nowrap;
     color: #475569;
     background: #f8fafc;
     border: 1px solid #e2e8f0;
     border-radius: 6px;
-    padding: 6px 12px;
+    padding: 6px 4px;
     cursor: pointer;
     transition: all 0.2s ease;
     text-decoration: none;
+    line-height: 1.2;
 }
+.tool-btn-preview svg,
 .tool-btn-preview i {
-    width: 14px;
-    height: 14px;
+    width: 13px;
+    height: 13px;
+    flex-shrink: 0;
     color: #64748b;
     transition: color 0.2s ease;
 }
@@ -753,27 +758,34 @@ svg.res-feat-icon {
     color: #1e40af;
     border-color: #bfdbfe;
 }
+.tool-btn-preview:hover svg,
 .tool-btn-preview:hover i {
     color: #2563eb;
 }
 
 .tool-download-btn {
+    flex: 1;
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    font-size: 12.5px;
+    justify-content: center;
+    gap: 5px;
+    font-size: 11px;
     font-weight: 700;
+    white-space: nowrap;
     color: var(--iv-orange);
     background: rgba(239, 109, 28, 0.08);
     border: 1px solid rgba(239, 109, 28, 0.2);
     border-radius: 6px;
-    padding: 6px 12px;
+    padding: 6px 4px;
     text-decoration: none;
     transition: all 0.2s ease;
+    line-height: 1.2;
 }
+.tool-download-btn svg,
 .tool-download-btn i {
-    width: 14px;
-    height: 14px;
+    width: 13px;
+    height: 13px;
+    flex-shrink: 0;
 }
 .tool-card-light:hover .tool-download-btn {
     background: var(--iv-orange);

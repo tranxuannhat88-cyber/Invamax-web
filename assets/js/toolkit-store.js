@@ -7,14 +7,13 @@ const INVAMAX_TOOLKIT_STORE = (function () {
     const STORAGE_KEY = 'invamax_toolkits_v1';
     const SETTINGS_KEY = 'invamax_admin_settings_v1';
 
-    // Dữ liệu mặc định 4 tài liệu gốc (Kèm thumbnail trực quan)
+    // Dữ liệu mặc định 4 tài liệu gốc
     const DEFAULT_TOOLKITS = [
         {
             id: 'tool-checklist-danh-gia',
             title: 'Checklist đánh giá hiện trạng nhà máy',
             format: 'XLSX',
             desc: 'Mẫu checklist giúp bạn rà soát hiện trạng và xác định cơ hội cải tiến.',
-            thumbnail: '../assets/images/resources/topic-mgmt.jpg',
             fileUrl: '#',
             fileName: 'Checklist-danh-gia-hien-trang.xlsx',
             fileSize: '1.2 MB',
@@ -27,7 +26,6 @@ const INVAMAX_TOOLKIT_STORE = (function () {
             title: 'Khung lập kế hoạch triển khai Lean (A3)',
             format: 'DOCX',
             desc: 'Mẫu A3 chuẩn giúp lập kế hoạch, triển khai và theo dõi tiến độ.',
-            thumbnail: '../assets/images/resources/topic-lean.jpg',
             fileUrl: '#',
             fileName: 'Khung-ke-hoach-Lean-A3.docx',
             fileSize: '850 KB',
@@ -40,7 +38,6 @@ const INVAMAX_TOOLKIT_STORE = (function () {
             title: 'Tài liệu hướng dẫn Giảm chi phí sản xuất',
             format: 'PDF',
             desc: 'Hướng dẫn chi tiết phương pháp phân tích chi phí theo IPO và các công cụ thực hành.',
-            thumbnail: '../assets/images/resources/topic-cost.jpg',
             fileUrl: '#',
             fileName: 'Huong-dan-giam-chi-phi-san-xuat.pdf',
             fileSize: '3.4 MB',
@@ -53,7 +50,6 @@ const INVAMAX_TOOLKIT_STORE = (function () {
             title: 'Biểu mẫu quản lý chỉ số OEE',
             format: 'XLSX',
             desc: 'Bộ biểu mẫu theo dõi, phân tích và báo cáo OEE trong sản xuất.',
-            thumbnail: '../assets/images/resources/art-oee.jpg',
             fileUrl: '#',
             fileName: 'Bieu-mau-quan-ly-OEE.xlsx',
             fileSize: '1.5 MB',
@@ -153,22 +149,14 @@ const INVAMAX_TOOLKIT_STORE = (function () {
                 return DEFAULT_TOOLKITS;
             }
 
-            // Đồng bộ thumbnail tự động cho các tài liệu cũ đã lưu trong localStorage
+            // Dọn sạch các thumbnail tự gán bậy trước đó từ các phiên bản trước
             let needsUpdate = false;
             data = data.map(item => {
-                const defaultMatch = DEFAULT_TOOLKITS.find(d => d.id === item.id);
-                if (!item.thumbnail && defaultMatch && defaultMatch.thumbnail) {
+                if (item.thumbnail && item.thumbnail.includes('../assets/images/resources/topic-')) {
                     needsUpdate = true;
-                    return { ...item, thumbnail: defaultMatch.thumbnail };
-                }
-                if (!item.thumbnail) {
-                    const fmt = (item.format || 'PDF').toUpperCase();
-                    let thumb = '../assets/images/resources/topic-mgmt.jpg';
-                    if (['DOCX', 'DOC'].includes(fmt)) thumb = '../assets/images/resources/topic-lean.jpg';
-                    else if (['PDF'].includes(fmt)) thumb = '../assets/images/resources/topic-cost.jpg';
-                    else if (['XLSX', 'XLS'].includes(fmt)) thumb = '../assets/images/resources/art-oee.jpg';
-                    needsUpdate = true;
-                    return { ...item, thumbnail: thumb };
+                    const copy = { ...item };
+                    delete copy.thumbnail;
+                    return copy;
                 }
                 return item;
             });
@@ -372,24 +360,28 @@ const INVAMAX_TOOLKIT_STORE = (function () {
         const downloadHref = hasDirectLink ? tool.fileUrl : '#';
         const downloadAttr = tool.fileUrl && tool.fileUrl.startsWith('data:') ? `download="${tool.fileName || 'tai-lieu'}"` : `target="_blank" rel="noopener"`;
 
-        // Thumbnail thực tế thay vì icon vẽ tĩnh
-        let thumbSrc = tool.thumbnail || '';
-        if (!thumbSrc) {
-            if (['XLSX', 'XLS'].includes(fmt)) thumbSrc = '../assets/images/resources/topic-mgmt.jpg';
-            else if (['DOCX', 'DOC'].includes(fmt)) thumbSrc = '../assets/images/resources/topic-lean.jpg';
-            else if (['PDF'].includes(fmt)) thumbSrc = '../assets/images/resources/topic-cost.jpg';
-            else thumbSrc = '../assets/images/resources/art-oee.jpg';
-        }
+        // Thumbnail thực tế nếu có, ngược lại dùng icon mặc định như cũ
+        const hasRealThumb = !!tool.thumbnail;
+        const thumbHTML = hasRealThumb ? `
+            <div class="tool-thumb-box" onclick="INVAMAX_TOOLKIT_STORE.handlePreview('${tool.id}', event)" title="Bấm để xem trước tài liệu">
+                <img src="${tool.thumbnail}" alt="${escapeHTML(tool.title)}" class="tool-thumb-img">
+                <div class="tool-thumb-overlay">
+                    <i data-lucide="eye" style="width: 16px; height: 16px; color: #ffffff;"></i>
+                </div>
+            </div>
+        ` : `
+            <div class="tool-preview-box">
+                <div class="doc-line title"></div>
+                <div class="doc-line w-80"></div>
+                <div class="doc-line w-60"></div>
+                <div class="doc-line w-90"></div>
+            </div>
+        `;
 
         return `
             <div class="tool-card-light" data-id="${tool.id}">
                 <div class="tool-top-row">
-                    <div class="tool-thumb-box" onclick="INVAMAX_TOOLKIT_STORE.handlePreview('${tool.id}', event)" title="Bấm để xem trước tài liệu">
-                        <img src="${thumbSrc}" alt="${escapeHTML(tool.title)}" class="tool-thumb-img" onerror="this.onerror=null;this.src='../assets/images/resources/topic-mgmt.jpg';">
-                        <div class="tool-thumb-overlay">
-                            <i data-lucide="eye" style="width: 18px; height: 18px; color: #ffffff;"></i>
-                        </div>
-                    </div>
+                    ${thumbHTML}
                     <div class="tool-header-content">
                         <span class="tool-format-badge ${badgeClass}" style="align-self: flex-start; margin-bottom: 6px;">${fmt}</span>
                         <h3 class="tool-title-light">${escapeHTML(tool.title)}</h3>
