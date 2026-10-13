@@ -126,10 +126,10 @@
 
         /* Container Layout */
         .admin-body {
-            max-width: 1260px;
+            max-width: 1380px;
             width: 100%;
             margin: 24px auto;
-            padding: 0 20px;
+            padding: 0 24px;
             flex: 1;
         }
 
@@ -186,7 +186,7 @@
         /* Main Grid: Form Left, List Right */
         .admin-main-grid {
             display: grid;
-            grid-template-columns: 420px 1fr;
+            grid-template-columns: 430px 1fr;
             gap: 24px;
             align-items: start;
         }
@@ -311,26 +311,27 @@
             margin-bottom: 12px;
         }
 
-        .tab-btn {
+        .tab-btn, .file-type-btn {
             flex: 1;
             padding: 7px 10px;
             font-size: 12.5px;
             font-weight: 600;
-            border: none;
+            border: 1px solid transparent;
             background: transparent;
             color: #64748b;
             border-radius: 6px;
             cursor: pointer;
             transition: all 0.2s;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 6px;
         }
-        .tab-btn svg { width: 14px; height: 14px; }
-        .tab-btn.active {
+        .tab-btn svg, .file-type-btn svg { width: 14px; height: 14px; }
+        .tab-btn.active, .file-type-btn.active {
             background: #ffffff;
             color: var(--admin-text-dark);
+            border-color: #cbd5e1;
             box-shadow: 0 2px 6px rgba(0,0,0,0.06);
         }
 
@@ -423,96 +424,194 @@
             display: block;
         }
 
-        .doc-item-row {
+        /* Document Item Cards in Right Panel */
+        .doc-item-card {
             border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            padding: 18px;
-            margin-bottom: 14px;
+            border-radius: 14px;
+            padding: 20px 22px;
+            margin-bottom: 16px;
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 18px;
+            flex-direction: column;
+            gap: 14px;
             background: #ffffff;
-            transition: all 0.2s;
+            transition: all 0.25s ease;
             position: relative;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
         }
-        .doc-item-row:hover {
+        .doc-item-card:hover {
             border-color: #cbd5e1;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+            transform: translateY(-1px);
         }
-        .doc-item-row.is-editing {
+        .doc-item-card.is-editing {
             border-color: var(--admin-orange);
             background: #fffbf7;
-            box-shadow: 0 0 0 3px rgba(255, 105, 0, 0.15);
+            box-shadow: 0 0 0 3px rgba(255, 105, 0, 0.18);
         }
 
-        .doc-main-info {
+        /* Top portion of Card: Thumbnail + Full Content */
+        .doc-card-main {
             display: flex;
             align-items: flex-start;
-            gap: 16px;
-            flex: 1;
+            gap: 18px;
+            width: 100%;
         }
 
         .doc-preview-thumb {
-            width: 46px;
-            height: 56px;
+            width: 60px;
+            height: 76px;
             background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 6px;
-            padding: 7px 5px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
-            gap: 3.5px;
+            align-items: center;
+            justify-content: center;
             flex-shrink: 0;
             margin-top: 2px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+        .doc-preview-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
-        .doc-texts h4 {
-            font-size: 15.5px;
+        .doc-card-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .doc-card-header {
+            margin-bottom: 6px;
+        }
+
+        .doc-card-header h4 {
+            font-size: 16px;
             font-weight: 700;
             color: #0f172a;
-            margin-bottom: 5px;
+            line-height: 1.4;
             display: flex;
             align-items: center;
             flex-wrap: wrap;
             gap: 8px;
         }
-        .doc-texts p {
-            font-size: 13px;
-            color: #64748b;
-            line-height: 1.55;
-            margin-bottom: 8px;
+
+        .doc-card-title {
+            color: #0f172a;
+            word-break: break-word;
         }
-        .doc-meta-tags {
+
+        .doc-badge-editing {
+            font-size: 10.5px;
+            background: #ea580c;
+            color: #ffffff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+        }
+
+        .doc-card-desc {
+            font-size: 13.5px;
+            color: #475569;
+            line-height: 1.6;
+            margin-bottom: 10px;
+            word-break: break-word;
+        }
+
+        .doc-card-meta {
             display: flex;
             align-items: center;
             flex-wrap: wrap;
-            gap: 12px;
-            font-size: 12px;
-            color: #94a3b8;
+            gap: 16px;
+            font-size: 12.5px;
+            color: #64748b;
         }
-        .doc-meta-tags span {
+
+        .doc-card-meta .meta-item {
             display: inline-flex;
             align-items: center;
-            gap: 4px;
+            gap: 5px;
         }
-        .doc-meta-tags svg { width: 13px; height: 13px; }
+        .doc-card-meta .meta-item svg {
+            width: 14px;
+            height: 14px;
+            color: #94a3b8;
+        }
 
-        /* ACTION BUTTONS WITH CLEAR TEXT & ICONS */
-        .doc-row-actions {
+        /* Bottom portion of Card: File attachment badge & Action buttons */
+        .doc-card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            padding-top: 14px;
+            border-top: 1px solid #f1f5f9;
+            flex-wrap: wrap;
+        }
+
+        .doc-file-status {
+            display: flex;
+            align-items: center;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .file-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 12.5px;
+            font-weight: 500;
+            max-width: 100%;
+        }
+        .file-badge svg {
+            width: 14px;
+            height: 14px;
+            flex-shrink: 0;
+        }
+        .file-badge .file-name-text {
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 280px;
+            display: inline-block;
+        }
+        .file-badge-success {
+            background: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #a7f3d0;
+        }
+        .file-badge-success svg { color: #059669; }
+
+        .file-badge-warning {
+            background: #fffbeb;
+            color: #92400e;
+            border: 1px solid #fde68a;
+        }
+        .file-badge-warning svg { color: #d97706; }
+
+        /* Action Buttons Group */
+        .doc-card-actions {
             display: flex;
             align-items: center;
             gap: 8px;
-            flex-shrink: 0;
             flex-wrap: wrap;
             justify-content: flex-end;
+            margin-left: auto;
         }
 
         .btn-action {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 8px 13px;
+            padding: 7px 13px;
             border-radius: 8px;
             font-size: 13px;
             font-weight: 600;
@@ -529,6 +628,21 @@
             height: 14px;
             flex-shrink: 0;
         }
+        .btn-action:hover {
+            transform: translateY(-1px);
+        }
+
+        /* Nút Xem trước */
+        .btn-action-preview {
+            background: #f8fafc;
+            color: #1e40af;
+            border-color: #bfdbfe;
+        }
+        .btn-action-preview:hover {
+            background: #eff6ff;
+            border-color: #93c5fd;
+            color: #1d4ed8;
+        }
 
         /* Nút Tải thử */
         .btn-action-download {
@@ -540,7 +654,6 @@
             background: #dcfce7;
             border-color: #86efac;
             color: #14532d;
-            transform: translateY(-1px);
         }
 
         /* Nút Upload tài liệu */
@@ -553,7 +666,6 @@
             background: #dbeafe;
             border-color: #93c5fd;
             color: #1e40af;
-            transform: translateY(-1px);
         }
 
         /* Nút Chỉnh sửa */
@@ -566,7 +678,6 @@
             background: #ffedd5;
             border-color: #fdba74;
             color: #9a3412;
-            transform: translateY(-1px);
         }
 
         /* Nút Xóa */
@@ -579,8 +690,22 @@
             background: #fee2e2;
             border-color: #fca5a5;
             color: #991b1b;
-            transform: translateY(-1px);
         }
+
+        /* Format Badges */
+        .tool-format-badge {
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        .fmt-xlsx { background: #e8f5e9; color: #166534; border: 1px solid #bbf7d0; }
+        .fmt-docx { background: #eff6ff; color: #1e40af; border: 1px solid #bfdbfe; }
+        .fmt-pdf { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
+        .fmt-pptx { background: #fff7ed; color: #c2410c; border: 1px solid #fed7aa; }
+        .fmt-zip { background: #f3e8ff; color: #7e22ce; border: 1px solid #e9d5ff; }
 
         /* MODAL CHỈNH SỬA NHANH (QUICK EDIT MODAL) */
         .edit-modal-backdrop {
@@ -1003,12 +1128,12 @@
                     <!-- File upload / Attachment for Modal -->
                     <div class="form-group">
                         <label class="form-label">Tệp đính kèm hoặc Đường dẫn tải</label>
-                        <div style="display: flex; gap: 8px; margin-bottom: 10px;">
-                            <button type="button" class="file-type-btn active" id="modalTabUploadBtn" onclick="switchModalFileTab('upload')">
+                        <div class="tab-buttons">
+                            <button type="button" class="tab-btn active" id="modalTabUploadBtn" onclick="switchModalFileTab('upload')">
                                 <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
                                 Tải file từ máy tính
                             </button>
-                            <button type="button" class="file-type-btn" id="modalTabLinkBtn" onclick="switchModalFileTab('link')">
+                            <button type="button" class="tab-btn" id="modalTabLinkBtn" onclick="switchModalFileTab('link')">
                                 <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
                                 Link Drive / Tải ngoài
                             </button>
@@ -1620,86 +1745,102 @@
                 let badgeClass = 'fmt-pdf';
                 if (['XLSX', 'XLS', 'EXCEL'].includes(fmt)) badgeClass = 'fmt-xlsx';
                 else if (['DOCX', 'DOC', 'WORD'].includes(fmt)) badgeClass = 'fmt-docx';
+                else if (['PPTX', 'PPT'].includes(fmt)) badgeClass = 'fmt-pptx';
+                else if (['ZIP', 'RAR'].includes(fmt)) badgeClass = 'fmt-zip';
 
                 const downloadAttr = doc.fileUrl && doc.fileUrl.startsWith('data:') ? `download="${doc.fileName || 'tai-lieu'}"` : `target="_blank" rel="noopener"`;
                 const isEditing = currentEditingId === doc.id;
 
                 const hasRealThumb = !!(doc.thumbnail && doc.thumbnail.trim());
                 const thumbHTML = hasRealThumb ? `
-                    <div class="doc-preview-thumb" style="padding: 0; overflow: hidden; width: 56px; height: 68px; border-radius: 8px; border: 1px solid #cbd5e1; box-shadow: 0 2px 6px rgba(0,0,0,0.06);">
-                        <img src="${doc.thumbnail}" alt="${escapeHTML(doc.title)}" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="doc-preview-thumb">
+                        <img src="${doc.thumbnail}" alt="${escapeHTML(doc.title)}">
                     </div>
                 ` : `
-                    <div class="doc-preview-thumb" style="width: 56px; height: 68px; border-radius: 8px; background: #f8fafc; border: 1px solid #cbd5e1; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 4px; padding: 6px;">
+                    <div class="doc-preview-thumb">
                         <span style="font-size: 11px; font-weight: 800; color: ${['XLSX', 'XLS'].includes(fmt) ? '#166534' : (['DOCX', 'DOC'].includes(fmt) ? '#1e40af' : '#991b1b')};">${fmt}</span>
-                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" style="color: #94a3b8;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" style="color: #94a3b8;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
                     </div>
                 `;
 
+                const isDataUrl = doc.fileUrl && doc.fileUrl.startsWith('data:');
+                const isIdbUrl = doc.fileUrl && doc.fileUrl.startsWith('idb:');
+                const isWebLink = doc.fileUrl && (doc.fileUrl.startsWith('http://') || doc.fileUrl.startsWith('https://'));
+                const hasRealFile = isDataUrl || isIdbUrl || isWebLink;
+
                 return `
-                    <div class="doc-item-row ${isEditing ? 'is-editing' : ''}">
-                        <div class="doc-main-info">
+                    <div class="doc-item-card ${isEditing ? 'is-editing' : ''}">
+                        <div class="doc-card-main">
                             ${thumbHTML}
-                            <div class="doc-texts">
-                                <h4>
-                                    <span class="tool-format-badge ${badgeClass}">${fmt}</span>
-                                    ${escapeHTML(doc.title)}
-                                    ${isEditing ? '<span style="font-size: 11px; background: #ea580c; color: white; padding: 2px 7px; border-radius: 4px; font-weight: 700;">ĐANG CHỈNH SỬA</span>' : ''}
-                                </h4>
-                                <p>${escapeHTML(doc.desc || '')}</p>
-                                <div class="doc-meta-tags">
-                                    <span>
+                            <div class="doc-card-content">
+                                <div class="doc-card-header">
+                                    <h4>
+                                        <span class="tool-format-badge ${badgeClass}">${fmt}</span>
+                                        <span class="doc-card-title">${escapeHTML(doc.title)}</span>
+                                        ${isEditing ? '<span class="doc-badge-editing">ĐANG CHỈNH SỬA</span>' : ''}
+                                    </h4>
+                                </div>
+                                <p class="doc-card-desc">${escapeHTML(doc.desc || '')}</p>
+                                <div class="doc-card-meta">
+                                    <span class="meta-item">
                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
                                         ${doc.createdAt || 'Mới cập nhật'}
                                     </span>
-                                    <span>
+                                    <span class="meta-item">
                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                                         ${doc.downloads || 0} lượt tải
                                     </span>
-                                    ${(doc.fileUrl && doc.fileUrl !== '#' && (doc.fileUrl.startsWith('data:') || doc.fileUrl.startsWith('idb:') || doc.fileUrl.startsWith('http'))) ? `
-                                    <span style="color: #059669; font-weight: 600; background: #ecfdf5; padding: 2px 8px; border-radius: 4px; border: 1px solid #a7f3d0;">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                                        ${escapeHTML(doc.fileName || 'Đã có file tải')} (${doc.fileSize || 'Đã tải'})
-                                    </span>` : `
-                                    <span style="color: #d97706; font-weight: 600; background: #fffbeb; padding: 2px 8px; border-radius: 4px; border: 1px solid #fde68a;">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                                        Chưa có file thực tế (Bấm "Upload file" để up)
-                                    </span>`}
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Clear Action Buttons with Text & Icons -->
-                        <div class="doc-row-actions">
-                            <!-- Nút Xem trước -->
-                            <button type="button" class="btn-action" title="Xem trước tài liệu này" onclick="INVAMAX_TOOLKIT_STORE.handlePreview('${doc.id}', event)" style="background: #f8fafc; color: #1e40af; border-color: #bfdbfe;">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
-                                Xem trước
-                            </button>
+                        <div class="doc-card-footer">
+                            <div class="doc-file-status">
+                                ${hasRealFile ? `
+                                    <span class="file-badge file-badge-success" title="${escapeHTML(doc.fileName || '')}">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="9 15 12 18 15 15"/></svg>
+                                        <strong class="file-name-text">${escapeHTML(doc.fileName || 'Đã có file tải')}</strong>
+                                        <span style="opacity: 0.85;">(${doc.fileSize || 'Đã tải'})</span>
+                                    </span>
+                                ` : `
+                                    <span class="file-badge file-badge-warning">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                                        <span>Chưa có file thực tế (Bấm "Upload file" để tải lên)</span>
+                                    </span>
+                                `}
+                            </div>
 
-                            <!-- Nút Tải thử -->
-                            <a href="${doc.fileUrl || '#'}" ${downloadAttr} class="btn-action btn-action-download" title="Tải thử tệp này về máy" onclick="INVAMAX_TOOLKIT_STORE.handleDownload('${doc.id}', event)">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                                Tải thử
-                            </a>
+                            <div class="doc-card-actions">
+                                <!-- Nút Xem trước -->
+                                <button type="button" class="btn-action btn-action-preview" title="Xem trước tài liệu này" onclick="INVAMAX_TOOLKIT_STORE.handlePreview('${doc.id}', event)">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                                    Xem trước
+                                </button>
 
-                            <!-- Nút Upload tài liệu thực tế -->
-                            <button type="button" class="btn-action btn-action-upload" title="Tải tệp thực tế từ máy tính lên cho tài liệu này" onclick="openQuickEditModal('${doc.id}', true)">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-                                Upload file
-                            </button>
+                                <!-- Nút Tải thử -->
+                                <a href="${doc.fileUrl || '#'}" ${downloadAttr} class="btn-action btn-action-download" title="Tải thử tệp này về máy" onclick="INVAMAX_TOOLKIT_STORE.handleDownload('${doc.id}', event)">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                    Tải thử
+                                </a>
 
-                            <!-- Nút Chỉnh sửa (Mở popup hoặc form sửa) -->
-                            <button type="button" class="btn-action btn-action-edit" title="Chỉnh sửa nội dung tài liệu này" onclick="openQuickEditModal('${doc.id}')">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-                                Chỉnh sửa
-                            </button>
+                                <!-- Nút Upload tài liệu thực tế -->
+                                <button type="button" class="btn-action btn-action-upload" title="Tải tệp thực tế từ máy tính lên cho tài liệu này" onclick="openQuickEditModal('${doc.id}', true)">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                                    Upload file
+                                </button>
 
-                            <!-- Nút Xóa -->
-                            <button type="button" class="btn-action btn-action-delete" title="Xóa tài liệu khỏi website" onclick="deleteDoc('${doc.id}', '${escapeHTML(doc.title)}')">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
-                                Xóa
-                            </button>
+                                <!-- Nút Chỉnh sửa -->
+                                <button type="button" class="btn-action btn-action-edit" title="Chỉnh sửa nội dung tài liệu này" onclick="openQuickEditModal('${doc.id}')">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                                    Chỉnh sửa
+                                </button>
+
+                                <!-- Nút Xóa -->
+                                <button type="button" class="btn-action btn-action-delete" title="Xóa tài liệu khỏi website" onclick="deleteDoc('${doc.id}', '${escapeHTML(doc.title)}')">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+                                    Xóa
+                                </button>
+                            </div>
                         </div>
                     </div>
                 `;
