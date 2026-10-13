@@ -3,17 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INVAMAX Admin - Quản lý Tài liệu & Toolkit</title>
+    <title>INVAMAX Admin - Quản lý & Sửa Tài liệu Website</title>
     <link rel="icon" type="image/jpeg" href="assets/images/favicon.jpg">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <!-- Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Styles -->
     <link rel="stylesheet" href="assets/css/invamax-tokens.css">
@@ -50,7 +46,7 @@
         .admin-nav {
             background: var(--admin-bg);
             color: #ffffff;
-            padding: 16px 28px;
+            padding: 14px 28px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -97,7 +93,7 @@
         .btn-nav-outline {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 7px;
             background: rgba(255, 255, 255, 0.08);
             color: #ffffff;
             border: 1px solid rgba(255, 255, 255, 0.15);
@@ -108,6 +104,10 @@
             text-decoration: none;
             cursor: pointer;
             transition: all 0.2s;
+        }
+        .btn-nav-outline svg {
+            width: 15px;
+            height: 15px;
         }
         .btn-nav-outline:hover {
             background: rgba(255, 255, 255, 0.16);
@@ -126,7 +126,7 @@
 
         /* Container Layout */
         .admin-body {
-            max-width: 1240px;
+            max-width: 1260px;
             width: 100%;
             margin: 24px auto;
             padding: 0 20px;
@@ -161,12 +161,16 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
             flex-shrink: 0;
+        }
+        .stat-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke-width: 2.2;
         }
 
         .stat-info h4 {
-            font-size: 13px;
+            font-size: 12.5px;
             color: var(--admin-text-muted);
             font-weight: 600;
             margin-bottom: 4px;
@@ -203,7 +207,7 @@
         }
 
         .panel-header {
-            padding: 18px 22px;
+            padding: 16px 20px;
             border-bottom: 1px solid #e2e8f0;
             display: flex;
             align-items: center;
@@ -212,21 +216,59 @@
         }
 
         .panel-header h3 {
-            font-size: 16px;
+            font-size: 15.5px;
             font-weight: 700;
             color: var(--admin-text-dark);
             display: flex;
             align-items: center;
             gap: 8px;
         }
+        .panel-header h3 svg {
+            width: 18px;
+            height: 18px;
+        }
 
         .panel-body {
             padding: 22px;
         }
 
+        /* Edit Mode Alert Banner */
+        .edit-mode-banner {
+            background: #fff7ed;
+            border: 1.5px solid #fed7aa;
+            border-radius: 10px;
+            padding: 12px 14px;
+            margin-bottom: 16px;
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        .edit-mode-banner.show {
+            display: flex;
+        }
+        .edit-mode-banner .banner-text {
+            font-size: 13px;
+            color: #9a3412;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .edit-mode-banner .btn-exit-edit {
+            background: #ffffff;
+            border: 1px solid #fdba74;
+            color: #c2410c;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
         /* Form Controls */
         .form-group {
-            margin-bottom: 18px;
+            margin-bottom: 16px;
         }
 
         .form-label {
@@ -234,7 +276,7 @@
             font-size: 13.5px;
             font-weight: 600;
             color: #334155;
-            margin-bottom: 7px;
+            margin-bottom: 6px;
         }
         .form-label span.req { color: #ef4444; }
 
@@ -285,6 +327,7 @@
             justify-content: center;
             gap: 6px;
         }
+        .tab-btn svg { width: 14px; height: 14px; }
         .tab-btn.active {
             background: #ffffff;
             color: var(--admin-text-dark);
@@ -306,10 +349,11 @@
             border-color: var(--admin-orange);
             background: rgba(255, 105, 0, 0.04);
         }
-        .dropzone i {
-            font-size: 28px;
+        .dropzone svg {
+            width: 32px;
+            height: 32px;
             color: var(--admin-orange);
-            margin-bottom: 8px;
+            margin: 0 auto 8px;
             display: block;
         }
         .dropzone p {
@@ -350,134 +394,252 @@
             color: #ffffff;
             border: none;
             border-radius: 8px;
-            font-size: 15px;
+            font-size: 14.5px;
             font-weight: 700;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
-            box-shadow: 0 4px 12px rgba(255, 105, 0, 0.3);
+            box-shadow: 0 4px 12px rgba(255, 105, 0, 0.25);
             transition: all 0.2s;
         }
+        .btn-submit svg { width: 17px; height: 17px; }
         .btn-submit:hover {
             background: var(--admin-orange-hover);
             transform: translateY(-1px);
         }
 
-        .btn-cancel {
-            width: 100%;
-            padding: 10px;
-            background: #e2e8f0;
-            color: #475569;
-            border: none;
-            border-radius: 8px;
-            font-size: 13.5px;
-            font-weight: 600;
-            margin-top: 8px;
-            cursor: pointer;
-            display: none;
-        }
-
-        /* Table & Cards in Right Panel */
+        /* Document Items in Right Panel */
         .doc-list-empty {
             text-align: center;
             padding: 40px 20px;
             color: #94a3b8;
         }
-        .doc-list-empty i {
-            font-size: 36px;
-            margin-bottom: 12px;
+        .doc-list-empty svg {
+            width: 44px;
+            height: 44px;
+            margin: 0 auto 12px;
             display: block;
         }
 
         .doc-item-row {
             border: 1px solid #e2e8f0;
-            border-radius: 10px;
-            padding: 16px 18px;
-            margin-bottom: 12px;
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 14px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 16px;
+            gap: 18px;
             background: #ffffff;
             transition: all 0.2s;
+            position: relative;
         }
         .doc-item-row:hover {
             border-color: #cbd5e1;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+        }
+        .doc-item-row.is-editing {
+            border-color: var(--admin-orange);
+            background: #fffbf7;
+            box-shadow: 0 0 0 3px rgba(255, 105, 0, 0.15);
         }
 
         .doc-main-info {
             display: flex;
             align-items: flex-start;
-            gap: 14px;
+            gap: 16px;
             flex: 1;
         }
 
         .doc-preview-thumb {
-            width: 44px;
-            height: 54px;
+            width: 46px;
+            height: 56px;
             background: #f8fafc;
             border: 1px solid #e2e8f0;
             border-radius: 6px;
-            padding: 6px 4px;
+            padding: 7px 5px;
             display: flex;
             flex-direction: column;
-            gap: 3px;
+            gap: 3.5px;
             flex-shrink: 0;
+            margin-top: 2px;
         }
 
         .doc-texts h4 {
-            font-size: 15px;
+            font-size: 15.5px;
             font-weight: 700;
             color: #0f172a;
-            margin-bottom: 4px;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
         }
         .doc-texts p {
             font-size: 13px;
             color: #64748b;
-            line-height: 1.5;
-            margin-bottom: 6px;
+            line-height: 1.55;
+            margin-bottom: 8px;
         }
         .doc-meta-tags {
             display: flex;
             align-items: center;
-            gap: 10px;
+            flex-wrap: wrap;
+            gap: 12px;
             font-size: 12px;
             color: #94a3b8;
         }
+        .doc-meta-tags span {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .doc-meta-tags svg { width: 13px; height: 13px; }
 
+        /* ACTION BUTTONS WITH CLEAR TEXT & ICONS */
         .doc-row-actions {
             display: flex;
             align-items: center;
             gap: 8px;
             flex-shrink: 0;
+            flex-wrap: wrap;
+            justify-content: flex-end;
         }
 
-        .action-icon-btn {
-            width: 36px;
-            height: 36px;
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 13px;
             border-radius: 8px;
-            border: 1px solid #e2e8f0;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 1px solid #cbd5e1;
             background: #ffffff;
-            color: #475569;
-            display: flex;
+            color: #334155;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        .btn-action svg {
+            width: 14px;
+            height: 14px;
+            flex-shrink: 0;
+        }
+
+        /* Nút Tải thử */
+        .btn-action-download {
+            background: #f0fdf4;
+            color: #166534;
+            border-color: #bbf7d0;
+        }
+        .btn-action-download:hover {
+            background: #dcfce7;
+            border-color: #86efac;
+            color: #14532d;
+            transform: translateY(-1px);
+        }
+
+        /* Nút Chỉnh sửa */
+        .btn-action-edit {
+            background: #fff7ed;
+            color: #c2410c;
+            border-color: #fed7aa;
+        }
+        .btn-action-edit:hover {
+            background: #ffedd5;
+            border-color: #fdba74;
+            color: #9a3412;
+            transform: translateY(-1px);
+        }
+
+        /* Nút Xóa */
+        .btn-action-delete {
+            background: #fef2f2;
+            color: #b91c1c;
+            border-color: #fecaca;
+        }
+        .btn-action-delete:hover {
+            background: #fee2e2;
+            border-color: #fca5a5;
+            color: #991b1b;
+            transform: translateY(-1px);
+        }
+
+        /* MODAL CHỈNH SỬA NHANH (QUICK EDIT MODAL) */
+        .edit-modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            display: none;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s;
-            text-decoration: none;
+            z-index: 1000;
+            padding: 20px;
         }
-        .action-icon-btn:hover {
+        .edit-modal-backdrop.show {
+            display: flex;
+        }
+
+        .edit-modal-card {
+            background: #ffffff;
+            width: 100%;
+            max-width: 580px;
+            border-radius: 16px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            animation: modalFadeIn 0.25s ease-out;
+        }
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.96) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .edit-modal-header {
+            padding: 18px 24px;
             background: #f8fafc;
-            color: var(--admin-orange);
-            border-color: var(--admin-orange);
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
-        .action-icon-btn.btn-delete:hover {
-            background: #fef2f2;
-            color: #dc2626;
-            border-color: #fca5a5;
+        .edit-modal-header h3 {
+            font-size: 16.5px;
+            font-weight: 700;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .edit-modal-close {
+            background: none;
+            border: none;
+            font-size: 22px;
+            color: #64748b;
+            cursor: pointer;
+            padding: 4px;
+            line-height: 1;
+        }
+        .edit-modal-close:hover { color: #0f172a; }
+
+        .edit-modal-body {
+            padding: 24px;
+            max-height: 75vh;
+            overflow-y: auto;
+        }
+
+        .edit-modal-footer {
+            padding: 16px 24px;
+            background: #f8fafc;
+            border-top: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 10px;
         }
 
         /* Login Modal / Overlay */
@@ -489,7 +651,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 1000;
+            z-index: 2000;
             padding: 20px;
         }
 
@@ -514,7 +676,7 @@
         .auth-desc {
             font-size: 14px;
             color: #64748b;
-            margin-bottom: 26px;
+            margin-bottom: 24px;
         }
 
         .auth-error {
@@ -534,7 +696,7 @@
             right: 24px;
             background: #0f172a;
             color: #ffffff;
-            padding: 14px 22px;
+            padding: 14px 20px;
             border-radius: 10px;
             font-size: 14px;
             font-weight: 600;
@@ -542,11 +704,12 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            z-index: 2000;
+            z-index: 3000;
             transform: translateY(100px);
             opacity: 0;
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
+        .toast-msg svg { width: 18px; height: 18px; flex-shrink: 0; }
         .toast-msg.show {
             transform: translateY(0);
             opacity: 1;
@@ -561,15 +724,15 @@
     <div id="authOverlay" class="auth-overlay">
         <div class="auth-card">
             <div class="auth-logo">INVA<span>MAX</span></div>
-            <p class="auth-desc">Đăng nhập tài khoản Admin để quản lý và tải tài liệu lên website</p>
+            <p class="auth-desc">Đăng nhập tài khoản Admin để quản lý và chỉnh sửa tài liệu website</p>
 
             <div id="authError" class="auth-error">
-                <i class="fa fa-circle-exclamation"></i> Mật khẩu không chính xác!
+                Mật khẩu quản trị không chính xác! Vui lòng thử lại.
             </div>
 
             <form id="loginForm" onsubmit="handleLogin(event)">
                 <div class="form-group" style="text-align: left;">
-                    <label class="form-label">Tài khoản (Email)</label>
+                    <label class="form-label">Tài khoản Admin (Email)</label>
                     <input type="text" id="adminUser" class="form-input" value="admin@invamax.com" required>
                 </div>
                 <div class="form-group" style="text-align: left; margin-bottom: 24px;">
@@ -578,13 +741,14 @@
                     <small style="color: #94a3b8; font-size: 11.5px; margin-top: 5px; display: block;">(Mặc định: <code>invamax2026</code>)</small>
                 </div>
                 <button type="submit" class="btn-submit">
-                    <i class="fa fa-lock-open"></i> Đăng nhập Admin
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    Đăng nhập Admin
                 </button>
             </form>
         </div>
     </div>
 
-    <!-- ADMIN NAVIGATION -->
+    <!-- ADMIN TOP NAVIGATION -->
     <header class="admin-nav">
         <a href="vi/resources.html" class="admin-brand">
             <span class="admin-logo-text">INVA<span>MAX</span></span>
@@ -592,10 +756,12 @@
         </a>
         <div class="admin-nav-actions">
             <a href="vi/resources.html#toolkit" target="_blank" class="btn-nav-outline">
-                <i class="fa fa-arrow-up-right-from-square"></i> Xem trang Web
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                Xem trang Web
             </a>
             <button onclick="handleLogout()" class="btn-nav-outline btn-logout">
-                <i class="fa fa-power-off"></i> Đăng xuất
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg>
+                Đăng xuất
             </button>
         </div>
     </header>
@@ -605,28 +771,36 @@
         <!-- Quick Stats -->
         <section class="admin-stats-grid">
             <div class="stat-card">
-                <div class="stat-icon"><i class="fa fa-folder-open"></i></div>
+                <div class="stat-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                </div>
                 <div class="stat-info">
-                    <h4>Tổng tài liệu</h4>
+                    <h4>Tổng số tài liệu</h4>
                     <div class="stat-number" id="statTotalDocs">0</div>
                 </div>
             </div>
             <div class="stat-card">
-                <div class="stat-icon" style="background: rgba(16, 185, 129, 0.1); color: #10b981;"><i class="fa fa-file-excel"></i></div>
+                <div class="stat-icon" style="background: rgba(16, 185, 129, 0.1); color: #10b981;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M8 13h8"/><path d="M8 17h8"/><path d="M10 9h4"/></svg>
+                </div>
                 <div class="stat-info">
                     <h4>Biểu mẫu Excel (XLSX)</h4>
                     <div class="stat-number" id="statXlsxDocs">0</div>
                 </div>
             </div>
             <div class="stat-card">
-                <div class="stat-icon" style="background: rgba(59, 130, 246, 0.1); color: #3b82f6;"><i class="fa fa-file-word"></i></div>
+                <div class="stat-icon" style="background: rgba(59, 130, 246, 0.1); color: #3b82f6;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                </div>
                 <div class="stat-info">
-                    <h4>Khung tài liệu Word / PDF</h4>
+                    <h4>Khung Word / PDF</h4>
                     <div class="stat-number" id="statOtherDocs">0</div>
                 </div>
             </div>
             <div class="stat-card">
-                <div class="stat-icon" style="background: rgba(99, 102, 241, 0.1); color: #6366f1;"><i class="fa fa-cloud-arrow-down"></i></div>
+                <div class="stat-icon" style="background: rgba(99, 102, 241, 0.1); color: #6366f1;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                </div>
                 <div class="stat-info">
                     <h4>Tổng lượt tải</h4>
                     <div class="stat-number" id="statTotalDownloads">0</div>
@@ -634,14 +808,26 @@
             </div>
         </section>
 
-        <!-- Main Layout: Form + List -->
+        <!-- Main Layout: Form Left, List Right -->
         <div class="admin-main-grid">
             <!-- LEFT COLUMN: ADD / EDIT FORM -->
             <section class="admin-panel">
                 <div class="panel-header">
-                    <h3 id="formPanelTitle"><i class="fa fa-circle-plus" style="color: var(--admin-orange);"></i> Thêm tài liệu mới</h3>
+                    <h3 id="formPanelTitle">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="var(--admin-orange)" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+                        Thêm tài liệu mới
+                    </h3>
                 </div>
                 <div class="panel-body">
+                    <!-- Edit Mode Alert Banner -->
+                    <div id="editModeBanner" class="edit-mode-banner">
+                        <div class="banner-text">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                            <span>Đang chỉnh sửa: <strong id="editingDocName">...</strong></span>
+                        </div>
+                        <button type="button" class="btn-exit-edit" onclick="cancelEdit()">Hủy sửa</button>
+                    </div>
+
                     <form id="docForm" onsubmit="handleSaveDoc(event)">
                         <input type="hidden" id="editDocId" value="">
 
@@ -671,28 +857,30 @@
 
                         <!-- File Upload Source Tabs -->
                         <div class="form-group">
-                            <label class="form-label">Tải tệp đính kèm hoặc dán link <span class="req">*</span></label>
+                            <label class="form-label">Tệp đính kèm hoặc đường link tải <span class="req">*</span></label>
                             
                             <div class="tab-buttons">
                                 <button type="button" class="tab-btn active" id="tabUploadBtn" onclick="switchFileTab('upload')">
-                                    <i class="fa fa-upload"></i> Tải file từ máy tính
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                                    Tải file từ máy tính
                                 </button>
                                 <button type="button" class="tab-btn" id="tabLinkBtn" onclick="switchFileTab('link')">
-                                    <i class="fa fa-link"></i> Link Drive / Tải ngoài
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                                    Link Drive / Tải ngoài
                                 </button>
                             </div>
 
                             <!-- Tab 1: Local File Upload -->
                             <div id="fileUploadContainer">
                                 <div class="dropzone" id="dropzoneBox">
-                                    <i class="fa fa-cloud-arrow-up"></i>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
                                     <p><strong>Kéo thả tệp vào đây</strong> hoặc bấm để chọn</p>
                                     <span>Hỗ trợ .xlsx, .docx, .pdf, .zip (tối đa 25MB)</span>
                                     <input type="file" id="docFileInput" onchange="handleFileSelect(event)">
                                 </div>
                                 <div id="selectedFileInfo" class="file-selected-box" style="display: none;">
-                                    <span id="selectedFileName"><i class="fa fa-check"></i> Đã chọn file</span>
-                                    <button type="button" onclick="clearSelectedFile()" style="background:none;border:none;color:#ef4444;cursor:pointer;font-weight:bold;">Xóa</button>
+                                    <span id="selectedFileName">Đã chọn file</span>
+                                    <button type="button" onclick="clearSelectedFile()" style="background:none;border:none;color:#ef4444;cursor:pointer;font-weight:bold;">Xóa file</button>
                                 </div>
                             </div>
 
@@ -700,47 +888,102 @@
                             <div id="fileLinkContainer" style="display: none;">
                                 <input type="url" id="docFileUrl" class="form-input" placeholder="https://drive.google.com/file/d/... hoặc link tải trực tiếp">
                                 <small style="color: #64748b; font-size: 12px; margin-top: 4px; display: block;">
-                                    Dán link chia sẻ (Google Drive, Onedrive, Dropbox...) với quyền <em>Bất kỳ ai có liên kết đều có thể xem/tải</em>.
+                                    Dán link chia sẻ Google Drive, Onedrive... với quyền <em>Bất kỳ ai có liên kết đều có thể tải</em>.
                                 </small>
                             </div>
                         </div>
 
                         <!-- Submit Button -->
                         <button type="submit" class="btn-submit" id="btnSubmitDoc">
-                            <i class="fa fa-floppy-disk"></i> Lưu &amp; Đăng lên Website
-                        </button>
-                        <button type="button" class="btn-cancel" id="btnCancelEdit" onclick="cancelEdit()">
-                            Hủy chỉnh sửa
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                            <span id="submitBtnText">Lưu &amp; Đăng lên Website</span>
                         </button>
                     </form>
                 </div>
             </section>
 
-            <!-- RIGHT COLUMN: DOCUMENT LIST & PREVIEW -->
+            <!-- RIGHT COLUMN: DOCUMENT LIST WITH FULL BUTTON LABELS & ICONS -->
             <section class="admin-panel">
                 <div class="panel-header">
-                    <h3><i class="fa fa-list-check" style="color: var(--admin-orange);"></i> Danh sách tài liệu trên Website</h3>
+                    <h3>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="var(--admin-orange)" stroke-width="2.2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                        Danh sách tài liệu trên Website
+                    </h3>
                     <div style="display: flex; gap: 8px;">
                         <button onclick="exportJSONBackup()" class="btn-nav-outline" style="background: #f1f5f9; color: #334155; border-color: #cbd5e1; font-size: 12.5px; padding: 6px 12px;" title="Tải file sao lưu JSON">
-                            <i class="fa fa-file-export"></i> Sao lưu JSON
+                            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Sao lưu JSON
                         </button>
-                        <button onclick="resetDefaultDocs()" class="btn-nav-outline" style="background: #f1f5f9; color: #dc2626; border-color: #fca5a5; font-size: 12.5px; padding: 6px 12px;" title="Khôi phục lại 4 tài liệu gốc">
-                            <i class="fa fa-rotate-left"></i> Khôi phục gốc
+                        <button onclick="resetDefaultDocs()" class="btn-nav-outline" style="background: #f1f5f9; color: #dc2626; border-color: #fca5a5; font-size: 12.5px; padding: 6px 12px;" title="Khôi phục lại 4 tài liệu mẫu ban đầu">
+                            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                            Khôi phục gốc
                         </button>
                     </div>
                 </div>
                 <div class="panel-body">
                     <div id="docsListContainer">
-                        <!-- Rendered by JavaScript -->
+                        <!-- Rendered dynamically by JavaScript -->
                     </div>
                 </div>
             </section>
         </div>
     </main>
 
+    <!-- POPUP MODAL CHỈNH SỬA NHANH (QUICK EDIT MODAL) -->
+    <div id="quickEditModal" class="edit-modal-backdrop">
+        <div class="edit-modal-card">
+            <div class="edit-modal-header">
+                <h3>
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--admin-orange)" stroke-width="2.2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                    Chỉnh sửa nội dung tài liệu
+                </h3>
+                <button class="edit-modal-close" onclick="closeQuickEditModal()">&times;</button>
+            </div>
+            <form id="modalEditForm" onsubmit="handleSaveModalEdit(event)">
+                <div class="edit-modal-body">
+                    <input type="hidden" id="modalDocId" value="">
+
+                    <div class="form-group">
+                        <label class="form-label" for="modalDocTitle">Tên tài liệu / Bộ công cụ <span class="req">*</span></label>
+                        <input type="text" id="modalDocTitle" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="modalDocFormat">Định dạng file hiển thị <span class="req">*</span></label>
+                        <select id="modalDocFormat" class="form-select" required>
+                            <option value="XLSX">Excel (.XLSX)</option>
+                            <option value="DOCX">Word (.DOCX)</option>
+                            <option value="PDF">Tài liệu PDF (.PDF)</option>
+                            <option value="PPTX">PowerPoint (.PPTX)</option>
+                            <option value="ZIP">Tệp nén (.ZIP / .RAR)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="modalDocDesc">Mô tả tài liệu <span class="req">*</span></label>
+                        <textarea id="modalDocDesc" class="form-textarea" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="modalDocLink">Đường dẫn tải file (Link tải trực tiếp hoặc Drive)</label>
+                        <input type="text" id="modalDocLink" class="form-input" placeholder="https://drive.google.com/...">
+                        <small style="color: #64748b; font-size: 11.5px; margin-top: 4px; display: block;">Nếu tải file mới từ máy tính, bạn có thể dùng form bên trái.</small>
+                    </div>
+                </div>
+                <div class="edit-modal-footer">
+                    <button type="button" class="btn-action" onclick="closeQuickEditModal()" style="padding: 10px 16px;">Hủy bỏ</button>
+                    <button type="submit" class="btn-submit" style="width: auto; padding: 10px 22px;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        Lưu thay đổi ngay
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- TOAST NOTIFICATION -->
     <div id="adminToast" class="toast-msg">
-        <i class="fa fa-circle-check"></i>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
         <span id="toastText">Thao tác thành công!</span>
     </div>
 
@@ -752,6 +995,7 @@
         let currentFileName = null;
         let currentFileSize = null;
         let activeTab = 'upload'; // 'upload' | 'link'
+        let currentEditingId = null;
 
         // Authentication Logic
         const ADMIN_PASS_KEY = 'invamax_admin_secret_v1';
@@ -810,12 +1054,11 @@
             }
         }
 
-        // Handle File Selection (convert to Base64 data URL for instant standalone downloads)
+        // Handle File Selection (convert to Base64 data URL)
         function handleFileSelect(e) {
             const file = e.target.files[0];
             if (!file) return;
 
-            // Check file size (25MB limit)
             if (file.size > 25 * 1024 * 1024) {
                 alert('Tệp có dung lượng quá lớn (hơn 25MB). Vui lòng dùng tab "Link Drive / Tải ngoài" để dán liên kết tải.');
                 e.target.value = '';
@@ -834,13 +1077,12 @@
             else if (['PPTX', 'PPT'].includes(ext)) formatSelect.value = 'PPTX';
             else if (['ZIP', 'RAR'].includes(ext)) formatSelect.value = 'ZIP';
 
-            // Read file
             const reader = new FileReader();
             reader.onload = function(event) {
                 currentFileBase64 = event.target.result;
                 document.getElementById('dropzoneBox').style.display = 'none';
                 document.getElementById('selectedFileInfo').style.display = 'flex';
-                document.getElementById('selectedFileName').innerHTML = `<i class="fa fa-file" style="margin-right:6px;"></i> <strong>${file.name}</strong> (${currentFileSize})`;
+                document.getElementById('selectedFileName').innerHTML = `<strong>${file.name}</strong> (${currentFileSize})`;
             };
             reader.readAsDataURL(file);
         }
@@ -854,7 +1096,7 @@
             document.getElementById('selectedFileInfo').style.display = 'none';
         }
 
-        // Save Document (Create or Update)
+        // Save Document from Left Form
         function handleSaveDoc(e) {
             e.preventDefault();
 
@@ -895,26 +1137,74 @@
 
             if (editId) {
                 docData.id = editId;
-                // Preserve original fileUrl if not re-uploaded
                 const existing = INVAMAX_TOOLKIT_STORE.getAll().find(t => t.id === editId);
                 if (existing && fileUrl === '#') {
                     docData.fileUrl = existing.fileUrl;
                     docData.fileName = existing.fileName;
+                    docData.fileSize = existing.fileSize;
                 }
             }
 
             INVAMAX_TOOLKIT_STORE.saveItem(docData);
-            showToast(editId ? 'Đã cập nhật tài liệu thành công!' : 'Đã đăng tài liệu mới lên website!', 'success');
+            showToast(editId ? `Đã cập nhật: "${title}"!` : `Đã thêm mới: "${title}"!`, 'success');
             
             cancelEdit();
             renderDashboard();
         }
 
-        // Edit Document
+        // Open Quick Edit Modal
+        function openQuickEditModal(id) {
+            const doc = INVAMAX_TOOLKIT_STORE.getAll().find(t => t.id === id);
+            if (!doc) return;
+
+            document.getElementById('modalDocId').value = doc.id;
+            document.getElementById('modalDocTitle').value = doc.title;
+            document.getElementById('modalDocFormat').value = doc.format || 'PDF';
+            document.getElementById('modalDocDesc').value = doc.desc || '';
+            document.getElementById('modalDocLink').value = (doc.fileUrl && doc.fileUrl.startsWith('data:') ? '' : (doc.fileUrl || ''));
+
+            document.getElementById('quickEditModal').classList.add('show');
+        }
+
+        function closeQuickEditModal() {
+            document.getElementById('quickEditModal').classList.remove('show');
+        }
+
+        // Handle Quick Edit Modal Save
+        function handleSaveModalEdit(e) {
+            e.preventDefault();
+            const id = document.getElementById('modalDocId').value;
+            const title = document.getElementById('modalDocTitle').value.trim();
+            const format = document.getElementById('modalDocFormat').value;
+            const desc = document.getElementById('modalDocDesc').value.trim();
+            const link = document.getElementById('modalDocLink').value.trim();
+
+            const existing = INVAMAX_TOOLKIT_STORE.getAll().find(t => t.id === id);
+            if (!existing) return;
+
+            const updatedData = {
+                ...existing,
+                title,
+                format,
+                desc
+            };
+
+            if (link) {
+                updatedData.fileUrl = link;
+            }
+
+            INVAMAX_TOOLKIT_STORE.saveItem(updatedData);
+            closeQuickEditModal();
+            showToast(`Đã lưu thay đổi cho "${title}" thành công!`, 'success');
+            renderDashboard();
+        }
+
+        // Start Edit in Main Form (Left Panel)
         function startEditDoc(id) {
             const doc = INVAMAX_TOOLKIT_STORE.getAll().find(t => t.id === id);
             if (!doc) return;
 
+            currentEditingId = id;
             document.getElementById('editDocId').value = doc.id;
             document.getElementById('docTitle').value = doc.title;
             document.getElementById('docFormat').value = doc.format || 'PDF';
@@ -927,33 +1217,47 @@
                 switchFileTab('upload');
             }
 
-            document.getElementById('formPanelTitle').innerHTML = '<i class="fa fa-pen-to-square" style="color: var(--admin-orange);"></i> Chỉnh sửa tài liệu';
-            document.getElementById('btnSubmitDoc').innerHTML = '<i class="fa fa-check"></i> Cập nhật thay đổi';
-            document.getElementById('btnCancelEdit').style.display = 'block';
+            // Show Edit Mode Banner
+            document.getElementById('editingDocName').innerText = doc.title;
+            document.getElementById('editModeBanner').classList.add('show');
 
-            // Scroll to form
+            document.getElementById('formPanelTitle').innerHTML = `
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--admin-orange)" stroke-width="2.2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                Chỉnh sửa: ${escapeHTML(doc.title)}
+            `;
+            document.getElementById('submitBtnText').innerText = 'Cập nhật thay đổi';
+
+            renderDashboard();
+
+            // Scroll smoothly to form
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function cancelEdit() {
+            currentEditingId = null;
             document.getElementById('editDocId').value = '';
             document.getElementById('docForm').reset();
             clearSelectedFile();
-            document.getElementById('formPanelTitle').innerHTML = '<i class="fa fa-circle-plus" style="color: var(--admin-orange);"></i> Thêm tài liệu mới';
-            document.getElementById('btnSubmitDoc').innerHTML = '<i class="fa fa-floppy-disk"></i> Lưu &amp; Đăng lên Website';
-            document.getElementById('btnCancelEdit').style.display = 'none';
+            document.getElementById('editModeBanner').classList.remove('show');
+            document.getElementById('formPanelTitle').innerHTML = `
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--admin-orange)" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+                Thêm tài liệu mới
+            `;
+            document.getElementById('submitBtnText').innerText = 'Lưu & Đăng lên Website';
+            renderDashboard();
         }
 
         // Delete Document
         function deleteDoc(id, title) {
             if (confirm(`Bạn có chắc chắn muốn xóa tài liệu "${title}" khỏi website?`)) {
                 INVAMAX_TOOLKIT_STORE.deleteItem(id);
+                if (currentEditingId === id) cancelEdit();
                 showToast(`Đã xóa tài liệu "${title}"!`, 'error');
                 renderDashboard();
             }
         }
 
-        // Render Dashboard Stats & List
+        // Render Dashboard Stats & List with clear buttons and icons
         function renderDashboard() {
             const docs = INVAMAX_TOOLKIT_STORE.getAll();
 
@@ -970,7 +1274,7 @@
             if (docs.length === 0) {
                 container.innerHTML = `
                     <div class="doc-list-empty">
-                        <i class="fa fa-folder-open"></i>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
                         <p>Chưa có tài liệu nào. Hãy điền form bên trái để đăng tài liệu đầu tiên!</p>
                     </div>
                 `;
@@ -984,9 +1288,10 @@
                 else if (['DOCX', 'DOC', 'WORD'].includes(fmt)) badgeClass = 'fmt-docx';
 
                 const downloadAttr = doc.fileUrl && doc.fileUrl.startsWith('data:') ? `download="${doc.fileName || 'tai-lieu'}"` : `target="_blank" rel="noopener"`;
+                const isEditing = currentEditingId === doc.id;
 
                 return `
-                    <div class="doc-item-row">
+                    <div class="doc-item-row ${isEditing ? 'is-editing' : ''}">
                         <div class="doc-main-info">
                             <div class="doc-preview-thumb">
                                 <div class="doc-line title"></div>
@@ -995,26 +1300,47 @@
                             </div>
                             <div class="doc-texts">
                                 <h4>
-                                    <span class="tool-format-badge ${badgeClass}" style="margin-right: 6px;">${fmt}</span>
+                                    <span class="tool-format-badge ${badgeClass}">${fmt}</span>
                                     ${escapeHTML(doc.title)}
+                                    ${isEditing ? '<span style="font-size: 11px; background: #ea580c; color: white; padding: 2px 7px; border-radius: 4px; font-weight: 700;">ĐANG CHỈNH SỬA</span>' : ''}
                                 </h4>
                                 <p>${escapeHTML(doc.desc || '')}</p>
                                 <div class="doc-meta-tags">
-                                    <span><i class="fa fa-calendar"></i> ${doc.createdAt || 'Mới'}</span>
-                                    <span><i class="fa fa-download"></i> ${doc.downloads || 0} lượt tải</span>
-                                    ${doc.fileName ? `<span><i class="fa fa-file"></i> ${escapeHTML(doc.fileName)}</span>` : ''}
+                                    <span>
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                                        ${doc.createdAt || 'Mới cập nhật'}
+                                    </span>
+                                    <span>
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                        ${doc.downloads || 0} lượt tải
+                                    </span>
+                                    ${doc.fileName ? `
+                                    <span>
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                                        ${escapeHTML(doc.fileName)}
+                                    </span>` : ''}
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Clear Action Buttons with Text & Icons -->
                         <div class="doc-row-actions">
-                            <a href="${doc.fileUrl || '#'}" ${downloadAttr} class="action-icon-btn" title="Tải thử file" onclick="INVAMAX_TOOLKIT_STORE.handleDownload('${doc.id}', event)">
-                                <i class="fa fa-download"></i>
+                            <!-- Nút Tải thử -->
+                            <a href="${doc.fileUrl || '#'}" ${downloadAttr} class="btn-action btn-action-download" title="Tải thử tệp này về máy" onclick="INVAMAX_TOOLKIT_STORE.handleDownload('${doc.id}', event)">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                Tải thử
                             </a>
-                            <button type="button" class="action-icon-btn" title="Chỉnh sửa" onclick="startEditDoc('${doc.id}')">
-                                <i class="fa fa-pen"></i>
+
+                            <!-- Nút Chỉnh sửa (Mở popup hoặc form sửa) -->
+                            <button type="button" class="btn-action btn-action-edit" title="Chỉnh sửa nội dung tài liệu này" onclick="openQuickEditModal('${doc.id}')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                                Chỉnh sửa
                             </button>
-                            <button type="button" class="action-icon-btn btn-delete" title="Xóa tài liệu" onclick="deleteDoc('${doc.id}', '${escapeHTML(doc.title)}')">
-                                <i class="fa fa-trash"></i>
+
+                            <!-- Nút Xóa -->
+                            <button type="button" class="btn-action btn-action-delete" title="Xóa tài liệu khỏi website" onclick="deleteDoc('${doc.id}', '${escapeHTML(doc.title)}')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+                                Xóa
                             </button>
                         </div>
                     </div>
@@ -1037,6 +1363,7 @@
         function resetDefaultDocs() {
             if (confirm('Bạn có chắc chắn muốn khôi phục lại 4 tài liệu mẫu ban đầu?')) {
                 INVAMAX_TOOLKIT_STORE.resetToDefault();
+                if (currentEditingId) cancelEdit();
                 showToast('Đã khôi phục dữ liệu gốc!', 'success');
                 renderDashboard();
             }
