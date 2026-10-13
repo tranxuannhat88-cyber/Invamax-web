@@ -59,6 +59,83 @@ const INVAMAX_TOOLKIT_STORE = (function () {
         }
     ];
 
+    // IndexedDB Cấu hình để lưu file thực tế (Dung lượng không giới hạn: lên tới hàng GB)
+    const IDB_NAME = 'invamax_toolkit_files_db';
+    const IDB_VERSION = 1;
+    const IDB_STORE = 'files_store';
+
+    function openFileDB() {
+        return new Promise((resolve, reject) => {
+            if (!window.indexedDB) {
+                return reject(new Error('IndexedDB không được hỗ trợ trên trình duyệt này'));
+            }
+            const req = indexedDB.open(IDB_NAME, IDB_VERSION);
+            req.onupgradeneeded = function (e) {
+                const db = e.target.result;
+                if (!db.objectStoreNames.contains(IDB_STORE)) {
+                    db.createObjectStore(IDB_STORE, { keyPath: 'id' });
+                }
+            };
+            req.onsuccess = function (e) {
+                resolve(e.target.result);
+            };
+            req.onerror = function (e) {
+                reject(e.target.error);
+            };
+        });
+    }
+
+    // Lưu file vào IndexedDB
+    async function setFileInDB(id, fileData) {
+        try {
+            const db = await openFileDB();
+            return new Promise((resolve, reject) => {
+                const tx = db.transaction(IDB_STORE, 'readwrite');
+                const store = tx.objectStore(IDB_STORE);
+                const req = store.put({ id: id, data: fileData, updatedAt: Date.now() });
+                req.onsuccess = () => resolve(true);
+                req.onerror = (e) => reject(e.target.error);
+            });
+        } catch (e) {
+            console.error('[ToolkitStore] Không thể lưu file vào IndexedDB:', e);
+            return false;
+        }
+    }
+
+    // Lấy file từ IndexedDB
+    async function getFileFromDB(id) {
+        try {
+            const db = await openFileDB();
+            return new Promise((resolve) => {
+                const tx = db.transaction(IDB_STORE, 'readonly');
+                const store = tx.objectStore(IDB_STORE);
+                const req = store.get(id);
+                req.onsuccess = (e) => {
+                    resolve(e.target.result ? e.target.result.data : null);
+                };
+                req.onerror = () => resolve(null);
+            });
+        } catch (e) {
+            return null;
+        }
+    }
+
+    // Xóa file khỏi IndexedDB
+    async function removeFileFromDB(id) {
+        try {
+            const db = await openFileDB();
+            return new Promise((resolve) => {
+                const tx = db.transaction(IDB_STORE, 'readwrite');
+                const store = tx.objectStore(IDB_STORE);
+                const req = store.delete(id);
+                req.onsuccess = () => resolve(true);
+                req.onerror = () => resolve(false);
+            });
+        } catch (e) {
+            return false;
+        }
+    }
+
     // Lấy danh sách tài liệu
     function getAll() {
         try {
@@ -75,46 +152,69 @@ const INVAMAX_TOOLKIT_STORE = (function () {
         }
     }
 
-    // Lưu danh sách tài liệu
+    // Lưu danh sách tài liệu vào localStorage (Tự động chuyển file lớn sang IndexedDB nếu cần)
     function saveAll(items) {
         try {
             localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
             return true;
         } catch (e) {
-            console.error('[ToolkitStore] Lỗi lưu vào localStorage:', e);
-            return false;
+            console.warn('[ToolkitStore] QuotaExceeded trên localStorage, kích hoạt cơ chế tách file sang IndexedDB...', e);
+            // Nếu bị vượt hạn mức localStorage, chuyển toàn bộ fileBase64 vào IndexedDB và chỉ lưu con trỏ `idb:{id}` vào localStorage
+            const sanitized = items.map(item => {
+                if (item.fileUrl && item.fileUrl.startsWith('data:')) {
+                    setFileInDB(item.id, item.fileUrl);
+                    return {
+                        ...item,
+                        fileUrl: 'idb:' + item.id
+                    };
+                }
+                return item;
+            });
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(sanitized));
+                return true;
+            } catch (err2) {
+                console.error('[ToolkitStore] Thất bại khi lưu sau khi chuyển sang IDB:', err2);
+                return false;
+            }
         }
     }
 
-    // Thêm hoặc cập nhật tài liệu
-    function saveItem(item) {
+    // Thêm hoặc cập nhật tài liệu (hỗ trợ async lưu file dung lượng lớn)
+    async function saveItem(item) {
         const items = getAll();
-        if (item.id) {
-            const index = items.findIndex(t => t.id === item.id);
-            if (index !== -1) {
-                items[index] = { ...items[index], ...item, updatedAt: new Date().toISOString() };
-            } else {
-                items.unshift(item);
-            }
-        } else {
-            const newItem = {
-                ...item,
-                id: 'tool-' + Date.now(),
-                createdAt: new Date().toISOString().split('T')[0],
-                downloads: item.downloads || 0,
-                status: item.status || 'published'
-            };
-            items.unshift(newItem);
+        let targetId = item.id;
+
+        if (!targetId) {
+            targetId = 'tool-' + Date.now();
+            item.id = targetId;
+            item.createdAt = new Date().toISOString().split('T')[0];
+            item.downloads = item.downloads || 0;
+            item.status = item.status || 'published';
         }
-        saveAll(items);
-        return true;
+
+        // Nếu fileUrl là Data URL Base64 (upload file trực tiếp từ máy), luôn lưu bản sao chuẩn vào IndexedDB trước
+        if (item.fileUrl && item.fileUrl.startsWith('data:')) {
+            await setFileInDB(targetId, item.fileUrl);
+        }
+
+        const index = items.findIndex(t => t.id === targetId);
+        if (index !== -1) {
+            items[index] = { ...items[index], ...item, updatedAt: new Date().toISOString() };
+        } else {
+            items.unshift(item);
+        }
+
+        const saved = saveAll(items);
+        return saved;
     }
 
     // Xóa tài liệu
-    function deleteItem(id) {
+    async function deleteItem(id) {
         let items = getAll();
         items = items.filter(t => t.id !== id);
         saveAll(items);
+        await removeFileFromDB(id);
         return true;
     }
 
@@ -153,6 +253,28 @@ const INVAMAX_TOOLKIT_STORE = (function () {
         localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings));
     }
 
+    // Kiểm tra xem item có file thực tế hay chưa
+    async function hasRealFile(item) {
+        if (!item || !item.fileUrl || item.fileUrl === '#') return false;
+        if (item.fileUrl.startsWith('http://') || item.fileUrl.startsWith('https://')) return true;
+        if (item.fileUrl.startsWith('data:')) return true;
+        if (item.fileUrl.startsWith('idb:')) {
+            const fileData = await getFileFromDB(item.id);
+            return !!fileData;
+        }
+        return false;
+    }
+
+    // Lấy nội dung link tải file (giải quyết nếu lưu trong IDB)
+    async function getFileDownloadUrl(item) {
+        if (!item || !item.fileUrl || item.fileUrl === '#') return '#';
+        if (item.fileUrl.startsWith('idb:')) {
+            const dataUrl = await getFileFromDB(item.id);
+            return dataUrl || '#';
+        }
+        return item.fileUrl;
+    }
+
     // Render HTML card cho trang resources.html
     function renderCardHTML(tool) {
         const fmt = (tool.format || 'PDF').toUpperCase();
@@ -160,7 +282,8 @@ const INVAMAX_TOOLKIT_STORE = (function () {
         if (fmt === 'XLSX' || fmt === 'XLS' || fmt === 'EXCEL') badgeClass = 'fmt-xlsx';
         else if (fmt === 'DOCX' || fmt === 'DOC' || fmt === 'WORD') badgeClass = 'fmt-docx';
 
-        const downloadHref = tool.fileUrl && tool.fileUrl !== '#' ? tool.fileUrl : '#';
+        const hasDirectLink = tool.fileUrl && (tool.fileUrl.startsWith('http://') || tool.fileUrl.startsWith('https://') || tool.fileUrl.startsWith('data:'));
+        const downloadHref = hasDirectLink ? tool.fileUrl : '#';
         const downloadAttr = tool.fileUrl && tool.fileUrl.startsWith('data:') ? `download="${tool.fileName || 'tai-lieu'}"` : `target="_blank" rel="noopener"`;
 
         return `
@@ -196,15 +319,32 @@ const INVAMAX_TOOLKIT_STORE = (function () {
     }
 
     // Xử lý khi bấm nút Tải xuống
-    function handleDownload(id, event) {
+    async function handleDownload(id, event) {
         incrementDownload(id);
         const item = getAll().find(t => t.id === id);
-        if (item && item.fileUrl === '#') {
-            event.preventDefault();
+        if (!item || item.fileUrl === '#') {
+            if (event) event.preventDefault();
             if (typeof openContactModal === 'function') {
                 openContactModal();
             } else {
-                alert('Tài liệu "' + item.title + '" đang được chuẩn bị bản mới nhất. Vui lòng liên hệ INVAMAX để nhận trực tiếp!');
+                alert('Tài liệu "' + (item ? item.title : '') + '" đang được cập nhật bản mới. Vui lòng liên hệ INVAMAX!');
+            }
+            return;
+        }
+
+        // Nếu file được lưu trong IndexedDB, lấy dữ liệu và kích hoạt download tự động
+        if (item.fileUrl.startsWith('idb:')) {
+            if (event) event.preventDefault();
+            const fileData = await getFileFromDB(item.id);
+            if (fileData) {
+                const tempLink = document.createElement('a');
+                tempLink.href = fileData;
+                tempLink.download = item.fileName || (item.title + '.' + (item.format || 'pdf').toLowerCase());
+                document.body.appendChild(tempLink);
+                tempLink.click();
+                document.body.removeChild(tempLink);
+            } else {
+                alert('Không tìm thấy file tải trong bộ nhớ. Vui lòng thử tải lại tài liệu!');
             }
         }
     }
@@ -234,6 +374,9 @@ const INVAMAX_TOOLKIT_STORE = (function () {
         saveSettings,
         renderCardHTML,
         handleDownload,
+        getFileFromDB,
+        getFileDownloadUrl,
+        hasRealFile,
         initResourcesPage
     };
 })();

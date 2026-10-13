@@ -1155,7 +1155,7 @@
         }
 
         // Save Document from Left Form
-        function handleSaveDoc(e) {
+        async function handleSaveDoc(e) {
             e.preventDefault();
 
             const editId = document.getElementById('editDocId').value;
@@ -1203,8 +1203,12 @@
                 }
             }
 
-            INVAMAX_TOOLKIT_STORE.saveItem(docData);
-            showToast(editId ? `Đã cập nhật: "${title}"!` : `Đã thêm mới: "${title}"!`, 'success');
+            const success = await INVAMAX_TOOLKIT_STORE.saveItem(docData);
+            if (success) {
+                showToast(editId ? `Đã cập nhật: "${title}"!` : `Đã thêm mới: "${title}"!`, 'success');
+            } else {
+                showToast(`Lỗi khi lưu tài liệu vào bộ nhớ trình duyệt!`, 'error');
+            }
             
             cancelEdit();
             renderDashboard();
@@ -1286,8 +1290,9 @@
             document.getElementById('modalDocDesc').value = doc.desc || '';
 
             const isDataUrl = doc.fileUrl && doc.fileUrl.startsWith('data:');
+            const isIdbUrl = doc.fileUrl && doc.fileUrl.startsWith('idb:');
             const isWebLink = doc.fileUrl && (doc.fileUrl.startsWith('http://') || doc.fileUrl.startsWith('https://'));
-            const hasRealFile = isDataUrl || isWebLink;
+            const hasRealFile = isDataUrl || isIdbUrl || isWebLink;
 
             const existingNotice = document.getElementById('modalExistingFileText');
             if (hasRealFile) {
@@ -1319,7 +1324,7 @@
         }
 
         // Handle Quick Edit Modal Save
-        function handleSaveModalEdit(e) {
+        async function handleSaveModalEdit(e) {
             e.preventDefault();
             const id = document.getElementById('modalDocId').value;
             const title = document.getElementById('modalDocTitle').value.trim();
@@ -1347,9 +1352,13 @@
                 updatedData.fileName = title;
             }
 
-            INVAMAX_TOOLKIT_STORE.saveItem(updatedData);
+            const success = await INVAMAX_TOOLKIT_STORE.saveItem(updatedData);
             closeQuickEditModal();
-            showToast(`Đã lưu tài liệu "${title}" thành công!`, 'success');
+            if (success) {
+                showToast(`Đã lưu tài liệu "${title}" thành công!`, 'success');
+            } else {
+                showToast(`Có lỗi xảy ra khi lưu tài liệu!`, 'error');
+            }
             renderDashboard();
         }
 
@@ -1468,7 +1477,7 @@
                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                                         ${doc.downloads || 0} lượt tải
                                     </span>
-                                    ${(doc.fileUrl && doc.fileUrl !== '#') ? `
+                                    ${(doc.fileUrl && doc.fileUrl !== '#' && (doc.fileUrl.startsWith('data:') || doc.fileUrl.startsWith('idb:') || doc.fileUrl.startsWith('http'))) ? `
                                     <span style="color: #059669; font-weight: 600; background: #ecfdf5; padding: 2px 8px; border-radius: 4px; border: 1px solid #a7f3d0;">
                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
                                         ${escapeHTML(doc.fileName || 'Đã có file tải')} (${doc.fileSize || 'Đã tải'})
