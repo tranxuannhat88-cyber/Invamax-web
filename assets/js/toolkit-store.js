@@ -568,14 +568,42 @@ const INVAMAX_TOOLKIT_STORE = (function () {
         }
     }
 
+    // Tải dữ liệu chính thức từ assets/data/toolkits.json trên server
+    async function fetchRemoteData() {
+        try {
+            const dataUrl = resolveAssetUrl('assets/data/toolkits.json') + '?t=' + Date.now();
+            const res = await fetch(dataUrl);
+            if (!res.ok) return null;
+            const remoteItems = await res.json();
+            if (Array.isArray(remoteItems) && remoteItems.length > 0) {
+                saveAll(remoteItems);
+                return remoteItems;
+            }
+        } catch (e) {
+            console.warn('[ToolkitStore] Không thể tải dữ liệu từ máy chủ:', e);
+        }
+        return null;
+    }
+
     // Khởi tạo và đồng bộ hiển thị lên trang resources.html
-    function initResourcesPage() {
+    async function initResourcesPage() {
         const grid = document.querySelector('#toolkit .res-grid-4');
         if (!grid) return;
 
-        const items = getAll().filter(t => t.status !== 'draft');
-        if (items && items.length > 0) {
-            grid.innerHTML = items.map(renderCardHTML).join('');
+        // 1. Render ngay lập tức từ bộ nhớ cục bộ để trang không bị trễ
+        const localItems = getAll().filter(t => t.status !== 'draft');
+        if (localItems && localItems.length > 0) {
+            grid.innerHTML = localItems.map(renderCardHTML).join('');
+            if (window.lucide && typeof window.lucide.createIcons === 'function') {
+                window.lucide.createIcons();
+            }
+        }
+
+        // 2. Tải ngầm dữ liệu mới nhất từ server/GitHub và cập nhật mượt mà
+        const remoteItems = await fetchRemoteData();
+        if (remoteItems) {
+            const published = remoteItems.filter(t => t.status !== 'draft');
+            grid.innerHTML = published.map(renderCardHTML).join('');
             if (window.lucide && typeof window.lucide.createIcons === 'function') {
                 window.lucide.createIcons();
             }
@@ -601,7 +629,8 @@ const INVAMAX_TOOLKIT_STORE = (function () {
         base64ToBlobUrl,
         generatePdfThumbnail,
         autoGenerateMissingThumbnails,
-        resolveAssetUrl
+        resolveAssetUrl,
+        fetchRemoteData
     };
 })();
 

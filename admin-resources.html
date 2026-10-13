@@ -893,6 +893,12 @@
             <span class="admin-badge">Admin Toolkit</span>
         </a>
         <div class="admin-nav-actions">
+            <!-- Nút Cài đặt Đồng bộ GitHub -->
+            <button type="button" onclick="openGitHubSettingsModal()" class="btn-nav-outline" id="btnGhSettings" title="Cài đặt kết nối GitHub để tự động xuất bản lên web">
+                <span id="ghIndicatorDot" style="width: 8px; height: 8px; border-radius: 50%; background: #f59e0b; display: inline-block;"></span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                <span id="ghStatusText">Tự động đăng Web (GitHub)</span>
+            </button>
             <a href="vi/resources.html#toolkit" target="_blank" class="btn-nav-outline">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                 Xem trang Web
@@ -906,6 +912,19 @@
 
     <!-- ADMIN MAIN BODY -->
     <main class="admin-body">
+        <!-- GITHUB AUTO-PUBLISH STATUS BANNER -->
+        <div id="ghStatusBanner" style="margin-bottom: 20px; padding: 12px 18px; border-radius: 10px; font-size: 13.5px; display: flex; align-items: center; justify-content: space-between; gap: 12px; background: #fffbeb; border: 1.5px solid #fde68a; color: #92400e; box-shadow: 0 2px 6px rgba(0,0,0,0.02);">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span id="ghBannerDot" style="width: 10px; height: 10px; border-radius: 50%; background: #f59e0b; flex-shrink: 0;"></span>
+                <span id="ghBannerText">
+                    <strong>Chưa kết nối GitHub Token:</strong> Mọi chỉnh sửa hiện chỉ lưu trên trình duyệt của máy này. Hãy <strong>kết nối GitHub</strong> để mỗi lần bấm "Lưu & Đăng" hệ thống tự động cập nhật lên web cho tất cả máy tính!
+                </span>
+            </div>
+            <button type="button" onclick="openGitHubSettingsModal()" id="btnGhBannerAction" class="btn-action" style="background: #ffffff; border-color: #f59e0b; color: #b45309; font-size: 12.5px; padding: 6px 14px; white-space: nowrap;">
+                Kết nối ngay (30 giây)
+            </button>
+        </div>
+
         <!-- Quick Stats -->
         <section class="admin-stats-grid">
             <div class="stat-card">
@@ -1203,20 +1222,77 @@
         </div>
     </div>
 
+    <!-- MODAL CÀI ĐẶT GITHUB AUTO-PUBLISH -->
+    <div id="githubSettingsModal" class="edit-modal-backdrop">
+        <div class="edit-modal-card" style="max-width: 620px;">
+            <div class="edit-modal-header">
+                <h3>
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--admin-orange)" stroke-width="2.2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                    Cài đặt Tự động Đăng lên Website (GitHub Sync)
+                </h3>
+                <button class="edit-modal-close" onclick="closeGitHubSettingsModal()">&times;</button>
+            </div>
+            <div class="edit-modal-body">
+                <p style="font-size: 13.5px; color: #475569; line-height: 1.6; margin-bottom: 16px;">
+                    Khi kết nối GitHub Token, mỗi lần bạn thêm hoặc sửa tài liệu ở trang Admin, hệ thống sẽ <strong>tự động commit và đẩy dữ liệu lên kho GitHub của Invamax</strong>. Nhờ đó, tất cả máy tính và khách hàng sẽ thấy nội dung mới ngay lập tức mà không cần thao tác code!
+                </p>
+
+                <div class="form-group">
+                    <label class="form-label">Kho lưu trữ Website (GitHub Repository)</label>
+                    <input type="text" id="ghRepoInput" class="form-input" value="tranxuannhat88-cyber/Invamax-web" placeholder="owner/repo">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Nhánh phát hành (Branch)</label>
+                    <input type="text" id="ghBranchInput" class="form-input" value="main" placeholder="main">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">GitHub Personal Access Token (PAT) <span class="req">*</span></label>
+                    <input type="password" id="ghTokenInput" class="form-input" placeholder="Dán mã Token bắt đầu bằng ghp_... vào đây">
+                    <div id="ghTestResult" style="margin-top: 8px; font-size: 12.5px; display: none;"></div>
+                </div>
+
+                <!-- Hướng dẫn tạo Token 30 giây -->
+                <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px; margin-top: 14px;">
+                    <strong style="font-size: 13px; color: #0f172a; display: block; margin-bottom: 8px;">📖 Hướng dẫn lấy mã GitHub Token (chỉ mất 30 giây):</strong>
+                    <ol style="font-size: 12.5px; color: #475569; line-height: 1.7; padding-left: 20px;">
+                        <li>Đăng nhập tài khoản GitHub <strong>tranxuannhat88-cyber</strong>.</li>
+                        <li>Truy cập trực tiếp liên kết: <a href="https://github.com/settings/tokens" target="_blank" style="color: var(--admin-orange); font-weight: 600;">github.com/settings/tokens</a> (mục Tokens classic).</li>
+                        <li>Bấm nút <strong>Generate new token (classic)</strong>.</li>
+                        <li>Ở ô <em>Note</em>, nhập: <code>Invamax Admin Auto Sync</code>.</li>
+                        <li>Ở mục <em>Select scopes</em>, tick chọn ô vuông <strong>repo</strong> (Full control of private repositories).</li>
+                        <li>Cuộn xuống dưới cùng bấm <strong>Generate token</strong>, sao chép chuỗi ký tự hiển thị (dạng <code>ghp_...</code>) rồi dán vào ô bên trên.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="edit-modal-footer">
+                <button type="button" class="btn-action" onclick="testGitHubConnection()" id="btnTestGh">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    Kiểm tra kết nối
+                </button>
+                <button type="button" class="btn-submit" onclick="saveGitHubSettings()" style="width: auto; padding: 9px 20px;">
+                    Lưu cài đặt kết nối
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- TOAST NOTIFICATION -->
     <div id="adminToast" class="toast-msg">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
         <span id="toastText">Thao tác thành công!</span>
     </div>
 
-    <!-- STORE & CONTROLLER SCRIPT WITH PDF.JS -->
+    <!-- STORE & CONTROLLER SCRIPT WITH PDF.JS & GITHUB SYNC -->
     <script src="assets/js/vendor/pdf.min.js"></script>
     <script>
         if (window.pdfjsLib) {
             pdfjsLib.GlobalWorkerOptions.workerSrc = 'assets/js/vendor/pdf.worker.min.js';
         }
     </script>
-    <script src="assets/js/toolkit-store.js?v=6"></script>
+    <script src="assets/js/toolkit-store.js?v=7"></script>
+    <script src="assets/js/github-sync.js?v=1"></script>
     <script>
         // State variables
         let currentFileBase64 = null;
@@ -1238,17 +1314,144 @@
         const ADMIN_PASS_KEY = 'invamax_admin_secret_v1';
         const DEFAULT_PASS = 'invamax2026';
 
-        function checkAuth() {
+        async function checkAuth() {
             const isAuth = sessionStorage.getItem('invamax_admin_logged');
             if (isAuth === 'true') {
                 document.getElementById('authOverlay').style.display = 'none';
                 renderDashboard();
+                updateGitHubStatusUI();
+
+                // Tải dữ liệu mới nhất từ assets/data/toolkits.json trên server/GitHub
+                if (typeof INVAMAX_TOOLKIT_STORE.fetchRemoteData === 'function') {
+                    const remote = await INVAMAX_TOOLKIT_STORE.fetchRemoteData();
+                    if (remote) {
+                        renderDashboard();
+                    }
+                }
+
                 // Tự động quét và tạo thumbnail trang 1 cho các file PDF đã upload
                 if (typeof INVAMAX_TOOLKIT_STORE.autoGenerateMissingThumbnails === 'function') {
                     INVAMAX_TOOLKIT_STORE.autoGenerateMissingThumbnails();
                 }
             } else {
                 document.getElementById('authOverlay').style.display = 'flex';
+            }
+        }
+
+        // GitHub Auto-Publish Settings Helpers
+        function openGitHubSettingsModal() {
+            const cfg = INVAMAX_GITHUB_SYNC.getConfig();
+            document.getElementById('ghRepoInput').value = `${cfg.owner}/${cfg.repo}`;
+            document.getElementById('ghBranchInput').value = cfg.branch || 'main';
+            document.getElementById('ghTokenInput').value = cfg.token || '';
+            const testRes = document.getElementById('ghTestResult');
+            testRes.style.display = 'none';
+            document.getElementById('githubSettingsModal').classList.add('show');
+        }
+
+        function closeGitHubSettingsModal() {
+            document.getElementById('githubSettingsModal').classList.remove('show');
+        }
+
+        async function testGitHubConnection() {
+            const token = document.getElementById('ghTokenInput').value.trim();
+            const repoVal = document.getElementById('ghRepoInput').value.trim();
+            const branchVal = document.getElementById('ghBranchInput').value.trim();
+            const testRes = document.getElementById('ghTestResult');
+
+            if (!token) {
+                testRes.style.display = 'block';
+                testRes.style.color = '#dc2626';
+                testRes.innerHTML = '⚠ Vui lòng dán mã GitHub Personal Access Token (PAT) vào ô trên!';
+                return;
+            }
+
+            const parts = repoVal.split('/');
+            const owner = parts[0] || 'tranxuannhat88-cyber';
+            const repo = parts[1] || 'Invamax-web';
+
+            INVAMAX_GITHUB_SYNC.saveConfig({ owner, repo, branch: branchVal || 'main', token });
+
+            testRes.style.display = 'block';
+            testRes.style.color = '#2563eb';
+            testRes.innerHTML = '⏳ Đang kiểm tra kết nối tới GitHub...';
+
+            const res = await INVAMAX_GITHUB_SYNC.testConnection(token);
+            if (res.success) {
+                testRes.style.color = '#16a34a';
+                testRes.innerHTML = `✓ <strong>Kết nối thành công!</strong> Kho: <code>${res.repoName}</code>. Quyền ghi (Push): <strong>${res.canPush ? 'Hợp lệ' : 'Cần cấp quyền repo'}</strong>`;
+            } else {
+                testRes.style.color = '#dc2626';
+                testRes.innerHTML = `✗ <strong>Kết nối thất bại:</strong> ${res.message}`;
+            }
+        }
+
+        function saveGitHubSettings() {
+            const token = document.getElementById('ghTokenInput').value.trim();
+            const repoVal = document.getElementById('ghRepoInput').value.trim();
+            const branchVal = document.getElementById('ghBranchInput').value.trim();
+
+            const parts = repoVal.split('/');
+            const owner = parts[0] || 'tranxuannhat88-cyber';
+            const repo = parts[1] || 'Invamax-web';
+
+            INVAMAX_GITHUB_SYNC.saveConfig({
+                owner,
+                repo,
+                branch: branchVal || 'main',
+                token
+            });
+
+            closeGitHubSettingsModal();
+            updateGitHubStatusUI();
+
+            if (token) {
+                showToast('Đã lưu cài đặt GitHub Token thành công!', 'success');
+            } else {
+                showToast('Đã xóa cài đặt GitHub Token.', 'info');
+            }
+        }
+
+        function updateGitHubStatusUI() {
+            const isConfigured = INVAMAX_GITHUB_SYNC.isConfigured();
+            const banner = document.getElementById('ghStatusBanner');
+            const dot = document.getElementById('ghIndicatorDot');
+            const bannerDot = document.getElementById('ghBannerDot');
+            const bannerText = document.getElementById('ghBannerText');
+            const btnConnect = document.getElementById('btnGhBannerAction');
+
+            if (isConfigured) {
+                if (dot) dot.style.background = '#10b981';
+                if (banner) {
+                    banner.style.background = '#ecfdf5';
+                    banner.style.borderColor = '#a7f3d0';
+                    banner.style.color = '#065f46';
+                }
+                if (bannerDot) bannerDot.style.background = '#10b981';
+                if (bannerText) {
+                    bannerText.innerHTML = '<strong>✓ Tự động đăng Web (GitHub) đang BẬT:</strong> Khi bạn bấm <em>"Lưu & Đăng"</em> hoặc <em>"Xóa"</em>, hệ thống sẽ tự động đồng bộ lên GitHub để cập nhật cho mọi máy tính sau 30-60 giây.';
+                }
+                if (btnConnect) {
+                    btnConnect.innerText = 'Cài đặt Token';
+                    btnConnect.style.borderColor = '#a7f3d0';
+                    btnConnect.style.color = '#065f46';
+                }
+            } else {
+                if (dot) dot.style.background = '#f59e0b';
+                if (banner) {
+                    banner.style.background = '#fffbeb';
+                    banner.style.borderColor = '#fde68a';
+                    banner.style.color = '#92400e';
+                }
+                if (bannerDot) bannerDot.style.background = '#f59e0b';
+                if (bannerText) {
+                    bannerText.innerHTML = '<strong>Chưa kết nối GitHub Token:</strong> Mọi chỉnh sửa hiện chỉ lưu trên trình duyệt máy này. Hãy <strong>kết nối GitHub Token</strong> để mỗi lần bấm "Lưu & Đăng" web tự động cập nhật cho mọi máy tính!';
+                }
+                if (btnConnect) {
+                    btnConnect.innerText = 'Kết nối ngay (30 giây)';
+                    btnConnect.style.borderColor = '#f59e0b';
+                    btnConnect.style.color = '#b45309';
+                }
             }
         }
 
@@ -1471,9 +1674,34 @@
 
             const success = await INVAMAX_TOOLKIT_STORE.saveItem(docData);
             if (success) {
-                showToast(editId ? `Đã cập nhật: "${title}"!` : `Đã thêm mới: "${title}"!`, 'success');
+                if (INVAMAX_GITHUB_SYNC.isConfigured()) {
+                    showToast('Đang tự động đồng bộ & đăng lên GitHub...', 'info');
+                    const btn = document.getElementById('btnSubmitDoc');
+                    const prevBtnText = document.getElementById('submitBtnText').innerText;
+                    if (btn) btn.disabled = true;
+                    document.getElementById('submitBtnText').innerText = 'Đang đẩy lên GitHub...';
+
+                    const ghResult = await INVAMAX_GITHUB_SYNC.syncToolkitsToGitHub(
+                        INVAMAX_TOOLKIT_STORE.getAll(),
+                        (msg) => showToast(msg, 'info')
+                    );
+
+                    if (btn) btn.disabled = false;
+                    document.getElementById('submitBtnText').innerText = prevBtnText;
+
+                    if (ghResult.success) {
+                        if (ghResult.updatedList) {
+                            INVAMAX_TOOLKIT_STORE.saveAll(ghResult.updatedList);
+                        }
+                        showToast(`✓ Đã đăng "${title}" lên website! Web tự cập nhật sau 30-60s.`, 'success');
+                    } else {
+                        showToast(`Lỗi đồng bộ GitHub: ${ghResult.message}`, 'error');
+                    }
+                } else {
+                    showToast(editId ? `Đã lưu: "${title}"! (Chưa kết nối GitHub Token - chỉ lưu máy này)` : `Đã thêm mới: "${title}"! (Chưa kết nối GitHub Token - chỉ lưu máy này)`, 'success');
+                }
             } else {
-                showToast(`Lỗi khi lưu tài liệu vào bộ nhớ trình duyệt!`, 'error');
+                showToast(`Lỗi khi lưu tài liệu!`, 'error');
             }
             
             cancelEdit();
@@ -1639,12 +1867,30 @@
 
             const success = await INVAMAX_TOOLKIT_STORE.saveItem(updatedData);
             closeQuickEditModal();
+            renderDashboard();
+
             if (success) {
-                showToast(`Đã lưu tài liệu "${title}" thành công!`, 'success');
+                if (INVAMAX_GITHUB_SYNC.isConfigured()) {
+                    showToast('Đang tự động đồng bộ & đăng lên GitHub...', 'info');
+                    const ghResult = await INVAMAX_GITHUB_SYNC.syncToolkitsToGitHub(
+                        INVAMAX_TOOLKIT_STORE.getAll(),
+                        (msg) => showToast(msg, 'info')
+                    );
+                    if (ghResult.success) {
+                        if (ghResult.updatedList) {
+                            INVAMAX_TOOLKIT_STORE.saveAll(ghResult.updatedList);
+                        }
+                        showToast(`✓ Đã đăng "${title}" lên website! Web tự cập nhật sau 30-60s.`, 'success');
+                        renderDashboard();
+                    } else {
+                        showToast(`Lỗi đồng bộ GitHub: ${ghResult.message}`, 'error');
+                    }
+                } else {
+                    showToast(`Đã lưu tài liệu "${title}"! (Chưa kết nối GitHub - chỉ lưu máy này)`, 'success');
+                }
             } else {
                 showToast(`Có lỗi xảy ra khi lưu tài liệu!`, 'error');
             }
-            renderDashboard();
         }
 
         // Start Edit in Main Form (Left Panel)
@@ -1705,12 +1951,26 @@
         }
 
         // Delete Document
-        function deleteDoc(id, title) {
+        async function deleteDoc(id, title) {
             if (confirm(`Bạn có chắc chắn muốn xóa tài liệu "${title}" khỏi website?`)) {
                 INVAMAX_TOOLKIT_STORE.deleteItem(id);
                 if (currentEditingId === id) cancelEdit();
-                showToast(`Đã xóa tài liệu "${title}"!`, 'error');
                 renderDashboard();
+
+                if (window.INVAMAX_GITHUB_SYNC && INVAMAX_GITHUB_SYNC.isConfigured()) {
+                    showToast('Đang đồng bộ xóa tài liệu lên GitHub...', 'info');
+                    const ghResult = await INVAMAX_GITHUB_SYNC.syncToolkitsToGitHub(
+                        INVAMAX_TOOLKIT_STORE.getAll(),
+                        (msg) => showToast(msg, 'info')
+                    );
+                    if (ghResult.success) {
+                        showToast(`✓ Đã xóa "${title}" và cập nhật website GitHub!`, 'success');
+                    } else {
+                        showToast(`Lỗi đồng bộ xóa lên GitHub: ${ghResult.message}`, 'error');
+                    }
+                } else {
+                    showToast(`Đã xóa tài liệu "${title}"! (Chưa kết nối GitHub)`, 'error');
+                }
             }
         }
 

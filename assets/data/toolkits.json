@@ -1,0 +1,51 @@
+[
+  {
+    "id": "tool-checklist-danh-gia",
+    "title": "Hướng dẫn thực hiện 5S Tinh gọn & Hiệu quả",
+    "format": "PDF",
+    "desc": "Tài liệu giúp bạn triển khai thực hiện và duy trì 5S hiệu quả.",
+    "fileUrl": "assets/docs/IVM-Huong-dan-thuc-hien-5S-Tinh-gon-Hieu-qua.pdf",
+    "fileName": "IVM - Hướng dẫn thực hiện 5S Tinh gọn & Hiệu quả.pdf",
+    "fileSize": "6.16 MB",
+    "thumbnail": "assets/images/resources/thumb-5s-guide.jpg",
+    "createdAt": "2026-10-10",
+    "downloads": 242,
+    "status": "published"
+  },
+  {
+    "id": "tool-ke-hoach-lean-a3",
+    "title": "Khung lập kế hoạch triển khai Lean (A3)",
+    "format": "DOCX",
+    "desc": "Mẫu A3 chuẩn giúp lập kế hoạch, triển khai và theo dõi tiến độ.",
+    "fileUrl": "#",
+    "fileName": "Khung-ke-hoach-Lean-A3.docx",
+    "fileSize": "850 KB",
+    "createdAt": "2026-10-08",
+    "downloads": 185,
+    "status": "published"
+  },
+  {
+    "id": "tool-huong-dan-giam-chi-phi",
+    "title": "Tài liệu hướng dẫn Giảm chi phí sản xuất",
+    "format": "PDF",
+    "desc": "Hướng dẫn chi tiết phương pháp phân tích chi phí theo IPO và các công cụ thực hành.",
+    "fileUrl": "#",
+    "fileName": "Huong-dan-giam-chi-phi-san-xuat.pdf",
+    "fileSize": "3.4 MB",
+    "createdAt": "2026-10-05",
+    "downloads": 310,
+    "status": "published"
+  },
+  {
+    "id": "tool-bieu-mau-oee",
+    "title": "Biểu mẫu quản lý chỉ số OEE",
+    "format": "XLSX",
+    "desc": "Bộ biểu mẫu theo dõi, phân tích và báo cáo OEE trong sản xuất.",
+    "fileUrl": "#",
+    "fileName": "Bieu-mau-quan-ly-OEE.xlsx",
+    "fileSize": "1.5 MB",
+    "createdAt": "2026-10-01",
+    "downloads": 295,
+    "status": "published"
+  }
+]
