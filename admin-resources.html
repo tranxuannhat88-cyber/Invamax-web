@@ -1107,7 +1107,8 @@
                 </div>
             </section>
         </div>
-    </main>
+    <!-- Input ẩn hỗ trợ tải file trực tiếp từ danh sách card -->
+    <input type="file" id="directDocFileInput" accept=".xlsx,.xls,.docx,.doc,.pdf,.pptx,.ppt,.zip,.rar" style="display: none;" onchange="handleDirectFileSelected(event)">
 
     <!-- POPUP MODAL CHỈNH SỬA NHANH (QUICK EDIT MODAL) -->
     <div id="quickEditModal" class="edit-modal-backdrop">
@@ -1291,8 +1292,8 @@
             pdfjsLib.GlobalWorkerOptions.workerSrc = 'assets/js/vendor/pdf.worker.min.js';
         }
     </script>
-    <script src="assets/js/toolkit-store.js?v=7"></script>
-    <script src="assets/js/github-sync.js?v=1"></script>
+    <script src="assets/js/toolkit-store.js?v=8"></script>
+    <script src="assets/js/github-sync.js?v=2"></script>
     <script>
         // State variables
         let currentFileBase64 = null;
@@ -1698,7 +1699,12 @@
                         showToast(`Lỗi đồng bộ GitHub: ${ghResult.message}`, 'error');
                     }
                 } else {
-                    showToast(editId ? `Đã lưu: "${title}"! (Chưa kết nối GitHub Token - chỉ lưu máy này)` : `Đã thêm mới: "${title}"! (Chưa kết nối GitHub Token - chỉ lưu máy này)`, 'success');
+                    showToast(editId ? `Đã lưu: "${title}"! (Chưa kết nối GitHub - chỉ lưu máy này)` : `Đã thêm mới: "${title}"! (Chưa kết nối GitHub - chỉ lưu máy này)`, 'success');
+                    setTimeout(() => {
+                        if (confirm(`Đã lưu "${title}" trên máy này!\n\nĐể tự động cập nhật lên website cho tất cả mọi người, bạn cần nhập GitHub Token.\n\nBạn có muốn mở cài đặt kết nối GitHub ngay không?`)) {
+                            openGitHubSettingsModal();
+                        }
+                    }, 400);
                 }
             } else {
                 showToast(`Lỗi khi lưu tài liệu!`, 'error');
@@ -1780,6 +1786,104 @@
             document.getElementById('modalSelectedFileInfo').style.display = 'none';
         }
 
+        // Direct File Upload from Document Card
+        let directUploadTargetId = null;
+
+        function triggerDirectUpload(id) {
+            directUploadTargetId = id;
+            const input = document.getElementById('directDocFileInput');
+            if (input) {
+                input.value = '';
+                input.click();
+            }
+        }
+
+        async function handleDirectFileSelected(e) {
+            const file = e.target.files && e.target.files[0];
+            if (!file || !directUploadTargetId) return;
+
+            const docId = directUploadTargetId;
+            directUploadTargetId = null;
+
+            const doc = INVAMAX_TOOLKIT_STORE.getAll().find(t => t.id === docId);
+            if (!doc) return;
+
+            if (file.size > 25 * 1024 * 1024) {
+                alert('Tệp quá lớn (> 25MB). Vui lòng chọn tệp nhỏ hơn hoặc dùng Link Drive.');
+                return;
+            }
+
+            showToast(`Đang tải tệp "${file.name}"...`, 'info');
+
+            const ext = file.name.split('.').pop().toUpperCase();
+            let detectedFormat = doc.format || 'PDF';
+            if (['XLSX', 'XLS'].includes(ext)) detectedFormat = 'XLSX';
+            else if (['DOCX', 'DOC'].includes(ext)) detectedFormat = 'DOCX';
+            else if (['PDF'].includes(ext)) detectedFormat = 'PDF';
+            else if (['PPTX', 'PPT'].includes(ext)) detectedFormat = 'PPTX';
+            else if (['ZIP', 'RAR'].includes(ext)) detectedFormat = 'ZIP';
+
+            const fileSizeStr = (file.size / (1024 * 1024)).toFixed(2) + ' MB';
+
+            const reader = new FileReader();
+            reader.onload = async function(event) {
+                const fileBase64 = event.target.result;
+
+                const updatedDoc = {
+                    ...doc,
+                    format: detectedFormat,
+                    fileUrl: fileBase64,
+                    fileName: file.name,
+                    fileSize: fileSizeStr
+                };
+
+                // Tự động tạo ảnh bìa nếu là PDF
+                if (ext === 'PDF' && typeof INVAMAX_TOOLKIT_STORE.generatePdfThumbnail === 'function') {
+                    try {
+                        showToast('Đang tạo ảnh bìa trang 1...', 'info');
+                        const thumb = await INVAMAX_TOOLKIT_STORE.generatePdfThumbnail(fileBase64);
+                        if (thumb) {
+                            updatedDoc.thumbnail = thumb;
+                        }
+                    } catch (err) {
+                        console.warn('Lỗi tạo thumbnail PDF:', err);
+                    }
+                }
+
+                const saved = await INVAMAX_TOOLKIT_STORE.saveItem(updatedDoc);
+                renderDashboard();
+
+                if (saved) {
+                    if (window.INVAMAX_GITHUB_SYNC && INVAMAX_GITHUB_SYNC.isConfigured()) {
+                        showToast(`Đang tải tệp "${file.name}" lên GitHub & Website...`, 'info');
+                        const ghResult = await INVAMAX_GITHUB_SYNC.syncToolkitsToGitHub(
+                            INVAMAX_TOOLKIT_STORE.getAll(),
+                            (msg) => showToast(msg, 'info')
+                        );
+                        if (ghResult.success) {
+                            if (ghResult.updatedList) {
+                                INVAMAX_TOOLKIT_STORE.saveAll(ghResult.updatedList);
+                            }
+                            showToast(`✓ Đã upload và cập nhật "${doc.title}" lên website thành công!`, 'success');
+                            renderDashboard();
+                        } else {
+                            showToast(`Lỗi đồng bộ GitHub: ${ghResult.message}`, 'error');
+                        }
+                    } else {
+                        showToast(`✓ Đã gắn tệp "${file.name}" vào "${doc.title}"!`, 'success');
+                        setTimeout(() => {
+                            if (confirm(`Đã lưu tệp "${file.name}" trên máy này!\n\nĐể tệp tự động hiển thị cho các máy tính khác trên web, bạn cần nhập GitHub Token.\n\nBạn có muốn mở bảng kết nối GitHub ngay không?`)) {
+                                openGitHubSettingsModal();
+                            }
+                        }, 400);
+                    }
+                } else {
+                    showToast('Có lỗi xảy ra khi lưu tệp đính kèm!', 'error');
+                }
+            };
+            reader.readAsDataURL(file);
+        }
+
         // Open Quick Edit Modal
         function openQuickEditModal(id, focusUpload = false) {
             const doc = INVAMAX_TOOLKIT_STORE.getAll().find(t => t.id === id);
@@ -1799,6 +1903,9 @@
                 displayModalThumbnailPreview(doc.thumbnail, 'Ảnh bìa hiện tại');
             }
 
+            const isDataUrl = doc.fileUrl && doc.fileUrl.startsWith('data:');
+            const isIdbUrl = doc.fileUrl && doc.fileUrl.startsWith('idb:');
+            const isWebLink = doc.fileUrl && (doc.fileUrl.startsWith('http://') || doc.fileUrl.startsWith('https://'));
             const isLocalDoc = doc.fileUrl && doc.fileUrl.startsWith('assets/');
             const hasRealFile = isDataUrl || isIdbUrl || isWebLink || isLocalDoc;
 
@@ -1818,12 +1925,6 @@
             }
 
             document.getElementById('quickEditModal').classList.add('show');
-
-            if (focusUpload) {
-                setTimeout(() => {
-                    document.getElementById('modalFileInput').click();
-                }, 150);
-            }
         }
 
         function closeQuickEditModal() {
@@ -1887,6 +1988,11 @@
                     }
                 } else {
                     showToast(`Đã lưu tài liệu "${title}"! (Chưa kết nối GitHub - chỉ lưu máy này)`, 'success');
+                    setTimeout(() => {
+                        if (confirm(`Đã lưu "${title}" trên máy này!\n\nĐể tự động cập nhật lên website cho tất cả mọi người, bạn cần nhập GitHub Token.\n\nBạn có muốn mở cài đặt kết nối GitHub ngay không?`)) {
+                            openGitHubSettingsModal();
+                        }
+                    }, 400);
                 }
             } else {
                 showToast(`Có lỗi xảy ra khi lưu tài liệu!`, 'error');
@@ -2083,7 +2189,7 @@
                                 </a>
 
                                 <!-- Nút Upload tài liệu thực tế -->
-                                <button type="button" class="btn-action btn-action-upload" title="Tải tệp thực tế từ máy tính lên cho tài liệu này" onclick="openQuickEditModal('${doc.id}', true)">
+                                <button type="button" class="btn-action btn-action-upload" title="Tải tệp thực tế từ máy tính lên cho tài liệu này" onclick="triggerDirectUpload('${doc.id}')">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
                                     Upload file
                                 </button>
