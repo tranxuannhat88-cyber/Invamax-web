@@ -7,13 +7,14 @@ const INVAMAX_TOOLKIT_STORE = (function () {
     const STORAGE_KEY = 'invamax_toolkits_v1';
     const SETTINGS_KEY = 'invamax_admin_settings_v1';
 
-    // Dữ liệu mặc định 4 tài liệu gốc
+    // Dữ liệu mặc định 4 tài liệu gốc (Kèm thumbnail trực quan)
     const DEFAULT_TOOLKITS = [
         {
             id: 'tool-checklist-danh-gia',
             title: 'Checklist đánh giá hiện trạng nhà máy',
             format: 'XLSX',
             desc: 'Mẫu checklist giúp bạn rà soát hiện trạng và xác định cơ hội cải tiến.',
+            thumbnail: '../assets/images/resources/topic-mgmt.jpg',
             fileUrl: '#',
             fileName: 'Checklist-danh-gia-hien-trang.xlsx',
             fileSize: '1.2 MB',
@@ -26,6 +27,7 @@ const INVAMAX_TOOLKIT_STORE = (function () {
             title: 'Khung lập kế hoạch triển khai Lean (A3)',
             format: 'DOCX',
             desc: 'Mẫu A3 chuẩn giúp lập kế hoạch, triển khai và theo dõi tiến độ.',
+            thumbnail: '../assets/images/resources/topic-lean.jpg',
             fileUrl: '#',
             fileName: 'Khung-ke-hoach-Lean-A3.docx',
             fileSize: '850 KB',
@@ -38,6 +40,7 @@ const INVAMAX_TOOLKIT_STORE = (function () {
             title: 'Tài liệu hướng dẫn Giảm chi phí sản xuất',
             format: 'PDF',
             desc: 'Hướng dẫn chi tiết phương pháp phân tích chi phí theo IPO và các công cụ thực hành.',
+            thumbnail: '../assets/images/resources/topic-cost.jpg',
             fileUrl: '#',
             fileName: 'Huong-dan-giam-chi-phi-san-xuat.pdf',
             fileSize: '3.4 MB',
@@ -50,6 +53,7 @@ const INVAMAX_TOOLKIT_STORE = (function () {
             title: 'Biểu mẫu quản lý chỉ số OEE',
             format: 'XLSX',
             desc: 'Bộ biểu mẫu theo dõi, phân tích và báo cáo OEE trong sản xuất.',
+            thumbnail: '../assets/images/resources/art-oee.jpg',
             fileUrl: '#',
             fileName: 'Bieu-mau-quan-ly-OEE.xlsx',
             fileSize: '1.5 MB',
@@ -275,6 +279,60 @@ const INVAMAX_TOOLKIT_STORE = (function () {
         return item.fileUrl;
     }
 
+    // Xử lý khi bấm nút "Xem tài liệu"
+    async function handlePreview(id, event) {
+        if (event) event.preventDefault();
+        const item = getAll().find(t => t.id === id);
+        if (!item) return;
+
+        // Nếu có preview modal trên trang, mở popup xem trước
+        if (typeof openDocPreviewModal === 'function') {
+            openDocPreviewModal(item);
+            return;
+        }
+
+        // Tự động kiểm tra fileUrl
+        let targetUrl = item.fileUrl;
+        if (targetUrl && targetUrl.startsWith('idb:')) {
+            targetUrl = await getFileFromDB(item.id);
+        }
+
+        if (targetUrl && targetUrl !== '#') {
+            // Mở tab mới xem trước trực tiếp (PDF, link Drive, hình ảnh, văn bản)
+            const win = window.open();
+            if (win) {
+                if (targetUrl.startsWith('data:application/pdf') || targetUrl.startsWith('http')) {
+                    win.location.href = targetUrl;
+                } else {
+                    win.document.write(`
+                        <html>
+                        <head><title>Xem trước: ${escapeHTML(item.title)}</title>
+                        <meta name="viewport" content="width=device-width, initial-scale=1">
+                        <style>
+                            body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 30px; text-align: center; background: #0f172a; color: #f8fafc; }
+                            .box { max-width: 600px; margin: 40px auto; background: #1e293b; padding: 30px; border-radius: 14px; border: 1px solid #334155; }
+                            h2 { color: #f97316; margin-bottom: 12px; }
+                            p { color: #94a3b8; line-height: 1.6; margin-bottom: 24px; }
+                            .btn { display: inline-flex; align-items: center; gap: 8px; background: #ea580c; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 700; }
+                        </style>
+                        </head>
+                        <body>
+                            <div class="box">
+                                <h2>${escapeHTML(item.title)}</h2>
+                                <p>${escapeHTML(item.desc || '')}</p>
+                                <p style="font-size: 13px; color: #64748b;">Định dạng: <strong>${escapeHTML(item.format || '')}</strong> &bull; Dung lượng: ${escapeHTML(item.fileSize || '')}</p>
+                                <a class="btn" href="${targetUrl}" download="${escapeHTML(item.fileName || 'tai-lieu')}">Tải về máy để xem toàn bộ</a>
+                            </div>
+                        </body>
+                        </html>
+                    `);
+                }
+            }
+        } else {
+            alert('Tài liệu "' + item.title + '" đang được chuẩn bị bản xem trước số hóa. Bạn có thể liên hệ INVAMAX để nhận tài liệu ngay!');
+        }
+    }
+
     // Render HTML card cho trang resources.html
     function renderCardHTML(tool) {
         const fmt = (tool.format || 'PDF').toUpperCase();
@@ -286,14 +344,23 @@ const INVAMAX_TOOLKIT_STORE = (function () {
         const downloadHref = hasDirectLink ? tool.fileUrl : '#';
         const downloadAttr = tool.fileUrl && tool.fileUrl.startsWith('data:') ? `download="${tool.fileName || 'tai-lieu'}"` : `target="_blank" rel="noopener"`;
 
+        // Thumbnail thực tế thay vì icon vẽ tĩnh
+        let thumbSrc = tool.thumbnail || '';
+        if (!thumbSrc) {
+            if (['XLSX', 'XLS'].includes(fmt)) thumbSrc = '../assets/images/resources/topic-mgmt.jpg';
+            else if (['DOCX', 'DOC'].includes(fmt)) thumbSrc = '../assets/images/resources/topic-lean.jpg';
+            else if (['PDF'].includes(fmt)) thumbSrc = '../assets/images/resources/topic-cost.jpg';
+            else thumbSrc = '../assets/images/resources/art-oee.jpg';
+        }
+
         return `
             <div class="tool-card-light" data-id="${tool.id}">
                 <div class="tool-top-row">
-                    <div class="tool-preview-box">
-                        <div class="doc-line title"></div>
-                        <div class="doc-line w-80"></div>
-                        <div class="doc-line w-60"></div>
-                        <div class="doc-line w-90"></div>
+                    <div class="tool-thumb-box" onclick="INVAMAX_TOOLKIT_STORE.handlePreview('${tool.id}', event)" title="Bấm để xem trước tài liệu">
+                        <img src="${thumbSrc}" alt="${escapeHTML(tool.title)}" class="tool-thumb-img" onerror="this.onerror=null;this.src='../assets/images/resources/topic-mgmt.jpg';">
+                        <div class="tool-thumb-overlay">
+                            <i data-lucide="eye" style="width: 18px; height: 18px; color: #ffffff;"></i>
+                        </div>
                     </div>
                     <div class="tool-header-content">
                         <span class="tool-format-badge ${badgeClass}" style="align-self: flex-start; margin-bottom: 6px;">${fmt}</span>
@@ -301,9 +368,14 @@ const INVAMAX_TOOLKIT_STORE = (function () {
                     </div>
                 </div>
                 <p class="tool-desc-light">${escapeHTML(tool.desc || '')}</p>
-                <a href="${downloadHref}" ${downloadAttr} class="tool-download-btn" onclick="INVAMAX_TOOLKIT_STORE.handleDownload('${tool.id}', event)">
-                    <i data-lucide="download"></i> Tải xuống
-                </a>
+                <div class="tool-card-actions">
+                    <button type="button" class="tool-btn-preview" onclick="INVAMAX_TOOLKIT_STORE.handlePreview('${tool.id}', event)">
+                        <i data-lucide="eye"></i> Xem tài liệu
+                    </button>
+                    <a href="${downloadHref}" ${downloadAttr} class="tool-download-btn" onclick="INVAMAX_TOOLKIT_STORE.handleDownload('${tool.id}', event)">
+                        <i data-lucide="download"></i> Tải xuống
+                    </a>
+                </div>
             </div>
         `;
     }
@@ -374,6 +446,7 @@ const INVAMAX_TOOLKIT_STORE = (function () {
         saveSettings,
         renderCardHTML,
         handleDownload,
+        handlePreview,
         getFileFromDB,
         getFileDownloadUrl,
         hasRealFile,

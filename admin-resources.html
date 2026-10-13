@@ -1453,13 +1453,13 @@
                 const downloadAttr = doc.fileUrl && doc.fileUrl.startsWith('data:') ? `download="${doc.fileName || 'tai-lieu'}"` : `target="_blank" rel="noopener"`;
                 const isEditing = currentEditingId === doc.id;
 
+                const thumbSrc = doc.thumbnail || (['XLSX', 'XLS'].includes(fmt) ? 'assets/images/resources/topic-mgmt.jpg' : (['DOCX', 'DOC'].includes(fmt) ? 'assets/images/resources/topic-lean.jpg' : 'assets/images/resources/topic-cost.jpg'));
+
                 return `
                     <div class="doc-item-row ${isEditing ? 'is-editing' : ''}">
                         <div class="doc-main-info">
-                            <div class="doc-preview-thumb">
-                                <div class="doc-line title"></div>
-                                <div class="doc-line w-80"></div>
-                                <div class="doc-line w-60"></div>
+                            <div class="doc-preview-thumb" style="padding: 0; overflow: hidden; width: 56px; height: 68px; border-radius: 8px;">
+                                <img src="${thumbSrc}" alt="${escapeHTML(doc.title)}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'">
                             </div>
                             <div class="doc-texts">
                                 <h4>
@@ -1492,6 +1492,12 @@
 
                         <!-- Clear Action Buttons with Text & Icons -->
                         <div class="doc-row-actions">
+                            <!-- Nút Xem trước -->
+                            <button type="button" class="btn-action" title="Xem trước tài liệu này" onclick="INVAMAX_TOOLKIT_STORE.handlePreview('${doc.id}', event)" style="background: #f8fafc; color: #1e40af; border-color: #bfdbfe;">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                                Xem trước
+                            </button>
+
                             <!-- Nút Tải thử -->
                             <a href="${doc.fileUrl || '#'}" ${downloadAttr} class="btn-action btn-action-download" title="Tải thử tệp này về máy" onclick="INVAMAX_TOOLKIT_STORE.handleDownload('${doc.id}', event)">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
