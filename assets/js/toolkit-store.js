@@ -4,21 +4,22 @@
  */
 
 const INVAMAX_TOOLKIT_STORE = (function () {
-    const STORAGE_KEY = 'invamax_toolkits_v1';
+    const STORAGE_KEY = 'invamax_toolkits_v2';
     const SETTINGS_KEY = 'invamax_admin_settings_v1';
 
     // Dữ liệu mặc định 4 tài liệu gốc
     const DEFAULT_TOOLKITS = [
         {
             id: 'tool-checklist-danh-gia',
-            title: 'Checklist đánh giá hiện trạng nhà máy',
-            format: 'XLSX',
-            desc: 'Mẫu checklist giúp bạn rà soát hiện trạng và xác định cơ hội cải tiến.',
-            fileUrl: '#',
-            fileName: 'Checklist-danh-gia-hien-trang.xlsx',
-            fileSize: '1.2 MB',
+            title: 'Hướng dẫn thực hiện 5S Tinh gọn & Hiệu quả',
+            format: 'PDF',
+            desc: 'Tài liệu giúp bạn triển khai thực hiện và duy trì 5S hiệu quả.',
+            fileUrl: 'assets/docs/IVM-Huong-dan-thuc-hien-5S-Tinh-gon-Hieu-qua.pdf',
+            fileName: 'IVM - Hướng dẫn thực hiện 5S Tinh gọn & Hiệu quả.pdf',
+            fileSize: '6.16 MB',
+            thumbnail: 'assets/images/resources/thumb-5s-guide.jpg',
             createdAt: '2026-10-10',
-            downloads: 240,
+            downloads: 242,
             status: 'published'
         },
         {
@@ -461,6 +462,18 @@ const INVAMAX_TOOLKIT_STORE = (function () {
         }
     }
 
+    // Giải quyết đường dẫn tương đối khi trang hiện tại nằm trong thư mục con (ví dụ /vi/ hoặc /en/)
+    function resolveAssetUrl(url) {
+        if (!url || url === '#' || url.startsWith('http://') || url.startsWith('https://') || url.startsWith('data:') || url.startsWith('blob:') || url.startsWith('idb:')) {
+            return url;
+        }
+        const isInSubdir = typeof window !== 'undefined' && window.location && (window.location.pathname.includes('/vi/') || window.location.pathname.includes('/en/'));
+        if (isInSubdir && url.startsWith('assets/')) {
+            return '../' + url;
+        }
+        return url;
+    }
+
     // Render HTML card cho trang resources.html
     function renderCardHTML(tool) {
         const fmt = (tool.format || 'PDF').toUpperCase();
@@ -468,15 +481,17 @@ const INVAMAX_TOOLKIT_STORE = (function () {
         if (fmt === 'XLSX' || fmt === 'XLS' || fmt === 'EXCEL') badgeClass = 'fmt-xlsx';
         else if (fmt === 'DOCX' || fmt === 'DOC' || fmt === 'WORD') badgeClass = 'fmt-docx';
 
-        const hasDirectLink = tool.fileUrl && (tool.fileUrl.startsWith('http://') || tool.fileUrl.startsWith('https://') || tool.fileUrl.startsWith('data:'));
-        const downloadHref = hasDirectLink ? tool.fileUrl : '#';
-        const downloadAttr = tool.fileUrl && tool.fileUrl.startsWith('data:') ? `download="${tool.fileName || 'tai-lieu'}"` : `target="_blank" rel="noopener"`;
+        const isRealLink = tool.fileUrl && tool.fileUrl !== '#' && !tool.fileUrl.startsWith('idb:');
+        const resolvedFileUrl = isRealLink ? resolveAssetUrl(tool.fileUrl) : '#';
+        const downloadHref = resolvedFileUrl;
+        const downloadAttr = tool.fileUrl && (tool.fileUrl.startsWith('data:') || tool.fileUrl.endsWith('.pdf')) ? `download="${tool.fileName || 'tai-lieu'}"` : `target="_blank" rel="noopener"`;
 
         // Thumbnail thực tế nếu có, ngược lại dùng icon mặc định như cũ
-        const hasRealThumb = !!tool.thumbnail;
+        const resolvedThumb = resolveAssetUrl(tool.thumbnail);
+        const hasRealThumb = !!resolvedThumb;
         const thumbHTML = hasRealThumb ? `
             <div class="tool-thumb-box" onclick="INVAMAX_TOOLKIT_STORE.handlePreview('${tool.id}', event)" title="Bấm để xem trước tài liệu">
-                <img src="${tool.thumbnail}" alt="${escapeHTML(tool.title)}" class="tool-thumb-img">
+                <img src="${resolvedThumb}" alt="${escapeHTML(tool.title)}" class="tool-thumb-img">
                 <div class="tool-thumb-overlay">
                     <i data-lucide="eye" style="width: 16px; height: 16px; color: #ffffff;"></i>
                 </div>
@@ -585,7 +600,8 @@ const INVAMAX_TOOLKIT_STORE = (function () {
         initResourcesPage,
         base64ToBlobUrl,
         generatePdfThumbnail,
-        autoGenerateMissingThumbnails
+        autoGenerateMissingThumbnails,
+        resolveAssetUrl
     };
 })();
 

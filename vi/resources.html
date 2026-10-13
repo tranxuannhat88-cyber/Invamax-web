@@ -271,23 +271,23 @@
                     <!-- Tool 1 -->
                     <div class="tool-card-light" data-id="tool-checklist-danh-gia">
                         <div class="tool-top-row">
-                            <div class="tool-preview-box">
-                                <div class="doc-line title"></div>
-                                <div class="doc-line w-80"></div>
-                                <div class="doc-line w-60"></div>
-                                <div class="doc-line w-90"></div>
+                            <div class="tool-thumb-box" onclick="INVAMAX_TOOLKIT_STORE.handlePreview('tool-checklist-danh-gia', event)" title="Bấm để xem trước tài liệu">
+                                <img src="../assets/images/resources/thumb-5s-guide.jpg" alt="Hướng dẫn thực hiện 5S Tinh gọn &amp; Hiệu quả" class="tool-thumb-img">
+                                <div class="tool-thumb-overlay">
+                                    <i data-lucide="eye" style="width: 16px; height: 16px; color: #ffffff;"></i>
+                                </div>
                             </div>
                             <div class="tool-header-content">
-                                <span class="tool-format-badge fmt-xlsx" style="align-self: flex-start; margin-bottom: 6px;">XLSX</span>
-                                <h3 class="tool-title-light">Checklist đánh giá hiện trạng nhà máy</h3>
+                                <span class="tool-format-badge fmt-pdf" style="align-self: flex-start; margin-bottom: 6px;">PDF</span>
+                                <h3 class="tool-title-light">Hướng dẫn thực hiện 5S Tinh gọn &amp; Hiệu quả</h3>
                             </div>
                         </div>
-                        <p class="tool-desc-light">Mẫu checklist giúp bạn rà soát hiện trạng và xác định cơ hội cải tiến.</p>
+                        <p class="tool-desc-light">Tài liệu giúp bạn triển khai thực hiện và duy trì 5S hiệu quả.</p>
                         <div class="tool-card-actions">
                             <button type="button" class="tool-btn-preview" onclick="INVAMAX_TOOLKIT_STORE.handlePreview('tool-checklist-danh-gia', event)">
                                 <i data-lucide="eye"></i> Xem tài liệu
                             </button>
-                            <a href="#" class="tool-download-btn" onclick="INVAMAX_TOOLKIT_STORE.handleDownload('tool-checklist-danh-gia', event)"><i data-lucide="download"></i> Tải xuống</a>
+                            <a href="../assets/docs/IVM-Huong-dan-thuc-hien-5S-Tinh-gon-Hieu-qua.pdf" download="IVM - Hướng dẫn thực hiện 5S Tinh gọn &amp; Hiệu quả.pdf" class="tool-download-btn" onclick="INVAMAX_TOOLKIT_STORE.handleDownload('tool-checklist-danh-gia', event)"><i data-lucide="download"></i> Tải xuống</a>
                         </div>
                     </div>
 
@@ -616,7 +616,7 @@
             const fmt = (item.format || 'PDF').toUpperCase();
 
             if (item.thumbnail && item.thumbnail.trim() !== '') {
-                thumbImg.src = item.thumbnail;
+                thumbImg.src = INVAMAX_TOOLKIT_STORE.resolveAssetUrl(item.thumbnail);
                 thumbImg.style.display = 'block';
                 defaultIcon.style.display = 'none';
             } else {
@@ -652,8 +652,9 @@
             }
 
             if (downloadUrl && downloadUrl !== '#') {
-                dlBtn.href = downloadUrl;
-                if (downloadUrl.startsWith('data:')) {
+                const resolvedDlUrl = INVAMAX_TOOLKIT_STORE.resolveAssetUrl(downloadUrl);
+                dlBtn.href = resolvedDlUrl;
+                if (downloadUrl.startsWith('data:') || downloadUrl.endsWith('.pdf')) {
                     dlBtn.setAttribute('download', item.fileName || (item.title + '.' + fmt.toLowerCase()));
                 } else {
                     dlBtn.setAttribute('target', '_blank');
@@ -703,15 +704,17 @@
                 openTabBtn.style.display = 'inline-flex';
                 directDlBtn.href = downloadUrl;
                 directDlBtn.style.display = 'inline-flex';
-            } else if (downloadUrl && downloadUrl.startsWith('http')) {
-                // Link web trực tiếp
-                iframe.src = downloadUrl;
+            } else if (downloadUrl && (downloadUrl.startsWith('http') || downloadUrl.endsWith('.pdf') || isPdf)) {
+                // Link web trực tiếp hoặc file PDF cục bộ trong assets/docs
+                const resolvedPdfUrl = INVAMAX_TOOLKIT_STORE.resolveAssetUrl(downloadUrl);
+                iframe.src = resolvedPdfUrl + (isPdf ? '#view=FitH&toolbar=1' : '');
                 iframeWrap.style.display = 'block';
                 officeNotice.style.display = 'none';
 
-                openTabBtn.href = downloadUrl;
+                openTabBtn.href = resolvedPdfUrl;
                 openTabBtn.style.display = 'inline-flex';
-                directDlBtn.href = downloadUrl;
+                directDlBtn.href = resolvedPdfUrl;
+                if (isPdf) directDlBtn.setAttribute('download', item.fileName || (item.title + '.pdf'));
                 directDlBtn.style.display = 'inline-flex';
             } else {
                 // File office nhị phân nội bộ (xlsx, docx)

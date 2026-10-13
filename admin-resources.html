@@ -1571,10 +1571,8 @@
                 displayModalThumbnailPreview(doc.thumbnail, 'Ảnh bìa hiện tại');
             }
 
-            const isDataUrl = doc.fileUrl && doc.fileUrl.startsWith('data:');
-            const isIdbUrl = doc.fileUrl && doc.fileUrl.startsWith('idb:');
-            const isWebLink = doc.fileUrl && (doc.fileUrl.startsWith('http://') || doc.fileUrl.startsWith('https://'));
-            const hasRealFile = isDataUrl || isIdbUrl || isWebLink;
+            const isLocalDoc = doc.fileUrl && doc.fileUrl.startsWith('assets/');
+            const hasRealFile = isDataUrl || isIdbUrl || isWebLink || isLocalDoc;
 
             const existingNotice = document.getElementById('modalExistingFileText');
             if (hasRealFile) {
@@ -1766,7 +1764,8 @@
                 const isDataUrl = doc.fileUrl && doc.fileUrl.startsWith('data:');
                 const isIdbUrl = doc.fileUrl && doc.fileUrl.startsWith('idb:');
                 const isWebLink = doc.fileUrl && (doc.fileUrl.startsWith('http://') || doc.fileUrl.startsWith('https://'));
-                const hasRealFile = isDataUrl || isIdbUrl || isWebLink;
+                const isLocalDoc = doc.fileUrl && doc.fileUrl.startsWith('assets/');
+                const hasRealFile = isDataUrl || isIdbUrl || isWebLink || isLocalDoc;
 
                 return `
                     <div class="doc-item-card ${isEditing ? 'is-editing' : ''}">
