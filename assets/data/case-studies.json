@@ -12,9 +12,17 @@
     "client": "Nhà máy sản xuất bút chì",
     "highlight": "Tăng 42,3% UPH",
     "link": "case-study/productivity-improvement-pencil-factory.html",
-    "thumbnail": "assets/images/home/pencil.jpg",
+    "thumbnail": "assets/images/resources/art-5steps.jpg",
+    "pdfUrl": "assets/docs/IVM-Huong-dan-thuc-hien-5S-Tinh-gon-Hieu-qua.pdf",
+    "images": [
+      "assets/images/report_dashboard.png",
+      "assets/images/report_matrix.png",
+      "assets/images/report_wastes.png"
+    ],
     "status": "published",
-    "createdAt": "2026-10-10"
+    "createdAt": "2026-10-12",
+    "dateDisplay": "12 thg 10, 2026",
+    "views": "2.4K lượt xem"
   },
   {
     "id": "cs-kaizen-cost-pencil",
@@ -29,9 +37,16 @@
     "client": "Nhà máy sản xuất bút chì",
     "highlight": "432.873 USD/năm",
     "link": "case-study/kaizen-cost-saving-pencil-factory.html",
-    "thumbnail": "assets/images/home/pencil.jpg",
+    "thumbnail": "assets/images/resources/art-costdown.jpg",
+    "pdfUrl": "assets/docs/IVM-Huong-dan-thuc-hien-5S-Tinh-gon-Hieu-qua.pdf",
+    "images": [
+      "assets/images/report_matrix.png",
+      "assets/images/report_roadmap.png"
+    ],
     "status": "published",
-    "createdAt": "2026-10-08"
+    "createdAt": "2026-10-08",
+    "dateDisplay": "08 thg 10, 2026",
+    "views": "1.8K lượt xem"
   },
   {
     "id": "cs-operating-model-pencil",
@@ -46,8 +61,15 @@
     "client": "Nhà máy sản xuất bút chì",
     "highlight": "Tối ưu quản lý chuyên trách",
     "link": "case-study/operating-model-pencil-factory.html",
-    "thumbnail": "assets/images/home/pencil.jpg",
+    "thumbnail": "assets/images/operations/operations.jpg",
+    "pdfUrl": "assets/docs/IVM-Huong-dan-thuc-hien-5S-Tinh-gon-Hieu-qua.pdf",
+    "images": [
+      "assets/images/report_roadmap.png",
+      "assets/images/operations/factory.jpg"
+    ],
     "status": "published",
-    "createdAt": "2026-10-05"
+    "createdAt": "2026-10-05",
+    "dateDisplay": "05 thg 10, 2026",
+    "views": "3.1K lượt xem"
   }
 ]

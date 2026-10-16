@@ -50,78 +50,528 @@
 .grid-custom-3 { 
     display: grid; 
     grid-template-columns: repeat(3, 1fr); 
-    gap: 24px; 
+    gap: 28px; 
 }
-.feature-card { 
+
+/* Modern Case Study Card (matching mockup) */
+.cs-modern-card, .feature-card { 
     background: #ffffff !important; 
-    border: 1px solid var(--iv-border) !important; 
-    padding: 28px 24px !important; 
-    border-radius: var(--iv-radius-card) !important; 
-    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+    border: 1px solid #e2e8f0 !important; 
+    border-radius: 18px !important; 
+    overflow: hidden !important;
+    padding: 0 !important;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease !important; 
+    position: relative;
+    color: inherit !important;
+}
+.cs-modern-card:hover, .feature-card:hover { 
+    border-color: rgba(255, 105, 0, 0.45) !important; 
+    transform: translateY(-6px) !important; 
+    box-shadow: 0 18px 38px rgba(15, 23, 42, 0.12) !important; 
+}
+.cs-thumb-wrap {
+    position: relative;
+    width: 100%;
+    height: 215px;
+    overflow: hidden;
+    background: #f1f5f9;
+}
+.cs-thumb-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.45s ease;
+}
+.cs-modern-card:hover .cs-thumb-img, .feature-card:hover .cs-thumb-img {
+    transform: scale(1.06);
+}
+.cs-cat-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: #f97316;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    padding: 6px 14px;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22);
+    pointer-events: none;
+    z-index: 2;
+    line-height: 1.2;
+}
+.cs-body {
+    padding: 22px 22px 14px;
     display: flex;
     flex-direction: column;
-    text-decoration: none !important;
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; 
-}
-.feature-card:hover { 
-    border-color: var(--iv-orange) !important; 
-    transform: translateY(-4px); 
-    box-shadow: 0 16px 32px rgba(15, 23, 42, 0.08); 
-}
-.cs-badge-top {
-    font-size: 0.75rem;
-    color: var(--iv-muted);
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 8px;
-}
-.cs-category {
-    font-size: 0.85rem;
-    color: var(--iv-orange);
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 14px;
-}
-.cs-title {
-    font-size: 1.22rem !important;
-    font-weight: 800 !important;
-    color: var(--iv-text) !important;
-    line-height: 1.4 !important;
-    margin-bottom: 14px !important;
-    text-align: left !important;
-    transition: color 0.2s ease;
-}
-.feature-card:hover .cs-title {
-    color: var(--iv-orange) !important;
-}
-.cs-desc {
-    color: var(--iv-muted) !important;
-    font-size: 0.92rem !important;
-    line-height: 1.6 !important;
-    margin-bottom: 24px !important;
     flex-grow: 1;
 }
-.cs-cta {
+.cs-title {
+    font-size: 1.15rem !important;
+    font-weight: 800 !important;
+    color: #0f172a !important;
+    line-height: 1.4 !important;
+    margin-bottom: 12px !important;
+    text-align: left !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    transition: color 0.2s ease;
+}
+.cs-modern-card:hover .cs-title, .feature-card:hover .cs-title {
+    color: #ff6900 !important;
+}
+.cs-desc {
+    color: #64748b !important;
+    font-size: 0.88rem !important;
+    line-height: 1.6 !important;
+    margin-bottom: 16px !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    flex-grow: 1;
+}
+.cs-divider {
+    border-top: 1px solid #f1f5f9;
+    margin: 0;
+    width: 100%;
+}
+.cs-footer {
+    padding: 13px 22px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    background: #ffffff;
+}
+.cs-meta-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 12.5px;
+    color: #64748b;
+    font-weight: 500;
+}
+.cs-meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.cs-meta-item svg, .cs-meta-item i {
+    width: 14px;
+    height: 14px;
+    color: #94a3b8;
+    flex-shrink: 0;
+}
+.cs-arrow-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #ff6900;
+    transition: transform 0.25s ease;
+}
+.cs-arrow-btn svg, .cs-arrow-btn i {
+    width: 19px;
+    height: 19px;
+}
+.cs-modern-card:hover .cs-arrow-btn, .feature-card:hover .cs-arrow-btn {
+    transform: translateX(5px);
+}
+
+/* Detail Modal Backdrop and Window */
+.cs-detail-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.72);
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+.cs-detail-modal-backdrop.show {
+    display: flex;
+    opacity: 1;
+}
+.cs-detail-modal-dialog {
+    background: #ffffff;
+    border-radius: 18px;
+    width: 100%;
+    max-width: 980px;
+    max-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+    transform: translateY(20px) scale(0.97);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.cs-detail-modal-backdrop.show .cs-detail-modal-dialog {
+    transform: translateY(0) scale(1);
+}
+.cs-detail-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 14px 22px;
+    background: #fafafa;
+    border-bottom: 1px solid #e2e8f0;
+    flex-shrink: 0;
+}
+.cs-modal-header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    flex: 1;
+}
+.cs-modal-cat-badge {
+    background: #f97316;
+    color: #ffffff;
+    font-size: 10.5px;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+}
+.cs-modal-header-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.cs-modal-header-actions {
     display: flex;
     align-items: center;
     gap: 8px;
-    color: var(--iv-orange) !important;
-    font-weight: 700;
-    font-size: 0.92rem;
-    margin-top: auto;
+    flex-shrink: 0;
 }
-.cs-cta i {
+.cs-modal-tool-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 12px;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    color: #334155;
+    border-radius: 7px;
+    font-size: 12.5px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.cs-modal-tool-btn:hover {
+    background: #f1f5f9;
+    color: #0f172a;
+}
+.cs-modal-tool-btn.primary {
+    background: #f97316;
+    border-color: #ea580c;
+    color: #ffffff;
+}
+.cs-modal-tool-btn.primary:hover {
+    background: #ea580c;
+    color: #ffffff;
+}
+.cs-detail-modal-close {
+    background: none;
+    border: none;
+    font-size: 26px;
+    line-height: 1;
+    color: #64748b;
+    cursor: pointer;
+    padding: 0 4px;
+    border-radius: 6px;
+    transition: color 0.15s;
+}
+.cs-detail-modal-close:hover {
+    color: #0f172a;
+}
+.cs-detail-modal-body {
+    padding: 22px 24px;
+    overflow-y: auto;
+    flex: 1;
+}
+.cs-modal-overview {
+    margin-bottom: 20px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #f1f5f9;
+}
+.cs-modal-title {
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.35;
+    margin-bottom: 12px;
+}
+.cs-modal-meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 22px;
+    margin-bottom: 14px;
+    font-size: 13px;
+    color: #475569;
+}
+.cs-modal-meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.cs-modal-meta-item svg, .cs-modal-meta-item i {
+    width: 15px;
+    height: 15px;
+    color: #ff6900;
+    flex-shrink: 0;
+}
+.cs-modal-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+.cs-modal-tag-pill {
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+    color: #ea580c;
+    font-size: 11.5px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 999px;
+}
+.cs-modal-desc {
+    font-size: 14px;
+    line-height: 1.65;
+    color: #475569;
+    margin: 0;
+}
+.cs-content-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+.cs-tab-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    background: #f8fafc;
+    color: #475569;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.cs-tab-btn.active {
+    background: #ff6900;
+    color: #ffffff;
+    border-color: #ea580c;
+    box-shadow: 0 2px 8px rgba(255, 105, 0, 0.25);
+}
+.cs-viewer-section {
+    margin-bottom: 20px;
+}
+.cs-section-subhead {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #1e293b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+.cs-section-subhead svg, .cs-section-subhead i {
     width: 16px;
     height: 16px;
-    transition: transform 0.2s ease;
+    color: #ff6900;
 }
-.feature-card:hover .cs-cta i {
-    transform: translateX(4px);
+.cs-pdf-frame-wrap {
+    width: 100%;
+    height: 520px;
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    overflow: hidden;
 }
-@media (max-width: 992px) { .grid-custom-3 { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 768px) { .grid-custom-3 { grid-template-columns: 1fr; } }
+.cs-pdf-frame-wrap iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+.cs-gallery-main-wrap {
+    width: 100%;
+    max-height: 440px;
+    background: #0f172a;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: zoom-in;
+}
+.cs-gallery-main-img {
+    max-width: 100%;
+    max-height: 440px;
+    object-fit: contain;
+    display: block;
+}
+.cs-gallery-zoom-hint {
+    position: absolute;
+    bottom: 10px;
+    right: 12px;
+    background: rgba(0,0,0,0.65);
+    color: #ffffff;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    pointer-events: none;
+}
+.cs-gallery-thumbs {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+    overflow-x: auto;
+    padding-bottom: 6px;
+}
+.cs-gallery-thumb-item {
+    width: 80px;
+    height: 60px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid #e2e8f0;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: border-color 0.2s, transform 0.2s;
+}
+.cs-gallery-thumb-item.active, .cs-gallery-thumb-item:hover {
+    border-color: #ff6900;
+    transform: scale(1.05);
+}
+.cs-gallery-thumb-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.cs-read-more-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 20px;
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+    border-radius: 12px;
+    margin-top: 16px;
+}
+.cs-read-more-text h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #9a3412;
+    margin-bottom: 2px;
+}
+.cs-read-more-text p {
+    font-size: 12.5px;
+    color: #7c2d12;
+    margin: 0;
+}
+.cs-read-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: #ff6900;
+    color: #ffffff;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.2s;
+}
+.cs-read-more-btn:hover {
+    background: #ea580c;
+    color: #ffffff;
+}
+.cs-detail-modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 14px 22px;
+    background: #fafafa;
+    border-top: 1px solid #e2e8f0;
+    flex-shrink: 0;
+}
+.cs-btn-secondary {
+    padding: 8px 18px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    background: #ffffff;
+    color: #475569;
+    font-weight: 600;
+    font-size: 13.5px;
+    cursor: pointer;
+}
+.cs-btn-secondary:hover {
+    background: #f1f5f9;
+}
+.cs-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 20px;
+    border-radius: 8px;
+    background: #ff6900;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 13.5px;
+    text-decoration: none;
+    cursor: pointer;
+}
+.cs-btn-primary:hover {
+    background: #ea580c;
+    color: #ffffff;
+}
+@media (max-width: 992px) { 
+    .grid-custom-3 { grid-template-columns: repeat(2, 1fr); gap: 20px; } 
+}
+@media (max-width: 768px) { 
+    .grid-custom-3 { grid-template-columns: 1fr; gap: 20px; }
+    .cs-read-more-box { flex-direction: column; align-items: flex-start; }
+    .cs-modal-header-actions .cs-modal-tool-btn span { display: none; }
+}
 </style>
 </head>
 <body class="light-theme">
@@ -205,35 +655,71 @@
         </div>
 
         <div class="grid-custom-3" id="caseStudiesGrid">
-            <a href="case-study/productivity-improvement-pencil-factory.html" class="feature-card" data-categories="tăng năng suất, lean & cải tiến">
-                <div class="cs-badge-top">CASE STUDY 01</div>
-                <div class="cs-category">Tăng năng suất • Lean &amp; Cải tiến</div>
-                <h3 class="cs-title">Tăng 42,3% năng suất tại nhà máy sản xuất bút chì</h3>
-                <p class="cs-desc">Từ 742 lên 1.056 UPH sau 4 năm cải tiến hệ thống vận hành với INVAMAX FOS.</p>
-                <div class="cs-cta">
-                    Xem Case Study <i data-lucide="arrow-right"></i>
+            <!-- Modern Card 01 -->
+            <div class="cs-modern-card" data-id="cs-productivity-pencil" data-categories="tăng năng suất, lean & cải tiến" onclick="openCaseStudyDetailModal('cs-productivity-pencil')">
+                <div class="cs-thumb-wrap">
+                    <img src="../assets/images/resources/art-5steps.jpg" alt="Tăng 42,3% năng suất tại nhà máy sản xuất bút chì" class="cs-thumb-img" loading="lazy">
+                    <span class="cs-cat-badge">LEAN &amp; CẢI TIẾN</span>
                 </div>
-            </a>
+                <div class="cs-body">
+                    <h3 class="cs-title">Tăng 42,3% năng suất tại nhà máy sản xuất bút chì</h3>
+                    <p class="cs-desc">Từ 742 lên 1.056 UPH sau 4 năm cải tiến hệ thống vận hành với INVAMAX FOS.</p>
+                </div>
+                <div class="cs-divider"></div>
+                <div class="cs-footer">
+                    <div class="cs-meta-left">
+                        <span class="cs-meta-item"><i data-lucide="calendar"></i> 12 thg 10, 2026</span>
+                        <span class="cs-meta-item"><i data-lucide="eye"></i> 2.4K lượt xem</span>
+                    </div>
+                    <div class="cs-arrow-btn">
+                        <i data-lucide="arrow-right"></i>
+                    </div>
+                </div>
+            </div>
             
-            <a href="case-study/kaizen-cost-saving-pencil-factory.html" class="feature-card" data-categories="giảm chi phí, lean & cải tiến">
-                <div class="cs-badge-top">CASE STUDY 02</div>
-                <div class="cs-category">Giảm chi phí • Lean &amp; Cải tiến</div>
-                <h3 class="cs-title">432.873 USD/năm giá trị cải tiến tại nhà máy sản xuất bút chì</h3>
-                <p class="cs-desc">4 năm liên tục loại bỏ lãng phí, tối ưu nguồn lực và cải thiện hệ thống vận hành với INVAMAX FOS.</p>
-                <div class="cs-cta">
-                    Xem Case Study <i data-lucide="arrow-right"></i>
+            <!-- Modern Card 02 -->
+            <div class="cs-modern-card" data-id="cs-kaizen-cost-pencil" data-categories="giảm chi phí, lean & cải tiến" onclick="openCaseStudyDetailModal('cs-kaizen-cost-pencil')">
+                <div class="cs-thumb-wrap">
+                    <img src="../assets/images/resources/art-costdown.jpg" alt="432.873 USD/năm giá trị cải tiến tại nhà máy sản xuất bút chì" class="cs-thumb-img" loading="lazy">
+                    <span class="cs-cat-badge">GIẢM CHI PHÍ</span>
                 </div>
-            </a>
+                <div class="cs-body">
+                    <h3 class="cs-title">432.873 USD/năm giá trị cải tiến tại nhà máy sản xuất bút chì</h3>
+                    <p class="cs-desc">4 năm liên tục loại bỏ lãng phí, tối ưu nguồn lực và cải thiện hệ thống vận hành với INVAMAX FOS.</p>
+                </div>
+                <div class="cs-divider"></div>
+                <div class="cs-footer">
+                    <div class="cs-meta-left">
+                        <span class="cs-meta-item"><i data-lucide="calendar"></i> 08 thg 10, 2026</span>
+                        <span class="cs-meta-item"><i data-lucide="eye"></i> 1.8K lượt xem</span>
+                    </div>
+                    <div class="cs-arrow-btn">
+                        <i data-lucide="arrow-right"></i>
+                    </div>
+                </div>
+            </div>
 
-            <a href="case-study/operating-model-pencil-factory.html" class="feature-card" data-categories="lean & cải tiến, tăng năng suất">
-                <div class="cs-badge-top">CASE STUDY 03</div>
-                <div class="cs-category">Lean &amp; Cải tiến • Tăng năng suất</div>
-                <h3 class="cs-title">Thay đổi Mô hình quản lý tại nhà máy sản xuất bút chì</h3>
-                <p class="cs-desc">Từ quản lý theo Mini Factory sang quản lý chuyên trách theo công đoạn, tối ưu nhân sự trực tiếp.</p>
-                <div class="cs-cta">
-                    Xem Case Study <i data-lucide="arrow-right"></i>
+            <!-- Modern Card 03 -->
+            <div class="cs-modern-card" data-id="cs-operating-model-pencil" data-categories="lean & cải tiến, tăng năng suất" onclick="openCaseStudyDetailModal('cs-operating-model-pencil')">
+                <div class="cs-thumb-wrap">
+                    <img src="../assets/images/operations/operations.jpg" alt="Thay đổi Mô hình quản lý tại nhà máy sản xuất bút chì" class="cs-thumb-img" loading="lazy">
+                    <span class="cs-cat-badge">LEAN &amp; CẢI TIẾN</span>
                 </div>
-            </a>
+                <div class="cs-body">
+                    <h3 class="cs-title">Thay đổi Mô hình quản lý tại nhà máy sản xuất bút chì</h3>
+                    <p class="cs-desc">Từ quản lý theo Mini Factory sang quản lý chuyên trách theo công đoạn, tối ưu nhân sự trực tiếp.</p>
+                </div>
+                <div class="cs-divider"></div>
+                <div class="cs-footer">
+                    <div class="cs-meta-left">
+                        <span class="cs-meta-item"><i data-lucide="calendar"></i> 05 thg 10, 2026</span>
+                        <span class="cs-meta-item"><i data-lucide="eye"></i> 3.1K lượt xem</span>
+                    </div>
+                    <div class="cs-arrow-btn">
+                        <i data-lucide="arrow-right"></i>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </main>
@@ -315,6 +801,107 @@
         </div>
     </footer>
 
+    <!-- CỬA SỔ XEM CHI TIẾT CASE STUDY (DETAIL MODAL) -->
+    <div id="csDetailModal" class="cs-detail-modal-backdrop" onclick="closeCaseStudyDetailModal(event)">
+        <div class="cs-detail-modal-dialog" onclick="event.stopPropagation()">
+            <!-- Header: Title, Actions (Fullscreen, Download), Close X -->
+            <div class="cs-detail-modal-header">
+                <div class="cs-modal-header-left">
+                    <span id="csModalBadge" class="cs-modal-cat-badge">LEAN &amp; CẢI TIẾN</span>
+                    <h3 id="csModalHeaderTitle" class="cs-modal-header-title">Chi tiết Case Study</h3>
+                </div>
+                <div class="cs-modal-header-actions">
+                    <a id="csModalFullscreenBtn" href="#" target="_blank" rel="noopener" class="cs-modal-tool-btn" title="Toàn màn hình / Mở sang tab mới">
+                        <i data-lucide="external-link"></i> <span>Toàn màn hình</span>
+                    </a>
+                    <a id="csModalDownloadBtn" href="#" download class="cs-modal-tool-btn primary" title="Tải tài liệu PDF về máy">
+                        <i data-lucide="download"></i> <span>Tải về máy</span>
+                    </a>
+                    <button type="button" class="cs-detail-modal-close" onclick="closeCaseStudyDetailModal()" title="Đóng">&times;</button>
+                </div>
+            </div>
+
+            <!-- Body -->
+            <div class="cs-detail-modal-body">
+                <!-- Overview Info Banner -->
+                <div class="cs-modal-overview">
+                    <h2 id="csModalTitle" class="cs-modal-title">Tiêu đề dự án</h2>
+                    <div class="cs-modal-meta-row">
+                        <div class="cs-modal-meta-item">
+                            <i data-lucide="calendar"></i>
+                            <span>Ngày cập nhật: <strong id="csModalDate">12 thg 10, 2026</strong></span>
+                        </div>
+                        <div class="cs-modal-meta-item" id="csModalClientWrap">
+                            <i data-lucide="building-2"></i>
+                            <span>Doanh nghiệp: <strong id="csModalClient">Nhà máy sản xuất</strong></span>
+                        </div>
+                        <div class="cs-modal-meta-item" id="csModalHighlightWrap">
+                            <i data-lucide="zap"></i>
+                            <span>Điểm nổi bật: <strong id="csModalHighlight" style="color: #ea580c;">Tăng 42,3% UPH</strong></span>
+                        </div>
+                    </div>
+                    <div id="csModalCategoriesWrap" class="cs-modal-tags">
+                        <!-- Category pills dynamically rendered -->
+                    </div>
+                    <p id="csModalDesc" class="cs-modal-desc">Nội dung tóm tắt...</p>
+                </div>
+
+                <!-- Content Switcher Tabs if both PDF and Images exist -->
+                <div id="csContentTabs" class="cs-content-tabs" style="display: none;">
+                    <button type="button" id="tabBtnPdf" class="cs-tab-btn active" onclick="switchCsTab('pdf')"><i data-lucide="file-text"></i> Tài liệu PDF dự án</button>
+                    <button type="button" id="tabBtnImages" class="cs-tab-btn" onclick="switchCsTab('images')"><i data-lucide="image"></i> Hình ảnh triển khai (<span id="csImagesCount">0</span>)</button>
+                </div>
+
+                <!-- PDF Viewer Section -->
+                <div id="csPdfSection" class="cs-viewer-section" style="display: none;">
+                    <div class="cs-section-subhead">
+                        <i data-lucide="file-text"></i>
+                        <span>Tài liệu báo cáo Case Study (PDF)</span>
+                    </div>
+                    <div class="cs-pdf-frame-wrap">
+                        <iframe id="csPdfIframe" src="about:blank" title="Tài liệu Case Study"></iframe>
+                    </div>
+                </div>
+
+                <!-- Images Gallery Section -->
+                <div id="csImagesSection" class="cs-viewer-section" style="display: none;">
+                    <div class="cs-section-subhead">
+                        <i data-lucide="image"></i>
+                        <span>Hình ảnh hiện trường &amp; sơ đồ kết quả</span>
+                    </div>
+                    <!-- Main Featured Image -->
+                    <div class="cs-gallery-main-wrap" title="Bấm để xem kích thước lớn">
+                        <img id="csGalleryMainImg" src="" alt="Hình ảnh Case Study" class="cs-gallery-main-img" onclick="openFullImage(this.src)">
+                        <div class="cs-gallery-zoom-hint"><i data-lucide="maximize-2"></i> Nhấp ảnh để phóng to</div>
+                    </div>
+                    <!-- Thumbnails Strip -->
+                    <div id="csGalleryThumbs" class="cs-gallery-thumbs"></div>
+                </div>
+
+                <!-- Read Full Article Link (if specific HTML page exists) -->
+                <div id="csReadMoreBox" class="cs-read-more-box" style="display: none;">
+                    <div class="cs-read-more-text">
+                        <h4>Đọc toàn bộ bài phân tích chuyên sâu</h4>
+                        <p>Khám phá đầy đủ bối cảnh, phương pháp triển khai từng bước và bảng số liệu đo lường thực tế.</p>
+                    </div>
+                    <a id="csFullArticleLink" href="#" class="cs-read-more-btn">
+                        <span>Xem toàn bộ bài viết</span>
+                        <i data-lucide="arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="cs-detail-modal-footer">
+                <button type="button" class="cs-btn-secondary" onclick="closeCaseStudyDetailModal()">Đóng</button>
+                <a id="csModalFooterArticleBtn" href="#" class="cs-btn-primary" style="display: none;">
+                    <span>Xem bài viết chi tiết</span>
+                    <i data-lucide="arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
     <script>
         function switchLanguage(lang) {
             localStorage.setItem('invamax_language', lang);
@@ -329,16 +916,85 @@
         }
     </script>
     
-
     <script>
         lucide.createIcons({ attrs: { "stroke-width": 2.2 } });
+
+        // Utility: Resolve asset url relative to vi/ directory
+        function resolveAssetUrl(url) {
+            if (!url) return '';
+            if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('data:') || url.startsWith('blob:')) {
+                return url;
+            }
+            if (url.startsWith('../')) return url;
+            if (url.startsWith('/')) return '..' + url;
+            return '../' + url;
+        }
+
+        // In-memory case studies cache
+        let loadedCaseStudies = [
+            {
+                id: 'cs-productivity-pencil',
+                badge: 'CASE STUDY 01',
+                categories: ['Tăng năng suất', 'Lean & Cải tiến'],
+                title: 'Tăng 42,3% năng suất tại nhà máy sản xuất bút chì',
+                desc: 'Từ 742 lên 1.056 UPH sau 4 năm cải tiến hệ thống vận hành với INVAMAX FOS.',
+                client: 'Nhà máy sản xuất bút chì',
+                highlight: 'Tăng 42,3% UPH',
+                link: 'case-study/productivity-improvement-pencil-factory.html',
+                thumbnail: 'assets/images/resources/art-5steps.jpg',
+                pdfUrl: 'assets/docs/IVM-Huong-dan-thuc-hien-5S-Tinh-gon-Hieu-qua.pdf',
+                images: [
+                    'assets/images/report_dashboard.png',
+                    'assets/images/report_matrix.png',
+                    'assets/images/report_wastes.png'
+                ],
+                dateDisplay: '12 thg 10, 2026',
+                views: '2.4K lượt xem'
+            },
+            {
+                id: 'cs-kaizen-cost-pencil',
+                badge: 'CASE STUDY 02',
+                categories: ['Giảm chi phí', 'Lean & Cải tiến'],
+                title: '432.873 USD/năm giá trị cải tiến tại nhà máy sản xuất bút chì',
+                desc: '4 năm liên tục loại bỏ lãng phí, tối ưu nguồn lực và cải thiện hệ thống vận hành với INVAMAX FOS.',
+                client: 'Nhà máy sản xuất bút chì',
+                highlight: '432.873 USD/năm',
+                link: 'case-study/kaizen-cost-saving-pencil-factory.html',
+                thumbnail: 'assets/images/resources/art-costdown.jpg',
+                pdfUrl: 'assets/docs/IVM-Huong-dan-thuc-hien-5S-Tinh-gon-Hieu-qua.pdf',
+                images: [
+                    'assets/images/report_matrix.png',
+                    'assets/images/report_roadmap.png'
+                ],
+                dateDisplay: '08 thg 10, 2026',
+                views: '1.8K lượt xem'
+            },
+            {
+                id: 'cs-operating-model-pencil',
+                badge: 'CASE STUDY 03',
+                categories: ['Lean & Cải tiến', 'Tăng năng suất'],
+                title: 'Thay đổi Mô hình quản lý tại nhà máy sản xuất bút chì',
+                desc: 'Từ quản lý theo Mini Factory sang quản lý chuyên trách theo công đoạn, tối ưu nhân sự trực tiếp.',
+                client: 'Nhà máy sản xuất bút chì',
+                highlight: 'Tối ưu quản lý chuyên trách',
+                link: 'case-study/operating-model-pencil-factory.html',
+                thumbnail: 'assets/images/operations/operations.jpg',
+                pdfUrl: 'assets/docs/IVM-Huong-dan-thuc-hien-5S-Tinh-gon-Hieu-qua.pdf',
+                images: [
+                    'assets/images/report_roadmap.png',
+                    'assets/images/operations/factory.jpg'
+                ],
+                dateDisplay: '05 thg 10, 2026',
+                views: '3.1K lượt xem'
+            }
+        ];
 
         // Interactive Filter & Search for Case Studies
         const searchInput = document.getElementById('resSearchInput');
         const pillBtns = document.querySelectorAll('.res-filter-pills-light .res-pill-btn');
 
         function filterCases() {
-            const caseCards = document.querySelectorAll('.grid-custom-3 .feature-card');
+            const caseCards = document.querySelectorAll('.grid-custom-3 .cs-modern-card, .grid-custom-3 .feature-card');
             const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
             const activePill = document.querySelector('.res-filter-pills-light .res-pill-btn.active');
             const filterKey = activePill ? (activePill.getAttribute('data-filter') || activePill.innerText.trim().toLowerCase()) : 'all';
@@ -346,11 +1002,10 @@
             caseCards.forEach(card => {
                 const title = card.querySelector('.cs-title')?.innerText.toLowerCase() || '';
                 const desc = card.querySelector('.cs-desc')?.innerText.toLowerCase() || '';
-                const category = card.querySelector('.cs-category')?.innerText.toLowerCase() || '';
-                const badge = card.querySelector('.cs-badge-top')?.innerText.toLowerCase() || '';
+                const category = card.querySelector('.cs-cat-badge, .cs-category')?.innerText.toLowerCase() || '';
                 const dataCats = (card.getAttribute('data-categories') || category).toLowerCase();
 
-                const matchesQuery = !query || title.includes(query) || desc.includes(query) || category.includes(query) || badge.includes(query);
+                const matchesQuery = !query || title.includes(query) || desc.includes(query) || category.includes(query) || dataCats.includes(query);
                 
                 let matchesPill = true;
                 if (filterKey !== 'all' && !filterKey.includes('tất cả')) {
@@ -386,6 +1041,219 @@
             });
         });
 
+        // Detail Modal Logic
+        function openCaseStudyDetailModal(csIdOrObj) {
+            let cs = null;
+            if (typeof csIdOrObj === 'string') {
+                cs = loadedCaseStudies.find(it => it.id === csIdOrObj);
+            } else if (typeof csIdOrObj === 'object' && csIdOrObj !== null) {
+                cs = csIdOrObj;
+            }
+
+            if (!cs) {
+                console.warn('Case study không tồn tại:', csIdOrObj);
+                return;
+            }
+
+            const modal = document.getElementById('csDetailModal');
+            if (!modal) return;
+
+            const cats = Array.isArray(cs.categories) && cs.categories.length > 0
+                ? cs.categories
+                : (cs.category ? cs.category.split(',').map(s => s.trim()).filter(Boolean) : ['Lean & Cải tiến']);
+
+            // Header info
+            const badgeEl = document.getElementById('csModalBadge');
+            if (badgeEl) badgeEl.innerText = (cats[0] || cs.badge || 'CASE STUDY').toUpperCase();
+
+            const headerTitleEl = document.getElementById('csModalHeaderTitle');
+            if (headerTitleEl) headerTitleEl.innerText = cs.title;
+
+            // Overview banner
+            const titleEl = document.getElementById('csModalTitle');
+            if (titleEl) titleEl.innerText = cs.title;
+
+            const dateEl = document.getElementById('csModalDate');
+            if (dateEl) dateEl.innerText = cs.dateDisplay || cs.createdAt || '12 thg 10, 2026';
+
+            const clientEl = document.getElementById('csModalClient');
+            const clientWrap = document.getElementById('csModalClientWrap');
+            if (clientEl && clientWrap) {
+                if (cs.client) {
+                    clientEl.innerText = cs.client;
+                    clientWrap.style.display = 'inline-flex';
+                } else {
+                    clientWrap.style.display = 'none';
+                }
+            }
+
+            const hlEl = document.getElementById('csModalHighlight');
+            const hlWrap = document.getElementById('csModalHighlightWrap');
+            if (hlEl && hlWrap) {
+                if (cs.highlight) {
+                    hlEl.innerText = cs.highlight;
+                    hlWrap.style.display = 'inline-flex';
+                } else {
+                    hlWrap.style.display = 'none';
+                }
+            }
+
+            // Tags
+            const tagsWrap = document.getElementById('csModalCategoriesWrap');
+            if (tagsWrap) {
+                tagsWrap.innerHTML = cats.map(c => `<span class="cs-modal-tag-pill">${c}</span>`).join('');
+            }
+
+            // Description
+            const descEl = document.getElementById('csModalDesc');
+            if (descEl) descEl.innerText = cs.desc || '';
+
+            // Handle PDF
+            const pdfSection = document.getElementById('csPdfSection');
+            const pdfIframe = document.getElementById('csPdfIframe');
+            const downloadBtn = document.getElementById('csModalDownloadBtn');
+            const fullscreenBtn = document.getElementById('csModalFullscreenBtn');
+
+            const hasPdf = Boolean(cs.pdfUrl);
+            const resolvedPdfUrl = hasPdf ? resolveAssetUrl(cs.pdfUrl) : '';
+
+            if (hasPdf) {
+                pdfIframe.src = resolvedPdfUrl;
+                downloadBtn.href = resolvedPdfUrl;
+                downloadBtn.style.display = 'inline-flex';
+                fullscreenBtn.href = resolvedPdfUrl;
+                fullscreenBtn.style.display = 'inline-flex';
+            } else {
+                pdfIframe.src = 'about:blank';
+                downloadBtn.style.display = 'none';
+                fullscreenBtn.style.display = 'none';
+            }
+
+            // Handle Images
+            const imagesSection = document.getElementById('csImagesSection');
+            const mainImg = document.getElementById('csGalleryMainImg');
+            const thumbsWrap = document.getElementById('csGalleryThumbs');
+            const countEl = document.getElementById('csImagesCount');
+
+            const imgs = Array.isArray(cs.images) && cs.images.length > 0
+                ? cs.images
+                : (cs.thumbnail ? [cs.thumbnail] : []);
+
+            const hasImages = imgs.length > 0;
+            if (hasImages) {
+                const firstImg = resolveAssetUrl(imgs[0]);
+                mainImg.src = firstImg;
+                if (countEl) countEl.innerText = imgs.length;
+
+                thumbsWrap.innerHTML = imgs.map((imgUrl, idx) => {
+                    const resolved = resolveAssetUrl(imgUrl);
+                    return `
+                        <div class="cs-gallery-thumb-item ${idx === 0 ? 'active' : ''}" onclick="selectCsGalleryImage('${resolved}', this)">
+                            <img src="${resolved}" alt="Ảnh ${idx + 1}" loading="lazy">
+                        </div>
+                    `;
+                }).join('');
+
+                if (!hasPdf) {
+                    fullscreenBtn.href = firstImg;
+                    fullscreenBtn.style.display = 'inline-flex';
+                }
+            }
+
+            // Tabs Switcher (if both PDF and Images exist)
+            const tabsWrap = document.getElementById('csContentTabs');
+            if (hasPdf && hasImages) {
+                tabsWrap.style.display = 'flex';
+                switchCsTab('pdf');
+            } else {
+                tabsWrap.style.display = 'none';
+                if (hasPdf) {
+                    pdfSection.style.display = 'block';
+                    imagesSection.style.display = 'none';
+                } else if (hasImages) {
+                    pdfSection.style.display = 'none';
+                    imagesSection.style.display = 'block';
+                } else {
+                    pdfSection.style.display = 'none';
+                    imagesSection.style.display = 'none';
+                }
+            }
+
+            // Read full article link
+            const readMoreBox = document.getElementById('csReadMoreBox');
+            const fullArticleLink = document.getElementById('csFullArticleLink');
+            const footerArticleBtn = document.getElementById('csModalFooterArticleBtn');
+
+            let articleHref = cs.link || '';
+            if (articleHref && articleHref !== '#') {
+                if (!articleHref.startsWith('http') && !articleHref.startsWith('/') && !articleHref.startsWith('case-study/')) {
+                    articleHref = 'case-study/' + articleHref;
+                }
+                if (fullArticleLink) fullArticleLink.href = articleHref;
+                if (footerArticleBtn) footerArticleBtn.href = articleHref;
+                if (readMoreBox) readMoreBox.style.display = 'flex';
+                if (footerArticleBtn) footerArticleBtn.style.display = 'inline-flex';
+            } else {
+                if (readMoreBox) readMoreBox.style.display = 'none';
+                if (footerArticleBtn) footerArticleBtn.style.display = 'none';
+            }
+
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+            lucide.createIcons({ attrs: { "stroke-width": 2.2 } });
+        }
+
+        function closeCaseStudyDetailModal(e) {
+            if (e && e.target && e.target !== document.getElementById('csDetailModal') && !e.target.classList.contains('cs-detail-modal-close')) {
+                return;
+            }
+            const modal = document.getElementById('csDetailModal');
+            if (modal) {
+                modal.classList.remove('show');
+                const iframe = document.getElementById('csPdfIframe');
+                if (iframe) iframe.src = 'about:blank';
+                document.body.style.overflow = '';
+            }
+        }
+
+        function switchCsTab(tab) {
+            const tabPdf = document.getElementById('tabBtnPdf');
+            const tabImages = document.getElementById('tabBtnImages');
+            const pdfSection = document.getElementById('csPdfSection');
+            const imagesSection = document.getElementById('csImagesSection');
+
+            if (tab === 'pdf') {
+                if (tabPdf) tabPdf.classList.add('active');
+                if (tabImages) tabImages.classList.remove('active');
+                if (pdfSection) pdfSection.style.display = 'block';
+                if (imagesSection) imagesSection.style.display = 'none';
+            } else {
+                if (tabPdf) tabPdf.classList.remove('active');
+                if (tabImages) tabImages.classList.add('active');
+                if (pdfSection) pdfSection.style.display = 'none';
+                if (imagesSection) imagesSection.style.display = 'block';
+            }
+            lucide.createIcons({ attrs: { "stroke-width": 2.2 } });
+        }
+
+        function selectCsGalleryImage(url, el) {
+            const mainImg = document.getElementById('csGalleryMainImg');
+            if (mainImg) mainImg.src = url;
+            const thumbs = document.querySelectorAll('.cs-gallery-thumb-item');
+            thumbs.forEach(t => t.classList.remove('active'));
+            if (el) el.classList.add('active');
+        }
+
+        function openFullImage(url) {
+            if (url) window.open(url, '_blank');
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeCaseStudyDetailModal();
+            }
+        });
+
         // Dynamic Case Studies Loader
         async function loadDynamicCaseStudies() {
             let list = null;
@@ -409,6 +1277,7 @@
             } catch(e) {}
 
             if (list && list.length > 0) {
+                loadedCaseStudies = list;
                 renderCaseStudiesToDOM(list);
             }
         }
@@ -420,26 +1289,36 @@
             if (published.length === 0) return;
 
             grid.innerHTML = published.map(cs => {
-                let link = cs.link || '#';
-                if (!link.startsWith('http') && !link.startsWith('/') && !link.startsWith('case-study/')) {
-                    link = 'case-study/' + link;
-                }
                 const cats = Array.isArray(cs.categories) && cs.categories.length > 0 
                     ? cs.categories 
                     : (cs.category ? cs.category.split(',').map(s => s.trim()).filter(Boolean) : ['Lean & Cải tiến']);
-                const catDisplay = cats.join(' • ');
+                const primaryCat = (cats[0] || 'LEAN & CẢI TIẾN').toUpperCase();
                 const catAttr = cats.join(', ').toLowerCase();
+                const thumb = resolveAssetUrl(cs.thumbnail || 'assets/images/resources/art-5steps.jpg');
+                const dateText = cs.dateDisplay || cs.createdAt || '12 thg 10, 2026';
+                const viewsText = cs.views || '2.4K lượt xem';
 
                 return `
-                    <a href="${link}" class="feature-card" data-categories="${catAttr}">
-                        <div class="cs-badge-top">${cs.badge || 'CASE STUDY'}</div>
-                        <div class="cs-category">${catDisplay}</div>
-                        <h3 class="cs-title">${cs.title}</h3>
-                        <p class="cs-desc">${cs.desc || ''}</p>
-                        <div class="cs-cta">
-                            Xem Case Study <i data-lucide="arrow-right"></i>
+                    <div class="cs-modern-card" data-id="${cs.id}" data-categories="${catAttr}" onclick="openCaseStudyDetailModal('${cs.id}')">
+                        <div class="cs-thumb-wrap">
+                            <img src="${thumb}" alt="${cs.title}" class="cs-thumb-img" loading="lazy">
+                            <span class="cs-cat-badge">${primaryCat}</span>
                         </div>
-                    </a>
+                        <div class="cs-body">
+                            <h3 class="cs-title">${cs.title}</h3>
+                            <p class="cs-desc">${cs.desc || ''}</p>
+                        </div>
+                        <div class="cs-divider"></div>
+                        <div class="cs-footer">
+                            <div class="cs-meta-left">
+                                <span class="cs-meta-item"><i data-lucide="calendar"></i> ${dateText}</span>
+                                <span class="cs-meta-item"><i data-lucide="eye"></i> ${viewsText}</span>
+                            </div>
+                            <div class="cs-arrow-btn">
+                                <i data-lucide="arrow-right"></i>
+                            </div>
+                        </div>
+                    </div>
                 `;
             }).join('');
 

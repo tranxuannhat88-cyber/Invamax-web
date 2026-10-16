@@ -17,9 +17,17 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
             client: 'Nhà máy sản xuất bút chì',
             highlight: 'Tăng 42,3% UPH',
             link: 'case-study/productivity-improvement-pencil-factory.html',
-            thumbnail: 'assets/images/home/pencil.jpg',
+            thumbnail: 'assets/images/resources/art-5steps.jpg',
+            pdfUrl: 'assets/docs/IVM-Huong-dan-thuc-hien-5S-Tinh-gon-Hieu-qua.pdf',
+            images: [
+                'assets/images/report_dashboard.png',
+                'assets/images/report_matrix.png',
+                'assets/images/report_wastes.png'
+            ],
             status: 'published',
-            createdAt: '2026-10-10'
+            createdAt: '2026-10-12',
+            dateDisplay: '12 thg 10, 2026',
+            views: '2.4K lượt xem'
         },
         {
             id: 'cs-kaizen-cost-pencil',
@@ -31,9 +39,16 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
             client: 'Nhà máy sản xuất bút chì',
             highlight: '432.873 USD/năm',
             link: 'case-study/kaizen-cost-saving-pencil-factory.html',
-            thumbnail: 'assets/images/home/pencil.jpg',
+            thumbnail: 'assets/images/resources/art-costdown.jpg',
+            pdfUrl: 'assets/docs/IVM-Huong-dan-thuc-hien-5S-Tinh-gon-Hieu-qua.pdf',
+            images: [
+                'assets/images/report_matrix.png',
+                'assets/images/report_roadmap.png'
+            ],
             status: 'published',
-            createdAt: '2026-10-08'
+            createdAt: '2026-10-08',
+            dateDisplay: '08 thg 10, 2026',
+            views: '1.8K lượt xem'
         },
         {
             id: 'cs-operating-model-pencil',
@@ -45,9 +60,16 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
             client: 'Nhà máy sản xuất bút chì',
             highlight: 'Tối ưu quản lý chuyên trách',
             link: 'case-study/operating-model-pencil-factory.html',
-            thumbnail: 'assets/images/home/pencil.jpg',
+            thumbnail: 'assets/images/operations/operations.jpg',
+            pdfUrl: 'assets/docs/IVM-Huong-dan-thuc-hien-5S-Tinh-gon-Hieu-qua.pdf',
+            images: [
+                'assets/images/report_roadmap.png',
+                'assets/images/operations/factory.jpg'
+            ],
             status: 'published',
-            createdAt: '2026-10-05'
+            createdAt: '2026-10-05',
+            dateDisplay: '05 thg 10, 2026',
+            views: '3.1K lượt xem'
         }
     ];
 
@@ -103,8 +125,12 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
             highlight: item.highlight || '',
             link: item.link || '#',
             thumbnail: item.thumbnail || '',
+            pdfUrl: item.pdfUrl || '',
+            images: Array.isArray(item.images) ? item.images : (item.images ? [item.images] : []),
             status: item.status || 'published',
-            createdAt: item.createdAt || new Date().toISOString().split('T')[0]
+            createdAt: item.createdAt || new Date().toISOString().split('T')[0],
+            dateDisplay: item.dateDisplay || '',
+            views: item.views || '1.2K lượt xem'
         };
         list.unshift(newItem);
         saveAll(list);
@@ -171,6 +197,26 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
                     notify(`Đang tải ảnh bìa Case Study "${item.title}" lên GitHub...`);
                     await window.INVAMAX_GITHUB_SYNC.uploadDataUrlFile(path, item.thumbnail, `Upload case study thumb: ${safeName}`);
                     item.thumbnail = path;
+                }
+
+                if (item.pdfUrl && item.pdfUrl.startsWith('data:')) {
+                    const safeName = `cs-doc-${item.id}.pdf`;
+                    const path = `assets/docs/${safeName}`;
+                    notify(`Đang tải tệp PDF Case Study "${item.title}" lên GitHub...`);
+                    await window.INVAMAX_GITHUB_SYNC.uploadDataUrlFile(path, item.pdfUrl, `Upload case study PDF: ${safeName}`);
+                    item.pdfUrl = path;
+                }
+
+                if (Array.isArray(item.images)) {
+                    for (let j = 0; j < item.images.length; j++) {
+                        if (item.images[j] && item.images[j].startsWith('data:')) {
+                            const safeName = `cs-detail-${item.id}-${j + 1}.jpg`;
+                            const path = `assets/images/case-study/${safeName}`;
+                            notify(`Đang tải ảnh chi tiết ${j + 1} lên GitHub...`);
+                            await window.INVAMAX_GITHUB_SYNC.uploadDataUrlFile(path, item.images[j], `Upload case study detail image: ${safeName}`);
+                            item.images[j] = path;
+                        }
+                    }
                 }
             }
 

@@ -1364,6 +1364,38 @@
                             </div>
                         </div>
 
+                        <!-- Tệp PDF Case Study đính kèm (Hiển thị trong cửa sổ xem chi tiết) -->
+                        <div class="form-group">
+                            <label class="form-label">Tài liệu PDF Case Study đính kèm</label>
+                            <div style="display: flex; gap: 8px; margin-bottom: 8px;">
+                                <input type="text" id="csPdfUrl" class="form-input" placeholder="Dán link PDF hoặc bấm Tải PDF từ máy...">
+                                <button type="button" class="btn-action" style="white-space: nowrap;" onclick="document.getElementById('csPdfFileInput').click()">
+                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+                                    Tải PDF
+                                </button>
+                            </div>
+                            <input type="file" id="csPdfFileInput" accept=".pdf" style="display: none;" onchange="handleCsPdfSelect(event)">
+                            <div id="csPdfPreviewBox" style="display: none; align-items: center; gap: 10px; margin-top: 8px; padding: 7px 12px; background: #fff7ed; border: 1px solid #fed7aa; border-radius: 8px;">
+                                <span style="font-size: 11px; font-weight: 800; background: #ea580c; color: white; padding: 2px 6px; border-radius: 4px;">PDF</span>
+                                <span style="font-size: 12px; color: #9a3412; font-weight: 600;" id="csPdfPreviewText">Đã chọn file PDF</span>
+                                <button type="button" style="margin-left: auto; background: none; border: none; color: #ef4444; cursor: pointer; font-size: 14px;" onclick="clearCsPdf()">&times;</button>
+                            </div>
+                        </div>
+
+                        <!-- Bộ ảnh chi tiết dự án / Sơ đồ kết quả -->
+                        <div class="form-group">
+                            <label class="form-label">Hình ảnh chi tiết / Sơ đồ kết quả</label>
+                            <div style="display: flex; gap: 8px; margin-bottom: 8px;">
+                                <input type="text" id="csImagesInput" class="form-input" placeholder="Dán link ảnh (cách nhau bởi dấu phẩy) hoặc tải ảnh...">
+                                <button type="button" class="btn-action" style="white-space: nowrap;" onclick="document.getElementById('csImagesFileInput').click()">
+                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                                    Tải ảnh
+                                </button>
+                            </div>
+                            <input type="file" id="csImagesFileInput" accept="image/*" multiple style="display: none;" onchange="handleCsImagesSelect(event)">
+                            <div id="csImagesPreviewGrid" style="display: none; flex-wrap: wrap; gap: 8px; margin-top: 8px;"></div>
+                        </div>
+
                         <!-- Trạng thái -->
                         <div class="form-group">
                             <label class="form-label" for="csStatus">Trạng thái hiển thị</label>
@@ -1495,6 +1527,21 @@
                     <div class="form-group">
                         <label class="form-label" for="modalCsLink">Đường dẫn bài viết <span class="req">*</span></label>
                         <input type="text" id="modalCsLink" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="modalCsThumbUrl">Ảnh bìa / Thumbnail URL</label>
+                        <input type="text" id="modalCsThumbUrl" class="form-input" placeholder="Link ảnh bìa...">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="modalCsPdfUrl">Tài liệu PDF Case Study đính kèm (URL)</label>
+                        <input type="text" id="modalCsPdfUrl" class="form-input" placeholder="assets/docs/ten-file.pdf hoặc link URL...">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="modalCsImages">Hình ảnh chi tiết / Sơ đồ kết quả (URLs)</label>
+                        <input type="text" id="modalCsImages" class="form-input" placeholder="Các link ảnh cách nhau bằng dấu phẩy...">
                     </div>
 
                     <div class="form-group">
@@ -1718,6 +1765,8 @@
 
         // State variables - Case Studies
         let currentCsThumbnail = null;
+        let currentCsPdf = null;
+        let currentCsImages = [];
         let currentEditingCsId = null;
         let currentCsFilter = 'all';
 
@@ -2791,6 +2840,85 @@
             if (urlInput) urlInput.value = '';
         }
 
+        // PDF Attachment Handlers
+        function handleCsPdfSelect(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(evt) {
+                currentCsPdf = evt.target.result;
+                displayCsPdf(currentCsPdf, file.name);
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function displayCsPdf(src, note = 'Đã chọn file PDF') {
+            const box = document.getElementById('csPdfPreviewBox');
+            const txt = document.getElementById('csPdfPreviewText');
+            if (box) {
+                if (txt) txt.innerText = note;
+                box.style.display = 'flex';
+            }
+        }
+
+        function clearCsPdf() {
+            currentCsPdf = null;
+            const box = document.getElementById('csPdfPreviewBox');
+            const input = document.getElementById('csPdfFileInput');
+            const urlInput = document.getElementById('csPdfUrl');
+            if (box) box.style.display = 'none';
+            if (input) input.value = '';
+            if (urlInput) urlInput.value = '';
+        }
+
+        // Project Gallery Images Handlers
+        function handleCsImagesSelect(e) {
+            const files = Array.from(e.target.files);
+            if (!files || files.length === 0) return;
+            files.forEach(file => {
+                const reader = new FileReader();
+                reader.onload = function(evt) {
+                    currentCsImages.push(evt.target.result);
+                    renderCsImagesPreview();
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        function renderCsImagesPreview() {
+            const grid = document.getElementById('csImagesPreviewGrid');
+            if (!grid) return;
+            if (!currentCsImages || currentCsImages.length === 0) {
+                grid.style.display = 'none';
+                grid.innerHTML = '';
+                return;
+            }
+            grid.style.display = 'flex';
+            grid.innerHTML = currentCsImages.map((src, idx) => `
+                <div style="position: relative; width: 68px; height: 50px; border-radius: 6px; overflow: hidden; border: 1.5px solid #cbd5e1;">
+                    <img src="${src}" style="width: 100%; height: 100%; object-fit: cover;">
+                    <button type="button" onclick="removeCsImageAt(${idx})" style="position: absolute; top: 2px; right: 2px; background: rgba(0,0,0,0.7); color: #fff; border: none; border-radius: 50%; width: 16px; height: 16px; font-size: 11px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center;">&times;</button>
+                </div>
+            `).join('');
+        }
+
+        function removeCsImageAt(idx) {
+            if (currentCsImages && idx >= 0 && idx < currentCsImages.length) {
+                currentCsImages.splice(idx, 1);
+                renderCsImagesPreview();
+            }
+        }
+
+        function clearCsImages() {
+            currentCsImages = [];
+            const grid = document.getElementById('csImagesPreviewGrid');
+            const fileInput = document.getElementById('csImagesFileInput');
+            const textInput = document.getElementById('csImagesInput');
+            if (grid) { grid.style.display = 'none'; grid.innerHTML = ''; }
+            if (fileInput) fileInput.value = '';
+            if (textInput) textInput.value = '';
+        }
+
         // Category Checkbox Helpers
         function getSelectedCsCategoriesFromForm() {
             const checks = document.querySelectorAll('input[name="cs_cat_check"]:checked');
@@ -2934,6 +3062,18 @@
                                             ${escapeHTML(cs.highlight)}
                                         </span>
                                     ` : ''}
+                                    ${cs.pdfUrl ? `
+                                        <span class="meta-item" style="color: #ea580c; font-weight: 700;">
+                                            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                                            Đính kèm PDF
+                                        </span>
+                                    ` : ''}
+                                    ${(cs.images && cs.images.length > 0) ? `
+                                        <span class="meta-item" style="color: #0284c7; font-weight: 700;">
+                                            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                                            ${cs.images.length} ảnh chi tiết
+                                        </span>
+                                    ` : ''}
                                     <span class="meta-item">
                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                                         ${cs.createdAt || '2026-10-10'}
@@ -2964,7 +3104,7 @@
 
                                 <!-- Nút Chỉnh sửa ở Form bên trái -->
                                 <button type="button" class="btn-action" title="Mở lên form bên trái để chỉnh sửa chi tiết" onclick="startEditCaseStudy('${cs.id}')">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4L16.5 3.5z"/></svg>
                                     Sửa chi tiết
                                 </button>
 
@@ -3005,6 +3145,8 @@
             const desc = document.getElementById('csDesc').value.trim();
             const link = document.getElementById('csLink').value.trim();
             const thumbUrl = document.getElementById('csThumbUrl').value.trim();
+            const pdfUrlInput = document.getElementById('csPdfUrl').value.trim();
+            const imagesInput = document.getElementById('csImagesInput').value.trim();
             const status = document.getElementById('csStatus').value;
 
             if (!title || !desc || !link) {
@@ -3012,7 +3154,10 @@
                 return;
             }
 
-            const thumb = currentCsThumbnail || thumbUrl || 'assets/images/home/pencil.jpg';
+            const thumb = currentCsThumbnail || thumbUrl || 'assets/images/resources/art-5steps.jpg';
+            const pdfUrl = currentCsPdf || pdfUrlInput || '';
+            const textImgs = imagesInput ? imagesInput.split(',').map(s => s.trim()).filter(Boolean) : [];
+            const images = Array.from(new Set([...currentCsImages, ...textImgs]));
 
             const caseData = {
                 title,
@@ -3024,6 +3169,8 @@
                 desc,
                 link,
                 thumbnail: thumb,
+                pdfUrl,
+                images,
                 status
             };
 
@@ -3058,6 +3205,7 @@
             document.getElementById('csDesc').value = cs.desc || '';
             document.getElementById('csLink').value = cs.link || '';
             document.getElementById('csThumbUrl').value = cs.thumbnail && !cs.thumbnail.startsWith('data:') ? cs.thumbnail : '';
+            document.getElementById('csPdfUrl').value = cs.pdfUrl && !cs.pdfUrl.startsWith('data:') ? cs.pdfUrl : '';
             document.getElementById('csStatus').value = cs.status || 'published';
 
             if (cs.thumbnail) {
@@ -3066,6 +3214,18 @@
             } else {
                 clearCsThumb();
             }
+
+            if (cs.pdfUrl) {
+                currentCsPdf = cs.pdfUrl;
+                displayCsPdf(cs.pdfUrl, 'Tệp PDF hiện tại');
+            } else {
+                clearCsPdf();
+            }
+
+            currentCsImages = Array.isArray(cs.images) ? [...cs.images] : (cs.images ? [cs.images] : []);
+            const textImgs = currentCsImages.filter(im => !im.startsWith('data:'));
+            document.getElementById('csImagesInput').value = textImgs.join(', ');
+            renderCsImagesPreview();
 
             document.getElementById('csEditBanner').classList.add('show');
             document.getElementById('btnCsCancel').style.display = 'block';
@@ -3082,10 +3242,14 @@
         function cancelEditCaseStudy() {
             currentEditingCsId = null;
             currentCsThumbnail = null;
+            currentCsPdf = null;
+            currentCsImages = [];
             document.getElementById('csForm').reset();
             document.getElementById('csDocId').value = '';
             setSelectedCsCategoriesInForm(['Lean & Cải tiến']);
             clearCsThumb();
+            clearCsPdf();
+            clearCsImages();
             document.getElementById('csEditBanner').classList.remove('show');
             document.getElementById('btnCsCancel').style.display = 'none';
             document.getElementById('btnCsSubmitText').innerText = 'Lưu Case Study';
@@ -3121,6 +3285,10 @@
             document.getElementById('modalCsHighlight').value = cs.highlight || '';
             document.getElementById('modalCsDesc').value = cs.desc || '';
             document.getElementById('modalCsLink').value = cs.link || '';
+            document.getElementById('modalCsThumbUrl').value = cs.thumbnail && !cs.thumbnail.startsWith('data:') ? cs.thumbnail : '';
+            document.getElementById('modalCsPdfUrl').value = cs.pdfUrl && !cs.pdfUrl.startsWith('data:') ? cs.pdfUrl : '';
+            const imgs = Array.isArray(cs.images) ? cs.images : (cs.images ? [cs.images] : []);
+            document.getElementById('modalCsImages').value = imgs.filter(i => !i.startsWith('data:')).join(', ');
             document.getElementById('modalCsStatus').value = cs.status || 'published';
 
             document.getElementById('csQuickEditModal').classList.add('show');
@@ -3141,6 +3309,10 @@
             const highlight = document.getElementById('modalCsHighlight').value.trim();
             const desc = document.getElementById('modalCsDesc').value.trim();
             const link = document.getElementById('modalCsLink').value.trim();
+            const thumbUrl = document.getElementById('modalCsThumbUrl').value.trim();
+            const pdfUrl = document.getElementById('modalCsPdfUrl').value.trim();
+            const imagesStr = document.getElementById('modalCsImages').value.trim();
+            const images = imagesStr ? imagesStr.split(',').map(s => s.trim()).filter(Boolean) : [];
             const status = document.getElementById('modalCsStatus').value;
 
             if (!title || !desc || !link) {
@@ -3148,9 +3320,14 @@
                 return;
             }
 
-            INVAMAX_CASE_STUDY_STORE.update(id, {
+            const updateData = {
                 title, badge, categories, category, client, highlight, desc, link, status
-            });
+            };
+            if (thumbUrl) updateData.thumbnail = thumbUrl;
+            if (pdfUrl !== undefined) updateData.pdfUrl = pdfUrl;
+            if (images.length > 0) updateData.images = images;
+
+            INVAMAX_CASE_STUDY_STORE.update(id, updateData);
 
             closeCsQuickEditModal();
             showToast('Đã cập nhật Case Study!', 'success');
