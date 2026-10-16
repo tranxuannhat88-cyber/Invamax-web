@@ -125,7 +125,11 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
             highlight: item.highlight || '',
             link: item.link || '#',
             thumbnail: item.thumbnail || '',
-            pdfUrl: item.pdfUrl || '',
+            pdfUrl: item.pdfUrl || item.fileUrl || '',
+            fileUrl: item.fileUrl || item.pdfUrl || '',
+            fileName: item.fileName || '',
+            fileSize: item.fileSize || '',
+            fileFormat: item.fileFormat || '',
             images: Array.isArray(item.images) ? item.images : (item.images ? [item.images] : []),
             status: item.status || 'published',
             createdAt: item.createdAt || new Date().toISOString().split('T')[0],
@@ -199,11 +203,14 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
                     item.thumbnail = path;
                 }
 
-                if (item.pdfUrl && item.pdfUrl.startsWith('data:')) {
-                    const safeName = `cs-doc-${item.id}.pdf`;
+                const fileData = item.fileUrl || item.pdfUrl;
+                if (fileData && fileData.startsWith('data:')) {
+                    const ext = (item.fileFormat || 'pdf').toLowerCase().replace('.', '');
+                    const safeName = `cs-file-${item.id}.${ext}`;
                     const path = `assets/docs/${safeName}`;
-                    notify(`Đang tải tệp PDF Case Study "${item.title}" lên GitHub...`);
-                    await window.INVAMAX_GITHUB_SYNC.uploadDataUrlFile(path, item.pdfUrl, `Upload case study PDF: ${safeName}`);
+                    notify(`Đang tải tệp dữ liệu Case Study "${item.title}" lên GitHub...`);
+                    await window.INVAMAX_GITHUB_SYNC.uploadDataUrlFile(path, fileData, `Upload case study file: ${safeName}`);
+                    item.fileUrl = path;
                     item.pdfUrl = path;
                 }
 
