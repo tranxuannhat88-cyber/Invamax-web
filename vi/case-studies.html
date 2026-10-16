@@ -852,14 +852,27 @@
                     <button type="button" id="tabBtnImages" class="cs-tab-btn" onclick="switchCsTab('images')"><i data-lucide="image"></i> Hình ảnh triển khai (<span id="csImagesCount">0</span>)</button>
                 </div>
 
-                <!-- PDF Viewer Section -->
+                <!-- Data File / PDF Viewer Section -->
                 <div id="csPdfSection" class="cs-viewer-section" style="display: none;">
                     <div class="cs-section-subhead">
                         <i data-lucide="file-text"></i>
-                        <span>Tài liệu báo cáo Case Study (PDF)</span>
+                        <span id="csDataFileHeading">Tài liệu báo cáo Case Study (PDF)</span>
                     </div>
-                    <div class="cs-pdf-frame-wrap">
+                    <!-- Frame for PDF -->
+                    <div class="cs-pdf-frame-wrap" id="csPdfFrameWrap">
                         <iframe id="csPdfIframe" src="about:blank" title="Tài liệu Case Study"></iframe>
+                    </div>
+                    <!-- Download card for other formats (Excel, Word, ZIP...) -->
+                    <div id="csDataFileDownloadCard" style="display: none; background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 12px; padding: 28px 20px; text-align: center; margin-top: 10px;">
+                        <div style="width: 58px; height: 58px; border-radius: 14px; background: #eff6ff; color: #2563eb; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 14px;">
+                            <i data-lucide="file-spreadsheet" style="width: 30px; height: 30px;"></i>
+                        </div>
+                        <h4 id="csDataFileCardName" style="font-size: 16px; font-weight: 700; color: #1e293b; margin-bottom: 6px;">Báo cáo số liệu dự án</h4>
+                        <p id="csDataFileCardMeta" style="font-size: 13px; color: #64748b; margin-bottom: 18px;">Tệp đính kèm dự án</p>
+                        <a id="csDataFileCardBtn" href="#" download class="cs-btn-primary" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none; padding: 11px 22px; font-weight: 700; border-radius: 8px;">
+                            <i data-lucide="download"></i>
+                            <span>Tải tệp này về máy</span>
+                        </a>
                     </div>
                 </div>
 
@@ -1108,25 +1121,61 @@
             const descEl = document.getElementById('csModalDesc');
             if (descEl) descEl.innerText = cs.desc || '';
 
-            // Handle PDF
+            // Handle Data File / PDF
             const pdfSection = document.getElementById('csPdfSection');
+            const pdfFrameWrap = document.getElementById('csPdfFrameWrap');
             const pdfIframe = document.getElementById('csPdfIframe');
+            const dataFileDownloadCard = document.getElementById('csDataFileDownloadCard');
+            const dataFileCardName = document.getElementById('csDataFileCardName');
+            const dataFileCardMeta = document.getElementById('csDataFileCardMeta');
+            const dataFileCardBtn = document.getElementById('csDataFileCardBtn');
+            const dataFileHeading = document.getElementById('csDataFileHeading');
             const downloadBtn = document.getElementById('csModalDownloadBtn');
             const fullscreenBtn = document.getElementById('csModalFullscreenBtn');
+            const tabBtnPdf = document.getElementById('tabBtnPdf');
 
-            const hasPdf = Boolean(cs.pdfUrl);
-            const resolvedPdfUrl = hasPdf ? resolveAssetUrl(cs.pdfUrl) : '';
+            const rawFileUrl = cs.fileUrl || cs.pdfUrl || '';
+            const hasFile = Boolean(rawFileUrl);
+            const resolvedFileUrl = hasFile ? resolveAssetUrl(rawFileUrl) : '';
+            const fileFormat = (cs.fileFormat || rawFileUrl.split('.').pop().split('?')[0] || 'FILE').toUpperCase();
+            const isPdf = hasFile && (fileFormat === 'PDF' || resolvedFileUrl.toLowerCase().endsWith('.pdf') || resolvedFileUrl.startsWith('data:application/pdf'));
 
-            if (hasPdf) {
-                pdfIframe.src = resolvedPdfUrl;
-                downloadBtn.href = resolvedPdfUrl;
+            if (hasFile) {
+                downloadBtn.href = resolvedFileUrl;
                 downloadBtn.style.display = 'inline-flex';
-                fullscreenBtn.href = resolvedPdfUrl;
-                fullscreenBtn.style.display = 'inline-flex';
+                if (cs.fileName) downloadBtn.setAttribute('download', cs.fileName);
+
+                if (isPdf) {
+                    if (dataFileHeading) dataFileHeading.innerText = 'Tài liệu báo cáo Case Study (PDF)';
+                    if (tabBtnPdf) tabBtnPdf.innerHTML = '<i data-lucide="file-text"></i> Tài liệu PDF dự án';
+                    if (pdfFrameWrap) pdfFrameWrap.style.display = 'block';
+                    if (pdfIframe) pdfIframe.src = resolvedFileUrl;
+                    if (dataFileDownloadCard) dataFileDownloadCard.style.display = 'none';
+                    if (fullscreenBtn) {
+                        fullscreenBtn.href = resolvedFileUrl;
+                        fullscreenBtn.style.display = 'inline-flex';
+                    }
+                } else {
+                    if (dataFileHeading) dataFileHeading.innerText = 'Tệp dữ liệu dự án đính kèm';
+                    if (tabBtnPdf) tabBtnPdf.innerHTML = `<i data-lucide="file-down"></i> Tệp dữ liệu (${fileFormat})`;
+                    if (pdfFrameWrap) pdfFrameWrap.style.display = 'none';
+                    if (pdfIframe) pdfIframe.src = 'about:blank';
+                    if (dataFileDownloadCard) {
+                        dataFileDownloadCard.style.display = 'block';
+                        if (dataFileCardName) dataFileCardName.innerText = cs.fileName || rawFileUrl.split('/').pop().split('?')[0];
+                        if (dataFileCardMeta) dataFileCardMeta.innerText = `Định dạng ${fileFormat}${cs.fileSize ? ' • ' + cs.fileSize : ''}`;
+                        if (dataFileCardBtn) {
+                            dataFileCardBtn.href = resolvedFileUrl;
+                            if (cs.fileName) dataFileCardBtn.setAttribute('download', cs.fileName);
+                        }
+                    }
+                    if (fullscreenBtn) fullscreenBtn.style.display = 'none';
+                }
             } else {
-                pdfIframe.src = 'about:blank';
-                downloadBtn.style.display = 'none';
-                fullscreenBtn.style.display = 'none';
+                if (pdfIframe) pdfIframe.src = 'about:blank';
+                if (downloadBtn) downloadBtn.style.display = 'none';
+                if (fullscreenBtn) fullscreenBtn.style.display = 'none';
+                if (dataFileDownloadCard) dataFileDownloadCard.style.display = 'none';
             }
 
             // Handle Images
@@ -1154,20 +1203,20 @@
                     `;
                 }).join('');
 
-                if (!hasPdf) {
+                if (!hasFile || !isPdf) {
                     fullscreenBtn.href = firstImg;
                     fullscreenBtn.style.display = 'inline-flex';
                 }
             }
 
-            // Tabs Switcher (if both PDF and Images exist)
+            // Tabs Switcher (if both File and Images exist)
             const tabsWrap = document.getElementById('csContentTabs');
-            if (hasPdf && hasImages) {
+            if (hasFile && hasImages) {
                 tabsWrap.style.display = 'flex';
                 switchCsTab('pdf');
             } else {
                 tabsWrap.style.display = 'none';
-                if (hasPdf) {
+                if (hasFile) {
                     pdfSection.style.display = 'block';
                     imagesSection.style.display = 'none';
                 } else if (hasImages) {
@@ -1184,8 +1233,8 @@
             const fullArticleLink = document.getElementById('csFullArticleLink');
             const footerArticleBtn = document.getElementById('csModalFooterArticleBtn');
 
-            let articleHref = cs.link || '';
-            if (articleHref && articleHref !== '#') {
+            let articleHref = (cs.link || '').trim();
+            if (articleHref && articleHref !== '#' && articleHref !== '') {
                 if (!articleHref.startsWith('http') && !articleHref.startsWith('/') && !articleHref.startsWith('case-study/')) {
                     articleHref = 'case-study/' + articleHref;
                 }
@@ -1324,9 +1373,34 @@
 
             lucide.createIcons({ attrs: { "stroke-width": 2.2 } });
             filterCases();
+
+            // Auto-open modal if URL has ?cs=<id> or #<id>
+            try {
+                const urlParams = new URLSearchParams(window.location.search);
+                const targetId = urlParams.get('cs') || (window.location.hash ? window.location.hash.replace('#', '') : '');
+                if (targetId) {
+                    const targetCs = loadedCaseStudies.find(it => it.id === targetId);
+                    if (targetCs) {
+                        setTimeout(() => openCaseStudyDetailModal(targetCs), 250);
+                    }
+                }
+            } catch(e) {}
         }
 
-        document.addEventListener('DOMContentLoaded', loadDynamicCaseStudies);
+        document.addEventListener('DOMContentLoaded', () => {
+            loadDynamicCaseStudies();
+            // Also check for default items if dynamic doesn't fire
+            try {
+                const urlParams = new URLSearchParams(window.location.search);
+                const targetId = urlParams.get('cs') || (window.location.hash ? window.location.hash.replace('#', '') : '');
+                if (targetId) {
+                    const targetCs = loadedCaseStudies.find(it => it.id === targetId);
+                    if (targetCs) {
+                        setTimeout(() => openCaseStudyDetailModal(targetCs), 300);
+                    }
+                }
+            } catch(e) {}
+        });
     </script>
 </body>
 </html>

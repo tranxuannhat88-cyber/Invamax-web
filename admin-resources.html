@@ -3063,15 +3063,20 @@
 
             container.innerHTML = filtered.map(cs => {
                 const isEditing = currentEditingCsId === cs.id;
-                let viewLink = cs.link || '#';
-                if (!viewLink.startsWith('http') && !viewLink.startsWith('/') && !viewLink.startsWith('vi/')) {
+                let viewLink = cs.link || '';
+                const hasValidLink = viewLink && viewLink !== '#' && viewLink.trim() !== '';
+                if (hasValidLink && !viewLink.startsWith('http') && !viewLink.startsWith('/') && !viewLink.startsWith('vi/')) {
                     viewLink = 'vi/' + viewLink;
                 }
+                const previewOnWebLink = hasValidLink ? viewLink : `vi/case-studies.html?cs=${cs.id}`;
 
                 const cats = Array.isArray(cs.categories) && cs.categories.length > 0 
                     ? cs.categories 
                     : (cs.category ? cs.category.split(',').map(s => s.trim()).filter(Boolean) : ['Lean & Cải tiến']);
                 const catBadgesHtml = cats.map(cat => `<span class="cs-cat-badge">${escapeHTML(cat)}</span>`).join(' ');
+
+                const fileAttached = cs.fileUrl || cs.pdfUrl;
+                const fileFmt = (cs.fileFormat || (fileAttached ? fileAttached.split('.').pop().toUpperCase() : '') || 'FILE').toUpperCase();
 
                 return `
                     <div class="doc-item-card ${isEditing ? 'is-editing' : ''}">
@@ -3104,10 +3109,10 @@
                                             ${escapeHTML(cs.highlight)}
                                         </span>
                                     ` : ''}
-                                    ${cs.pdfUrl ? `
+                                    ${fileAttached ? `
                                         <span class="meta-item" style="color: #ea580c; font-weight: 700;">
                                             <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                                            Đính kèm PDF
+                                            Đính kèm [${escapeHTML(fileFmt)}]: ${escapeHTML(cs.fileName || 'Tệp dữ liệu')}
                                         </span>
                                     ` : ''}
                                     ${(cs.images && cs.images.length > 0) ? `
@@ -3132,10 +3137,10 @@
                             </div>
 
                             <div class="doc-card-actions">
-                                <!-- Nút Xem bài viết -->
-                                <a href="${viewLink}" target="_blank" rel="noopener" class="btn-action btn-action-preview" title="Xem bài viết Case Study trên web">
+                                <!-- Nút Xem bài viết / Xem trên web -->
+                                <a href="${previewOnWebLink}" target="_blank" rel="noopener" class="btn-action btn-action-preview" title="Xem bài viết Case Study trên web">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                                    Xem bài viết
+                                    ${hasValidLink ? 'Xem bài viết' : 'Xem trên web'}
                                 </a>
 
                                 <!-- Nút Sửa nhanh Modal -->
@@ -3185,19 +3190,28 @@
             const client = document.getElementById('csClient').value.trim();
             const highlight = document.getElementById('csHighlight').value.trim();
             const desc = document.getElementById('csDesc').value.trim();
-            const link = document.getElementById('csLink').value.trim();
-            const thumbUrl = document.getElementById('csThumbUrl').value.trim();
-            const pdfUrlInput = document.getElementById('csPdfUrl').value.trim();
-            const imagesInput = document.getElementById('csImagesInput').value.trim();
+            const link = (document.getElementById('csLink')?.value || '').trim();
+            const thumbUrl = (document.getElementById('csThumbUrl')?.value || '').trim();
+            const dataFileUrlInput = (document.getElementById('csDataFileUrl')?.value || '').trim();
+            const imagesInput = (document.getElementById('csImagesInput')?.value || '').trim();
             const status = document.getElementById('csStatus').value;
 
-            if (!title || !desc || !link) {
-                showToast('Vui lòng điền đầy đủ tiêu đề, mô tả và đường dẫn link bài viết!', 'error');
+            // Link is optional! Only title and description are required
+            if (!title || !desc) {
+                showToast('Vui lòng điền tiêu đề và mô tả tóm tắt của Case Study!', 'error');
                 return;
             }
 
             const thumb = currentCsThumbnail || thumbUrl || 'assets/images/resources/art-5steps.jpg';
-            const pdfUrl = currentCsPdf || pdfUrlInput || '';
+            const dataFile = currentCsFileData || dataFileUrlInput || '';
+            let fileName = currentCsFileName;
+            let fileFormat = currentCsFileFormat;
+            let fileSize = currentCsFileSize;
+            if (!fileName && dataFileUrlInput) {
+                fileName = dataFileUrlInput.split('/').pop().split('?')[0];
+                fileFormat = fileName.split('.').pop().toUpperCase();
+            }
+
             const textImgs = imagesInput ? imagesInput.split(',').map(s => s.trim()).filter(Boolean) : [];
             const images = Array.from(new Set([...currentCsImages, ...textImgs]));
 
@@ -3209,9 +3223,13 @@
                 client,
                 highlight,
                 desc,
-                link,
+                link: link || '',
                 thumbnail: thumb,
-                pdfUrl,
+                pdfUrl: dataFile,
+                fileUrl: dataFile,
+                fileName: fileName || '',
+                fileSize: fileSize || '',
+                fileFormat: fileFormat || '',
                 images,
                 status
             };
@@ -3247,7 +3265,12 @@
             document.getElementById('csDesc').value = cs.desc || '';
             document.getElementById('csLink').value = cs.link || '';
             document.getElementById('csThumbUrl').value = cs.thumbnail && !cs.thumbnail.startsWith('data:') ? cs.thumbnail : '';
-            document.getElementById('csPdfUrl').value = cs.pdfUrl && !cs.pdfUrl.startsWith('data:') ? cs.pdfUrl : '';
+            
+            const fileUrl = cs.fileUrl || cs.pdfUrl || '';
+            const dataFileUrlInput = document.getElementById('csDataFileUrl');
+            if (dataFileUrlInput) {
+                dataFileUrlInput.value = fileUrl && !fileUrl.startsWith('data:') ? fileUrl : '';
+            }
             document.getElementById('csStatus').value = cs.status || 'published';
 
             if (cs.thumbnail) {
@@ -3257,11 +3280,14 @@
                 clearCsThumb();
             }
 
-            if (cs.pdfUrl) {
-                currentCsPdf = cs.pdfUrl;
-                displayCsPdf(cs.pdfUrl, 'Tệp PDF hiện tại');
+            if (fileUrl) {
+                currentCsFileData = fileUrl;
+                currentCsFileName = cs.fileName || fileUrl.split('/').pop().split('?')[0];
+                currentCsFileFormat = cs.fileFormat || currentCsFileName.split('.').pop().toUpperCase();
+                currentCsFileSize = cs.fileSize || '';
+                displayCsDataFile(currentCsFileName, currentCsFileSize, currentCsFileFormat);
             } else {
-                clearCsPdf();
+                clearCsDataFile();
             }
 
             currentCsImages = Array.isArray(cs.images) ? [...cs.images] : (cs.images ? [cs.images] : []);
@@ -3284,13 +3310,16 @@
         function cancelEditCaseStudy() {
             currentEditingCsId = null;
             currentCsThumbnail = null;
-            currentCsPdf = null;
+            currentCsFileData = null;
+            currentCsFileName = null;
+            currentCsFileSize = null;
+            currentCsFileFormat = null;
             currentCsImages = [];
             document.getElementById('csForm').reset();
             document.getElementById('csDocId').value = '';
             setSelectedCsCategoriesInForm(['Lean & Cải tiến']);
             clearCsThumb();
-            clearCsPdf();
+            clearCsDataFile();
             clearCsImages();
             document.getElementById('csEditBanner').classList.remove('show');
             document.getElementById('btnCsCancel').style.display = 'none';
@@ -3328,7 +3357,9 @@
             document.getElementById('modalCsDesc').value = cs.desc || '';
             document.getElementById('modalCsLink').value = cs.link || '';
             document.getElementById('modalCsThumbUrl').value = cs.thumbnail && !cs.thumbnail.startsWith('data:') ? cs.thumbnail : '';
-            document.getElementById('modalCsPdfUrl').value = cs.pdfUrl && !cs.pdfUrl.startsWith('data:') ? cs.pdfUrl : '';
+            
+            const fileUrl = cs.fileUrl || cs.pdfUrl || '';
+            document.getElementById('modalCsPdfUrl').value = fileUrl && !fileUrl.startsWith('data:') ? fileUrl : '';
             const imgs = Array.isArray(cs.images) ? cs.images : (cs.images ? [cs.images] : []);
             document.getElementById('modalCsImages').value = imgs.filter(i => !i.startsWith('data:')).join(', ');
             document.getElementById('modalCsStatus').value = cs.status || 'published';
@@ -3357,16 +3388,25 @@
             const images = imagesStr ? imagesStr.split(',').map(s => s.trim()).filter(Boolean) : [];
             const status = document.getElementById('modalCsStatus').value;
 
-            if (!title || !desc || !link) {
-                showToast('Vui lòng điền đủ tiêu đề, mô tả và đường dẫn link!', 'error');
+            // Link is optional
+            if (!title || !desc) {
+                showToast('Vui lòng điền đủ tiêu đề và mô tả tóm tắt!', 'error');
                 return;
             }
 
             const updateData = {
-                title, badge, categories, category, client, highlight, desc, link, status
+                title, badge, categories, category, client, highlight, desc, link: link || '', status
             };
             if (thumbUrl) updateData.thumbnail = thumbUrl;
-            if (pdfUrl !== undefined) updateData.pdfUrl = pdfUrl;
+            if (pdfUrl !== undefined) {
+                updateData.pdfUrl = pdfUrl;
+                updateData.fileUrl = pdfUrl;
+                if (pdfUrl) {
+                    const fname = pdfUrl.split('/').pop().split('?')[0];
+                    updateData.fileName = fname;
+                    updateData.fileFormat = fname.split('.').pop().toUpperCase();
+                }
+            }
             if (images.length > 0) updateData.images = images;
 
             INVAMAX_CASE_STUDY_STORE.update(id, updateData);
