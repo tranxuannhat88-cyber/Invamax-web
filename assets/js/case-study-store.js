@@ -10,7 +10,8 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
         {
             id: 'cs-productivity-pencil',
             badge: 'CASE STUDY 01',
-            category: 'Năng suất',
+            categories: ['Tăng năng suất', 'Lean & Cải tiến'],
+            category: 'Tăng năng suất, Lean & Cải tiến',
             title: 'Tăng 42,3% năng suất tại nhà máy sản xuất bút chì',
             desc: 'Từ 742 lên 1.056 UPH sau 4 năm cải tiến hệ thống vận hành với INVAMAX FOS.',
             client: 'Nhà máy sản xuất bút chì',
@@ -23,7 +24,8 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
         {
             id: 'cs-kaizen-cost-pencil',
             badge: 'CASE STUDY 02',
-            category: 'Kaizen & Cost Improvement',
+            categories: ['Giảm chi phí', 'Lean & Cải tiến'],
+            category: 'Giảm chi phí, Lean & Cải tiến',
             title: '432.873 USD/năm giá trị cải tiến tại nhà máy sản xuất bút chì',
             desc: '4 năm liên tục loại bỏ lãng phí, tối ưu nguồn lực và cải thiện hệ thống vận hành với INVAMAX FOS.',
             client: 'Nhà máy sản xuất bút chì',
@@ -36,7 +38,8 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
         {
             id: 'cs-operating-model-pencil',
             badge: 'CASE STUDY 03',
-            category: 'Operating Model Transformation',
+            categories: ['Lean & Cải tiến', 'Tăng năng suất'],
+            category: 'Lean & Cải tiến, Tăng năng suất',
             title: 'Thay đổi Mô hình quản lý tại nhà máy sản xuất bút chì',
             desc: 'Từ quản lý theo Mini Factory sang quản lý chuyên trách theo công đoạn, tối ưu nhân sự trực tiếp.',
             client: 'Nhà máy sản xuất bút chì',
@@ -47,6 +50,15 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
             createdAt: '2026-10-05'
         }
     ];
+
+    function getCategories(item) {
+        if (!item) return [];
+        if (Array.isArray(item.categories) && item.categories.length > 0) return item.categories;
+        if (typeof item.category === 'string' && item.category.trim() !== '') {
+            return item.category.split(',').map(s => s.trim()).filter(Boolean);
+        }
+        return ['Lean & Cải tiến'];
+    }
 
     function getAll() {
         try {
@@ -77,10 +89,14 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
     function add(item) {
         const list = getAll();
         const id = item.id || ('cs-' + Date.now());
+        const cats = Array.isArray(item.categories) && item.categories.length > 0 
+            ? item.categories 
+            : (item.category ? item.category.split(',').map(s => s.trim()).filter(Boolean) : ['Lean & Cải tiến']);
         const newItem = {
             id,
             badge: item.badge || ('CASE STUDY 0' + (list.length + 1)),
-            category: item.category || 'Năng suất',
+            categories: cats,
+            category: cats.join(', '),
             title: item.title || 'Case Study mới',
             desc: item.desc || '',
             client: item.client || '',
@@ -99,6 +115,11 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
         const list = getAll();
         const index = list.findIndex(item => item.id === id);
         if (index === -1) return null;
+        if (updatedFields.categories && Array.isArray(updatedFields.categories)) {
+            updatedFields.category = updatedFields.categories.join(', ');
+        } else if (updatedFields.category && typeof updatedFields.category === 'string') {
+            updatedFields.categories = updatedFields.category.split(',').map(s => s.trim()).filter(Boolean);
+        }
         list[index] = { ...list[index], ...updatedFields, updatedAt: new Date().toISOString().split('T')[0] };
         saveAll(list);
         return list[index];
@@ -174,6 +195,7 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
     return {
         getAll,
         getById,
+        getCategories,
         add,
         update,
         remove,

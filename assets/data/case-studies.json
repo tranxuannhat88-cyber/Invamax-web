@@ -2,7 +2,11 @@
   {
     "id": "cs-productivity-pencil",
     "badge": "CASE STUDY 01",
-    "category": "Năng suất",
+    "categories": [
+      "Tăng năng suất",
+      "Lean & Cải tiến"
+    ],
+    "category": "Tăng năng suất, Lean & Cải tiến",
     "title": "Tăng 42,3% năng suất tại nhà máy sản xuất bút chì",
     "desc": "Từ 742 lên 1.056 UPH sau 4 năm cải tiến hệ thống vận hành với INVAMAX FOS.",
     "client": "Nhà máy sản xuất bút chì",
@@ -15,7 +19,11 @@
   {
     "id": "cs-kaizen-cost-pencil",
     "badge": "CASE STUDY 02",
-    "category": "Kaizen & Cost Improvement",
+    "categories": [
+      "Giảm chi phí",
+      "Lean & Cải tiến"
+    ],
+    "category": "Giảm chi phí, Lean & Cải tiến",
     "title": "432.873 USD/năm giá trị cải tiến tại nhà máy sản xuất bút chì",
     "desc": "4 năm liên tục loại bỏ lãng phí, tối ưu nguồn lực và cải thiện hệ thống vận hành với INVAMAX FOS.",
     "client": "Nhà máy sản xuất bút chì",
@@ -28,7 +36,11 @@
   {
     "id": "cs-operating-model-pencil",
     "badge": "CASE STUDY 03",
-    "category": "Operating Model Transformation",
+    "categories": [
+      "Lean & Cải tiến",
+      "Tăng năng suất"
+    ],
+    "category": "Lean & Cải tiến, Tăng năng suất",
     "title": "Thay đổi Mô hình quản lý tại nhà máy sản xuất bút chì",
     "desc": "Từ quản lý theo Mini Factory sang quản lý chuyên trách theo công đoạn, tối ưu nhân sự trực tiếp.",
     "client": "Nhà máy sản xuất bút chì",

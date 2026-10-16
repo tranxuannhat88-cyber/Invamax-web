@@ -179,10 +179,11 @@
             <div class="res-hero-action-bar">
                 <!-- Filter Pills -->
                 <div class="res-filter-pills-light">
-                    <button class="res-pill-btn active"><i data-lucide="layers"></i> Tất cả dự án</button>
-                    <button class="res-pill-btn"><i data-lucide="trending-up"></i> Năng suất</button>
-                    <button class="res-pill-btn"><i data-lucide="dollar-sign"></i> Kaizen &amp; Chi phí</button>
-                    <button class="res-pill-btn"><i data-lucide="refresh-cw"></i> Operating Model</button>
+                    <button class="res-pill-btn active" data-filter="all"><i data-lucide="layers"></i> Tất cả dự án</button>
+                    <button class="res-pill-btn" data-filter="lean"><i data-lucide="wrench"></i> Lean &amp; Cải tiến</button>
+                    <button class="res-pill-btn" data-filter="productivity"><i data-lucide="trending-up"></i> Tăng năng suất</button>
+                    <button class="res-pill-btn" data-filter="cost"><i data-lucide="dollar-sign"></i> Giảm chi phí</button>
+                    <button class="res-pill-btn" data-filter="digital"><i data-lucide="cpu"></i> Số hóa &amp; dữ liệu</button>
                 </div>
 
                 <!-- Search Bar with Orange Round Button -->
@@ -204,9 +205,9 @@
         </div>
 
         <div class="grid-custom-3" id="caseStudiesGrid">
-            <a href="case-study/productivity-improvement-pencil-factory.html" class="feature-card">
+            <a href="case-study/productivity-improvement-pencil-factory.html" class="feature-card" data-categories="tăng năng suất, lean & cải tiến">
                 <div class="cs-badge-top">CASE STUDY 01</div>
-                <div class="cs-category">Năng suất</div>
+                <div class="cs-category">Tăng năng suất • Lean &amp; Cải tiến</div>
                 <h3 class="cs-title">Tăng 42,3% năng suất tại nhà máy sản xuất bút chì</h3>
                 <p class="cs-desc">Từ 742 lên 1.056 UPH sau 4 năm cải tiến hệ thống vận hành với INVAMAX FOS.</p>
                 <div class="cs-cta">
@@ -214,9 +215,9 @@
                 </div>
             </a>
             
-            <a href="case-study/kaizen-cost-saving-pencil-factory.html" class="feature-card">
+            <a href="case-study/kaizen-cost-saving-pencil-factory.html" class="feature-card" data-categories="giảm chi phí, lean & cải tiến">
                 <div class="cs-badge-top">CASE STUDY 02</div>
-                <div class="cs-category">Kaizen &amp; Cost Improvement</div>
+                <div class="cs-category">Giảm chi phí • Lean &amp; Cải tiến</div>
                 <h3 class="cs-title">432.873 USD/năm giá trị cải tiến tại nhà máy sản xuất bút chì</h3>
                 <p class="cs-desc">4 năm liên tục loại bỏ lãng phí, tối ưu nguồn lực và cải thiện hệ thống vận hành với INVAMAX FOS.</p>
                 <div class="cs-cta">
@@ -224,9 +225,9 @@
                 </div>
             </a>
 
-            <a href="case-study/operating-model-pencil-factory.html" class="feature-card">
+            <a href="case-study/operating-model-pencil-factory.html" class="feature-card" data-categories="lean & cải tiến, tăng năng suất">
                 <div class="cs-badge-top">CASE STUDY 03</div>
-                <div class="cs-category">Operating Model Transformation</div>
+                <div class="cs-category">Lean &amp; Cải tiến • Tăng năng suất</div>
                 <h3 class="cs-title">Thay đổi Mô hình quản lý tại nhà máy sản xuất bút chì</h3>
                 <p class="cs-desc">Từ quản lý theo Mini Factory sang quản lý chuyên trách theo công đoạn, tối ưu nhân sự trực tiếp.</p>
                 <div class="cs-cta">
@@ -340,20 +341,28 @@
             const caseCards = document.querySelectorAll('.grid-custom-3 .feature-card');
             const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
             const activePill = document.querySelector('.res-filter-pills-light .res-pill-btn.active');
-            const activeFilter = activePill ? activePill.innerText.trim().toLowerCase() : 'tất cả';
+            const filterKey = activePill ? (activePill.getAttribute('data-filter') || activePill.innerText.trim().toLowerCase()) : 'all';
 
             caseCards.forEach(card => {
                 const title = card.querySelector('.cs-title')?.innerText.toLowerCase() || '';
                 const desc = card.querySelector('.cs-desc')?.innerText.toLowerCase() || '';
                 const category = card.querySelector('.cs-category')?.innerText.toLowerCase() || '';
                 const badge = card.querySelector('.cs-badge-top')?.innerText.toLowerCase() || '';
+                const dataCats = (card.getAttribute('data-categories') || category).toLowerCase();
 
                 const matchesQuery = !query || title.includes(query) || desc.includes(query) || category.includes(query) || badge.includes(query);
+                
                 let matchesPill = true;
-                if (!activeFilter.includes('tất cả')) {
-                    if (activeFilter.includes('năng suất')) matchesPill = category.includes('năng suất');
-                    else if (activeFilter.includes('chi phí') || activeFilter.includes('kaizen')) matchesPill = category.includes('cost') || category.includes('kaizen') || category.includes('chi phí');
-                    else if (activeFilter.includes('mô hình') || activeFilter.includes('operating')) matchesPill = category.includes('operating') || category.includes('mô hình');
+                if (filterKey !== 'all' && !filterKey.includes('tất cả')) {
+                    if (filterKey === 'lean' || filterKey.includes('lean') || filterKey.includes('cải tiến')) {
+                        matchesPill = dataCats.includes('lean') || dataCats.includes('cải tiến');
+                    } else if (filterKey === 'productivity' || filterKey.includes('năng suất')) {
+                        matchesPill = dataCats.includes('năng suất');
+                    } else if (filterKey === 'cost' || filterKey.includes('chi phí') || filterKey.includes('giảm chi phí')) {
+                        matchesPill = dataCats.includes('chi phí') || dataCats.includes('cost');
+                    } else if (filterKey === 'digital' || filterKey.includes('số hóa') || filterKey.includes('dữ liệu')) {
+                        matchesPill = dataCats.includes('số hóa') || dataCats.includes('dữ liệu') || dataCats.includes('digital') || dataCats.includes('data');
+                    }
                 }
 
                 if (matchesQuery && matchesPill) {
@@ -415,10 +424,16 @@
                 if (!link.startsWith('http') && !link.startsWith('/') && !link.startsWith('case-study/')) {
                     link = 'case-study/' + link;
                 }
+                const cats = Array.isArray(cs.categories) && cs.categories.length > 0 
+                    ? cs.categories 
+                    : (cs.category ? cs.category.split(',').map(s => s.trim()).filter(Boolean) : ['Lean & Cải tiến']);
+                const catDisplay = cats.join(' • ');
+                const catAttr = cats.join(', ').toLowerCase();
+
                 return `
-                    <a href="${link}" class="feature-card">
+                    <a href="${link}" class="feature-card" data-categories="${catAttr}">
                         <div class="cs-badge-top">${cs.badge || 'CASE STUDY'}</div>
-                        <div class="cs-category">${cs.category || 'Dự án'}</div>
+                        <div class="cs-category">${catDisplay}</div>
                         <h3 class="cs-title">${cs.title}</h3>
                         <p class="cs-desc">${cs.desc || ''}</p>
                         <div class="cs-cta">
