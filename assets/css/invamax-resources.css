@@ -828,21 +828,38 @@ svg.res-feat-icon {
     to { transform: scale(1) translateY(0); opacity: 1; }
 }
 .doc-preview-modal-header {
-    padding: 16px 22px;
+    padding: 12px 20px;
     background: #fafafa;
     border-bottom: 1px solid #e2e8f0;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 14px;
 }
 .doc-preview-modal-header h3 {
-    font-size: 16px;
+    font-size: 15.5px;
     font-weight: 800;
     color: var(--iv-text);
     margin: 0;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 9px;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.doc-preview-modal-header h3 span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.doc-preview-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
 }
 .doc-preview-modal-close {
     width: 32px;
@@ -942,21 +959,22 @@ svg.res-feat-icon {
 .preview-tool-btn {
     display: inline-flex;
     align-items: center;
-    gap: 5px;
-    font-size: 11.5px;
+    gap: 6px;
+    font-size: 12px;
     font-weight: 600;
-    padding: 5px 10px;
-    border-radius: 6px;
+    padding: 6px 12px;
+    border-radius: 8px;
     border: 1px solid #cbd5e1;
     background: #ffffff;
     color: #334155;
     text-decoration: none;
     transition: all 0.2s;
     line-height: 1.2;
+    cursor: pointer;
 }
 .preview-tool-btn svg, .preview-tool-btn i {
-    width: 13px;
-    height: 13px;
+    width: 13.5px;
+    height: 13.5px;
 }
 .preview-tool-btn:hover {
     background: #f1f5f9;
@@ -975,7 +993,7 @@ svg.res-feat-icon {
 .doc-preview-iframe-wrap iframe {
     width: 100%;
     flex-grow: 1;
-    height: calc(100% - 44px);
+    height: 100%;
     border: none;
     background: #525659;
 }
