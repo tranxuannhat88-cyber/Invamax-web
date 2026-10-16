@@ -530,29 +530,7 @@
                 </h3>
                 <button type="button" class="doc-preview-modal-close" onclick="closeDocPreviewModal()" title="Đóng">&times;</button>
             </div>
-            <div class="doc-preview-modal-body">
-                <div class="doc-preview-banner">
-                    <div class="doc-preview-thumb-box" id="previewModalThumbContainer" style="display: flex; align-items: center; justify-content: center;">
-                        <img id="previewModalThumb" src="" alt="Thumbnail" style="display: none; width: 84px; height: 104px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
-                        <div id="previewModalDefaultIcon" class="tool-preview-box" style="display: none; width: 84px; height: 104px; padding: 12px 10px;">
-                            <div class="doc-line title"></div>
-                            <div class="doc-line w-80"></div>
-                            <div class="doc-line w-60"></div>
-                            <div class="doc-line w-90"></div>
-                            <div class="doc-line w-50"></div>
-                        </div>
-                    </div>
-                    <div class="doc-preview-info">
-                        <h4 id="previewModalDocName">Tên tài liệu</h4>
-                        <p id="previewModalDesc">Mô tả chi tiết tài liệu...</p>
-                        <div class="doc-preview-meta">
-                            <span id="previewModalFormat" class="tool-format-badge fmt-xlsx">XLSX</span>
-                            <span id="previewModalSize">1.2 MB</span>
-                            <span id="previewModalDownloads">240 lượt tải</span>
-                        </div>
-                    </div>
-                </div>
-
+            <div class="doc-preview-modal-body" style="padding: 16px 20px;">
                 <!-- Iframe or PDF preview container with Toolbar -->
                 <div id="previewIframeContainer" class="doc-preview-iframe-wrap" style="display: none;">
                     <div class="doc-preview-toolbar">
@@ -606,31 +584,25 @@
         async function openDocPreviewModal(item) {
             if (!item) return;
             const modal = document.getElementById('docPreviewModal');
-            document.getElementById('previewModalTitle').innerText = item.title;
-            document.getElementById('previewModalDocName').innerText = item.title;
-            document.getElementById('previewModalDesc').innerText = item.desc || '';
+            const titleEl = document.getElementById('previewModalTitle');
+            if (titleEl) titleEl.innerText = item.title;
+            const docNameEl = document.getElementById('previewModalDocName');
+            if (docNameEl) docNameEl.innerText = item.title;
+            const descEl = document.getElementById('previewModalDesc');
+            if (descEl) descEl.innerText = item.desc || '';
             
-            // Thumbnail: Chỉ hiển thị ảnh thực tế nếu có, tuyệt đối không dùng ảnh mẫu ngẫu nhiên
-            const thumbImg = document.getElementById('previewModalThumb');
-            const defaultIcon = document.getElementById('previewModalDefaultIcon');
+            // Format
             const fmt = (item.format || 'PDF').toUpperCase();
-
-            if (item.thumbnail && item.thumbnail.trim() !== '') {
-                thumbImg.src = INVAMAX_TOOLKIT_STORE.resolveAssetUrl(item.thumbnail);
-                thumbImg.style.display = 'block';
-                defaultIcon.style.display = 'none';
-            } else {
-                thumbImg.style.display = 'none';
-                defaultIcon.style.display = 'flex';
+            const fmtBadge = document.getElementById('previewModalFormat');
+            if (fmtBadge) {
+                fmtBadge.innerText = fmt;
+                fmtBadge.className = 'tool-format-badge ' + (['XLSX', 'XLS'].includes(fmt) ? 'fmt-xlsx' : (['DOCX', 'DOC'].includes(fmt) ? 'fmt-docx' : 'fmt-pdf'));
             }
 
-            // Format badge
-            const fmtBadge = document.getElementById('previewModalFormat');
-            fmtBadge.innerText = fmt;
-            fmtBadge.className = 'tool-format-badge ' + (['XLSX', 'XLS'].includes(fmt) ? 'fmt-xlsx' : (['DOCX', 'DOC'].includes(fmt) ? 'fmt-docx' : 'fmt-pdf'));
-
-            document.getElementById('previewModalSize').innerText = item.fileSize || '1 MB';
-            document.getElementById('previewModalDownloads').innerText = (item.downloads || 0) + ' lượt tải';
+            const sizeEl = document.getElementById('previewModalSize');
+            if (sizeEl) sizeEl.innerText = item.fileSize || '1 MB';
+            const dlEl = document.getElementById('previewModalDownloads');
+            if (dlEl) dlEl.innerText = (item.downloads || 0) + ' lượt tải';
 
             // Download Button Setup
             const dlBtn = document.getElementById('previewModalDownloadBtn');
