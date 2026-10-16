@@ -1,0 +1,41 @@
+[
+  {
+    "id": "cs-productivity-pencil",
+    "badge": "CASE STUDY 01",
+    "category": "Năng suất",
+    "title": "Tăng 42,3% năng suất tại nhà máy sản xuất bút chì",
+    "desc": "Từ 742 lên 1.056 UPH sau 4 năm cải tiến hệ thống vận hành với INVAMAX FOS.",
+    "client": "Nhà máy sản xuất bút chì",
+    "highlight": "Tăng 42,3% UPH",
+    "link": "case-study/productivity-improvement-pencil-factory.html",
+    "thumbnail": "assets/images/home/pencil.jpg",
+    "status": "published",
+    "createdAt": "2026-10-10"
+  },
+  {
+    "id": "cs-kaizen-cost-pencil",
+    "badge": "CASE STUDY 02",
+    "category": "Kaizen & Cost Improvement",
+    "title": "432.873 USD/năm giá trị cải tiến tại nhà máy sản xuất bút chì",
+    "desc": "4 năm liên tục loại bỏ lãng phí, tối ưu nguồn lực và cải thiện hệ thống vận hành với INVAMAX FOS.",
+    "client": "Nhà máy sản xuất bút chì",
+    "highlight": "432.873 USD/năm",
+    "link": "case-study/kaizen-cost-saving-pencil-factory.html",
+    "thumbnail": "assets/images/home/pencil.jpg",
+    "status": "published",
+    "createdAt": "2026-10-08"
+  },
+  {
+    "id": "cs-operating-model-pencil",
+    "badge": "CASE STUDY 03",
+    "category": "Operating Model Transformation",
+    "title": "Thay đổi Mô hình quản lý tại nhà máy sản xuất bút chì",
+    "desc": "Từ quản lý theo Mini Factory sang quản lý chuyên trách theo công đoạn, tối ưu nhân sự trực tiếp.",
+    "client": "Nhà máy sản xuất bút chì",
+    "highlight": "Tối ưu quản lý chuyên trách",
+    "link": "case-study/operating-model-pencil-factory.html",
+    "thumbnail": "assets/images/home/pencil.jpg",
+    "status": "published",
+    "createdAt": "2026-10-05"
+  }
+]
