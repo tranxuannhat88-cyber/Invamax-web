@@ -1881,9 +1881,23 @@
                 if (errEl) errEl.style.display = 'none';
                 showToast('Đăng nhập quản trị thành công!', 'success');
 
-                renderDashboard();
-                renderCaseStudiesDashboard();
-                updateGitHubStatusUI();
+                try {
+                    renderDashboard();
+                } catch (err) {
+                    console.error('Error rendering resources dashboard:', err);
+                }
+
+                try {
+                    renderCaseStudiesDashboard();
+                } catch (err) {
+                    console.error('Error rendering case studies dashboard:', err);
+                }
+
+                try {
+                    updateGitHubStatusUI();
+                } catch (err) {
+                    console.error('Error updating GitHub status UI:', err);
+                }
 
                 if (typeof INVAMAX_TOOLKIT_STORE !== 'undefined' && typeof INVAMAX_TOOLKIT_STORE.autoGenerateMissingThumbnails === 'function') {
                     INVAMAX_TOOLKIT_STORE.autoGenerateMissingThumbnails();
@@ -2244,8 +2258,6 @@
         }
 
         // Direct File Upload from Document Card
-        let directUploadTargetId = null;
-
         function triggerDirectUpload(id) {
             directUploadTargetId = id;
             const input = document.getElementById('directDocFileInput');
