@@ -353,36 +353,90 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 18px;
-    margin-bottom: 18px;
+    margin-bottom: 20px;
 }
 
 .cap-core-card {
-    background: linear-gradient(135deg, #0b2423 0%, #07191a 100%);
+    background: linear-gradient(135deg, #07191e 0%, #0a242c 100%);
     border: 1px solid rgba(45, 112, 106, 0.45);
-    border-radius: 12px;
-    padding: 24px 26px;
-    display: flex;
-    align-items: center;
-    gap: 22px;
-    color: #ffffff;
-    text-decoration: none;
+    border-radius: 14px;
+    padding: 20px 24px;
     position: relative;
-    box-shadow: 0 10px 26px rgba(7, 25, 26, 0.14);
+    overflow: hidden;
+    text-decoration: none;
+    box-shadow: 0 8px 24px rgba(7, 25, 26, 0.12);
     transition: all 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    min-height: 156px;
 }
 
 .cap-core-card:hover {
     transform: translateY(-3px);
     border-color: var(--cap-orange);
-    box-shadow: 0 14px 32px rgba(7, 25, 26, 0.22);
+    box-shadow: 0 12px 30px rgba(7, 25, 26, 0.22);
+}
+
+.cap-card-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 2;
+}
+
+.cap-num-badge {
+    background: linear-gradient(135deg, #f26b1d 0%, #e65c00 100%);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    padding: 3px 10px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(242, 107, 29, 0.35);
+}
+
+.cap-core-arrow {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.04);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--cap-orange);
+    font-size: 15px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.cap-core-card:hover .cap-core-arrow,
+.cap-core-arrow:hover {
+    background: var(--cap-orange);
+    border-color: var(--cap-orange);
+    color: #ffffff;
+}
+
+.cap-card-main {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    position: relative;
+    z-index: 2;
+    padding-right: 90px;
 }
 
 .cap-core-icon {
-    width: 68px;
-    height: 68px;
+    width: 58px;
+    height: 58px;
     border-radius: 12px;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(6, 23, 29, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -395,146 +449,274 @@
 }
 
 .cap-core-body h3 {
-    font-size: 21px;
+    font-size: 20px;
     font-weight: 800;
     color: #ffffff !important;
-    margin: 0 0 3px;
+    margin: 0 0 2px;
     line-height: 1.25;
 }
 
 .cap-core-body .core-sub {
-    font-size: 13.5px;
+    font-size: 13px;
     font-weight: 600;
-    color: var(--cap-orange);
-    margin: 0 0 8px;
+    color: #38bdf8;
+    margin: 0 0 6px;
 }
 
 .cap-core-body p {
-    font-size: 13.5px;
+    font-size: 13px;
     color: #cbd5e1;
     margin: 0;
-    line-height: 1.5;
+    line-height: 1.45;
 }
 
-.cap-core-arrow {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.28);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #cbd5e1;
-    flex-shrink: 0;
-    align-self: flex-start;
-    transition: all 0.2s ease;
+.cap-card-bg-graphic {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    width: 175px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right center;
+    pointer-events: none;
+    opacity: 0.85;
+    z-index: 1;
 }
 
-.cap-core-card:hover .cap-core-arrow {
-    background: var(--cap-orange);
-    border-color: var(--cap-orange);
+/* =========================================================
+   CARD 05: Practical Experience (Large Unified Dark Card)
+   ========================================================= */
+.cap-card-05 {
+    background: linear-gradient(135deg, #07191e 0%, #0a242c 100%);
+    border: 1.5px solid rgba(242, 107, 29, 0.65);
+    box-shadow: 0 0 28px rgba(242, 107, 29, 0.14), 0 10px 30px rgba(0, 0, 0, 0.18);
+    border-radius: 16px;
+    padding: 24px 28px 20px;
+    position: relative;
+    overflow: hidden;
     color: #ffffff;
 }
 
-/* 5th Capability Foundation Banner */
-.cap-foundation-banner {
-    background: linear-gradient(90deg, #dde3e9 0%, #e6ebf0 60%, #d8e0e7 100%);
-    border: 1px solid #c5cfd9;
-    border-radius: 12px;
-    padding: 20px 28px;
-    display: grid;
-    grid-template-columns: auto 1px 1fr auto;
-    align-items: center;
-    gap: 24px;
-    box-shadow: inset 0 1px 0 #ffffff, 0 6px 18px rgba(15, 23, 42, 0.06);
-    margin-bottom: 24px;
-    position: relative;
-    overflow: hidden;
-}
-
-.cap-foundation-left {
+.cap-card05-header {
     display: flex;
-    align-items: center;
-    gap: 16px;
+    align-items: flex-start;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 22px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.cap-foundation-icon {
-    width: 54px;
-    height: 54px;
-    border-radius: 10px;
-    background: rgba(15, 23, 42, 0.06);
+.cap-card05-head-left {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    position: relative;
+    z-index: 2;
+}
+
+.cap-card05-badge-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.cap-card05-icon {
+    width: 62px;
+    height: 62px;
+    border-radius: 14px;
+    background: rgba(6, 23, 29, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #1e293b;
+    flex-shrink: 0;
 }
 
-.cap-foundation-title h3 {
-    font-size: 20px;
+.cap-card05-info {
+    margin-top: 4px;
+}
+
+.cap-card05-info h3 {
+    font-size: 23px;
     font-weight: 800;
-    color: #0f172a !important;
+    color: #ffffff !important;
     margin: 0 0 2px;
+    line-height: 1.25;
 }
 
-.cap-foundation-title span {
-    font-size: 13px;
+.cap-card05-info .card05-sub {
+    font-size: 13.5px;
     font-weight: 600;
-    color: #475569;
+    color: #38bdf8;
+    margin: 0 0 6px;
 }
 
-.cap-foundation-divider {
-    width: 1px;
-    height: 46px;
-    background: #b6c2cf;
-}
-
-.cap-foundation-desc {
-    font-size: 14px;
-    line-height: 1.58;
-    color: #1e293b;
+.cap-card05-info .card05-lead {
+    font-size: 13.5px;
+    color: #cbd5e1;
     margin: 0;
-    max-width: 680px;
+    line-height: 1.45;
 }
 
-.cap-foundation-sketch {
-    opacity: 0.45;
-    display: flex;
-    align-items: center;
+.cap-card05-head-right {
+    position: relative;
+    z-index: 2;
 }
 
-/* 5 Metrics Bar */
-.cap-metrics-bar {
+.cap-card05-bg-graphic {
+    position: absolute;
+    right: 50px;
+    top: 0;
+    bottom: 0;
+    width: 280px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right center;
+    pointer-events: none;
+    opacity: 0.85;
+    z-index: 1;
+}
+
+/* 5 Practical Pillars Grid */
+.cap-card05-pillars {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    background: rgba(255, 255, 255, 0.65);
-    border: 1px solid #d5dde6;
-    border-radius: 10px;
-    padding: 18px 12px;
+    gap: 16px;
+    margin-bottom: 22px;
+    position: relative;
+    z-index: 2;
 }
 
-.cap-metric-item {
-    text-align: center;
-    border-right: 1px solid #cbd5e1;
-    padding: 0 12px;
+.cap-pillar-item {
+    position: relative;
+    padding-right: 14px;
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.cap-metric-item:last-child {
+.cap-pillar-item:last-child {
     border-right: none;
+    padding-right: 0;
 }
 
-.cap-metric-item strong {
-    display: block;
-    font-size: clamp(24px, 2.4vw, 32px);
+.cap-pillar-icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    color: var(--cap-orange);
+}
+
+.cap-pillar-item h4 {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #ffffff !important;
+    margin: 0 0 6px;
+}
+
+.cap-pillar-item p {
+    font-size: 12.5px;
+    color: #94a3b8;
+    line-height: 1.45;
+    margin: 0;
+}
+
+/* 5 Metrics Row */
+.cap-card05-metrics {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    position: relative;
+    z-index: 2;
+}
+
+.cap-metric-pill {
+    background: rgba(6, 23, 29, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 30px;
+    padding: 8px 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.cap-metric-icon-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #ffffff;
+}
+
+.cap-metric-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.cap-metric-text strong {
+    font-size: 18px;
     font-weight: 800;
-    color: #0f172a;
-    line-height: 1.15;
-    margin-bottom: 4px;
+    color: var(--cap-orange);
+    line-height: 1.1;
 }
 
-.cap-metric-item span {
-    font-size: 13.5px;
-    font-weight: 500;
-    color: #334155;
+.cap-metric-text span {
+    font-size: 11.5px;
+    color: #94a3b8;
+    white-space: nowrap;
+}
+
+@media (max-width: 1024px) {
+    .cap-card05-pillars {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+    }
+    .cap-pillar-item:nth-child(3) {
+        border-right: none;
+    }
+    .cap-card05-metrics {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .cap-cards-2x2 {
+        grid-template-columns: 1fr;
+    }
+    .cap-card05-pillars {
+        grid-template-columns: 1fr;
+    }
+    .cap-pillar-item {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        padding-bottom: 14px;
+        padding-right: 0;
+    }
+    .cap-pillar-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+    .cap-card05-metrics {
+        grid-template-columns: 1fr;
+    }
+    .cap-card05-bg-graphic,
+    .cap-card-bg-graphic {
+        display: none;
+    }
+    .cap-card-main {
+        padding-right: 0;
+    }
 }
 
 /* =========================================================
