@@ -175,6 +175,7 @@
     background: var(--deep2);
     color: #fff;
     padding-top: 52px !important; /* Space for fixed navbar */
+    overflow: hidden;
 }
 
 .ivrs .ivrs-hero-picture {
@@ -191,7 +192,7 @@
 }
 
 .ivrs .ivrs-hero-main {
-    min-height: 385px;
+    min-height: 420px;
     display: flex;
     align-items: center;
     position: relative;

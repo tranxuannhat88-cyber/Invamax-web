@@ -150,7 +150,6 @@
     color: #ffffff;
     padding-top: 52px !important;
     overflow: hidden;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .ifp-hero-bg-media {
@@ -181,14 +180,14 @@
         rgba(6, 26, 30, 0.98) 12%, 
         rgba(6, 26, 30, 0.75) 32%, 
         rgba(6, 26, 30, 0.25) 60%, 
-        rgba(6, 26, 30, 0.05) 85%,
+        rgba(6, 26, 30, 0.05) 85%, 
         transparent 100%
     );
     pointer-events: none;
 }
 
 .ifp-hero-main {
-    min-height: 480px;
+    min-height: 420px;
     display: flex;
     align-items: center;
     position: relative;
@@ -196,32 +195,32 @@
 }
 
 .ifp-hero-copy {
-    max-width: 620px;
-    padding: 64px 0 68px;
+    max-width: 660px;
+    padding: 48px 0 44px;
 }
 
 .ifp-hero-copy h1 {
     color: #ffffff;
-    font-size: clamp(34px, 3.8vw, 50px);
-    font-weight: 900;
+    font-size: clamp(34px, 3.8vw, 48px);
+    font-weight: 800;
     line-height: 1.15;
-    letter-spacing: -0.03em;
-    margin-bottom: 18px;
+    letter-spacing: -0.025em;
+    margin-bottom: 12px;
 }
 
 .ifp-hero-tagline {
-    font-size: clamp(16px, 1.4vw, 19px);
-    font-weight: 700;
+    font-size: 15px;
+    font-weight: 600;
     color: #f1f5f9;
-    line-height: 1.45;
-    margin-bottom: 16px;
+    line-height: 1.4;
+    margin-bottom: 10px;
 }
 
 .ifp-hero-desc {
-    font-size: 15px;
-    line-height: 1.75;
+    font-size: 14px;
+    line-height: 1.55;
     color: var(--ifp-text-light);
-    margin-bottom: 28px;
+    margin-bottom: 20px;
 }
 
 .ifp-hero-actions {
@@ -663,16 +662,19 @@
    RESPONSIVE DESIGN BREAKPOINTS
    ======================================================== */
 @media (max-width: 991px) {
+    .ifp-hero {
+        padding-top: 52px !important;
+    }
     .ifp-hero-bg-media {
         left: 0;
         opacity: 0.28;
     }
     .ifp-hero-main {
-        min-height: auto;
+        min-height: 380px;
     }
     .ifp-hero-copy {
         max-width: 100%;
-        padding: 44px 0 48px;
+        padding: 44px 0 40px;
     }
 }
 
