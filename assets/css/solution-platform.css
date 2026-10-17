@@ -154,8 +154,9 @@
 
 .ifp-hero-bg-media {
     position: absolute;
-    inset: 0 0 0 38%;
+    inset: 0 0 0 45%;
     z-index: 1;
+    cursor: zoom-in;
     overflow: hidden;
 }
 
@@ -163,12 +164,12 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center left;
+    object-position: center right;
     display: block;
-    transition: transform 0.6s ease;
+    transition: transform 0.5s ease;
 }
 
-.ifp-hero:hover .ifp-hero-bg-img {
+.ifp-hero-bg-media:hover .ifp-hero-bg-img {
     transform: scale(1.02);
 }
 
@@ -177,11 +178,10 @@
     inset: 0;
     background: linear-gradient(90deg, 
         #061a1e 0%, 
-        rgba(6, 26, 30, 0.98) 12%, 
-        rgba(6, 26, 30, 0.75) 32%, 
-        rgba(6, 26, 30, 0.25) 60%, 
-        rgba(6, 26, 30, 0.05) 85%, 
-        transparent 100%
+        rgba(6, 26, 30, 0.95) 15%, 
+        rgba(6, 26, 30, 0.60) 35%, 
+        rgba(6, 26, 30, 0.15) 60%, 
+        transparent 80%
     );
     pointer-events: none;
 }
@@ -195,38 +195,45 @@
 }
 
 .ifp-hero-copy {
-    max-width: 660px;
-    padding: 48px 0 44px;
+    max-width: 600px;
+    padding: 56px 0 50px;
 }
 
 .ifp-hero-copy h1 {
     color: #ffffff;
     font-size: clamp(34px, 3.8vw, 48px);
     font-weight: 800;
-    line-height: 1.15;
-    letter-spacing: -0.025em;
-    margin-bottom: 12px;
+    line-height: 1.16;
+    letter-spacing: -.025em;
+    margin: 0 0 16px;
 }
 
 .ifp-hero-tagline {
-    font-size: 15px;
-    font-weight: 600;
-    color: #f1f5f9;
-    line-height: 1.4;
-    margin-bottom: 10px;
+    display: none !important;
 }
 
 .ifp-hero-desc {
-    font-size: 14px;
-    line-height: 1.55;
-    color: var(--ifp-text-light);
-    margin-bottom: 20px;
+    font-size: 16.5px !important;
+    font-weight: 600 !important;
+    line-height: 1.6 !important;
+    color: #ffffff !important;
+    margin-bottom: 28px !important;
+    max-width: 580px;
 }
 
 .ifp-hero-actions {
     display: flex;
     flex-wrap: wrap;
     gap: 14px;
+    align-items: center;
+}
+
+.ifp-hero-actions .btn {
+    border-radius: 12px !important;
+    min-height: 48px !important;
+    padding: 0 24px !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
 }
 
 /* ========================================================
