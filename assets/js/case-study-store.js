@@ -253,7 +253,7 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
                         const copy = { ...item };
                         if (copy.fileUrl && copy.fileUrl.startsWith('data:')) copy.fileUrl = '';
                         if (copy.pdfUrl && copy.pdfUrl.startsWith('data:')) copy.pdfUrl = '';
-                        if (copy.thumbnail && copy.thumbnail.startsWith('data:') && copy.thumbnail.length > 100000) {
+                        if (copy.thumbnail && copy.thumbnail.startsWith('data:') && copy.thumbnail.length > 1800000) {
                             copy.thumbnail = 'assets/images/resources/art-5steps.jpg';
                         }
                         if (Array.isArray(copy.images)) {
@@ -384,6 +384,138 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
         return memoryList;
     }
 
+    function getImageNaturalWidth(src) {
+        return new Promise((resolve) => {
+            if (!src || typeof src !== 'string') return resolve(0);
+            const img = new Image();
+            img.onload = () => resolve(img.naturalWidth || img.width || 0);
+            img.onerror = () => resolve(0);
+            img.src = src;
+        });
+    }
+
+    async function ensurePdfJsLoaded() {
+        if (typeof window !== 'undefined' && window.pdfjsLib) return true;
+        if (typeof document === 'undefined') return false;
+        const isInSubdir = window.location && (window.location.pathname.includes('/vi/') || window.location.pathname.includes('/en/'));
+        const prefix = isInSubdir ? '../' : '';
+        return new Promise((resolve) => {
+            const script = document.createElement('script');
+            script.src = prefix + 'assets/js/vendor/pdf.min.js';
+            script.onload = () => {
+                if (window.pdfjsLib) {
+                    window.pdfjsLib.GlobalWorkerOptions.workerSrc = prefix + 'assets/js/vendor/pdf.worker.min.js';
+                    resolve(true);
+                } else {
+                    resolve(false);
+                }
+            };
+            script.onerror = () => resolve(false);
+            document.head.appendChild(script);
+        });
+    }
+
+    // Trích xuất trang 1 của PDF ở độ phân giải Ultra-HD (2000px chiều ngang, chất lượng 0.95)
+    async function generatePdfThumbnail(pdfSource, targetWidth = 2000) {
+        const ready = await ensurePdfJsLoaded();
+        if (!ready || !window.pdfjsLib) {
+            return null;
+        }
+        try {
+            let loadingTask;
+            if (typeof pdfSource === 'string' && pdfSource.startsWith('data:')) {
+                const parts = pdfSource.split(';base64,');
+                const base64Str = parts.length > 1 ? parts[1] : parts[0];
+                const binaryStr = window.atob(base64Str);
+                const len = binaryStr.length;
+                const bytes = new Uint8Array(len);
+                for (let i = 0; i < len; i++) {
+                    bytes[i] = binaryStr.charCodeAt(i);
+                }
+                loadingTask = window.pdfjsLib.getDocument({ data: bytes });
+            } else {
+                loadingTask = window.pdfjsLib.getDocument(pdfSource);
+            }
+
+            const pdf = await loadingTask.promise;
+            const page = await pdf.getPage(1);
+            const unscaledViewport = page.getViewport({ scale: 1 });
+            const desiredWidth = Math.max(targetWidth || 2000, 2000);
+            const scale = Math.max(desiredWidth / unscaledViewport.width, 2.8);
+            const viewport = page.getViewport({ scale: scale });
+
+            const canvas = document.createElement('canvas');
+            canvas.width = Math.floor(viewport.width);
+            canvas.height = Math.floor(viewport.height);
+            const ctx = canvas.getContext('2d', { alpha: false });
+
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.imageSmoothingEnabled = true;
+            ctx.imageSmoothingQuality = 'high';
+
+            await page.render({
+                canvasContext: ctx,
+                viewport: viewport,
+                intent: 'display'
+            }).promise;
+
+            return canvas.toDataURL('image/jpeg', 0.95);
+        } catch (err) {
+            console.warn('[CaseStudyStore] Lỗi trích xuất thumbnail PDF Ultra-HD:', err);
+            return null;
+        }
+    }
+
+    // Tự động nâng cấp các ảnh thumbnail PDF bị mờ (< 1200px) lên chuẩn Ultra-HD 2000px
+    async function autoUpgradePdfThumbnails(onUpdated = null) {
+        if (!Array.isArray(memoryList) || memoryList.length === 0) return false;
+        let hasUpgraded = false;
+        const isInSubdir = typeof window !== 'undefined' && window.location && (window.location.pathname.includes('/vi/') || window.location.pathname.includes('/en/'));
+
+        for (let i = 0; i < memoryList.length; i++) {
+            const item = memoryList[i];
+            const pdfSrc = item.fileUrl || item.pdfUrl || '';
+            if (!pdfSrc) continue;
+
+            const isPdf = pdfSrc.startsWith('data:application/pdf') ||
+                          pdfSrc.toLowerCase().endsWith('.pdf') ||
+                          (item.fileFormat || '').toUpperCase() === 'PDF';
+            if (!isPdf) continue;
+
+            let needsUpgrade = false;
+            if (!item.thumbnail) {
+                needsUpgrade = true;
+            } else if (item.thumbnail.startsWith('data:image/')) {
+                const w = await getImageNaturalWidth(item.thumbnail);
+                if (w > 0 && w < 1200) {
+                    needsUpgrade = true;
+                }
+            }
+
+            if (needsUpgrade) {
+                let resolvedPdf = pdfSrc;
+                if (!pdfSrc.startsWith('data:') && !pdfSrc.startsWith('http') && !pdfSrc.startsWith('/') && isInSubdir && !pdfSrc.startsWith('../')) {
+                    resolvedPdf = '../' + pdfSrc;
+                }
+                const hdThumb = await generatePdfThumbnail(resolvedPdf, 2000);
+                if (hdThumb) {
+                    item.thumbnail = hdThumb;
+                    hasUpgraded = true;
+                }
+            }
+        }
+
+        if (hasUpgraded) {
+            await saveListToIDB(memoryList);
+            saveToLocalStorageFallback(memoryList);
+            if (typeof onUpdated === 'function') {
+                onUpdated(memoryList);
+            }
+        }
+        return hasUpgraded;
+    }
+
     // Initialize store from IndexedDB -> localStorage -> Remote JSON
     async function init(remoteJsonUrl = 'assets/data/case-studies.json') {
         const isLocalModified = Boolean(localStorage.getItem(LOCAL_MODIFIED_KEY));
@@ -427,6 +559,10 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
         if (!memoryList || memoryList.length === 0) {
             memoryList = cloneList(DEFAULT_CASE_STUDIES);
         }
+
+        // 4. Tự động kiểm tra và nâng cấp độ nét Ultra-HD 2000px cho các thumbnail PDF bị mờ
+        await autoUpgradePdfThumbnails();
+
         return memoryList;
     }
 
@@ -591,6 +727,8 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
         fetchRemoteData,
         syncToGitHub,
         saveAll,
-        base64ToBlobUrl
+        base64ToBlobUrl,
+        generatePdfThumbnail,
+        autoUpgradePdfThumbnails
     };
 })();

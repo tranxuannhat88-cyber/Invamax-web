@@ -1041,7 +1041,7 @@
     </div>
 
     <script src="../assets/js/main.js?v=5"></script>
-    <script src="../assets/js/case-study-store.js?v=3"></script>
+    <script src="../assets/js/case-study-store.js?v=4"></script>
     <script>
         function switchLanguage(lang) {
             localStorage.setItem('invamax_language', lang);
@@ -1396,6 +1396,12 @@
             if (list && list.length > 0) {
                 loadedCaseStudies = list;
                 renderCaseStudiesToDOM(list);
+                if (typeof INVAMAX_CASE_STUDY_STORE !== 'undefined' && typeof INVAMAX_CASE_STUDY_STORE.autoUpgradePdfThumbnails === 'function') {
+                    INVAMAX_CASE_STUDY_STORE.autoUpgradePdfThumbnails((updatedList) => {
+                        loadedCaseStudies = updatedList;
+                        renderCaseStudiesToDOM(updatedList);
+                    });
+                }
             }
         }
 

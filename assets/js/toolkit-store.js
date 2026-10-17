@@ -196,8 +196,19 @@ const INVAMAX_TOOLKIT_STORE = (function () {
         }
     }
 
-    // Trích xuất ảnh trang 1 của file PDF thực tế làm Thumbnail bằng PDF.js
-    async function generatePdfThumbnail(pdfSource, targetWidth = 260) {
+    // Kiểm tra kích thước chiều rộng thực tế của ảnh (để phát hiện ảnh thumbnail cũ bị mờ < 1200px)
+    function getImageNaturalWidth(src) {
+        return new Promise((resolve) => {
+            if (!src || typeof src !== 'string') return resolve(0);
+            const img = new Image();
+            img.onload = () => resolve(img.naturalWidth || img.width || 0);
+            img.onerror = () => resolve(0);
+            img.src = src;
+        });
+    }
+
+    // Trích xuất ảnh trang 1 của file PDF thực tế làm Thumbnail bằng PDF.js ở độ phân giải Ultra-HD (2000px)
+    async function generatePdfThumbnail(pdfSource, targetWidth = 2000) {
         if (!window.pdfjsLib) {
             console.warn('[ToolkitStore] PDF.js chưa được nạp, bỏ qua trích xuất thumbnail.');
             return null;
@@ -221,20 +232,29 @@ const INVAMAX_TOOLKIT_STORE = (function () {
             const pdf = await loadingTask.promise;
             const page = await pdf.getPage(1);
             const unscaledViewport = page.getViewport({ scale: 1 });
-            const scale = targetWidth / unscaledViewport.width;
+            // Đảm bảo độ phân giải cực nét (tối thiểu 2000px chiều ngang hoặc scale >= 2.8x)
+            const desiredWidth = Math.max(targetWidth || 2000, 2000);
+            const scale = Math.max(desiredWidth / unscaledViewport.width, 2.8);
             const viewport = page.getViewport({ scale: scale });
 
             const canvas = document.createElement('canvas');
             canvas.width = Math.floor(viewport.width);
             canvas.height = Math.floor(viewport.height);
-            const ctx = canvas.getContext('2d');
+            const ctx = canvas.getContext('2d', { alpha: false });
+
+            // Đổ nền trắng tinh khiết để chữ, biểu đồ và bảng số liệu sắc nét tối đa
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.imageSmoothingEnabled = true;
+            ctx.imageSmoothingQuality = 'high';
 
             await page.render({
                 canvasContext: ctx,
-                viewport: viewport
+                viewport: viewport,
+                intent: 'display'
             }).promise;
 
-            const thumbData = canvas.toDataURL('image/jpeg', 0.85);
+            const thumbData = canvas.toDataURL('image/jpeg', 0.95);
             return thumbData;
         } catch (err) {
             console.warn('[ToolkitStore] Lỗi trích xuất thumbnail PDF trang 1:', err);
@@ -242,7 +262,7 @@ const INVAMAX_TOOLKIT_STORE = (function () {
         }
     }
 
-    // Tự động kiểm tra và sinh thumbnail trang 1 cho các tài liệu PDF thực tế chưa có thumbnail
+    // Tự động kiểm tra, sinh mới và nâng cấp độ nét Ultra-HD cho các thumbnail PDF bị mờ (< 1200px)
     async function autoGenerateMissingThumbnails() {
         if (!window.pdfjsLib) return;
         try {
@@ -251,16 +271,26 @@ const INVAMAX_TOOLKIT_STORE = (function () {
 
             for (let i = 0; i < items.length; i++) {
                 const item = items[i];
-                const isPdf = (item.format || '').toUpperCase() === 'PDF' || (item.fileName && item.fileName.toLowerCase().endsWith('.pdf'));
-                
-                // Nếu là PDF và chưa có thumbnail thực tế
-                if (isPdf && !item.thumbnail) {
+                const isPdf = (item.format || '').toUpperCase() === 'PDF' || (item.fileName && item.fileName.toLowerCase().endsWith('.pdf')) || (item.fileUrl && item.fileUrl.toLowerCase().endsWith('.pdf'));
+
+                if (!isPdf) continue;
+
+                let needsRegen = !item.thumbnail;
+                if (!needsRegen && item.thumbnail && item.thumbnail.startsWith('data:image/')) {
+                    const currentW = await getImageNaturalWidth(item.thumbnail);
+                    if (currentW > 0 && currentW < 1200) {
+                        needsRegen = true;
+                    }
+                }
+
+                if (needsRegen) {
                     let fileData = item.fileUrl;
                     if (fileData && fileData.startsWith('idb:')) {
                         fileData = await getFileFromDB(item.id);
                     }
-                    if (fileData && (fileData.startsWith('data:application/pdf') || fileData.startsWith('data:'))) {
-                        const thumb = await generatePdfThumbnail(fileData);
+                    if (fileData && (fileData.startsWith('data:') || fileData.endsWith('.pdf'))) {
+                        const resolvedSource = fileData.startsWith('data:') ? fileData : resolveAssetUrl(fileData);
+                        const thumb = await generatePdfThumbnail(resolvedSource, 2000);
                         if (thumb) {
                             item.thumbnail = thumb;
                             hasChanged = true;
