@@ -1561,10 +1561,10 @@ svg.lucide {
     text-align: center !important;
 }
 
-/* Footer grid balance */
+/* Footer grid balance - 4 columns */
 .footer-grid {
     display: grid !important;
-    grid-template-columns: 1.4fr 1fr 1fr 0.8fr 2fr !important;
+    grid-template-columns: 1.4fr 1.2fr 1.1fr 1.8fr !important;
     gap: 24px !important;
 }
 
@@ -1582,22 +1582,53 @@ svg.lucide {
 }
 
 .social-links a {
-    color: #94a3b8 !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     width: 44px !important;
     height: 44px !important;
     border-radius: 50% !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    background: rgba(255, 255, 255, 0.05) !important;
     transition: all 0.3s ease !important;
     text-decoration: none !important;
     flex-shrink: 0 !important;
 }
 
+.social-links a.social-linkedin,
+.social-links a[aria-label="LinkedIn"],
+.social-links a[href*="linkedin.com"] {
+    background: #0A66C2 !important;
+    color: #ffffff !important;
+    border: 1px solid #0A66C2 !important;
+}
+
+.social-links a.social-youtube,
+.social-links a[aria-label="YouTube"],
+.social-links a[href*="youtube.com"] {
+    background: #FF0000 !important;
+    color: #ffffff !important;
+    border: 1px solid #FF0000 !important;
+}
+
+.social-links a.social-facebook,
+.social-links a[aria-label="Facebook"],
+.social-links a[href*="facebook.com"] {
+    background: #1877F2 !important;
+    color: #ffffff !important;
+    border: 1px solid #1877F2 !important;
+}
+
+.social-links a.social-zalo,
+.social-links a[aria-label="Zalo"],
+.social-links a[href*="zalo.me"] {
+    background: #0068FF !important;
+    color: #ffffff !important;
+    border: 1px solid #0068FF !important;
+}
+
 .social-links a:hover {
     transform: translateY(-2px) !important;
+    filter: brightness(1.15) !important;
+    opacity: 0.95 !important;
 }
 
 /* Footer contact section matching other columns (Về chúng tôi, Giải pháp, Năng lực) */
