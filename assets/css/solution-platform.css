@@ -249,15 +249,15 @@
 .ifp-problems-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-    margin-bottom: 32px;
+    gap: 20px;
+    margin-bottom: 28px;
 }
 
 .ifp-prob-card {
     background: #ffffff;
     border: 1px solid var(--ifp-border);
     border-radius: var(--ifp-radius);
-    padding: 26px 22px;
+    padding: 18px 18px;
     display: flex;
     flex-direction: column;
     box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
@@ -265,40 +265,79 @@
 }
 
 .ifp-prob-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
     border-color: rgba(242, 107, 29, 0.4);
 }
 
+.ifp-prob-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
 .ifp-prob-icon {
-    width: 44px;
-    height: 44px;
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
     border-radius: 8px;
     background: var(--ifp-orange-soft);
     color: var(--ifp-orange);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 18px;
+    margin-bottom: 0;
     flex-shrink: 0;
 }
 
-.ifp-prob-card h3 {
-    font-size: 17px;
+.ifp-prob-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.ifp-prob-card h3,
+.ifp-prob-title {
+    font-size: 15.5px;
     font-weight: 700;
     line-height: 1.35;
-    margin-bottom: 10px;
-    min-height: 46px;
+    margin: 0;
+    min-height: 0;
+    color: var(--ifp-dark, #0B211A);
     display: flex;
     align-items: center;
 }
 
 .ifp-prob-card p {
-    font-size: 13.5px;
-    line-height: 1.7;
+    font-size: 13px;
+    line-height: 1.6;
     color: var(--ifp-text-muted);
     margin: 0;
     flex: 1;
+}
+
+/* Support fallback if .ifp-prob-head is not in DOM */
+.ifp-prob-card:not(:has(.ifp-prob-head)) {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr;
+    column-gap: 12px;
+    row-gap: 10px;
+    align-items: center;
+}
+.ifp-prob-card:not(:has(.ifp-prob-head)) .ifp-prob-icon {
+    grid-column: 1;
+    grid-row: 1;
+    margin-bottom: 0;
+}
+.ifp-prob-card:not(:has(.ifp-prob-head)) h3 {
+    grid-column: 2;
+    grid-row: 1;
+    margin-bottom: 0;
+}
+.ifp-prob-card:not(:has(.ifp-prob-head)) p {
+    grid-column: 1 / -1;
+    grid-row: 2;
 }
 
 /* Highlight Quote / Statement Banner */
@@ -725,9 +764,14 @@
     .ifp-prob-card {
         padding: 14px 16px !important;
     }
-    .ifp-prob-card h3 {
+    .ifp-prob-head {
+        margin-bottom: 8px !important;
+        gap: 10px !important;
+    }
+    .ifp-prob-card h3,
+    .ifp-prob-title {
         font-size: 15px !important;
-        margin-bottom: 4px !important;
+        margin-bottom: 0 !important;
     }
     .ifp-prob-card p {
         font-size: 13px !important;
