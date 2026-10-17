@@ -1,10 +1,18 @@
 /**
  * INVAMAX CASE STUDY STORE
- * Quản lý dữ liệu Case Study: Lưu trữ, Tải dữ liệu, Đồng bộ GitHub & Cập nhật website
+ * Quản lý dữ liệu Case Study: Lưu trữ (IndexedDB + LocalStorage + Memory Cache),
+ * Tải dữ liệu, Đồng bộ GitHub & Cập nhật website không giới hạn dung lượng file/ảnh.
  */
 
 const INVAMAX_CASE_STUDY_STORE = (function () {
     const STORAGE_KEY = 'invamax_case_studies_v1';
+    const LOCAL_MODIFIED_KEY = 'invamax_case_studies_local_modified';
+
+    // IndexedDB configuration for unlimited file & image storage (hundreds of MBs)
+    const IDB_NAME = 'invamax_case_studies_db';
+    const IDB_VERSION = 1;
+    const IDB_STORE = 'case_studies_store';
+    const IDB_MAIN_KEY = 'all_case_studies';
 
     const DEFAULT_CASE_STUDIES = [
         {
@@ -19,6 +27,7 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
             link: '',
             thumbnail: 'assets/images/resources/art-5steps.jpg',
             pdfUrl: '',
+            fileUrl: '',
             images: [
                 'assets/images/report_dashboard.png',
                 'assets/images/report_matrix.png',
@@ -41,6 +50,7 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
             link: 'case-study/kaizen-cost-saving-pencil-factory.html',
             thumbnail: 'assets/images/resources/art-costdown.jpg',
             pdfUrl: 'assets/docs/IVM-Huong-dan-thuc-hien-5S-Tinh-gon-Hieu-qua.pdf',
+            fileUrl: 'assets/docs/IVM-Huong-dan-thuc-hien-5S-Tinh-gon-Hieu-qua.pdf',
             images: [
                 'assets/images/report_matrix.png',
                 'assets/images/report_roadmap.png'
@@ -62,6 +72,7 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
             link: 'case-study/operating-model-pencil-factory.html',
             thumbnail: 'assets/images/operations/operations.jpg',
             pdfUrl: 'assets/docs/IVM-Huong-dan-thuc-hien-5S-Tinh-gon-Hieu-qua.pdf',
+            fileUrl: 'assets/docs/IVM-Huong-dan-thuc-hien-5S-Tinh-gon-Hieu-qua.pdf',
             images: [
                 'assets/images/report_roadmap.png',
                 'assets/images/operations/factory.jpg'
@@ -73,6 +84,98 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
         }
     ];
 
+    // In-memory cache so synchronous getAll() / getById() always returns full data immediately
+    let memoryList = null;
+
+    function cloneList(list) {
+        try {
+            return JSON.parse(JSON.stringify(list));
+        } catch (e) {
+            return Array.isArray(list) ? [...list] : [];
+        }
+    }
+
+    function openDB() {
+        return new Promise((resolve, reject) => {
+            if (typeof window === 'undefined' || !window.indexedDB) {
+                return reject(new Error('IndexedDB không khả dụng'));
+            }
+            const req = window.indexedDB.open(IDB_NAME, IDB_VERSION);
+            req.onupgradeneeded = function (e) {
+                const db = e.target.result;
+                if (!db.objectStoreNames.contains(IDB_STORE)) {
+                    db.createObjectStore(IDB_STORE, { keyPath: 'key' });
+                }
+            };
+            req.onsuccess = function (e) {
+                resolve(e.target.result);
+            };
+            req.onerror = function (e) {
+                reject(e.target.error);
+            };
+        });
+    }
+
+    async function saveListToIDB(list) {
+        try {
+            const db = await openDB();
+            return new Promise((resolve) => {
+                const tx = db.transaction(IDB_STORE, 'readwrite');
+                const store = tx.objectStore(IDB_STORE);
+                const req = store.put({
+                    key: IDB_MAIN_KEY,
+                    list: list,
+                    updatedAt: Date.now()
+                });
+                req.onsuccess = () => resolve(true);
+                req.onerror = (e) => {
+                    console.warn('[CaseStudyStore] Lỗi ghi IndexedDB:', e);
+                    resolve(false);
+                };
+            });
+        } catch (e) {
+            console.warn('[CaseStudyStore] Không thể ghi IndexedDB:', e);
+            return false;
+        }
+    }
+
+    async function getListFromIDB() {
+        try {
+            const db = await openDB();
+            return new Promise((resolve) => {
+                const tx = db.transaction(IDB_STORE, 'readonly');
+                const store = tx.objectStore(IDB_STORE);
+                const req = store.get(IDB_MAIN_KEY);
+                req.onsuccess = (e) => {
+                    const res = e.target.result;
+                    if (res && Array.isArray(res.list) && res.list.length > 0) {
+                        resolve(res.list);
+                    } else {
+                        resolve(null);
+                    }
+                };
+                req.onerror = () => resolve(null);
+            });
+        } catch (e) {
+            return null;
+        }
+    }
+
+    async function clearIDB() {
+        try {
+            const db = await openDB();
+            return new Promise((resolve) => {
+                const tx = db.transaction(IDB_STORE, 'readwrite');
+                const store = tx.objectStore(IDB_STORE);
+                const req = store.delete(IDB_MAIN_KEY);
+                req.onsuccess = () => resolve(true);
+                req.onerror = () => resolve(false);
+            });
+        } catch (e) {
+            return false;
+        }
+    }
+
     function getCategories(item) {
         if (!item) return [];
         if (Array.isArray(item.categories) && item.categories.length > 0) return item.categories;
@@ -82,67 +185,158 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
         return ['Lean & Cải tiến'];
     }
 
+    function normalizeItem(item) {
+        if (!item) return item;
+        const copy = { ...item };
+        if (!copy.fileUrl && copy.pdfUrl) copy.fileUrl = copy.pdfUrl;
+        if (!copy.pdfUrl && copy.fileUrl) copy.pdfUrl = copy.fileUrl;
+        return copy;
+    }
+
     function getAll() {
+        if (Array.isArray(memoryList) && memoryList.length > 0) {
+            return memoryList.map(normalizeItem);
+        }
         try {
             const raw = localStorage.getItem(STORAGE_KEY);
-            if (!raw) return DEFAULT_CASE_STUDIES;
+            if (!raw) {
+                memoryList = cloneList(DEFAULT_CASE_STUDIES);
+                return memoryList;
+            }
             const parsed = JSON.parse(raw);
-            return Array.isArray(parsed) && parsed.length > 0 ? parsed : DEFAULT_CASE_STUDIES;
+            if (Array.isArray(parsed) && parsed.length > 0) {
+                memoryList = parsed.map(normalizeItem);
+                return memoryList;
+            }
         } catch (e) {
             console.warn('[CaseStudyStore] Lỗi đọc localStorage:', e);
-            return DEFAULT_CASE_STUDIES;
+        }
+        memoryList = cloneList(DEFAULT_CASE_STUDIES);
+        return memoryList;
+    }
+
+    function saveToLocalStorageFallback(list) {
+        // Avoid duplicating base64 in both pdfUrl and fileUrl when serializing to localStorage
+        const deduplicated = list.map(item => {
+            const copy = { ...item };
+            if (copy.fileUrl && copy.fileUrl.startsWith('data:') && copy.pdfUrl === copy.fileUrl) {
+                delete copy.pdfUrl;
+            }
+            return copy;
+        });
+
+        try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(deduplicated));
+            return true;
+        } catch (e1) {
+            console.info('[CaseStudyStore] Dữ liệu lớn hơn giới hạn localStorage (5MB), tự động lưu file nặng vào IndexedDB và bản rút gọn vào localStorage.');
+            // Strip large data: URLs from localStorage copy (full data is safely stored in IndexedDB & memoryList)
+            try {
+                const lightList = deduplicated.map(item => {
+                    const copy = { ...item };
+                    if (copy.fileUrl && copy.fileUrl.startsWith('data:')) {
+                        copy.fileUrl = '';
+                    }
+                    if (copy.pdfUrl && copy.pdfUrl.startsWith('data:')) {
+                        copy.pdfUrl = '';
+                    }
+                    if (Array.isArray(copy.images)) {
+                        copy.images = copy.images.filter(img => !img || !img.startsWith('data:') || img.length < 150000);
+                    }
+                    return copy;
+                });
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(lightList));
+                return true;
+            } catch (e2) {
+                try {
+                    const ultraLight = deduplicated.map(item => {
+                        const copy = { ...item };
+                        if (copy.fileUrl && copy.fileUrl.startsWith('data:')) copy.fileUrl = '';
+                        if (copy.pdfUrl && copy.pdfUrl.startsWith('data:')) copy.pdfUrl = '';
+                        if (copy.thumbnail && copy.thumbnail.startsWith('data:') && copy.thumbnail.length > 100000) {
+                            copy.thumbnail = 'assets/images/resources/art-5steps.jpg';
+                        }
+                        if (Array.isArray(copy.images)) {
+                            copy.images = copy.images.filter(img => !img || !img.startsWith('data:'));
+                        }
+                        return copy;
+                    });
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(ultraLight));
+                    return true;
+                } catch (e3) {
+                    console.warn('[CaseStudyStore] Không thể ghi bản rút gọn vào localStorage, dữ liệu vẫn được giữ trong IndexedDB:', e3);
+                    return true; // Still saved in memoryList & IndexedDB
+                }
+            }
         }
     }
 
-    function saveAll(list) {
-        try {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
-            return true;
-        } catch (e) {
-            console.error('[CaseStudyStore] Lỗi ghi localStorage:', e);
-            return false;
+    function saveAll(list, markLocalModified = true) {
+        const normalized = (Array.isArray(list) ? list : []).map(normalizeItem);
+        memoryList = normalized;
+        if (markLocalModified) {
+            try {
+                localStorage.setItem(LOCAL_MODIFIED_KEY, Date.now().toString());
+            } catch (e) {}
         }
+        saveListToIDB(normalized);
+        return saveToLocalStorageFallback(normalized);
     }
 
     function getById(id) {
         return getAll().find(item => item.id === id) || null;
     }
 
+    function formatVietnameseDate(isoDate) {
+        try {
+            const parts = (isoDate || '').split('-');
+            if (parts.length === 3) {
+                return `${parts[2]} thg ${parseInt(parts[1], 10)}, ${parts[0]}`;
+            }
+        } catch (e) {}
+        return isoDate || '';
+    }
+
     function add(item) {
-        const list = getAll();
+        const list = cloneList(getAll());
         const id = item.id || ('cs-' + Date.now());
         const cats = Array.isArray(item.categories) && item.categories.length > 0 
             ? item.categories 
             : (item.category ? item.category.split(',').map(s => s.trim()).filter(Boolean) : ['Lean & Cải tiến']);
+        const createdAt = item.createdAt || new Date().toISOString().split('T')[0];
+        const fileData = item.fileUrl || item.pdfUrl || '';
+        const imgs = Array.isArray(item.images) ? item.images : (item.images ? [item.images] : []);
+        const thumb = item.thumbnail || (imgs.length > 0 ? imgs[0] : 'assets/images/resources/art-5steps.jpg');
+
         const newItem = {
             id,
-            badge: item.badge || ('CASE STUDY 0' + (list.length + 1)),
+            badge: item.badge || ('CASE STUDY ' + String(list.length + 1).padStart(2, '0')),
             categories: cats,
             category: cats.join(', '),
             title: item.title || 'Case Study mới',
-            desc: item.desc || '',
+            desc: item.desc || item.highlight || item.title || '',
             client: item.client || '',
             highlight: item.highlight || '',
-            link: item.link || '#',
-            thumbnail: item.thumbnail || '',
-            pdfUrl: item.pdfUrl || item.fileUrl || '',
-            fileUrl: item.fileUrl || item.pdfUrl || '',
+            link: item.link !== undefined ? item.link : '',
+            thumbnail: thumb,
+            pdfUrl: fileData,
+            fileUrl: fileData,
             fileName: item.fileName || '',
             fileSize: item.fileSize || '',
             fileFormat: item.fileFormat || '',
-            images: Array.isArray(item.images) ? item.images : (item.images ? [item.images] : []),
+            images: imgs,
             status: item.status || 'published',
-            createdAt: item.createdAt || new Date().toISOString().split('T')[0],
-            dateDisplay: item.dateDisplay || '',
+            createdAt: createdAt,
+            dateDisplay: item.dateDisplay || formatVietnameseDate(createdAt),
             views: item.views || '1.2K lượt xem'
         };
         list.unshift(newItem);
-        saveAll(list);
+        saveAll(list, true);
         return newItem;
     }
 
     function update(id, updatedFields) {
-        const list = getAll();
+        const list = cloneList(getAll());
         const index = list.findIndex(item => item.id === id);
         if (index === -1) return null;
         if (updatedFields.categories && Array.isArray(updatedFields.categories)) {
@@ -152,43 +346,113 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
         }
         
         // If fileUrl or pdfUrl is explicitly cleared
-        if (updatedFields.pdfUrl === '' || updatedFields.fileUrl === '') {
+        if (updatedFields.pdfUrl === '' && updatedFields.fileUrl === '') {
             updatedFields.pdfUrl = '';
             updatedFields.fileUrl = '';
             updatedFields.fileName = '';
             updatedFields.fileFormat = '';
             updatedFields.fileSize = '';
+        } else if (updatedFields.fileUrl || updatedFields.pdfUrl) {
+            const f = updatedFields.fileUrl || updatedFields.pdfUrl;
+            updatedFields.fileUrl = f;
+            updatedFields.pdfUrl = f;
         }
 
-        list[index] = { ...list[index], ...updatedFields, updatedAt: new Date().toISOString().split('T')[0] };
-        const saved = saveAll(list);
-        return saved ? list[index] : null;
+        list[index] = {
+            ...list[index],
+            ...updatedFields,
+            updatedAt: new Date().toISOString().split('T')[0]
+        };
+        saveAll(list, true);
+        return list[index];
     }
 
     function remove(id) {
-        const list = getAll().filter(item => item.id !== id);
-        saveAll(list);
+        const list = cloneList(getAll()).filter(item => item.id !== id);
+        saveAll(list, true);
         return list;
     }
 
-    async function fetchRemoteData() {
+    async function resetToDefault() {
         try {
-            const res = await fetch('assets/data/case-studies.json?t=' + Date.now());
-            if (res.ok) {
-                const data = await res.json();
-                if (Array.isArray(data) && data.length > 0) {
-                    const localRaw = localStorage.getItem(STORAGE_KEY);
-                    // Chỉ nạp và ghi đè localStorage nếu chưa có dữ liệu local
-                    if (!localRaw) {
-                        saveAll(data);
+            localStorage.removeItem(STORAGE_KEY);
+            localStorage.removeItem(LOCAL_MODIFIED_KEY);
+        } catch (e) {}
+        await clearIDB();
+        memoryList = cloneList(DEFAULT_CASE_STUDIES);
+        saveAll(memoryList, false);
+        return memoryList;
+    }
+
+    // Initialize store from IndexedDB -> localStorage -> Remote JSON
+    async function init(remoteJsonUrl = 'assets/data/case-studies.json') {
+        const isLocalModified = Boolean(localStorage.getItem(LOCAL_MODIFIED_KEY));
+
+        // 1. Check IndexedDB first (contains full high-res images & files)
+        const idbList = await getListFromIDB();
+        if (idbList && idbList.length > 0) {
+            memoryList = idbList.map(normalizeItem);
+        } else {
+            // 2. Check localStorage
+            try {
+                const raw = localStorage.getItem(STORAGE_KEY);
+                if (raw) {
+                    const parsed = JSON.parse(raw);
+                    if (Array.isArray(parsed) && parsed.length > 0) {
+                        memoryList = parsed.map(normalizeItem);
+                        await saveListToIDB(memoryList);
                     }
-                    return data;
                 }
-            }
-        } catch (e) {
-            console.info('[CaseStudyStore] Chưa tải được remote case-studies.json, dùng dữ liệu local');
+            } catch (e) {}
         }
-        return null;
+
+        // 3. Only overwrite with remote JSON if there are no unsynced local modifications
+        //    OR if we have no local data yet
+        if (!isLocalModified || !memoryList || memoryList.length === 0) {
+            try {
+                const res = await fetch(remoteJsonUrl + '?t=' + Date.now());
+                if (res.ok) {
+                    const remoteData = await res.json();
+                    if (Array.isArray(remoteData) && remoteData.length > 0) {
+                        memoryList = remoteData.map(normalizeItem);
+                        await saveListToIDB(memoryList);
+                        saveToLocalStorageFallback(memoryList);
+                    }
+                }
+            } catch (e) {
+                console.info('[CaseStudyStore] Dùng dữ liệu Case Study trong bộ nhớ trình duyệt.');
+            }
+        }
+
+        if (!memoryList || memoryList.length === 0) {
+            memoryList = cloneList(DEFAULT_CASE_STUDIES);
+        }
+        return memoryList;
+    }
+
+    async function fetchRemoteData(remoteJsonUrl = 'assets/data/case-studies.json') {
+        return await init(remoteJsonUrl);
+    }
+
+    function base64ToBlobUrl(base64Data, defaultMime = 'application/pdf') {
+        if (!base64Data || typeof base64Data !== 'string') return base64Data;
+        if (!base64Data.startsWith('data:')) return base64Data;
+        try {
+            const parts = base64Data.split(';base64,');
+            if (parts.length < 2) return base64Data;
+            const mime = parts[0].replace('data:', '') || defaultMime;
+            const bstr = window.atob(parts[1]);
+            let n = bstr.length;
+            const u8arr = new Uint8Array(n);
+            while (n--) {
+                u8arr[n] = bstr.charCodeAt(n);
+            }
+            const blob = new Blob([u8arr], { type: mime });
+            return URL.createObjectURL(blob);
+        } catch (e) {
+            console.warn('[CaseStudyStore] Không thể chuyển DataURL sang BlobURL:', e);
+            return base64Data;
+        }
     }
 
     async function syncToGitHub(progressCallback = null) {
@@ -196,7 +460,7 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
             return {
                 success: false,
                 skipped: true,
-                message: 'Chưa cấu hình GitHub Token. Dữ liệu đã lưu tạm vào máy này.'
+                message: 'Chưa cấu hình GitHub Token. Dữ liệu đã lưu trên trình duyệt máy này.'
             };
         }
 
@@ -205,7 +469,10 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
         };
 
         try {
-            const listToSync = JSON.parse(JSON.stringify(getAll()));
+            // Ensure we have full data from IndexedDB before syncing
+            const idbList = await getListFromIDB();
+            const sourceList = (idbList && idbList.length > 0) ? idbList : getAll();
+            const listToSync = cloneList(sourceList);
 
             for (let i = 0; i < listToSync.length; i++) {
                 const item = listToSync[i];
@@ -244,7 +511,12 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
             notify('Đang cập nhật danh sách Case Study lên GitHub...');
             const commitResult = await window.INVAMAX_GITHUB_SYNC.commitJson('assets/data/case-studies.json', listToSync, 'Update case studies database from INVAMAX Admin portal');
 
-            saveAll(listToSync);
+            // Save synced list and clear local modified flag since remote is now up-to-date
+            saveAll(listToSync, false);
+            try {
+                localStorage.removeItem(LOCAL_MODIFIED_KEY);
+            } catch (e) {}
+
             return {
                 success: true,
                 message: 'Đã xuất bản Case Study lên GitHub thành công!',
@@ -260,7 +532,7 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
     }
 
     function move(id, direction) {
-        const list = getAll();
+        const list = cloneList(getAll());
         const idx = list.findIndex(item => item.id === id);
         if (idx === -1) return null;
         if (direction === 'up' && idx > 0) {
@@ -272,11 +544,12 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
             list[idx] = list[idx + 1];
             list[idx + 1] = temp;
         }
-        saveAll(list);
+        saveAll(list, true);
         return list;
     }
 
     return {
+        init,
         getAll,
         getById,
         getCategories,
@@ -284,8 +557,10 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
         update,
         remove,
         move,
+        resetToDefault,
         fetchRemoteData,
         syncToGitHub,
-        saveAll
+        saveAll,
+        base64ToBlobUrl
     };
 })();

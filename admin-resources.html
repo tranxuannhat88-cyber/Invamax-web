@@ -1308,7 +1308,7 @@
                             <label class="form-label">Nhóm nội dung / Lĩnh vực (Có thể chọn nhiều) <span class="req">*</span></label>
                             <div id="csCatCheckboxGroup" style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 10px 12px; background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 8px;">
                                 <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: #1e293b; cursor: pointer;">
-                                    <input type="checkbox" name="cs_cat_check" value="Lean & Cải tiến" style="width: 16px; height: 16px; accent-color: var(--admin-orange);">
+                                    <input type="checkbox" name="cs_cat_check" value="Lean & Cải tiến" checked style="width: 16px; height: 16px; accent-color: var(--admin-orange);">
                                     <span>Lean &amp; Cải tiến</span>
                                 </label>
                                 <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: #1e293b; cursor: pointer;">
@@ -1335,8 +1335,8 @@
 
                         <!-- Mô tả tóm tắt -->
                         <div class="form-group">
-                            <label class="form-label" for="csDesc">Mô tả tóm tắt dự án <span class="req">*</span></label>
-                            <textarea id="csDesc" class="form-textarea" rows="3" placeholder="Tóm tắt ngắn gọn bối cảnh, phương pháp và kết quả cải tiến..." required></textarea>
+                            <label class="form-label" for="csDesc">Mô tả tóm tắt dự án</label>
+                            <textarea id="csDesc" class="form-textarea" rows="3" placeholder="Tóm tắt ngắn gọn bối cảnh, phương pháp và kết quả cải tiến..."></textarea>
                         </div>
 
                         <!-- Link bài viết chi tiết (Tùy chọn) -->
@@ -1818,7 +1818,7 @@
     </script>
     <script src="assets/js/toolkit-store.js?v=8"></script>
     <script src="assets/js/github-sync.js?v=2"></script>
-    <script src="assets/js/case-study-store.js?v=1"></script>
+    <script src="assets/js/case-study-store.js?v=2"></script>
     <script>
         // State variables - Resources
         let currentFileBase64 = null;
@@ -1845,6 +1845,7 @@
         let currentCsImages = [];
         let currentEditingCsId = null;
         let currentCsFilter = 'all';
+        let csPendingFilePromise = null;
 
         // Authentication Logic
         const ADMIN_PASS_KEY = 'invamax_admin_secret_v1';
@@ -1871,21 +1872,17 @@
                 renderCaseStudiesDashboard();
                 updateGitHubStatusUI();
 
+                // Khởi tạo dữ liệu Case Study từ IndexedDB / LocalStorage / Server
+                if (typeof INVAMAX_CASE_STUDY_STORE !== 'undefined' && typeof INVAMAX_CASE_STUDY_STORE.init === 'function') {
+                    await INVAMAX_CASE_STUDY_STORE.init();
+                    renderCaseStudiesDashboard();
+                }
+
                 // Tải dữ liệu mới nhất từ assets/data/toolkits.json trên server/GitHub
                 if (typeof INVAMAX_TOOLKIT_STORE !== 'undefined' && typeof INVAMAX_TOOLKIT_STORE.fetchRemoteData === 'function') {
                     const remote = await INVAMAX_TOOLKIT_STORE.fetchRemoteData();
                     if (remote) {
                         renderDashboard();
-                    }
-                }
-
-                // Tải dữ liệu mới nhất từ assets/data/case-studies.json nếu local chưa có
-                if (typeof INVAMAX_CASE_STUDY_STORE !== 'undefined' && typeof INVAMAX_CASE_STUDY_STORE.fetchRemoteData === 'function') {
-                    if (!localStorage.getItem('invamax_case_studies_v1')) {
-                        const remoteCs = await INVAMAX_CASE_STUDY_STORE.fetchRemoteData();
-                        if (remoteCs) {
-                            renderCaseStudiesDashboard();
-                        }
                     }
                 }
 
@@ -2049,6 +2046,9 @@
 
                 try {
                     renderCaseStudiesDashboard();
+                    if (typeof INVAMAX_CASE_STUDY_STORE !== 'undefined' && typeof INVAMAX_CASE_STUDY_STORE.init === 'function') {
+                        INVAMAX_CASE_STUDY_STORE.init().then(() => renderCaseStudiesDashboard());
+                    }
                 } catch (err) {
                     console.error('Error rendering case studies dashboard:', err);
                 }
@@ -2963,12 +2963,27 @@
             currentCsFileSize = formatCsFileSize(file.size);
             currentCsFileFormat = ext;
 
-            const reader = new FileReader();
-            reader.onload = function(evt) {
-                currentCsFileData = evt.target.result;
-                displayCsDataFile(file.name, currentCsFileSize, ext);
-            };
-            reader.readAsDataURL(file);
+            csPendingFilePromise = new Promise((resolve) => {
+                const reader = new FileReader();
+                reader.onload = async function(evt) {
+                    currentCsFileData = evt.target.result;
+                    displayCsDataFile(file.name, currentCsFileSize, ext);
+
+                    // Tự động tạo ảnh đại diện trang 1 nếu là PDF và chưa chọn ảnh đại diện
+                    if (ext === 'PDF' && !currentCsThumbnail && typeof INVAMAX_TOOLKIT_STORE !== 'undefined' && typeof INVAMAX_TOOLKIT_STORE.generatePdfThumbnail === 'function') {
+                        try {
+                            const thumb = await INVAMAX_TOOLKIT_STORE.generatePdfThumbnail(currentCsFileData);
+                            if (thumb && !currentCsThumbnail) {
+                                currentCsThumbnail = thumb;
+                                displayCsThumb(thumb, 'Tự động trích xuất từ trang 1 PDF');
+                            }
+                        } catch (err) {}
+                    }
+                    resolve(currentCsFileData);
+                };
+                reader.onerror = () => resolve(null);
+                reader.readAsDataURL(file);
+            });
         }
 
         function displayCsDataFile(name, size, format) {
@@ -2989,6 +3004,7 @@
             currentCsFileName = null;
             currentCsFileSize = null;
             currentCsFileFormat = null;
+            csPendingFilePromise = null;
             const box = document.getElementById('csDataFilePreviewBox');
             const fileInput = document.getElementById('csDataFileInput');
             const urlInput = document.getElementById('csDataFileUrl');
@@ -3007,7 +3023,7 @@
             const files = Array.from(e.target.files);
             if (!files || files.length === 0) return;
             for (const file of files) {
-                const dataUrl = await compressImage(file, 1200, 0.82);
+                const dataUrl = await compressImage(file, 1100, 0.8);
                 currentCsImages.push(dataUrl);
             }
             renderCsImagesPreview();
@@ -3118,7 +3134,7 @@
             const file = e.target.files && e.target.files[0];
             if (!file) return;
             try {
-                const compressed = await compressImage(file, 1200, 0.82);
+                const compressed = await compressImage(file, 1100, 0.8);
                 modalCsThumbnail = compressed;
                 displayModalCsThumb(compressed, file.name);
             } catch (err) {
@@ -3151,15 +3167,15 @@
         function handleModalCsDataFileSelect(e) {
             const file = e.target.files && e.target.files[0];
             if (!file) return;
-            if (file.size > 20 * 1024 * 1024) {
-                showToast('Kích thước tệp quá lớn (>20MB)!', 'error');
+            if (file.size > 25 * 1024 * 1024) {
+                showToast('Kích thước tệp quá lớn (>25MB)!', 'error');
                 return;
             }
             const reader = new FileReader();
             reader.onload = function(evt) {
                 modalCsFileData = evt.target.result;
                 modalCsFileName = file.name;
-                modalCsFileSize = formatFileSize(file.size);
+                modalCsFileSize = formatCsFileSize(file.size);
                 modalCsFileFormat = file.name.split('.').pop().toUpperCase();
                 displayModalCsDataFile(modalCsFileName, modalCsFileSize, modalCsFileFormat);
             };
@@ -3198,7 +3214,7 @@
             if (!files || files.length === 0) return;
             for (const file of files) {
                 try {
-                    const compressed = await compressImage(file, 1200, 0.82);
+                    const compressed = await compressImage(file, 1100, 0.8);
                     modalCsImagesList.push(compressed);
                 } catch (err) {
                     console.error('Lỗi nén ảnh modal gallery:', err);
@@ -3281,6 +3297,14 @@
             if (typeof INVAMAX_CASE_STUDY_STORE === 'undefined') return;
             const items = INVAMAX_CASE_STUDY_STORE.getAll();
 
+            // Update default badge number if not currently editing
+            if (!currentEditingCsId) {
+                const badgeInput = document.getElementById('csBadge');
+                if (badgeInput && (!badgeInput.value || /^CASE STUDY \d+$/i.test(badgeInput.value.trim()))) {
+                    badgeInput.value = 'CASE STUDY ' + String(items.length + 1).padStart(2, '0');
+                }
+            }
+
             // Stats for 5 categories
             const totalEl = document.getElementById('statCsTotal');
             const leanEl = document.getElementById('statCsLean');
@@ -3352,8 +3376,8 @@
                     : (cs.category ? cs.category.split(',').map(s => s.trim()).filter(Boolean) : ['Lean & Cải tiến']);
                 const catBadgesHtml = cats.map(cat => `<span class="cs-cat-badge">${escapeHTML(cat)}</span>`).join(' ');
 
-                const fileAttached = cs.fileUrl || cs.pdfUrl;
-                const fileFmt = (cs.fileFormat || (fileAttached ? fileAttached.split('.').pop().toUpperCase() : '') || 'FILE').toUpperCase();
+                const fileAttached = cs.fileUrl || cs.pdfUrl || cs.fileName;
+                const fileFmt = (cs.fileFormat || (fileAttached && !fileAttached.startsWith('data:') ? fileAttached.split('.').pop().toUpperCase() : '') || 'FILE').toUpperCase();
 
                 return `
                     <div class="doc-item-card ${isEditing ? 'is-editing' : ''}">
@@ -3456,8 +3480,14 @@
             renderCaseStudiesDashboard();
         }
 
-        function handleSaveCaseStudy(e) {
+        async function handleSaveCaseStudy(e) {
             if (e) e.preventDefault();
+
+            if (csPendingFilePromise) {
+                showToast('Đang xử lý tệp đính kèm, vui lòng đợi...', 'info');
+                await csPendingFilePromise;
+                csPendingFilePromise = null;
+            }
 
             const id = document.getElementById('csDocId').value.trim();
             const title = document.getElementById('csTitle').value.trim();
@@ -3466,20 +3496,24 @@
             const category = categories.join(', ');
             const client = document.getElementById('csClient').value.trim();
             const highlight = document.getElementById('csHighlight').value.trim();
-            const desc = document.getElementById('csDesc').value.trim();
+            const rawDesc = document.getElementById('csDesc').value.trim();
+            const desc = rawDesc || highlight || (client ? `Dự án triển khai cải tiến thực tế tại ${client}.` : title);
             const link = (document.getElementById('csLink')?.value || '').trim();
             const thumbUrl = (document.getElementById('csThumbUrl')?.value || '').trim();
             const dataFileUrlInput = (document.getElementById('csDataFileUrl')?.value || '').trim();
             const imagesInput = (document.getElementById('csImagesInput')?.value || '').trim();
             const status = document.getElementById('csStatus').value;
 
-            // Link is optional! Only title and description are required
-            if (!title || !desc) {
-                showToast('Vui lòng điền tiêu đề và mô tả tóm tắt của Case Study!', 'error');
+            if (!title) {
+                showToast('Vui lòng điền tiêu đề của Case Study!', 'error');
+                document.getElementById('csTitle')?.focus();
                 return;
             }
 
-            const thumb = currentCsThumbnail || thumbUrl || 'assets/images/resources/art-5steps.jpg';
+            const textImgs = imagesInput ? imagesInput.split(',').map(s => s.trim()).filter(Boolean) : [];
+            const images = Array.from(new Set([...currentCsImages, ...textImgs]));
+
+            const thumb = currentCsThumbnail || thumbUrl || (images.length > 0 ? images[0] : 'assets/images/resources/art-5steps.jpg');
             const dataFile = currentCsFileData || dataFileUrlInput || '';
             let fileName = currentCsFileName;
             let fileFormat = currentCsFileFormat;
@@ -3488,9 +3522,6 @@
                 fileName = dataFileUrlInput.split('/').pop().split('?')[0];
                 fileFormat = fileName.split('.').pop().toUpperCase();
             }
-
-            const textImgs = imagesInput ? imagesInput.split(',').map(s => s.trim()).filter(Boolean) : [];
-            const images = Array.from(new Set([...currentCsImages, ...textImgs]));
 
             const caseData = {
                 title,
@@ -3511,16 +3542,22 @@
                 status
             };
 
+            // Reset filtro về 'all' để bài viết mới luôn hiển thị ngay đầu danh sách
+            currentCsFilter = 'all';
+            const pills = document.querySelectorAll('#csFilterPills .btn-action');
+            pills.forEach((p, idx) => p.classList.toggle('active', idx === 0));
+            const searchBox = document.getElementById('csSearchInput');
+            if (searchBox) searchBox.value = '';
+
             if (id) {
                 INVAMAX_CASE_STUDY_STORE.update(id, caseData);
-                showToast('Đã cập nhật Case Study thành công!', 'success');
+                showToast(`✓ Đã cập nhật Case Study "${title}" thành công!`, 'success');
             } else {
                 INVAMAX_CASE_STUDY_STORE.add(caseData);
-                showToast('Đã thêm Case Study mới thành công!', 'success');
+                showToast(`✓ Đã thêm Case Study "${title}" thành công!`, 'success');
             }
 
             cancelEditCaseStudy();
-            renderCaseStudiesDashboard();
 
             // Tự động đẩy lên GitHub nếu đã cấu hình Token
             if (window.INVAMAX_GITHUB_SYNC && window.INVAMAX_GITHUB_SYNC.isConfigured()) {
@@ -3592,8 +3629,12 @@
             currentCsFileSize = null;
             currentCsFileFormat = null;
             currentCsImages = [];
+            csPendingFilePromise = null;
             document.getElementById('csForm').reset();
             document.getElementById('csDocId').value = '';
+            const nextNum = (typeof INVAMAX_CASE_STUDY_STORE !== 'undefined' ? INVAMAX_CASE_STUDY_STORE.getAll().length : 3) + 1;
+            const badgeInput = document.getElementById('csBadge');
+            if (badgeInput) badgeInput.value = 'CASE STUDY ' + String(nextNum).padStart(2, '0');
             setSelectedCsCategoriesInForm(['Lean & Cải tiến']);
             clearCsThumb();
             clearCsDataFile();
@@ -3675,6 +3716,7 @@
 
         function handleSaveCsModalEdit(e) {
             if (e) e.preventDefault();
+            addModalCsImageUrl();
             const id = document.getElementById('modalCsId').value;
             const title = document.getElementById('modalCsTitle').value.trim();
             const badge = document.getElementById('modalCsBadge').value.trim() || 'CASE STUDY';
@@ -3682,19 +3724,19 @@
             const category = categories.join(', ');
             const client = document.getElementById('modalCsClient').value.trim();
             const highlight = document.getElementById('modalCsHighlight').value.trim();
-            const desc = document.getElementById('modalCsDesc').value.trim();
+            const rawDesc = document.getElementById('modalCsDesc').value.trim();
+            const desc = rawDesc || highlight || title;
             const link = (document.getElementById('modalCsLink')?.value || '').trim();
             const thumbUrl = (document.getElementById('modalCsThumbUrl')?.value || '').trim();
             const pdfUrlInput = (document.getElementById('modalCsPdfUrl')?.value || '').trim();
             const status = document.getElementById('modalCsStatus').value;
 
-            // Link is optional
-            if (!title || !desc) {
-                showToast('Vui lòng điền đủ tiêu đề và mô tả tóm tắt!', 'error');
+            if (!title) {
+                showToast('Vui lòng điền tiêu đề Case Study!', 'error');
                 return;
             }
 
-            const thumb = modalCsThumbnail || thumbUrl || 'assets/images/resources/art-5steps.jpg';
+            const thumb = modalCsThumbnail || thumbUrl || (modalCsImagesList.length > 0 ? modalCsImagesList[0] : 'assets/images/resources/art-5steps.jpg');
             const dataFile = modalCsFileData || pdfUrlInput || '';
             let fileName = modalCsFileName;
             let fileFormat = modalCsFileFormat;
@@ -3725,12 +3767,12 @@
 
             const resUpdate = INVAMAX_CASE_STUDY_STORE.update(id, updateData);
             if (!resUpdate) {
-                showToast('Không thể lưu cập nhật (Bộ nhớ trình duyệt đầy)!', 'error');
+                showToast('Không thể lưu cập nhật!', 'error');
                 return;
             }
 
             closeCsQuickEditModal();
-            showToast('Đã lưu cập nhật bài viết Case Study!', 'success');
+            showToast('✓ Đã lưu cập nhật bài viết Case Study!', 'success');
             renderCaseStudiesDashboard();
 
             if (window.INVAMAX_GITHUB_SYNC && window.INVAMAX_GITHUB_SYNC.isConfigured()) {
@@ -3766,9 +3808,9 @@
             showToast('Đã xuất file sao lưu JSON Case Studies!', 'success');
         }
 
-        function resetDefaultCaseStudies() {
+        async function resetDefaultCaseStudies() {
             if (confirm('Khôi phục lại danh sách 3 Case Study gốc ban đầu của INVAMAX?')) {
-                localStorage.removeItem('invamax_case_studies_v1');
+                await INVAMAX_CASE_STUDY_STORE.resetToDefault();
                 showToast('Đã khôi phục 3 Case Study ban đầu!', 'success');
                 renderCaseStudiesDashboard();
             }

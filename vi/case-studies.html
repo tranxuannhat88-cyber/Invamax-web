@@ -1009,6 +1009,7 @@
     </div>
 
     <script src="../assets/js/main.js?v=5"></script>
+    <script src="../assets/js/case-study-store.js?v=2"></script>
     <script>
         function switchLanguage(lang) {
             localStorage.setItem('invamax_language', lang);
@@ -1230,9 +1231,12 @@
 
             const rawFileUrl = cs.fileUrl || cs.pdfUrl || '';
             const hasFile = Boolean(rawFileUrl);
-            const resolvedFileUrl = hasFile ? resolveAssetUrl(rawFileUrl) : '';
-            const fileFormat = (cs.fileFormat || rawFileUrl.split('.').pop().split('?')[0] || 'FILE').toUpperCase();
-            const isPdf = hasFile && (fileFormat === 'PDF' || resolvedFileUrl.toLowerCase().endsWith('.pdf') || resolvedFileUrl.startsWith('data:application/pdf'));
+            let resolvedFileUrl = hasFile ? resolveAssetUrl(rawFileUrl) : '';
+            if (hasFile && resolvedFileUrl.startsWith('data:') && typeof INVAMAX_CASE_STUDY_STORE !== 'undefined' && typeof INVAMAX_CASE_STUDY_STORE.base64ToBlobUrl === 'function') {
+                resolvedFileUrl = INVAMAX_CASE_STUDY_STORE.base64ToBlobUrl(resolvedFileUrl);
+            }
+            const fileFormat = (cs.fileFormat || (!rawFileUrl.startsWith('data:') ? rawFileUrl.split('.').pop().split('?')[0] : '') || 'FILE').toUpperCase();
+            const isPdf = hasFile && (fileFormat === 'PDF' || rawFileUrl.toLowerCase().endsWith('.pdf') || rawFileUrl.startsWith('data:application/pdf'));
 
             if (hasFile) {
                 downloadBtn.href = resolvedFileUrl;
@@ -1256,7 +1260,7 @@
                     if (pdfIframe) pdfIframe.src = 'about:blank';
                     if (dataFileDownloadCard) {
                         dataFileDownloadCard.style.display = 'block';
-                        if (dataFileCardName) dataFileCardName.innerText = cs.fileName || rawFileUrl.split('/').pop().split('?')[0];
+                        if (dataFileCardName) dataFileCardName.innerText = cs.fileName || (!rawFileUrl.startsWith('data:') ? rawFileUrl.split('/').pop().split('?')[0] : 'Tệp dữ liệu đính kèm');
                         if (dataFileCardMeta) dataFileCardMeta.innerText = `Định dạng ${fileFormat}${cs.fileSize ? ' • ' + cs.fileSize : ''}`;
                         if (dataFileCardBtn) {
                             dataFileCardBtn.href = resolvedFileUrl;
@@ -1298,7 +1302,10 @@
                 }).join('');
 
                 if (!hasFile || !isPdf) {
-                    fullscreenBtn.href = firstImg;
+                    const fullImgUrl = (firstImg.startsWith('data:') && typeof INVAMAX_CASE_STUDY_STORE !== 'undefined')
+                        ? INVAMAX_CASE_STUDY_STORE.base64ToBlobUrl(firstImg, 'image/jpeg')
+                        : firstImg;
+                    fullscreenBtn.href = fullImgUrl;
                     fullscreenBtn.style.display = 'inline-flex';
                 }
             }
@@ -1388,7 +1395,11 @@
         }
 
         function openFullImage(url) {
-            if (url) window.open(url, '_blank');
+            if (!url) return;
+            const targetUrl = (url.startsWith('data:') && typeof INVAMAX_CASE_STUDY_STORE !== 'undefined')
+                ? INVAMAX_CASE_STUDY_STORE.base64ToBlobUrl(url, 'image/jpeg')
+                : url;
+            window.open(targetUrl, '_blank');
         }
 
         document.addEventListener('keydown', (e) => {
@@ -1397,27 +1408,20 @@
             }
         });
 
-        // Dynamic Case Studies Loader
+        // Dynamic Case Studies Loader (reads IndexedDB + LocalStorage + Remote JSON safely)
         async function loadDynamicCaseStudies() {
             let list = null;
-            try {
-                const local = localStorage.getItem('invamax_case_studies_v1');
-                if (local) {
-                    const parsed = JSON.parse(local);
-                    if (Array.isArray(parsed) && parsed.length > 0) list = parsed;
-                }
-            } catch(e) {}
-
-            try {
-                const res = await fetch('../assets/data/case-studies.json?t=' + Date.now());
-                if (res.ok) {
-                    const remote = await res.json();
-                    if (Array.isArray(remote) && remote.length > 0) {
-                        list = remote;
-                        localStorage.setItem('invamax_case_studies_v1', JSON.stringify(remote));
+            if (typeof INVAMAX_CASE_STUDY_STORE !== 'undefined' && typeof INVAMAX_CASE_STUDY_STORE.init === 'function') {
+                list = await INVAMAX_CASE_STUDY_STORE.init('../assets/data/case-studies.json');
+            } else {
+                try {
+                    const local = localStorage.getItem('invamax_case_studies_v1');
+                    if (local) {
+                        const parsed = JSON.parse(local);
+                        if (Array.isArray(parsed) && parsed.length > 0) list = parsed;
                     }
-                }
-            } catch(e) {}
+                } catch(e) {}
+            }
 
             if (list && list.length > 0) {
                 loadedCaseStudies = list;
