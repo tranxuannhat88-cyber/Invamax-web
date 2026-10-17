@@ -1,5 +1,109 @@
 [
   {
+    "id": "cs-1792227507057",
+    "badge": "CASE STUDY 06",
+    "categories": [
+      "Số hóa & dữ liệu"
+    ],
+    "category": "Số hóa & dữ liệu",
+    "title": "Trực quan hóa báo cáo sản xuất",
+    "desc": "Thiết lập báo cáo kết quả sản xuất sử dụng các biểu đồ, bảng biểu và màu sắc trực quan để nắm bắt thông tin nhanh hơn.",
+    "client": "Bộ phận sản xuất",
+    "highlight": "Trực quan hơn - Thông tin nhanh hơn",
+    "link": "",
+    "thumbnail": "assets/images/case-study/thumb-cs-1792227507057.jpg",
+    "pdfUrl": "assets/docs/cs-file-cs-1792227507057.pdf",
+    "fileUrl": "assets/docs/cs-file-cs-1792227507057.pdf",
+    "fileName": "Trực quan hóa báo cáo sản xuất.pdf",
+    "fileSize": "1.21 MB",
+    "fileFormat": "PDF",
+    "images": [],
+    "status": "published",
+    "createdAt": "2026-10-17",
+    "dateDisplay": "17 thg 10, 2026",
+    "views": "1.2K lượt xem",
+    "updatedAt": "2026-10-17",
+    "thumbSource": "pdf-auto"
+  },
+  {
+    "id": "cs-1792225273414",
+    "badge": "CASE STUDY 05",
+    "categories": [
+      "Lean & Cải tiến",
+      "Tăng năng suất"
+    ],
+    "category": "Lean & Cải tiến, Tăng năng suất",
+    "title": "Tổng hợp các cải tiến 2025",
+    "desc": "Nhận diện các lãng phí và điểm nghẽn, giải quyết vấn đề để đạt được năng suất cao hơn.",
+    "client": "Sản xuất văn phòng phẩm",
+    "highlight": "Năng suất cao hơn - Cần ít nhân công hơn",
+    "link": "",
+    "thumbnail": "assets/images/case-study/thumb-cs-1792225273414.jpg",
+    "pdfUrl": "assets/docs/cs-file-cs-1792225273414.pdf",
+    "fileUrl": "assets/docs/cs-file-cs-1792225273414.pdf",
+    "fileName": "Báo cáo Kaizen 2025 VPPQT.pdf",
+    "fileSize": "7.42 MB",
+    "fileFormat": "PDF",
+    "images": [],
+    "status": "published",
+    "createdAt": "2026-10-17",
+    "dateDisplay": "17 thg 10, 2026",
+    "views": "1.2K lượt xem",
+    "updatedAt": "2026-10-17",
+    "thumbSource": "pdf-auto"
+  },
+  {
+    "id": "cs-1792224796463",
+    "badge": "CASE STUDY 04",
+    "categories": [
+      "Lean & Cải tiến"
+    ],
+    "category": "Lean & Cải tiến",
+    "title": "Dự án chuẩn hóa Layout & thực hiện 5S tại xưởng gia công cơ khí",
+    "desc": "Từ một xưởng cơ khí bừa bộn, sau khi áp dụng chuẩn hóa Layout & thực hiện 5S đã trở nên gọn gàng, sạch sẽ, năng suất cao hơn.",
+    "client": "Gia công cơ khí",
+    "highlight": "Gọn gàng - Sạch sẽ - Năng suất",
+    "link": "",
+    "thumbnail": "assets/images/case-study/thumb-cs-1792224796463.jpg",
+    "pdfUrl": "assets/docs/cs-file-cs-1792224796463.pdf",
+    "fileUrl": "assets/docs/cs-file-cs-1792224796463.pdf",
+    "fileName": "Báo cáo tổng kết dự án Chuẩn hóa Layout & thực hiện 5S tại CTY CNC Gia Nghĩa 2024.pdf",
+    "fileSize": "36.86 MB",
+    "fileFormat": "PDF",
+    "images": [],
+    "status": "published",
+    "createdAt": "2026-10-17",
+    "dateDisplay": "17 thg 10, 2026",
+    "views": "1.2K lượt xem",
+    "updatedAt": "2026-10-17",
+    "thumbSource": "custom"
+  },
+  {
+    "id": "cs-kaizen-cost-pencil",
+    "badge": "CASE STUDY 02",
+    "categories": [
+      "Giảm chi phí",
+      "Lean & Cải tiến"
+    ],
+    "category": "Giảm chi phí, Lean & Cải tiến",
+    "title": "432.873 USD/năm giá trị cải tiến tại nhà máy sản xuất bút chì",
+    "desc": "4 năm liên tục loại bỏ lãng phí, tối ưu nguồn lực và cải thiện hệ thống vận hành với INVAMAX FOS.",
+    "client": "Nhà máy sản xuất bút chì",
+    "highlight": "432.873 USD/năm",
+    "link": "case-study/kaizen-cost-saving-pencil-factory.html",
+    "thumbnail": "assets/images/resources/art-costdown.jpg",
+    "pdfUrl": "assets/docs/IVM-Huong-dan-thuc-hien-5S-Tinh-gon-Hieu-qua.pdf",
+    "images": [
+      "assets/images/report_matrix.png",
+      "assets/images/report_roadmap.png"
+    ],
+    "status": "published",
+    "createdAt": "2026-10-08",
+    "dateDisplay": "08 thg 10, 2026",
+    "views": "1.8K lượt xem",
+    "fileUrl": "assets/docs/IVM-Huong-dan-thuc-hien-5S-Tinh-gon-Hieu-qua.pdf"
+  },
+  {
     "id": "cs-productivity-pencil",
     "badge": "CASE STUDY 01",
     "categories": [
@@ -25,30 +129,6 @@
     "views": "2.4K lượt xem"
   },
   {
-    "id": "cs-kaizen-cost-pencil",
-    "badge": "CASE STUDY 02",
-    "categories": [
-      "Giảm chi phí",
-      "Lean & Cải tiến"
-    ],
-    "category": "Giảm chi phí, Lean & Cải tiến",
-    "title": "432.873 USD/năm giá trị cải tiến tại nhà máy sản xuất bút chì",
-    "desc": "4 năm liên tục loại bỏ lãng phí, tối ưu nguồn lực và cải thiện hệ thống vận hành với INVAMAX FOS.",
-    "client": "Nhà máy sản xuất bút chì",
-    "highlight": "432.873 USD/năm",
-    "link": "case-study/kaizen-cost-saving-pencil-factory.html",
-    "thumbnail": "assets/images/resources/art-costdown.jpg",
-    "pdfUrl": "assets/docs/IVM-Huong-dan-thuc-hien-5S-Tinh-gon-Hieu-qua.pdf",
-    "images": [
-      "assets/images/report_matrix.png",
-      "assets/images/report_roadmap.png"
-    ],
-    "status": "published",
-    "createdAt": "2026-10-08",
-    "dateDisplay": "08 thg 10, 2026",
-    "views": "1.8K lượt xem"
-  },
-  {
     "id": "cs-operating-model-pencil",
     "badge": "CASE STUDY 03",
     "categories": [
@@ -70,6 +150,7 @@
     "status": "published",
     "createdAt": "2026-10-05",
     "dateDisplay": "05 thg 10, 2026",
-    "views": "3.1K lượt xem"
+    "views": "3.1K lượt xem",
+    "fileUrl": "assets/docs/IVM-Huong-dan-thuc-hien-5S-Tinh-gon-Hieu-qua.pdf"
   }
 ]
