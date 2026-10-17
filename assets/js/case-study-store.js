@@ -16,27 +16,76 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
 
     const DEFAULT_CASE_STUDIES = [
         {
-            id: 'cs-productivity-pencil',
-            badge: 'CASE STUDY 01',
-            categories: ['Tăng năng suất', 'Lean & Cải tiến'],
-            category: 'Tăng năng suất, Lean & Cải tiến',
-            title: 'Tăng 42,3% năng suất tại nhà máy sản xuất bút chì',
-            desc: 'Từ 742 lên 1.056 UPH sau 4 năm cải tiến hệ thống vận hành với INVAMAX FOS.',
-            client: 'Nhà máy sản xuất bút chì',
-            highlight: 'Tăng 42,3% UPH',
+            id: 'cs-1792227507057',
+            badge: 'CASE STUDY 06',
+            categories: ['Số hóa & dữ liệu'],
+            category: 'Số hóa & dữ liệu',
+            title: 'Trực quan hóa báo cáo sản xuất',
+            desc: 'Thiết lập báo cáo kết quả sản xuất sử dụng các biểu đồ, bảng biểu và màu sắc trực quan để nắm bắt thông tin nhanh hơn.',
+            client: 'Bộ phận sản xuất',
+            highlight: 'Trực quan hơn - Thông tin nhanh hơn',
             link: '',
-            thumbnail: 'assets/images/resources/art-5steps.jpg',
-            pdfUrl: '',
-            fileUrl: '',
-            images: [
-                'assets/images/report_dashboard.png',
-                'assets/images/report_matrix.png',
-                'assets/images/report_wastes.png'
-            ],
+            thumbnail: 'assets/images/case-study/thumb-cs-1792227507057.jpg',
+            pdfUrl: 'assets/docs/cs-file-cs-1792227507057.pdf',
+            fileUrl: 'assets/docs/cs-file-cs-1792227507057.pdf',
+            fileName: 'Trực quan hóa báo cáo sản xuất.pdf',
+            fileSize: '1.21 MB',
+            fileFormat: 'PDF',
+            images: [],
             status: 'published',
-            createdAt: '2026-10-12',
-            dateDisplay: '12 thg 10, 2026',
-            views: '2.4K lượt xem'
+            createdAt: '2026-10-17',
+            dateDisplay: '17 thg 10, 2026',
+            views: '1.2K lượt xem',
+            updatedAt: '2026-10-17',
+            thumbSource: 'pdf-auto'
+        },
+        {
+            id: 'cs-1792225273414',
+            badge: 'CASE STUDY 05',
+            categories: ['Lean & Cải tiến', 'Tăng năng suất'],
+            category: 'Lean & Cải tiến, Tăng năng suất',
+            title: 'Tổng hợp các cải tiến 2025',
+            desc: 'Nhận diện các lãng phí và điểm nghẽn, giải quyết vấn đề để đạt được năng suất cao hơn.',
+            client: 'Sản xuất văn phòng phẩm',
+            highlight: 'Năng suất cao hơn - Cần ít nhân công hơn',
+            link: '',
+            thumbnail: 'assets/images/case-study/thumb-cs-1792225273414.jpg',
+            pdfUrl: 'assets/docs/cs-file-cs-1792225273414.pdf',
+            fileUrl: 'assets/docs/cs-file-cs-1792225273414.pdf',
+            fileName: 'Báo cáo Kaizen 2025 VPPQT.pdf',
+            fileSize: '7.42 MB',
+            fileFormat: 'PDF',
+            images: [],
+            status: 'published',
+            createdAt: '2026-10-17',
+            dateDisplay: '17 thg 10, 2026',
+            views: '1.2K lượt xem',
+            updatedAt: '2026-10-17',
+            thumbSource: 'pdf-auto'
+        },
+        {
+            id: 'cs-1792224796463',
+            badge: 'CASE STUDY 04',
+            categories: ['Lean & Cải tiến'],
+            category: 'Lean & Cải tiến',
+            title: 'Dự án chuẩn hóa Layout & thực hiện 5S tại xưởng gia công cơ khí',
+            desc: 'Từ một xưởng cơ khí bừa bộn, sau khi áp dụng chuẩn hóa Layout & thực hiện 5S đã trở nên gọn gàng, sạch sẽ, năng suất cao hơn.',
+            client: 'Gia công cơ khí',
+            highlight: 'Gọn gàng - Sạch sẽ - Năng suất',
+            link: '',
+            thumbnail: 'assets/images/case-study/thumb-cs-1792224796463.jpg',
+            pdfUrl: 'assets/docs/cs-file-cs-1792224796463.pdf',
+            fileUrl: 'assets/docs/cs-file-cs-1792224796463.pdf',
+            fileName: 'Báo cáo tổng kết dự án Chuẩn hóa Layout & thực hiện 5S tại CTY CNC Gia Nghĩa 2024.pdf',
+            fileSize: '36.86 MB',
+            fileFormat: 'PDF',
+            images: [],
+            status: 'published',
+            createdAt: '2026-10-17',
+            dateDisplay: '17 thg 10, 2026',
+            views: '1.2K lượt xem',
+            updatedAt: '2026-10-17',
+            thumbSource: 'custom'
         },
         {
             id: 'cs-kaizen-cost-pencil',
@@ -59,6 +108,29 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
             createdAt: '2026-10-08',
             dateDisplay: '08 thg 10, 2026',
             views: '1.8K lượt xem'
+        },
+        {
+            id: 'cs-productivity-pencil',
+            badge: 'CASE STUDY 01',
+            categories: ['Tăng năng suất', 'Lean & Cải tiến'],
+            category: 'Tăng năng suất, Lean & Cải tiến',
+            title: 'Tăng 42,3% năng suất tại nhà máy sản xuất bút chì',
+            desc: 'Từ 742 lên 1.056 UPH sau 4 năm cải tiến hệ thống vận hành với INVAMAX FOS.',
+            client: 'Nhà máy sản xuất bút chì',
+            highlight: 'Tăng 42,3% UPH',
+            link: '',
+            thumbnail: 'assets/images/resources/art-5steps.jpg',
+            pdfUrl: '',
+            fileUrl: '',
+            images: [
+                'assets/images/report_dashboard.png',
+                'assets/images/report_matrix.png',
+                'assets/images/report_wastes.png'
+            ],
+            status: 'published',
+            createdAt: '2026-10-12',
+            dateDisplay: '12 thg 10, 2026',
+            views: '2.4K lượt xem'
         },
         {
             id: 'cs-operating-model-pencil',
@@ -561,15 +633,21 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
 
         // 3. Only overwrite with remote JSON if there are no unsynced local modifications
         //    OR if we have no local data yet
-        if (!isLocalModified || !memoryList || memoryList.length === 0) {
+        const isLegacy3Items = memoryList && memoryList.length === 3 && memoryList.every(it =>
+            ['cs-productivity-pencil', 'cs-kaizen-cost-pencil', 'cs-operating-model-pencil'].includes(it.id)
+        );
+        if (!isLocalModified || !memoryList || memoryList.length === 0 || isLegacy3Items) {
             try {
                 const res = await fetch(remoteJsonUrl + '?t=' + Date.now());
                 if (res.ok) {
                     const remoteData = await res.json();
                     if (Array.isArray(remoteData) && remoteData.length > 0) {
-                        memoryList = remoteData.map(normalizeItem);
-                        await saveListToIDB(memoryList);
-                        saveToLocalStorageFallback(memoryList);
+                        // Không ghi đè nếu dữ liệu trên CDN đang cũ hơn (ít mục hơn) dữ liệu hiện tại
+                        if (!memoryList || remoteData.length >= memoryList.length) {
+                            memoryList = remoteData.map(normalizeItem);
+                            await saveListToIDB(memoryList);
+                            saveToLocalStorageFallback(memoryList);
+                        }
                     }
                 }
             } catch (e) {
@@ -577,8 +655,10 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
             }
         }
 
-        if (!memoryList || memoryList.length === 0) {
+        if (!memoryList || memoryList.length === 0 || (isLegacy3Items && DEFAULT_CASE_STUDIES.length > 3)) {
             memoryList = cloneList(DEFAULT_CASE_STUDIES);
+            await saveListToIDB(memoryList);
+            saveToLocalStorageFallback(memoryList);
         }
 
         // 4. Tự động kiểm tra và nâng cấp độ nét Ultra-HD 2000px cho các thumbnail PDF bị mờ
@@ -669,11 +749,8 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
             notify('Đang cập nhật danh sách Case Study lên GitHub...');
             const commitResult = await ghSync.commitJson('assets/data/case-studies.json', listToSync, 'Update case studies database from INVAMAX Admin portal');
 
-            // Save synced list and clear local modified flag since remote is now up-to-date
-            saveAll(listToSync, false);
-            try {
-                localStorage.removeItem(LOCAL_MODIFIED_KEY);
-            } catch (e) {}
+            // Giữ nguyên đánh dấu dữ liệu mới nhất trên trình duyệt để tránh bị CDN GitHub Pages (đang build trong 60s đầu) ghi đè ngược bằng bản cũ
+            saveAll(listToSync, true);
 
             return {
                 success: true,
