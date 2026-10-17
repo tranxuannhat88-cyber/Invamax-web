@@ -446,7 +446,8 @@
 }
 .cs-pdf-frame-wrap {
     width: 100%;
-    height: 520px;
+    height: 66vh;
+    min-height: 520px;
     background: #f8fafc;
     border: 1px solid #cbd5e1;
     border-radius: 12px;
@@ -867,7 +868,7 @@
     <!-- CỬA SỔ XEM CHI TIẾT CASE STUDY (DETAIL MODAL) -->
     <div id="csDetailModal" class="cs-detail-modal-backdrop" onclick="closeCaseStudyDetailModal(event)">
         <div class="cs-detail-modal-dialog" onclick="event.stopPropagation()">
-            <!-- Header: Title, Actions (Fullscreen, Download), Close X -->
+            <!-- Header: Title, Actions (Fullscreen), Close X -->
             <div class="cs-detail-modal-header">
                 <div class="cs-modal-header-left">
                     <span id="csModalBadge" class="cs-modal-cat-badge">LEAN &amp; CẢI TIẾN</span>
@@ -877,44 +878,12 @@
                     <a id="csModalFullscreenBtn" href="#" target="_blank" rel="noopener" class="cs-modal-tool-btn" title="Toàn màn hình / Mở sang tab mới">
                         <i data-lucide="external-link"></i> <span>Toàn màn hình</span>
                     </a>
-                    <a id="csModalDownloadBtn" href="#" download class="cs-modal-tool-btn primary" title="Tải tài liệu PDF về máy">
-                        <i data-lucide="download"></i> <span>Tải về máy</span>
-                    </a>
                     <button type="button" class="cs-detail-modal-close" onclick="closeCaseStudyDetailModal()" title="Đóng">&times;</button>
                 </div>
             </div>
 
             <!-- Body -->
             <div class="cs-detail-modal-body">
-                <!-- Overview Info Banner -->
-                <div class="cs-modal-overview">
-                    <h2 id="csModalTitle" class="cs-modal-title">Tiêu đề dự án</h2>
-                    <div class="cs-modal-meta-row">
-                        <div class="cs-modal-meta-item">
-                            <i data-lucide="calendar"></i>
-                            <span>Ngày cập nhật: <strong id="csModalDate">12 thg 10, 2026</strong></span>
-                        </div>
-                        <div class="cs-modal-meta-item" id="csModalClientWrap">
-                            <i data-lucide="building-2"></i>
-                            <span>Doanh nghiệp: <strong id="csModalClient">Nhà máy sản xuất</strong></span>
-                        </div>
-                        <div class="cs-modal-meta-item" id="csModalHighlightWrap">
-                            <i data-lucide="zap"></i>
-                            <span>Điểm nổi bật: <strong id="csModalHighlight" style="color: #ea580c;">Tăng 42,3% UPH</strong></span>
-                        </div>
-                    </div>
-                    <div id="csModalCategoriesWrap" class="cs-modal-tags">
-                        <!-- Category pills dynamically rendered -->
-                    </div>
-                    <p id="csModalDesc" class="cs-modal-desc">Nội dung tóm tắt...</p>
-                </div>
-
-                <!-- Content Switcher Tabs if both PDF and Images exist -->
-                <div id="csContentTabs" class="cs-content-tabs" style="display: none;">
-                    <button type="button" id="tabBtnPdf" class="cs-tab-btn active" onclick="switchCsTab('pdf')"><i data-lucide="file-text"></i> Tài liệu PDF dự án</button>
-                    <button type="button" id="tabBtnImages" class="cs-tab-btn" onclick="switchCsTab('images')"><i data-lucide="image"></i> Hình ảnh triển khai (<span id="csImagesCount">0</span>)</button>
-                </div>
-
                 <!-- Data File / PDF Viewer Section -->
                 <div id="csPdfSection" class="cs-viewer-section" style="display: none;">
                     <div class="cs-section-subhead">
@@ -1241,45 +1210,6 @@
             const headerTitleEl = document.getElementById('csModalHeaderTitle');
             if (headerTitleEl) headerTitleEl.innerText = cs.title;
 
-            // Overview banner
-            const titleEl = document.getElementById('csModalTitle');
-            if (titleEl) titleEl.innerText = cs.title;
-
-            const dateEl = document.getElementById('csModalDate');
-            if (dateEl) dateEl.innerText = cs.dateDisplay || cs.createdAt || '12 thg 10, 2026';
-
-            const clientEl = document.getElementById('csModalClient');
-            const clientWrap = document.getElementById('csModalClientWrap');
-            if (clientEl && clientWrap) {
-                if (cs.client) {
-                    clientEl.innerText = cs.client;
-                    clientWrap.style.display = 'inline-flex';
-                } else {
-                    clientWrap.style.display = 'none';
-                }
-            }
-
-            const hlEl = document.getElementById('csModalHighlight');
-            const hlWrap = document.getElementById('csModalHighlightWrap');
-            if (hlEl && hlWrap) {
-                if (cs.highlight) {
-                    hlEl.innerText = cs.highlight;
-                    hlWrap.style.display = 'inline-flex';
-                } else {
-                    hlWrap.style.display = 'none';
-                }
-            }
-
-            // Tags
-            const tagsWrap = document.getElementById('csModalCategoriesWrap');
-            if (tagsWrap) {
-                tagsWrap.innerHTML = cats.map(c => `<span class="cs-modal-tag-pill">${c}</span>`).join('');
-            }
-
-            // Description
-            const descEl = document.getElementById('csModalDesc');
-            if (descEl) descEl.innerText = cs.desc || '';
-
             // Handle Data File / PDF
             const pdfSection = document.getElementById('csPdfSection');
             const pdfFrameWrap = document.getElementById('csPdfFrameWrap');
@@ -1289,9 +1219,7 @@
             const dataFileCardMeta = document.getElementById('csDataFileCardMeta');
             const dataFileCardBtn = document.getElementById('csDataFileCardBtn');
             const dataFileHeading = document.getElementById('csDataFileHeading');
-            const downloadBtn = document.getElementById('csModalDownloadBtn');
             const fullscreenBtn = document.getElementById('csModalFullscreenBtn');
-            const tabBtnPdf = document.getElementById('tabBtnPdf');
 
             const rawFileUrl = cs.fileUrl || cs.pdfUrl || '';
             const hasFile = Boolean(rawFileUrl);
@@ -1303,13 +1231,8 @@
             const isPdf = hasFile && (fileFormat === 'PDF' || rawFileUrl.toLowerCase().endsWith('.pdf') || rawFileUrl.startsWith('data:application/pdf'));
 
             if (hasFile) {
-                downloadBtn.href = resolvedFileUrl;
-                downloadBtn.style.display = 'inline-flex';
-                if (cs.fileName) downloadBtn.setAttribute('download', cs.fileName);
-
                 if (isPdf) {
                     if (dataFileHeading) dataFileHeading.innerText = 'Tài liệu báo cáo Case Study (PDF)';
-                    if (tabBtnPdf) tabBtnPdf.innerHTML = '<i data-lucide="file-text"></i> Tài liệu PDF dự án';
                     if (pdfFrameWrap) pdfFrameWrap.style.display = 'block';
                     if (pdfIframe) pdfIframe.src = resolvedFileUrl;
                     if (dataFileDownloadCard) dataFileDownloadCard.style.display = 'none';
@@ -1319,7 +1242,6 @@
                     }
                 } else {
                     if (dataFileHeading) dataFileHeading.innerText = 'Tệp dữ liệu dự án đính kèm';
-                    if (tabBtnPdf) tabBtnPdf.innerHTML = `<i data-lucide="file-down"></i> Tệp dữ liệu (${fileFormat})`;
                     if (pdfFrameWrap) pdfFrameWrap.style.display = 'none';
                     if (pdfIframe) pdfIframe.src = 'about:blank';
                     if (dataFileDownloadCard) {
@@ -1335,7 +1257,6 @@
                 }
             } else {
                 if (pdfIframe) pdfIframe.src = 'about:blank';
-                if (downloadBtn) downloadBtn.style.display = 'none';
                 if (fullscreenBtn) fullscreenBtn.style.display = 'none';
                 if (dataFileDownloadCard) dataFileDownloadCard.style.display = 'none';
             }
@@ -1344,17 +1265,16 @@
             const imagesSection = document.getElementById('csImagesSection');
             const mainImg = document.getElementById('csGalleryMainImg');
             const thumbsWrap = document.getElementById('csGalleryThumbs');
-            const countEl = document.getElementById('csImagesCount');
 
-            const imgs = Array.isArray(cs.images) && cs.images.length > 0
-                ? cs.images
-                : (cs.thumbnail ? [cs.thumbnail] : []);
+            const explicitImgs = Array.isArray(cs.images) ? cs.images.filter(Boolean) : [];
+            const imgs = explicitImgs.length > 0
+                ? explicitImgs
+                : (!hasFile && cs.thumbnail ? [cs.thumbnail] : []);
 
             const hasImages = imgs.length > 0;
             if (hasImages) {
                 const firstImg = resolveAssetUrl(imgs[0]);
                 mainImg.src = firstImg;
-                if (countEl) countEl.innerText = imgs.length;
 
                 thumbsWrap.innerHTML = imgs.map((imgUrl, idx) => {
                     const resolved = resolveAssetUrl(imgUrl);
@@ -1369,29 +1289,15 @@
                     const fullImgUrl = (firstImg.startsWith('data:') && typeof INVAMAX_CASE_STUDY_STORE !== 'undefined')
                         ? INVAMAX_CASE_STUDY_STORE.base64ToBlobUrl(firstImg, 'image/jpeg')
                         : firstImg;
-                    fullscreenBtn.href = fullImgUrl;
-                    fullscreenBtn.style.display = 'inline-flex';
+                    if (fullscreenBtn) {
+                        fullscreenBtn.href = fullImgUrl;
+                        fullscreenBtn.style.display = 'inline-flex';
+                    }
                 }
             }
 
-            // Tabs Switcher (if both File and Images exist)
-            const tabsWrap = document.getElementById('csContentTabs');
-            if (hasFile && hasImages) {
-                tabsWrap.style.display = 'flex';
-                switchCsTab('pdf');
-            } else {
-                tabsWrap.style.display = 'none';
-                if (hasFile) {
-                    pdfSection.style.display = 'block';
-                    imagesSection.style.display = 'none';
-                } else if (hasImages) {
-                    pdfSection.style.display = 'none';
-                    imagesSection.style.display = 'block';
-                } else {
-                    pdfSection.style.display = 'none';
-                    imagesSection.style.display = 'none';
-                }
-            }
+            if (pdfSection) pdfSection.style.display = hasFile ? 'block' : 'none';
+            if (imagesSection) imagesSection.style.display = (!hasFile && hasImages) || (hasFile && explicitImgs.length > 0) ? 'block' : 'none';
 
             // Read full article link
             const readMoreBox = document.getElementById('csReadMoreBox');
