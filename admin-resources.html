@@ -1825,11 +1825,13 @@
                     }
                 }
 
-                // Tải dữ liệu mới nhất từ assets/data/case-studies.json
+                // Tải dữ liệu mới nhất từ assets/data/case-studies.json nếu local chưa có
                 if (typeof INVAMAX_CASE_STUDY_STORE !== 'undefined' && typeof INVAMAX_CASE_STUDY_STORE.fetchRemoteData === 'function') {
-                    const remoteCs = await INVAMAX_CASE_STUDY_STORE.fetchRemoteData();
-                    if (remoteCs) {
-                        renderCaseStudiesDashboard();
+                    if (!localStorage.getItem('invamax_case_studies_v1')) {
+                        const remoteCs = await INVAMAX_CASE_STUDY_STORE.fetchRemoteData();
+                        if (remoteCs) {
+                            renderCaseStudiesDashboard();
+                        }
                     }
                 }
 
@@ -2830,15 +2832,44 @@
         // ========================================================
         // CASE STUDY CONTROLLER FUNCTIONS
         // ========================================================
-        function handleCsThumbSelect(e) {
+        function compressImage(file, maxWidth = 1200, quality = 0.82) {
+            return new Promise((resolve) => {
+                if (!file || !file.type || !file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = e => resolve(e.target.result);
+                    reader.readAsDataURL(file);
+                    return;
+                }
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const img = new Image();
+                    img.onload = () => {
+                        let w = img.width;
+                        let h = img.height;
+                        if (w > maxWidth) {
+                            h = Math.round((h * maxWidth) / w);
+                            w = maxWidth;
+                        }
+                        const canvas = document.createElement('canvas');
+                        canvas.width = w;
+                        canvas.height = h;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, w, h);
+                        resolve(canvas.toDataURL('image/jpeg', quality));
+                    };
+                    img.onerror = () => resolve(e.target.result);
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        async function handleCsThumbSelect(e) {
             const file = e.target.files[0];
             if (!file) return;
-            const reader = new FileReader();
-            reader.onload = function(evt) {
-                currentCsThumbnail = evt.target.result;
-                displayCsThumb(currentCsThumbnail, file.name);
-            };
-            reader.readAsDataURL(file);
+            const dataUrl = await compressImage(file, 1200, 0.82);
+            currentCsThumbnail = dataUrl;
+            displayCsThumb(currentCsThumbnail, file.name);
         }
 
         function displayCsThumb(src, note = 'Đã chọn ảnh') {
@@ -2918,17 +2949,14 @@
         function clearCsPdf() { clearCsDataFile(); }
 
         // Project Gallery Images Handlers
-        function handleCsImagesSelect(e) {
+        async function handleCsImagesSelect(e) {
             const files = Array.from(e.target.files);
             if (!files || files.length === 0) return;
-            files.forEach(file => {
-                const reader = new FileReader();
-                reader.onload = function(evt) {
-                    currentCsImages.push(evt.target.result);
-                    renderCsImagesPreview();
-                };
-                reader.readAsDataURL(file);
-            });
+            for (const file of files) {
+                const dataUrl = await compressImage(file, 1200, 0.82);
+                currentCsImages.push(dataUrl);
+            }
+            renderCsImagesPreview();
         }
 
         function renderCsImagesPreview() {
@@ -3401,7 +3429,7 @@
             const updateData = {
                 title, badge, categories, category, client, highlight, desc, link: link || '', status
             };
-            if (thumbUrl) updateData.thumbnail = thumbUrl;
+            if (thumbUrl !== undefined) updateData.thumbnail = thumbUrl;
             if (pdfUrl !== undefined) {
                 updateData.pdfUrl = pdfUrl;
                 updateData.fileUrl = pdfUrl;
@@ -3409,11 +3437,19 @@
                     const fname = pdfUrl.split('/').pop().split('?')[0];
                     updateData.fileName = fname;
                     updateData.fileFormat = fname.split('.').pop().toUpperCase();
+                } else {
+                    updateData.fileName = '';
+                    updateData.fileFormat = '';
+                    updateData.fileSize = '';
                 }
             }
-            if (images.length > 0) updateData.images = images;
+            if (imagesStr !== undefined) updateData.images = images;
 
-            INVAMAX_CASE_STUDY_STORE.update(id, updateData);
+            const resUpdate = INVAMAX_CASE_STUDY_STORE.update(id, updateData);
+            if (!resUpdate) {
+                showToast('Không thể lưu cập nhật (Bộ nhớ trình duyệt đầy)!', 'error');
+                return;
+            }
 
             closeCsQuickEditModal();
             showToast('Đã cập nhật Case Study!', 'success');

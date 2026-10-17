@@ -16,9 +16,9 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
             desc: 'Từ 742 lên 1.056 UPH sau 4 năm cải tiến hệ thống vận hành với INVAMAX FOS.',
             client: 'Nhà máy sản xuất bút chì',
             highlight: 'Tăng 42,3% UPH',
-            link: 'case-study/productivity-improvement-pencil-factory.html',
+            link: '',
             thumbnail: 'assets/images/resources/art-5steps.jpg',
-            pdfUrl: 'assets/docs/IVM-Huong-dan-thuc-hien-5S-Tinh-gon-Hieu-qua.pdf',
+            pdfUrl: '',
             images: [
                 'assets/images/report_dashboard.png',
                 'assets/images/report_matrix.png',
@@ -150,9 +150,19 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
         } else if (updatedFields.category && typeof updatedFields.category === 'string') {
             updatedFields.categories = updatedFields.category.split(',').map(s => s.trim()).filter(Boolean);
         }
+        
+        // If fileUrl or pdfUrl is explicitly cleared
+        if (updatedFields.pdfUrl === '' || updatedFields.fileUrl === '') {
+            updatedFields.pdfUrl = '';
+            updatedFields.fileUrl = '';
+            updatedFields.fileName = '';
+            updatedFields.fileFormat = '';
+            updatedFields.fileSize = '';
+        }
+
         list[index] = { ...list[index], ...updatedFields, updatedAt: new Date().toISOString().split('T')[0] };
-        saveAll(list);
-        return list[index];
+        const saved = saveAll(list);
+        return saved ? list[index] : null;
     }
 
     function remove(id) {
@@ -167,7 +177,11 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
             if (res.ok) {
                 const data = await res.json();
                 if (Array.isArray(data) && data.length > 0) {
-                    saveAll(data);
+                    const localRaw = localStorage.getItem(STORAGE_KEY);
+                    // Chỉ nạp và ghi đè localStorage nếu chưa có dữ liệu local
+                    if (!localRaw) {
+                        saveAll(data);
+                    }
                     return data;
                 }
             }
