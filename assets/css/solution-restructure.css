@@ -1008,16 +1008,47 @@
 
 @media (max-width: 768px) {
     .ivrs .ivrs-section {
-        padding: 48px 0;
+        padding: 40px 0;
     }
     .ivrs .ivrs-reasons-grid {
         grid-template-columns: 1fr;
+        gap: 12px !important;
     }
     .ivrs .ivrs-why-grid {
         grid-template-columns: 1fr;
+        gap: 12px !important;
     }
     .ivrs .ivrs-values-grid {
         grid-template-columns: 1fr;
+        gap: 12px !important;
+    }
+    /* Compact Cards on Mobile */
+    .ivrs .ivrs-value-card {
+        padding: 14px 16px !important;
+    }
+    .ivrs .ivrs-value-card h4 {
+        font-size: 15px !important;
+        margin-bottom: 6px !important;
+    }
+    .ivrs .ivrs-value-card p {
+        font-size: 13px !important;
+        line-height: 1.5 !important;
+    }
+    .ivrs .ivrs-why-card {
+        padding: 13px 15px !important;
+    }
+    .ivrs .ivrs-why-card h4 {
+        margin-bottom: 5px !important;
+    }
+    .ivrs .ivrs-why-card p {
+        line-height: 1.5 !important;
+    }
+    .ivrs .ivrs-step-card {
+        padding: 14px 14px !important;
+    }
+    .ivrs .ivrs-reason-card {
+        padding: 12px 14px !important;
+        min-height: auto !important;
     }
     .ivrs .ivrs-hero-picture {
         left: 0;

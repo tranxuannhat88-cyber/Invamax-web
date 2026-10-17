@@ -34,9 +34,9 @@
     <!-- Global CSS -->
     
     <link rel="icon" type="image/jpeg" href="../assets/images/favicon.jpg">
-    <link rel="stylesheet" href="../assets/css/style.css?v=15">
-    <link rel="stylesheet" href="../assets/css/navbar.css?v=11">
-    <link rel="stylesheet" href="../assets/css/invamax-resources.css?v=8">
+    <link rel="stylesheet" href="../assets/css/style.css?v=16">
+    <link rel="stylesheet" href="../assets/css/navbar.css?v=12">
+    <link rel="stylesheet" href="../assets/css/invamax-resources.css?v=9">
     <style>
         /* 2-Column Event Cards Grid */
         .events-list {
@@ -180,16 +180,50 @@
             }
         }
 
-        @media (max-width: 580px) {
+        @media (max-width: 768px) {
+            .events-list {
+                gap: 16px;
+            }
             .event-card-horizontal {
                 grid-template-columns: 1fr;
+                border-radius: 12px;
             }
             .event-card-img-wrap {
-                min-height: 200px;
-                max-height: 240px;
+                height: 140px;
+                min-height: 140px;
+                max-height: 140px;
+            }
+            .event-card-badge {
+                top: 10px;
+                left: 10px;
+                font-size: 9.5px;
+                padding: 3px 8px;
             }
             .event-card-content {
-                padding: 18px;
+                padding: 12px 14px 14px;
+            }
+            .event-card-status {
+                font-size: 11px;
+                margin-bottom: 4px;
+            }
+            .event-card-title {
+                font-size: 1.05rem;
+                margin-bottom: 6px;
+                line-height: 1.35;
+            }
+            .event-card-excerpt {
+                font-size: 0.82rem;
+                line-height: 1.45;
+                margin-bottom: 8px;
+                -webkit-line-clamp: 2;
+            }
+            .event-card-footer {
+                padding-top: 8px;
+                margin-top: 4px;
+            }
+            .btn-event-detail {
+                padding: 6px 14px;
+                font-size: 11px;
             }
         }
     </style>

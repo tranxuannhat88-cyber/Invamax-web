@@ -719,7 +719,25 @@
     }
     .ifp-problems-grid {
         grid-template-columns: 1fr;
-        gap: 16px;
+        gap: 12px !important;
+    }
+    /* Compact Cards on Mobile */
+    .ifp-prob-card {
+        padding: 14px 16px !important;
+    }
+    .ifp-prob-card h3 {
+        font-size: 15px !important;
+        margin-bottom: 4px !important;
+    }
+    .ifp-prob-card p {
+        font-size: 13px !important;
+        line-height: 1.5 !important;
+    }
+    .ifp-sol-card {
+        padding: 16px 16px !important;
+    }
+    .ifp-diff-card {
+        padding: 14px 16px !important;
     }
     .ifp-sol-inner-split {
         grid-template-columns: 1fr;

@@ -1014,12 +1014,51 @@
     }
     .ivop-when-grid {
         grid-template-columns: 1fr;
+        gap: 12px !important;
     }
     .ivop-models-grid {
         grid-template-columns: 1fr;
+        gap: 12px !important;
     }
     .ivop-why-grid {
         grid-template-columns: 1fr;
+        gap: 12px !important;
+    }
+    /* Compact Cards on Mobile */
+    .ivop-when-card {
+        padding: 14px 16px !important;
+    }
+    .ivop-when-card h3 {
+        font-size: 15px !important;
+        margin-bottom: 4px !important;
+    }
+    .ivop-when-card p {
+        font-size: 13px !important;
+        line-height: 1.5 !important;
+    }
+    .ivop-card-head {
+        margin-bottom: 8px !important;
+        gap: 10px !important;
+    }
+    .ivop-card-icon {
+        width: 38px !important;
+        height: 38px !important;
+    }
+    .ivop-model-card {
+        padding: 16px 16px !important;
+    }
+    .ivop-model-card h3 {
+        font-size: 16px !important;
+        margin-bottom: 6px !important;
+    }
+    .ivop-why-card {
+        padding: 12px 14px !important;
+    }
+    .ivop-result-card {
+        padding: 14px 16px !important;
+    }
+    .ivop-diagram-card {
+        padding: 14px 16px !important;
     }
     .ivop-process-timeline {
         grid-template-columns: 1fr;

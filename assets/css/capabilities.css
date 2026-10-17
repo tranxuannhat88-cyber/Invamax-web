@@ -676,6 +676,33 @@
 @media (max-width: 768px) {
     .cap-cards-2x2 {
         grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    .cap-core-card {
+        padding: 14px 16px;
+        min-height: auto;
+    }
+    .cap-card-topbar {
+        margin-bottom: 8px;
+    }
+    .cap-card-main {
+        gap: 12px;
+        padding-right: 0;
+    }
+    .cap-card-icon {
+        width: 36px;
+        height: 36px;
+    }
+    .cap-card-info h3 {
+        font-size: 16px;
+        margin-bottom: 4px;
+    }
+    .cap-card-info p {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+    .cap-card-05 {
+        padding: 16px 16px;
     }
     .cap-card05-pillars {
         grid-template-columns: 1fr;

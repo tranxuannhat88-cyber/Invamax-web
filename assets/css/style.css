@@ -1563,6 +1563,30 @@ svg.lucide {
     .grid-6 {
         grid-template-columns: 1fr !important;
     }
+
+    /* Mobile card height and whitespace reduction */
+    .card, .intro-card {
+        padding: 16px 16px !important;
+        min-height: auto !important;
+    }
+    .card .card-icon, .intro-card .card-icon {
+        width: 42px !important;
+        height: 42px !important;
+        margin-bottom: 12px !important;
+    }
+    .card .card-icon svg, .intro-card .card-icon svg {
+        width: 22px !important;
+        height: 22px !important;
+    }
+    .card h3, .intro-card h3 {
+        font-size: 1.1rem !important;
+        margin-bottom: 8px !important;
+    }
+    .card p, .intro-card p {
+        font-size: 0.88rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 12px !important;
+    }
 }
 
 
