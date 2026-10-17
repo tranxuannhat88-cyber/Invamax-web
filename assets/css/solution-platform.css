@@ -154,17 +154,19 @@
 
 .ifp-hero-bg-media {
     position: absolute;
-    inset: 0 0 0 45%;
+    inset: 0;
     z-index: 1;
     cursor: zoom-in;
     overflow: hidden;
 }
 
 .ifp-hero-bg-img {
-    width: 100%;
+    position: absolute;
+    right: -165px;
+    top: 0;
     height: 100%;
-    object-fit: cover;
-    object-position: center right;
+    width: auto;
+    max-width: none;
     display: block;
     transition: transform 0.5s ease;
 }
@@ -178,10 +180,10 @@
     inset: 0;
     background: linear-gradient(90deg, 
         #061a1e 0%, 
-        rgba(6, 26, 30, 0.95) 15%, 
-        rgba(6, 26, 30, 0.60) 35%, 
-        rgba(6, 26, 30, 0.15) 60%, 
-        transparent 80%
+        #061a1e 32%, 
+        rgba(6, 26, 30, 0.92) 42%, 
+        rgba(6, 26, 30, 0.45) 58%, 
+        transparent 78%
     );
     pointer-events: none;
 }
@@ -673,8 +675,17 @@
         padding-top: 52px !important;
     }
     .ifp-hero-bg-media {
-        left: 0;
+        inset: 0 !important;
         opacity: 0.28;
+    }
+    .ifp-hero-bg-img {
+        position: relative !important;
+        right: auto !important;
+        top: auto !important;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center right !important;
     }
     .ifp-hero-main {
         min-height: 380px;
