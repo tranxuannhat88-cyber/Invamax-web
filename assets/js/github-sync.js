@@ -247,3 +247,7 @@ const INVAMAX_GITHUB_SYNC = (function () {
         slugifyFileName
     };
 })();
+
+if (typeof window !== 'undefined') {
+    window.INVAMAX_GITHUB_SYNC = INVAMAX_GITHUB_SYNC;
+}

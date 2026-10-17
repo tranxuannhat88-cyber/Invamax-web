@@ -2276,8 +2276,8 @@
         }
     </script>
     <script src="assets/js/toolkit-store.js?v=10"></script>
-    <script src="assets/js/github-sync.js?v=2"></script>
-    <script src="assets/js/case-study-store.js?v=6"></script>
+    <script src="assets/js/github-sync.js?v=3"></script>
+    <script src="assets/js/case-study-store.js?v=7"></script>
     <script>
         // State variables - Resources
         let currentFileBase64 = null;
@@ -2425,7 +2425,10 @@
             updateGitHubStatusUI();
 
             if (token) {
-                showToast('Đã lưu cài đặt GitHub Token thành công!', 'success');
+                showToast('Đã lưu cài đặt GitHub Token! Đang tự động đẩy dữ liệu lên Website...', 'success');
+                setTimeout(() => {
+                    syncCaseStudiesToGitHub(true);
+                }, 300);
             } else {
                 showToast('Đã xóa cài đặt GitHub Token.', 'info');
             }
@@ -2945,7 +2948,7 @@
                 renderDashboard();
 
                 if (saved) {
-                    if (window.INVAMAX_GITHUB_SYNC && INVAMAX_GITHUB_SYNC.isConfigured()) {
+                    if (typeof INVAMAX_GITHUB_SYNC !== 'undefined' && INVAMAX_GITHUB_SYNC.isConfigured()) {
                         showToast(`Đang tải tệp "${file.name}" lên GitHub & Website...`, 'info');
                         const ghResult = await INVAMAX_GITHUB_SYNC.syncToolkitsToGitHub(
                             INVAMAX_TOOLKIT_STORE.getAll(),
@@ -3788,7 +3791,7 @@
                 renderCaseStudiesDashboard();
                 renderCsReorderModalList();
                 showToast(direction === 'up' ? 'Đã chuyển Case Study lên trước!' : 'Đã chuyển Case Study ra sau!', 'success');
-                if (window.INVAMAX_GITHUB_SYNC && window.INVAMAX_GITHUB_SYNC.isConfigured()) {
+                if (typeof INVAMAX_GITHUB_SYNC !== 'undefined' && INVAMAX_GITHUB_SYNC.isConfigured()) {
                     syncCaseStudiesToGitHub(false);
                 }
             }
@@ -3802,7 +3805,7 @@
                 renderCaseStudiesDashboard();
                 renderCsReorderModalList();
                 showToast(`Đã chuyển Case Study đến vị trí #${idxNum + 1}!`, 'success');
-                if (window.INVAMAX_GITHUB_SYNC && window.INVAMAX_GITHUB_SYNC.isConfigured()) {
+                if (typeof INVAMAX_GITHUB_SYNC !== 'undefined' && INVAMAX_GITHUB_SYNC.isConfigured()) {
                     syncCaseStudiesToGitHub(false);
                 }
             }
@@ -4195,7 +4198,7 @@
             cancelEditCaseStudy();
 
             // Tự động đẩy lên GitHub nếu đã cấu hình Token
-            if (window.INVAMAX_GITHUB_SYNC && window.INVAMAX_GITHUB_SYNC.isConfigured()) {
+            if (typeof INVAMAX_GITHUB_SYNC !== 'undefined' && INVAMAX_GITHUB_SYNC.isConfigured()) {
                 syncCaseStudiesToGitHub(false);
             }
         }
@@ -4299,7 +4302,7 @@
                 showToast('Đã xóa Case Study!', 'success');
                 renderCaseStudiesDashboard();
 
-                if (window.INVAMAX_GITHUB_SYNC && window.INVAMAX_GITHUB_SYNC.isConfigured()) {
+                if (typeof INVAMAX_GITHUB_SYNC !== 'undefined' && INVAMAX_GITHUB_SYNC.isConfigured()) {
                     syncCaseStudiesToGitHub(false);
                 }
             }
@@ -4376,13 +4379,14 @@
             showToast('✓ Đã lưu cập nhật bài viết Case Study!', 'success');
             renderCaseStudiesDashboard();
 
-            if (window.INVAMAX_GITHUB_SYNC && window.INVAMAX_GITHUB_SYNC.isConfigured()) {
+            if (typeof INVAMAX_GITHUB_SYNC !== 'undefined' && INVAMAX_GITHUB_SYNC.isConfigured()) {
                 syncCaseStudiesToGitHub(false);
             }
         }
 
         async function syncCaseStudiesToGitHub(showNotify = false) {
-            if (!window.INVAMAX_GITHUB_SYNC || !window.INVAMAX_GITHUB_SYNC.isConfigured()) {
+            const ghSync = (typeof INVAMAX_GITHUB_SYNC !== 'undefined') ? INVAMAX_GITHUB_SYNC : window.INVAMAX_GITHUB_SYNC;
+            if (!ghSync || !ghSync.isConfigured()) {
                 if (showNotify) openGitHubSettingsModal();
                 return;
             }
@@ -4393,7 +4397,8 @@
             });
 
             if (res.success) {
-                showToast('Đã xuất bản Case Study lên GitHub thành công! Web sẽ cập nhật trong 30 giây.', 'success');
+                renderCaseStudiesDashboard();
+                showToast('✓ Đã xuất bản Case Study lên GitHub thành công! Web sẽ cập nhật trong 30 giây.', 'success');
             } else if (!res.skipped) {
                 showToast('Lỗi đồng bộ GitHub: ' + res.message, 'error');
             }

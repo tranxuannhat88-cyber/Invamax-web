@@ -613,7 +613,8 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
     }
 
     async function syncToGitHub(progressCallback = null) {
-        if (!window.INVAMAX_GITHUB_SYNC || !window.INVAMAX_GITHUB_SYNC.isConfigured()) {
+        const ghSync = (typeof INVAMAX_GITHUB_SYNC !== 'undefined') ? INVAMAX_GITHUB_SYNC : (typeof window !== 'undefined' ? window.INVAMAX_GITHUB_SYNC : null);
+        if (!ghSync || !ghSync.isConfigured()) {
             return {
                 success: false,
                 skipped: true,
@@ -637,7 +638,7 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
                     const safeName = `thumb-${item.id}.jpg`;
                     const path = `assets/images/case-study/${safeName}`;
                     notify(`Đang tải ảnh bìa Case Study "${item.title}" lên GitHub...`);
-                    await window.INVAMAX_GITHUB_SYNC.uploadDataUrlFile(path, item.thumbnail, `Upload case study thumb: ${safeName}`);
+                    await ghSync.uploadDataUrlFile(path, item.thumbnail, `Upload case study thumb: ${safeName}`);
                     item.thumbnail = path;
                 }
 
@@ -647,7 +648,7 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
                     const safeName = `cs-file-${item.id}.${ext}`;
                     const path = `assets/docs/${safeName}`;
                     notify(`Đang tải tệp dữ liệu Case Study "${item.title}" lên GitHub...`);
-                    await window.INVAMAX_GITHUB_SYNC.uploadDataUrlFile(path, fileData, `Upload case study file: ${safeName}`);
+                    await ghSync.uploadDataUrlFile(path, fileData, `Upload case study file: ${safeName}`);
                     item.fileUrl = path;
                     item.pdfUrl = path;
                 }
@@ -658,7 +659,7 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
                             const safeName = `cs-detail-${item.id}-${j + 1}.jpg`;
                             const path = `assets/images/case-study/${safeName}`;
                             notify(`Đang tải ảnh chi tiết ${j + 1} lên GitHub...`);
-                            await window.INVAMAX_GITHUB_SYNC.uploadDataUrlFile(path, item.images[j], `Upload case study detail image: ${safeName}`);
+                            await ghSync.uploadDataUrlFile(path, item.images[j], `Upload case study detail image: ${safeName}`);
                             item.images[j] = path;
                         }
                     }
@@ -666,7 +667,7 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
             }
 
             notify('Đang cập nhật danh sách Case Study lên GitHub...');
-            const commitResult = await window.INVAMAX_GITHUB_SYNC.commitJson('assets/data/case-studies.json', listToSync, 'Update case studies database from INVAMAX Admin portal');
+            const commitResult = await ghSync.commitJson('assets/data/case-studies.json', listToSync, 'Update case studies database from INVAMAX Admin portal');
 
             // Save synced list and clear local modified flag since remote is now up-to-date
             saveAll(listToSync, false);
@@ -753,3 +754,7 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
         autoUpgradePdfThumbnails
     };
 })();
+
+if (typeof window !== 'undefined') {
+    window.INVAMAX_CASE_STUDY_STORE = INVAMAX_CASE_STUDY_STORE;
+}
