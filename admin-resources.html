@@ -2275,9 +2275,9 @@
             pdfjsLib.GlobalWorkerOptions.workerSrc = 'assets/js/vendor/pdf.worker.min.js';
         }
     </script>
-    <script src="assets/js/toolkit-store.js?v=9"></script>
+    <script src="assets/js/toolkit-store.js?v=10"></script>
     <script src="assets/js/github-sync.js?v=2"></script>
-    <script src="assets/js/case-study-store.js?v=4"></script>
+    <script src="assets/js/case-study-store.js?v=5"></script>
     <script>
         // State variables - Resources
         let currentFileBase64 = null;
@@ -3382,11 +3382,14 @@
             });
         }
 
+        let currentCsThumbSource = null;
+
         async function handleCsThumbSelect(e) {
             const file = e.target.files[0];
             if (!file) return;
             const dataUrl = await compressImage(file, 1800, 0.92);
             currentCsThumbnail = dataUrl;
+            currentCsThumbSource = 'custom';
             displayCsThumb(currentCsThumbnail, file.name);
         }
 
@@ -3403,6 +3406,7 @@
 
         function clearCsThumb() {
             currentCsThumbnail = null;
+            currentCsThumbSource = null;
             const box = document.getElementById('csThumbPreviewBox');
             const input = document.getElementById('csThumbFileInput');
             const urlInput = document.getElementById('csThumbUrl');
@@ -3428,6 +3432,7 @@
             const hdThumb = await genFn(pdfData, 2000);
             if (hdThumb) {
                 currentCsThumbnail = hdThumb;
+                currentCsThumbSource = 'pdf-auto';
                 displayCsThumb(hdThumb, 'Đã làm nét Ultra-HD từ trang 1 PDF');
                 showToast('✓ Đã trích xuất ảnh bìa Ultra-HD sắc nét thành công!', 'success');
             } else {
@@ -3457,7 +3462,7 @@
                     currentCsFileData = evt.target.result;
                     displayCsDataFile(file.name, currentCsFileSize, ext);
 
-                    // Tự động tạo ảnh đại diện trang 1 ở độ phân giải Ultra-HD (2000px) nếu là PDF
+                    // Tự động tạo ảnh đại diện trang 1 ở độ phân giải Ultra-HD (2000px) nếu là PDF và chưa có ảnh đại diện riêng
                     const genFn = (typeof INVAMAX_CASE_STUDY_STORE !== 'undefined' && typeof INVAMAX_CASE_STUDY_STORE.generatePdfThumbnail === 'function')
                         ? INVAMAX_CASE_STUDY_STORE.generatePdfThumbnail
                         : (typeof INVAMAX_TOOLKIT_STORE !== 'undefined' ? INVAMAX_TOOLKIT_STORE.generatePdfThumbnail : null);
@@ -3466,6 +3471,7 @@
                             const thumb = await genFn(currentCsFileData, 2000);
                             if (thumb && !currentCsThumbnail) {
                                 currentCsThumbnail = thumb;
+                                currentCsThumbSource = 'pdf-auto';
                                 displayCsThumb(thumb, 'Tự động trích xuất Ultra-HD từ trang 1 PDF');
                             }
                         } catch (err) {}
@@ -4110,6 +4116,7 @@
             const images = Array.from(new Set([...currentCsImages, ...textImgs]));
 
             const thumb = currentCsThumbnail || thumbUrl || (images.length > 0 ? images[0] : 'assets/images/resources/art-5steps.jpg');
+            const thumbSource = currentCsThumbSource || (thumbUrl ? 'custom' : (currentCsThumbnail ? 'custom' : 'auto'));
             const dataFile = currentCsFileData || dataFileUrlInput || '';
             let fileName = currentCsFileName;
             let fileFormat = currentCsFileFormat;
@@ -4129,6 +4136,7 @@
                 desc,
                 link: link || '',
                 thumbnail: thumb,
+                thumbSource,
                 pdfUrl: dataFile,
                 fileUrl: dataFile,
                 fileName: fileName || '',
@@ -4186,6 +4194,7 @@
 
             if (cs.thumbnail) {
                 currentCsThumbnail = cs.thumbnail;
+                currentCsThumbSource = cs.thumbSource || 'custom';
                 displayCsThumb(cs.thumbnail, 'Ảnh hiện tại');
             } else {
                 clearCsThumb();
@@ -4221,6 +4230,7 @@
         function cancelEditCaseStudy() {
             currentEditingCsId = null;
             currentCsThumbnail = null;
+            currentCsThumbSource = null;
             currentCsFileData = null;
             currentCsFileName = null;
             currentCsFileSize = null;

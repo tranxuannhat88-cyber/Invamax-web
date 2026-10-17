@@ -275,10 +275,12 @@ const INVAMAX_TOOLKIT_STORE = (function () {
 
                 if (!isPdf) continue;
 
+                if (item.thumbSource === 'custom') continue;
+
                 let needsRegen = !item.thumbnail;
                 if (!needsRegen && item.thumbnail && item.thumbnail.startsWith('data:image/')) {
                     const currentW = await getImageNaturalWidth(item.thumbnail);
-                    if (currentW > 0 && currentW < 1200) {
+                    if (currentW > 0 && currentW <= 280) {
                         needsRegen = true;
                     }
                 }
@@ -293,6 +295,7 @@ const INVAMAX_TOOLKIT_STORE = (function () {
                         const thumb = await generatePdfThumbnail(resolvedSource, 2000);
                         if (thumb) {
                             item.thumbnail = thumb;
+                            item.thumbSource = 'pdf-auto';
                             hasChanged = true;
                         }
                     }

@@ -319,6 +319,7 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
             highlight: item.highlight || '',
             link: item.link !== undefined ? item.link : '',
             thumbnail: thumb,
+            thumbSource: item.thumbSource || (item.thumbnail ? 'custom' : 'auto'),
             pdfUrl: fileData,
             fileUrl: fileData,
             fileName: item.fileName || '',
@@ -467,7 +468,8 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
         }
     }
 
-    // Tự động nâng cấp các ảnh thumbnail PDF bị mờ (< 1200px) lên chuẩn Ultra-HD 2000px
+    // Tự động nâng cấp các ảnh thumbnail PDF tự động cũ (260px) lên chuẩn Ultra-HD 2000px
+    // Tuyệt đối KHÔNG ghi đè ảnh đại diện do người dùng tự tải lên (custom thumbnail)
     async function autoUpgradePdfThumbnails(onUpdated = null) {
         if (!Array.isArray(memoryList) || memoryList.length === 0) return false;
         let hasUpgraded = false;
@@ -475,6 +477,21 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
 
         for (let i = 0; i < memoryList.length; i++) {
             const item = memoryList[i];
+            const titleLower = (item.title || '').toLowerCase();
+
+            // Khôi phục lại ảnh xưởng thực tế cho dự án "Chuẩn hóa Layout & thực hiện 5S" nếu trước đó bị tự động ghi đè bởi trang 1 PDF
+            if (titleLower.includes('chuẩn hóa layout') && titleLower.includes('5s') && item.thumbSource !== 'custom') {
+                item.thumbnail = 'assets/images/case-study/layout-5s-gia-nghia.jpg';
+                item.thumbSource = 'custom';
+                hasUpgraded = true;
+                continue;
+            }
+
+            // Nếu người dùng đã chủ động thiết lập ảnh đại diện riêng trong Admin thì giữ nguyên 100%
+            if (item.thumbSource === 'custom') {
+                continue;
+            }
+
             const pdfSrc = item.fileUrl || item.pdfUrl || '';
             if (!pdfSrc) continue;
 
@@ -488,7 +505,8 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
                 needsUpgrade = true;
             } else if (item.thumbnail.startsWith('data:image/')) {
                 const w = await getImageNaturalWidth(item.thumbnail);
-                if (w > 0 && w < 1200) {
+                // Chỉ nâng cấp đúng các ảnh thumbnail PDF tự động thế hệ cũ (vốn cố định ở 260px), không chạm vào ảnh chụp thực tế (480px+)
+                if (w > 0 && w <= 280) {
                     needsUpgrade = true;
                 }
             }
@@ -501,6 +519,7 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
                 const hdThumb = await generatePdfThumbnail(resolvedPdf, 2000);
                 if (hdThumb) {
                     item.thumbnail = hdThumb;
+                    item.thumbSource = 'pdf-auto';
                     hasUpgraded = true;
                 }
             }
