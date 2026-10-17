@@ -259,6 +259,23 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
         }
     }
 
+    function move(id, direction) {
+        const list = getAll();
+        const idx = list.findIndex(item => item.id === id);
+        if (idx === -1) return null;
+        if (direction === 'up' && idx > 0) {
+            const temp = list[idx];
+            list[idx] = list[idx - 1];
+            list[idx - 1] = temp;
+        } else if (direction === 'down' && idx < list.length - 1) {
+            const temp = list[idx];
+            list[idx] = list[idx + 1];
+            list[idx + 1] = temp;
+        }
+        saveAll(list);
+        return list;
+    }
+
     return {
         getAll,
         getById,
@@ -266,6 +283,7 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
         add,
         update,
         remove,
+        move,
         fetchRemoteData,
         syncToGitHub,
         saveAll
