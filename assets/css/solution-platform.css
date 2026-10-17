@@ -34,7 +34,7 @@
     color: var(--ifp-text-dark);
     background: #ffffff;
     overflow-x: hidden;
-    padding-top: 52px; /* Fixed navbar height */
+    padding-top: 0;
     line-height: 1.6;
 }
 

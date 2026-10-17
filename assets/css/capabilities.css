@@ -19,7 +19,7 @@
     color: var(--cap-text-dark);
     background: var(--cap-light-bg);
     overflow-x: hidden;
-    padding-top: 52px; /* space for fixed navbar */
+    padding-top: 0;
 }
 
 .cap-page * {
