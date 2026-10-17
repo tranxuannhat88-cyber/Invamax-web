@@ -1106,6 +1106,18 @@
   }
 }
 
+@media (min-width: 992px) {
+  .nowrap-desktop {
+    white-space: nowrap !important;
+  }
+}
+
+@media (max-width: 991px) {
+  .nowrap-desktop {
+    white-space: normal !important;
+  }
+}
+
 @media (max-width: 768px) {
   .ivp3-section {
     padding: 44px 0;
@@ -1118,7 +1130,13 @@
   }
 
   .ivp3-pillars-diagram-wrap {
-    height: 380px;
+    height: auto;
+  }
+
+  .ivp3-pillars-diagram {
+    height: 360px;
+    width: 100%;
+    position: relative;
   }
 
   .ivp3-pillars-diagram .strategy {
@@ -1158,11 +1176,59 @@
   .ivp3-side-notes {
     position: static;
     width: 100%;
-    margin-top: 10px;
+    margin: 12px 0 0 0;
+    box-sizing: border-box;
+  }
+
+  .ivp3-side-notes.note-right-top {
+    border-left: 3px solid #ef6d1c;
+  }
+
+  .ivp3-side-notes.note-left-bottom {
+    border-left: 3px solid #10b981;
+  }
+
+  .ivp3-side-notes.note-right-bottom {
+    border-left: 3px solid #2563eb;
+  }
+
+  .ivp3-relation-cards {
+    margin-top: 28px;
   }
 
   .ivp3-relation-grid {
     grid-template-columns: 1fr;
+  }
+
+  .ivp3-closing {
+    padding: 44px 0;
+  }
+
+  .ivp3-closing-copy h2,
+  .ivp3-closing-copy h2 span {
+    font-size: 20px !important;
+    line-height: 1.35 !important;
+    white-space: normal !important;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .ivp3-closing-copy p {
+    font-size: 13.5px;
+    line-height: 1.6;
+    max-width: 100%;
+    margin-bottom: 20px;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .ivp3-closing-panel {
+    margin-top: 10px;
+    padding: 20px 18px;
+  }
+
+  .ivp3-closing-panel strong {
+    font-size: 18px !important;
   }
 
   .ivp3-growth-flow {

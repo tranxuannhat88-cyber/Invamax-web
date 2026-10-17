@@ -36,7 +36,7 @@
     <link rel="icon" type="image/jpeg" href="../assets/images/favicon.jpg">
     <link rel="stylesheet" href="../assets/css/style.css?v=16">
     <link rel="stylesheet" href="../assets/css/navbar.css?v=12">
-    <link rel="stylesheet" href="../assets/css/invamax-philosophy-v3.css?v=24">
+    <link rel="stylesheet" href="../assets/css/invamax-philosophy-v3.css?v=25">
     
     
     <style>
@@ -342,8 +342,8 @@
                 <div class="ivp3-copy-block">
                     <div class="ivp3-section-index"><span>03</span><b>TRIẾT LÝ INVAMAX</b></div>
                     <h2 style="color: #0f172a !important;">
-                        <span style="display: block; white-space: nowrap; color: #0f172a !important;">Triết lý <span style="color: #ef6d1c !important;">thuận tự nhiên</span></span>
-                        <span style="display: block; white-space: nowrap; color: #0f172a !important;">trong hệ thống sản xuất</span>
+                        <span class="nowrap-desktop" style="display: block; color: #0f172a !important;">Triết lý <span style="color: #ef6d1c !important;">thuận tự nhiên</span></span>
+                        <span class="nowrap-desktop" style="display: block; color: #0f172a !important;">trong hệ thống sản xuất</span>
                     </h2>
                     <p>Hiệu quả cao không đồng nghĩa với áp lực cao. INVAMAX theo đuổi triết lý Thuận tự nhiên: thiết kế hệ thống sản xuất phù hợp với quy luật vận hành thực tế, khả năng của con người và dòng chảy của công việc.</p>
                 </div>
@@ -384,8 +384,8 @@
             <div class="ivp3-shell ivp3-closing-grid">
                 <div class="ivp3-closing-copy">
                     <h2>
-                        <span style="display: block; white-space: nowrap; color: #ffffff !important;">Cùng INVAMAX xây dựng nhà máy hoạt động hiệu quả hơn,</span>
-                        <span style="display: block; white-space: nowrap; color: #ffffff !important;">con người làm việc bớt áp lực hơn.</span>
+                        <span class="nowrap-desktop" style="display: block; color: #ffffff !important;">Cùng INVAMAX xây dựng nhà máy hoạt động hiệu quả hơn,</span>
+                        <span class="nowrap-desktop" style="display: block; color: #ffffff !important;">con người làm việc bớt áp lực hơn.</span>
                     </h2>
                     <p>Mục tiêu của chúng tôi không phải là tư vấn quản trị sản xuất Lean. Chúng tôi đồng hành cùng doanh nghiệp để xây dựng chiến lược đúng, phát triển đội ngũ và thiết kế hệ thống vận hành hiệu quả, phù hợp với thực tế của từng nhà máy.</p>
                     <a class="ivp3-btn ivp3-btn-primary" href="#" onclick="openContactModal(); return false;">Liên hệ với INVAMAX <span style="margin-left: 4px;">→</span></a>
@@ -562,9 +562,23 @@
         </div>
     </div>
 
-    <script src="../assets/js/main.js"></script>
     <script>
-        lucide.createIcons();
+        window.addEventListener('DOMContentLoaded', () => {
+            const list = [];
+            document.querySelectorAll('*').forEach(el => {
+                const r = el.getBoundingClientRect();
+                if (r.right > 395 || r.width > 395) {
+                    list.push({
+                        tag: el.tagName,
+                        cls: (el.className || '').toString().slice(0, 50),
+                        id: el.id,
+                        right: Math.round(r.right),
+                        w: Math.round(r.width)
+                    });
+                }
+            });
+            document.title = 'WIDE: ' + JSON.stringify(list);
+        });
     </script>
 </body>
 </html>
