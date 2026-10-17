@@ -1446,7 +1446,7 @@ footer {
 }
 .footer-grid {
     display: grid !important;
-    grid-template-columns: 1.4fr 1fr 1fr 0.8fr 2fr !important;
+    grid-template-columns: 1.4fr 1.2fr 1.1fr 1.8fr !important;
     gap: 24px !important;
 }
 .footer-brand {
@@ -1472,7 +1472,7 @@ footer {
     color: #ffffff !important;
     font-weight: 600 !important;
 }
-.footer-grid a:not(.logo) {
+.footer-grid > div:not(.footer-brand) a:not(.social-links a) {
     display: block !important;
     font-size: 12px !important;
     line-height: 1.65 !important;
@@ -1480,8 +1480,56 @@ footer {
     margin-bottom: 8px !important;
     text-decoration: none !important;
 }
-.footer-grid a:not(.logo):hover {
+.footer-grid > div:not(.footer-brand) a:not(.social-links a):hover {
     color: var(--cap-orange) !important;
+}
+.footer-brand .social-links a,
+.footer-grid .social-links a,
+.social-links a {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    max-width: 44px !important;
+    max-height: 44px !important;
+    border-radius: 50% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    line-height: 1 !important;
+    box-sizing: border-box !important;
+    transition: all 0.3s ease !important;
+    text-decoration: none !important;
+    flex-shrink: 0 !important;
+    vertical-align: middle !important;
+}
+
+.footer-brand .social-links a svg,
+.footer-grid .social-links a svg,
+.social-links a svg {
+    display: block !important;
+    margin: auto !important;
+    width: 18px !important;
+    height: 18px !important;
+    flex-shrink: 0 !important;
+    vertical-align: middle !important;
+}
+
+.footer-brand .social-links a span,
+.footer-grid .social-links a span,
+.social-links a span {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: auto !important;
+    line-height: 1 !important;
+    text-align: center !important;
+    font-size: 11px !important;
+    font-weight: 800 !important;
+    font-family: 'Inter', sans-serif !important;
 }
 .footer-company-name {
     font-weight: 600 !important;
