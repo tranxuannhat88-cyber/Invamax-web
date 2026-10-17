@@ -1,47 +1,76 @@
 const pageLoadTime = Date.now();
-document.addEventListener('DOMContentLoaded', () => {
-    // Mobile menu toggle
-    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const navLinks = document.querySelector('.nav-links');
-    
-    if(mobileMenuBtn) {
-        mobileMenuBtn.addEventListener('click', () => {
-            if (navLinks.style.display === 'flex') {
-                navLinks.style.display = 'none';
-            } else {
-                navLinks.style.display = 'flex';
-                navLinks.style.flexDirection = 'column';
-                navLinks.style.position = 'absolute';
-                navLinks.style.top = '80px';
-                navLinks.style.left = '0';
-                navLinks.style.width = '100%';
-                navLinks.style.backgroundColor = 'var(--bg-card)';
-                navLinks.style.padding = '20px';
-                navLinks.style.borderBottom = '1px solid var(--border-color)';
-            }
-        });
-    }
 
-    // Mobile dropdown accordion
-    const dropdowns = document.querySelectorAll('.nav-dropdown');
-    dropdowns.forEach(dropdown => {
-        const title = dropdown.previousElementSibling;
-        if (title && title.classList.contains('nav-title')) {
-            title.addEventListener('click', (e) => {
-                if (window.innerWidth <= 768) {
+// Global robust mobile menu & navbar interaction
+function initGlobalMobileMenu() {
+    const mobileMenuBtns = document.querySelectorAll('.mobile-menu-btn, .mobile-toggle');
+    const navLinksElements = document.querySelectorAll('.nav-links, .site-header nav');
+
+    mobileMenuBtns.forEach(btn => {
+        if (btn.dataset.menuBound === 'true') return;
+        btn.dataset.menuBound = 'true';
+
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            navLinksElements.forEach(nl => {
+                nl.classList.toggle('active');
+                nl.classList.toggle('open');
+            });
+            btn.classList.toggle('active');
+            btn.classList.toggle('open');
+        });
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+        const isClickInside = Array.from(navLinksElements).some(nl => nl.contains(e.target)) ||
+                              Array.from(mobileMenuBtns).some(btn => btn.contains(e.target));
+        if (!isClickInside) {
+            navLinksElements.forEach(nl => {
+                nl.classList.remove('active');
+                nl.classList.remove('open');
+            });
+            mobileMenuBtns.forEach(btn => {
+                btn.classList.remove('active');
+                btn.classList.remove('open');
+            });
+        }
+    });
+
+    // Mobile dropdown accordion inside mobile menu
+    const dropdownTitles = document.querySelectorAll('.nav-item .nav-title');
+    dropdownTitles.forEach(title => {
+        if (title.dataset.dropdownBound === 'true') return;
+        title.dataset.dropdownBound = 'true';
+
+        title.addEventListener('click', (e) => {
+            if (window.innerWidth <= 980) {
+                const parentItem = title.closest('.nav-item');
+                const dropdown = parentItem ? parentItem.querySelector('.nav-dropdown') : null;
+                if (dropdown) {
                     e.preventDefault();
-                    // Toggle current
-                    dropdown.parentElement.classList.toggle('open');
-                    // Close others (optional)
+                    e.stopPropagation();
+                    parentItem.classList.toggle('open');
                     document.querySelectorAll('.nav-item').forEach(item => {
-                        if (item !== dropdown.parentElement) {
+                        if (item !== parentItem) {
                             item.classList.remove('open');
                         }
                     });
                 }
-            });
-        }
+            }
+        });
     });
+}
+
+// Run immediately & on DOMContentLoaded to guarantee attachment
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initGlobalMobileMenu);
+} else {
+    initGlobalMobileMenu();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    initGlobalMobileMenu();
 
 
     // Navbar scroll effect
