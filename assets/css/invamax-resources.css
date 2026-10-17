@@ -1142,7 +1142,9 @@ svg.res-feat-icon {
         padding-bottom: 16px;
     }
     .res-hero-bg-wrap {
-        width: 100%;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
         opacity: 0.15;
     }
     .res-hero-eyebrow {

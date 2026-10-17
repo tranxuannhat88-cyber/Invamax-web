@@ -201,6 +201,12 @@
     .navbar {
         z-index: 10000 !important;
     }
+    .navbar .container {
+        padding: 0 16px !important;
+    }
+    .navbar .logo {
+        font-size: 1.65rem !important;
+    }
     .nav-links {
         display: none !important;
         flex-direction: column !important;

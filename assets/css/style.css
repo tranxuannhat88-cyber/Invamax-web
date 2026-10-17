@@ -38,13 +38,14 @@ h1, h2, h3, h4, h5, h6, .section-heading, .section-heading-large {
     font-family: var(--iv-font-family);
 }
 
-body {
+html, body {
     font-family: var(--iv-font-family);
     background-color: var(--bg-dark);
     color: var(--text-light);
     line-height: 1.7;
     font-size: var(--iv-text-body-size);
     overflow-x: hidden;
+    max-width: 100vw;
 }
 
 h1 {
@@ -606,6 +607,12 @@ section[id], div[id] {
 @media (max-width: 980px) {
     .navbar {
         z-index: 10000 !important;
+    }
+    .navbar .container {
+        padding: 0 16px !important;
+    }
+    .navbar .logo {
+        font-size: 1.65rem !important;
     }
     .nav-links {
         display: none !important;
@@ -1596,11 +1603,32 @@ svg.lucide {
     text-align: center !important;
 }
 
-/* Footer grid balance - 4 columns */
-.footer-grid {
-    display: grid !important;
-    grid-template-columns: 1.4fr 1.2fr 1.1fr 1.8fr !important;
-    gap: 24px !important;
+/* Footer grid balance - responsive 4 columns on desktop, 2 on tablet, 1 on mobile */
+@media (min-width: 901px) {
+    .footer-grid {
+        display: grid !important;
+        grid-template-columns: 1.4fr 1.2fr 1.1fr 1.8fr !important;
+        gap: 24px !important;
+    }
+}
+@media (max-width: 900px) {
+    .footer-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 24px !important;
+    }
+}
+@media (max-width: 600px) {
+    .footer-grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+    .contact-item {
+        white-space: normal !important;
+        height: auto !important;
+        line-height: 1.4 !important;
+    }
 }
 
 /* Footer brand & Social links under brand */
