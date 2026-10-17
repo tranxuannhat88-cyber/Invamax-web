@@ -306,7 +306,7 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
         const createdAt = item.createdAt || new Date().toISOString().split('T')[0];
         const fileData = item.fileUrl || item.pdfUrl || '';
         const imgs = Array.isArray(item.images) ? item.images : (item.images ? [item.images] : []);
-        const thumb = item.thumbnail || (imgs.length > 0 ? imgs[0] : 'assets/images/resources/art-5steps.jpg');
+        const thumb = item.thumbnail !== undefined ? item.thumbnail : (imgs.length > 0 ? imgs[0] : '');
 
         const newItem = {
             id,
@@ -319,7 +319,7 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
             highlight: item.highlight || '',
             link: item.link !== undefined ? item.link : '',
             thumbnail: thumb,
-            thumbSource: item.thumbSource || (item.thumbnail ? 'custom' : 'auto'),
+            thumbSource: item.thumbSource || (thumb ? 'custom' : 'auto'),
             pdfUrl: fileData,
             fileUrl: fileData,
             fileName: item.fileName || '',
@@ -468,7 +468,7 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
         }
     }
 
-    // Tự động nâng cấp các ảnh thumbnail PDF tự động cũ (260px) lên chuẩn Ultra-HD 2000px
+    // Tự động nâng cấp các ảnh thumbnail PDF tự động cũ (260px) hoặc ảnh mặc định art-5steps.jpg bị gán nhầm lên chuẩn Ultra-HD 2000px
     // Tuyệt đối KHÔNG ghi đè ảnh đại diện do người dùng tự tải lên (custom thumbnail)
     async function autoUpgradePdfThumbnails(onUpdated = null) {
         if (!Array.isArray(memoryList) || memoryList.length === 0) return false;
@@ -487,8 +487,10 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
                 continue;
             }
 
-            // Nếu người dùng đã chủ động thiết lập ảnh đại diện riêng trong Admin thì giữ nguyên 100%
-            if (item.thumbSource === 'custom') {
+            const isStuckPlaceholder = item.thumbnail === 'assets/images/resources/art-5steps.jpg' && item.id !== 'cs-productivity-pencil';
+
+            // Nếu người dùng đã chủ động gỡ bỏ hoàn toàn hoặc thiết lập ảnh đại diện riêng trong Admin (không phải ảnh mặc định art-5steps.jpg bị gán tự động) thì giữ nguyên 100%
+            if ((item.thumbSource === 'custom' && !isStuckPlaceholder) || item.thumbSource === 'cleared') {
                 continue;
             }
 
@@ -501,7 +503,7 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
             if (!isPdf) continue;
 
             let needsUpgrade = false;
-            if (!item.thumbnail) {
+            if (!item.thumbnail || isStuckPlaceholder) {
                 needsUpgrade = true;
             } else if (item.thumbnail.startsWith('data:image/')) {
                 const w = await getImageNaturalWidth(item.thumbnail);

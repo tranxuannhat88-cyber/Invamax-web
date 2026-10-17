@@ -2277,7 +2277,7 @@
     </script>
     <script src="assets/js/toolkit-store.js?v=10"></script>
     <script src="assets/js/github-sync.js?v=2"></script>
-    <script src="assets/js/case-study-store.js?v=5"></script>
+    <script src="assets/js/case-study-store.js?v=6"></script>
     <script>
         // State variables - Resources
         let currentFileBase64 = null;
@@ -3405,8 +3405,9 @@
         }
 
         function clearCsThumb() {
-            currentCsThumbnail = null;
-            currentCsThumbSource = null;
+            const prevSource = currentCsThumbSource;
+            currentCsThumbnail = '';
+            currentCsThumbSource = prevSource === 'pdf-auto' ? 'cleared' : 'auto';
             const box = document.getElementById('csThumbPreviewBox');
             const input = document.getElementById('csThumbFileInput');
             const urlInput = document.getElementById('csThumbUrl');
@@ -4115,8 +4116,8 @@
             const textImgs = imagesInput ? imagesInput.split(',').map(s => s.trim()).filter(Boolean) : [];
             const images = Array.from(new Set([...currentCsImages, ...textImgs]));
 
-            const thumb = currentCsThumbnail || thumbUrl || (images.length > 0 ? images[0] : 'assets/images/resources/art-5steps.jpg');
-            const thumbSource = currentCsThumbSource || (thumbUrl ? 'custom' : (currentCsThumbnail ? 'custom' : 'auto'));
+            let thumb = currentCsThumbnail || thumbUrl || '';
+            let thumbSource = currentCsThumbSource || (thumbUrl ? 'custom' : (currentCsThumbnail ? 'custom' : 'auto'));
             const dataFile = currentCsFileData || dataFileUrlInput || '';
             let fileName = currentCsFileName;
             let fileFormat = currentCsFileFormat;
@@ -4124,6 +4125,35 @@
             if (!fileName && dataFileUrlInput) {
                 fileName = dataFileUrlInput.split('/').pop().split('?')[0];
                 fileFormat = fileName.split('.').pop().toUpperCase();
+            }
+
+            // Khi người dùng đã bấm "Gỡ ảnh" (thumb rỗng), tuyệt đối không tự chèn lại art-5steps.jpg
+            // Nếu có tệp PDF đính kèm (và không phải vừa gỡ chính ảnh PDF), tự động trích xuất trang 1 PDF sắc nét
+            if (!thumb) {
+                const isPdfData = dataFile && (
+                    dataFile.startsWith('data:application/pdf') ||
+                    dataFile.toLowerCase().endsWith('.pdf') ||
+                    (fileFormat || '').toUpperCase() === 'PDF'
+                );
+                if (isPdfData && thumbSource !== 'cleared') {
+                    const genFn = (typeof INVAMAX_CASE_STUDY_STORE !== 'undefined' && typeof INVAMAX_CASE_STUDY_STORE.generatePdfThumbnail === 'function')
+                        ? INVAMAX_CASE_STUDY_STORE.generatePdfThumbnail
+                        : (typeof INVAMAX_TOOLKIT_STORE !== 'undefined' ? INVAMAX_TOOLKIT_STORE.generatePdfThumbnail : null);
+                    if (genFn) {
+                        showToast('Đang tự động trích xuất ảnh bìa Ultra-HD từ trang 1 PDF...', 'info');
+                        try {
+                            const pdfThumb = await genFn(dataFile, 2000);
+                            if (pdfThumb) {
+                                thumb = pdfThumb;
+                                thumbSource = 'pdf-auto';
+                            }
+                        } catch (err) {}
+                    }
+                }
+                if (!thumb && images.length > 0) {
+                    thumb = images[0];
+                    thumbSource = thumbSource === 'cleared' ? 'cleared' : 'auto';
+                }
             }
 
             const caseData = {
@@ -4183,7 +4213,10 @@
             document.getElementById('csHighlight').value = cs.highlight || '';
             document.getElementById('csDesc').value = cs.desc || '';
             document.getElementById('csLink').value = cs.link || '';
-            document.getElementById('csThumbUrl').value = cs.thumbnail && !cs.thumbnail.startsWith('data:') ? cs.thumbnail : '';
+
+            const isStuckPlaceholder = cs.thumbnail === 'assets/images/resources/art-5steps.jpg' && cs.id !== 'cs-productivity-pencil';
+            const effectiveThumb = isStuckPlaceholder ? '' : (cs.thumbnail || '');
+            document.getElementById('csThumbUrl').value = effectiveThumb && !effectiveThumb.startsWith('data:') ? effectiveThumb : '';
             
             const fileUrl = cs.fileUrl || cs.pdfUrl || '';
             const dataFileUrlInput = document.getElementById('csDataFileUrl');
@@ -4192,10 +4225,11 @@
             }
             document.getElementById('csStatus').value = cs.status || 'published';
 
-            if (cs.thumbnail) {
-                currentCsThumbnail = cs.thumbnail;
+            if (effectiveThumb) {
+                currentCsThumbnail = effectiveThumb;
                 currentCsThumbSource = cs.thumbSource || 'custom';
-                displayCsThumb(cs.thumbnail, 'Ảnh hiện tại');
+                const noteText = cs.thumbSource === 'pdf-auto' ? 'Tự động trích xuất từ trang 1 PDF' : 'Ảnh hiện tại';
+                displayCsThumb(effectiveThumb, noteText);
             } else {
                 clearCsThumb();
             }
@@ -4303,7 +4337,7 @@
                 return;
             }
 
-            const thumb = modalCsThumbnail || thumbUrl || (modalCsImagesList.length > 0 ? modalCsImagesList[0] : 'assets/images/resources/art-5steps.jpg');
+            const thumb = modalCsThumbnail || thumbUrl || (modalCsImagesList.length > 0 ? modalCsImagesList[0] : '');
             const dataFile = modalCsFileData || pdfUrlInput || '';
             let fileName = modalCsFileName;
             let fileFormat = modalCsFileFormat;
