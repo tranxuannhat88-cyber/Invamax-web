@@ -29,7 +29,7 @@
     
     <!-- Global CSS -->
     <link rel="icon" type="image/jpeg" href="../../assets/images/favicon.jpg">
-    <link rel="stylesheet" href="../../assets/css/style.css?v=16">
+    <link rel="stylesheet" href="../../assets/css/style.css?v=17">
     <link rel="stylesheet" href="../../assets/css/navbar.css?v=12">
     <link rel="stylesheet" href="../../assets/css/invamax-event-cost.css?v=2">
     
@@ -116,7 +116,7 @@
                     <h1>TỐI ƯU<br><span>CHI PHÍ SẢN XUẤT</span></h1>
                     <p class="ive-hero-lead">Giảm lãng phí, nâng cao năng suất lao động và xây dựng nền tảng vận hành hiệu quả, bền vững cho nhà máy của bạn.</p>
                     <div class="ive-hero-actions">
-                        <a class="ive-btn ive-btn-primary" href="#dang-ky">Đăng ký trao đổi <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i></a>
+                        <a class="ive-btn ive-btn-primary" href="#" onclick="openContactModal(); return false;">Đăng ký trao đổi <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i></a>
                         <a class="ive-btn ive-btn-ghost" href="#cach-trien-khai">Xem cách triển khai</a>
                     </div>
                     <div class="ive-hero-note">
@@ -317,8 +317,8 @@
                 </div>
 
                 <div class="ive-form-card">
-                    <h3>Phiếu Đăng Ký Trao Đổi</h3>
-                    <p>Vui lòng điền thông tin bên dưới, chúng tôi sẽ phản hồi trong vòng 24 giờ làm việc.</p>
+                    <h3 style="color: #FF6900;">Đăng ký tư vấn</h3>
+                    <p>Vui lòng để lại thông tin, chuyên gia INVAMAX sẽ liên hệ lại với bạn.</p>
 
                     <form id="campaignLeadForm" onsubmit="submitCampaignForm(event)">
                         <!-- Anti-spam Honeypot -->
@@ -333,84 +333,75 @@
                                 <input type="text" name="hoTen" required placeholder="Nguyễn Văn A">
                             </div>
                             <div class="ive-field">
-                                <label>Số điện thoại <em>*</em></label>
-                                <input type="tel" name="soDienThoai" required placeholder="0988 123 456">
-                            </div>
-                        </div>
-
-                        <div class="ive-form-row">
-                            <div class="ive-field">
-                                <label>Email làm việc <em>*</em></label>
-                                <input type="email" name="email" required placeholder="name@company.com">
-                            </div>
-                            <div class="ive-field">
                                 <label>Chức danh <em>*</em></label>
-                                <input type="text" name="chucDanh" required placeholder="Giám đốc nhà máy / Quản đốc">
+                                <input type="text" name="chucDanh" required placeholder="Giám đốc / Trưởng phòng">
                             </div>
-                        </div>
-
-                        <div class="ive-field">
-                            <label>Tên doanh nghiệp / Nhà máy <em>*</em></label>
-                            <input type="text" name="tenNhaMay" required placeholder="Công ty TNHH Sản xuất XYZ">
                         </div>
 
                         <div class="ive-form-row">
                             <div class="ive-field">
-                                <label>Quy mô nhân sự</label>
-                                <select name="quyMo">
+                                <label>Số điện thoại <em>*</em></label>
+                                <input type="tel" name="soDienThoai" required placeholder="0988...">
+                            </div>
+                            <div class="ive-field">
+                                <label>Email <em>*</em></label>
+                                <input type="email" name="email" required placeholder="email@congty.com">
+                            </div>
+                        </div>
+
+                        <div class="ive-form-row">
+                            <div class="ive-field">
+                                <label>Tên nhà máy / Công ty <em>*</em></label>
+                                <input type="text" name="tenNhaMay" required placeholder="Công ty TNHH XYZ">
+                            </div>
+                            <div class="ive-field">
+                                <label>Địa chỉ nhà máy <em>*</em></label>
+                                <input type="text" name="diaChi" required placeholder="KCN abc, Tỉnh xyz...">
+                            </div>
+                        </div>
+
+                        <div class="ive-form-row">
+                            <div class="ive-field">
+                                <label>Lĩnh vực sản xuất <em>*</em></label>
+                                <select name="linhVuc" required>
+                                    <option value="">-- Chọn lĩnh vực --</option>
+                                    <option value="Gỗ / nội thất">Gỗ / nội thất</option>
+                                    <option value="Cơ khí / kim loại">Cơ khí / kim loại</option>
+                                    <option value="May mặc / da giày">May mặc / da giày</option>
+                                    <option value="Nhựa / cao su">Nhựa / cao su</option>
+                                    <option value="Thực phẩm / đồ uống">Thực phẩm / đồ uống</option>
+                                    <option value="Điện tử / điện lạnh">Điện tử / điện lạnh</option>
+                                    <option value="Vật liệu xây dựng">Vật liệu xây dựng</option>
+                                    <option value="Bao bì / in ấn">Bao bì / in ấn</option>
+                                    <option value="Khác">Khác</option>
+                                </select>
+                            </div>
+                            <div class="ive-field">
+                                <label>Quy mô nhân sự <em>*</em></label>
+                                <select name="quyMo" required>
                                     <option value="">-- Chọn quy mô --</option>
-                                    <option value="Dưới 30 người">Dưới 30 người</option>
-                                    <option value="30 ~ 50 người">30 ~ 50 người</option>
-                                    <option value="51 ~ 100 người">51 ~ 100 người</option>
+                                    <option value="Dưới 50 người">Dưới 50 người</option>
+                                    <option value="50 ~ 100 người">50 ~ 100 người</option>
                                     <option value="101 ~ 200 người">101 ~ 200 người</option>
                                     <option value="Trên 200 người">Trên 200 người</option>
                                 </select>
                             </div>
-                            <div class="ive-field">
-                                <label>Doanh thu ước tính (tỷ đồng/năm)</label>
-                                <input type="number" name="doanhThu" min="0" step="0.1" placeholder="Ví dụ: 50">
-                            </div>
                         </div>
 
                         <div class="ive-field">
-                            <label>Địa chỉ nhà máy</label>
-                            <input type="text" name="diaChi" placeholder="KCN Tiên Sơn, Bắc Ninh...">
+                            <label>Nội dung cần tư vấn <em>*</em></label>
+                            <textarea name="noiDung" rows="2" required placeholder="Mô tả sơ bộ về định hướng, vấn đề hiện tại của nhà máy..."></textarea>
                         </div>
-
-                        <fieldset class="ive-goals-box">
-                            <legend>Mục tiêu mong muốn (chọn một hoặc cả hai)</legend>
-                            <div class="ive-checkbox-group">
-                                <label class="ive-check-item">
-                                    <input type="checkbox" name="mucTieu" value="Giảm chi phí sản xuất" checked>
-                                    <span>Giảm chi phí sản xuất (5 – 20%)</span>
-                                </label>
-                                <label class="ive-check-item">
-                                    <input type="checkbox" name="mucTieu" value="Tăng năng suất lao động" checked>
-                                    <span>Tăng năng suất lao động (10 – 40%)</span>
-                                </label>
-                            </div>
-                        </fieldset>
-
-                        <div class="ive-field">
-                            <label>Vấn đề lớn nhất nhà máy đang gặp phải</label>
-                            <textarea name="noiDung" rows="3" placeholder="Chia sẻ ngắn gọn về tình trạng tồn kho, năng suất, tỷ lệ lỗi, tiến độ giao hàng..."></textarea>
-                        </div>
-
-                        <label class="ive-check-item ive-consent">
-                            <input type="checkbox" name="dongY" required checked>
-                            <span>Tôi đồng ý để INVAMAX liên hệ và trao đổi về chương trình.</span>
-                        </label>
 
                         <button type="submit" id="btnSubmitCampaign" class="ive-btn-submit">
-                            <i data-lucide="send" style="width: 18px; height: 18px;"></i> Gửi Đăng Ký Trao Đổi
+                            Gửi Yêu Cầu Tư Vấn &rarr;
                         </button>
-                        <p class="ive-privacy-note">Thông tin được bảo mật và chỉ sử dụng cho mục đích trao đổi hợp tác cùng INVAMAX.</p>
                     </form>
 
                     <div id="campaignSuccessBox" class="ive-success-card">
                         <i data-lucide="check-circle-2"></i>
-                        <h3>Gửi đăng ký thành công!</h3>
-                        <p>Cảm ơn Quý doanh nghiệp. Đội ngũ chuyên gia INVAMAX sẽ liên hệ lại qua số điện thoại hoặc email trong vòng 24 giờ.</p>
+                        <h3>Gửi thành công!</h3>
+                        <p>Cảm ơn bạn. Chuyên gia INVAMAX sẽ sớm liên hệ lại.</p>
                     </div>
                 </div>
             </div>
@@ -489,7 +480,100 @@
         </div>
     </footer>
 
-    <script src="../../assets/js/main.js"></script>
+        <!-- Contact Modal -->
+    <div id="contactModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" type="button" onclick="closeContactModal()" aria-label="Đóng">&times;</button>
+            <h2>Đăng ký tư vấn</h2>
+            <p>Vui lòng để lại thông tin, chuyên gia INVAMAX sẽ liên hệ lại với bạn.</p>
+            
+            <form id="leadForm" onsubmit="submitForm(event)">
+                <!-- Anti-spam Honeypot -->
+                <div style="opacity: 0; position: absolute; top: 0; left: 0; height: 0; width: 0; z-index: -1; overflow: hidden;">
+                    <label for="website_url">Website URL</label>
+                    <input type="text" id="website_url" name="website_url" tabindex="-1" autocomplete="off">
+                </div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Họ và tên *</label>
+                        <input type="text" name="hoTen" required placeholder="Nguyễn Văn A">
+                    </div>
+                    <div class="form-group">
+                        <label>Chức danh *</label>
+                        <input type="text" name="chucDanh" required placeholder="Giám đốc / Trưởng phòng">
+                    </div>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Số điện thoại *</label>
+                        <input type="tel" name="soDienThoai" required placeholder="0988...">
+                    </div>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" name="email" required placeholder="email@congty.com">
+                    </div>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Tên nhà máy / Công ty *</label>
+                        <input type="text" name="tenNhaMay" required placeholder="Công ty TNHH XYZ">
+                    </div>
+                    <div class="form-group">
+                        <label>Địa chỉ nhà máy *</label>
+                        <input type="text" name="diaChi" required placeholder="KCN abc, Tỉnh xyz...">
+                    </div>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Lĩnh vực sản xuất *</label>
+                        <select name="linhVuc" required>
+                            <option value="">-- Chọn lĩnh vực --</option>
+                            <option value="Gỗ / nội thất">Gỗ / nội thất</option>
+                            <option value="Cơ khí / kim loại">Cơ khí / kim loại</option>
+                            <option value="May mặc / da giày">May mặc / da giày</option>
+                            <option value="Nhựa / cao su">Nhựa / cao su</option>
+                            <option value="Thực phẩm / đồ uống">Thực phẩm / đồ uống</option>
+                            <option value="Điện tử / điện lạnh">Điện tử / điện lạnh</option>
+                            <option value="Vật liệu xây dựng">Vật liệu xây dựng</option>
+                            <option value="Bao bì / in ấn">Bao bì / in ấn</option>
+                            <option value="Khác">Khác</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Quy mô nhân sự *</label>
+                        <select name="quyMo" required>
+                            <option value="">-- Chọn quy mô --</option>
+                            <option value="Dưới 50 người">Dưới 50 người</option>
+                            <option value="50 ~ 100 người">50 ~ 100 người</option>
+                            <option value="101 ~ 200 người">101 ~ 200 người</option>
+                            <option value="Trên 200 người">Trên 200 người</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Nội dung cần tư vấn *</label>
+                    <textarea name="noiDung" rows="2" required placeholder="Mô tả sơ bộ về định hướng, vấn đề hiện tại của nhà máy..."></textarea>
+                </div>
+                
+                <button type="submit" id="btnSubmitForm" class="btn btn-orange">
+                    Gửi Yêu Cầu Tư Vấn &rarr;
+                </button>
+            </form>
+            
+            <div id="formSuccess" style="display: none; text-align: center; padding: 24px 0;">
+                <div style="color: #22c55e; font-size: 2.8rem; margin-bottom: 10px;">&#10004;</div>
+                <h3 style="color: #16a34a; font-size: 1.25rem; margin: 0;">Gửi thành công!</h3>
+                <p style="color: #475569; margin-top: 8px; font-size: 0.92rem;">Cảm ơn bạn. Chuyên gia INVAMAX sẽ sớm liên hệ lại.</p>
+                <button type="button" class="btn btn-outline" style="margin-top: 16px; color: #17251e; border-color: #cbd5e1;" onclick="closeContactModal()">Đóng cửa sổ</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../assets/js/main.js?v=5"></script>
     <script>
         lucide.createIcons();
 

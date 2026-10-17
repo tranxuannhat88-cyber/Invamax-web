@@ -28,7 +28,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/invamax-tokens.css">
-    <link rel="stylesheet" href="assets/css/homepage.css?v=6">
+    <link rel="stylesheet" href="assets/css/homepage.css?v=7">
     
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -339,12 +339,12 @@
         </div>
     </footer>
 
-    <!-- CONTACT MODAL -->
+        <!-- Contact Modal -->
     <div id="contactModal" class="modal-overlay">
         <div class="modal-content">
-            <button class="modal-close" onclick="closeContactModal()" aria-label="Đóng">&times;</button>
-            <h2 style="font-size: 1.5rem; color: var(--orange); margin-bottom: 8px; font-weight: 800;">Đăng ký tư vấn</h2>
-            <p style="color: #64748b; margin-bottom: 20px; font-size: 0.95rem;">Vui lòng để lại thông tin, chuyên gia INVAMAX sẽ liên hệ lại với bạn.</p>
+            <button class="modal-close" type="button" onclick="closeContactModal()" aria-label="Đóng">&times;</button>
+            <h2>Đăng ký tư vấn</h2>
+            <p>Vui lòng để lại thông tin, chuyên gia INVAMAX sẽ liên hệ lại với bạn.</p>
             
             <form id="leadForm" onsubmit="submitForm(event)">
                 <!-- Anti-spam Honeypot -->
@@ -374,14 +374,15 @@
                     </div>
                 </div>
                 
-                <div class="form-group">
-                    <label>Tên nhà máy / Công ty *</label>
-                    <input type="text" name="tenNhaMay" required placeholder="Công ty TNHH XYZ">
-                </div>
-                
-                <div class="form-group">
-                    <label>Địa chỉ nhà máy *</label>
-                    <input type="text" name="diaChi" required placeholder="KCN abc, Tỉnh xyz...">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Tên nhà máy / Công ty *</label>
+                        <input type="text" name="tenNhaMay" required placeholder="Công ty TNHH XYZ">
+                    </div>
+                    <div class="form-group">
+                        <label>Địa chỉ nhà máy *</label>
+                        <input type="text" name="diaChi" required placeholder="KCN abc, Tỉnh xyz...">
+                    </div>
                 </div>
                 
                 <div class="form-grid">
@@ -414,25 +415,25 @@
                 
                 <div class="form-group">
                     <label>Nội dung cần tư vấn *</label>
-                    <textarea name="noiDung" rows="3" required placeholder="Mô tả sơ bộ về định hướng, vấn đề hiện tại của nhà máy..."></textarea>
+                    <textarea name="noiDung" rows="2" required placeholder="Mô tả sơ bộ về định hướng, vấn đề hiện tại của nhà máy..."></textarea>
                 </div>
                 
-                <button type="submit" id="btnSubmitForm" class="btn btn-orange" style="width: 100%; margin-top: 10px; cursor: pointer;">
+                <button type="submit" id="btnSubmitForm" class="btn btn-orange">
                     Gửi Yêu Cầu Tư Vấn &rarr;
                 </button>
             </form>
             
-            <div id="formSuccess" style="display: none; text-align: center; padding: 30px 0;">
-                <div style="color: #22c55e; font-size: 3rem; margin-bottom: 15px;">&#10004;</div>
-                <h3 style="color: #16a34a; font-size: 1.3rem;">Gửi thành công!</h3>
-                <p style="color: #475569; margin-top: 10px;">Cảm ơn bạn. Chuyên gia INVAMAX sẽ sớm liên hệ lại.</p>
-                <button type="button" class="btn btn-outline" style="margin-top: 20px; color: #17251e; border-color: #cbd5e1;" onclick="closeContactModal()">Đóng cửa sổ</button>
+            <div id="formSuccess" style="display: none; text-align: center; padding: 24px 0;">
+                <div style="color: #22c55e; font-size: 2.8rem; margin-bottom: 10px;">&#10004;</div>
+                <h3 style="color: #16a34a; font-size: 1.25rem; margin: 0;">Gửi thành công!</h3>
+                <p style="color: #475569; margin-top: 8px; font-size: 0.92rem;">Cảm ơn bạn. Chuyên gia INVAMAX sẽ sớm liên hệ lại.</p>
+                <button type="button" class="btn btn-outline" style="margin-top: 16px; color: #17251e; border-color: #cbd5e1;" onclick="closeContactModal()">Đóng cửa sổ</button>
             </div>
         </div>
     </div>
 
     <!-- SCRIPTS -->
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/main.js?v=5"></script>
     <script>
         lucide.createIcons();
     </script>

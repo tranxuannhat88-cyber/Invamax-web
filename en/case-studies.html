@@ -31,7 +31,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/invamax-tokens.css">
-    <link rel="stylesheet" href="../assets/css/style.css?v=16">
+    <link rel="stylesheet" href="../assets/css/style.css?v=17">
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     
@@ -282,7 +282,100 @@
     </script>
     
 
-    <script src="../assets/js/main.js"></script>
+        <!-- Contact Modal -->
+    <div id="contactModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" type="button" onclick="closeContactModal()" aria-label="Close">&times;</button>
+            <h2>Request a Consultation</h2>
+            <p>Please leave your details and an INVAMAX expert will contact you shortly.</p>
+            
+            <form id="leadForm" onsubmit="submitForm(event)">
+                <!-- Anti-spam Honeypot -->
+                <div style="opacity: 0; position: absolute; top: 0; left: 0; height: 0; width: 0; z-index: -1; overflow: hidden;">
+                    <label for="website_url">Website URL</label>
+                    <input type="text" id="website_url" name="website_url" tabindex="-1" autocomplete="off">
+                </div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Full Name *</label>
+                        <input type="text" name="hoTen" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label>Job Title *</label>
+                        <input type="text" name="chucDanh" required placeholder="Director / Manager">
+                    </div>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Phone Number *</label>
+                        <input type="tel" name="soDienThoai" required placeholder="+84 988...">
+                    </div>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" name="email" required placeholder="email@company.com">
+                    </div>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Factory / Company Name *</label>
+                        <input type="text" name="tenNhaMay" required placeholder="XYZ Manufacturing Co., Ltd">
+                    </div>
+                    <div class="form-group">
+                        <label>Factory Address *</label>
+                        <input type="text" name="diaChi" required placeholder="Industrial Park, Province...">
+                    </div>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Manufacturing Sector *</label>
+                        <select name="linhVuc" required>
+                            <option value="">-- Select sector --</option>
+                            <option value="Gỗ / nội thất">Wood / Furniture</option>
+                            <option value="Cơ khí / kim loại">Mechanical / Metal</option>
+                            <option value="May mặc / da giày">Garment / Footwear</option>
+                            <option value="Nhựa / cao su">Plastics / Rubber</option>
+                            <option value="Thực phẩm / đồ uống">Food / Beverage</option>
+                            <option value="Điện tử / điện lạnh">Electronics / Refrigeration</option>
+                            <option value="Vật liệu xây dựng">Building Materials</option>
+                            <option value="Bao bì / in ấn">Packaging / Printing</option>
+                            <option value="Khác">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Company Size *</label>
+                        <select name="quyMo" required>
+                            <option value="">-- Select size --</option>
+                            <option value="Dưới 50 người">Under 50 employees</option>
+                            <option value="50 ~ 100 người">50 ~ 100 employees</option>
+                            <option value="101 ~ 200 người">101 ~ 200 employees</option>
+                            <option value="Trên 200 người">Over 200 employees</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Consultation Topic *</label>
+                    <textarea name="noiDung" rows="2" required placeholder="Briefly describe your factory's current challenges or goals..."></textarea>
+                </div>
+                
+                <button type="submit" id="btnSubmitForm" class="btn btn-orange">
+                    Submit Request &rarr;
+                </button>
+            </form>
+            
+            <div id="formSuccess" style="display: none; text-align: center; padding: 24px 0;">
+                <div style="color: #22c55e; font-size: 2.8rem; margin-bottom: 10px;">&#10004;</div>
+                <h3 style="color: #16a34a; font-size: 1.25rem; margin: 0;">Submitted Successfully!</h3>
+                <p style="color: #475569; margin-top: 8px; font-size: 0.92rem;">Thank you. An INVAMAX expert will contact you shortly.</p>
+                <button type="button" class="btn btn-outline" style="margin-top: 16px; color: #17251e; border-color: #cbd5e1;" onclick="closeContactModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/main.js?v=5"></script>
     <script>lucide.createIcons();</script>
 </body>
 </html>

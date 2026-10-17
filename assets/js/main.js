@@ -145,15 +145,394 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+// Unified Consultation Modal (Single-Screen Common Form across all pages)
+function getUnifiedModalContentHTML(isEn) {
+    if (isEn) {
+        return `
+        <div class="modal-content">
+            <button class="modal-close" type="button" onclick="closeContactModal()" aria-label="Close">&times;</button>
+            <h2>Request a Consultation</h2>
+            <p>Please leave your details and an INVAMAX expert will contact you shortly.</p>
+            
+            <form id="leadForm" onsubmit="submitForm(event)">
+                <div style="opacity: 0; position: absolute; top: 0; left: 0; height: 0; width: 0; z-index: -1; overflow: hidden;">
+                    <label for="website_url">Website URL</label>
+                    <input type="text" id="website_url" name="website_url" tabindex="-1" autocomplete="off">
+                </div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Full Name *</label>
+                        <input type="text" name="hoTen" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label>Job Title *</label>
+                        <input type="text" name="chucDanh" required placeholder="Director / Manager">
+                    </div>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Phone Number *</label>
+                        <input type="tel" name="soDienThoai" required placeholder="+84 988...">
+                    </div>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" name="email" required placeholder="email@company.com">
+                    </div>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Factory / Company Name *</label>
+                        <input type="text" name="tenNhaMay" required placeholder="XYZ Manufacturing Co., Ltd">
+                    </div>
+                    <div class="form-group">
+                        <label>Factory Address *</label>
+                        <input type="text" name="diaChi" required placeholder="Industrial Park, Province...">
+                    </div>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Manufacturing Sector *</label>
+                        <select name="linhVuc" required>
+                            <option value="">-- Select sector --</option>
+                            <option value="Gỗ / nội thất">Wood / Furniture</option>
+                            <option value="Cơ khí / kim loại">Mechanical / Metal</option>
+                            <option value="May mặc / da giày">Garment / Footwear</option>
+                            <option value="Nhựa / cao su">Plastics / Rubber</option>
+                            <option value="Thực phẩm / đồ uống">Food / Beverage</option>
+                            <option value="Điện tử / điện lạnh">Electronics / Refrigeration</option>
+                            <option value="Vật liệu xây dựng">Building Materials</option>
+                            <option value="Bao bì / in ấn">Packaging / Printing</option>
+                            <option value="Khác">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Company Size *</label>
+                        <select name="quyMo" required>
+                            <option value="">-- Select size --</option>
+                            <option value="Dưới 50 người">Under 50 employees</option>
+                            <option value="50 ~ 100 người">50 ~ 100 employees</option>
+                            <option value="101 ~ 200 người">101 ~ 200 employees</option>
+                            <option value="Trên 200 người">Over 200 employees</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Consultation Topic *</label>
+                    <textarea name="noiDung" rows="2" required placeholder="Briefly describe your factory's current challenges or goals..."></textarea>
+                </div>
+                
+                <button type="submit" id="btnSubmitForm" class="btn btn-orange">
+                    Submit Request &rarr;
+                </button>
+            </form>
+            
+            <div id="formSuccess" style="display: none; text-align: center; padding: 24px 0;">
+                <div style="color: #22c55e; font-size: 2.8rem; margin-bottom: 10px;">&#10004;</div>
+                <h3 style="color: #16a34a; font-size: 1.25rem; margin: 0;">Submitted Successfully!</h3>
+                <p style="color: #475569; margin-top: 8px; font-size: 0.92rem;">Thank you. An INVAMAX expert will contact you shortly.</p>
+                <button type="button" class="btn btn-outline" style="margin-top: 16px; color: #17251e; border-color: #cbd5e1;" onclick="closeContactModal()">Close</button>
+            </div>
+        </div>`;
+    }
+
+    return `
+        <div class="modal-content">
+            <button class="modal-close" type="button" onclick="closeContactModal()" aria-label="Đóng">&times;</button>
+            <h2>Đăng ký tư vấn</h2>
+            <p>Vui lòng để lại thông tin, chuyên gia INVAMAX sẽ liên hệ lại với bạn.</p>
+            
+            <form id="leadForm" onsubmit="submitForm(event)">
+                <div style="opacity: 0; position: absolute; top: 0; left: 0; height: 0; width: 0; z-index: -1; overflow: hidden;">
+                    <label for="website_url">Website URL</label>
+                    <input type="text" id="website_url" name="website_url" tabindex="-1" autocomplete="off">
+                </div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Họ và tên *</label>
+                        <input type="text" name="hoTen" required placeholder="Nguyễn Văn A">
+                    </div>
+                    <div class="form-group">
+                        <label>Chức danh *</label>
+                        <input type="text" name="chucDanh" required placeholder="Giám đốc / Trưởng phòng">
+                    </div>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Số điện thoại *</label>
+                        <input type="tel" name="soDienThoai" required placeholder="0988...">
+                    </div>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" name="email" required placeholder="email@congty.com">
+                    </div>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Tên nhà máy / Công ty *</label>
+                        <input type="text" name="tenNhaMay" required placeholder="Công ty TNHH XYZ">
+                    </div>
+                    <div class="form-group">
+                        <label>Địa chỉ nhà máy *</label>
+                        <input type="text" name="diaChi" required placeholder="KCN abc, Tỉnh xyz...">
+                    </div>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Lĩnh vực sản xuất *</label>
+                        <select name="linhVuc" required>
+                            <option value="">-- Chọn lĩnh vực --</option>
+                            <option value="Gỗ / nội thất">Gỗ / nội thất</option>
+                            <option value="Cơ khí / kim loại">Cơ khí / kim loại</option>
+                            <option value="May mặc / da giày">May mặc / da giày</option>
+                            <option value="Nhựa / cao su">Nhựa / cao su</option>
+                            <option value="Thực phẩm / đồ uống">Thực phẩm / đồ uống</option>
+                            <option value="Điện tử / điện lạnh">Điện tử / điện lạnh</option>
+                            <option value="Vật liệu xây dựng">Vật liệu xây dựng</option>
+                            <option value="Bao bì / in ấn">Bao bì / in ấn</option>
+                            <option value="Khác">Khác</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Quy mô nhân sự *</label>
+                        <select name="quyMo" required>
+                            <option value="">-- Chọn quy mô --</option>
+                            <option value="Dưới 50 người">Dưới 50 người</option>
+                            <option value="50 ~ 100 người">50 ~ 100 người</option>
+                            <option value="101 ~ 200 người">101 ~ 200 người</option>
+                            <option value="Trên 200 người">Trên 200 người</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Nội dung cần tư vấn *</label>
+                    <textarea name="noiDung" rows="2" required placeholder="Mô tả sơ bộ về định hướng, vấn đề hiện tại của nhà máy..."></textarea>
+                </div>
+                
+                <button type="submit" id="btnSubmitForm" class="btn btn-orange">
+                    Gửi Yêu Cầu Tư Vấn &rarr;
+                </button>
+            </form>
+            
+            <div id="formSuccess" style="display: none; text-align: center; padding: 24px 0;">
+                <div style="color: #22c55e; font-size: 2.8rem; margin-bottom: 10px;">&#10004;</div>
+                <h3 style="color: #16a34a; font-size: 1.25rem; margin: 0;">Gửi thành công!</h3>
+                <p style="color: #475569; margin-top: 8px; font-size: 0.92rem;">Cảm ơn bạn. Chuyên gia INVAMAX sẽ sớm liên hệ lại.</p>
+                <button type="button" class="btn btn-outline" style="margin-top: 16px; color: #17251e; border-color: #cbd5e1;" onclick="closeContactModal()">Đóng cửa sổ</button>
+            </div>
+        </div>`;
+}
+
+function injectUnifiedModalStyles() {
+    if (document.getElementById('invamax-unified-modal-styles')) return;
+    const style = document.createElement('style');
+    style.id = 'invamax-unified-modal-styles';
+    style.textContent = `
+        #contactModal.modal-overlay {
+            position: fixed !important;
+            top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important;
+            background: rgba(10, 25, 20, 0.78) !important;
+            backdrop-filter: blur(6px) !important;
+            -webkit-backdrop-filter: blur(6px) !important;
+            z-index: 9999 !important;
+            display: none;
+            align-items: center !important;
+            justify-content: center !important;
+            padding: 12px 16px !important;
+            box-sizing: border-box !important;
+            opacity: 0;
+            transition: opacity 0.25s ease;
+        }
+        #contactModal.modal-overlay.active {
+            display: flex !important;
+            opacity: 1 !important;
+        }
+        #contactModal .modal-content {
+            background: #ffffff !important;
+            width: 100% !important;
+            max-width: 600px !important;
+            margin: auto !important;
+            border-radius: 16px !important;
+            padding: 20px 24px !important;
+            position: relative !important;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35) !important;
+            color: #17251e !important;
+            box-sizing: border-box !important;
+            max-height: calc(100vh - 24px) !important;
+            overflow-y: auto !important;
+            transform: translateY(0) !important;
+        }
+        #contactModal .modal-close {
+            position: absolute !important;
+            top: 14px !important; right: 18px !important;
+            background: none !important; border: none !important;
+            font-size: 24px !important; color: #64748b !important;
+            cursor: pointer !important;
+            line-height: 1 !important;
+            font-weight: bold !important;
+            padding: 4px !important;
+        }
+        #contactModal .modal-close:hover { color: #0f172a !important; }
+        #contactModal .modal-content h2 {
+            font-size: 1.35rem !important;
+            color: #FF6900 !important;
+            margin: 0 0 4px 0 !important;
+            font-weight: 800 !important;
+            line-height: 1.25 !important;
+        }
+        #contactModal .modal-content > p {
+            color: #64748b !important;
+            margin: 0 0 12px 0 !important;
+            font-size: 0.88rem !important;
+            line-height: 1.4 !important;
+        }
+        #contactModal .form-grid {
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important;
+            gap: 0 14px !important;
+        }
+        #contactModal .form-group { margin-bottom: 10px !important; min-width: 0 !important; }
+        #contactModal .form-group label {
+            display: block !important;
+            font-weight: 600 !important;
+            margin-bottom: 4px !important;
+            color: #334155 !important;
+            font-size: 0.82rem !important;
+            line-height: 1.25 !important;
+        }
+        #contactModal .form-group input,
+        #contactModal .form-group textarea,
+        #contactModal .form-group select {
+            width: 100% !important;
+            min-width: 0 !important;
+            max-width: 100% !important;
+            padding: 8px 12px !important;
+            border: 1px solid #cbd5e1 !important;
+            border-radius: 8px !important;
+            font-family: inherit !important;
+            font-size: 0.88rem !important;
+            line-height: 1.35 !important;
+            color: #1e293b !important;
+            background: #ffffff !important;
+            box-sizing: border-box !important;
+            transition: border-color 0.2s !important;
+        }
+        #contactModal .form-group textarea {
+            min-height: 52px !important;
+            max-height: 76px !important;
+            resize: vertical !important;
+        }
+        #contactModal .form-group input:focus,
+        #contactModal .form-group textarea:focus,
+        #contactModal .form-group select:focus {
+            outline: none !important;
+            border-color: #FF6900 !important;
+        }
+        #contactModal #btnSubmitForm,
+        #contactModal button[type="submit"] {
+            width: 100% !important;
+            margin-top: 4px !important;
+            padding: 10px 20px !important;
+            height: 42px !important;
+            border-radius: 8px !important;
+            background-color: #FF6900 !important;
+            color: #ffffff !important;
+            border: none !important;
+            font-size: 0.95rem !important;
+            font-weight: 700 !important;
+            cursor: pointer !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 8px !important;
+            box-shadow: 0 4px 14px rgba(255, 105, 0, 0.35) !important;
+            transition: all 0.2s ease !important;
+        }
+        #contactModal #btnSubmitForm:hover,
+        #contactModal button[type="submit"]:hover {
+            background-color: #e05d00 !important;
+            transform: translateY(-1px) !important;
+        }
+        @media (max-width: 600px) {
+            #contactModal.modal-overlay { padding: 8px 10px !important; }
+            #contactModal .modal-content { padding: 16px !important; border-radius: 14px !important; max-height: calc(100vh - 16px) !important; }
+            #contactModal .modal-content h2 { font-size: 1.2rem !important; margin-bottom: 2px !important; }
+            #contactModal .modal-content > p { font-size: 0.8rem !important; margin-bottom: 10px !important; }
+            #contactModal .form-grid { grid-template-columns: 1fr 1fr !important; gap: 0 10px !important; }
+            #contactModal .form-group { margin-bottom: 8px !important; }
+            #contactModal .form-group label { font-size: 0.76rem !important; margin-bottom: 3px !important; }
+            #contactModal .form-group input,
+            #contactModal .form-group textarea,
+            #contactModal .form-group select { padding: 7px 10px !important; font-size: 0.82rem !important; }
+            #contactModal .form-group textarea { min-height: 46px !important; }
+            #contactModal #btnSubmitForm,
+            #contactModal button[type="submit"] { height: 38px !important; font-size: 0.88rem !important; }
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+function ensureUnifiedContactModal() {
+    injectUnifiedModalStyles();
+    const isEn = document.documentElement.lang === 'en' || window.location.pathname.includes('/en/');
+    let modal = document.getElementById('contactModal');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'contactModal';
+        modal.className = 'modal-overlay';
+        document.body.appendChild(modal);
+    }
+    if (modal.dataset.unifiedReady !== 'true') {
+        modal.className = 'modal-overlay';
+        modal.innerHTML = getUnifiedModalContentHTML(isEn);
+        modal.dataset.unifiedReady = 'true';
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeContactModal();
+        });
+    }
+    return modal;
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', ensureUnifiedContactModal);
+} else {
+    ensureUnifiedContactModal();
+}
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        const modal = document.getElementById('contactModal');
+        if (modal && modal.classList.contains('active')) {
+            closeContactModal();
+        }
+    }
+});
+
 // Modal Functions
 function openContactModal() {
-    document.getElementById('contactModal').classList.add('active');
+    const modal = ensureUnifiedContactModal();
+    modal.classList.add('active');
 }
 function closeContactModal() {
-    document.getElementById('contactModal').classList.remove('active');
-    document.getElementById('leadForm').style.display = 'block';
-    document.getElementById('formSuccess').style.display = 'none';
-    document.getElementById('leadForm').reset();
+    const modal = document.getElementById('contactModal');
+    if (!modal) return;
+    modal.classList.remove('active');
+    const leadForm = document.getElementById('leadForm');
+    const formSuccess = document.getElementById('formSuccess');
+    if (leadForm) {
+        leadForm.style.display = 'block';
+        leadForm.reset();
+    }
+    if (formSuccess) {
+        formSuccess.style.display = 'none';
+    }
 }
 
 // Thay URL Web App của Google Apps Script vào đây
@@ -168,7 +547,9 @@ async function submitForm(e) {
     
     const form = e.target;
     const btn = form.querySelector('button[type="submit"]');
+    const formSuccess = document.getElementById('formSuccess');
     const formData = new FormData(form);
+    const isEn = document.documentElement.lang === 'en' || window.location.pathname.includes('/en/');
     
     let data = { formType: 'contact' };
     formData.forEach((value, key) => data[key] = value);
@@ -178,14 +559,15 @@ async function submitForm(e) {
     
     if (data['website_url'] || timeToFill < 3000) {
         console.log('Spam bot detected. Aborting.');
-        // Fake success
-        alert('Gửi yêu cầu thành công! Chuyên gia của INVAMAX sẽ sớm liên hệ với bạn.');
         form.reset();
-        const modal = form.closest('.modal');
-        if(modal) modal.style.display = 'none';
-        
+        if (formSuccess && form.id === 'leadForm') {
+            form.style.display = 'none';
+            formSuccess.style.display = 'block';
+        } else {
+            closeContactModal();
+        }
         if (btn) {
-            btn.innerHTML = btn.dataset.originalText || 'Gửi yêu cầu';
+            btn.innerHTML = btn.dataset.originalText || (isEn ? 'Submit Request &rarr;' : 'Gửi Yêu Cầu Tư Vấn &rarr;');
             btn.disabled = false;
         }
         return;
@@ -195,7 +577,7 @@ async function submitForm(e) {
     
     if(btn) {
         btn.dataset.originalText = btn.innerHTML;
-        btn.innerHTML = 'Đang gửi...';
+        btn.innerHTML = isEn ? 'Submitting...' : 'Đang gửi...';
         btn.disabled = true;
     }
     
@@ -210,19 +592,23 @@ async function submitForm(e) {
         
         const result = await response.json();
         if (result.status === 'success') {
-            alert('Gửi yêu cầu thành công! Chuyên gia của INVAMAX sẽ sớm liên hệ với bạn.');
             form.reset();
-            const modal = form.closest('.modal');
-            if(modal) modal.style.display = 'none';
+            if (formSuccess && form.id === 'leadForm') {
+                form.style.display = 'none';
+                formSuccess.style.display = 'block';
+            } else {
+                alert(isEn ? 'Submitted successfully! An INVAMAX expert will contact you shortly.' : 'Gửi yêu cầu thành công! Chuyên gia của INVAMAX sẽ sớm liên hệ với bạn.');
+                closeContactModal();
+            }
         } else {
             throw new Error(result.message || "Lỗi không xác định");
         }
     } catch(err) {
-        alert("Lỗi: Không thể gửi thông tin. Vui lòng thử lại sau.");
+        alert(isEn ? "Error: Could not submit details. Please try again later." : "Lỗi: Không thể gửi thông tin. Vui lòng thử lại sau.");
         console.error(err);
     } finally {
         if(btn) {
-            btn.innerHTML = btn.dataset.originalText || 'Gửi yêu cầu';
+            btn.innerHTML = btn.dataset.originalText || (isEn ? 'Submit Request &rarr;' : 'Gửi Yêu Cầu Tư Vấn &rarr;');
             btn.disabled = false;
         }
     }
