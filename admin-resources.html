@@ -2243,7 +2243,7 @@
     </script>
     <script src="assets/js/toolkit-store.js?v=8"></script>
     <script src="assets/js/github-sync.js?v=2"></script>
-    <script src="assets/js/case-study-store.js?v=2"></script>
+    <script src="assets/js/case-study-store.js?v=3"></script>
     <script>
         // State variables - Resources
         let currentFileBase64 = null;
@@ -3705,17 +3705,123 @@
             }
         }
 
-        // Case Study Reordering Handlers (Thay đổi thứ tự bài viết)
+        // Case Study Reordering Handlers (Thay đổi thứ tự bài viết hiển thị trên web)
+        let draggedCsId = null;
+
         function moveCaseStudy(id, direction) {
             if (typeof INVAMAX_CASE_STUDY_STORE === 'undefined') return;
             const res = INVAMAX_CASE_STUDY_STORE.move(id, direction);
             if (res) {
                 renderCaseStudiesDashboard();
-                showToast(direction === 'up' ? 'Đã di chuyển bài viết lên trên!' : 'Đã di chuyển bài viết xuống dưới!', 'success');
+                renderCsReorderModalList();
+                showToast(direction === 'up' ? 'Đã chuyển Case Study lên trước!' : 'Đã chuyển Case Study ra sau!', 'success');
                 if (window.INVAMAX_GITHUB_SYNC && window.INVAMAX_GITHUB_SYNC.isConfigured()) {
                     syncCaseStudiesToGitHub(false);
                 }
             }
+        }
+
+        function moveCaseStudyToIndex(id, targetIndex) {
+            if (typeof INVAMAX_CASE_STUDY_STORE === 'undefined' || typeof INVAMAX_CASE_STUDY_STORE.moveToIndex !== 'function') return;
+            const idxNum = Number(targetIndex);
+            const res = INVAMAX_CASE_STUDY_STORE.moveToIndex(id, idxNum);
+            if (res) {
+                renderCaseStudiesDashboard();
+                renderCsReorderModalList();
+                showToast(`Đã chuyển Case Study đến vị trí #${idxNum + 1}!`, 'success');
+                if (window.INVAMAX_GITHUB_SYNC && window.INVAMAX_GITHUB_SYNC.isConfigured()) {
+                    syncCaseStudiesToGitHub(false);
+                }
+            }
+        }
+
+        function handleCsCardDragStart(e, id) {
+            draggedCsId = id;
+            if (e.dataTransfer) {
+                e.dataTransfer.effectAllowed = 'move';
+                e.dataTransfer.setData('text/plain', id);
+            }
+            if (e.currentTarget) e.currentTarget.classList.add('cs-Modern-dragging');
+        }
+
+        function handleCsCardDragOver(e) {
+            e.preventDefault();
+            if (e.dataTransfer) e.dataTransfer.dropEffect = 'move';
+            if (e.currentTarget) e.currentTarget.classList.add('drag-over');
+        }
+
+        function handleCsCardDragLeave(e) {
+            if (e.currentTarget) e.currentTarget.classList.remove('drag-over');
+        }
+
+        function handleCsCardDrop(e, targetId) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (e.currentTarget) e.currentTarget.classList.remove('drag-over');
+            const sourceId = draggedCsId || (e.dataTransfer ? e.dataTransfer.getData('text/plain') : null);
+            draggedCsId = null;
+            if (!sourceId || sourceId === targetId) return;
+            const items = INVAMAX_CASE_STUDY_STORE.getAll();
+            const targetIdx = items.findIndex(it => it.id === targetId);
+            if (targetIdx !== -1) {
+                moveCaseStudyToIndex(sourceId, targetIdx);
+            }
+        }
+
+        function handleCsCardDragEnd(e) {
+            draggedCsId = null;
+            if (e.currentTarget) e.currentTarget.classList.remove('cs-Modern-dragging');
+            document.querySelectorAll('.cs-modern-card.drag-over, .reorder-cs-item.drag-over').forEach(el => el.classList.remove('drag-over'));
+        }
+
+        function openCsReorderModal() {
+            renderCsReorderModalList();
+            const modal = document.getElementById('csReorderModal');
+            if (modal) modal.classList.add('show');
+        }
+
+        function closeCsReorderModal() {
+            const modal = document.getElementById('csReorderModal');
+            if (modal) modal.classList.remove('show');
+        }
+
+        function saveAndCloseCsReorderModal() {
+            closeCsReorderModal();
+            showToast('✓ Đã lưu thứ tự hiển thị Case Study trên website!', 'success');
+        }
+
+        function renderCsReorderModalList() {
+            const container = document.getElementById('csReorderListContainer');
+            if (!container || typeof INVAMAX_CASE_STUDY_STORE === 'undefined') return;
+            const items = INVAMAX_CASE_STUDY_STORE.getAll();
+            if (items.length === 0) {
+                container.innerHTML = '<p style="text-align:center;color:#64748b;padding:20px;">Chưa có Case Study nào.</p>';
+                return;
+            }
+            container.innerHTML = items.map((cs, idx) => {
+                const thumb = cs.thumbnail || 'assets/images/resources/art-5steps.jpg';
+                return `
+                    <div class="reorder-cs-item" draggable="true"
+                         ondragstart="handleCsCardDragStart(event, '${cs.id}')"
+                         ondragover="handleCsCardDragOver(event)"
+                         ondragleave="handleCsCardDragLeave(event)"
+                         ondrop="handleCsCardDrop(event, '${cs.id}')"
+                         ondragend="handleCsCardDragEnd(event)">
+                        <span style="color: #94a3b8; font-size: 16px; cursor: grab; user-select: none;" title="Kéo thả để đổi vị trí">⠿</span>
+                        <span style="background: #ff6900; color: #fff; font-size: 12px; font-weight: 800; padding: 4px 9px; border-radius: 6px; min-width: 34px; text-align: center;">#${idx + 1}</span>
+                        <img src="${thumb}" alt="" style="width: 54px; height: 40px; object-fit: cover; border-radius: 6px; border: 1px solid #e2e8f0; flex-shrink: 0;">
+                        <div style="flex: 1; min-width: 0;">
+                            <div style="font-size: 11px; font-weight: 800; color: #ea580c; text-transform: uppercase;">${escapeHTML(cs.badge || 'CASE STUDY')}</div>
+                            <div style="font-size: 13.5px; font-weight: 700; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${escapeHTML(cs.title)}</div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 4px; flex-shrink: 0;">
+                            <button type="button" class="btn-action" style="padding: 5px 8px; font-size: 11.5px;" ${idx === 0 ? 'disabled style="opacity:0.35;pointer-events:none;padding:5px 8px;font-size:11.5px;"' : ''} onclick="moveCaseStudyToIndex('${cs.id}', 0)" title="Đưa lên vị trí #1">Đầu</button>
+                            <button type="button" class="btn-action" style="padding: 5px 8px; font-size: 11.5px;" ${idx === 0 ? 'disabled style="opacity:0.35;pointer-events:none;padding:5px 8px;font-size:11.5px;"' : ''} onclick="moveCaseStudy('${cs.id}', 'up')" title="Lên 1 vị trí">▲ Lên</button>
+                            <button type="button" class="btn-action" style="padding: 5px 8px; font-size: 11.5px;" ${idx === items.length - 1 ? 'disabled style="opacity:0.35;pointer-events:none;padding:5px 8px;font-size:11.5px;"' : ''} onclick="moveCaseStudy('${cs.id}', 'down')" title="Xuống 1 vị trí">▼ Xuống</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
         }
 
         function renderCaseStudiesDashboard() {
@@ -3779,16 +3885,20 @@
 
             if (filtered.length === 0) {
                 container.innerHTML = `
-                    <div class="doc-list-empty">
+                    <div class="doc-list-empty" style="grid-column: 1 / -1; background: #ffffff; border: 1.5px dashed #cbd5e1; border-radius: 16px; padding: 48px 24px;">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <p>Chưa có Case Study nào phù hợp. Hãy thêm bài viết đầu tiên bên trái!</p>
+                        <p style="margin-bottom: 14px;">Chưa có Case Study nào phù hợp với bộ lọc hiện tại.</p>
+                        <button type="button" class="btn-add-cs-main" onclick="openAddCaseStudyModal()">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                            Thêm Case Study mới
+                        </button>
                     </div>
                 `;
                 return;
             }
 
-            container.innerHTML = filtered.map((cs, idx) => {
-                const isEditing = currentEditingCsId === cs.id;
+            container.innerHTML = filtered.map((cs) => {
+                const globalIdx = items.findIndex(it => it.id === cs.id);
                 let viewLink = cs.link || '';
                 const hasValidLink = viewLink && viewLink !== '#' && viewLink.trim() !== '';
                 if (hasValidLink && !viewLink.startsWith('http') && !viewLink.startsWith('/') && !viewLink.startsWith('vi/')) {
@@ -3799,92 +3909,62 @@
                 const cats = Array.isArray(cs.categories) && cs.categories.length > 0 
                     ? cs.categories 
                     : (cs.category ? cs.category.split(',').map(s => s.trim()).filter(Boolean) : ['Lean & Cải tiến']);
-                const catBadgesHtml = cats.map(cat => `<span class="cs-cat-badge">${escapeHTML(cat)}</span>`).join(' ');
+                const primaryCat = (cats[0] || 'LEAN & CẢI TIẾN').toUpperCase();
+                const thumb = cs.thumbnail || 'assets/images/resources/art-5steps.jpg';
+                const dateText = cs.dateDisplay || cs.createdAt || '12 thg 10, 2026';
+                const viewsText = cs.views || '2.4K lượt xem';
 
-                const fileAttached = cs.fileUrl || cs.pdfUrl || cs.fileName;
-                const fileFmt = (cs.fileFormat || (fileAttached && !fileAttached.startsWith('data:') ? fileAttached.split('.').pop().toUpperCase() : '') || 'FILE').toUpperCase();
+                const positionOptions = items.map((_, optIdx) => 
+                    `<option value="${optIdx}" ${optIdx === globalIdx ? 'selected' : ''}>Vị trí #${optIdx + 1}</option>`
+                ).join('');
 
                 return `
-                    <div class="doc-item-card ${isEditing ? 'is-editing' : ''}">
-                        <div class="doc-card-main">
-                            <div class="doc-preview-thumb">
-                                ${cs.thumbnail ? `<img src="${cs.thumbnail}" alt="${escapeHTML(cs.title)}">` : `
-                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="var(--admin-orange)" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                `}
-                            </div>
-                            <div class="doc-card-content">
-                                <div class="doc-card-header">
-                                    <h4 style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px;">
-                                        <!-- Thứ tự & Nút thay đổi thứ tự bài viết -->
-                                        <div style="display: inline-flex; align-items: center; gap: 3px; margin-right: 4px; background: #f1f5f9; padding: 2px 5px; border-radius: 6px; border: 1px solid #e2e8f0;">
-                                            <span style="background: #0f172a; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 6px; border-radius: 4px; letter-spacing: 0.5px;">#${idx + 1}</span>
-                                            <button type="button" class="btn-action" style="padding: 2px 6px; font-size: 11px; line-height: 1; ${idx === 0 ? 'opacity: 0.3; pointer-events: none;' : ''}" title="Chuyển lên trên" onclick="moveCaseStudy('${cs.id}', 'up')">▲</button>
-                                            <button type="button" class="btn-action" style="padding: 2px 6px; font-size: 11px; line-height: 1; ${idx === filtered.length - 1 ? 'opacity: 0.3; pointer-events: none;' : ''}" title="Chuyển xuống dưới" onclick="moveCaseStudy('${cs.id}', 'down')">▼</button>
-                                        </div>
-                                        <span class="cs-card-badge">${escapeHTML(cs.badge || 'CASE STUDY')}</span>
-                                        ${catBadgesHtml}
-                                        <span class="doc-card-title">${escapeHTML(cs.title)}</span>
-                                        ${isEditing ? '<span class="doc-badge-editing">ĐANG CHỈNH SỬA</span>' : ''}
-                                    </h4>
-                                </div>
-                                <p class="doc-card-desc">${escapeHTML(cs.desc || '')}</p>
-                                <div class="doc-card-meta">
-                                    ${cs.client ? `
-                                        <span class="meta-item">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M9 8h1"/><path d="M9 12h1"/><path d="M9 16h1"/><path d="M14 8h1"/><path d="M14 12h1"/><path d="M14 16h1"/><path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"/></svg>
-                                            ${escapeHTML(cs.client)}
-                                        </span>
-                                    ` : ''}
-                                    ${cs.highlight ? `
-                                        <span class="cs-highlight-pill">
-                                            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                                            ${escapeHTML(cs.highlight)}
-                                        </span>
-                                    ` : ''}
-                                    ${fileAttached ? `
-                                        <span class="meta-item" style="color: #ea580c; font-weight: 700;">
-                                            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                                            Đính kèm [${escapeHTML(fileFmt)}]: ${escapeHTML(cs.fileName || 'Tệp dữ liệu')}
-                                        </span>
-                                    ` : ''}
-                                    ${(cs.images && cs.images.length > 0) ? `
-                                        <span class="meta-item" style="color: #0284c7; font-weight: 700;">
-                                            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-                                            ${cs.images.length} ảnh chi tiết
-                                        </span>
-                                    ` : ''}
-                                    <span class="meta-item">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                                        ${cs.createdAt || '2026-10-10'}
-                                    </span>
-                                </div>
+                    <div class="cs-modern-card"
+                         draggable="true"
+                         ondragstart="handleCsCardDragStart(event, '${cs.id}')"
+                         ondragover="handleCsCardDragOver(event)"
+                         ondragleave="handleCsCardDragLeave(event)"
+                         ondrop="handleCsCardDrop(event, '${cs.id}')"
+                         ondragend="handleCsCardDragEnd(event)"
+                         onclick="window.open('${previewOnWebLink}', '_blank')"
+                         title="Bấm để xem trên trang web, hoặc kéo thả để đổi thứ tự">
+                        <div class="cs-thumb-wrap">
+                            <img src="${thumb}" alt="${escapeHTML(cs.title)}" class="cs-thumb-img" loading="lazy">
+                            <span class="cs-web-cat-badge">${escapeHTML(primaryCat)}</span>
+                            ${cs.status === 'draft' ? '<span class="cs-draft-badge">BẢN NHÁP (TẠM ẨN)</span>' : ''}
+
+                            <!-- Thanh điều khiển sắp xếp thứ tự hiển thị trên web -->
+                            <div class="cs-order-overlay" onclick="event.stopPropagation()">
+                                <button type="button" class="cs-order-btn" ${globalIdx <= 0 ? 'disabled' : ''} onclick="event.stopPropagation(); moveCaseStudy('${cs.id}', 'up')" title="Chuyển lên trước (sang trái)">◀</button>
+                                <select class="cs-order-select" onclick="event.stopPropagation()" onchange="event.stopPropagation(); moveCaseStudyToIndex('${cs.id}', this.value)" title="Chọn thứ tự hiển thị trên web">
+                                    ${positionOptions}
+                                </select>
+                                <button type="button" class="cs-order-btn" ${globalIdx >= items.length - 1 ? 'disabled' : ''} onclick="event.stopPropagation(); moveCaseStudy('${cs.id}', 'down')" title="Chuyển ra sau (sang phải)">▶</button>
                             </div>
                         </div>
-
-                        <div class="doc-card-footer">
-                            <div class="doc-file-status">
-                                <span class="file-badge ${cs.status === 'draft' ? 'file-badge-warning' : 'file-badge-success'}">
-                                    ${cs.status === 'draft' ? 'Bản nháp (Tạm ẩn)' : 'Đã xuất bản (Đang hiển thị trên web)'}
+                        <div class="cs-body">
+                            <h3 class="cs-title">${escapeHTML(cs.title)}</h3>
+                            <p class="cs-desc">${escapeHTML(cs.desc || '')}</p>
+                        </div>
+                        <div class="cs-divider"></div>
+                        <div class="cs-footer">
+                            <div class="cs-meta-left">
+                                <span class="cs-meta-item">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                                    ${escapeHTML(dateText)}
+                                </span>
+                                <span class="cs-meta-item">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                                    ${escapeHTML(viewsText)}
                                 </span>
                             </div>
-
-                            <div class="doc-card-actions">
-                                <!-- Nút Xem bài viết / Xem trên web -->
-                                <a href="${previewOnWebLink}" target="_blank" rel="noopener" class="btn-action btn-action-preview" title="Xem bài viết Case Study trên web">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                                    ${hasValidLink ? 'Xem bài viết' : 'Xem trên web'}
-                                </a>
-
-                                <!-- Nút Sửa (Gộp Sửa nhanh & Sửa chi tiết thành 1 nút Sửa toàn bộ) -->
-                                <button type="button" class="btn-action btn-action-edit" title="Chỉnh sửa toàn bộ bài viết Case Study" onclick="openCaseStudyEditModal('${cs.id}')">
+                            <div class="cs-card-admin-actions" onclick="event.stopPropagation()">
+                                <button type="button" class="btn-cs-card-edit" onclick="event.stopPropagation(); openCaseStudyEditModal('${cs.id}')" title="Chỉnh sửa Case Study này">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4L16.5 3.5z"/></svg>
                                     Sửa
                                 </button>
-
-                                <!-- Nút Xóa -->
-                                <button type="button" class="btn-action btn-action-delete" title="Xóa Case Study" onclick="deleteCaseStudy('${cs.id}', '${escapeHTML(cs.title)}')">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
-                                    Xóa
+                                <button type="button" class="btn-cs-card-delete" onclick="event.stopPropagation(); deleteCaseStudy('${cs.id}', '${escapeHTML(cs.title)}')" title="Xóa Case Study">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
                                 </button>
                             </div>
                         </div>
@@ -3895,7 +3975,7 @@
 
         function setCsFilter(filter, btn) {
             currentCsFilter = filter;
-            const pills = document.querySelectorAll('#csFilterPills .btn-action');
+            const pills = document.querySelectorAll('#csFilterPills .res-pill-btn, #csFilterPills .btn-action');
             pills.forEach(p => p.classList.remove('active'));
             if (btn) btn.classList.add('active');
             renderCaseStudiesDashboard();
@@ -3903,6 +3983,20 @@
 
         function filterCaseStudiesList() {
             renderCaseStudiesDashboard();
+        }
+
+        function openAddCaseStudyModal() {
+            cancelEditCaseStudy();
+            const modal = document.getElementById('csFormModal');
+            if (modal) modal.classList.add('show');
+            setTimeout(() => {
+                document.getElementById('csTitle')?.focus();
+            }, 100);
+        }
+
+        function closeCsFormModal() {
+            const modal = document.getElementById('csFormModal');
+            if (modal) modal.classList.remove('show');
         }
 
         async function handleSaveCaseStudy(e) {
@@ -3969,7 +4063,7 @@
 
             // Reset filtro về 'all' để bài viết mới luôn hiển thị ngay đầu danh sách
             currentCsFilter = 'all';
-            const pills = document.querySelectorAll('#csFilterPills .btn-action');
+            const pills = document.querySelectorAll('#csFilterPills .res-pill-btn, #csFilterPills .btn-action');
             pills.forEach((p, idx) => p.classList.toggle('active', idx === 0));
             const searchBox = document.getElementById('csSearchInput');
             if (searchBox) searchBox.value = '';
@@ -3982,6 +4076,7 @@
                 showToast(`✓ Đã thêm Case Study "${title}" thành công!`, 'success');
             }
 
+            closeCsFormModal();
             cancelEditCaseStudy();
 
             // Tự động đẩy lên GitHub nếu đã cấu hình Token
@@ -3996,7 +4091,7 @@
 
             currentEditingCsId = id;
             document.getElementById('csDocId').value = cs.id;
-            document.getElementById('csTitle').value = cs.title;
+            document.getElementById('csTitle').value = cs.title || '';
             document.getElementById('csBadge').value = cs.badge || '';
             setSelectedCsCategoriesInForm(cs.categories || cs.category);
             document.getElementById('csClient').value = cs.client || '';
@@ -4035,14 +4130,14 @@
             renderCsImagesPreview();
 
             document.getElementById('csEditBanner').classList.add('show');
-            document.getElementById('btnCsCancel').style.display = 'block';
             document.getElementById('btnCsSubmitText').innerText = 'Cập nhật Case Study';
             document.getElementById('csFormPanelTitle').innerHTML = `
-                <svg viewBox="0 0 24 24" fill="none" stroke="var(--admin-orange)" stroke-width="2.2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-                <span>Chỉnh sửa: ${escapeHTML(cs.title.substring(0, 30))}...</span>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--admin-orange)" stroke-width="2.2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                <span>Chỉnh sửa Case Study</span>
             `;
 
-            document.getElementById('csFormPanel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            const modal = document.getElementById('csFormModal');
+            if (modal) modal.classList.add('show');
             renderCaseStudiesDashboard();
         }
 
@@ -4065,10 +4160,9 @@
             clearCsDataFile();
             clearCsImages();
             document.getElementById('csEditBanner').classList.remove('show');
-            document.getElementById('btnCsCancel').style.display = 'none';
             document.getElementById('btnCsSubmitText').innerText = 'Lưu Case Study';
             document.getElementById('csFormPanelTitle').innerHTML = `
-                <svg viewBox="0 0 24 24" fill="none" stroke="var(--admin-orange)" stroke-width="2.2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--admin-orange)" stroke-width="2.2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
                 <span>Thêm Case Study mới</span>
             `;
             renderCaseStudiesDashboard();
@@ -4077,7 +4171,10 @@
         function deleteCaseStudy(id, title) {
             if (confirm(`Bạn có chắc chắn muốn xóa Case Study:\n"${title}"?\n\nThao tác này sẽ gỡ bài viết khỏi danh sách.`)) {
                 INVAMAX_CASE_STUDY_STORE.remove(id);
-                if (currentEditingCsId === id) cancelEditCaseStudy();
+                if (currentEditingCsId === id) {
+                    closeCsFormModal();
+                    cancelEditCaseStudy();
+                }
                 showToast('Đã xóa Case Study!', 'success');
                 renderCaseStudiesDashboard();
 
@@ -4088,55 +4185,13 @@
         }
 
         function openCaseStudyEditModal(id) {
-            const cs = INVAMAX_CASE_STUDY_STORE.getById(id);
-            if (!cs) return;
-
-            document.getElementById('modalCsId').value = cs.id;
-            document.getElementById('modalCsTitle').value = cs.title || '';
-            document.getElementById('modalCsBadge').value = cs.badge || '';
-            setSelectedCsCategoriesInModal(cs.categories || cs.category);
-            document.getElementById('modalCsClient').value = cs.client || '';
-            document.getElementById('modalCsHighlight').value = cs.highlight || '';
-            document.getElementById('modalCsDesc').value = cs.desc || '';
-            document.getElementById('modalCsLink').value = cs.link || '';
-            
-            // Thumbnail
-            modalCsThumbnail = cs.thumbnail || '';
-            const thumbUrlInput = document.getElementById('modalCsThumbUrl');
-            if (thumbUrlInput) thumbUrlInput.value = (cs.thumbnail && !cs.thumbnail.startsWith('data:')) ? cs.thumbnail : '';
-            if (cs.thumbnail) {
-                displayModalCsThumb(cs.thumbnail, 'Ảnh hiện tại');
-            } else {
-                clearModalCsThumb();
-            }
-
-            // Images gallery & reordering
-            modalCsImagesList = Array.isArray(cs.images) ? [...cs.images] : (cs.images ? [cs.images] : []);
-            const imagesInput = document.getElementById('modalCsImagesInput');
-            if (imagesInput) imagesInput.value = '';
-            renderModalCsImagesGrid();
-
-            // Data File / PDF
-            const fileUrl = cs.fileUrl || cs.pdfUrl || '';
-            modalCsFileData = fileUrl;
-            modalCsFileName = cs.fileName || (fileUrl ? fileUrl.split('/').pop().split('?')[0] : '');
-            modalCsFileSize = cs.fileSize || '';
-            modalCsFileFormat = cs.fileFormat || (modalCsFileName ? modalCsFileName.split('.').pop().toUpperCase() : '');
-            const pdfUrlInput = document.getElementById('modalCsPdfUrl');
-            if (pdfUrlInput) pdfUrlInput.value = (fileUrl && !fileUrl.startsWith('data:')) ? fileUrl : '';
-            if (fileUrl) {
-                displayModalCsDataFile(modalCsFileName, modalCsFileSize, modalCsFileFormat);
-            } else {
-                clearModalCsDataFile();
-            }
-
-            document.getElementById('modalCsStatus').value = cs.status || 'published';
-            document.getElementById('csQuickEditModal').classList.add('show');
+            startEditCaseStudy(id);
         }
         const openCaseStudyQuickModal = openCaseStudyEditModal;
 
         function closeCsQuickEditModal() {
-            document.getElementById('csQuickEditModal').classList.remove('show');
+            closeCsFormModal();
+            document.getElementById('csQuickEditModal')?.classList.remove('show');
         }
 
         function handleSaveCsModalEdit(e) {
