@@ -216,9 +216,8 @@
   background-position: center right;
   background-size: cover;
   background-repeat: no-repeat;
-  padding-top: 135px !important;
-  padding-bottom: 50px;
-  min-height: 540px;
+  padding-top: 52px !important;
+  padding-bottom: 0 !important;
   overflow: hidden;
 }
 
@@ -242,12 +241,13 @@
   grid-template-columns: minmax(0, 50%) minmax(0, 50%);
   align-items: center;
   gap: 24px;
-  min-height: 440px;
+  min-height: 420px;
 }
 
 .ivp3-hero-copy {
   color: #fff;
   z-index: 2;
+  padding: 36px 0 32px;
 }
 
 .ivp3-hero-copy h1 {
@@ -1112,8 +1112,9 @@
   }
 
   .ivp3-hero {
-    padding-top: 85px !important;
+    padding-top: 52px !important;
     padding-bottom: 36px;
+    min-height: auto !important;
   }
 
   .ivp3-pillars-diagram-wrap {

@@ -71,8 +71,8 @@
         linear-gradient(90deg, rgba(6, 22, 23, 0.96) 0%, rgba(7, 27, 28, 0.92) 45%, rgba(8, 30, 31, 0.78) 75%, rgba(6, 22, 23, 0.88) 100%),
         url('../capabilities/hero.jpg') right center / cover no-repeat;
     color: #ffffff;
-    padding: 58px 0 64px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 52px 0 0 !important;
+    box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.08);
     overflow: hidden;
 }
 
@@ -83,31 +83,32 @@
     gap: 36px;
     align-items: center;
     z-index: 2;
+    min-height: 420px;
 }
 
 .cap-hero-copy h1 {
-    font-size: clamp(34px, 3.8vw, 52px);
+    font-size: clamp(34px, 3.8vw, 48px);
     font-weight: 800;
     line-height: 1.14;
     letter-spacing: -0.025em;
     color: #ffffff !important;
-    margin: 0 0 18px;
+    margin: 0 0 14px;
 }
 
 .cap-hero-lead {
-    font-size: 16.5px;
+    font-size: 16px;
     font-weight: 600;
-    line-height: 1.55;
+    line-height: 1.5;
     color: #f1f5f9;
-    margin: 0 0 16px;
+    margin: 0 0 12px;
 }
 
 .cap-hero-desc {
-    font-size: 14px;
-    line-height: 1.68;
+    font-size: 13.5px;
+    line-height: 1.62;
     color: #94a3b8;
     max-width: 530px;
-    margin: 0 0 28px;
+    margin: 0 0 20px;
 }
 
 .cap-btn-orange {
@@ -170,13 +171,15 @@
     line-height: 1.45;
     color: #cbd5e1;
     text-transform: uppercase;
-    margin-bottom: 18px;
+    margin-bottom: 10px;
 }
 
 .cycle-diagram {
     position: relative;
     width: 430px;
     height: 360px;
+    transform: scale(0.95);
+    transform-origin: center center;
 }
 
 .cycle-svg-lines {
@@ -1399,7 +1402,11 @@
 }
 
 @media (max-width: 960px) {
+    .cap-hero {
+        padding: 52px 0 40px !important;
+    }
     .cap-hero-inner {
+        min-height: auto !important;
         grid-template-columns: 1fr;
     }
     .cap-cards-2x2 {
