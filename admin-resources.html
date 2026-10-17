@@ -1195,7 +1195,7 @@
             font-weight: 800 !important;
             color: #0f172a !important;
             line-height: 1.4 !important;
-            margin-bottom: 12px !important;
+            margin-bottom: 10px !important;
             text-align: left !important;
             display: -webkit-box;
             -webkit-line-clamp: 2;
@@ -1205,6 +1205,39 @@
         }
         .cs-modern-card:hover .cs-title {
             color: #ff6900 !important;
+        }
+        .cs-card-info-box {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding: 9px 12px;
+            margin-bottom: 11px;
+            background: #fffaf5;
+            border: 1px solid #ffedd5;
+            border-left: 3px solid #ff6900;
+            border-radius: 8px;
+            font-size: 12.5px;
+            line-height: 1.4;
+            color: #475569;
+        }
+        .cs-card-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 7px;
+        }
+        .cs-card-info-item svg {
+            width: 14px;
+            height: 14px;
+            color: #ff6900;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .cs-card-info-item strong {
+            color: #0f172a;
+            font-weight: 700;
+        }
+        .cs-card-info-item strong.cs-highlight-val {
+            color: #ea580c;
         }
         .cs-desc {
             color: #64748b !important;
@@ -3918,6 +3951,16 @@
                     `<option value="${optIdx}" ${optIdx === globalIdx ? 'selected' : ''}>Vị trí #${optIdx + 1}</option>`
                 ).join('');
 
+                const clientHtml = cs.client
+                    ? `<div class="cs-card-info-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg><span>Doanh nghiệp: <strong>${escapeHTML(cs.client)}</strong></span></div>`
+                    : '';
+                const highlightHtml = cs.highlight
+                    ? `<div class="cs-card-info-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg><span>Điểm nổi bật: <strong class="cs-highlight-val">${escapeHTML(cs.highlight)}</strong></span></div>`
+                    : '';
+                const infoBoxHtml = (clientHtml || highlightHtml)
+                    ? `<div class="cs-card-info-box">${clientHtml}${highlightHtml}</div>`
+                    : '';
+
                 return `
                     <div class="cs-modern-card"
                          draggable="true"
@@ -3944,6 +3987,7 @@
                         </div>
                         <div class="cs-body">
                             <h3 class="cs-title">${escapeHTML(cs.title)}</h3>
+                            ${infoBoxHtml}
                             <p class="cs-desc">${escapeHTML(cs.desc || '')}</p>
                         </div>
                         <div class="cs-divider"></div>
