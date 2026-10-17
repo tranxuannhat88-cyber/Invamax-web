@@ -360,14 +360,14 @@
 }
 
 .cap-core-card {
-    background: linear-gradient(135deg, #07191e 0%, #0a242c 100%);
-    border: 1px solid rgba(45, 112, 106, 0.45);
+    background: var(--iv-dark, #0B211A);
+    border: 1px solid rgba(221, 229, 225, 0.15);
     border-radius: 14px;
-    padding: 20px 24px;
+    padding: 22px 24px;
     position: relative;
     overflow: hidden;
     text-decoration: none;
-    box-shadow: 0 8px 24px rgba(7, 25, 26, 0.12);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
     transition: all 0.25s ease;
     display: flex;
     flex-direction: column;
@@ -377,7 +377,7 @@
 .cap-core-card:hover {
     transform: translateY(-3px);
     border-color: var(--cap-orange);
-    box-shadow: 0 12px 30px rgba(7, 25, 26, 0.22);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
 }
 
 .cap-card-topbar {
@@ -431,14 +431,14 @@
     gap: 16px;
     position: relative;
     z-index: 2;
-    padding-right: 90px;
+    padding-right: 0;
 }
 
 .cap-core-icon {
     width: 58px;
     height: 58px;
     border-radius: 12px;
-    background: rgba(6, 23, 29, 0.95);
+    background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.12);
     display: flex;
     align-items: center;
@@ -474,24 +474,14 @@
 }
 
 .cap-card-bg-graphic {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    top: 0;
-    width: 175px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: right center;
-    pointer-events: none;
-    opacity: 0.85;
-    z-index: 1;
+    display: none !important;
 }
 
 /* =========================================================
    CARD 05: Practical Experience (Large Unified Dark Card)
    ========================================================= */
 .cap-card-05 {
-    background: linear-gradient(135deg, #07191e 0%, #0a242c 100%);
+    background: var(--iv-dark, #0B211A);
     border: 1.5px solid rgba(242, 107, 29, 0.65);
     box-shadow: 0 0 28px rgba(242, 107, 29, 0.14), 0 10px 30px rgba(0, 0, 0, 0.18);
     border-radius: 16px;
@@ -532,7 +522,7 @@
     width: 62px;
     height: 62px;
     border-radius: 14px;
-    background: rgba(6, 23, 29, 0.95);
+    background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.12);
     display: flex;
     align-items: center;
@@ -572,17 +562,7 @@
 }
 
 .cap-card05-bg-graphic {
-    position: absolute;
-    right: 50px;
-    top: 0;
-    bottom: 0;
-    width: 280px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: right center;
-    pointer-events: none;
-    opacity: 0.85;
-    z-index: 1;
+    display: none !important;
 }
 
 /* 5 Practical Pillars Grid */
@@ -641,7 +621,7 @@
 }
 
 .cap-metric-pill {
-    background: rgba(6, 23, 29, 0.7);
+    background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 30px;
     padding: 8px 14px;
