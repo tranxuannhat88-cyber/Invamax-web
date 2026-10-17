@@ -3105,6 +3105,178 @@
             }
         }
 
+        // Modal State Variables for Full Editing
+        let modalCsImagesList = [];
+        let modalCsThumbnail = null;
+        let modalCsFileData = null;
+        let modalCsFileName = null;
+        let modalCsFileSize = null;
+        let modalCsFileFormat = null;
+
+        // Modal Thumbnail Handlers
+        async function handleModalCsThumbSelect(e) {
+            const file = e.target.files && e.target.files[0];
+            if (!file) return;
+            try {
+                const compressed = await compressImage(file, 1200, 0.82);
+                modalCsThumbnail = compressed;
+                displayModalCsThumb(compressed, file.name);
+            } catch (err) {
+                console.error('Lỗi nén ảnh modal thumbnail:', err);
+            }
+        }
+
+        function displayModalCsThumb(src, text) {
+            const box = document.getElementById('modalCsThumbPreviewBox');
+            const img = document.getElementById('modalCsThumbPreviewImg');
+            const txt = document.getElementById('modalCsThumbPreviewText');
+            if (box && img) {
+                box.style.display = 'flex';
+                img.src = src;
+                if (txt) txt.innerText = text || 'Ảnh đại diện';
+            }
+        }
+
+        function clearModalCsThumb() {
+            modalCsThumbnail = '';
+            const box = document.getElementById('modalCsThumbPreviewBox');
+            const input = document.getElementById('modalCsThumbFileInput');
+            const urlInput = document.getElementById('modalCsThumbUrl');
+            if (box) box.style.display = 'none';
+            if (input) input.value = '';
+            if (urlInput) urlInput.value = '';
+        }
+
+        // Modal Data File Handlers
+        function handleModalCsDataFileSelect(e) {
+            const file = e.target.files && e.target.files[0];
+            if (!file) return;
+            if (file.size > 20 * 1024 * 1024) {
+                showToast('Kích thước tệp quá lớn (>20MB)!', 'error');
+                return;
+            }
+            const reader = new FileReader();
+            reader.onload = function(evt) {
+                modalCsFileData = evt.target.result;
+                modalCsFileName = file.name;
+                modalCsFileSize = formatFileSize(file.size);
+                modalCsFileFormat = file.name.split('.').pop().toUpperCase();
+                displayModalCsDataFile(modalCsFileName, modalCsFileSize, modalCsFileFormat);
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function displayModalCsDataFile(name, size, format) {
+            const box = document.getElementById('modalCsDataFilePreviewBox');
+            const badge = document.getElementById('modalCsDataFileBadge');
+            const nameEl = document.getElementById('modalCsDataFileName');
+            const sizeEl = document.getElementById('modalCsDataFileSize');
+            if (box) {
+                box.style.display = 'flex';
+                if (badge) badge.innerText = format || 'FILE';
+                if (nameEl) nameEl.innerText = name || 'Tệp dữ liệu đính kèm';
+                if (sizeEl) sizeEl.innerText = size || '';
+            }
+        }
+
+        function clearModalCsDataFile() {
+            modalCsFileData = '';
+            modalCsFileName = '';
+            modalCsFileSize = '';
+            modalCsFileFormat = '';
+            const box = document.getElementById('modalCsDataFilePreviewBox');
+            const fileInput = document.getElementById('modalCsDataFileInput');
+            const urlInput = document.getElementById('modalCsPdfUrl');
+            if (box) box.style.display = 'none';
+            if (fileInput) fileInput.value = '';
+            if (urlInput) urlInput.value = '';
+        }
+
+        // Modal Gallery Images & Reordering Handlers
+        async function handleModalCsImagesSelect(e) {
+            const files = Array.from(e.target.files || []);
+            if (!files || files.length === 0) return;
+            for (const file of files) {
+                try {
+                    const compressed = await compressImage(file, 1200, 0.82);
+                    modalCsImagesList.push(compressed);
+                } catch (err) {
+                    console.error('Lỗi nén ảnh modal gallery:', err);
+                }
+            }
+            renderModalCsImagesGrid();
+            e.target.value = '';
+        }
+
+        function addModalCsImageUrl() {
+            const input = document.getElementById('modalCsImagesInput');
+            if (!input) return;
+            const val = input.value.trim();
+            if (!val) return;
+            const urls = val.split(',').map(s => s.trim()).filter(Boolean);
+            urls.forEach(u => modalCsImagesList.push(u));
+            input.value = '';
+            renderModalCsImagesGrid();
+        }
+
+        function renderModalCsImagesGrid() {
+            const grid = document.getElementById('modalCsImagesPreviewGrid');
+            const badge = document.getElementById('modalCsImagesCountBadge');
+            if (badge) badge.innerText = modalCsImagesList.length;
+            if (!grid) return;
+            if (modalCsImagesList.length === 0) {
+                grid.style.display = 'none';
+                grid.innerHTML = '';
+                return;
+            }
+            grid.style.display = 'flex';
+            grid.innerHTML = modalCsImagesList.map((src, idx) => `
+                <div style="position: relative; width: 90px; height: 76px; border-radius: 6px; overflow: hidden; border: 1.5px solid ${idx === 0 ? '#ea580c' : '#cbd5e1'}; background: #0f172a; display: flex; flex-direction: column;">
+                    <div style="position: relative; flex: 1; overflow: hidden;">
+                        <img src="${src}" style="width: 100%; height: 100%; object-fit: cover;">
+                        <span style="position: absolute; top: 2px; left: 2px; background: ${idx === 0 ? '#ea580c' : 'rgba(0,0,0,0.7)'}; color: #fff; font-size: 9.5px; font-weight: 800; padding: 1px 4px; border-radius: 3px;">
+                            ${idx === 0 ? '#1 Chính' : '#' + (idx + 1)}
+                        </span>
+                        <button type="button" onclick="removeModalCsImageAt(${idx})" title="Xóa ảnh này" style="position: absolute; top: 2px; right: 2px; background: rgba(220,38,38,0.85); color: #fff; border: none; border-radius: 50%; width: 16px; height: 16px; font-size: 11px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center;">&times;</button>
+                    </div>
+                    <div style="display: flex; height: 22px; background: #1e293b; border-top: 1px solid rgba(255,255,255,0.1);">
+                        <button type="button" onclick="moveModalCsImage(${idx}, -1)" ${idx === 0 ? 'disabled style="opacity: 0.3; cursor: default;"' : 'style="cursor: pointer;"'} title="Chuyển sang trước" style="flex: 1; background: transparent; border: none; color: #fff; font-size: 10px; display: flex; align-items: center; justify-content: center;">◀</button>
+                        <div style="width: 1px; background: rgba(255,255,255,0.15);"></div>
+                        <button type="button" onclick="moveModalCsImage(${idx}, 1)" ${idx === modalCsImagesList.length - 1 ? 'disabled style="opacity: 0.3; cursor: default;"' : 'style="cursor: pointer;"'} title="Chuyển sang sau" style="flex: 1; background: transparent; border: none; color: #fff; font-size: 10px; display: flex; align-items: center; justify-content: center;">▶</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function moveModalCsImage(idx, delta) {
+            const targetIdx = idx + delta;
+            if (targetIdx < 0 || targetIdx >= modalCsImagesList.length) return;
+            const temp = modalCsImagesList[idx];
+            modalCsImagesList[idx] = modalCsImagesList[targetIdx];
+            modalCsImagesList[targetIdx] = temp;
+            renderModalCsImagesGrid();
+        }
+
+        function removeModalCsImageAt(idx) {
+            if (idx >= 0 && idx < modalCsImagesList.length) {
+                modalCsImagesList.splice(idx, 1);
+                renderModalCsImagesGrid();
+            }
+        }
+
+        // Case Study Reordering Handlers (Thay đổi thứ tự bài viết)
+        function moveCaseStudy(id, direction) {
+            if (typeof INVAMAX_CASE_STUDY_STORE === 'undefined') return;
+            const res = INVAMAX_CASE_STUDY_STORE.move(id, direction);
+            if (res) {
+                renderCaseStudiesDashboard();
+                showToast(direction === 'up' ? 'Đã di chuyển bài viết lên trên!' : 'Đã di chuyển bài viết xuống dưới!', 'success');
+                if (window.INVAMAX_GITHUB_SYNC && window.INVAMAX_GITHUB_SYNC.isConfigured()) {
+                    syncCaseStudiesToGitHub(false);
+                }
+            }
+        }
+
         function renderCaseStudiesDashboard() {
             if (typeof INVAMAX_CASE_STUDY_STORE === 'undefined') return;
             const items = INVAMAX_CASE_STUDY_STORE.getAll();
@@ -3166,7 +3338,7 @@
                 return;
             }
 
-            container.innerHTML = filtered.map(cs => {
+            container.innerHTML = filtered.map((cs, idx) => {
                 const isEditing = currentEditingCsId === cs.id;
                 let viewLink = cs.link || '';
                 const hasValidLink = viewLink && viewLink !== '#' && viewLink.trim() !== '';
@@ -3194,6 +3366,12 @@
                             <div class="doc-card-content">
                                 <div class="doc-card-header">
                                     <h4 style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px;">
+                                        <!-- Thứ tự & Nút thay đổi thứ tự bài viết -->
+                                        <div style="display: inline-flex; align-items: center; gap: 3px; margin-right: 4px; background: #f1f5f9; padding: 2px 5px; border-radius: 6px; border: 1px solid #e2e8f0;">
+                                            <span style="background: #0f172a; color: #fff; font-size: 11px; font-weight: 800; padding: 1px 6px; border-radius: 4px; letter-spacing: 0.5px;">#${idx + 1}</span>
+                                            <button type="button" class="btn-action" style="padding: 2px 6px; font-size: 11px; line-height: 1; ${idx === 0 ? 'opacity: 0.3; pointer-events: none;' : ''}" title="Chuyển lên trên" onclick="moveCaseStudy('${cs.id}', 'up')">▲</button>
+                                            <button type="button" class="btn-action" style="padding: 2px 6px; font-size: 11px; line-height: 1; ${idx === filtered.length - 1 ? 'opacity: 0.3; pointer-events: none;' : ''}" title="Chuyển xuống dưới" onclick="moveCaseStudy('${cs.id}', 'down')">▼</button>
+                                        </div>
                                         <span class="cs-card-badge">${escapeHTML(cs.badge || 'CASE STUDY')}</span>
                                         ${catBadgesHtml}
                                         <span class="doc-card-title">${escapeHTML(cs.title)}</span>
@@ -3248,16 +3426,10 @@
                                     ${hasValidLink ? 'Xem bài viết' : 'Xem trên web'}
                                 </a>
 
-                                <!-- Nút Sửa nhanh Modal -->
-                                <button type="button" class="btn-action btn-action-edit" title="Sửa nhanh thông tin" onclick="openCaseStudyQuickModal('${cs.id}')">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-                                    Sửa nhanh
-                                </button>
-
-                                <!-- Nút Chỉnh sửa ở Form bên trái -->
-                                <button type="button" class="btn-action" title="Mở lên form bên trái để chỉnh sửa chi tiết" onclick="startEditCaseStudy('${cs.id}')">
+                                <!-- Nút Sửa (Gộp Sửa nhanh & Sửa chi tiết thành 1 nút Sửa toàn bộ) -->
+                                <button type="button" class="btn-action btn-action-edit" title="Chỉnh sửa toàn bộ bài viết Case Study" onclick="openCaseStudyEditModal('${cs.id}')">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4L16.5 3.5z"/></svg>
-                                    Sửa chi tiết
+                                    Sửa
                                 </button>
 
                                 <!-- Nút Xóa -->
@@ -3449,28 +3621,53 @@
             }
         }
 
-        function openCaseStudyQuickModal(id) {
+        function openCaseStudyEditModal(id) {
             const cs = INVAMAX_CASE_STUDY_STORE.getById(id);
             if (!cs) return;
 
             document.getElementById('modalCsId').value = cs.id;
-            document.getElementById('modalCsTitle').value = cs.title;
+            document.getElementById('modalCsTitle').value = cs.title || '';
             document.getElementById('modalCsBadge').value = cs.badge || '';
             setSelectedCsCategoriesInModal(cs.categories || cs.category);
             document.getElementById('modalCsClient').value = cs.client || '';
             document.getElementById('modalCsHighlight').value = cs.highlight || '';
             document.getElementById('modalCsDesc').value = cs.desc || '';
             document.getElementById('modalCsLink').value = cs.link || '';
-            document.getElementById('modalCsThumbUrl').value = cs.thumbnail && !cs.thumbnail.startsWith('data:') ? cs.thumbnail : '';
             
-            const fileUrl = cs.fileUrl || cs.pdfUrl || '';
-            document.getElementById('modalCsPdfUrl').value = fileUrl && !fileUrl.startsWith('data:') ? fileUrl : '';
-            const imgs = Array.isArray(cs.images) ? cs.images : (cs.images ? [cs.images] : []);
-            document.getElementById('modalCsImages').value = imgs.filter(i => !i.startsWith('data:')).join(', ');
-            document.getElementById('modalCsStatus').value = cs.status || 'published';
+            // Thumbnail
+            modalCsThumbnail = cs.thumbnail || '';
+            const thumbUrlInput = document.getElementById('modalCsThumbUrl');
+            if (thumbUrlInput) thumbUrlInput.value = (cs.thumbnail && !cs.thumbnail.startsWith('data:')) ? cs.thumbnail : '';
+            if (cs.thumbnail) {
+                displayModalCsThumb(cs.thumbnail, 'Ảnh hiện tại');
+            } else {
+                clearModalCsThumb();
+            }
 
+            // Images gallery & reordering
+            modalCsImagesList = Array.isArray(cs.images) ? [...cs.images] : (cs.images ? [cs.images] : []);
+            const imagesInput = document.getElementById('modalCsImagesInput');
+            if (imagesInput) imagesInput.value = '';
+            renderModalCsImagesGrid();
+
+            // Data File / PDF
+            const fileUrl = cs.fileUrl || cs.pdfUrl || '';
+            modalCsFileData = fileUrl;
+            modalCsFileName = cs.fileName || (fileUrl ? fileUrl.split('/').pop().split('?')[0] : '');
+            modalCsFileSize = cs.fileSize || '';
+            modalCsFileFormat = cs.fileFormat || (modalCsFileName ? modalCsFileName.split('.').pop().toUpperCase() : '');
+            const pdfUrlInput = document.getElementById('modalCsPdfUrl');
+            if (pdfUrlInput) pdfUrlInput.value = (fileUrl && !fileUrl.startsWith('data:')) ? fileUrl : '';
+            if (fileUrl) {
+                displayModalCsDataFile(modalCsFileName, modalCsFileSize, modalCsFileFormat);
+            } else {
+                clearModalCsDataFile();
+            }
+
+            document.getElementById('modalCsStatus').value = cs.status || 'published';
             document.getElementById('csQuickEditModal').classList.add('show');
         }
+        const openCaseStudyQuickModal = openCaseStudyEditModal;
 
         function closeCsQuickEditModal() {
             document.getElementById('csQuickEditModal').classList.remove('show');
@@ -3480,17 +3677,15 @@
             if (e) e.preventDefault();
             const id = document.getElementById('modalCsId').value;
             const title = document.getElementById('modalCsTitle').value.trim();
-            const badge = document.getElementById('modalCsBadge').value.trim();
+            const badge = document.getElementById('modalCsBadge').value.trim() || 'CASE STUDY';
             const categories = getSelectedCsCategoriesFromModal();
             const category = categories.join(', ');
             const client = document.getElementById('modalCsClient').value.trim();
             const highlight = document.getElementById('modalCsHighlight').value.trim();
             const desc = document.getElementById('modalCsDesc').value.trim();
-            const link = document.getElementById('modalCsLink').value.trim();
-            const thumbUrl = document.getElementById('modalCsThumbUrl').value.trim();
-            const pdfUrl = document.getElementById('modalCsPdfUrl').value.trim();
-            const imagesStr = document.getElementById('modalCsImages').value.trim();
-            const images = imagesStr ? imagesStr.split(',').map(s => s.trim()).filter(Boolean) : [];
+            const link = (document.getElementById('modalCsLink')?.value || '').trim();
+            const thumbUrl = (document.getElementById('modalCsThumbUrl')?.value || '').trim();
+            const pdfUrlInput = (document.getElementById('modalCsPdfUrl')?.value || '').trim();
             const status = document.getElementById('modalCsStatus').value;
 
             // Link is optional
@@ -3499,24 +3694,34 @@
                 return;
             }
 
-            const updateData = {
-                title, badge, categories, category, client, highlight, desc, link: link || '', status
-            };
-            if (thumbUrl !== undefined) updateData.thumbnail = thumbUrl;
-            if (pdfUrl !== undefined) {
-                updateData.pdfUrl = pdfUrl;
-                updateData.fileUrl = pdfUrl;
-                if (pdfUrl) {
-                    const fname = pdfUrl.split('/').pop().split('?')[0];
-                    updateData.fileName = fname;
-                    updateData.fileFormat = fname.split('.').pop().toUpperCase();
-                } else {
-                    updateData.fileName = '';
-                    updateData.fileFormat = '';
-                    updateData.fileSize = '';
-                }
+            const thumb = modalCsThumbnail || thumbUrl || 'assets/images/resources/art-5steps.jpg';
+            const dataFile = modalCsFileData || pdfUrlInput || '';
+            let fileName = modalCsFileName;
+            let fileFormat = modalCsFileFormat;
+            let fileSize = modalCsFileSize;
+            if (!fileName && pdfUrlInput) {
+                fileName = pdfUrlInput.split('/').pop().split('?')[0];
+                fileFormat = fileName.split('.').pop().toUpperCase();
             }
-            if (imagesStr !== undefined) updateData.images = images;
+
+            const updateData = {
+                title,
+                badge,
+                categories,
+                category,
+                client,
+                highlight,
+                desc,
+                link: link || '',
+                thumbnail: thumb,
+                pdfUrl: dataFile,
+                fileUrl: dataFile,
+                fileName: fileName || '',
+                fileSize: fileSize || '',
+                fileFormat: fileFormat || '',
+                images: [...modalCsImagesList],
+                status
+            };
 
             const resUpdate = INVAMAX_CASE_STUDY_STORE.update(id, updateData);
             if (!resUpdate) {
@@ -3525,7 +3730,7 @@
             }
 
             closeCsQuickEditModal();
-            showToast('Đã cập nhật Case Study!', 'success');
+            showToast('Đã lưu cập nhật bài viết Case Study!', 'success');
             renderCaseStudiesDashboard();
 
             if (window.INVAMAX_GITHUB_SYNC && window.INVAMAX_GITHUB_SYNC.isConfigured()) {
