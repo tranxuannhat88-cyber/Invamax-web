@@ -934,6 +934,397 @@
             color: #065f46;
             border: 1px solid #a7f3d0;
         }
+
+        /* ========================================================
+           OFFICIAL WEBSITE CASE STUDY REPLICA STYLES IN ADMIN
+           ======================================================== */
+        .cs-admin-web-hero {
+            position: relative;
+            width: 100%;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 18px;
+            padding: 28px 30px 24px;
+            margin-bottom: 28px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+        }
+        .cs-admin-web-hero .res-hero-bg-wrap {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            min-width: 420px;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+        .cs-admin-web-hero .res-hero-bg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: right top;
+            opacity: 0.28;
+            mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.35) 25%, black 100%);
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.35) 25%, black 100%);
+        }
+        .cs-admin-hero-top {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .cs-admin-toolbar-btns {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .btn-add-cs-main {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 11px 20px;
+            background: #ff6900;
+            color: #ffffff !important;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 6px 18px rgba(255, 105, 0, 0.32);
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        .btn-add-cs-main:hover {
+            background: #e05d00;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px rgba(255, 105, 0, 0.42);
+        }
+        .btn-add-cs-main svg {
+            width: 18px;
+            height: 18px;
+            stroke-width: 2.6;
+        }
+        .btn-reorder-cs {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 10px 16px;
+            background: #0f172a;
+            color: #ffffff !important;
+            border: 1px solid #1e293b;
+            border-radius: 10px;
+            font-size: 13.5px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        .btn-reorder-cs:hover {
+            background: #1e293b;
+            transform: translateY(-1px);
+        }
+        .btn-reorder-cs svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* 3-Column Website Grid & Modern Case Study Cards */
+        .grid-custom-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+        @media (max-width: 1024px) {
+            .grid-custom-3 {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+        }
+        @media (max-width: 680px) {
+            .grid-custom-3 {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+        }
+        .cs-modern-card {
+            background: #ffffff !important;
+            border: 1px solid #e2e8f0 !important;
+            border-radius: 18px !important;
+            overflow: hidden !important;
+            padding: 0 !important;
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05) !important;
+            display: flex !important;
+            flex-direction: column !important;
+            text-decoration: none !important;
+            cursor: pointer !important;
+            transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease !important;
+            position: relative;
+            color: inherit !important;
+        }
+        .cs-modern-card:hover {
+            border-color: rgba(255, 105, 0, 0.45) !important;
+            transform: translateY(-6px) !important;
+            box-shadow: 0 18px 38px rgba(15, 23, 42, 0.12) !important;
+        }
+        .cs-modern-card.drag-over {
+            border: 2.5px dashed #ff6900 !important;
+            transform: scale(1.02) !important;
+            box-shadow: 0 12px 30px rgba(255, 105, 0, 0.22) !important;
+        }
+        .cs-Modern-dragging {
+            opacity: 0.55;
+        }
+        .cs-thumb-wrap {
+            position: relative;
+            width: 100%;
+            height: 215px;
+            overflow: hidden;
+            background: #f1f5f9;
+        }
+        .cs-thumb-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.45s ease;
+        }
+        .cs-modern-card:hover .cs-thumb-img {
+            transform: scale(1.06);
+        }
+        .cs-web-cat-badge {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            background: #f97316;
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            padding: 6px 14px;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22);
+            pointer-events: none;
+            z-index: 2;
+            line-height: 1.2;
+        }
+        .cs-draft-badge {
+            position: absolute;
+            bottom: 12px;
+            left: 14px;
+            background: rgba(217, 119, 6, 0.95);
+            color: #ffffff;
+            font-size: 10.5px;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 5px;
+            z-index: 2;
+            letter-spacing: 0.5px;
+        }
+        /* Top-right Order & Reorder Controls on Card */
+        .cs-order-overlay {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            z-index: 4;
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            background: rgba(15, 23, 42, 0.86);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            border-radius: 8px;
+            padding: 3px 5px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        }
+        .cs-order-btn {
+            width: 24px;
+            height: 24px;
+            border: none;
+            background: rgba(255, 255, 255, 0.14);
+            color: #ffffff;
+            border-radius: 5px;
+            font-size: 10px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.15s;
+        }
+        .cs-order-btn:hover:not(:disabled) {
+            background: #ff6900;
+        }
+        .cs-order-btn:disabled {
+            opacity: 0.3;
+            cursor: default;
+        }
+        .cs-order-select {
+            background: transparent;
+            color: #ffffff;
+            border: none;
+            font-size: 11.5px;
+            font-weight: 800;
+            padding: 0 4px;
+            cursor: pointer;
+            outline: none;
+            text-align: center;
+        }
+        .cs-order-select option {
+            background: #0f172a;
+            color: #ffffff;
+            font-weight: 700;
+        }
+        .cs-body {
+            padding: 22px 22px 14px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .cs-title {
+            font-size: 1.15rem !important;
+            font-weight: 800 !important;
+            color: #0f172a !important;
+            line-height: 1.4 !important;
+            margin-bottom: 12px !important;
+            text-align: left !important;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            transition: color 0.2s ease;
+        }
+        .cs-modern-card:hover .cs-title {
+            color: #ff6900 !important;
+        }
+        .cs-desc {
+            color: #64748b !important;
+            font-size: 0.88rem !important;
+            line-height: 1.6 !important;
+            margin-bottom: 14px !important;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            flex-grow: 1;
+        }
+        .cs-divider {
+            border-top: 1px solid #f1f5f9;
+            margin: 0;
+            width: 100%;
+        }
+        .cs-footer {
+            padding: 13px 20px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            background: #ffffff;
+        }
+        .cs-meta-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 12.5px;
+            color: #64748b;
+            font-weight: 500;
+            min-width: 0;
+            flex-wrap: wrap;
+        }
+        .cs-meta-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .cs-meta-item svg {
+            width: 14px;
+            height: 14px;
+            color: #94a3b8;
+            flex-shrink: 0;
+        }
+        .cs-card-admin-actions {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            flex-shrink: 0;
+        }
+        .btn-cs-card-edit {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 6px 13px;
+            border-radius: 8px;
+            background: #fff7ed;
+            border: 1.5px solid #fdba74;
+            color: #ea580c;
+            font-size: 12.5px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .btn-cs-card-edit:hover {
+            background: #ff6900;
+            border-color: #ff6900;
+            color: #ffffff;
+            box-shadow: 0 4px 10px rgba(255, 105, 0, 0.25);
+        }
+        .btn-cs-card-edit svg {
+            width: 14px;
+            height: 14px;
+        }
+        .btn-cs-card-delete {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 31px;
+            height: 31px;
+            border-radius: 8px;
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #dc2626;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .btn-cs-card-delete:hover {
+            background: #dc2626;
+            border-color: #dc2626;
+            color: #ffffff;
+        }
+        .btn-cs-card-delete svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        /* Reorder List Item inside Reorder Modal */
+        .reorder-cs-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 14px;
+            background: #ffffff;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            cursor: grab;
+            transition: all 0.18s ease;
+        }
+        .reorder-cs-item:hover {
+            border-color: #cbd5e1;
+            background: #f8fafc;
+        }
+        .reorder-cs-item.drag-over {
+            border: 2px dashed #ff6900;
+            background: #fff7ed;
+        }
     </style>
 </head>
 <body>
@@ -1213,272 +1604,306 @@
          SUB-PAGE 2: QUẢN LÝ CASE STUDY
          ======================================================== -->
     <div id="sectionCaseStudies" class="admin-section-pane" style="display: none;">
-        <!-- Quick Stats Case Studies -->
-        <section class="admin-stats-grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));">
-            <div class="stat-card">
-                <div class="stat-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <!-- HERO HEADER & FILTER BAR (GIỐNG TRANG WEB CHÍNH THỨC vi/case-studies.html) -->
+        <section class="cs-admin-web-hero">
+            <div class="res-hero-bg-wrap">
+                <img src="assets/images/resources/hero-light-bg.jpg" alt="INVAMAX Factory" class="res-hero-bg">
+                <div class="res-hero-gradient-overlay"></div>
+            </div>
+
+            <div class="cs-admin-hero-top">
+                <div class="res-hero-left">
+                    <div class="res-hero-eyebrow">DỰ ÁN &amp; CASE STUDY</div>
+                    <h1 class="res-hero-title" style="margin-bottom: 6px;">Case Study <span>INVAMAX</span></h1>
+                    <p class="res-hero-subtitle" style="white-space: normal; margin-bottom: 8px;">Thực tiễn chuyển đổi mô hình vận hành, nâng cao năng suất và tối ưu chi phí từ các dự án nhà máy thực tế.</p>
                 </div>
-                <div class="stat-info">
-                    <h4>Tổng số Case Study</h4>
-                    <div class="stat-number" id="statCsTotal">0</div>
+
+                <!-- Thanh công cụ Quản trị trên Hero -->
+                <div class="cs-admin-toolbar-btns">
+                    <button type="button" class="btn-add-cs-main" onclick="openAddCaseStudyModal()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        Thêm Case Study
+                    </button>
+                    <button type="button" class="btn-reorder-cs" onclick="openCsReorderModal()" title="Sắp xếp thứ tự hiển thị các Case Study trên website">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/><polyline points="5 9 12 2 19 9"/></svg>
+                        Sắp xếp thứ tự
+                    </button>
+                    <button type="button" onclick="syncCaseStudiesToGitHub(true)" class="btn-nav-outline" style="background: #f8fafc; color: #0f172a; border-color: #cbd5e1; font-size: 13px; padding: 9px 14px;" title="Đẩy dữ liệu lên GitHub">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="var(--admin-orange)" stroke-width="2.2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                        Đăng GitHub
+                    </button>
+                    <button type="button" onclick="exportCaseStudiesJSONBackup()" class="btn-nav-outline" style="background: #f8fafc; color: #334155; border-color: #cbd5e1; font-size: 13px; padding: 9px 12px;" title="Tải file sao lưu JSON các Case Study">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Sao lưu JSON
+                    </button>
+                    <button type="button" onclick="resetDefaultCaseStudies()" class="btn-nav-outline" style="background: #fef2f2; color: #dc2626; border-color: #fecaca; font-size: 13px; padding: 9px 12px;" title="Khôi phục lại 3 Case Study gốc">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                        Khôi phục gốc
+                    </button>
                 </div>
             </div>
-            <div class="stat-card">
-                <div class="stat-icon" style="background: rgba(249, 115, 22, 0.1); color: #f97316;">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+
+            <!-- Action Bar: Filter Pills and Search Bar on Same Row (Giống hệt website) -->
+            <div class="res-hero-action-bar" style="position: relative; z-index: 2; margin-top: 20px; flex-wrap: wrap;">
+                <div class="res-filter-pills-light" id="csFilterPills" style="flex-wrap: wrap;">
+                    <button type="button" class="res-pill-btn active" onclick="setCsFilter('all', this)">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                        Tất cả dự án (<span id="statCsTotal">0</span>)
+                    </button>
+                    <button type="button" class="res-pill-btn" onclick="setCsFilter('lean', this)">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                        Lean &amp; Cải tiến (<span id="statCsLean">0</span>)
+                    </button>
+                    <button type="button" class="res-pill-btn" onclick="setCsFilter('năng suất', this)">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                        Tăng năng suất (<span id="statCsProductivity">0</span>)
+                    </button>
+                    <button type="button" class="res-pill-btn" onclick="setCsFilter('chi phí', this)">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        Giảm chi phí (<span id="statCsCost">0</span>)
+                    </button>
+                    <button type="button" class="res-pill-btn" onclick="setCsFilter('số hóa', this)">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg>
+                        Số hóa &amp; dữ liệu (<span id="statCsDigital">0</span>)
+                    </button>
                 </div>
-                <div class="stat-info">
-                    <h4>Lean &amp; Cải tiến</h4>
-                    <div class="stat-number" id="statCsLean">0</div>
-                </div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon" style="background: rgba(16, 185, 129, 0.1); color: #10b981;">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-                </div>
-                <div class="stat-info">
-                    <h4>Tăng năng suất</h4>
-                    <div class="stat-number" id="statCsProductivity">0</div>
-                </div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon" style="background: rgba(59, 130, 246, 0.1); color: #3b82f6;">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                </div>
-                <div class="stat-info">
-                    <h4>Giảm chi phí</h4>
-                    <div class="stat-number" id="statCsCost">0</div>
-                </div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon" style="background: rgba(168, 85, 247, 0.1); color: #a855f7;">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
-                </div>
-                <div class="stat-info">
-                    <h4>Số hóa &amp; Dữ liệu</h4>
-                    <div class="stat-number" id="statCsDigital">0</div>
+
+                <!-- Search Bar with Orange Round Button -->
+                <div class="res-search-wrap-light" style="width: 300px;">
+                    <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#64748b" stroke-width="2.2" style="margin-right: 8px; flex-shrink: 0;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <input type="text" id="csSearchInput" placeholder="Tìm kiếm dự án, ngành nghề, mục tiêu..." oninput="filterCaseStudiesList()" aria-label="Tìm kiếm">
+                    <button type="button" class="res-search-submit-btn" onclick="filterCaseStudiesList()" aria-label="Tìm kiếm">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#ffffff" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    </button>
                 </div>
             </div>
         </section>
 
-        <!-- Main Grid: Form Left, List Right -->
-        <div class="admin-main-grid">
-            <!-- LEFT COLUMN: ADD / EDIT CASE STUDY FORM -->
-            <section class="admin-panel" id="csFormPanel">
-                <div class="panel-header">
-                    <h3 id="csFormPanelTitle">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="var(--admin-orange)" stroke-width="2.2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-                        <span>Thêm Case Study mới</span>
-                    </h3>
+        <!-- SECTION HEADER & 3-COLUMN WEBSITE CARD GRID -->
+        <div style="margin-bottom: 40px;">
+            <div class="res-sec-header" style="margin-bottom: 22px; display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
+                <div class="res-sec-title-wrap">
+                    <h2 class="res-sec-title">Dự án chuyển đổi tiêu biểu</h2>
+                    <p class="res-sec-desc">Hiển thị đúng theo bố cục 3 cột trên website. Bấm <strong>◀ #Vị trí ▶</strong> hoặc <strong>kéo thả thẻ</strong> để đổi thứ tự hiển thị, bấm <strong>Sửa</strong> để chỉnh sửa nội dung.</p>
                 </div>
-                <div class="panel-body">
-                    <!-- Edit Mode Alert Banner -->
-                    <div id="csEditBanner" class="edit-mode-banner">
-                        <div class="banner-text">
-                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                            <span>Đang chỉnh sửa Case Study</span>
-                        </div>
-                        <button type="button" class="btn-exit-edit" onclick="cancelEditCaseStudy()">Hủy</button>
-                    </div>
-
-                    <form id="csForm" onsubmit="event.preventDefault(); handleSaveCaseStudy(event); return false;">
-                        <input type="hidden" id="csDocId" value="">
-
-                        <!-- Tiêu đề Case Study -->
-                        <div class="form-group">
-                            <label class="form-label" for="csTitle">Tiêu đề Case Study <span class="req">*</span></label>
-                            <input type="text" id="csTitle" class="form-input" placeholder="Ví dụ: Tăng 42,3% năng suất tại nhà máy sản xuất..." required>
-                        </div>
-
-                        <!-- Mã số Badge & Khách hàng -->
-                        <div style="display: grid; grid-template-columns: 140px 1fr; gap: 12px;" class="form-group">
-                            <div>
-                                <label class="form-label" for="csBadge">Số hiệu (Badge)</label>
-                                <input type="text" id="csBadge" class="form-input" placeholder="CASE STUDY 04" value="CASE STUDY 04">
-                            </div>
-                            <div>
-                                <label class="form-label" for="csClient">Doanh nghiệp / Ngành</label>
-                                <input type="text" id="csClient" class="form-input" placeholder="VD: Nhà máy sản xuất bút chì">
-                            </div>
-                        </div>
-
-                        <!-- Nhóm nội dung / Lĩnh vực (Có thể chọn nhiều nhóm) -->
-                        <div class="form-group">
-                            <label class="form-label">Nhóm nội dung / Lĩnh vực (Có thể chọn nhiều) <span class="req">*</span></label>
-                            <div id="csCatCheckboxGroup" style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 10px 12px; background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 8px;">
-                                <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: #1e293b; cursor: pointer;">
-                                    <input type="checkbox" name="cs_cat_check" value="Lean & Cải tiến" checked style="width: 16px; height: 16px; accent-color: var(--admin-orange);">
-                                    <span>Lean &amp; Cải tiến</span>
-                                </label>
-                                <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: #1e293b; cursor: pointer;">
-                                    <input type="checkbox" name="cs_cat_check" value="Tăng năng suất" style="width: 16px; height: 16px; accent-color: var(--admin-orange);">
-                                    <span>Tăng năng suất</span>
-                                </label>
-                                <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: #1e293b; cursor: pointer;">
-                                    <input type="checkbox" name="cs_cat_check" value="Giảm chi phí" style="width: 16px; height: 16px; accent-color: var(--admin-orange);">
-                                    <span>Giảm chi phí</span>
-                                </label>
-                                <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: #1e293b; cursor: pointer;">
-                                    <input type="checkbox" name="cs_cat_check" value="Số hóa & dữ liệu" style="width: 16px; height: 16px; accent-color: var(--admin-orange);">
-                                    <span>Số hóa &amp; dữ liệu</span>
-                                </label>
-                            </div>
-                            <small style="color: #64748b; font-size: 11.5px; margin-top: 4px; display: block;">Mỗi Case Study có thể thuộc một hoặc nhiều nhóm nội dung.</small>
-                        </div>
-
-                        <!-- Điểm nổi bật -->
-                        <div class="form-group">
-                            <label class="form-label" for="csHighlight">Kết quả nổi bật (Highlight)</label>
-                            <input type="text" id="csHighlight" class="form-input" placeholder="VD: Tăng 42,3% UPH hoặc Tiết kiệm 432.873 USD/năm">
-                        </div>
-
-                        <!-- Mô tả tóm tắt -->
-                        <div class="form-group">
-                            <label class="form-label" for="csDesc">Mô tả tóm tắt dự án</label>
-                            <textarea id="csDesc" class="form-textarea" rows="3" placeholder="Tóm tắt ngắn gọn bối cảnh, phương pháp và kết quả cải tiến..."></textarea>
-                        </div>
-
-                        <!-- Link bài viết chi tiết (Tùy chọn) -->
-                        <div class="form-group">
-                            <label class="form-label" for="csLink">Đường dẫn bài viết chi tiết / File HTML <span style="font-weight: 500; color: #64748b; font-size: 12px;">(Tùy chọn, không bắt buộc)</span></label>
-                            <input type="text" id="csLink" class="form-input" placeholder="VD: case-study/productivity-improvement-pencil-factory.html (Để trống nếu chỉ xem ảnh/file trong popup)">
-                            <small style="color: #64748b; font-size: 11.5px; margin-top: 4px; display: block;">💡 Không bắt buộc. Nếu để trống, khi người dùng bấm vào Case Study trên web sẽ mở cửa sổ popup xem chi tiết hình ảnh và file dữ liệu đã tải lên.</small>
-                        </div>
-
-                        <!-- 1. Ảnh đại diện Case Study (Thumbnail) -->
-                        <div class="form-group" style="background: #ffffff; border: 1.5px dashed #cbd5e1; border-radius: 10px; padding: 14px 16px;">
-                            <label class="form-label" style="margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between;">
-                                <span><span style="color: var(--admin-orange); font-weight: 800;">1.</span> Ảnh đại diện / Thumbnail</span>
-                                <span style="font-size: 11.5px; color: #64748b; font-weight: normal;">Khuyên dùng tỷ lệ 16:9</span>
-                            </label>
-                            <div style="display: flex; gap: 8px; margin-bottom: 8px;">
-                                <button type="button" class="btn-action" style="background: #fff7ed; border-color: #fdba74; color: #c2410c; font-weight: 700; padding: 9px 14px; white-space: nowrap;" onclick="document.getElementById('csThumbFileInput').click()">
-                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-                                    Tải ảnh đại diện từ máy
-                                </button>
-                                <input type="text" id="csThumbUrl" class="form-input" placeholder="Hoặc dán URL ảnh bìa tại đây...">
-                            </div>
-                            <input type="file" id="csThumbFileInput" accept="image/*" style="display: none;" onchange="handleCsThumbSelect(event)">
-                            <div id="csThumbPreviewBox" style="display: none; align-items: center; gap: 12px; margin-top: 10px; padding: 8px 12px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px;">
-                                <img id="csThumbPreviewImg" src="" style="width: 64px; height: 46px; object-fit: cover; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
-                                <div style="display: flex; flex-direction: column; min-width: 0;">
-                                    <span style="font-size: 12.5px; font-weight: 700; color: #1e293b;" id="csThumbPreviewText">Đã chọn ảnh đại diện</span>
-                                    <span style="font-size: 11px; color: #16a34a; font-weight: 600;">Sẵn sàng hiển thị</span>
-                                </div>
-                                <button type="button" style="margin-left: auto; background: #fee2e2; border: 1px solid #fecaca; color: #dc2626; border-radius: 6px; padding: 4px 8px; cursor: pointer; font-size: 12px; font-weight: 600;" onclick="clearCsThumb()">Gỡ ảnh</button>
-                            </div>
-                        </div>
-
-                        <!-- 2. Bộ ảnh chi tiết / Hiện trường dự án -->
-                        <div class="form-group" style="background: #ffffff; border: 1.5px dashed #cbd5e1; border-radius: 10px; padding: 14px 16px;">
-                            <label class="form-label" style="margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between;">
-                                <span><span style="color: var(--admin-orange); font-weight: 800;">2.</span> Hình ảnh chi tiết / Hiện trường dự án</span>
-                                <span style="font-size: 11.5px; color: #64748b; font-weight: normal;">Có thể chọn nhiều ảnh</span>
-                            </label>
-                            <div style="display: flex; gap: 8px; margin-bottom: 8px;">
-                                <button type="button" class="btn-action" style="background: #f0fdf4; border-color: #86efac; color: #15803d; font-weight: 700; padding: 9px 14px; white-space: nowrap;" onclick="document.getElementById('csImagesFileInput').click()">
-                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-                                    Tải thêm ảnh từ máy
-                                </button>
-                                <input type="text" id="csImagesInput" class="form-input" placeholder="Hoặc dán URL các ảnh (ngăn cách bằng dấu phẩy)...">
-                            </div>
-                            <input type="file" id="csImagesFileInput" accept="image/*" multiple style="display: none;" onchange="handleCsImagesSelect(event)">
-                            <div id="csImagesPreviewGrid" style="display: none; flex-wrap: wrap; gap: 8px; margin-top: 10px; padding: 10px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px;"></div>
-                        </div>
-
-                        <!-- 3. File dữ liệu / Tài liệu đính kèm (PDF, Excel, Word, Zip...) -->
-                        <div class="form-group" style="background: #ffffff; border: 1.5px dashed #cbd5e1; border-radius: 10px; padding: 14px 16px;">
-                            <label class="form-label" style="margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between;">
-                                <span><span style="color: var(--admin-orange); font-weight: 800;">3.</span> Tải file dữ liệu / Tài liệu dự án</span>
-                                <span style="font-size: 11.5px; color: #64748b; font-weight: normal;">PDF, Excel, Word, ZIP, PowerPoint...</span>
-                            </label>
-                            <div style="display: flex; gap: 8px; margin-bottom: 8px;">
-                                <button type="button" class="btn-action" style="background: #eff6ff; border-color: #93c5fd; color: #1d4ed8; font-weight: 700; padding: 9px 14px; white-space: nowrap;" onclick="document.getElementById('csDataFileInput').click()">
-                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
-                                    Tải file từ máy tính
-                                </button>
-                                <input type="text" id="csDataFileUrl" class="form-input" placeholder="Hoặc dán URL file dữ liệu (PDF, XLSX, DOCX...)...">
-                            </div>
-                            <input type="file" id="csDataFileInput" accept=".pdf,.xlsx,.xls,.docx,.doc,.pptx,.ppt,.zip,.rar,.csv" style="display: none;" onchange="handleCsDataFileSelect(event)">
-                            <div id="csDataFilePreviewBox" style="display: none; align-items: center; gap: 12px; margin-top: 10px; padding: 10px 14px; background: #fff7ed; border: 1px solid #fed7aa; border-radius: 8px;">
-                                <span id="csDataFileBadge" style="font-size: 11px; font-weight: 800; background: #ea580c; color: white; padding: 4px 8px; border-radius: 4px; letter-spacing: 0.5px;">FILE</span>
-                                <div style="display: flex; flex-direction: column; min-width: 0; flex: 1;">
-                                    <span style="font-size: 13px; font-weight: 700; color: #1e293b; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" id="csDataFileName">ten-file.pdf</span>
-                                    <span style="font-size: 11px; color: #64748b;" id="csDataFileSize">2.4 MB</span>
-                                </div>
-                                <button type="button" style="margin-left: auto; background: #fee2e2; border: 1px solid #fecaca; color: #dc2626; border-radius: 6px; padding: 4px 8px; cursor: pointer; font-size: 12px; font-weight: 600;" onclick="clearCsDataFile()">Gỡ file</button>
-                            </div>
-                        </div>
-
-                        <!-- Trạng thái -->
-                        <div class="form-group">
-                            <label class="form-label" for="csStatus">Trạng thái hiển thị</label>
-                            <select id="csStatus" class="form-select">
-                                <option value="published">Xuất bản ngay (Hiển thị trên web)</option>
-                                <option value="draft">Bản nháp (Tạm ẩn)</option>
-                            </select>
-                        </div>
-
-                        <!-- Action buttons -->
-                        <div style="display: flex; gap: 10px; margin-top: 24px;">
-                            <button type="submit" id="btnCsSubmit" class="btn-submit" style="flex: 1;">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                                <span id="btnCsSubmitText">Lưu Case Study</span>
-                            </button>
-                            <button type="button" id="btnCsCancel" class="btn-cancel" style="display: none;" onclick="cancelEditCaseStudy()">
-                                Hủy
-                            </button>
-                        </div>
-                    </form>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <button type="button" class="btn-reorder-cs" onclick="openCsReorderModal()" style="padding: 9px 15px; font-size: 13px;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                        Sắp xếp thứ tự
+                    </button>
+                    <button type="button" class="btn-add-cs-main" onclick="openAddCaseStudyModal()" style="padding: 9px 18px; font-size: 13.5px;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        Thêm Case Study
+                    </button>
                 </div>
-            </section>
+            </div>
 
-            <!-- RIGHT COLUMN: CASE STUDY LIST -->
-            <section class="admin-panel">
-                <div class="panel-header">
-                    <h3>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="var(--admin-orange)" stroke-width="2.2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        Danh sách Case Study trên Website
-                    </h3>
-                    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-                        <button type="button" onclick="syncCaseStudiesToGitHub(true)" class="btn-nav-outline" style="background: var(--admin-orange); color: #ffffff; border-color: var(--admin-orange); font-size: 12.5px; padding: 6px 12px;" title="Đẩy ngay lên GitHub">
-                            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-                            Đăng GitHub
-                        </button>
-                        <button type="button" onclick="exportCaseStudiesJSONBackup()" class="btn-nav-outline" style="background: #f1f5f9; color: #334155; border-color: #cbd5e1; font-size: 12.5px; padding: 6px 12px;" title="Tải file sao lưu JSON các Case Study">
-                            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                            Sao lưu JSON
-                        </button>
-                        <button type="button" onclick="resetDefaultCaseStudies()" class="btn-nav-outline" style="background: #f1f5f9; color: #dc2626; border-color: #fca5a5; font-size: 12.5px; padding: 6px 12px;" title="Khôi phục lại 3 Case Study gốc">
-                            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
-                            Khôi phục gốc
-                        </button>
-                    </div>
-                </div>
-                <div class="panel-body">
-                    <!-- Search & Category Filters -->
-                    <div style="display: flex; gap: 10px; margin-bottom: 18px; flex-wrap: wrap;">
-                        <div style="flex: 1; min-width: 220px; position: relative;">
-                            <input type="text" id="csSearchInput" class="form-input" placeholder="Tìm kiếm case study theo tên, lĩnh vực..." oninput="filterCaseStudiesList()">
-                        </div>
-                        <div style="display: flex; gap: 6px; flex-wrap: wrap;" id="csFilterPills">
-                            <button type="button" class="btn-action active" onclick="setCsFilter('all', this)">Tất cả dự án</button>
-                            <button type="button" class="btn-action" onclick="setCsFilter('lean', this)">Lean &amp; Cải tiến</button>
-                            <button type="button" class="btn-action" onclick="setCsFilter('năng suất', this)">Tăng năng suất</button>
-                            <button type="button" class="btn-action" onclick="setCsFilter('chi phí', this)">Giảm chi phí</button>
-                            <button type="button" class="btn-action" onclick="setCsFilter('số hóa', this)">Số hóa &amp; dữ liệu</button>
-                        </div>
-                    </div>
-
-                    <div id="csListContainer">
-                        <!-- Rendered dynamically by JavaScript -->
-                    </div>
-                </div>
-            </section>
+            <!-- 3-Column Grid (Giống hệt #caseStudiesGrid trên vi/case-studies.html) -->
+            <div class="grid-custom-3" id="csListContainer">
+                <!-- Rendered dynamically by JavaScript -->
+            </div>
         </div>
     </div><!-- /#sectionCaseStudies -->
 </main>
+
+    <!-- POPUP MODAL THÊM CASE STUDY MỚI (NHƯ CỬA SỔ HIỆN TẠI) -->
+    <div id="csFormModal" class="edit-modal-backdrop" onclick="if(event.target===this) closeCsFormModal()">
+        <div class="edit-modal-card" id="csFormPanel" style="max-width: 680px; max-height: 92vh;">
+            <div class="edit-modal-header">
+                <h3 id="csFormPanelTitle">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--admin-orange)" stroke-width="2.2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                    <span>Thêm Case Study mới</span>
+                </h3>
+                <button type="button" class="edit-modal-close" onclick="closeCsFormModal()">&times;</button>
+            </div>
+            <div class="edit-modal-body" style="max-height: calc(92vh - 70px); overflow-y: auto; padding-right: 16px;">
+                <!-- Edit Mode Alert Banner -->
+                <div id="csEditBanner" class="edit-mode-banner">
+                    <div class="banner-text">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                        <span>Đang chỉnh sửa Case Study</span>
+                    </div>
+                    <button type="button" class="btn-exit-edit" onclick="cancelEditCaseStudy()">Hủy</button>
+                </div>
+
+                <form id="csForm" onsubmit="event.preventDefault(); handleSaveCaseStudy(event); return false;">
+                    <input type="hidden" id="csDocId" value="">
+
+                    <!-- Tiêu đề Case Study -->
+                    <div class="form-group">
+                        <label class="form-label" for="csTitle">Tiêu đề Case Study <span class="req">*</span></label>
+                        <input type="text" id="csTitle" class="form-input" placeholder="Ví dụ: Tăng 42,3% năng suất tại nhà máy sản xuất..." required>
+                    </div>
+
+                    <!-- Mã số Badge & Khách hàng -->
+                    <div style="display: grid; grid-template-columns: 140px 1fr; gap: 12px;" class="form-group">
+                        <div>
+                            <label class="form-label" for="csBadge">Số hiệu (Badge)</label>
+                            <input type="text" id="csBadge" class="form-input" placeholder="CASE STUDY 04" value="CASE STUDY 04">
+                        </div>
+                        <div>
+                            <label class="form-label" for="csClient">Doanh nghiệp / Ngành</label>
+                            <input type="text" id="csClient" class="form-input" placeholder="VD: Nhà máy sản xuất bút chì">
+                        </div>
+                    </div>
+
+                    <!-- Nhóm nội dung / Lĩnh vực (Có thể chọn nhiều nhóm) -->
+                    <div class="form-group">
+                        <label class="form-label">Nhóm nội dung / Lĩnh vực (Có thể chọn nhiều) <span class="req">*</span></label>
+                        <div id="csCatCheckboxGroup" style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 10px 12px; background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 8px;">
+                            <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: #1e293b; cursor: pointer;">
+                                <input type="checkbox" name="cs_cat_check" value="Lean & Cải tiến" checked style="width: 16px; height: 16px; accent-color: var(--admin-orange);">
+                                <span>Lean &amp; Cải tiến</span>
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: #1e293b; cursor: pointer;">
+                                <input type="checkbox" name="cs_cat_check" value="Tăng năng suất" style="width: 16px; height: 16px; accent-color: var(--admin-orange);">
+                                <span>Tăng năng suất</span>
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: #1e293b; cursor: pointer;">
+                                <input type="checkbox" name="cs_cat_check" value="Giảm chi phí" style="width: 16px; height: 16px; accent-color: var(--admin-orange);">
+                                <span>Giảm chi phí</span>
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: #1e293b; cursor: pointer;">
+                                <input type="checkbox" name="cs_cat_check" value="Số hóa & dữ liệu" style="width: 16px; height: 16px; accent-color: var(--admin-orange);">
+                                <span>Số hóa &amp; dữ liệu</span>
+                            </label>
+                        </div>
+                        <small style="color: #64748b; font-size: 11.5px; margin-top: 4px; display: block;">Mỗi Case Study có thể thuộc một hoặc nhiều nhóm nội dung.</small>
+                    </div>
+
+                    <!-- Điểm nổi bật -->
+                    <div class="form-group">
+                        <label class="form-label" for="csHighlight">Kết quả nổi bật (Highlight)</label>
+                        <input type="text" id="csHighlight" class="form-input" placeholder="VD: Tăng 42,3% UPH hoặc Tiết kiệm 432.873 USD/năm">
+                    </div>
+
+                    <!-- Mô tả tóm tắt -->
+                    <div class="form-group">
+                        <label class="form-label" for="csDesc">Mô tả tóm tắt dự án</label>
+                        <textarea id="csDesc" class="form-textarea" rows="3" placeholder="Tóm tắt ngắn gọn bối cảnh, phương pháp và kết quả cải tiến..."></textarea>
+                    </div>
+
+                    <!-- Link bài viết chi tiết (Tùy chọn) -->
+                    <div class="form-group">
+                        <label class="form-label" for="csLink">Đường dẫn bài viết chi tiết / File HTML <span style="font-weight: 500; color: #64748b; font-size: 12px;">(Tùy chọn, không bắt buộc)</span></label>
+                        <input type="text" id="csLink" class="form-input" placeholder="VD: case-study/productivity-improvement-pencil-factory.html (Để trống nếu chỉ xem ảnh/file trong popup)">
+                        <small style="color: #64748b; font-size: 11.5px; margin-top: 4px; display: block;">💡 Không bắt buộc. Nếu để trống, khi người dùng bấm vào Case Study trên web sẽ mở cửa sổ popup xem chi tiết hình ảnh và file dữ liệu đã tải lên.</small>
+                    </div>
+
+                    <!-- 1. Ảnh đại diện Case Study (Thumbnail) -->
+                    <div class="form-group" style="background: #ffffff; border: 1.5px dashed #cbd5e1; border-radius: 10px; padding: 14px 16px;">
+                        <label class="form-label" style="margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between;">
+                            <span><span style="color: var(--admin-orange); font-weight: 800;">1.</span> Ảnh đại diện / Thumbnail</span>
+                            <span style="font-size: 11.5px; color: #64748b; font-weight: normal;">Khuyên dùng tỷ lệ 16:9</span>
+                        </label>
+                        <div style="display: flex; gap: 8px; margin-bottom: 8px;">
+                            <button type="button" class="btn-action" style="background: #fff7ed; border-color: #fdba74; color: #c2410c; font-weight: 700; padding: 9px 14px; white-space: nowrap;" onclick="document.getElementById('csThumbFileInput').click()">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                                Tải ảnh đại diện từ máy
+                            </button>
+                            <input type="text" id="csThumbUrl" class="form-input" placeholder="Hoặc dán URL ảnh bìa tại đây...">
+                        </div>
+                        <input type="file" id="csThumbFileInput" accept="image/*" style="display: none;" onchange="handleCsThumbSelect(event)">
+                        <div id="csThumbPreviewBox" style="display: none; align-items: center; gap: 12px; margin-top: 10px; padding: 8px 12px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px;">
+                            <img id="csThumbPreviewImg" src="" style="width: 64px; height: 46px; object-fit: cover; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                            <div style="display: flex; flex-direction: column; min-width: 0;">
+                                <span style="font-size: 12.5px; font-weight: 700; color: #1e293b;" id="csThumbPreviewText">Đã chọn ảnh đại diện</span>
+                                <span style="font-size: 11px; color: #16a34a; font-weight: 600;">Sẵn sàng hiển thị</span>
+                            </div>
+                            <button type="button" style="margin-left: auto; background: #fee2e2; border: 1px solid #fecaca; color: #dc2626; border-radius: 6px; padding: 4px 8px; cursor: pointer; font-size: 12px; font-weight: 600;" onclick="clearCsThumb()">Gỡ ảnh</button>
+                        </div>
+                    </div>
+
+                    <!-- 2. Bộ ảnh chi tiết / Hiện trường dự án -->
+                    <div class="form-group" style="background: #ffffff; border: 1.5px dashed #cbd5e1; border-radius: 10px; padding: 14px 16px;">
+                        <label class="form-label" style="margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between;">
+                            <span><span style="color: var(--admin-orange); font-weight: 800;">2.</span> Hình ảnh chi tiết / Hiện trường dự án</span>
+                            <span style="font-size: 11.5px; color: #64748b; font-weight: normal;">Có thể chọn nhiều ảnh (dùng ◀ ▶ đổi thứ tự)</span>
+                        </label>
+                        <div style="display: flex; gap: 8px; margin-bottom: 8px;">
+                            <button type="button" class="btn-action" style="background: #f0fdf4; border-color: #86efac; color: #15803d; font-weight: 700; padding: 9px 14px; white-space: nowrap;" onclick="document.getElementById('csImagesFileInput').click()">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                                Tải thêm ảnh từ máy
+                            </button>
+                            <input type="text" id="csImagesInput" class="form-input" placeholder="Hoặc dán URL các ảnh (ngăn cách bằng dấu phẩy)...">
+                        </div>
+                        <input type="file" id="csImagesFileInput" accept="image/*" multiple style="display: none;" onchange="handleCsImagesSelect(event)">
+                        <div id="csImagesPreviewGrid" style="display: none; flex-wrap: wrap; gap: 8px; margin-top: 10px; padding: 10px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px;"></div>
+                    </div>
+
+                    <!-- 3. File dữ liệu / Tài liệu đính kèm (PDF, Excel, Word, Zip...) -->
+                    <div class="form-group" style="background: #ffffff; border: 1.5px dashed #cbd5e1; border-radius: 10px; padding: 14px 16px;">
+                        <label class="form-label" style="margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between;">
+                            <span><span style="color: var(--admin-orange); font-weight: 800;">3.</span> Tải file dữ liệu / Tài liệu dự án</span>
+                            <span style="font-size: 11.5px; color: #64748b; font-weight: normal;">PDF, Excel, Word, ZIP, PowerPoint...</span>
+                        </label>
+                        <div style="display: flex; gap: 8px; margin-bottom: 8px;">
+                            <button type="button" class="btn-action" style="background: #eff6ff; border-color: #93c5fd; color: #1d4ed8; font-weight: 700; padding: 9px 14px; white-space: nowrap;" onclick="document.getElementById('csDataFileInput').click()">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+                                Tải file từ máy tính
+                            </button>
+                            <input type="text" id="csDataFileUrl" class="form-input" placeholder="Hoặc dán URL file dữ liệu (PDF, XLSX, DOCX...)...">
+                        </div>
+                        <input type="file" id="csDataFileInput" accept=".pdf,.xlsx,.xls,.docx,.doc,.pptx,.ppt,.zip,.rar,.csv" style="display: none;" onchange="handleCsDataFileSelect(event)">
+                        <div id="csDataFilePreviewBox" style="display: none; align-items: center; gap: 12px; margin-top: 10px; padding: 10px 14px; background: #fff7ed; border: 1px solid #fed7aa; border-radius: 8px;">
+                            <span id="csDataFileBadge" style="font-size: 11px; font-weight: 800; background: #ea580c; color: white; padding: 4px 8px; border-radius: 4px; letter-spacing: 0.5px;">FILE</span>
+                            <div style="display: flex; flex-direction: column; min-width: 0; flex: 1;">
+                                <span style="font-size: 13px; font-weight: 700; color: #1e293b; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" id="csDataFileName">ten-file.pdf</span>
+                                <span style="font-size: 11px; color: #64748b;" id="csDataFileSize">2.4 MB</span>
+                            </div>
+                            <button type="button" style="margin-left: auto; background: #fee2e2; border: 1px solid #fecaca; color: #dc2626; border-radius: 6px; padding: 4px 8px; cursor: pointer; font-size: 12px; font-weight: 600;" onclick="clearCsDataFile()">Gỡ file</button>
+                        </div>
+                    </div>
+
+                    <!-- Trạng thái -->
+                    <div class="form-group">
+                        <label class="form-label" for="csStatus">Trạng thái hiển thị</label>
+                        <select id="csStatus" class="form-select">
+                            <option value="published">Xuất bản ngay (Hiển thị trên web)</option>
+                            <option value="draft">Bản nháp (Tạm ẩn)</option>
+                        </select>
+                    </div>
+
+                    <!-- Action buttons -->
+                    <div style="display: flex; gap: 10px; margin-top: 24px; justify-content: flex-end;">
+                        <button type="button" id="btnCsCancel" class="btn-cancel" onclick="closeCsFormModal()" style="padding: 10px 20px;">
+                            Đóng
+                        </button>
+                        <button type="submit" id="btnCsSubmit" class="btn-submit" style="width: auto; padding: 10px 26px;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span id="btnCsSubmitText">Lưu Case Study</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- POPUP MODAL SẮP XẾP THỨ TỰ CASE STUDY TRÊN WEB -->
+    <div id="csReorderModal" class="edit-modal-backdrop" onclick="if(event.target===this) closeCsReorderModal()">
+        <div class="edit-modal-card" style="max-width: 650px; max-height: 90vh;">
+            <div class="edit-modal-header">
+                <h3>
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--admin-orange)" stroke-width="2.2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                    <span>Sắp xếp thứ tự Case Study trên Website</span>
+                </h3>
+                <button type="button" class="edit-modal-close" onclick="closeCsReorderModal()">&times;</button>
+            </div>
+            <div class="edit-modal-body" style="max-height: calc(90vh - 140px); overflow-y: auto;">
+                <p style="font-size: 13px; color: #475569; margin-bottom: 14px; line-height: 1.5;">
+                    💡 <strong>Kéo thả các dòng</strong> hoặc bấm nút <strong>▲ Lên / ▼ Xuống / Đưa lên đầu</strong> để thay đổi thứ tự xuất hiện của các Case Study trên trang web chính thức (từ trái sang phải, từ trên xuống dưới).
+                </p>
+                <div id="csReorderListContainer"></div>
+            </div>
+            <div class="edit-modal-footer">
+                <button type="button" class="btn-cancel" onclick="closeCsReorderModal()">Đóng</button>
+                <button type="button" class="btn-submit" style="width: auto; padding: 10px 24px;" onclick="saveAndCloseCsReorderModal()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    Hoàn tất &amp; Lưu thứ tự
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- POPUP MODAL CHỈNH SỬA TOÀN BỘ CASE STUDY -->
     <div id="csQuickEditModal" class="edit-modal-backdrop">
