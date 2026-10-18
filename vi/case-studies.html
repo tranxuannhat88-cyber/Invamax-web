@@ -207,6 +207,13 @@
     color: #94a3b8;
     flex-shrink: 0;
 }
+.cs-arrow-wrap {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 6px;
+}
 .cs-arrow-btn {
     display: inline-flex;
     align-items: center;
@@ -215,8 +222,8 @@
     transition: transform 0.25s ease;
 }
 .cs-arrow-btn svg, .cs-arrow-btn i {
-    width: 19px;
-    height: 19px;
+    width: 20px;
+    height: 20px;
 }
 .cs-modern-card:hover .cs-arrow-btn, .feature-card:hover .cs-arrow-btn {
     transform: translateX(5px);
@@ -714,15 +721,10 @@
                         </div>
                     </div>
                     <p class="cs-desc">Từ 742 lên 1.056 UPH sau 4 năm cải tiến hệ thống vận hành với INVAMAX FOS.</p>
-                </div>
-                <div class="cs-divider"></div>
-                <div class="cs-footer">
-                    <div class="cs-meta-left">
-                        <span class="cs-meta-item"><i data-lucide="calendar"></i> 12 thg 10, 2026</span>
-                        <span class="cs-meta-item"><i data-lucide="eye"></i> 2.4K lượt xem</span>
-                    </div>
-                    <div class="cs-arrow-btn">
-                        <i data-lucide="arrow-right"></i>
+                    <div class="cs-arrow-wrap">
+                        <div class="cs-arrow-btn">
+                            <i data-lucide="arrow-right"></i>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -746,15 +748,10 @@
                         </div>
                     </div>
                     <p class="cs-desc">4 năm liên tục loại bỏ lãng phí, tối ưu nguồn lực và cải thiện hệ thống vận hành với INVAMAX FOS.</p>
-                </div>
-                <div class="cs-divider"></div>
-                <div class="cs-footer">
-                    <div class="cs-meta-left">
-                        <span class="cs-meta-item"><i data-lucide="calendar"></i> 08 thg 10, 2026</span>
-                        <span class="cs-meta-item"><i data-lucide="eye"></i> 1.8K lượt xem</span>
-                    </div>
-                    <div class="cs-arrow-btn">
-                        <i data-lucide="arrow-right"></i>
+                    <div class="cs-arrow-wrap">
+                        <div class="cs-arrow-btn">
+                            <i data-lucide="arrow-right"></i>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -778,15 +775,10 @@
                         </div>
                     </div>
                     <p class="cs-desc">Từ quản lý theo Mini Factory sang quản lý chuyên trách theo công đoạn, tối ưu nhân sự trực tiếp.</p>
-                </div>
-                <div class="cs-divider"></div>
-                <div class="cs-footer">
-                    <div class="cs-meta-left">
-                        <span class="cs-meta-item"><i data-lucide="calendar"></i> 05 thg 10, 2026</span>
-                        <span class="cs-meta-item"><i data-lucide="eye"></i> 3.1K lượt xem</span>
-                    </div>
-                    <div class="cs-arrow-btn">
-                        <i data-lucide="arrow-right"></i>
+                    <div class="cs-arrow-wrap">
+                        <div class="cs-arrow-btn">
+                            <i data-lucide="arrow-right"></i>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1441,15 +1433,10 @@
                             <h3 class="cs-title">${cs.title}</h3>
                             ${infoBoxHtml}
                             <p class="cs-desc">${cs.desc || ''}</p>
-                        </div>
-                        <div class="cs-divider"></div>
-                        <div class="cs-footer">
-                            <div class="cs-meta-left">
-                                <span class="cs-meta-item"><i data-lucide="calendar"></i> ${dateText}</span>
-                                <span class="cs-meta-item"><i data-lucide="eye"></i> ${viewsText}</span>
-                            </div>
-                            <div class="cs-arrow-btn">
-                                <i data-lucide="arrow-right"></i>
+                            <div class="cs-arrow-wrap">
+                                <div class="cs-arrow-btn">
+                                    <i data-lucide="arrow-right"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
