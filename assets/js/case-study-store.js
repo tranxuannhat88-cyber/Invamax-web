@@ -559,10 +559,10 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
                 continue;
             }
 
-            const isStuckPlaceholder = item.thumbnail === 'assets/images/resources/art-5steps.jpg' && item.id !== 'cs-productivity-pencil';
+            const isStuckPlaceholder = item.thumbnail === 'assets/images/resources/art-5steps.jpg';
 
-            // Nếu người dùng đã chủ động gỡ bỏ hoàn toàn hoặc thiết lập ảnh đại diện riêng trong Admin (không phải ảnh mặc định art-5steps.jpg bị gán tự động) thì giữ nguyên 100%
-            if ((item.thumbSource === 'custom' && !isStuckPlaceholder) || item.thumbSource === 'cleared') {
+            // Nếu người dùng đã thiết lập ảnh đại diện riêng (custom) và không phải ảnh generic art-5steps.jpg
+            if (item.thumbSource === 'custom' && !isStuckPlaceholder) {
                 continue;
             }
 

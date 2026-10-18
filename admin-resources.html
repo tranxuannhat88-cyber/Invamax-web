@@ -3407,16 +3407,49 @@
             }
         }
 
-        function clearCsThumb() {
-            const prevSource = currentCsThumbSource;
+        async function clearCsThumb() {
             currentCsThumbnail = '';
-            currentCsThumbSource = prevSource === 'pdf-auto' ? 'cleared' : 'auto';
+            currentCsThumbSource = 'auto';
             const box = document.getElementById('csThumbPreviewBox');
             const input = document.getElementById('csThumbFileInput');
             const urlInput = document.getElementById('csThumbUrl');
             if (box) box.style.display = 'none';
             if (input) input.value = '';
             if (urlInput) urlInput.value = '';
+
+            // Kiểm tra xem có file dữ liệu (PDF) đính kèm hay không
+            if (csPendingFilePromise) {
+                await csPendingFilePromise;
+            }
+            const pdfData = currentCsFileData || (document.getElementById('csDataFileUrl')?.value || '').trim();
+            const format = (currentCsFileFormat || (currentCsFileName ? currentCsFileName.split('.').pop() : '')).toUpperCase();
+            const isPdf = pdfData && (
+                pdfData.startsWith('data:application/pdf') ||
+                pdfData.toLowerCase().endsWith('.pdf') ||
+                format === 'PDF'
+            );
+
+            if (isPdf) {
+                const genFn = (typeof INVAMAX_CASE_STUDY_STORE !== 'undefined' && typeof INVAMAX_CASE_STUDY_STORE.generatePdfThumbnail === 'function')
+                    ? INVAMAX_CASE_STUDY_STORE.generatePdfThumbnail
+                    : (typeof INVAMAX_TOOLKIT_STORE !== 'undefined' ? INVAMAX_TOOLKIT_STORE.generatePdfThumbnail : null);
+                if (genFn) {
+                    showToast('Đang tự động tạo ảnh bìa Ultra-HD từ file PDF đính kèm...', 'info');
+                    try {
+                        const hdThumb = await genFn(pdfData, 2000);
+                        if (hdThumb) {
+                            currentCsThumbnail = hdThumb;
+                            currentCsThumbSource = 'pdf-auto';
+                            displayCsThumb(hdThumb, 'Tự động tạo từ file tài liệu PDF');
+                            showToast('✓ Đã tự động tạo ảnh bìa từ file tài liệu đính kèm!', 'success');
+                            return;
+                        }
+                    } catch (err) {
+                        console.warn('Lỗi trích xuất thumbnail PDF khi gỡ ảnh:', err);
+                    }
+                }
+            }
+            showToast('Đã gỡ ảnh đại diện. Khi tải file PDF lên hoặc lưu, hệ thống sẽ tự động tạo ảnh bìa từ file tài liệu.', 'info');
         }
 
         async function reExtractCsThumbFromPdf() {
@@ -3466,19 +3499,22 @@
                     currentCsFileData = evt.target.result;
                     displayCsDataFile(file.name, currentCsFileSize, ext);
 
-                    // Tự động tạo ảnh đại diện trang 1 ở độ phân giải Ultra-HD (2000px) nếu là PDF và chưa có ảnh đại diện riêng
+                    // Tự động tạo ảnh đại diện trang 1 ở độ phân giải Ultra-HD (2000px) nếu là PDF và người dùng không có ảnh custom riêng (hoặc đang là generic art-5steps.jpg)
+                    const isCustomThumb = currentCsThumbSource === 'custom' && currentCsThumbnail && !currentCsThumbnail.includes('art-5steps.jpg');
                     const genFn = (typeof INVAMAX_CASE_STUDY_STORE !== 'undefined' && typeof INVAMAX_CASE_STUDY_STORE.generatePdfThumbnail === 'function')
                         ? INVAMAX_CASE_STUDY_STORE.generatePdfThumbnail
                         : (typeof INVAMAX_TOOLKIT_STORE !== 'undefined' ? INVAMAX_TOOLKIT_STORE.generatePdfThumbnail : null);
-                    if (ext === 'PDF' && !currentCsThumbnail && genFn) {
+                    if (ext === 'PDF' && (!isCustomThumb || !currentCsThumbnail) && genFn) {
                         try {
                             const thumb = await genFn(currentCsFileData, 2000);
-                            if (thumb && !currentCsThumbnail) {
+                            if (thumb) {
                                 currentCsThumbnail = thumb;
                                 currentCsThumbSource = 'pdf-auto';
                                 displayCsThumb(thumb, 'Tự động trích xuất Ultra-HD từ trang 1 PDF');
                             }
-                        } catch (err) {}
+                        } catch (err) {
+                            console.warn('Lỗi tự động tạo thumbnail từ PDF mới tải lên:', err);
+                        }
                     }
                     resolve(currentCsFileData);
                 };
@@ -4130,15 +4166,16 @@
                 fileFormat = fileName.split('.').pop().toUpperCase();
             }
 
-            // Khi người dùng đã bấm "Gỡ ảnh" (thumb rỗng), tuyệt đối không tự chèn lại art-5steps.jpg
-            // Nếu có tệp PDF đính kèm (và không phải vừa gỡ chính ảnh PDF), tự động trích xuất trang 1 PDF sắc nét
-            if (!thumb) {
+            // Nếu người dùng không chọn ảnh đại diện riêng (hoặc đã gỡ ảnh):
+            // Luôn tự động trích xuất ảnh bìa từ file tài liệu PDF đính kèm (nếu có)
+            const isCustomThumb = (thumbSource === 'custom' || Boolean(thumbUrl)) && thumb && !thumb.includes('art-5steps.jpg');
+            if (!isCustomThumb) {
                 const isPdfData = dataFile && (
                     dataFile.startsWith('data:application/pdf') ||
                     dataFile.toLowerCase().endsWith('.pdf') ||
                     (fileFormat || '').toUpperCase() === 'PDF'
                 );
-                if (isPdfData && thumbSource !== 'cleared') {
+                if (isPdfData) {
                     const genFn = (typeof INVAMAX_CASE_STUDY_STORE !== 'undefined' && typeof INVAMAX_CASE_STUDY_STORE.generatePdfThumbnail === 'function')
                         ? INVAMAX_CASE_STUDY_STORE.generatePdfThumbnail
                         : (typeof INVAMAX_TOOLKIT_STORE !== 'undefined' ? INVAMAX_TOOLKIT_STORE.generatePdfThumbnail : null);
@@ -4150,12 +4187,14 @@
                                 thumb = pdfThumb;
                                 thumbSource = 'pdf-auto';
                             }
-                        } catch (err) {}
+                        } catch (err) {
+                            console.warn('Lỗi tự động tạo thumbnail từ PDF khi lưu:', err);
+                        }
                     }
                 }
                 if (!thumb && images.length > 0) {
                     thumb = images[0];
-                    thumbSource = thumbSource === 'cleared' ? 'cleared' : 'auto';
+                    thumbSource = 'auto';
                 }
             }
 
@@ -4217,9 +4256,9 @@
             document.getElementById('csDesc').value = cs.desc || '';
             document.getElementById('csLink').value = cs.link || '';
 
-            const isStuckPlaceholder = cs.thumbnail === 'assets/images/resources/art-5steps.jpg' && cs.id !== 'cs-productivity-pencil';
-            const effectiveThumb = isStuckPlaceholder ? '' : (cs.thumbnail || '');
-            document.getElementById('csThumbUrl').value = effectiveThumb && !effectiveThumb.startsWith('data:') ? effectiveThumb : '';
+            const isGenericPlaceholder = cs.thumbnail === 'assets/images/resources/art-5steps.jpg';
+            const effectiveThumb = (cs.thumbSource === 'custom' && !isGenericPlaceholder) ? cs.thumbnail : (cs.thumbnail || '');
+            document.getElementById('csThumbUrl').value = effectiveThumb && !effectiveThumb.startsWith('data:') && !effectiveThumb.includes('art-5steps.jpg') ? effectiveThumb : '';
             
             const fileUrl = cs.fileUrl || cs.pdfUrl || '';
             const dataFileUrlInput = document.getElementById('csDataFileUrl');
@@ -4228,11 +4267,16 @@
             }
             document.getElementById('csStatus').value = cs.status || 'published';
 
-            if (effectiveThumb) {
+            if (effectiveThumb && !isGenericPlaceholder) {
                 currentCsThumbnail = effectiveThumb;
                 currentCsThumbSource = cs.thumbSource || 'custom';
                 const noteText = cs.thumbSource === 'pdf-auto' ? 'Tự động trích xuất từ trang 1 PDF' : 'Ảnh hiện tại';
                 displayCsThumb(effectiveThumb, noteText);
+            } else if (fileUrl && (fileUrl.toLowerCase().endsWith('.pdf') || fileUrl.startsWith('data:application/pdf'))) {
+                // Nếu chưa có ảnh tùy chọn riêng hoặc đang là ảnh generic placeholder, tự động kích hoạt tạo thumbnail từ file PDF
+                currentCsThumbnail = '';
+                currentCsThumbSource = 'auto';
+                clearCsThumb();
             } else {
                 clearCsThumb();
             }
@@ -4318,7 +4362,7 @@
             document.getElementById('csQuickEditModal')?.classList.remove('show');
         }
 
-        function handleSaveCsModalEdit(e) {
+        async function handleSaveCsModalEdit(e) {
             if (e) e.preventDefault();
             addModalCsImageUrl();
             const id = document.getElementById('modalCsId').value;
@@ -4340,7 +4384,7 @@
                 return;
             }
 
-            const thumb = modalCsThumbnail || thumbUrl || (modalCsImagesList.length > 0 ? modalCsImagesList[0] : '');
+            let thumb = modalCsThumbnail || thumbUrl || '';
             const dataFile = modalCsFileData || pdfUrlInput || '';
             let fileName = modalCsFileName;
             let fileFormat = modalCsFileFormat;
@@ -4348,6 +4392,30 @@
             if (!fileName && pdfUrlInput) {
                 fileName = pdfUrlInput.split('/').pop().split('?')[0];
                 fileFormat = fileName.split('.').pop().toUpperCase();
+            }
+
+            if (!thumb) {
+                const isPdfData = dataFile && (
+                    dataFile.startsWith('data:application/pdf') ||
+                    dataFile.toLowerCase().endsWith('.pdf') ||
+                    (fileFormat || '').toUpperCase() === 'PDF'
+                );
+                if (isPdfData) {
+                    const genFn = (typeof INVAMAX_CASE_STUDY_STORE !== 'undefined' && typeof INVAMAX_CASE_STUDY_STORE.generatePdfThumbnail === 'function')
+                        ? INVAMAX_CASE_STUDY_STORE.generatePdfThumbnail
+                        : (typeof INVAMAX_TOOLKIT_STORE !== 'undefined' ? INVAMAX_TOOLKIT_STORE.generatePdfThumbnail : null);
+                    if (genFn) {
+                        try {
+                            const pdfThumb = await genFn(dataFile, 2000);
+                            if (pdfThumb) {
+                                thumb = pdfThumb;
+                            }
+                        } catch (err) {}
+                    }
+                }
+                if (!thumb && modalCsImagesList.length > 0) {
+                    thumb = modalCsImagesList[0];
+                }
             }
 
             const updateData = {
@@ -4360,6 +4428,7 @@
                 desc,
                 link: link || '',
                 thumbnail: thumb,
+                thumbSource: thumb && thumb.startsWith('data:') ? 'pdf-auto' : 'auto',
                 pdfUrl: dataFile,
                 fileUrl: dataFile,
                 fileName: fileName || '',
