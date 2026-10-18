@@ -16,6 +16,30 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
 
     const DEFAULT_CASE_STUDIES = [
         {
+            id: 'cs-productivity-pencil',
+            badge: 'CASE STUDY 01',
+            categories: ['Lean & Cải tiến', 'Tăng năng suất'],
+            category: 'Lean & Cải tiến, Tăng năng suất',
+            title: 'Hành trình tăng năng suất lao động 42,3% trong 4 năm',
+            desc: 'Tăng năng suất từ 742 lên 1.056 UPH sau 4 năm cải tiến hệ thống vận hành.',
+            client: 'Nhà máy sản xuất bút chì',
+            highlight: 'Tăng 42,3% UPH',
+            link: '',
+            thumbnail: 'assets/images/case-study/thumb-cs-productivity-pencil.jpg',
+            pdfUrl: 'assets/docs/cs-file-cs-productivity-pencil.pdf',
+            fileUrl: 'assets/docs/cs-file-cs-productivity-pencil.pdf',
+            fileName: 'INVAMAX_CaseStudy_2022-2025.pdf',
+            fileSize: '4.47 MB',
+            fileFormat: 'PDF',
+            images: [],
+            status: 'published',
+            createdAt: '2026-10-12',
+            dateDisplay: '12 thg 10, 2026',
+            views: '2.4K lượt xem',
+            updatedAt: '2026-10-18',
+            thumbSource: 'pdf-auto'
+        },
+        {
             id: 'cs-1792227507057',
             badge: 'CASE STUDY 06',
             categories: ['Số hóa & dữ liệu'],
@@ -108,51 +132,6 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
             createdAt: '2026-10-08',
             dateDisplay: '08 thg 10, 2026',
             views: '1.8K lượt xem'
-        },
-        {
-            id: 'cs-productivity-pencil',
-            badge: 'CASE STUDY 01',
-            categories: ['Lean & Cải tiến', 'Tăng năng suất'],
-            category: 'Lean & Cải tiến, Tăng năng suất',
-            title: 'Hành trình tăng năng suất lao động 42,3% trong 4 năm',
-            desc: 'Tăng năng suất từ 742 lên 1.056 UPH sau 4 năm cải tiến hệ thống vận hành.',
-            client: 'Nhà máy sản xuất bút chì',
-            highlight: 'Tăng 42,3% UPH',
-            link: '',
-            thumbnail: 'assets/images/case-study/thumb-cs-productivity-pencil.jpg',
-            pdfUrl: 'assets/docs/cs-file-cs-productivity-pencil.pdf',
-            fileUrl: 'assets/docs/cs-file-cs-productivity-pencil.pdf',
-            fileName: 'INVAMAX_CaseStudy_2022-2025.pdf',
-            fileSize: '4.47 MB',
-            fileFormat: 'PDF',
-            images: [],
-            status: 'published',
-            createdAt: '2026-10-12',
-            dateDisplay: '12 thg 10, 2026',
-            views: '2.4K lượt xem',
-            thumbSource: 'pdf-auto'
-        },
-        {
-            id: 'cs-operating-model-pencil',
-            badge: 'CASE STUDY 03',
-            categories: ['Lean & Cải tiến', 'Tăng năng suất'],
-            category: 'Lean & Cải tiến, Tăng năng suất',
-            title: 'Thay đổi Mô hình quản lý tại nhà máy sản xuất bút chì',
-            desc: 'Từ quản lý theo Mini Factory sang quản lý chuyên trách theo công đoạn, tối ưu nhân sự trực tiếp.',
-            client: 'Nhà máy sản xuất bút chì',
-            highlight: 'Tối ưu quản lý chuyên trách',
-            link: 'case-study/operating-model-pencil-factory.html',
-            thumbnail: 'assets/images/operations/operations.jpg',
-            pdfUrl: 'assets/docs/IVM-Huong-dan-thuc-hien-5S-Tinh-gon-Hieu-qua.pdf',
-            fileUrl: 'assets/docs/IVM-Huong-dan-thuc-hien-5S-Tinh-gon-Hieu-qua.pdf',
-            images: [
-                'assets/images/report_roadmap.png',
-                'assets/images/operations/factory.jpg'
-            ],
-            status: 'published',
-            createdAt: '2026-10-05',
-            dateDisplay: '05 thg 10, 2026',
-            views: '3.1K lượt xem'
         }
     ];
 
@@ -611,6 +590,7 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
 
     // Initialize store from IndexedDB -> localStorage -> Remote JSON
     async function init(remoteJsonUrl = 'assets/data/case-studies.json') {
+        const isAdminPage = typeof window !== 'undefined' && window.location && window.location.pathname.toLowerCase().includes('admin');
         const isLocalModified = Boolean(localStorage.getItem(LOCAL_MODIFIED_KEY));
 
         // 1. Check IndexedDB first (contains full high-res images & files)
@@ -631,22 +611,23 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
             } catch (e) {}
         }
 
-        // 3. Only overwrite with remote JSON if there are no unsynced local modifications
-        //    OR if we have no local data yet
-        const isLegacy3Items = memoryList && memoryList.length === 3 && memoryList.every(it =>
-            ['cs-productivity-pencil', 'cs-kaizen-cost-pencil', 'cs-operating-model-pencil'].includes(it.id)
-        );
-        if (!isLocalModified || !memoryList || memoryList.length === 0 || isLegacy3Items) {
+        // 3. Remote JSON sync:
+        // On public pages, ALWAYS prefer and sync latest data from server/GitHub so all devices (iPhone, Android, Desktop) see identical content
+        // Only on admin editor pages do we preserve un-synced local drafts.
+        const shouldFetchRemote = !isAdminPage || !isLocalModified || !memoryList || memoryList.length === 0;
+
+        if (shouldFetchRemote) {
             try {
                 const res = await fetch(remoteJsonUrl + '?t=' + Date.now());
                 if (res.ok) {
                     const remoteData = await res.json();
                     if (Array.isArray(remoteData) && remoteData.length > 0) {
-                        // Không ghi đè nếu dữ liệu trên CDN đang cũ hơn (ít mục hơn) dữ liệu hiện tại
-                        if (!memoryList || remoteData.length >= memoryList.length) {
-                            memoryList = remoteData.map(normalizeItem);
-                            await saveListToIDB(memoryList);
-                            saveToLocalStorageFallback(memoryList);
+                        memoryList = remoteData.map(normalizeItem);
+                        await saveListToIDB(memoryList);
+                        saveToLocalStorageFallback(memoryList);
+                        // Clean up stale local modification flag on public pages
+                        if (!isAdminPage) {
+                            try { localStorage.removeItem(LOCAL_MODIFIED_KEY); } catch (e) {}
                         }
                     }
                 }
@@ -655,7 +636,7 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
             }
         }
 
-        if (!memoryList || memoryList.length === 0 || (isLegacy3Items && DEFAULT_CASE_STUDIES.length > 3)) {
+        if (!memoryList || memoryList.length === 0) {
             memoryList = cloneList(DEFAULT_CASE_STUDIES);
             await saveListToIDB(memoryList);
             saveToLocalStorageFallback(memoryList);
