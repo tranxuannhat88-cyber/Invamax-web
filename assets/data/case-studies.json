@@ -79,31 +79,6 @@
     "thumbSource": "custom"
   },
   {
-    "id": "cs-kaizen-cost-pencil",
-    "badge": "CASE STUDY 02",
-    "categories": [
-      "Giảm chi phí",
-      "Lean & Cải tiến"
-    ],
-    "category": "Giảm chi phí, Lean & Cải tiến",
-    "title": "432.873 USD/năm giá trị cải tiến tại nhà máy sản xuất bút chì",
-    "desc": "4 năm liên tục loại bỏ lãng phí, tối ưu nguồn lực và cải thiện hệ thống vận hành với INVAMAX FOS.",
-    "client": "Nhà máy sản xuất bút chì",
-    "highlight": "432.873 USD/năm",
-    "link": "case-study/kaizen-cost-saving-pencil-factory.html",
-    "thumbnail": "assets/images/resources/art-costdown.jpg",
-    "pdfUrl": "assets/docs/IVM-Huong-dan-thuc-hien-5S-Tinh-gon-Hieu-qua.pdf",
-    "images": [
-      "assets/images/report_matrix.png",
-      "assets/images/report_roadmap.png"
-    ],
-    "status": "published",
-    "createdAt": "2026-10-08",
-    "dateDisplay": "08 thg 10, 2026",
-    "views": "1.8K lượt xem",
-    "fileUrl": "assets/docs/IVM-Huong-dan-thuc-hien-5S-Tinh-gon-Hieu-qua.pdf"
-  },
-  {
     "id": "cs-productivity-pencil",
     "badge": "CASE STUDY 01",
     "categories": [
@@ -127,6 +102,31 @@
     "createdAt": "2026-10-12",
     "dateDisplay": "12 thg 10, 2026",
     "views": "2.4K lượt xem"
+  },
+  {
+    "id": "cs-kaizen-cost-pencil",
+    "badge": "CASE STUDY 02",
+    "categories": [
+      "Giảm chi phí",
+      "Lean & Cải tiến"
+    ],
+    "category": "Giảm chi phí, Lean & Cải tiến",
+    "title": "432.873 USD/năm giá trị cải tiến tại nhà máy sản xuất bút chì",
+    "desc": "4 năm liên tục loại bỏ lãng phí, tối ưu nguồn lực và cải thiện hệ thống vận hành với INVAMAX FOS.",
+    "client": "Nhà máy sản xuất bút chì",
+    "highlight": "432.873 USD/năm",
+    "link": "case-study/kaizen-cost-saving-pencil-factory.html",
+    "thumbnail": "assets/images/resources/art-costdown.jpg",
+    "pdfUrl": "assets/docs/IVM-Huong-dan-thuc-hien-5S-Tinh-gon-Hieu-qua.pdf",
+    "images": [
+      "assets/images/report_matrix.png",
+      "assets/images/report_roadmap.png"
+    ],
+    "status": "published",
+    "createdAt": "2026-10-08",
+    "dateDisplay": "08 thg 10, 2026",
+    "views": "1.8K lượt xem",
+    "fileUrl": "assets/docs/IVM-Huong-dan-thuc-hien-5S-Tinh-gon-Hieu-qua.pdf"
   },
   {
     "id": "cs-operating-model-pencil",
