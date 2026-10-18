@@ -112,25 +112,25 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
         {
             id: 'cs-productivity-pencil',
             badge: 'CASE STUDY 01',
-            categories: ['Tăng năng suất', 'Lean & Cải tiến'],
-            category: 'Tăng năng suất, Lean & Cải tiến',
-            title: 'Tăng 42,3% năng suất tại nhà máy sản xuất bút chì',
-            desc: 'Từ 742 lên 1.056 UPH sau 4 năm cải tiến hệ thống vận hành với INVAMAX FOS.',
+            categories: ['Lean & Cải tiến', 'Tăng năng suất'],
+            category: 'Lean & Cải tiến, Tăng năng suất',
+            title: 'Hành trình tăng năng suất lao động 42,3% trong 4 năm',
+            desc: 'Tăng năng suất từ 742 lên 1.056 UPH sau 4 năm cải tiến hệ thống vận hành.',
             client: 'Nhà máy sản xuất bút chì',
             highlight: 'Tăng 42,3% UPH',
             link: '',
-            thumbnail: 'assets/images/resources/art-5steps.jpg',
-            pdfUrl: '',
-            fileUrl: '',
-            images: [
-                'assets/images/report_dashboard.png',
-                'assets/images/report_matrix.png',
-                'assets/images/report_wastes.png'
-            ],
+            thumbnail: 'assets/images/case-study/thumb-cs-productivity-pencil.jpg',
+            pdfUrl: 'assets/docs/cs-file-cs-productivity-pencil.pdf',
+            fileUrl: 'assets/docs/cs-file-cs-productivity-pencil.pdf',
+            fileName: 'INVAMAX_CaseStudy_2022-2025.pdf',
+            fileSize: '4.47 MB',
+            fileFormat: 'PDF',
+            images: [],
             status: 'published',
             createdAt: '2026-10-12',
             dateDisplay: '12 thg 10, 2026',
-            views: '2.4K lượt xem'
+            views: '2.4K lượt xem',
+            thumbSource: 'pdf-auto'
         },
         {
             id: 'cs-operating-model-pencil',
