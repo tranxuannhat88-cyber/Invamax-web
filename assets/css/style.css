@@ -370,6 +370,13 @@ section[id], div[id] {
     color: #fff;
     cursor: pointer;
     padding: 8px;
+    touch-action: manipulation !important;
+    -webkit-tap-highlight-color: transparent !important;
+}
+
+.mobile-menu-btn svg,
+.mobile-menu-btn i {
+    pointer-events: none !important;
 }
 
 /* Hero Section */
@@ -634,13 +641,18 @@ section[id], div[id] {
     .nav-links.active,
     .nav-links.open {
         display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
     }
     .mobile-menu-btn {
         display: flex !important;
-        align-items: center;
-        justify-content: center;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 42px !important;
+        height: 42px !important;
         z-index: 10001 !important;
         pointer-events: auto !important;
+        cursor: pointer !important;
     }
     .nav-dropdown {
         position: static !important;

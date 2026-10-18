@@ -195,6 +195,13 @@
     padding: 8px !important;
     z-index: 10001 !important;
     pointer-events: auto !important;
+    touch-action: manipulation !important;
+    -webkit-tap-highlight-color: transparent !important;
+}
+
+.mobile-menu-btn svg,
+.mobile-menu-btn i {
+    pointer-events: none !important;
 }
 
 @media (max-width: 980px) {
@@ -227,11 +234,15 @@
     .nav-links.active,
     .nav-links.open {
         display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
     }
     .mobile-menu-btn {
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
+        width: 42px !important;
+        height: 42px !important;
     }
     .nav-dropdown {
         position: static !important;
