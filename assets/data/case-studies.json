@@ -1,5 +1,36 @@
 [
   {
+    "id": "cs-productivity-pencil",
+    "badge": "CASE STUDY 01",
+    "categories": [
+      "Lean & Cải tiến",
+      "Tăng năng suất"
+    ],
+    "category": "Lean & Cải tiến, Tăng năng suất",
+    "title": "Hành trình tăng năng suất lao động 42,3% trong 4 năm",
+    "desc": "Tăng năng suất từ 742 lên 1.056 UPH sau 4 năm cải tiến hệ thống vận hành.",
+    "client": "Nhà máy sản xuất bút chì",
+    "highlight": "Tăng 42,3% UPH",
+    "link": "",
+    "thumbnail": "assets/images/resources/art-5steps.jpg",
+    "pdfUrl": "",
+    "images": [
+      "assets/images/report_dashboard.png",
+      "assets/images/report_matrix.png",
+      "assets/images/report_wastes.png"
+    ],
+    "status": "draft",
+    "createdAt": "2026-10-12",
+    "dateDisplay": "12 thg 10, 2026",
+    "views": "2.4K lượt xem",
+    "thumbSource": "custom",
+    "fileUrl": "",
+    "fileName": "",
+    "fileSize": "",
+    "fileFormat": "",
+    "updatedAt": "2026-10-18"
+  },
+  {
     "id": "cs-1792227507057",
     "badge": "CASE STUDY 06",
     "categories": [
@@ -77,31 +108,6 @@
     "views": "1.2K lượt xem",
     "updatedAt": "2026-10-17",
     "thumbSource": "custom"
-  },
-  {
-    "id": "cs-productivity-pencil",
-    "badge": "CASE STUDY 01",
-    "categories": [
-      "Tăng năng suất",
-      "Lean & Cải tiến"
-    ],
-    "category": "Tăng năng suất, Lean & Cải tiến",
-    "title": "Tăng 42,3% năng suất tại nhà máy sản xuất bút chì",
-    "desc": "Từ 742 lên 1.056 UPH sau 4 năm cải tiến hệ thống vận hành với INVAMAX FOS.",
-    "client": "Nhà máy sản xuất bút chì",
-    "highlight": "Tăng 42,3% UPH",
-    "link": "",
-    "thumbnail": "assets/images/resources/art-5steps.jpg",
-    "pdfUrl": "",
-    "images": [
-      "assets/images/report_dashboard.png",
-      "assets/images/report_matrix.png",
-      "assets/images/report_wastes.png"
-    ],
-    "status": "published",
-    "createdAt": "2026-10-12",
-    "dateDisplay": "12 thg 10, 2026",
-    "views": "2.4K lượt xem"
   },
   {
     "id": "cs-kaizen-cost-pencil",
