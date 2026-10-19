@@ -384,7 +384,82 @@ svg.res-feat-icon {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
+    transition: opacity 0.2s ease;
 }
+
+/* ==========================================================================
+   PAGINATION (Phân trang: Trang số & Nút tiến / lùi)
+   ========================================================================== */
+.res-pagination-container {
+    margin-top: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.res-pagination-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #ffffff;
+    padding: 6px 12px;
+    border-radius: 50px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+}
+.res-page-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 38px;
+    height: 38px;
+    padding: 0 10px;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    background: transparent;
+    color: #475569;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+.res-page-btn i {
+    width: 18px;
+    height: 18px;
+    stroke-width: 2.2;
+}
+.res-page-btn:hover:not(:disabled):not(.active) {
+    background: #f1f5f9;
+    color: var(--iv-orange);
+    border-color: #e2e8f0;
+}
+.res-page-btn.active {
+    background: var(--iv-orange);
+    color: #ffffff !important;
+    border-color: var(--iv-orange);
+    font-weight: 700;
+    box-shadow: 0 3px 10px rgba(249, 115, 22, 0.35);
+}
+.res-page-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+.res-page-dots {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 26px;
+    height: 38px;
+    color: #94a3b8;
+    font-size: 14px;
+    font-weight: 700;
+    user-select: none;
+}
+
 
 /* ==========================================================================
    SECTION 1: KHÁM PHÁ THEO CHỦ ĐỀ (Dark Cards on Light Background)
@@ -1264,4 +1339,26 @@ svg.res-feat-icon {
     .vid-meta-footer-light {
         padding-top: 6px;
     }
+    .res-pagination-container {
+        margin-top: 22px;
+    }
+    .res-pagination-wrap {
+        gap: 6px;
+        padding: 5px 8px;
+    }
+    .res-page-btn {
+        min-width: 34px;
+        height: 34px;
+        font-size: 13px;
+        padding: 0 6px;
+    }
+    .res-page-btn i {
+        width: 16px;
+        height: 16px;
+    }
+    .res-page-dots {
+        min-width: 20px;
+        height: 34px;
+    }
 }
+

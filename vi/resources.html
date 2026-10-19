@@ -36,7 +36,7 @@
     <link rel="icon" type="image/jpeg" href="../assets/images/favicon.jpg">
     <link rel="stylesheet" href="../assets/css/style.css?v=18">
     <link rel="stylesheet" href="../assets/css/navbar.css?v=13">
-    <link rel="stylesheet" href="../assets/css/invamax-resources.css?v=11">
+    <link rel="stylesheet" href="../assets/css/invamax-resources.css?v=12">
 </head>
 <body class="light-theme">
 
@@ -94,7 +94,7 @@
                     <!-- Filter Pills -->
                     <div class="res-filter-pills-light">
                         <button class="res-pill-btn active"><i data-lucide="book-open"></i> Tất cả</button>
-                        <a href="articles.html" class="res-pill-btn"><i data-lucide="file-text"></i> Bài viết</a>
+                        <a href="#articles" class="res-pill-btn"><i data-lucide="file-text"></i> Bài viết</a>
                         <a href="#toolkit" class="res-pill-btn"><i data-lucide="download"></i> Tài liệu</a>
                         <a href="#video" class="res-pill-btn"><i data-lucide="play-circle"></i> Video</a>
                     </div>
@@ -175,7 +175,6 @@
                         <h2 class="res-sec-title">Bài viết mới &amp; tiêu biểu</h2>
                         <p class="res-sec-desc">Những bài viết được quan tâm nhiều nhất, cập nhật kiến thức và kinh nghiệm thực tế từ INVAMAX.</p>
                     </div>
-                    <a href="articles.html" class="res-view-all">Xem tất cả bài viết <i data-lucide="arrow-right"></i></a>
                 </div>
 
                 <div class="res-grid-4">
@@ -255,6 +254,13 @@
                         </div>
                     </article>
                 </div>
+                <div id="articles-pagination" class="res-pagination-container">
+                    <div class="res-pagination-wrap">
+                        <button type="button" class="res-page-btn res-page-prev" disabled aria-label="Trang trước" title="Trang trước"><i data-lucide="chevron-left"></i></button>
+                        <button type="button" class="res-page-btn res-page-num active">1</button>
+                        <button type="button" class="res-page-btn res-page-next" disabled aria-label="Trang sau" title="Trang sau"><i data-lucide="chevron-right"></i></button>
+                    </div>
+                </div>
             </section>
 
             <!-- SECTION 3: Toolkit & Tài liệu -->
@@ -264,7 +270,6 @@
                         <h2 class="res-sec-title">Toolkit &amp; Tài liệu</h2>
                         <p class="res-sec-desc">Bộ công cụ và tài liệu giúp bạn triển khai ngay trong công việc.</p>
                     </div>
-                    <a href="articles.html" class="res-view-all">Xem tất cả tài liệu <i data-lucide="arrow-right"></i></a>
                 </div>
 
                 <div class="res-grid-4">
@@ -358,6 +363,13 @@
                             </button>
                             <a href="#" class="tool-download-btn" onclick="INVAMAX_TOOLKIT_STORE.handleDownload('tool-bieu-mau-oee', event)"><i data-lucide="download"></i> Tải xuống</a>
                         </div>
+                    </div>
+                </div>
+                <div id="toolkit-pagination" class="res-pagination-container">
+                    <div class="res-pagination-wrap">
+                        <button type="button" class="res-page-btn res-page-prev" disabled aria-label="Trang trước" title="Trang trước"><i data-lucide="chevron-left"></i></button>
+                        <button type="button" class="res-page-btn res-page-num active">1</button>
+                        <button type="button" class="res-page-btn res-page-next" disabled aria-label="Trang sau" title="Trang sau"><i data-lucide="chevron-right"></i></button>
                     </div>
                 </div>
             </section>
@@ -560,7 +572,7 @@
             pdfjsLib.GlobalWorkerOptions.workerSrc = '../assets/js/vendor/pdf.worker.min.js';
         }
     </script>
-    <script src="../assets/js/toolkit-store.js?v=20261019_1330"></script>
+    <script src="../assets/js/toolkit-store.js?v=20261019_1615"></script>
         <!-- Contact Modal -->
     <div id="contactModal" class="modal-overlay">
         <div class="modal-content">

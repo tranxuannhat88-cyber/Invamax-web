@@ -986,25 +986,136 @@ var INVAMAX_TOOLKIT_STORE = (function () {
         `;
     }
 
-    // Khởi tạo và đồng bộ hiển thị lên trang resources.html
-    async function initResourcesPage() {
-        // 1. Render Articles
-        const artGrid = document.querySelector('#articles .res-grid-4');
-        if (artGrid) {
-            const publishedArticles = getArticles().filter(a => a.status !== 'draft');
-            if (publishedArticles.length > 0) {
-                artGrid.innerHTML = publishedArticles.map(renderArticleCardHTML).join('');
+    // ==========================================================================
+    // PHÂN TRANG (PAGINATION) TRÊN TRANG TRI THỨC (RESOURCES.HTML)
+    // ==========================================================================
+    const PAGE_SIZE = 4;
+    let articlesCurrentPage = 1;
+    let toolkitsCurrentPage = 1;
+
+    function renderPaginationHTML(totalItems, currentPage, pageSize, changePageFnName) {
+        if (totalItems <= 0) return '';
+        const totalPages = Math.max(1, Math.ceil(totalItems / pageSize));
+        
+        let html = '<div class="res-pagination-wrap">';
+        
+        // Nút lùi (Trang trước)
+        const prevDisabled = currentPage <= 1 ? 'disabled' : '';
+        const prevClick = currentPage > 1 ? `onclick="${changePageFnName}(${currentPage - 1})"` : '';
+        html += `<button type="button" class="res-page-btn res-page-prev" ${prevDisabled} ${prevClick} aria-label="Trang trước" title="Trang trước"><i data-lucide="chevron-left"></i></button>`;
+        
+        // Danh sách số trang
+        let pages = [];
+        if (totalPages <= 7) {
+            for (let i = 1; i <= totalPages; i++) pages.push(i);
+        } else {
+            if (currentPage <= 4) {
+                pages = [1, 2, 3, 4, 5, '...', totalPages];
+            } else if (currentPage >= totalPages - 3) {
+                pages = [1, '...', totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages];
+            } else {
+                pages = [1, '...', currentPage - 1, currentPage, currentPage + 1, '...', totalPages];
             }
+        }
+        
+        pages.forEach(p => {
+            if (p === '...') {
+                html += '<span class="res-page-dots">...</span>';
+            } else {
+                const activeClass = p === currentPage ? 'active' : '';
+                const clickAttr = p !== currentPage ? `onclick="${changePageFnName}(${p})"` : '';
+                html += `<button type="button" class="res-page-btn res-page-num ${activeClass}" ${clickAttr} aria-label="Trang ${p}">${p}</button>`;
+            }
+        });
+        
+        // Nút tiến (Trang sau)
+        const nextDisabled = currentPage >= totalPages ? 'disabled' : '';
+        const nextClick = currentPage < totalPages ? `onclick="${changePageFnName}(${currentPage + 1})"` : '';
+        html += `<button type="button" class="res-page-btn res-page-next" ${nextDisabled} ${nextClick} aria-label="Trang sau" title="Trang sau"><i data-lucide="chevron-right"></i></button>`;
+        
+        html += '</div>';
+        return html;
+    }
+
+    function renderArticlesSection(page = articlesCurrentPage, shouldScroll = false) {
+        const artGrid = document.querySelector('#articles .res-grid-4');
+        const artPag = document.getElementById('articles-pagination');
+        if (!artGrid) return;
+
+        const publishedArticles = getArticles().filter(a => a.status !== 'draft');
+        const totalPages = Math.max(1, Math.ceil(publishedArticles.length / PAGE_SIZE));
+        articlesCurrentPage = Math.max(1, Math.min(page, totalPages));
+
+        const startIdx = (articlesCurrentPage - 1) * PAGE_SIZE;
+        const pageItems = publishedArticles.slice(startIdx, startIdx + PAGE_SIZE);
+
+        if (pageItems.length > 0) {
+            artGrid.innerHTML = pageItems.map(renderArticleCardHTML).join('');
+        } else {
+            artGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #64748b; padding: 30px 0;">Chưa có bài viết nào.</p>';
         }
 
-        // 2. Render Toolkit
-        const toolGrid = document.querySelector('#toolkit .res-grid-4');
-        if (toolGrid) {
-            const publishedTools = getAll().filter(t => t.status !== 'draft');
-            if (publishedTools.length > 0) {
-                toolGrid.innerHTML = publishedTools.map(renderCardHTML).join('');
-            }
+        if (artPag) {
+            artPag.innerHTML = renderPaginationHTML(publishedArticles.length, articlesCurrentPage, PAGE_SIZE, 'INVAMAX_TOOLKIT_STORE.changeArticlesPage');
         }
+
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+            window.lucide.createIcons();
+        }
+
+        if (shouldScroll) {
+            const sec = document.getElementById('articles');
+            if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
+
+    function changeArticlesPage(page) {
+        renderArticlesSection(page, true);
+    }
+
+    function renderToolkitsSection(page = toolkitsCurrentPage, shouldScroll = false) {
+        const toolGrid = document.querySelector('#toolkit .res-grid-4');
+        const toolPag = document.getElementById('toolkit-pagination');
+        if (!toolGrid) return;
+
+        const publishedTools = getAll().filter(t => t.status !== 'draft');
+        const totalPages = Math.max(1, Math.ceil(publishedTools.length / PAGE_SIZE));
+        toolkitsCurrentPage = Math.max(1, Math.min(page, totalPages));
+
+        const startIdx = (toolkitsCurrentPage - 1) * PAGE_SIZE;
+        const pageItems = publishedTools.slice(startIdx, startIdx + PAGE_SIZE);
+
+        if (pageItems.length > 0) {
+            toolGrid.innerHTML = pageItems.map(renderCardHTML).join('');
+        } else {
+            toolGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #64748b; padding: 30px 0;">Chưa có tài liệu nào.</p>';
+        }
+
+        if (toolPag) {
+            toolPag.innerHTML = renderPaginationHTML(publishedTools.length, toolkitsCurrentPage, PAGE_SIZE, 'INVAMAX_TOOLKIT_STORE.changeToolkitPage');
+        }
+
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+            window.lucide.createIcons();
+        }
+
+        if (shouldScroll) {
+            const sec = document.getElementById('toolkit');
+            if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
+
+    function changeToolkitPage(page) {
+        renderToolkitsSection(page, true);
+    }
+
+    // Khởi tạo và đồng bộ hiển thị lên trang resources.html
+    async function initResourcesPage() {
+        // 1. Render Articles với phân trang
+        renderArticlesSection(1, false);
+
+        // 2. Render Toolkit với phân trang
+        renderToolkitsSection(1, false);
 
         // 3. Render Videos
         const vidGrid = document.querySelector('#video .res-grid-4');
@@ -1022,14 +1133,9 @@ var INVAMAX_TOOLKIT_STORE = (function () {
         // 4. Tải ngầm dữ liệu mới nhất từ server/GitHub và cập nhật
         await fetchRemoteData();
 
-        if (artGrid) {
-            const publishedArticles = getArticles().filter(a => a.status !== 'draft');
-            artGrid.innerHTML = publishedArticles.map(renderArticleCardHTML).join('');
-        }
-        if (toolGrid) {
-            const publishedTools = getAll().filter(t => t.status !== 'draft');
-            toolGrid.innerHTML = publishedTools.map(renderCardHTML).join('');
-        }
+        renderArticlesSection(articlesCurrentPage, false);
+        renderToolkitsSection(toolkitsCurrentPage, false);
+
         if (vidGrid) {
             const publishedVideos = getVideos().filter(v => v.status !== 'draft');
             vidGrid.innerHTML = publishedVideos.map(renderVideoCardHTML).join('');
@@ -1063,6 +1169,12 @@ var INVAMAX_TOOLKIT_STORE = (function () {
         autoGenerateMissingThumbnails,
         resolveAssetUrl,
         fetchRemoteData,
+        // Pagination API
+        renderPaginationHTML,
+        renderArticlesSection,
+        changeArticlesPage,
+        renderToolkitsSection,
+        changeToolkitPage,
         // Articles API
         getArticles,
         saveArticles,
