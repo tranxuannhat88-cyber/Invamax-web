@@ -2458,7 +2458,7 @@
                                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
                                 Tải ảnh đại diện từ máy
                             </button>
-                            <input type="text" id="csThumbUrl" class="form-input" placeholder="Hoặc dán URL ảnh bìa tại đây...">
+                            <input type="text" id="csThumbUrl" class="form-input" placeholder="Hoặc dán URL ảnh bìa tại đây..." oninput="handleCsThumbUrlInput()">
                         </div>
                         <input type="file" id="csThumbFileInput" accept="image/*" style="display: none;" onchange="handleCsThumbSelect(event)">
                         <div id="csThumbPreviewBox" style="display: none; align-items: center; gap: 12px; margin-top: 10px; padding: 8px 12px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px;">
@@ -2788,7 +2788,7 @@
     </script>
     <script src="assets/js/toolkit-store.js?v=20261019_1330"></script>
     <script src="assets/js/github-sync.js?v=20261019_1330"></script>
-    <script src="assets/js/case-study-store.js?v=20261019_1330"></script>
+    <script src="assets/js/case-study-store.js?v=20261019_1415"></script>
     <script>
         // State variables - Resources
         let currentFileBase64 = null;
@@ -4968,7 +4968,24 @@
             const dataUrl = await compressImage(file, 1800, 0.92);
             currentCsThumbnail = dataUrl;
             currentCsThumbSource = 'custom';
-            displayCsThumb(currentCsThumbnail, file.name);
+            const urlInput = document.getElementById('csThumbUrl');
+            if (urlInput) urlInput.value = '';
+            displayCsThumb(currentCsThumbnail, file.name || 'Ảnh đã chọn từ máy');
+            showToast('✓ Đã chọn ảnh đại diện cho Case Study!', 'success');
+        }
+
+        function handleCsThumbUrlInput() {
+            const url = (document.getElementById('csThumbUrl')?.value || '').trim();
+            if (url) {
+                currentCsThumbnail = url;
+                currentCsThumbSource = 'custom';
+                displayCsThumb(url, 'Ảnh từ đường dẫn URL');
+            } else {
+                currentCsThumbnail = '';
+                currentCsThumbSource = 'none';
+                const box = document.getElementById('csThumbPreviewBox');
+                if (box) box.style.display = 'none';
+            }
         }
 
         function displayCsThumb(src, note = 'Đã chọn ảnh') {
@@ -4984,47 +5001,14 @@
 
         async function clearCsThumb() {
             currentCsThumbnail = '';
-            currentCsThumbSource = 'auto';
+            currentCsThumbSource = 'none';
             const box = document.getElementById('csThumbPreviewBox');
             const input = document.getElementById('csThumbFileInput');
             const urlInput = document.getElementById('csThumbUrl');
             if (box) box.style.display = 'none';
             if (input) input.value = '';
             if (urlInput) urlInput.value = '';
-
-            // Kiểm tra xem có file dữ liệu (PDF) đính kèm hay không
-            if (csPendingFilePromise) {
-                await csPendingFilePromise;
-            }
-            const pdfData = currentCsFileData || (document.getElementById('csDataFileUrl')?.value || '').trim();
-            const format = (currentCsFileFormat || (currentCsFileName ? currentCsFileName.split('.').pop() : '')).toUpperCase();
-            const isPdf = pdfData && (
-                pdfData.startsWith('data:application/pdf') ||
-                pdfData.toLowerCase().endsWith('.pdf') ||
-                format === 'PDF'
-            );
-
-            if (isPdf) {
-                const genFn = (typeof INVAMAX_CASE_STUDY_STORE !== 'undefined' && typeof INVAMAX_CASE_STUDY_STORE.generatePdfThumbnail === 'function')
-                    ? INVAMAX_CASE_STUDY_STORE.generatePdfThumbnail
-                    : (typeof INVAMAX_TOOLKIT_STORE !== 'undefined' ? INVAMAX_TOOLKIT_STORE.generatePdfThumbnail : null);
-                if (genFn) {
-                    showToast('Đang tự động tạo ảnh bìa Ultra-HD từ file PDF đính kèm...', 'info');
-                    try {
-                        const hdThumb = await genFn(pdfData, 2000);
-                        if (hdThumb) {
-                            currentCsThumbnail = hdThumb;
-                            currentCsThumbSource = 'pdf-auto';
-                            displayCsThumb(hdThumb, 'Tự động tạo từ file tài liệu PDF');
-                            showToast('✓ Đã tự động tạo ảnh bìa từ file tài liệu đính kèm!', 'success');
-                            return;
-                        }
-                    } catch (err) {
-                        console.warn('Lỗi trích xuất thumbnail PDF khi gỡ ảnh:', err);
-                    }
-                }
-            }
-            showToast('Đã gỡ ảnh đại diện. Khi tải file PDF lên hoặc lưu, hệ thống sẽ tự động tạo ảnh bìa từ file tài liệu.', 'info');
+            showToast('Đã gỡ ảnh đại diện. (Hệ thống chỉ gán ảnh mặc định nếu bạn không chèn ảnh nào khi lưu)', 'info');
         }
 
         async function reExtractCsThumbFromPdf() {
@@ -5720,8 +5704,15 @@
             const textImgs = imagesInput ? imagesInput.split(',').map(s => s.trim()).filter(Boolean) : [];
             const images = Array.from(new Set([...currentCsImages, ...textImgs]));
 
-            let thumb = currentCsThumbnail || thumbUrl || '';
-            let thumbSource = currentCsThumbSource || (thumbUrl ? 'custom' : (currentCsThumbnail ? 'custom' : 'auto'));
+            // Nếu người dùng đã bấm "Gỡ ảnh" (currentCsThumbSource === 'none') và không nhập thumbUrl mới
+            let thumb = '';
+            let thumbSource = 'auto';
+
+            if (currentCsThumbSource !== 'none' && (currentCsThumbnail || thumbUrl)) {
+                thumb = currentCsThumbnail || thumbUrl;
+                thumbSource = 'custom';
+            }
+
             const dataFile = currentCsFileData || dataFileUrlInput || '';
             let fileName = currentCsFileName;
             let fileFormat = currentCsFileFormat;
@@ -5731,10 +5722,8 @@
                 fileFormat = fileName.split('.').pop().toUpperCase();
             }
 
-            // Nếu người dùng không chọn ảnh đại diện riêng (hoặc đã gỡ ảnh):
-            // Luôn tự động trích xuất ảnh bìa từ file tài liệu PDF đính kèm (nếu có)
-            const isCustomThumb = (thumbSource === 'custom' || Boolean(thumbUrl)) && thumb && !thumb.includes('art-5steps.jpg');
-            if (!isCustomThumb) {
+            // CHỈ KHI NÀO KHÔNG CHÈN ẢNH LÊN LÀM THUMBNAIL THÌ MỚI LẤY ẢNH MẶC ĐỊNH / TRÍCH XUẤT TỪ PDF
+            if (!thumb) {
                 const isPdfData = dataFile && (
                     dataFile.startsWith('data:application/pdf') ||
                     dataFile.toLowerCase().endsWith('.pdf') ||
@@ -5745,7 +5734,6 @@
                         ? INVAMAX_CASE_STUDY_STORE.generatePdfThumbnail
                         : (typeof INVAMAX_TOOLKIT_STORE !== 'undefined' ? INVAMAX_TOOLKIT_STORE.generatePdfThumbnail : null);
                     if (genFn) {
-                        showToast('Đang tự động trích xuất ảnh bìa Ultra-HD từ trang 1 PDF...', 'info');
                         try {
                             const pdfThumb = await genFn(dataFile, 2000);
                             if (pdfThumb) {
@@ -5759,6 +5747,10 @@
                 }
                 if (!thumb && images.length > 0) {
                     thumb = images[0];
+                    thumbSource = 'auto';
+                }
+                if (!thumb) {
+                    thumb = 'assets/images/case-study/layout-5s-gia-nghia.jpg';
                     thumbSource = 'auto';
                 }
             }
@@ -5821,8 +5813,8 @@
             document.getElementById('csDesc').value = cs.desc || '';
             document.getElementById('csLink').value = cs.link || '';
 
-            const isGenericPlaceholder = cs.thumbnail === 'assets/images/resources/art-5steps.jpg';
-            const effectiveThumb = (cs.thumbSource === 'custom' && !isGenericPlaceholder) ? cs.thumbnail : (cs.thumbnail || '');
+            const isGenericPlaceholder = !cs.thumbnail || cs.thumbnail === 'assets/images/resources/art-5steps.jpg';
+            const effectiveThumb = (!isGenericPlaceholder) ? cs.thumbnail : '';
             document.getElementById('csThumbUrl').value = effectiveThumb && !effectiveThumb.startsWith('data:') && !effectiveThumb.includes('art-5steps.jpg') ? effectiveThumb : '';
             
             const fileUrl = cs.fileUrl || cs.pdfUrl || '';
@@ -5832,18 +5824,18 @@
             }
             document.getElementById('csStatus').value = cs.status || 'published';
 
-            if (effectiveThumb && !isGenericPlaceholder) {
+            if (effectiveThumb) {
                 currentCsThumbnail = effectiveThumb;
                 currentCsThumbSource = cs.thumbSource || 'custom';
-                const noteText = cs.thumbSource === 'pdf-auto' ? 'Tự động trích xuất từ trang 1 PDF' : 'Ảnh hiện tại';
+                const noteText = cs.thumbSource === 'pdf-auto' ? 'Ảnh trích xuất từ trang 1 PDF' : 'Ảnh đại diện hiện tại';
                 displayCsThumb(effectiveThumb, noteText);
-            } else if (fileUrl && (fileUrl.toLowerCase().endsWith('.pdf') || fileUrl.startsWith('data:application/pdf'))) {
-                // Nếu chưa có ảnh tùy chọn riêng hoặc đang là ảnh generic placeholder, tự động kích hoạt tạo thumbnail từ file PDF
-                currentCsThumbnail = '';
-                currentCsThumbSource = 'auto';
-                clearCsThumb();
             } else {
-                clearCsThumb();
+                currentCsThumbnail = '';
+                currentCsThumbSource = 'none';
+                const box = document.getElementById('csThumbPreviewBox');
+                if (box) box.style.display = 'none';
+                const input = document.getElementById('csThumbFileInput');
+                if (input) input.value = '';
             }
 
             if (fileUrl) {
@@ -5950,6 +5942,7 @@
             }
 
             let thumb = modalCsThumbnail || thumbUrl || '';
+            let thumbSource = thumb ? 'custom' : 'auto';
             const dataFile = modalCsFileData || pdfUrlInput || '';
             let fileName = modalCsFileName;
             let fileFormat = modalCsFileFormat;
@@ -5974,12 +5967,14 @@
                             const pdfThumb = await genFn(dataFile, 2000);
                             if (pdfThumb) {
                                 thumb = pdfThumb;
+                                thumbSource = 'pdf-auto';
                             }
                         } catch (err) {}
                     }
                 }
                 if (!thumb && modalCsImagesList.length > 0) {
                     thumb = modalCsImagesList[0];
+                    thumbSource = 'auto';
                 }
             }
 
@@ -5993,7 +5988,7 @@
                 desc,
                 link: link || '',
                 thumbnail: thumb,
-                thumbSource: thumb && thumb.startsWith('data:') ? 'pdf-auto' : 'auto',
+                thumbSource,
                 pdfUrl: dataFile,
                 fileUrl: dataFile,
                 fileName: fileName || '',

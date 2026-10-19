@@ -538,10 +538,10 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
                 continue;
             }
 
-            const isStuckPlaceholder = item.thumbnail === 'assets/images/resources/art-5steps.jpg';
+            const isStuckPlaceholder = !item.thumbnail || item.thumbnail === 'assets/images/resources/art-5steps.jpg';
 
-            // Nếu người dùng đã thiết lập ảnh đại diện riêng (custom) và không phải ảnh generic art-5steps.jpg
-            if (item.thumbSource === 'custom' && !isStuckPlaceholder) {
+            // Nếu người dùng đã thiết lập ảnh đại diện riêng (custom) hoặc đã có đường dẫn ảnh thật (assets/images/...)
+            if ((item.thumbSource === 'custom' || (item.thumbnail && !item.thumbnail.startsWith('data:image/'))) && !isStuckPlaceholder) {
                 continue;
             }
 
@@ -554,11 +554,11 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
             if (!isPdf) continue;
 
             let needsUpgrade = false;
-            if (!item.thumbnail || isStuckPlaceholder) {
+            if (isStuckPlaceholder) {
                 needsUpgrade = true;
-            } else if (item.thumbnail.startsWith('data:image/')) {
+            } else if (item.thumbnail.startsWith('data:image/') && item.thumbSource === 'pdf-auto') {
                 const w = await getImageNaturalWidth(item.thumbnail);
-                // Chỉ nâng cấp đúng các ảnh thumbnail PDF tự động thế hệ cũ (vốn cố định ở 260px), không chạm vào ảnh chụp thực tế (480px+)
+                // Chỉ nâng cấp đúng các ảnh thumbnail PDF tự động thế hệ cũ (vốn cố định ở 260px)
                 if (w > 0 && w <= 280) {
                     needsUpgrade = true;
                 }
@@ -701,6 +701,9 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
                     notify(`Đang tải ảnh bìa Case Study "${item.title}" lên GitHub...`);
                     await ghSync.uploadDataUrlFile(path, item.thumbnail, `Upload case study thumb: ${safeName}`);
                     item.thumbnail = path;
+                    if (item.thumbSource !== 'pdf-auto') {
+                        item.thumbSource = 'custom';
+                    }
                 }
 
                 const fileData = item.fileUrl || item.pdfUrl;
