@@ -40,7 +40,7 @@
     "highlight": "Công nhân nhập báo cáo sản xuất vào máy tính bảng thay thế cho ghi báo cáo giấy.",
     "link": "",
     "thumbnail": "assets/images/case-study/thumb-cs-1792391629391.jpg",
-    "thumbSource": "pdf-auto",
+    "thumbSource": "custom",
     "pdfUrl": "assets/docs/cs-file-cs-1792391629391.pdf",
     "fileUrl": "assets/docs/cs-file-cs-1792391629391.pdf",
     "fileName": "Báo cáo Kaizen số hóa báo cáo sản xuất.pdf",
