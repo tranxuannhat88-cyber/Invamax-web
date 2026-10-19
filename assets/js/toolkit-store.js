@@ -384,6 +384,54 @@ const INVAMAX_TOOLKIT_STORE = (function () {
         return true;
     }
 
+    // Di chuyển tài liệu lên hoặc xuống
+    function move(id, direction) {
+        let items = getAll();
+        const idx = items.findIndex(t => t.id === id);
+        if (idx === -1) return null;
+        if (direction === 'up' && idx > 0) {
+            const temp = items[idx];
+            items[idx] = items[idx - 1];
+            items[idx - 1] = temp;
+        } else if (direction === 'down' && idx < items.length - 1) {
+            const temp = items[idx];
+            items[idx] = items[idx + 1];
+            items[idx + 1] = temp;
+        }
+        saveAll(items);
+        return items;
+    }
+
+    // Di chuyển tài liệu đến vị trí chỉ định
+    function moveToIndex(id, targetIndex) {
+        let items = getAll();
+        const fromIdx = items.findIndex(t => t.id === id);
+        if (fromIdx === -1) return null;
+        const clampedTarget = Math.max(0, Math.min(items.length - 1, Number(targetIndex)));
+        if (fromIdx === clampedTarget) return items;
+        const [movedItem] = items.splice(fromIdx, 1);
+        items.splice(clampedTarget, 0, movedItem);
+        saveAll(items);
+        return items;
+    }
+
+    // Sắp xếp lại tài liệu theo danh sách IDs
+    function reorderByIds(orderedIds) {
+        if (!Array.isArray(orderedIds) || orderedIds.length === 0) return null;
+        let items = getAll();
+        const map = new Map(items.map(it => [it.id, it]));
+        const reordered = [];
+        orderedIds.forEach(id => {
+            if (map.has(id)) {
+                reordered.push(map.get(id));
+                map.delete(id);
+            }
+        });
+        map.forEach(item => reordered.push(item));
+        saveAll(reordered);
+        return reordered;
+    }
+
     // Reset về mặc định
     function resetToDefault() {
         saveAll(DEFAULT_TOOLKITS);
@@ -648,6 +696,9 @@ const INVAMAX_TOOLKIT_STORE = (function () {
         saveAll,
         saveItem,
         deleteItem,
+        move,
+        moveToIndex,
+        reorderByIds,
         resetToDefault,
         incrementDownload,
         getSettings,
