@@ -28,9 +28,9 @@
   },
   {
     "id": "tool-ke-hoach-lean-a3",
-    "title": "Khung lập kế hoạch triển khai Lean (A3)",
+    "title": "A3 report - Công cụ giải của Lean để quyết vấn đề.",
     "format": "XLSX",
-    "desc": "Mẫu A3 chuẩn giúp lập kế hoạch, triển khai và theo dõi tiến độ.",
+    "desc": "Mẫu A3 report chuẩn theo mẫu của Toyota giúp lập kế hoạch, triển khai thực hiện việc giải quyết vấn đề, Kaizen.",
     "fileUrl": "assets/docs/INVAMAX_A3_Report_7_Buoc_Editable.xlsx",
     "fileName": "INVAMAX_A3_Report_7_Buoc_Editable.xlsx",
     "fileSize": "0.17 MB",
@@ -38,7 +38,7 @@
     "downloads": 185,
     "status": "published",
     "thumbnail": "assets/images/resources/thumb-tool-ke-hoach-lean-a3.jpg",
-    "updatedAt": "2026-10-19T07:46:22.890Z"
+    "updatedAt": "2026-10-19T07:49:15.083Z"
   },
   {
     "id": "tool-bieu-mau-oee",
