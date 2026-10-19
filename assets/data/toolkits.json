@@ -29,14 +29,16 @@
   {
     "id": "tool-ke-hoach-lean-a3",
     "title": "Khung lập kế hoạch triển khai Lean (A3)",
-    "format": "DOCX",
+    "format": "XLSX",
     "desc": "Mẫu A3 chuẩn giúp lập kế hoạch, triển khai và theo dõi tiến độ.",
-    "fileUrl": "#",
-    "fileName": "Khung-ke-hoach-Lean-A3.docx",
-    "fileSize": "850 KB",
+    "fileUrl": "assets/docs/INVAMAX_A3_Report_7_Buoc_Editable.xlsx",
+    "fileName": "INVAMAX_A3_Report_7_Buoc_Editable.xlsx",
+    "fileSize": "0.17 MB",
     "createdAt": "2026-10-08",
     "downloads": 185,
-    "status": "published"
+    "status": "published",
+    "thumbnail": "assets/images/resources/thumb-tool-ke-hoach-lean-a3.jpg",
+    "updatedAt": "2026-10-19T07:46:22.890Z"
   },
   {
     "id": "tool-bieu-mau-oee",
