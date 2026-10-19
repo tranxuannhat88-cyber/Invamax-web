@@ -992,6 +992,7 @@ var INVAMAX_TOOLKIT_STORE = (function () {
     const PAGE_SIZE = 4;
     let articlesCurrentPage = 1;
     let toolkitsCurrentPage = 1;
+    let videosCurrentPage = 1;
 
     function renderPaginationHTML(totalItems, currentPage, pageSize, changePageFnName) {
         if (totalItems <= 0) return '';
@@ -1109,6 +1110,42 @@ var INVAMAX_TOOLKIT_STORE = (function () {
         renderToolkitsSection(page, true);
     }
 
+    function renderVideosSection(page = videosCurrentPage, shouldScroll = false) {
+        const vidGrid = document.querySelector('#video .res-grid-4');
+        const vidPag = document.getElementById('video-pagination');
+        if (!vidGrid) return;
+
+        const publishedVideos = getVideos().filter(v => v.status !== 'draft');
+        const totalPages = Math.max(1, Math.ceil(publishedVideos.length / PAGE_SIZE));
+        videosCurrentPage = Math.max(1, Math.min(page, totalPages));
+
+        const startIdx = (videosCurrentPage - 1) * PAGE_SIZE;
+        const pageItems = publishedVideos.slice(startIdx, startIdx + PAGE_SIZE);
+
+        if (pageItems.length > 0) {
+            vidGrid.innerHTML = pageItems.map(renderVideoCardHTML).join('');
+        } else {
+            vidGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #64748b; padding: 30px 0;">Chưa có video nào.</p>';
+        }
+
+        if (vidPag) {
+            vidPag.innerHTML = renderPaginationHTML(publishedVideos.length, videosCurrentPage, PAGE_SIZE, 'INVAMAX_TOOLKIT_STORE.changeVideosPage');
+        }
+
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+            window.lucide.createIcons();
+        }
+
+        if (shouldScroll) {
+            const sec = document.getElementById('video');
+            if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
+
+    function changeVideosPage(page) {
+        renderVideosSection(page, true);
+    }
+
     // Khởi tạo và đồng bộ hiển thị lên trang resources.html
     async function initResourcesPage() {
         // 1. Render Articles với phân trang
@@ -1117,14 +1154,8 @@ var INVAMAX_TOOLKIT_STORE = (function () {
         // 2. Render Toolkit với phân trang
         renderToolkitsSection(1, false);
 
-        // 3. Render Videos
-        const vidGrid = document.querySelector('#video .res-grid-4');
-        if (vidGrid) {
-            const publishedVideos = getVideos().filter(v => v.status !== 'draft');
-            if (publishedVideos.length > 0) {
-                vidGrid.innerHTML = publishedVideos.map(renderVideoCardHTML).join('');
-            }
-        }
+        // 3. Render Videos với phân trang
+        renderVideosSection(1, false);
 
         if (window.lucide && typeof window.lucide.createIcons === 'function') {
             window.lucide.createIcons();
@@ -1135,11 +1166,8 @@ var INVAMAX_TOOLKIT_STORE = (function () {
 
         renderArticlesSection(articlesCurrentPage, false);
         renderToolkitsSection(toolkitsCurrentPage, false);
+        renderVideosSection(videosCurrentPage, false);
 
-        if (vidGrid) {
-            const publishedVideos = getVideos().filter(v => v.status !== 'draft');
-            vidGrid.innerHTML = publishedVideos.map(renderVideoCardHTML).join('');
-        }
         if (window.lucide && typeof window.lucide.createIcons === 'function') {
             window.lucide.createIcons();
         }
@@ -1175,6 +1203,8 @@ var INVAMAX_TOOLKIT_STORE = (function () {
         changeArticlesPage,
         renderToolkitsSection,
         changeToolkitPage,
+        renderVideosSection,
+        changeVideosPage,
         // Articles API
         getArticles,
         saveArticles,
