@@ -1885,6 +1885,169 @@
     </div><!-- /#sectionCaseStudies -->
 </main>
 
+    <!-- POPUP MODAL THÊM / CHỈNH SỬA TÀI LIỆU (TƯƠNG TỰ NHƯ TRANG CASE STUDY) -->
+    <div id="resDocModal" class="edit-modal-backdrop" onclick="if(event.target===this) closeDocModal()">
+        <div class="edit-modal-card" style="max-width: 680px; max-height: 92vh;">
+            <div class="edit-modal-header">
+                <h3 id="resDocModalTitle">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--admin-orange)" stroke-width="2.2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                    <span>Thêm tài liệu mới</span>
+                </h3>
+                <button type="button" class="edit-modal-close" onclick="closeDocModal()">&times;</button>
+            </div>
+            <div class="edit-modal-body" style="max-height: calc(92vh - 70px); overflow-y: auto; padding-right: 16px;">
+                <!-- Edit Mode Alert Banner -->
+                <div id="resEditBanner" class="edit-mode-banner">
+                    <div class="banner-text">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                        <span>Đang chỉnh sửa: <strong id="resEditingDocName">...</strong></span>
+                    </div>
+                    <button type="button" class="btn-exit-edit" onclick="cancelDocEdit()">Hủy sửa</button>
+                </div>
+
+                <form id="resDocForm" onsubmit="event.preventDefault(); handleSaveDoc(event); return false;">
+                    <input type="hidden" id="editDocId" value="">
+
+                    <!-- Title -->
+                    <div class="form-group">
+                        <label class="form-label" for="docTitle">Tên tài liệu / Bộ công cụ <span class="req">*</span></label>
+                        <input type="text" id="docTitle" class="form-input" placeholder="VD: Hướng dẫn thực hiện 5S Tinh gọn &amp; Hiệu quả" required>
+                    </div>
+
+                    <!-- Format Tag -->
+                    <div class="form-group">
+                        <label class="form-label" for="docFormat">Định dạng file hiển thị <span class="req">*</span></label>
+                        <select id="docFormat" class="form-select" required>
+                            <option value="PDF">Tài liệu PDF (.PDF)</option>
+                            <option value="XLSX">Excel (.XLSX)</option>
+                            <option value="DOCX">Word (.DOCX)</option>
+                            <option value="PPTX">PowerPoint (.PPTX)</option>
+                            <option value="ZIP">Tệp nén (.ZIP / .RAR)</option>
+                            <option value="CSV">Bảng dữ liệu (.CSV)</option>
+                        </select>
+                    </div>
+
+                    <!-- Description -->
+                    <div class="form-group">
+                        <label class="form-label" for="docDesc">Mô tả ngắn tài liệu <span class="req">*</span></label>
+                        <textarea id="docDesc" class="form-textarea" rows="3" placeholder="Tóm tắt 1-2 câu về nội dung và lợi ích tài liệu mang lại cho doanh nghiệp..." required></textarea>
+                    </div>
+
+                    <!-- File Upload Source Tabs -->
+                    <div class="form-group" style="background: #ffffff; border: 1.5px dashed #cbd5e1; border-radius: 10px; padding: 14px 16px;">
+                        <label class="form-label" style="margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between;">
+                            <span><span style="color: var(--admin-orange); font-weight: 800;">1.</span> Tệp đính kèm hoặc đường link tải <span class="req">*</span></span>
+                            <span style="font-size: 11.5px; color: #64748b; font-weight: normal;">Hỗ trợ .xlsx, .docx, .pdf, .zip (tối đa 25MB)</span>
+                        </label>
+                        
+                        <div class="tab-buttons" style="margin-bottom: 12px;">
+                            <button type="button" class="tab-btn active" id="tabUploadBtn" onclick="switchFileTab('upload')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                                Tải file từ máy tính
+                            </button>
+                            <button type="button" class="tab-btn" id="tabLinkBtn" onclick="switchFileTab('link')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                                Link Drive / Tải ngoài
+                            </button>
+                        </div>
+
+                        <!-- Tab 1: Local File Upload -->
+                        <div id="fileUploadContainer">
+                            <div class="dropzone" id="dropzoneBox" style="padding: 16px; margin-bottom: 0;">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                                <p style="font-weight: 600; font-size: 13px;"><strong>Kéo thả tệp vào đây</strong> hoặc bấm để chọn</p>
+                                <span>Hỗ trợ .xlsx, .docx, .pdf, .zip (tối đa 25MB)</span>
+                                <input type="file" id="docFileInput" accept=".xlsx,.xls,.docx,.doc,.pdf,.pptx,.ppt,.zip,.rar,.csv" onchange="handleFileSelect(event)">
+                            </div>
+                            <div id="selectedFileInfo" class="file-selected-box" style="display: none; margin-top: 10px;">
+                                <div style="display: flex; align-items: center; gap: 8px; flex: 1; min-width: 0;">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#10b981" stroke-width="2.2"><polyline points="20 6 9 17 4 12"/></svg>
+                                    <span id="selectedFileName" style="font-weight: 600; font-size: 13px; color: #1e293b; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Đã chọn file</span>
+                                </div>
+                                <button type="button" onclick="clearSelectedFile()" style="background:none;border:none;color:#ef4444;cursor:pointer;font-weight:bold;font-size:12px;white-space:nowrap;">Gỡ bỏ</button>
+                            </div>
+                        </div>
+
+                        <!-- Tab 2: External Link Input -->
+                        <div id="fileLinkContainer" style="display: none;">
+                            <input type="url" id="docFileUrl" class="form-input" placeholder="https://drive.google.com/file/d/... hoặc link tải trực tiếp">
+                            <small style="color: #64748b; font-size: 12px; margin-top: 4px; display: block;">
+                                Dán link chia sẻ Google Drive, OneDrive... với quyền <em>Bất kỳ ai có liên kết đều có thể tải</em>.
+                            </small>
+                        </div>
+
+                        <!-- Notice if file already exists in edit mode -->
+                        <div id="existingFileNotice" style="display: none; align-items: center; gap: 6px; margin-top: 8px; font-size: 12px; color: #64748b;">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                            <span id="existingFileText">...</span>
+                        </div>
+                    </div>
+
+                    <!-- Thumbnail / Real Document Cover -->
+                    <div class="form-group" style="background: #ffffff; border: 1.5px dashed #cbd5e1; border-radius: 10px; padding: 14px 16px;">
+                        <label class="form-label" style="margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between;">
+                            <span><span style="color: var(--admin-orange); font-weight: 800;">2.</span> Ảnh bìa / Thumbnail thực tế</span>
+                            <small style="font-weight: 600; color: #059669;" id="thumbAutoNotice">Tự động trích xuất nếu là file PDF</small>
+                        </label>
+                        <div id="thumbPreviewBox" style="display: none; align-items: center; gap: 12px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
+                            <img id="thumbPreviewImg" src="" alt="Thumbnail preview" style="width: 50px; height: 64px; object-fit: cover; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+                            <div style="flex: 1; font-size: 12px; min-width: 0;">
+                                <strong style="color: #059669; display: block;">✓ Đã có ảnh bìa thực tế</strong>
+                                <span id="thumbPreviewNote" style="color: #64748b;">Trích xuất từ trang 1 của file</span>
+                            </div>
+                            <button type="button" style="background: #eff6ff; border: 1px solid #bfdbfe; color: #1d4ed8; border-radius: 6px; padding: 4px 9px; cursor: pointer; font-size: 11.5px; font-weight: 700; white-space: nowrap;" onclick="reExtractDocThumbFromPdf()" title="Trích xuất lại trang 1 từ file PDF ở độ phân giải cực nét">✨ Làm nét từ PDF</button>
+                            <button type="button" onclick="clearSelectedThumbnail()" style="background: none; border: none; color: #ef4444; font-size: 12px; font-weight: 600; cursor: pointer; white-space: nowrap;">Xóa ảnh</button>
+                        </div>
+                        <div style="display: flex; gap: 8px;">
+                            <button type="button" class="btn-action" style="background: #fff7ed; border-color: #fdba74; color: #c2410c; font-weight: 700; padding: 9px 14px; white-space: nowrap;" onclick="document.getElementById('docThumbInput').click()">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                                Tải ảnh bìa từ máy
+                            </button>
+                            <input type="file" id="docThumbInput" accept="image/*" style="display: none;" onchange="handleThumbnailSelect(event)">
+                        </div>
+                    </div>
+
+                    <!-- Action buttons -->
+                    <div style="display: flex; gap: 10px; margin-top: 24px; justify-content: flex-end;">
+                        <button type="button" class="btn-cancel" onclick="closeDocModal()" style="padding: 10px 20px;">
+                            Đóng
+                        </button>
+                        <button type="submit" class="btn-submit" id="btnSubmitDoc" style="width: auto; padding: 10px 26px;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span id="submitBtnText">Lưu &amp; Đăng lên Website</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- POPUP MODAL SẮP XẾP THỨ TỰ TÀI LIỆU TRÊN WEB -->
+    <div id="resReorderModal" class="edit-modal-backdrop" onclick="if(event.target===this) closeResReorderModal()">
+        <div class="edit-modal-card" style="max-width: 650px; max-height: 90vh;">
+            <div class="edit-modal-header">
+                <h3>
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--admin-orange)" stroke-width="2.2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                    <span>Sắp xếp thứ tự Tài liệu &amp; Toolkit trên Website</span>
+                </h3>
+                <button type="button" class="edit-modal-close" onclick="closeResReorderModal()">&times;</button>
+            </div>
+            <div class="edit-modal-body" style="max-height: calc(90vh - 140px); overflow-y: auto;">
+                <p style="font-size: 13px; color: #475569; margin-bottom: 14px; line-height: 1.5;">
+                    💡 <strong>Kéo thả các dòng</strong> hoặc bấm nút <strong>▲ Lên / ▼ Xuống / Đưa lên đầu</strong> để thay đổi thứ tự xuất hiện của các tài liệu trên trang web chính thức (từ trái sang phải, từ trên xuống dưới).
+                </p>
+                <div id="resReorderListContainer"></div>
+            </div>
+            <div class="edit-modal-footer">
+                <button type="button" class="btn-cancel" onclick="closeResReorderModal()">Đóng</button>
+                <button type="button" class="btn-submit" style="width: auto; padding: 10px 24px;" onclick="saveAndCloseResReorderModal()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    Hoàn tất &amp; Lưu thứ tự
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- POPUP MODAL THÊM CASE STUDY MỚI (NHƯ CỬA SỔ HIỆN TẠI) -->
     <div id="csFormModal" class="edit-modal-backdrop" onclick="if(event.target===this) closeCsFormModal()">
         <div class="edit-modal-card" id="csFormPanel" style="max-width: 680px; max-height: 92vh;">
@@ -2239,119 +2402,6 @@
     </div>
     <input type="file" id="directDocFileInput" accept=".xlsx,.xls,.docx,.doc,.pdf,.pptx,.ppt,.zip,.rar" style="display: none;" onchange="handleDirectFileSelected(event)">
 
-    <!-- POPUP MODAL CHỈNH SỬA NHANH (QUICK EDIT MODAL) -->
-    <div id="quickEditModal" class="edit-modal-backdrop">
-        <div class="edit-modal-card">
-            <div class="edit-modal-header">
-                <h3>
-                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--admin-orange)" stroke-width="2.2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-                    Chỉnh sửa nội dung tài liệu
-                </h3>
-                <button class="edit-modal-close" onclick="closeQuickEditModal()">&times;</button>
-            </div>
-            <form id="modalEditForm" onsubmit="handleSaveModalEdit(event)">
-                <div class="edit-modal-body">
-                    <input type="hidden" id="modalDocId" value="">
-
-                    <div class="form-group">
-                        <label class="form-label" for="modalDocTitle">Tên tài liệu / Bộ công cụ <span class="req">*</span></label>
-                        <input type="text" id="modalDocTitle" class="form-input" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label" for="modalDocFormat">Định dạng file hiển thị <span class="req">*</span></label>
-                        <select id="modalDocFormat" class="form-select" required>
-                            <option value="XLSX">Excel (.XLSX)</option>
-                            <option value="DOCX">Word (.DOCX)</option>
-                            <option value="PDF">Tài liệu PDF (.PDF)</option>
-                            <option value="PPTX">PowerPoint (.PPTX)</option>
-                            <option value="ZIP">Tệp nén (.ZIP / .RAR)</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label" for="modalDocDesc">Mô tả tài liệu <span class="req">*</span></label>
-                        <textarea id="modalDocDesc" class="form-textarea" required></textarea>
-                    </div>
-
-                    <!-- File upload / Attachment for Modal -->
-                    <div class="form-group">
-                        <label class="form-label">Tệp đính kèm hoặc Đường dẫn tải</label>
-                        <div class="tab-buttons">
-                            <button type="button" class="tab-btn active" id="modalTabUploadBtn" onclick="switchModalFileTab('upload')">
-                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-                                Tải file từ máy tính
-                            </button>
-                            <button type="button" class="tab-btn" id="modalTabLinkBtn" onclick="switchModalFileTab('link')">
-                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-                                Link Drive / Tải ngoài
-                            </button>
-                        </div>
-
-                        <!-- Modal File Upload Box -->
-                        <div id="modalFileUploadContainer">
-                            <div class="dropzone" id="modalDropzoneBox" style="padding: 16px;">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-                                <p style="font-weight: 600; font-size: 13px;">Kéo thả tệp vào đây <span style="font-weight: normal; color: var(--admin-orange);">hoặc bấm để chọn</span></p>
-                                <span>Hỗ trợ .xlsx, .docx, .pdf, .zip (tối đa 25MB)</span>
-                                <input type="file" id="modalFileInput" accept=".xlsx,.xls,.docx,.doc,.pdf,.pptx,.ppt,.zip,.rar" onchange="handleModalFileSelect(event)">
-                            </div>
-                            <div id="modalSelectedFileInfo" class="file-selected-box" style="display: none;">
-                                <div style="display: flex; align-items: center; gap: 8px;">
-                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                                    <span id="modalSelectedFileName">Tên file đã chọn</span>
-                                </div>
-                                <button type="button" onclick="clearModalSelectedFile()" style="background: none; border: none; color: #dc2626; cursor: pointer; font-size: 12px; font-weight: 600;">Gỡ bỏ</button>
-                            </div>
-                        </div>
-
-                        <!-- Modal Link Input Box -->
-                        <div id="modalFileLinkContainer" style="display: none;">
-                            <input type="text" id="modalDocLink" class="form-input" placeholder="https://drive.google.com/... hoặc link tải trực tiếp">
-                            <small style="color: #64748b; font-size: 11.5px; margin-top: 4px; display: block;">Dán link Google Drive hoặc OneDrive ở chế độ công khai.</small>
-                        </div>
-
-                        <!-- Existing File Notice -->
-                        <div id="modalExistingFileNotice" style="margin-top: 8px; font-size: 12px; color: #64748b; display: flex; align-items: center; gap: 6px;">
-                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-                            <span id="modalExistingFileText">Hiện chưa có file thực tế được đính kèm.</span>
-                        </div>
-                    </div>
-
-                    <!-- Modal Thumbnail / Real Document Cover -->
-                    <div class="form-group" style="margin-top: 14px;">
-                        <label class="form-label" style="display: flex; justify-content: space-between; align-items: center;">
-                            <span>Ảnh bìa / Thumbnail thực tế</span>
-                            <small style="font-weight: normal; color: #059669;" id="modalThumbAutoNotice">Tự động trích xuất nếu tải file PDF</small>
-                        </label>
-                        <div id="modalThumbPreviewBox" style="display: none; align-items: center; gap: 12px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                            <img id="modalThumbPreviewImg" src="" alt="Thumbnail preview" style="width: 50px; height: 64px; object-fit: cover; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
-                            <div style="flex: 1; font-size: 12px;">
-                                <strong style="color: #059669; display: block;">✓ Đã có ảnh bìa thực tế</strong>
-                                <span id="modalThumbPreviewNote" style="color: #64748b;">Trích xuất từ trang 1 của file</span>
-                            </div>
-                            <button type="button" onclick="clearModalSelectedThumbnail()" style="background: none; border: none; color: #ef4444; font-size: 12px; font-weight: 600; cursor: pointer;">Xóa ảnh</button>
-                        </div>
-                        <div style="display: flex; gap: 8px;">
-                            <label for="modalDocThumbInput" class="btn-action" style="flex: 1; text-align: center; cursor: pointer; background: #ffffff; border: 1px dashed #cbd5e1; padding: 8px; border-radius: 6px; font-size: 12px; color: #475569; display: flex; align-items: center; justify-content: center; gap: 6px;">
-                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-                                Chọn ảnh bìa từ máy tính (nếu muốn)
-                            </label>
-                            <input type="file" id="modalDocThumbInput" accept="image/*" style="display: none;" onchange="handleModalThumbnailSelect(event)">
-                        </div>
-                    </div>
-                </div>
-                <div class="edit-modal-footer">
-                    <button type="button" class="btn-action" onclick="closeQuickEditModal()" style="padding: 10px 16px;">Hủy bỏ</button>
-                    <button type="submit" class="btn-submit" style="width: auto; padding: 10px 22px;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                        Lưu thay đổi ngay
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-
     <!-- MODAL CÀI ĐẶT GITHUB AUTO-PUBLISH -->
     <div id="githubSettingsModal" class="edit-modal-backdrop">
         <div class="edit-modal-card" style="max-width: 620px;">
@@ -2432,13 +2482,8 @@
         let currentThumbnail = null;
         let activeTab = 'upload'; // 'upload' | 'link'
         let currentEditingId = null;
-
-        // Modal File State variables
-        let modalFileBase64 = null;
-        let modalFileName = null;
-        let modalFileSize = null;
-        let modalThumbnail = null;
-        let modalActiveTab = 'upload';
+        let currentResFilter = 'all';
+        let draggedDocId = null;
         let directUploadTargetId = null;
 
         // State variables - Case Studies
@@ -2723,7 +2768,7 @@
             }
         }
 
-        // Switch File Tab
+        // Switch File Tab (Modal)
         function switchFileTab(tab) {
             activeTab = tab;
             const uploadBtn = document.getElementById('tabUploadBtn');
@@ -2732,21 +2777,21 @@
             const linkBox = document.getElementById('fileLinkContainer');
 
             if (tab === 'upload') {
-                uploadBtn.classList.add('active');
-                linkBtn.classList.remove('active');
-                uploadBox.style.display = 'block';
-                linkBox.style.display = 'none';
+                if (uploadBtn) uploadBtn.classList.add('active');
+                if (linkBtn) linkBtn.classList.remove('active');
+                if (uploadBox) uploadBox.style.display = 'block';
+                if (linkBox) linkBox.style.display = 'none';
             } else {
-                linkBtn.classList.add('active');
-                uploadBtn.classList.remove('active');
-                uploadBox.style.display = 'none';
-                linkBox.style.display = 'block';
+                if (linkBtn) linkBtn.classList.add('active');
+                if (uploadBtn) uploadBtn.classList.remove('active');
+                if (uploadBox) uploadBox.style.display = 'none';
+                if (linkBox) linkBox.style.display = 'block';
             }
         }
 
-        // Thumbnail Helpers (Left Form)
+        // Thumbnail Helpers (Modal)
         function handleThumbnailSelect(e) {
-            const file = e.target.files[0];
+            const file = e.target.files && e.target.files[0];
             if (!file) return;
             const reader = new FileReader();
             reader.onload = function(evt) {
@@ -2767,48 +2812,72 @@
             }
         }
 
-        function clearSelectedThumbnail() {
+        async function clearSelectedThumbnail() {
             currentThumbnail = null;
             const box = document.getElementById('thumbPreviewBox');
             const input = document.getElementById('docThumbInput');
             if (box) box.style.display = 'none';
             if (input) input.value = '';
-        }
 
-        // Thumbnail Helpers (Modal)
-        function handleModalThumbnailSelect(e) {
-            const file = e.target.files[0];
-            if (!file) return;
-            const reader = new FileReader();
-            reader.onload = function(evt) {
-                modalThumbnail = evt.target.result;
-                displayModalThumbnailPreview(modalThumbnail, 'Đã chọn ảnh từ máy tính');
-            };
-            reader.readAsDataURL(file);
-        }
-
-        function displayModalThumbnailPreview(src, note = 'Ảnh bìa thực tế') {
-            const box = document.getElementById('modalThumbPreviewBox');
-            const img = document.getElementById('modalThumbPreviewImg');
-            const noteEl = document.getElementById('modalThumbPreviewNote');
-            if (box && img) {
-                img.src = src;
-                if (noteEl) noteEl.innerText = note;
-                box.style.display = 'flex';
+            // Nếu đang có file PDF đính kèm, tự động trích xuất lại từ PDF
+            const docId = document.getElementById('editDocId')?.value;
+            let pdfData = currentFileBase64;
+            if (!pdfData && docId) {
+                const existing = INVAMAX_TOOLKIT_STORE.getAll().find(t => t.id === docId);
+                if (existing && existing.fileUrl && (existing.fileUrl.startsWith('data:application/pdf') || (existing.format || '').toUpperCase() === 'PDF')) {
+                    pdfData = existing.fileUrl;
+                }
             }
+            if (pdfData && typeof INVAMAX_TOOLKIT_STORE.generatePdfThumbnail === 'function') {
+                showToast('Đang tạo lại ảnh bìa Ultra-HD từ file PDF...', 'info');
+                try {
+                    const thumb = await INVAMAX_TOOLKIT_STORE.generatePdfThumbnail(pdfData, 2000);
+                    if (thumb) {
+                        currentThumbnail = thumb;
+                        displayThumbnailPreview(thumb, 'Đã tự động tạo từ trang 1 của file PDF');
+                        showToast('✓ Đã tạo lại ảnh bìa từ file PDF đính kèm!', 'success');
+                        return;
+                    }
+                } catch (err) {
+                    console.warn('Lỗi trích xuất thumbnail từ PDF:', err);
+                }
+            }
+            showToast('Đã gỡ ảnh bìa.', 'info');
         }
 
-        function clearModalSelectedThumbnail() {
-            modalThumbnail = null;
-            const box = document.getElementById('modalThumbPreviewBox');
-            const input = document.getElementById('modalDocThumbInput');
-            if (box) box.style.display = 'none';
-            if (input) input.value = '';
+        async function reExtractDocThumbFromPdf() {
+            const docId = document.getElementById('editDocId')?.value;
+            let pdfData = currentFileBase64;
+            if (!pdfData && docId) {
+                const existing = INVAMAX_TOOLKIT_STORE.getAll().find(t => t.id === docId);
+                if (existing && existing.fileUrl) pdfData = existing.fileUrl;
+            }
+            if (!pdfData) {
+                showToast('Chưa có file PDF đính kèm để trích xuất ảnh bìa!', 'error');
+                return;
+            }
+            if (typeof INVAMAX_TOOLKIT_STORE.generatePdfThumbnail !== 'function') {
+                showToast('Công cụ trích xuất PDF chưa sẵn sàng!', 'error');
+                return;
+            }
+            showToast('Đang trích xuất ảnh trang 1 PDF ở độ phân giải Ultra-HD (2000px)...', 'info');
+            try {
+                const hdThumb = await INVAMAX_TOOLKIT_STORE.generatePdfThumbnail(pdfData, 2000);
+                if (hdThumb) {
+                    currentThumbnail = hdThumb;
+                    displayThumbnailPreview(hdThumb, 'Đã làm nét Ultra-HD từ trang 1 PDF');
+                    showToast('✓ Đã trích xuất ảnh bìa Ultra-HD sắc nét thành công!', 'success');
+                } else {
+                    showToast('Không thể trích xuất trang 1 (chỉ hỗ trợ file PDF).', 'error');
+                }
+            } catch (err) {
+                showToast('Lỗi khi trích xuất PDF: ' + err.message, 'error');
+            }
         }
 
         // Handle File Selection (convert to Base64 data URL & auto-extract PDF thumbnail)
         function handleFileSelect(e) {
-            const file = e.target.files[0];
+            const file = e.target.files && e.target.files[0];
             if (!file) return;
 
             if (file.size > 25 * 1024 * 1024) {
@@ -2823,25 +2892,36 @@
             // Auto detect format tag
             const ext = file.name.split('.').pop().toUpperCase();
             const formatSelect = document.getElementById('docFormat');
-            if (['XLSX', 'XLS'].includes(ext)) formatSelect.value = 'XLSX';
-            else if (['DOCX', 'DOC'].includes(ext)) formatSelect.value = 'DOCX';
-            else if (['PDF'].includes(ext)) formatSelect.value = 'PDF';
-            else if (['PPTX', 'PPT'].includes(ext)) formatSelect.value = 'PPTX';
-            else if (['ZIP', 'RAR'].includes(ext)) formatSelect.value = 'ZIP';
+            if (formatSelect) {
+                if (['XLSX', 'XLS'].includes(ext)) formatSelect.value = 'XLSX';
+                else if (['DOCX', 'DOC'].includes(ext)) formatSelect.value = 'DOCX';
+                else if (['PDF'].includes(ext)) formatSelect.value = 'PDF';
+                else if (['PPTX', 'PPT'].includes(ext)) formatSelect.value = 'PPTX';
+                else if (['ZIP', 'RAR'].includes(ext)) formatSelect.value = 'ZIP';
+                else if (['CSV'].includes(ext)) formatSelect.value = 'CSV';
+            }
 
             const reader = new FileReader();
             reader.onload = async function(event) {
                 currentFileBase64 = event.target.result;
-                document.getElementById('dropzoneBox').style.display = 'none';
-                document.getElementById('selectedFileInfo').style.display = 'flex';
-                document.getElementById('selectedFileName').innerHTML = `<strong>${file.name}</strong> (${currentFileSize})`;
+                const dropBox = document.getElementById('dropzoneBox');
+                const fileInfo = document.getElementById('selectedFileInfo');
+                const fileNameEl = document.getElementById('selectedFileName');
+                if (dropBox) dropBox.style.display = 'none';
+                if (fileInfo) fileInfo.style.display = 'flex';
+                if (fileNameEl) fileNameEl.innerHTML = `<strong>${escapeHTML(file.name)}</strong> (${currentFileSize})`;
 
-                // Nếu là file PDF, tự động trích xuất trang 1 làm thumbnail thực tế
+                // Nếu là file PDF, tự động trích xuất trang 1 làm thumbnail thực tế ở độ phân giải cao
                 if (ext === 'PDF' && typeof INVAMAX_TOOLKIT_STORE.generatePdfThumbnail === 'function') {
-                    const thumb = await INVAMAX_TOOLKIT_STORE.generatePdfThumbnail(currentFileBase64);
-                    if (thumb) {
-                        currentThumbnail = thumb;
-                        displayThumbnailPreview(thumb, 'Đã tự động tạo từ trang 1 của file PDF');
+                    showToast('Đang tạo ảnh bìa trang 1 từ file PDF...', 'info');
+                    try {
+                        const thumb = await INVAMAX_TOOLKIT_STORE.generatePdfThumbnail(currentFileBase64, 2000);
+                        if (thumb) {
+                            currentThumbnail = thumb;
+                            displayThumbnailPreview(thumb, 'Đã tự động tạo Ultra-HD từ trang 1 của file PDF');
+                        }
+                    } catch (err) {
+                        console.warn('Lỗi tự động tạo thumbnail PDF:', err);
                     }
                 }
             };
@@ -2852,19 +2932,144 @@
             currentFileBase64 = null;
             currentFileName = null;
             currentFileSize = null;
-            document.getElementById('docFileInput').value = '';
-            document.getElementById('dropzoneBox').style.display = 'block';
-            document.getElementById('selectedFileInfo').style.display = 'none';
+            const input = document.getElementById('docFileInput');
+            const dropBox = document.getElementById('dropzoneBox');
+            const fileInfo = document.getElementById('selectedFileInfo');
+            if (input) input.value = '';
+            if (dropBox) dropBox.style.display = 'block';
+            if (fileInfo) fileInfo.style.display = 'none';
         }
 
-        // Save Document from Left Form
-        async function handleSaveDoc(e) {
-            e.preventDefault();
+        // Open Add Document Modal (Popup như Case Study)
+        function openAddDocModal() {
+            cancelDocEdit();
+            const modal = document.getElementById('resDocModal');
+            const titleEl = document.getElementById('resDocModalTitle');
+            const btnText = document.getElementById('submitBtnText');
+            if (titleEl) {
+                titleEl.innerHTML = `
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--admin-orange)" stroke-width="2.2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                    <span>Thêm tài liệu mới</span>
+                `;
+            }
+            if (btnText) btnText.innerText = 'Lưu & Đăng lên Website';
+            if (modal) modal.classList.add('show');
+            setTimeout(() => {
+                document.getElementById('docTitle')?.focus();
+            }, 100);
+        }
 
-            const editId = document.getElementById('editDocId').value;
+        // Open Edit Document Modal (Popup như Case Study)
+        function openDocEditModal(id) {
+            const doc = INVAMAX_TOOLKIT_STORE.getAll().find(t => t.id === id);
+            if (!doc) return;
+
+            cancelDocEdit();
+            currentEditingId = id;
+
+            document.getElementById('editDocId').value = doc.id;
+            document.getElementById('docTitle').value = doc.title || '';
+            document.getElementById('docFormat').value = (doc.format || 'PDF').toUpperCase();
+            document.getElementById('docDesc').value = doc.desc || '';
+
+            // Thumbnail
+            if (doc.thumbnail && doc.thumbnail.trim() !== '') {
+                currentThumbnail = doc.thumbnail;
+                displayThumbnailPreview(doc.thumbnail, 'Ảnh bìa hiện tại');
+            } else {
+                clearSelectedThumbnail();
+            }
+
+            // File attachment / Link
+            const isWebLink = doc.fileUrl && (doc.fileUrl.startsWith('http://') || doc.fileUrl.startsWith('https://'));
+            const isDataUrl = doc.fileUrl && doc.fileUrl.startsWith('data:');
+            const isIdbUrl = doc.fileUrl && doc.fileUrl.startsWith('idb:');
+            const isLocalDoc = doc.fileUrl && doc.fileUrl.startsWith('assets/');
+            const hasRealFile = isDataUrl || isIdbUrl || isWebLink || isLocalDoc;
+
+            if (isWebLink) {
+                switchFileTab('link');
+                document.getElementById('docFileUrl').value = doc.fileUrl;
+            } else {
+                switchFileTab('upload');
+            }
+
+            // Existing file notice
+            const noticeBox = document.getElementById('existingFileNotice');
+            const noticeText = document.getElementById('existingFileText');
+            if (noticeBox && noticeText) {
+                noticeBox.style.display = 'flex';
+                if (hasRealFile) {
+                    noticeText.innerHTML = `<span style="color: #059669; font-weight: 600;">✓ Đã có file thực tế:</span> ${escapeHTML(doc.fileName || doc.title)} (${doc.fileSize || 'Đã đính kèm'})`;
+                } else {
+                    noticeText.innerHTML = `<span style="color: #d97706; font-weight: 600;">⚠ Chưa có file tải thực tế đính kèm.</span> Bạn hãy chọn file từ máy tính ở trên để đính kèm ngay!`;
+                }
+            }
+
+            // Edit banner
+            const editBanner = document.getElementById('resEditBanner');
+            const editingName = document.getElementById('resEditingDocName');
+            if (editBanner && editingName) {
+                editingName.innerText = doc.title;
+                editBanner.style.display = 'flex';
+            }
+
+            // Modal Header Title & Submit Button
+            const titleEl = document.getElementById('resDocModalTitle');
+            const btnText = document.getElementById('submitBtnText');
+            if (titleEl) {
+                titleEl.innerHTML = `
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--admin-orange)" stroke-width="2.2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                    <span>Chỉnh sửa: ${escapeHTML(doc.title)}</span>
+                `;
+            }
+            if (btnText) btnText.innerText = 'Cập nhật thay đổi';
+
+            const modal = document.getElementById('resDocModal');
+            if (modal) modal.classList.add('show');
+            setTimeout(() => {
+                document.getElementById('docTitle')?.focus();
+            }, 100);
+        }
+
+        function closeDocModal() {
+            const modal = document.getElementById('resDocModal');
+            if (modal) modal.classList.remove('show');
+            cancelDocEdit();
+        }
+
+        function cancelDocEdit() {
+            currentEditingId = null;
+            const editIdInput = document.getElementById('editDocId');
+            const form = document.getElementById('resDocForm');
+            const editBanner = document.getElementById('resEditBanner');
+            const noticeBox = document.getElementById('existingFileNotice');
+            if (editIdInput) editIdInput.value = '';
+            if (form) form.reset();
+            clearSelectedFile();
+            clearSelectedThumbnail();
+            if (editBanner) editBanner.style.display = 'none';
+            if (noticeBox) noticeBox.style.display = 'none';
+        }
+
+        // Aliases for backward compatibility
+        function openQuickEditModal(id) { openDocEditModal(id); }
+        function cancelEdit() { cancelDocEdit(); }
+
+        // Save Document from Modal Form
+        async function handleSaveDoc(e) {
+            if (e) e.preventDefault();
+
+            const editId = document.getElementById('editDocId').value.trim();
             const title = document.getElementById('docTitle').value.trim();
             const format = document.getElementById('docFormat').value;
             const desc = document.getElementById('docDesc').value.trim();
+
+            if (!title) {
+                showToast('Vui lòng nhập tên tài liệu!', 'error');
+                document.getElementById('docTitle')?.focus();
+                return;
+            }
 
             let fileUrl = '#';
             let fileName = currentFileName || '';
@@ -2877,7 +3082,7 @@
                     return;
                 }
             } else {
-                const link = document.getElementById('docFileUrl').value.trim();
+                const link = (document.getElementById('docFileUrl')?.value || '').trim();
                 if (!link && !editId) {
                     alert('Vui lòng nhập đường dẫn tải tệp (link Google Drive, Onedrive...)!');
                     return;
@@ -2916,27 +3121,22 @@
             }
 
             const success = await INVAMAX_TOOLKIT_STORE.saveItem(docData);
-            if (success) {
-                if (INVAMAX_GITHUB_SYNC.isConfigured()) {
-                    showToast('Đang tự động đồng bộ & đăng lên GitHub...', 'info');
-                    const btn = document.getElementById('btnSubmitDoc');
-                    const prevBtnText = document.getElementById('submitBtnText').innerText;
-                    if (btn) btn.disabled = true;
-                    document.getElementById('submitBtnText').innerText = 'Đang đẩy lên GitHub...';
+            closeDocModal();
+            renderDashboard();
 
+            if (success) {
+                if (typeof INVAMAX_GITHUB_SYNC !== 'undefined' && INVAMAX_GITHUB_SYNC.isConfigured()) {
+                    showToast('Đang tự động đồng bộ & đăng lên GitHub...', 'info');
                     const ghResult = await INVAMAX_GITHUB_SYNC.syncToolkitsToGitHub(
                         INVAMAX_TOOLKIT_STORE.getAll(),
                         (msg) => showToast(msg, 'info')
                     );
-
-                    if (btn) btn.disabled = false;
-                    document.getElementById('submitBtnText').innerText = prevBtnText;
-
                     if (ghResult.success) {
                         if (ghResult.updatedList) {
                             INVAMAX_TOOLKIT_STORE.saveAll(ghResult.updatedList);
                         }
                         showToast(`✓ Đã đăng "${title}" lên website! Web tự cập nhật sau 30-60s.`, 'success');
+                        renderDashboard();
                     } else {
                         showToast(`Lỗi đồng bộ GitHub: ${ghResult.message}`, 'error');
                     }
@@ -2951,81 +3151,6 @@
             } else {
                 showToast(`Lỗi khi lưu tài liệu!`, 'error');
             }
-            
-            cancelEdit();
-            renderDashboard();
-        }
-
-        // Switch Modal File Tab
-        function switchModalFileTab(tab) {
-            modalActiveTab = tab;
-            const uploadBtn = document.getElementById('modalTabUploadBtn');
-            const linkBtn = document.getElementById('modalTabLinkBtn');
-            const uploadBox = document.getElementById('modalFileUploadContainer');
-            const linkBox = document.getElementById('modalFileLinkContainer');
-
-            if (tab === 'upload') {
-                uploadBtn.classList.add('active');
-                linkBtn.classList.remove('active');
-                uploadBox.style.display = 'block';
-                linkBox.style.display = 'none';
-            } else {
-                linkBtn.classList.add('active');
-                uploadBtn.classList.remove('active');
-                uploadBox.style.display = 'none';
-                linkBox.style.display = 'block';
-            }
-        }
-
-        // Handle Modal File Selection (Base64 & auto PDF thumbnail)
-        function handleModalFileSelect(e) {
-            const file = e.target.files[0];
-            if (!file) return;
-
-            if (file.size > 25 * 1024 * 1024) {
-                alert('Tệp có dung lượng quá lớn (hơn 25MB). Vui lòng dùng tab "Link Drive / Tải ngoài" để dán liên kết tải.');
-                e.target.value = '';
-                return;
-            }
-
-            modalFileName = file.name;
-            modalFileSize = (file.size / (1024 * 1024)).toFixed(2) + ' MB';
-
-            // Auto detect format tag in modal
-            const ext = file.name.split('.').pop().toUpperCase();
-            const formatSelect = document.getElementById('modalDocFormat');
-            if (['XLSX', 'XLS'].includes(ext)) formatSelect.value = 'XLSX';
-            else if (['DOCX', 'DOC'].includes(ext)) formatSelect.value = 'DOCX';
-            else if (['PDF'].includes(ext)) formatSelect.value = 'PDF';
-            else if (['PPTX', 'PPT'].includes(ext)) formatSelect.value = 'PPTX';
-            else if (['ZIP', 'RAR'].includes(ext)) formatSelect.value = 'ZIP';
-
-            const reader = new FileReader();
-            reader.onload = async function(event) {
-                modalFileBase64 = event.target.result;
-                document.getElementById('modalDropzoneBox').style.display = 'none';
-                document.getElementById('modalSelectedFileInfo').style.display = 'flex';
-                document.getElementById('modalSelectedFileName').innerHTML = `<strong>${file.name}</strong> (${modalFileSize})`;
-
-                // Tự động tạo ảnh bìa nếu là PDF
-                if (ext === 'PDF' && typeof INVAMAX_TOOLKIT_STORE.generatePdfThumbnail === 'function') {
-                    const thumb = await INVAMAX_TOOLKIT_STORE.generatePdfThumbnail(modalFileBase64);
-                    if (thumb) {
-                        modalThumbnail = thumb;
-                        displayModalThumbnailPreview(thumb, 'Đã tự động tạo từ trang 1 của file PDF');
-                    }
-                }
-            };
-            reader.readAsDataURL(file);
-        }
-
-        function clearModalSelectedFile() {
-            modalFileBase64 = null;
-            modalFileName = null;
-            modalFileSize = null;
-            document.getElementById('modalFileInput').value = '';
-            document.getElementById('modalDropzoneBox').style.display = 'block';
-            document.getElementById('modalSelectedFileInfo').style.display = 'none';
         }
 
         // Direct File Upload from Document Card
@@ -3062,6 +3187,7 @@
             else if (['PDF'].includes(ext)) detectedFormat = 'PDF';
             else if (['PPTX', 'PPT'].includes(ext)) detectedFormat = 'PPTX';
             else if (['ZIP', 'RAR'].includes(ext)) detectedFormat = 'ZIP';
+            else if (['CSV'].includes(ext)) detectedFormat = 'CSV';
 
             const fileSizeStr = (file.size / (1024 * 1024)).toFixed(2) + ' MB';
 
@@ -3081,7 +3207,7 @@
                 if (ext === 'PDF' && typeof INVAMAX_TOOLKIT_STORE.generatePdfThumbnail === 'function') {
                     try {
                         showToast('Đang tạo ảnh bìa trang 1...', 'info');
-                        const thumb = await INVAMAX_TOOLKIT_STORE.generatePdfThumbnail(fileBase64);
+                        const thumb = await INVAMAX_TOOLKIT_STORE.generatePdfThumbnail(fileBase64, 2000);
                         if (thumb) {
                             updatedDoc.thumbnail = thumb;
                         }
@@ -3124,183 +3250,11 @@
             reader.readAsDataURL(file);
         }
 
-        // Open Quick Edit Modal
-        function openQuickEditModal(id, focusUpload = false) {
-            const doc = INVAMAX_TOOLKIT_STORE.getAll().find(t => t.id === id);
-            if (!doc) return;
-
-            clearModalSelectedFile();
-            clearModalSelectedThumbnail();
-
-            document.getElementById('modalDocId').value = doc.id;
-            document.getElementById('modalDocTitle').value = doc.title;
-            document.getElementById('modalDocFormat').value = doc.format || 'PDF';
-            document.getElementById('modalDocDesc').value = doc.desc || '';
-
-            // Thumbnail
-            if (doc.thumbnail && doc.thumbnail.trim() !== '') {
-                modalThumbnail = doc.thumbnail;
-                displayModalThumbnailPreview(doc.thumbnail, 'Ảnh bìa hiện tại');
-            }
-
-            const isDataUrl = doc.fileUrl && doc.fileUrl.startsWith('data:');
-            const isIdbUrl = doc.fileUrl && doc.fileUrl.startsWith('idb:');
-            const isWebLink = doc.fileUrl && (doc.fileUrl.startsWith('http://') || doc.fileUrl.startsWith('https://'));
-            const isLocalDoc = doc.fileUrl && doc.fileUrl.startsWith('assets/');
-            const hasRealFile = isDataUrl || isIdbUrl || isWebLink || isLocalDoc;
-
-            const existingNotice = document.getElementById('modalExistingFileText');
-            if (hasRealFile) {
-                existingNotice.innerHTML = `<span style="color: #059669; font-weight: 600;">✓ Đã có file thực tế:</span> ${escapeHTML(doc.fileName || 'Tệp đính kèm')} (${doc.fileSize || 'Đã tải'})`;
-            } else {
-                existingNotice.innerHTML = `<span style="color: #d97706; font-weight: 600;">⚠ Chưa có file tải thực tế đính kèm.</span> Bạn hãy chọn file từ máy tính ở trên để đính kèm ngay!`;
-            }
-
-            if (isWebLink) {
-                switchModalFileTab('link');
-                document.getElementById('modalDocLink').value = doc.fileUrl;
-            } else {
-                switchModalFileTab('upload');
-                document.getElementById('modalDocLink').value = '';
-            }
-
-            document.getElementById('quickEditModal').classList.add('show');
-        }
-
-        function closeQuickEditModal() {
-            document.getElementById('quickEditModal').classList.remove('show');
-            clearModalSelectedFile();
-            clearModalSelectedThumbnail();
-        }
-
-        // Handle Quick Edit Modal Save
-        async function handleSaveModalEdit(e) {
-            e.preventDefault();
-            const id = document.getElementById('modalDocId').value;
-            const title = document.getElementById('modalDocTitle').value.trim();
-            const format = document.getElementById('modalDocFormat').value;
-            const desc = document.getElementById('modalDocDesc').value.trim();
-            const link = document.getElementById('modalDocLink').value.trim();
-
-            const existing = INVAMAX_TOOLKIT_STORE.getAll().find(t => t.id === id);
-            if (!existing) return;
-
-            const updatedData = {
-                ...existing,
-                title,
-                format,
-                desc
-            };
-
-            if (modalThumbnail !== null) {
-                updatedData.thumbnail = modalThumbnail;
-            }
-
-            // Process uploaded file or external link
-            if (modalActiveTab === 'upload' && modalFileBase64) {
-                updatedData.fileUrl = modalFileBase64;
-                updatedData.fileName = modalFileName || (title + '.' + format.toLowerCase());
-                updatedData.fileSize = modalFileSize || '1 MB';
-            } else if (modalActiveTab === 'link' && link) {
-                updatedData.fileUrl = link;
-                updatedData.fileName = title;
-            }
-
-            const success = await INVAMAX_TOOLKIT_STORE.saveItem(updatedData);
-            closeQuickEditModal();
-            renderDashboard();
-
-            if (success) {
-                if (INVAMAX_GITHUB_SYNC.isConfigured()) {
-                    showToast('Đang tự động đồng bộ & đăng lên GitHub...', 'info');
-                    const ghResult = await INVAMAX_GITHUB_SYNC.syncToolkitsToGitHub(
-                        INVAMAX_TOOLKIT_STORE.getAll(),
-                        (msg) => showToast(msg, 'info')
-                    );
-                    if (ghResult.success) {
-                        if (ghResult.updatedList) {
-                            INVAMAX_TOOLKIT_STORE.saveAll(ghResult.updatedList);
-                        }
-                        showToast(`✓ Đã đăng "${title}" lên website! Web tự cập nhật sau 30-60s.`, 'success');
-                        renderDashboard();
-                    } else {
-                        showToast(`Lỗi đồng bộ GitHub: ${ghResult.message}`, 'error');
-                    }
-                } else {
-                    showToast(`Đã lưu tài liệu "${title}"! (Chưa kết nối GitHub - chỉ lưu máy này)`, 'success');
-                    setTimeout(() => {
-                        if (confirm(`Đã lưu "${title}" trên máy này!\n\nĐể tự động cập nhật lên website cho tất cả mọi người, bạn cần nhập GitHub Token.\n\nBạn có muốn mở cài đặt kết nối GitHub ngay không?`)) {
-                            openGitHubSettingsModal();
-                        }
-                    }, 400);
-                }
-            } else {
-                showToast(`Có lỗi xảy ra khi lưu tài liệu!`, 'error');
-            }
-        }
-
-        // Start Edit in Main Form (Left Panel)
-        function startEditDoc(id) {
-            const doc = INVAMAX_TOOLKIT_STORE.getAll().find(t => t.id === id);
-            if (!doc) return;
-
-            currentEditingId = id;
-            document.getElementById('editDocId').value = doc.id;
-            document.getElementById('docTitle').value = doc.title;
-            document.getElementById('docFormat').value = doc.format || 'PDF';
-            document.getElementById('docDesc').value = doc.desc || '';
-
-            // Thumbnail
-            if (doc.thumbnail && doc.thumbnail.trim() !== '') {
-                currentThumbnail = doc.thumbnail;
-                displayThumbnailPreview(doc.thumbnail, 'Ảnh bìa hiện tại');
-            } else {
-                clearSelectedThumbnail();
-            }
-
-            if (doc.fileUrl && doc.fileUrl.startsWith('http')) {
-                switchFileTab('link');
-                document.getElementById('docFileUrl').value = doc.fileUrl;
-            } else {
-                switchFileTab('upload');
-            }
-
-            // Show Edit Mode Banner
-            document.getElementById('editingDocName').innerText = doc.title;
-            document.getElementById('editModeBanner').classList.add('show');
-
-            document.getElementById('formPanelTitle').innerHTML = `
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--admin-orange)" stroke-width="2.2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-                Chỉnh sửa: ${escapeHTML(doc.title)}
-            `;
-            document.getElementById('submitBtnText').innerText = 'Cập nhật thay đổi';
-
-            renderDashboard();
-
-            // Scroll smoothly to form
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function cancelEdit() {
-            currentEditingId = null;
-            document.getElementById('editDocId').value = '';
-            document.getElementById('docForm').reset();
-            clearSelectedFile();
-            clearSelectedThumbnail();
-            document.getElementById('editModeBanner').classList.remove('show');
-            document.getElementById('formPanelTitle').innerHTML = `
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--admin-orange)" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
-                Thêm tài liệu mới
-            `;
-            document.getElementById('submitBtnText').innerText = 'Lưu & Đăng lên Website';
-            renderDashboard();
-        }
-
         // Delete Document
         async function deleteDoc(id, title) {
             if (confirm(`Bạn có chắc chắn muốn xóa tài liệu "${title}" khỏi website?`)) {
                 INVAMAX_TOOLKIT_STORE.deleteItem(id);
-                if (currentEditingId === id) cancelEdit();
+                if (currentEditingId === id) cancelDocEdit();
                 renderDashboard();
 
                 if (window.INVAMAX_GITHUB_SYNC && INVAMAX_GITHUB_SYNC.isConfigured()) {
@@ -3315,36 +3269,255 @@
                         showToast(`Lỗi đồng bộ xóa lên GitHub: ${ghResult.message}`, 'error');
                     }
                 } else {
-                    showToast(`Đã xóa tài liệu "${title}"! (Chưa kết nối GitHub)`, 'error');
+                    showToast(`Đã xóa tài liệu "${title}"! (Chưa kết nối GitHub)`, 'info');
                 }
             }
         }
 
-        // Render Dashboard Stats & List with clear buttons and icons
+        // ========================================================
+        // REORDERING & DRAG-AND-DROP CONTROLLER FOR RESOURCES
+        // ========================================================
+        function moveDoc(id, direction) {
+            if (typeof INVAMAX_TOOLKIT_STORE === 'undefined' || typeof INVAMAX_TOOLKIT_STORE.move !== 'function') return;
+            const res = INVAMAX_TOOLKIT_STORE.move(id, direction);
+            if (res) {
+                renderDashboard();
+                renderResReorderModalList();
+                showToast(direction === 'up' ? 'Đã chuyển tài liệu lên trước!' : 'Đã chuyển tài liệu ra sau!', 'success');
+                if (typeof INVAMAX_GITHUB_SYNC !== 'undefined' && INVAMAX_GITHUB_SYNC.isConfigured()) {
+                    syncToolkitsToGitHubManual(false);
+                }
+            }
+        }
+
+        function moveDocToIndex(id, targetIndex) {
+            if (typeof INVAMAX_TOOLKIT_STORE === 'undefined' || typeof INVAMAX_TOOLKIT_STORE.moveToIndex !== 'function') return;
+            const idxNum = Number(targetIndex);
+            const res = INVAMAX_TOOLKIT_STORE.moveToIndex(id, idxNum);
+            if (res) {
+                renderDashboard();
+                renderResReorderModalList();
+                showToast(`Đã chuyển tài liệu đến vị trí #${idxNum + 1}!`, 'success');
+                if (typeof INVAMAX_GITHUB_SYNC !== 'undefined' && INVAMAX_GITHUB_SYNC.isConfigured()) {
+                    syncToolkitsToGitHubManual(false);
+                }
+            }
+        }
+
+        function handleResCardDragStart(e, id) {
+            draggedDocId = id;
+            if (e.dataTransfer) {
+                e.dataTransfer.effectAllowed = 'move';
+                e.dataTransfer.setData('text/plain', id);
+            }
+            if (e.currentTarget) e.currentTarget.classList.add('tool-card-dragging');
+        }
+
+        function handleResCardDragOver(e) {
+            e.preventDefault();
+            if (e.dataTransfer) e.dataTransfer.dropEffect = 'move';
+            if (e.currentTarget) e.currentTarget.classList.add('drag-over');
+        }
+
+        function handleResCardDragLeave(e) {
+            if (e.currentTarget) e.currentTarget.classList.remove('drag-over');
+        }
+
+        function handleResCardDrop(e, targetId) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (e.currentTarget) e.currentTarget.classList.remove('drag-over');
+            const sourceId = draggedDocId || (e.dataTransfer ? e.dataTransfer.getData('text/plain') : null);
+            draggedDocId = null;
+            if (!sourceId || sourceId === targetId) return;
+            const items = INVAMAX_TOOLKIT_STORE.getAll();
+            const targetIdx = items.findIndex(it => it.id === targetId);
+            if (targetIdx !== -1) {
+                moveDocToIndex(sourceId, targetIdx);
+            }
+        }
+
+        function handleResCardDragEnd(e) {
+            draggedDocId = null;
+            if (e.currentTarget) e.currentTarget.classList.remove('tool-card-dragging');
+            document.querySelectorAll('.tool-card-light.drag-over, .reorder-res-item.drag-over').forEach(el => el.classList.remove('drag-over'));
+        }
+
+        function openResReorderModal() {
+            renderResReorderModalList();
+            const modal = document.getElementById('resReorderModal');
+            if (modal) modal.classList.add('show');
+        }
+
+        function closeResReorderModal() {
+            const modal = document.getElementById('resReorderModal');
+            if (modal) modal.classList.remove('show');
+        }
+
+        function saveAndCloseResReorderModal() {
+            closeResReorderModal();
+            showToast('✓ Đã lưu thứ tự hiển thị tài liệu trên website!', 'success');
+        }
+
+        function renderResReorderModalList() {
+            const container = document.getElementById('resReorderListContainer');
+            if (!container || typeof INVAMAX_TOOLKIT_STORE === 'undefined') return;
+            const items = INVAMAX_TOOLKIT_STORE.getAll();
+            if (items.length === 0) {
+                container.innerHTML = '<p style="text-align:center;color:#64748b;padding:20px;">Chưa có tài liệu nào.</p>';
+                return;
+            }
+            container.innerHTML = items.map((doc, idx) => {
+                const fmt = (doc.format || 'PDF').toUpperCase();
+                let fmtBadgeColor = '#991b1b';
+                if (['XLSX', 'XLS', 'EXCEL'].includes(fmt)) fmtBadgeColor = '#166534';
+                else if (['DOCX', 'DOC', 'WORD'].includes(fmt)) fmtBadgeColor = '#1e40af';
+
+                const thumbHtml = doc.thumbnail ? `
+                    <img src="${doc.thumbnail}" alt="" style="width: 36px; height: 46px; object-fit: cover; border-radius: 4px; border: 1px solid #e2e8f0; flex-shrink: 0;">
+                ` : `
+                    <div style="width: 36px; height: 46px; background: #f1f5f9; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; color: ${fmtBadgeColor}; flex-shrink: 0; border: 1px solid #cbd5e1;">${fmt}</div>
+                `;
+
+                return `
+                    <div class="reorder-res-item" draggable="true"
+                         ondragstart="handleResCardDragStart(event, '${doc.id}')"
+                         ondragover="handleResCardDragOver(event)"
+                         ondragleave="handleResCardDragLeave(event)"
+                         ondrop="handleResCardDrop(event, '${doc.id}')"
+                         ondragend="handleResCardDragEnd(event)">
+                        <span style="color: #94a3b8; font-size: 16px; cursor: grab; user-select: none;" title="Kéo thả để đổi vị trí">⠿</span>
+                        <span style="background: #ff6900; color: #fff; font-size: 12px; font-weight: 800; padding: 4px 9px; border-radius: 6px; min-width: 34px; text-align: center;">#${idx + 1}</span>
+                        ${thumbHtml}
+                        <div style="flex: 1; min-width: 0;">
+                            <div style="font-size: 10.5px; font-weight: 800; color: ${fmtBadgeColor}; text-transform: uppercase;">${fmt}</div>
+                            <div style="font-size: 13.5px; font-weight: 700; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${escapeHTML(doc.title)}</div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 4px; flex-shrink: 0;">
+                            <button type="button" class="btn-action" style="padding: 5px 8px; font-size: 11.5px;" ${idx === 0 ? 'disabled style="opacity:0.35;pointer-events:none;padding:5px 8px;font-size:11.5px;"' : ''} onclick="moveDocToIndex('${doc.id}', 0)" title="Đưa lên vị trí #1">Đầu</button>
+                            <button type="button" class="btn-action" style="padding: 5px 8px; font-size: 11.5px;" ${idx === 0 ? 'disabled style="opacity:0.35;pointer-events:none;padding:5px 8px;font-size:11.5px;"' : ''} onclick="moveDoc('${doc.id}', 'up')" title="Lên 1 vị trí">▲ Lên</button>
+                            <button type="button" class="btn-action" style="padding: 5px 8px; font-size: 11.5px;" ${idx === items.length - 1 ? 'disabled style="opacity:0.35;pointer-events:none;padding:5px 8px;font-size:11.5px;"' : ''} onclick="moveDoc('${doc.id}', 'down')" title="Xuống 1 vị trí">▼ Xuống</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Filter Pills Handler
+        function setResFilter(filterKey, btn) {
+            currentResFilter = filterKey;
+            const pills = document.querySelectorAll('#resFilterPills .res-pill-btn');
+            pills.forEach(p => p.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+            renderDashboard();
+        }
+
+        function filterDocsList() {
+            renderDashboard();
+        }
+
+        // Dedicated GitHub Sync Helper for Toolkits
+        async function syncToolkitsToGitHubManual(showNotify = false) {
+            const ghSync = (typeof INVAMAX_GITHUB_SYNC !== 'undefined') ? INVAMAX_GITHUB_SYNC : window.INVAMAX_GITHUB_SYNC;
+            if (!ghSync || !ghSync.isConfigured()) {
+                if (showNotify) openGitHubSettingsModal();
+                return;
+            }
+
+            if (showNotify) showToast('Đang đồng bộ dữ liệu Thư viện lên GitHub...', 'info');
+            const res = await ghSync.syncToolkitsToGitHub(
+                INVAMAX_TOOLKIT_STORE.getAll(),
+                (msg) => showToast(msg, 'info')
+            );
+
+            if (res.success) {
+                if (res.updatedList) {
+                    INVAMAX_TOOLKIT_STORE.saveAll(res.updatedList);
+                }
+                renderDashboard();
+                showToast('✓ Đã xuất bản Thư viện lên GitHub thành công! Web sẽ cập nhật trong 30 giây.', 'success');
+            } else if (!res.skipped) {
+                showToast('Lỗi đồng bộ GitHub: ' + res.message, 'error');
+            }
+        }
+
+        // ========================================================
+        // RENDER DASHBOARD: 4-COLUMN WEBSITE CARD GRID
+        // ========================================================
         function renderDashboard() {
-            const docs = INVAMAX_TOOLKIT_STORE.getAll();
+            const allDocs = INVAMAX_TOOLKIT_STORE.getAll();
 
-            // Stats
-            document.getElementById('statTotalDocs').innerText = docs.length;
-            const xlsxCount = docs.filter(d => (d.format || '').toUpperCase() === 'XLSX').length;
-            document.getElementById('statXlsxDocs').innerText = xlsxCount;
-            document.getElementById('statOtherDocs').innerText = docs.length - xlsxCount;
-            const totalDl = docs.reduce((sum, d) => sum + (d.downloads || 0), 0);
-            document.getElementById('statTotalDownloads').innerText = totalDl;
+            // Count per format category
+            const isFmt = (doc, arr) => arr.includes((doc.format || '').toUpperCase());
+            const totalCount = allDocs.length;
+            const xlsxCount = allDocs.filter(d => isFmt(d, ['XLSX', 'XLS', 'EXCEL'])).length;
+            const docxCount = allDocs.filter(d => isFmt(d, ['DOCX', 'DOC', 'WORD'])).length;
+            const pdfCount = allDocs.filter(d => isFmt(d, ['PDF'])).length;
+            const otherCount = totalCount - (xlsxCount + docxCount + pdfCount);
 
-            // List Render
+            // Update stats badges in filter pills
+            const elTotal = document.getElementById('statResTotal');
+            const elXlsx = document.getElementById('statResXlsx');
+            const elDocx = document.getElementById('statResDocx');
+            const elPdf = document.getElementById('statResPdf');
+            const elOther = document.getElementById('statResOther');
+            if (elTotal) elTotal.innerText = totalCount;
+            if (elXlsx) elXlsx.innerText = xlsxCount;
+            if (elDocx) elDocx.innerText = docxCount;
+            if (elPdf) elPdf.innerText = pdfCount;
+            if (elOther) elOther.innerText = otherCount;
+
+            // Also update legacy stats elements if present
+            const legTotal = document.getElementById('statTotalDocs');
+            const legXlsx = document.getElementById('statXlsxDocs');
+            const legOther = document.getElementById('statOtherDocs');
+            if (legTotal) legTotal.innerText = totalCount;
+            if (legXlsx) legXlsx.innerText = xlsxCount;
+            if (legOther) legOther.innerText = otherCount;
+
+            // Filter by selected format pill
+            let filtered = allDocs;
+            if (currentResFilter === 'xlsx') {
+                filtered = filtered.filter(d => isFmt(d, ['XLSX', 'XLS', 'EXCEL']));
+            } else if (currentResFilter === 'docx') {
+                filtered = filtered.filter(d => isFmt(d, ['DOCX', 'DOC', 'WORD']));
+            } else if (currentResFilter === 'pdf') {
+                filtered = filtered.filter(d => isFmt(d, ['PDF']));
+            } else if (currentResFilter === 'other') {
+                filtered = filtered.filter(d => !isFmt(d, ['XLSX', 'XLS', 'EXCEL', 'DOCX', 'DOC', 'WORD', 'PDF']));
+            }
+
+            // Filter by live search input
+            const searchInput = document.getElementById('resAdminSearchInput');
+            const query = (searchInput ? searchInput.value : '').toLowerCase().trim();
+            if (query) {
+                filtered = filtered.filter(d => 
+                    (d.title || '').toLowerCase().includes(query) ||
+                    (d.desc || '').toLowerCase().includes(query) ||
+                    (d.format || '').toLowerCase().includes(query) ||
+                    (d.fileName || '').toLowerCase().includes(query)
+                );
+            }
+
             const container = document.getElementById('docsListContainer');
-            if (docs.length === 0) {
+            if (!container) return;
+
+            if (filtered.length === 0) {
                 container.innerHTML = `
-                    <div class="doc-list-empty">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-                        <p>Chưa có tài liệu nào. Hãy điền form bên trái để đăng tài liệu đầu tiên!</p>
+                    <div class="doc-list-empty" style="grid-column: 1 / -1; background: #ffffff; border: 1.5px dashed #cbd5e1; border-radius: 16px; padding: 48px 24px;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                        <p style="margin-bottom: 14px; color: #64748b; font-size: 14px;">Chưa có tài liệu nào phù hợp với bộ lọc hiện tại.</p>
+                        <button type="button" class="btn-add-res-main" onclick="openAddDocModal()">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                            Thêm tài liệu mới
+                        </button>
                     </div>
                 `;
                 return;
             }
 
-            container.innerHTML = docs.map(doc => {
+            container.innerHTML = filtered.map((doc) => {
+                const globalIdx = allDocs.findIndex(it => it.id === doc.id);
                 const fmt = (doc.format || 'PDF').toUpperCase();
                 let badgeClass = 'fmt-pdf';
                 if (['XLSX', 'XLS', 'EXCEL'].includes(fmt)) badgeClass = 'fmt-xlsx';
@@ -3352,18 +3525,25 @@
                 else if (['PPTX', 'PPT'].includes(fmt)) badgeClass = 'fmt-pptx';
                 else if (['ZIP', 'RAR'].includes(fmt)) badgeClass = 'fmt-zip';
 
-                const downloadAttr = doc.fileUrl && doc.fileUrl.startsWith('data:') ? `download="${doc.fileName || 'tai-lieu'}"` : `target="_blank" rel="noopener"`;
-                const isEditing = currentEditingId === doc.id;
+                const positionOptions = allDocs.map((_, optIdx) => 
+                    `<option value="${optIdx}" ${optIdx === globalIdx ? 'selected' : ''}>Vị trí #${optIdx + 1}</option>`
+                ).join('');
 
-                const hasRealThumb = !!(doc.thumbnail && doc.thumbnail.trim());
-                const thumbHTML = hasRealThumb ? `
-                    <div class="doc-preview-thumb">
-                        <img src="${doc.thumbnail}" alt="${escapeHTML(doc.title)}">
+                const hasThumb = doc.thumbnail && doc.thumbnail.trim();
+                const thumbBoxHtml = hasThumb ? `
+                    <div class="tool-thumb-box" onclick="event.stopPropagation(); INVAMAX_TOOLKIT_STORE.handlePreview('${doc.id}', event)" title="Bấm để xem trước tài liệu">
+                        <img src="${doc.thumbnail}" alt="${escapeHTML(doc.title)}" class="tool-thumb-img">
+                        <div class="tool-thumb-overlay">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#ffffff" stroke-width="2.2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </div>
                     </div>
                 ` : `
-                    <div class="doc-preview-thumb">
-                        <span style="font-size: 11px; font-weight: 800; color: ${['XLSX', 'XLS'].includes(fmt) ? '#166534' : (['DOCX', 'DOC'].includes(fmt) ? '#1e40af' : '#991b1b')};">${fmt}</span>
-                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" style="color: #94a3b8;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    <div class="tool-preview-box" onclick="event.stopPropagation(); INVAMAX_TOOLKIT_STORE.handlePreview('${doc.id}', event)" title="Bấm để xem trước tài liệu" style="cursor: pointer;">
+                        <div class="doc-line title"></div>
+                        <div class="doc-line w-90"></div>
+                        <div class="doc-line w-50"></div>
+                        <div class="doc-line w-80"></div>
+                        <div class="doc-line w-60"></div>
                     </div>
                 `;
 
@@ -3372,80 +3552,67 @@
                 const isWebLink = doc.fileUrl && (doc.fileUrl.startsWith('http://') || doc.fileUrl.startsWith('https://'));
                 const isLocalDoc = doc.fileUrl && doc.fileUrl.startsWith('assets/');
                 const hasRealFile = isDataUrl || isIdbUrl || isWebLink || isLocalDoc;
+                const downloadAttr = isDataUrl ? `download="${doc.fileName || 'tai-lieu'}"` : `target="_blank" rel="noopener"`;
 
                 return `
-                    <div class="doc-item-card ${isEditing ? 'is-editing' : ''}">
-                        <div class="doc-card-main">
-                            ${thumbHTML}
-                            <div class="doc-card-content">
-                                <div class="doc-card-header">
-                                    <h4>
-                                        <span class="tool-format-badge ${badgeClass}">${fmt}</span>
-                                        <span class="doc-card-title">${escapeHTML(doc.title)}</span>
-                                        ${isEditing ? '<span class="doc-badge-editing">ĐANG CHỈNH SỬA</span>' : ''}
-                                    </h4>
-                                </div>
-                                <p class="doc-card-desc">${escapeHTML(doc.desc || '')}</p>
-                                <div class="doc-card-meta">
-                                    <span class="meta-item">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                                        ${doc.createdAt || 'Mới cập nhật'}
-                                    </span>
-                                    <span class="meta-item">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                                        ${doc.downloads || 0} lượt tải
-                                    </span>
-                                </div>
+                    <div class="tool-card-light"
+                         data-id="${doc.id}"
+                         draggable="true"
+                         ondragstart="handleResCardDragStart(event, '${doc.id}')"
+                         ondragover="handleResCardDragOver(event)"
+                         ondragleave="handleResCardDragLeave(event)"
+                         ondrop="handleResCardDrop(event, '${doc.id}')"
+                         ondragend="handleResCardDragEnd(event)"
+                         onclick="openDocEditModal('${doc.id}')"
+                         title="Bấm để chỉnh sửa, hoặc kéo thả để đổi thứ tự">
+                        
+                        <!-- Thanh điều khiển thứ tự trên Card (tương tự Case Study) -->
+                        <div class="res-order-overlay" onclick="event.stopPropagation()">
+                            <button type="button" class="res-order-btn" ${globalIdx <= 0 ? 'disabled' : ''} onclick="event.stopPropagation(); moveDoc('${doc.id}', 'up')" title="Chuyển lên trước">◀</button>
+                            <select class="res-order-select" onclick="event.stopPropagation()" onchange="event.stopPropagation(); moveDocToIndex('${doc.id}', this.value)" title="Chọn vị trí hiển thị">
+                                ${positionOptions}
+                            </select>
+                            <button type="button" class="res-order-btn" ${globalIdx >= allDocs.length - 1 ? 'disabled' : ''} onclick="event.stopPropagation(); moveDoc('${doc.id}', 'down')" title="Chuyển ra sau">▶</button>
+                        </div>
+
+                        <div class="tool-top-row" style="padding-right: 90px;">
+                            ${thumbBoxHtml}
+                            <div class="tool-header-content">
+                                <span class="tool-format-badge ${badgeClass}" style="align-self: flex-start; margin-bottom: 6px;">${fmt}</span>
+                                <h3 class="tool-title-light">${escapeHTML(doc.title)}</h3>
                             </div>
                         </div>
 
-                        <div class="doc-card-footer">
-                            <div class="doc-file-status">
-                                ${hasRealFile ? `
-                                    <span class="file-badge file-badge-success" title="${escapeHTML(doc.fileName || '')}">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="9 15 12 18 15 15"/></svg>
-                                        <strong class="file-name-text">${escapeHTML(doc.fileName || 'Đã có file tải')}</strong>
-                                        <span style="opacity: 0.85;">(${doc.fileSize || 'Đã tải'})</span>
-                                    </span>
-                                ` : `
-                                    <span class="file-badge file-badge-warning">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                                        <span>Chưa có file thực tế (Bấm "Upload file" để tải lên)</span>
-                                    </span>
-                                `}
-                            </div>
+                        <p class="tool-desc-light">${escapeHTML(doc.desc || '')}</p>
 
-                            <div class="doc-card-actions">
-                                <!-- Nút Xem trước -->
-                                <button type="button" class="btn-action btn-action-preview" title="Xem trước tài liệu này" onclick="INVAMAX_TOOLKIT_STORE.handlePreview('${doc.id}', event)">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
-                                    Xem trước
-                                </button>
+                        <!-- File Status Badge -->
+                        <div class="res-card-file-badge" style="background: ${hasRealFile ? '#ecfdf5' : '#fffbeb'}; border: 1px solid ${hasRealFile ? '#a7f3d0' : '#fde68a'}; color: ${hasRealFile ? '#065f46' : '#92400e'};" onclick="event.stopPropagation()">
+                            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" style="flex-shrink:0;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                            <span style="font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1;">${hasRealFile ? escapeHTML(doc.fileName || 'Đã có file tải') : 'Chưa có file tải đính kèm'}</span>
+                            ${hasRealFile && doc.fileSize ? `<small style="opacity:0.8; flex-shrink:0;">(${doc.fileSize})</small>` : ''}
+                        </div>
 
-                                <!-- Nút Tải thử -->
-                                <a href="${doc.fileUrl || '#'}" ${downloadAttr} class="btn-action btn-action-download" title="Tải thử tệp này về máy" onclick="INVAMAX_TOOLKIT_STORE.handleDownload('${doc.id}', event)">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                                    Tải thử
-                                </a>
-
-                                <!-- Nút Upload tài liệu thực tế -->
-                                <button type="button" class="btn-action btn-action-upload" title="Tải tệp thực tế từ máy tính lên cho tài liệu này" onclick="triggerDirectUpload('${doc.id}')">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-                                    Upload file
-                                </button>
-
-                                <!-- Nút Chỉnh sửa -->
-                                <button type="button" class="btn-action btn-action-edit" title="Chỉnh sửa nội dung tài liệu này" onclick="openQuickEditModal('${doc.id}')">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-                                    Chỉnh sửa
-                                </button>
-
-                                <!-- Nút Xóa -->
-                                <button type="button" class="btn-action btn-action-delete" title="Xóa tài liệu khỏi website" onclick="deleteDoc('${doc.id}', '${escapeHTML(doc.title)}')">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
-                                    Xóa
-                                </button>
-                            </div>
+                        <!-- Card Admin Actions (Sửa, Xóa, Xem, Tải, Upload) -->
+                        <div class="res-card-admin-actions" onclick="event.stopPropagation()">
+                            <button type="button" class="btn-res-card-action" style="color: #1e40af; border-color: #bfdbfe; background: #eff6ff;" onclick="event.stopPropagation(); INVAMAX_TOOLKIT_STORE.handlePreview('${doc.id}', event)" title="Xem trước tài liệu">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                                Xem
+                            </button>
+                            <a href="${doc.fileUrl || '#'}" ${downloadAttr} class="btn-res-card-action" style="color: #166534; border-color: #bbf7d0; background: #f0fdf4;" onclick="event.stopPropagation(); INVAMAX_TOOLKIT_STORE.handleDownload('${doc.id}', event)" title="Tải thử file">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                Tải
+                            </a>
+                            <button type="button" class="btn-res-card-action" style="color: #1d4ed8; border-color: #bfdbfe; background: #f8fafc;" onclick="event.stopPropagation(); triggerDirectUpload('${doc.id}')" title="Upload nhanh file mới cho tài liệu này">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                                File
+                            </button>
+                            <button type="button" class="btn-res-card-action" style="color: #c2410c; border-color: #fed7aa; background: #fff7ed; margin-left: auto;" onclick="event.stopPropagation(); openDocEditModal('${doc.id}')" title="Chỉnh sửa tài liệu này">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                                Sửa
+                            </button>
+                            <button type="button" class="btn-res-card-action" style="color: #dc2626; border-color: #fecaca; background: #fef2f2; padding: 6px 8px;" onclick="event.stopPropagation(); deleteDoc('${doc.id}', '${escapeHTML(doc.title)}')" title="Xóa tài liệu">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                            </button>
                         </div>
                     </div>
                 `;
@@ -3467,7 +3634,7 @@
         function resetDefaultDocs() {
             if (confirm('Bạn có chắc chắn muốn khôi phục lại 4 tài liệu mẫu ban đầu?')) {
                 INVAMAX_TOOLKIT_STORE.resetToDefault();
-                if (currentEditingId) cancelEdit();
+                if (currentEditingId) cancelDocEdit();
                 showToast('Đã khôi phục dữ liệu gốc!', 'success');
                 renderDashboard();
             }
