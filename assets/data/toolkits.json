@@ -13,18 +13,6 @@
     "status": "published"
   },
   {
-    "id": "tool-ke-hoach-lean-a3",
-    "title": "Khung lập kế hoạch triển khai Lean (A3)",
-    "format": "DOCX",
-    "desc": "Mẫu A3 chuẩn giúp lập kế hoạch, triển khai và theo dõi tiến độ.",
-    "fileUrl": "#",
-    "fileName": "Khung-ke-hoach-Lean-A3.docx",
-    "fileSize": "850 KB",
-    "createdAt": "2026-10-08",
-    "downloads": 185,
-    "status": "published"
-  },
-  {
     "id": "tool-huong-dan-giam-chi-phi",
     "title": "Tài liệu hướng dẫn Giảm chi phí sản xuất",
     "format": "PDF",
@@ -34,6 +22,18 @@
     "fileSize": "3.4 MB",
     "createdAt": "2026-10-05",
     "downloads": 310,
+    "status": "published"
+  },
+  {
+    "id": "tool-ke-hoach-lean-a3",
+    "title": "Khung lập kế hoạch triển khai Lean (A3)",
+    "format": "DOCX",
+    "desc": "Mẫu A3 chuẩn giúp lập kế hoạch, triển khai và theo dõi tiến độ.",
+    "fileUrl": "#",
+    "fileName": "Khung-ke-hoach-Lean-A3.docx",
+    "fileSize": "850 KB",
+    "createdAt": "2026-10-08",
+    "downloads": 185,
     "status": "published"
   },
   {
