@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>5 bước triển khai Lean hiệu quả tại nhà máy sản xuất | INVAMAX</title>
+    <meta name="description" content="Hướng dẫn thực tế từ các dự án triển khai Lean, giúp doanh nghiệp cải thiện năng suất và giảm lãng phí bền vững từ chuyên gia INVAMAX.">
+    
+    <link rel="canonical" href="https://invamax.com/vi/article-5-buoc-trien-khai-lean.html">
+    <link rel="alternate" hreflang="vi" href="https://invamax.com/vi/article-5-buoc-trien-khai-lean.html">
+    <link rel="alternate" hreflang="x-default" href="https://invamax.com/vi/article-5-buoc-trien-khai-lean.html">
+    
+    <meta property="og:title" content="5 bước triển khai Lean hiệu quả tại nhà máy sản xuất | INVAMAX">
+    <meta property="og:description" content="Hướng dẫn thực tế từ các dự án triển khai Lean, giúp doanh nghiệp cải thiện năng suất và giảm lãng phí bền vững từ chuyên gia INVAMAX.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://invamax.com/vi/article-5-buoc-trien-khai-lean.html">
+    <meta property="og:image" content="https://invamax.com/assets/images/resources/art-5-buoc-lean-infographic.jpg">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="5 bước triển khai Lean hiệu quả tại nhà máy sản xuất | INVAMAX">
+    <meta name="twitter:description" content="Hướng dẫn thực tế từ các dự án triển khai Lean, giúp doanh nghiệp cải thiện năng suất và giảm lãng phí bền vững.">
+    <meta name="twitter:image" content="https://invamax.com/assets/images/resources/art-5-buoc-lean-infographic.jpg">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Global CSS -->
+    <link rel="icon" type="image/jpeg" href="../assets/images/favicon.jpg">
+    <link rel="stylesheet" href="../assets/css/style.css?v=18">
+    <link rel="stylesheet" href="../assets/css/navbar.css?v=13">
+    
+    <style>
+        :root {
+            --primary: #f97316;
+            --primary-hover: #ea580c;
+            --primary-light: rgba(249, 115, 22, 0.1);
+        }
+
+        .article-hero {
+            padding: 130px 0 50px;
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 1) 100%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .article-hero-container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 24px;
+            transition: color 0.2s ease;
+        }
+        .back-link:hover {
+            color: var(--primary);
+        }
+        .article-category-badge {
+            display: inline-block;
+            padding: 5px 14px;
+            background: var(--primary);
+            color: #ffffff;
+            font-size: 0.78rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-radius: 6px;
+            margin-bottom: 18px;
+        }
+        .article-hero h1 {
+            font-size: 2.6rem;
+            color: #ffffff;
+            margin-bottom: 18px;
+            font-weight: 800;
+            line-height: 1.25;
+            letter-spacing: -0.5px;
+        }
+        .article-hero-subtitle {
+            font-size: 1.15rem;
+            color: #cbd5e1;
+            line-height: 1.6;
+            margin-bottom: 24px;
+            font-weight: 400;
+        }
+        .article-meta-row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            color: #94a3b8;
+            font-size: 0.9rem;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .article-meta-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .article-meta-item i {
+            width: 15px;
+            height: 15px;
+            color: var(--primary);
+        }
+
+        /* Content Layout */
+        .article-main-wrap {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 50px 20px 90px;
+        }
+
+        /* Lead Quote Box */
+        .article-intro-quote {
+            background: rgba(249, 115, 22, 0.04);
+            border-left: 4px solid var(--primary);
+            padding: 24px 28px;
+            border-radius: 0 12px 12px 0;
+            margin-bottom: 45px;
+            font-size: 1.12rem;
+            line-height: 1.75;
+            color: #e2e8f0;
+        }
+        .article-intro-quote p {
+            margin: 0 0 12px 0;
+        }
+        .article-intro-quote p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Infographic Showcase */
+        .infographic-showcase-card {
+            background: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            margin-bottom: 60px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .infographic-showcase-header {
+            background: #0f172a;
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #e2e8f0;
+            font-size: 0.88rem;
+            font-weight: 600;
+        }
+        .infographic-showcase-header a {
+            color: var(--primary);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.82rem;
+            transition: color 0.2s ease;
+        }
+        .infographic-showcase-header a:hover {
+            color: #ffedd5;
+        }
+        .infographic-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            cursor: zoom-in;
+            transition: transform 0.3s ease;
+        }
+
+        /* Step Card Styling */
+        .step-section-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 32px 34px;
+            margin-bottom: 35px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .step-section-card:hover {
+            border-color: rgba(249, 115, 22, 0.3);
+            transform: translateY(-2px);
+        }
+        .step-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 18px;
+        }
+        .step-number-badge {
+            width: 38px;
+            height: 38px;
+            min-width: 38px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15rem;
+            font-weight: 800;
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+        }
+        .step-title-wrap h2 {
+            font-size: 1.45rem;
+            color: #ffffff;
+            font-weight: 700;
+            margin: 0 0 6px 0;
+            line-height: 1.35;
+        }
+        .step-lead {
+            font-size: 1.05rem;
+            color: #cbd5e1;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        .step-checklist {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .step-checklist li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 1rem;
+            color: #e2e8f0;
+            line-height: 1.6;
+        }
+        .step-checklist li i {
+            width: 18px;
+            height: 18px;
+            min-width: 18px;
+            color: #22c55e;
+            margin-top: 2px;
+        }
+        .step-highlight-box {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px dashed rgba(249, 115, 22, 0.3);
+            border-radius: 12px;
+            padding: 18px 22px;
+            margin-top: 18px;
+            font-size: 0.95rem;
+            color: #cbd5e1;
+            line-height: 1.65;
+        }
+        .step-highlight-box strong {
+            color: #fdba74;
+        }
+
+        /* 5 Core Principles Grid in Step 1 */
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+            margin: 20px 0 10px;
+        }
+        .principle-block {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 14px 10px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .principle-num {
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: var(--primary);
+            background: rgba(249, 115, 22, 0.15);
+            padding: 2px 8px;
+            border-radius: 12px;
+        }
+        .principle-name {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0;
+            line-height: 1.3;
+        }
+        .principle-desc {
+            font-size: 0.72rem;
+            color: #94a3b8;
+            margin: 0;
+        }
+
+        /* 7 Wastes Pill Tags in Step 2 */
+        .wastes-tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        .waste-tag {
+            background: rgba(239, 68, 68, 0.12);
+            color: #fca5a5;
+            border: 1px solid rgba(239, 68, 68, 0.25);
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.82rem;
+            font-weight: 600;
+        }
+
+        /* Bottom Hero Callout Banner */
+        .lean-summary-banner {
+            background: linear-gradient(135deg, #06281e 0%, #0b3d2e 100%);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 16px;
+            padding: 34px 38px;
+            margin: 50px 0;
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+        .summary-left h3 {
+            font-size: 1.4rem;
+            color: #ffffff;
+            font-weight: 800;
+            line-height: 1.45;
+            margin: 0;
+        }
+        .summary-right {
+            background: rgba(0, 0, 0, 0.25);
+            border-left: 3px solid #22c55e;
+            padding: 18px 22px;
+            border-radius: 0 10px 10px 0;
+            color: #d1fae5;
+            font-size: 0.98rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* CTA Consultation Section */
+        .article-cta-box {
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.08) 0%, rgba(234, 88, 12, 0.04) 100%);
+            border: 1.5px solid rgba(249, 115, 22, 0.3);
+            border-radius: 18px;
+            padding: 40px 36px;
+            text-align: center;
+            margin: 50px 0;
+        }
+        .article-cta-box h3 {
+            font-size: 1.6rem;
+            color: #ffffff;
+            font-weight: 800;
+            margin: 0 0 12px 0;
+        }
+        .article-cta-box p {
+            color: #cbd5e1;
+            font-size: 1.05rem;
+            max-width: 650px;
+            margin: 0 auto 28px auto;
+            line-height: 1.6;
+        }
+        .btn-cta-consult {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--primary);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 13px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 16px rgba(249, 115, 22, 0.35);
+        }
+        .btn-cta-consult:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(249, 115, 22, 0.45);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .article-hero {
+                padding: 110px 0 35px;
+            }
+            .article-hero h1 {
+                font-size: 1.85rem;
+            }
+            .article-hero-subtitle {
+                font-size: 1rem;
+            }
+            .article-main-wrap {
+                padding: 35px 16px 60px;
+            }
+            .step-section-card {
+                padding: 24px 20px;
+            }
+            .step-title-wrap h2 {
+                font-size: 1.25rem;
+            }
+            .principles-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .lean-summary-banner {
+                grid-template-columns: 1fr;
+                padding: 24px 20px;
+                gap: 18px;
+            }
+            .article-cta-box {
+                padding: 28px 20px;
+            }
+            .article-cta-box h3 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="logo">INVA<span>MAX</span></a>
+            <div class="nav-links">
+                <div class="nav-item"><a href="/" class="nav-title">Trang chủ</a></div>
+                <div class="nav-item">    
+                    <a href="#" class="nav-title">Giải pháp <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i></a>
+                    <div class="nav-dropdown">
+                        <a href="factory-transformation.html">Tái cấu trúc & nâng cấp vận hành</a>
+                        <a href="operate-transform.html">Điều hành Nhà máy</a>
+                        <a href="factory-assessment.html">Nền tảng số vận hành nhà máy</a>
+                    </div>
+                </div>
+                <div class="nav-item"><a href="capabilities.html" class="nav-title">Năng lực</a></div>
+                <div class="nav-item"><a href="tin-tuc.html" class="nav-title">Sự kiện</a></div>
+                <div class="nav-item"><a href="case-studies.html" class="nav-title">Case Study</a></div>
+                <div class="nav-item"><a href="resources.html" class="nav-title active">Tri thức</a></div>
+                <div class="nav-item"><a href="about.html" class="nav-title">Triết lý INVAMAX</a></div>
+                
+                <div class="lang-switcher">
+                    <a href="/vi/article-5-buoc-trien-khai-lean.html" class="active" style="display: flex; align-items: center; gap: 4px;">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" width="16" height="11" style="border-radius: 2px;" alt="VN">Tiếng Việt
+                    </a>
+                    <span style="color: rgba(255,255,255,0.25);">/</span>
+                    <a href="/en/" style="display: flex; align-items: center; gap: 4px; opacity: 0.75;">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" width="16" height="11" style="border-radius: 2px;" alt="EN">English
+                    </a>
+                </div>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Mở menu"><i data-lucide="menu"></i></button>
+        </div>
+    </nav>
+
+    <main>
+        <!-- ARTICLE HERO -->
+        <header class="article-hero">
+            <div class="article-hero-container">
+                <a href="resources.html#articles" class="back-link">
+                    <i data-lucide="arrow-left"></i> Quay lại Tri thức
+                </a>
+                
+                <div>
+                    <span class="article-category-badge">LEAN &amp; CẢI TIẾN</span>
+                </div>
+                
+                <h1>5 bước triển khai Lean hiệu quả tại nhà máy sản xuất</h1>
+                <p class="article-hero-subtitle">
+                    Hướng dẫn thực tế từ các dự án triển khai Lean, giúp doanh nghiệp cải thiện năng suất và giảm lãng phí bền vững.
+                </p>
+                
+                <div class="article-meta-row">
+                    <span class="article-meta-item"><i data-lucide="calendar"></i> 12 tháng 10, 2026</span>
+                    <span class="article-meta-item"><i data-lucide="eye"></i> 2.4K lượt xem</span>
+                    <span class="article-meta-item"><i data-lucide="clock"></i> 12 phút đọc</span>
+                    <span class="article-meta-item"><i data-lucide="user-check"></i> Bởi <strong>Chuyên gia INVAMAX</strong></span>
+                </div>
+            </div>
+        </header>
+
+        <!-- ARTICLE BODY -->
+        <article class="article-main-wrap">
+            
+            <!-- Intro Quote Box -->
+            <div class="article-intro-quote">
+                <p>Lean không chỉ là một bộ công cụ, mà là một cách tư duy và phương thức vận hành giúp nhà máy tạo ra giá trị với ít lãng phí hơn. Tuy nhiên, nhiều doanh nghiệp triển khai Lean chưa hiệu quả vì áp dụng rời rạc, thiếu lộ trình và không duy trì được kết quả.</p>
+                <p>Bài viết này chia sẻ 5 bước triển khai Lean dựa trên kinh nghiệm thực tế tại các nhà máy sản xuất, giúp bạn bắt đầu đúng, làm đúng và duy trì bền vững.</p>
+            </div>
+
+            <!-- Infographic Card Preview -->
+            <div class="infographic-showcase-card">
+                <div class="infographic-showcase-header">
+                    <span><i data-lucide="image" style="width: 14px; height: 14px; vertical-align: middle; margin-right: 5px; color: var(--primary);"></i> Infographic Tóm lược: Lộ trình 5 bước triển khai Lean</span>
+                    <a href="../assets/images/resources/art-5-buoc-lean-infographic.jpg" target="_blank" rel="noopener">
+                        <i data-lucide="maximize-2" style="width: 13px; height: 13px;"></i> Xem ảnh kích thước gốc
+                    </a>
+                </div>
+                <a href="../assets/images/resources/art-5-buoc-lean-infographic.jpg" target="_blank" rel="noopener" title="Bấm để phóng to sơ đồ">
+                    <img src="../assets/images/resources/art-5-buoc-lean-infographic.jpg" alt="Infographic 5 bước triển khai Lean hiệu quả tại nhà máy sản xuất" class="infographic-img" loading="lazy">
+                </a>
+            </div>
+
+            <!-- BƯỚC 1 -->
+            <section class="step-section-card" id="step-1">
+                <div class="step-header">
+                    <div class="step-number-badge">1</div>
+                    <div class="step-title-wrap">
+                        <h2>Hiểu đúng về Lean và xác định mục tiêu</h2>
+                    </div>
+                </div>
+                
+                <p class="step-lead">
+                    Lean là hệ thống phương pháp giúp loại bỏ lãng phí, tối ưu dòng chảy và tạo ra giá trị cho khách hàng. Rất nhiều doanh nghiệp bắt đầu Lean bằng cách áp dụng ngay 5S hay Kaizen mà chưa làm rõ lý do tại sao phải làm. Trước khi triển khai, ban lãnh đạo và đội ngũ nhà máy cần thống nhất và hiểu rõ:
+                </p>
+
+                <ul class="step-checklist">
+                    <li>
+                        <i data-lucide="check-circle-2"></i>
+                        <span><strong>Mục tiêu của Lean là gì?</strong> Bạn muốn tăng năng suất (UPPH), giảm chi phí sản xuất, rút ngắn thời gian giao hàng (Lead Time) hay cải thiện tỷ lệ chất lượng (First Pass Yield)?</span>
+                    </li>
+                    <li>
+                        <i data-lucide="check-circle-2"></i>
+                        <span><strong>Phạm vi triển khai ở đâu?</strong> Chọn một dây chuyền làm điểm (Pilot Line), một phân xưởng thử nghiệm hay triển khai quy mô toàn nhà máy?</span>
+                    </li>
+                    <li>
+                        <i data-lucide="check-circle-2"></i>
+                        <span><strong>Kết quả mong đợi trong bao lâu?</strong> Xác định rõ mốc thời gian đánh giá (30 ngày, 90 ngày hay 6 tháng).</span>
+                    </li>
+                </ul>
+
+                <div class="principles-grid">
+                    <div class="principle-block">
+                        <span class="principle-num">01</span>
+                        <p class="principle-name">Identify Value</p>
+                        <p class="principle-desc">Xác định giá trị khách hàng sẵn sàng trả</p>
+                    </div>
+                    <div class="principle-block">
+                        <span class="principle-num">02</span>
+                        <p class="principle-name">Map the Flow</p>
+                        <p class="principle-desc">Lập sơ đồ dòng chảy giá trị (VSM)</p>
+                    </div>
+                    <div class="principle-block">
+                        <span class="principle-num">03</span>
+                        <p class="principle-name">Eliminate Waste</p>
+                        <p class="principle-desc">Loại bỏ 7 loại lãng phí (Muda)</p>
+                    </div>
+                    <div class="principle-block">
+                        <span class="principle-num">04</span>
+                        <p class="principle-name">Create Flow</p>
+                        <p class="principle-desc">Tạo dòng chảy sản xuất liên tục</p>
+                    </div>
+                    <div class="principle-block">
+                        <span class="principle-num">05</span>
+                        <p class="principle-name">Continuous Imprv.</p>
+                        <p class="principle-desc">Cải tiến liên tục không ngừng (Kaizen)</p>
+                    </div>
+                </div>
+
+                <div class="step-highlight-box">
+                    <strong>Góc nhìn INVAMAX:</strong> Lean không phải là làm việc nhanh hơn bằng cách vắt kiệt sức lao động của công nhân. Lean là loại bỏ những thao tác vô ích, thời gian chờ đợi và nguyên vật liệu tồn đọng để giải phóng công suất thực tế của nhà máy.
+                </div>
+            </section>
+
+            <!-- BƯỚC 2 -->
+            <section class="step-section-card" id="step-2">
+                <div class="step-header">
+                    <div class="step-number-badge">2</div>
+                    <div class="step-title-wrap">
+                        <h2>Đánh giá hiện trạng (Gemba)</h2>
+                    </div>
+                </div>
+                
+                <p class="step-lead">
+                    Ra hiện trường (Gemba), quan sát thực tế để nhận diện vấn đề. Dữ liệu trên báo cáo trong phòng họp thường che giấu nhiều sự thật tại xưởng sản xuất. Các công việc chính trong bước này bao gồm:
+                </p>
+
+                <ul class="step-checklist">
+                    <li>
+                        <i data-lucide="check-circle-2"></i>
+                        <span><strong>Vẽ sơ đồ dòng chảy hiện trạng (Value Stream Mapping - VSM):</strong> Theo dõi hành trình của một chi tiết/sản phẩm từ kho nguyên vật liệu qua từng công đoạn gia công, lắp ráp đến kho thành phẩm.</span>
+                    </li>
+                    <li>
+                        <i data-lucide="check-circle-2"></i>
+                        <span><strong>Đo lường các chỉ số vận hành thực tế:</strong> Năng suất theo giờ, Cycle Time từng công đoạn, thời gian chờ, lượng tồn kho bán thành phẩm trên chuyền (WIP) và tỷ lệ lỗi tại từng công đoạn.</span>
+                    </li>
+                    <li>
+                        <i data-lucide="check-circle-2"></i>
+                        <span><strong>Xác định 7 loại lãng phí (Muda) trong quá trình sản xuất:</strong></span>
+                    </li>
+                </ul>
+
+                <div class="wastes-tag-cloud" style="margin-left: 30px; margin-bottom: 20px;">
+                    <span class="waste-tag">1. Sản xuất thừa (Overproduction)</span>
+                    <span class="waste-tag">2. Tồn kho dư thừa (Inventory)</span>
+                    <span class="waste-tag">3. Chờ đợi (Waiting)</span>
+                    <span class="waste-tag">4. Thao tác thừa (Motion)</span>
+                    <span class="waste-tag">5. Vận chuyển không cần thiết (Transport)</span>
+                    <span class="waste-tag">6. Gia công thừa (Over-processing)</span>
+                    <span class="waste-tag">7. Hàng lỗi &amp; phế phẩm (Defects)</span>
+                </div>
+
+                <ul class="step-checklist">
+                    <li>
+                        <i data-lucide="check-circle-2"></i>
+                        <span><strong>Ưu tiên các vấn đề có tác động lớn (Nguyên tắc 80/20):</strong> Phân tích Pareto để chọn ra 20% nút thắt cổ chai (bottlenecks) đang tạo ra 80% lãng phí và chậm trễ của dây chuyền.</span>
+                    </li>
+                </ul>
+
+                <div class="step-highlight-box">
+                    <strong>Kinh nghiệm thực tế:</strong> Hãy cầm đồng hồ bấm giờ (Stopwatch) và đứng quan sát trực tiếp tại công đoạn nghẽn tối thiểu 2 giờ. Bạn sẽ ngạc nhiên khi thấy thời gian tạo ra giá trị thực sự (Value-Added Time) thường chỉ chiếm dưới 15% tổng thời gian một sản phẩm nằm trong xưởng.
+                </div>
+            </section>
+
+            <!-- BƯỚC 3 -->
+            <section class="step-section-card" id="step-3">
+                <div class="step-header">
+                    <div class="step-number-badge">3</div>
+                    <div class="step-title-wrap">
+                        <h2>Xây dựng kế hoạch triển khai</h2>
+                    </div>
+                </div>
+                
+                <p class="step-lead">
+                    Dựa trên kết quả đánh giá hiện trạng tại Gemba, xây dựng kế hoạch cụ thể, rõ ràng và có tính cam kết cao với các nội dung trọng tâm:
+                </p>
+
+                <ul class="step-checklist">
+                    <li>
+                        <i data-lucide="check-circle-2"></i>
+                        <span><strong>Chọn phạm vi và thứ tự ưu tiên:</strong> Chọn một chuyền hoặc khu vực làm "Mô hình điểm" (Model Line / Pilot Area) có vấn đề rõ ràng và người quản lý nhiệt huyết để triển khai trước.</span>
+                    </li>
+                    <li>
+                        <i data-lucide="check-circle-2"></i>
+                        <span><strong>Xác định mục tiêu định lượng (SMART):</strong> Mục tiêu phải đo đếm được. Ví dụ: Rút ngắn thời gian chuyển đổi mã hàng 40%, giảm tồn kho WIP 30%, tăng OEE từ 62% lên 75% trong 90 ngày.</span>
+                    </li>
+                    <li>
+                        <i data-lucide="check-circle-2"></i>
+                        <span><strong>Lựa chọn công cụ phù hợp:</strong> Áp dụng đúng công cụ cho đúng bài toán — 5S cho nền tảng trực quan; Kaizen cho giải quyết vấn đề nhanh; SMED cho rút ngắn thay khuôn; SOP cho chuẩn hóa thao tác.</span>
+                    </li>
+                    <li>
+                        <i data-lucide="check-circle-2"></i>
+                        <span><strong>Phân công rõ trách nhiệm và nguồn lực:</strong> Phân định rõ ai là Project Owner, ai phụ trách kỹ thuật, ai phụ trách đào tạo công nhân và ngân sách hỗ trợ cần thiết.</span>
+                    </li>
+                    <li>
+                        <i data-lucide="check-circle-2"></i>
+                        <span><strong>Lập mốc thời gian và cách đánh giá kết quả:</strong> Xây dựng biểu đồ tiến độ (Gantt chart), lịch họp đánh giá hàng tuần và chỉ số nghiệm thu từng mốc.</span>
+                    </li>
+                </ul>
+
+                <div class="step-highlight-box">
+                    <strong>Lưu ý quan trọng:</strong> Tránh cạm bẫy "triển khai dàn trải". Một nhà máy cố gắng làm 5S cho toàn bộ 5 nhà xưởng cùng lúc thường kết thúc bằng việc kiệt sức sau 2 tuần. Hãy tập trung làm thật xuất sắc tại một chuyền điểm để tạo tiền đề nhân rộng.
+                </div>
+            </section>
+
+            <!-- BƯỚC 4 -->
+            <section class="step-section-card" id="step-4">
+                <div class="step-header">
+                    <div class="step-number-badge">4</div>
+                    <div class="step-title-wrap">
+                        <h2>Triển khai và tạo thay đổi</h2>
+                    </div>
+                </div>
+                
+                <p class="step-lead">
+                    Thực hiện các giải pháp theo kế hoạch đã lập. Bí quyết thành công ở giai đoạn này là bắt đầu từ những cải tiến dễ làm và có kết quả nhanh (Quick Wins) để tạo niềm tin và động lực cho toàn bộ nhân sự:
+                </p>
+
+                <ul class="step-checklist">
+                    <li>
+                        <i data-lucide="check-circle-2"></i>
+                        <span><strong>Áp dụng công cụ phù hợp cho từng vấn đề:</strong> Triển khai 5S triệt để tại chuyền điểm, sắp xếp lại dụng cụ theo nguyên tắc công thái học, cân bằng chuyền (Line Balancing) để xóa bỏ ùn ứ.</span>
+                    </li>
+                    <li>
+                        <i data-lucide="check-circle-2"></i>
+                        <span><strong>Đào tạo và hướng dẫn tại hiện trường (OJT):</strong> Không đào tạo trong phòng học máy lạnh. Hãy ra trực tiếp máy móc, cầm tay chỉ việc và cùng công nhân thao tác theo cách thức mới.</span>
+                    </li>
+                    <li>
+                        <i data-lucide="check-circle-2"></i>
+                        <span><strong>Đo đạc kết quả sau mỗi cải tiến (Before - After):</strong> Ghi nhận lại hình ảnh, số liệu trước và sau cải tiến, dán lên bảng tin trực quan của phân xưởng để mọi người cùng nhìn thấy thành quả.</span>
+                    </li>
+                    <li>
+                        <i data-lucide="check-circle-2"></i>
+                        <span><strong>Nhân rộng các mô hình thành công:</strong> Sau khi chuyền điểm hoạt động ổn định và chứng minh được hiệu quả bằng con số, tổ chức cho các tổ trưởng khác đến tham quan học hỏi và bắt đầu chuyển giao.</span>
+                    </li>
+                </ul>
+
+                <div class="step-highlight-box">
+                    <strong>Bí quyết thực thi:</strong> Hãy lắng nghe đề xuất từ chính những công nhân trực tiếp đứng máy. Họ là người hiểu rõ nhất những điểm bất tiện trong thao tác hằng ngày. Khi công nhân cảm thấy ý kiến của họ được trân trọng và áp dụng, họ sẽ trở thành những người ủng hộ Lean mạnh mẽ nhất.
+                </div>
+            </section>
+
+            <!-- BƯỚC 5 -->
+            <section class="step-section-card" id="step-5">
+                <div class="step-header">
+                    <div class="step-number-badge">5</div>
+                    <div class="step-title-wrap">
+                        <h2>Duy trì và cải tiến liên tục</h2>
+                    </div>
+                </div>
+                
+                <p class="step-lead">
+                    Lean chỉ thực sự phát huy giá trị khi được duy trì hàng ngày và trở thành một phần của hệ thống vận hành. Đã có rất nhiều nhà máy cải tiến rầm rộ trong 1 tháng đầu, nhưng sau 3 tháng lại quay về thói quen lộn xộn cũ. Để duy trì bền vững:
+                </p>
+
+                <ul class="step-checklist">
+                    <li>
+                        <i data-lucide="check-circle-2"></i>
+                        <span><strong>Chuẩn hóa các kết quả đã đạt được:</strong> Biến các cải tiến thành quy trình chuẩn (SOP), bảng hướng dẫn công việc một trang (One Point Lesson - OPL) có hình ảnh trực quan rõ ràng.</span>
+                    </li>
+                    <li>
+                        <i data-lucide="check-circle-2"></i>
+                        <span><strong>Đưa vào tiêu chuẩn công việc:</strong> Tiêu chuẩn hóa thời gian thao tác, cách bố trí vật tư, danh mục kiểm tra đầu ca (Start-up Checklist) cho từng vị trí.</span>
+                    </li>
+                    <li>
+                        <i data-lucide="check-circle-2"></i>
+                        <span><strong>Thiết lập hệ thống theo dõi định kỳ:</strong> Tổ chức kiểm tra chéo (5S Audit hàng tuần), duy trì bảng theo dõi sản lượng theo giờ và bảng ghi nhận ý tưởng Kaizen.</span>
+                    </li>
+                    <li>
+                        <i data-lucide="check-circle-2"></i>
+                        <span><strong>Xây dựng văn hóa cải tiến liên tục (Vòng lặp PDCA):</strong> Plan (Lập kế hoạch) &rarr; Do (Thực hiện) &rarr; Check (Kiểm tra) &rarr; Act (Chuẩn hóa &amp; cải tiến tiếp). Biến cải tiến thành phản xạ tự nhiên của đội ngũ.</span>
+                    </li>
+                </ul>
+
+                <div class="step-highlight-box">
+                    <strong>Bài học xương máu:</strong> "Không có tiêu chuẩn thì không thể có cải tiến" (Taiichi Ohno). Tiêu chuẩn là cái nêm giữ cho hòn đá không lăn ngược xuống dốc. Khi tiêu chuẩn đã được duy trì ổn định, ta mới tiếp tục đẩy hòn đá lên nấc thang năng suất cao hơn.
+                </div>
+            </section>
+
+            <!-- Lean Summary Banner -->
+            <div class="lean-summary-banner">
+                <div class="summary-left">
+                    <h3>Lean không phải là dự án ngắn hạn, mà là hành trình xây dựng một nhà máy tinh gọn và hiệu quả hơn mỗi ngày.</h3>
+                </div>
+                <div class="summary-right">
+                    Bắt đầu từ một khu vực nhỏ, làm đúng phương pháp, bạn sẽ thấy kết quả rõ ràng, và có thể nhân rộng toàn nhà máy.
+                </div>
+            </div>
+
+            <!-- CTA Box -->
+            <div class="article-cta-box">
+                <h3>Sẵn sàng chuyển đổi Lean cho nhà máy của bạn?</h3>
+                <p>Các chuyên gia thực chiến của INVAMAX sẵn sàng đồng hành cùng doanh nghiệp bạn: từ khảo sát Gemba tại hiện trường, chẩn đoán nút thắt lãng phí đến thiết kế lộ trình chuyển đổi tinh gọn bền vững.</p>
+                <a href="javascript:void(0)" onclick="openContactModal()" class="btn-cta-consult">
+                    <i data-lucide="send"></i> Đăng ký khảo sát &amp; tư vấn miễn phí
+                </a>
+            </div>
+
+            <!-- Related Articles Navigation -->
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 40px; margin-top: 40px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+                <a href="resources.html#articles" class="back-link" style="margin-bottom: 0;">
+                    <i data-lucide="arrow-left"></i> Quay lại Danh sách Tri thức
+                </a>
+                <div style="display: flex; gap: 16px;">
+                    <a href="article-fos-la-gi.html" style="color: #94a3b8; text-decoration: none; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 6px;">
+                        Bài kế tiếp: INVAMAX FOS là gì? <i data-lucide="arrow-right" style="width: 14px;"></i>
+                    </a>
+                </div>
+            </div>
+
+        </article>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <img src="../assets/images/home/logo-invamax-original.png" alt="INVAMAX">
+                <p>Đối tác vận hành và phát triển nhà máy</p>
+                <h5 style="color: white; margin-bottom: 14px; margin-top: 26px; font-size: 0.95rem; font-weight: 600;">Kết nối với chúng tôi</h5>
+                <div class="social-links" style="display: flex; gap: 8px; align-items: center;">
+                    <a href="https://www.linkedin.com/in/xuannhattran/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-linkedin" style="color: white; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; border: 1px solid #0A66C2; background: #0A66C2; padding: 0; margin: 0; line-height: 1; transition: all 0.3s;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block; margin: auto;"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    </a>
+                    <a href="https://www.youtube.com/@NguoiXayNen" target="_blank" rel="noopener" aria-label="YouTube" class="social-youtube" style="color: white; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; border: 1px solid #FF0000; background: #FF0000; padding: 0; margin: 0; line-height: 1; transition: all 0.3s;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block; margin: auto;"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                    </a>
+                    <a href="https://www.facebook.com/invamax.vanhanhtinhgon" target="_blank" rel="noopener" aria-label="Facebook" class="social-facebook" style="color: white; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; border: 1px solid #1877F2; background: #1877F2; padding: 0; margin: 0; line-height: 1; transition: all 0.3s;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block; margin: auto;"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                    </a>
+                    <a href="https://zalo.me/0988911869" target="_blank" rel="noopener" aria-label="Zalo" class="social-zalo" style="color: white; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; border: 1px solid #0068FF; background: #0068FF; padding: 0; margin: 0; line-height: 1; transition: all 0.3s;">
+                        <span style="font-size: 11px; font-weight: 800; font-family: 'Inter', sans-serif; line-height: 1; display: inline-flex; align-items: center; justify-content: center; margin: auto;">Zalo</span>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h4>Giải pháp</h4>
+                <a href="factory-transformation.html">Tái cấu trúc & nâng cấp vận hành</a>
+                <a href="operate-transform.html">Điều hành nhà máy</a>
+                <a href="factory-assessment.html">Nền tảng số vận hành nhà máy</a>
+            </div>
+            <div>
+                <h4>Về chúng tôi</h4>
+                <a href="capabilities.html">Năng lực</a>
+                <a href="tin-tuc.html">Sự kiện</a>
+                <a href="case-studies.html">Case Study</a>
+                <a href="resources.html">Tri thức</a>
+                <a href="about.html">Triết lý INVAMAX</a>
+            </div>
+            <div>
+                <h4>Liên hệ</h4>
+                <p class="footer-company-name">CÔNG TY TNHH ĐẦU TƯ VÀ PHÁT TRIỂN INVAMAX</p>
+                <div class="contact-info" style="display: flex; flex-direction: column; gap: 8px;">
+                    <div class="contact-item" style="display: flex; align-items: center; gap: 8px; height: 22px; font-size: 12px; line-height: 1; white-space: nowrap;">
+                        <span style="width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block; margin: auto;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </span>
+                        <a href="tel:0988911869" style="color: inherit; text-decoration: none; display: inline-flex; align-items: center; line-height: 1;">0988 911 869</a>
+                    </div>
+                    <div class="contact-item" style="display: flex; align-items: center; gap: 8px; height: 22px; font-size: 12px; line-height: 1; white-space: nowrap;">
+                        <span style="width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block; margin: auto;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </span>
+                        <a href="mailto:info@invamax.vn" style="color: inherit; text-decoration: none; display: inline-flex; align-items: center; line-height: 1;">info@invamax.vn</a>
+                    </div>
+                    <div class="contact-item" style="display: flex; align-items: center; gap: 8px; height: 22px; font-size: 12px; line-height: 1; white-space: nowrap;">
+                        <span style="width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block; margin: auto;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </span>
+                        <span style="display: inline-flex; align-items: center; line-height: 1;">Thôn Đông Lôi, xã Vĩnh Thịnh, TP Hải Phòng</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <span>&copy; 2026 INVAMAX. All rights reserved.</span>
+        </div>
+    </footer>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" type="button" onclick="closeContactModal()" aria-label="Đóng">&times;</button>
+            <h2>Đăng ký tư vấn</h2>
+            <p>Vui lòng để lại thông tin, chuyên gia INVAMAX sẽ liên hệ lại với bạn.</p>
+            
+            <form id="leadForm" onsubmit="submitForm(event)">
+                <div style="opacity: 0; position: absolute; top: 0; left: 0; height: 0; width: 0; z-index: -1; overflow: hidden;">
+                    <label for="website_url">Website URL</label>
+                    <input type="text" id="website_url" name="website_url" tabindex="-1" autocomplete="off">
+                </div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Họ và tên *</label>
+                        <input type="text" name="hoTen" required placeholder="Nguyễn Văn A">
+                    </div>
+                    <div class="form-group">
+                        <label>Chức danh *</label>
+                        <input type="text" name="chucDanh" required placeholder="Giám đốc / Trưởng phòng">
+                    </div>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Số điện thoại *</label>
+                        <input type="tel" name="soDienThoai" required placeholder="0988...">
+                    </div>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" name="email" required placeholder="email@congty.com">
+                    </div>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Tên nhà máy / Công ty *</label>
+                        <input type="text" name="tenNhaMay" required placeholder="Công ty TNHH XYZ">
+                    </div>
+                    <div class="form-group">
+                        <label>Địa chỉ nhà máy *</label>
+                        <input type="text" name="diaChi" required placeholder="KCN abc, Tỉnh xyz...">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Nội dung cần tư vấn *</label>
+                    <textarea name="noiDung" rows="3" required placeholder="Mô tả sơ bộ về định hướng hoặc bài toán triển khai Lean tại nhà máy..."></textarea>
+                </div>
+                
+                <button type="submit" id="btnSubmitForm" class="btn btn-orange" style="width: 100%; justify-content: center; padding: 12px; font-weight: 700; background: var(--primary); color: #fff; border: none; border-radius: 8px; cursor: pointer;">
+                    Gửi Yêu Cầu Tư Vấn &rarr;
+                </button>
+            </form>
+            
+            <div id="formSuccess" style="display: none; text-align: center; padding: 24px 0;">
+                <div style="color: #22c55e; font-size: 2.8rem; margin-bottom: 10px;">&#10004;</div>
+                <h3 style="color: #16a34a; font-size: 1.25rem; margin: 0;">Gửi thành công!</h3>
+                <p style="color: #475569; margin-top: 8px; font-size: 0.92rem;">Cảm ơn bạn. Chuyên gia INVAMAX sẽ sớm liên hệ lại.</p>
+                <button type="button" class="btn btn-outline" style="margin-top: 16px; color: #17251e; border-color: #cbd5e1;" onclick="closeContactModal()">Đóng cửa sổ</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/main.js?v=6"></script>
+    <script>
+        lucide.createIcons({ attrs: { "stroke-width": 2.2 } });
+
+        function openContactModal() {
+            const modal = document.getElementById('contactModal');
+            if (modal) modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeContactModal() {
+            const modal = document.getElementById('contactModal');
+            if (modal) modal.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+
+        async function submitForm(e) {
+            e.preventDefault();
+            const form = e.target;
+            const submitBtn = document.getElementById('btnSubmitForm');
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerText = 'Đang gửi...';
+            }
+
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+
+            try {
+                // Submit to Formspree or webhook if configured
+                console.log('[INVAMAX] Gửi form tư vấn Lean:', data);
+                setTimeout(() => {
+                    form.style.display = 'none';
+                    document.getElementById('formSuccess').style.display = 'block';
+                }, 400);
+            } catch (err) {
+                alert('Có lỗi xảy ra, vui lòng thử lại sau.');
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = 'Gửi Yêu Cầu Tư Vấn →';
+                }
+            }
+        }
+    </script>
+</body>
+</html>

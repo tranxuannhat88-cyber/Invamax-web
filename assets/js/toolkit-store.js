@@ -72,7 +72,7 @@ var INVAMAX_TOOLKIT_STORE = (function () {
             thumbnail: 'assets/images/resources/art-5steps.jpg',
             dateDisplay: '12 thg 10, 2026',
             views: '2.4K lượt xem',
-            link: 'vi/articles.html',
+            link: 'vi/article-5-buoc-trien-khai-lean.html',
             status: 'published',
             createdAt: '2026-10-12'
         },
@@ -651,8 +651,10 @@ var INVAMAX_TOOLKIT_STORE = (function () {
             return url;
         }
         const isInSubdir = typeof window !== 'undefined' && window.location && (window.location.pathname.includes('/vi/') || window.location.pathname.includes('/en/'));
-        if (isInSubdir && url.startsWith('assets/')) {
-            return '../' + url;
+        if (isInSubdir) {
+            if (url.startsWith('assets/')) return '../' + url;
+            if (url.startsWith('vi/')) return url.substring(3);
+            if (url.startsWith('en/')) return url.substring(3);
         }
         return url;
     }
