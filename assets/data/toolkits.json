@@ -35,21 +35,23 @@
     "fileName": "INVAMAX_A3_Report_7_Buoc_Editable.xlsx",
     "fileSize": "0.17 MB",
     "createdAt": "2026-10-08",
-    "downloads": 185,
+    "downloads": 186,
     "status": "published",
     "thumbnail": "assets/images/resources/thumb-tool-ke-hoach-lean-a3.jpg",
-    "updatedAt": "2026-10-19T07:52:44.410Z"
+    "updatedAt": "2026-10-19T07:51:50.741Z"
   },
   {
     "id": "tool-bieu-mau-oee",
     "title": "Biểu mẫu quản lý chỉ số OEE",
     "format": "XLSX",
     "desc": "Bộ biểu mẫu theo dõi, phân tích và báo cáo OEE trong sản xuất.",
-    "fileUrl": "#",
-    "fileName": "Bieu-mau-quan-ly-OEE.xlsx",
-    "fileSize": "1.5 MB",
+    "fileUrl": "assets/docs/INVAMAX_OEE_Tracking_Dashboard.xlsx",
+    "fileName": "INVAMAX_OEE_Tracking_Dashboard.xlsx",
+    "fileSize": "0.05 MB",
     "createdAt": "2026-10-01",
     "downloads": 295,
-    "status": "published"
+    "status": "published",
+    "thumbnail": "assets/images/resources/thumb-tool-bieu-mau-oee.jpg",
+    "updatedAt": "2026-10-19T08:42:45.691Z"
   }
 ]
