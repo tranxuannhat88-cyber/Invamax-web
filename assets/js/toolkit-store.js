@@ -874,7 +874,7 @@ var INVAMAX_TOOLKIT_STORE = (function () {
         const thumb = resolveAssetUrl(art.thumbnail || 'assets/images/resources/art-5steps.jpg');
         const link = resolveAssetUrl(art.link || 'articles.html');
         return `
-            <article class="art-card-light" data-id="${escapeHTML(art.id)}">
+            <a href="${link}" class="art-card-light" data-id="${escapeHTML(art.id)}">
                 <div class="art-thumb-wrap">
                     <img src="${thumb}" alt="${escapeHTML(art.title)}" loading="lazy">
                     <span class="art-tag-badge-solid">${escapeHTML(art.category || 'Tri thức')}</span>
@@ -887,10 +887,10 @@ var INVAMAX_TOOLKIT_STORE = (function () {
                             <span class="art-meta-item"><i data-lucide="calendar" style="width: 12px; height: 12px;"></i> ${escapeHTML(art.dateDisplay || '')}</span>
                             <span class="art-meta-item"><i data-lucide="eye" style="width: 12px; height: 12px;"></i> ${escapeHTML(art.views || '')}</span>
                         </div>
-                        <a href="${link}" class="art-arrow-btn" aria-label="Xem bài viết"><i data-lucide="arrow-right" style="width: 15px; height: 15px;"></i></a>
+                        <span class="art-arrow-btn" aria-hidden="true"><i data-lucide="arrow-right" style="width: 15px; height: 15px;"></i></span>
                     </div>
                 </div>
-            </article>
+            </a>
         `;
     }
 
