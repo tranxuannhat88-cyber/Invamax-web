@@ -1,15 +1,17 @@
 [
   {
     "id": "tool-huong-dan-giam-chi-phi",
-    "title": "Tài liệu hướng dẫn Giảm chi phí sản xuất",
+    "title": "Hướng dẫn Giảm chi phí sản xuất",
     "format": "PDF",
-    "desc": "Hướng dẫn chi tiết phương pháp phân tích chi phí theo IPO và các công cụ thực hành.",
-    "fileUrl": "#",
-    "fileName": "Huong-dan-giam-chi-phi-san-xuat.pdf",
-    "fileSize": "3.4 MB",
+    "desc": "Hướng dẫn chi tiết phương pháp giảm chi phí sản xuất:\n- Xác định chi phí.\n- Nhận diện và loại bỏ lãng phí.\n- Tối ưu chi phí.",
+    "fileUrl": "idb:tool-huong-dan-giam-chi-phi",
+    "fileName": "Hướng dẫn Giảm chi phí sản xuất-Phần 1, 2, 3..pdf",
+    "fileSize": "9.28 MB",
     "createdAt": "2026-10-05",
-    "downloads": 310,
-    "status": "published"
+    "downloads": 311,
+    "status": "published",
+    "thumbnail": "assets/images/resources/thumb-tool-huong-dan-giam-chi-phi.jpg",
+    "updatedAt": "2026-10-19T02:54:02.295Z"
   },
   {
     "id": "tool-checklist-danh-gia",
