@@ -3,7 +3,7 @@
  * Quản lý dữ liệu tài liệu Toolkit: Lưu trữ, Tải file, Đồng bộ & Render
  */
 
-const INVAMAX_TOOLKIT_STORE = (function () {
+var INVAMAX_TOOLKIT_STORE = (function () {
     const STORAGE_KEY = 'invamax_toolkits_v2';
     const ARTICLES_STORAGE_KEY = 'invamax_resources_articles_v1';
     const VIDEOS_STORAGE_KEY = 'invamax_resources_videos_v1';
@@ -1083,6 +1083,10 @@ const INVAMAX_TOOLKIT_STORE = (function () {
         renderVideoCardHTML
     };
 })();
+
+if (typeof window !== 'undefined') {
+    window.INVAMAX_TOOLKIT_STORE = INVAMAX_TOOLKIT_STORE;
+}
 
 // Tự động khởi chạy trên trang resources
 if (typeof document !== 'undefined') {

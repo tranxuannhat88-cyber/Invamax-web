@@ -2786,9 +2786,9 @@
             pdfjsLib.GlobalWorkerOptions.workerSrc = 'assets/js/vendor/pdf.worker.min.js';
         }
     </script>
-    <script src="assets/js/toolkit-store.js?v=10"></script>
-    <script src="assets/js/github-sync.js?v=3"></script>
-    <script src="assets/js/case-study-store.js?v=7"></script>
+    <script src="assets/js/toolkit-store.js?v=20261019_1330"></script>
+    <script src="assets/js/github-sync.js?v=20261019_1330"></script>
+    <script src="assets/js/case-study-store.js?v=20261019_1330"></script>
     <script>
         // State variables - Resources
         let currentFileBase64 = null;
@@ -2801,6 +2801,15 @@
         let draggedDocId = null;
         let directUploadTargetId = null;
 
+        // State variables - Tri Thuc Unified (Articles, Toolkit, Videos)
+        let currentTriThucTab = 'all';
+        let currentArticleThumb = null;
+        let currentEditingArticleId = null;
+        let draggedArticleId = null;
+        let currentVideoThumb = null;
+        let currentEditingVideoId = null;
+        let draggedVideoId = null;
+
         // State variables - Case Studies
         let currentCsThumbnail = null;
         let currentCsFileData = null;
@@ -2811,6 +2820,139 @@
         let currentEditingCsId = null;
         let currentCsFilter = 'all';
         let csPendingFilePromise = null;
+
+        // Safe Data Access Helpers (with Fallback to LocalStorage and Built-in Defaults)
+        const DEFAULT_ARTICLES_FALLBACK = [
+            {
+                id: 'art-5-buoc-lean',
+                title: '5 bước triển khai Lean hiệu quả tại nhà máy sản xuất',
+                category: 'Lean & Cải tiến',
+                excerpt: 'Hướng dẫn thực tế từ các dự án triển khai Lean, giúp doanh nghiệp cải thiện năng suất và giảm lãng phí bền vững.',
+                thumbnail: 'assets/images/resources/art-5steps.jpg',
+                dateDisplay: '12 thg 10, 2026',
+                views: '2.4K lượt xem',
+                link: 'vi/articles.html',
+                status: 'published'
+            },
+            {
+                id: 'art-chi-so-oee',
+                title: 'Chỉ số OEE: Cách đo lường và cải thiện hiệu quả thiết bị',
+                category: 'Quản trị nhà máy',
+                excerpt: 'Hiểu đúng về OEE và các bước triển khai cải tiến hiệu quả trong nhà máy.',
+                thumbnail: 'assets/images/resources/art-oee.jpg',
+                dateDisplay: '10 thg 10, 2026',
+                views: '1.8K lượt xem',
+                link: 'vi/articles.html',
+                status: 'published'
+            },
+            {
+                id: 'art-ung-dung-ai',
+                title: 'Ứng dụng AI trong sản xuất: Cơ hội và lộ trình triển khai',
+                category: 'Digital & AI',
+                excerpt: 'Những ứng dụng thực tế của AI trong sản xuất và gợi ý lộ trình phù hợp cho doanh nghiệp Việt Nam.',
+                thumbnail: 'assets/images/resources/art-ai.jpg',
+                dateDisplay: '8 thg 10, 2026',
+                views: '1.6K lượt xem',
+                link: 'vi/articles.html',
+                status: 'published'
+            },
+            {
+                id: 'art-10-co-hoi-giam-chi-phi',
+                title: '10 cơ hội giảm chi phí sản xuất nhanh chóng',
+                category: 'Cost Down',
+                excerpt: 'Những giải pháp cost down có thể triển khai trong 3–6 tháng, dựa trên các dự án thực tế.',
+                thumbnail: 'assets/images/resources/art-cost-10opp.jpg',
+                dateDisplay: '5 thg 10, 2026',
+                views: '2.1K lượt xem',
+                link: 'vi/articles.html',
+                status: 'published'
+            }
+        ];
+
+        const DEFAULT_VIDEOS_FALLBACK = [
+            {
+                id: 'vid-lean-intro-12p',
+                title: 'Giới thiệu Lean Manufacturing trong 12 phút',
+                thumbnail: 'assets/images/resources/vid-intro.jpg',
+                duration: '12:34',
+                views: '32K lượt xem',
+                timeAgo: '2 tuần trước',
+                videoUrl: 'https://www.youtube.com/@NguoiXayNen',
+                status: 'published'
+            },
+            {
+                id: 'vid-5-loi-thuong-gap',
+                title: '5 lỗi thường gặp khi triển khai cải tiến tại nhà máy',
+                thumbnail: 'assets/images/resources/vid-mistakes.jpg',
+                duration: '18:20',
+                views: '24K lượt xem',
+                timeAgo: '3 tuần trước',
+                videoUrl: 'https://www.youtube.com/@NguoiXayNen',
+                status: 'published'
+            },
+            {
+                id: 'vid-ai-du-bao-san-xuat',
+                title: 'Ứng dụng AI trong dự báo sản xuất',
+                thumbnail: 'assets/images/resources/vid-ai-pred.jpg',
+                duration: '15:10',
+                views: '18K lượt xem',
+                timeAgo: '1 tháng trước',
+                videoUrl: 'https://www.youtube.com/@NguoiXayNen',
+                status: 'published'
+            },
+            {
+                id: 'vid-xay-dung-cost-down',
+                title: 'Cách xây dựng hệ thống Cost Down bền vững',
+                thumbnail: 'assets/images/resources/vid-costdown-sys.jpg',
+                duration: '10:45',
+                views: '21K lượt xem',
+                timeAgo: '1 tháng trước',
+                videoUrl: 'https://www.youtube.com/@NguoiXayNen',
+                status: 'published'
+            }
+        ];
+
+        function getArticlesSafe() {
+            if (typeof INVAMAX_TOOLKIT_STORE !== 'undefined' && typeof INVAMAX_TOOLKIT_STORE.getArticles === 'function') {
+                return INVAMAX_TOOLKIT_STORE.getArticles();
+            }
+            try {
+                const raw = localStorage.getItem('invamax_resources_articles_v1');
+                if (raw) {
+                    const parsed = JSON.parse(raw);
+                    if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+                }
+            } catch (e) {}
+            return DEFAULT_ARTICLES_FALLBACK;
+        }
+
+        function getVideosSafe() {
+            if (typeof INVAMAX_TOOLKIT_STORE !== 'undefined' && typeof INVAMAX_TOOLKIT_STORE.getVideos === 'function') {
+                return INVAMAX_TOOLKIT_STORE.getVideos();
+            }
+            try {
+                const raw = localStorage.getItem('invamax_resources_videos_v1');
+                if (raw) {
+                    const parsed = JSON.parse(raw);
+                    if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+                }
+            } catch (e) {}
+            return DEFAULT_VIDEOS_FALLBACK;
+        }
+
+        function getDocsSafe() {
+            if (typeof INVAMAX_TOOLKIT_STORE !== 'undefined' && typeof INVAMAX_TOOLKIT_STORE.getAll === 'function') {
+                return INVAMAX_TOOLKIT_STORE.getAll();
+            }
+            try {
+                const raw = localStorage.getItem('invamax_toolkits_v2');
+                if (raw) {
+                    const parsed = JSON.parse(raw);
+                    if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+                }
+            } catch (e) {}
+            return [];
+        }
 
         // Authentication Logic
         const ADMIN_PASS_KEY = 'invamax_admin_secret_v1';
@@ -3988,8 +4130,8 @@
 
         function renderArticleReorderModalList() {
             const container = document.getElementById('articleReorderListContainer');
-            if (!container || typeof INVAMAX_TOOLKIT_STORE === 'undefined') return;
-            const items = INVAMAX_TOOLKIT_STORE.getArticles();
+            if (!container) return;
+            const items = getArticlesSafe();
             if (items.length === 0) {
                 container.innerHTML = '<p style="text-align:center;color:#64748b;padding:20px;">Chưa có bài viết nào.</p>';
                 return;
@@ -4061,9 +4203,9 @@
 
         function renderArticlesList(query = '') {
             const container = document.getElementById('articlesListContainer');
-            if (!container || typeof INVAMAX_TOOLKIT_STORE === 'undefined') return;
+            if (!container) return;
 
-            const allArticles = INVAMAX_TOOLKIT_STORE.getArticles();
+            const allArticles = getArticlesSafe();
             let filtered = allArticles;
             if (query) {
                 filtered = filtered.filter(a => 
@@ -4369,8 +4511,8 @@
 
         function renderVideoReorderModalList() {
             const container = document.getElementById('videoReorderListContainer');
-            if (!container || typeof INVAMAX_TOOLKIT_STORE === 'undefined') return;
-            const items = INVAMAX_TOOLKIT_STORE.getVideos();
+            if (!container) return;
+            const items = getVideosSafe();
             if (items.length === 0) {
                 container.innerHTML = '<p style="text-align:center;color:#64748b;padding:20px;">Chưa có video nào.</p>';
                 return;
@@ -4442,9 +4584,9 @@
 
         function renderVideosList(query = '') {
             const container = document.getElementById('videosListContainer');
-            if (!container || typeof INVAMAX_TOOLKIT_STORE === 'undefined') return;
+            if (!container) return;
 
-            const allVideos = INVAMAX_TOOLKIT_STORE.getVideos();
+            const allVideos = getVideosSafe();
             let filtered = allVideos;
             if (query) {
                 filtered = filtered.filter(v => 
@@ -4530,19 +4672,28 @@
         // 3. RENDER DASHBOARD: UNIFIED TRI THỨC (ARTICLES, TOOLKIT, VIDEOS)
         // ========================================================
         function renderDashboard() {
-            const allDocs = INVAMAX_TOOLKIT_STORE.getAll();
-            const allArticles = (typeof INVAMAX_TOOLKIT_STORE.getArticles === 'function') ? INVAMAX_TOOLKIT_STORE.getArticles() : [];
-            const allVideos = (typeof INVAMAX_TOOLKIT_STORE.getVideos === 'function') ? INVAMAX_TOOLKIT_STORE.getVideos() : [];
+            try {
+                const allDocs = getDocsSafe();
+                const allArticles = getArticlesSafe();
+                const allVideos = getVideosSafe();
 
-            // Query search input
-            const searchInput = document.getElementById('resAdminSearchInput');
-            const query = (searchInput ? searchInput.value : '').toLowerCase().trim();
+                // Query search input
+                const searchInput = document.getElementById('resAdminSearchInput');
+                const query = (searchInput ? searchInput.value : '').toLowerCase().trim();
 
-            // Render Section 1: Articles
-            renderArticlesList(query);
+                // Render Section 1: Articles
+                try {
+                    renderArticlesList(query);
+                } catch (eArt) {
+                    console.error('[Dashboard] Lỗi hiển thị danh sách bài viết:', eArt);
+                }
 
-            // Render Section 3: Videos
-            renderVideosList(query);
+                // Render Section 3: Videos
+                try {
+                    renderVideosList(query);
+                } catch (eVid) {
+                    console.error('[Dashboard] Lỗi hiển thị danh sách video:', eVid);
+                }
 
             // Render Section 2: Toolkit
             // Count per format category
@@ -4714,14 +4865,17 @@
                     </div>
                 `;
             }).join('');
+            } catch (err) {
+                console.error('[Dashboard] Critical error in renderDashboard:', err);
+            }
         }
 
         // Export Unified JSON Backup (Toolkits + Articles + Videos)
         function exportJSONBackup() {
             const data = {
-                toolkits: INVAMAX_TOOLKIT_STORE.getAll(),
-                articles: INVAMAX_TOOLKIT_STORE.getArticles(),
-                videos: INVAMAX_TOOLKIT_STORE.getVideos(),
+                toolkits: getDocsSafe(),
+                articles: getArticlesSafe(),
+                videos: getVideosSafe(),
                 exportedAt: new Date().toISOString()
             };
             const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data, null, 2));
