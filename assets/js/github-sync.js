@@ -220,9 +220,47 @@ const INVAMAX_GITHUB_SYNC = (function () {
             notify('Đang cập nhật danh sách tài liệu vào kho GitHub...');
             const commitResult = await commitJson('assets/data/toolkits.json', listToSync, 'Update toolkits database from INVAMAX Admin portal');
 
+            // 4. Đồng bộ Bài viết (Articles) nếu có store
+            if (window.INVAMAX_TOOLKIT_STORE && typeof window.INVAMAX_TOOLKIT_STORE.getArticles === 'function') {
+                const rawArticles = window.INVAMAX_TOOLKIT_STORE.getArticles();
+                const articlesToSync = JSON.parse(JSON.stringify(rawArticles));
+                for (let i = 0; i < articlesToSync.length; i++) {
+                    const art = articlesToSync[i];
+                    if (art.thumbnail && art.thumbnail.startsWith('data:')) {
+                        const safeThumbName = `art-thumb-${art.id || ('art-' + Date.now())}.jpg`;
+                        const targetThumbPath = `assets/images/resources/${safeThumbName}`;
+                        notify(`Đang tải ảnh bìa bài viết lên GitHub: "${safeThumbName}"...`);
+                        await uploadDataUrlFile(targetThumbPath, art.thumbnail, `Upload article thumbnail: ${safeThumbName}`);
+                        art.thumbnail = targetThumbPath;
+                    }
+                }
+                notify('Đang cập nhật danh sách bài viết vào kho GitHub...');
+                await commitJson('assets/data/articles.json', articlesToSync, 'Update articles database from INVAMAX Admin portal');
+                window.INVAMAX_TOOLKIT_STORE.saveArticles(articlesToSync);
+            }
+
+            // 5. Đồng bộ Video nếu có store
+            if (window.INVAMAX_TOOLKIT_STORE && typeof window.INVAMAX_TOOLKIT_STORE.getVideos === 'function') {
+                const rawVideos = window.INVAMAX_TOOLKIT_STORE.getVideos();
+                const videosToSync = JSON.parse(JSON.stringify(rawVideos));
+                for (let i = 0; i < videosToSync.length; i++) {
+                    const vid = videosToSync[i];
+                    if (vid.thumbnail && vid.thumbnail.startsWith('data:')) {
+                        const safeThumbName = `vid-thumb-${vid.id || ('vid-' + Date.now())}.jpg`;
+                        const targetThumbPath = `assets/images/resources/${safeThumbName}`;
+                        notify(`Đang tải ảnh bìa video lên GitHub: "${safeThumbName}"...`);
+                        await uploadDataUrlFile(targetThumbPath, vid.thumbnail, `Upload video thumbnail: ${safeThumbName}`);
+                        vid.thumbnail = targetThumbPath;
+                    }
+                }
+                notify('Đang cập nhật danh sách video vào kho GitHub...');
+                await commitJson('assets/data/videos.json', videosToSync, 'Update videos database from INVAMAX Admin portal');
+                window.INVAMAX_TOOLKIT_STORE.saveVideos(videosToSync);
+            }
+
             return {
                 success: true,
-                message: 'Đã xuất bản thành công lên GitHub! Website sẽ tự động cập nhật trong 30-60 giây.',
+                message: 'Đã xuất bản toàn bộ Tri thức (Bài viết, Tài liệu, Video) lên GitHub thành công! Web sẽ tự động cập nhật trong 30-60 giây.',
                 updatedList: listToSync,
                 commit: commitResult
             };

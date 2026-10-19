@@ -5,6 +5,8 @@
 
 const INVAMAX_TOOLKIT_STORE = (function () {
     const STORAGE_KEY = 'invamax_toolkits_v2';
+    const ARTICLES_STORAGE_KEY = 'invamax_resources_articles_v1';
+    const VIDEOS_STORAGE_KEY = 'invamax_resources_videos_v1';
     const SETTINGS_KEY = 'invamax_admin_settings_v1';
 
     // Dữ liệu mặc định 4 tài liệu gốc
@@ -57,6 +59,106 @@ const INVAMAX_TOOLKIT_STORE = (function () {
             createdAt: '2026-10-01',
             downloads: 295,
             status: 'published'
+        }
+    ];
+
+    // Dữ liệu mặc định 4 bài viết mới & tiêu biểu
+    const DEFAULT_ARTICLES = [
+        {
+            id: 'art-5-buoc-lean',
+            title: '5 bước triển khai Lean hiệu quả tại nhà máy sản xuất',
+            category: 'Lean & Cải tiến',
+            excerpt: 'Hướng dẫn thực tế từ các dự án triển khai Lean, giúp doanh nghiệp cải thiện năng suất và giảm lãng phí bền vững.',
+            thumbnail: 'assets/images/resources/art-5steps.jpg',
+            dateDisplay: '12 thg 10, 2026',
+            views: '2.4K lượt xem',
+            link: 'vi/articles.html',
+            status: 'published',
+            createdAt: '2026-10-12'
+        },
+        {
+            id: 'art-chi-so-oee',
+            title: 'Chỉ số OEE: Cách đo lường và cải thiện hiệu quả thiết bị',
+            category: 'Quản trị nhà máy',
+            excerpt: 'Hiểu đúng về OEE và các bước triển khai cải tiến hiệu quả trong nhà máy.',
+            thumbnail: 'assets/images/resources/art-oee.jpg',
+            dateDisplay: '10 thg 10, 2026',
+            views: '1.8K lượt xem',
+            link: 'vi/articles.html',
+            status: 'published',
+            createdAt: '2026-10-10'
+        },
+        {
+            id: 'art-ung-dung-ai',
+            title: 'Ứng dụng AI trong sản xuất: Cơ hội và lộ trình triển khai',
+            category: 'Digital & AI',
+            excerpt: 'Những ứng dụng thực tế của AI trong sản xuất và gợi ý lộ trình phù hợp cho doanh nghiệp Việt Nam.',
+            thumbnail: 'assets/images/resources/art-ai.jpg',
+            dateDisplay: '8 thg 10, 2026',
+            views: '1.6K lượt xem',
+            link: 'vi/articles.html',
+            status: 'published',
+            createdAt: '2026-10-08'
+        },
+        {
+            id: 'art-10-co-hoi-giam-chi-phi',
+            title: '10 cơ hội giảm chi phí sản xuất nhanh chóng',
+            category: 'Cost Down',
+            excerpt: 'Những giải pháp cost down có thể triển khai trong 3–6 tháng, dựa trên các dự án thực tế.',
+            thumbnail: 'assets/images/resources/art-cost-10opp.jpg',
+            dateDisplay: '5 thg 10, 2026',
+            views: '2.1K lượt xem',
+            link: 'vi/articles.html',
+            status: 'published',
+            createdAt: '2026-10-05'
+        }
+    ];
+
+    // Dữ liệu mặc định 4 video học nhanh
+    const DEFAULT_VIDEOS = [
+        {
+            id: 'vid-lean-intro-12p',
+            title: 'Giới thiệu Lean Manufacturing trong 12 phút',
+            thumbnail: 'assets/images/resources/vid-intro.jpg',
+            duration: '12:34',
+            views: '32K lượt xem',
+            timeAgo: '2 tuần trước',
+            videoUrl: 'https://www.youtube.com/@NguoiXayNen',
+            status: 'published',
+            createdAt: '2026-10-05'
+        },
+        {
+            id: 'vid-5-loi-thuong-gap',
+            title: '5 lỗi thường gặp khi triển khai cải tiến tại nhà máy',
+            thumbnail: 'assets/images/resources/vid-mistakes.jpg',
+            duration: '18:20',
+            views: '24K lượt xem',
+            timeAgo: '3 tuần trước',
+            videoUrl: 'https://www.youtube.com/@NguoiXayNen',
+            status: 'published',
+            createdAt: '2026-09-28'
+        },
+        {
+            id: 'vid-ai-du-bao-san-xuat',
+            title: 'Ứng dụng AI trong dự báo sản xuất',
+            thumbnail: 'assets/images/resources/vid-ai-pred.jpg',
+            duration: '15:10',
+            views: '18K lượt xem',
+            timeAgo: '1 tháng trước',
+            videoUrl: 'https://www.youtube.com/@NguoiXayNen',
+            status: 'published',
+            createdAt: '2026-09-19'
+        },
+        {
+            id: 'vid-xay-dung-cost-down',
+            title: 'Cách xây dựng hệ thống Cost Down bền vững',
+            thumbnail: 'assets/images/resources/vid-costdown-sys.jpg',
+            duration: '10:45',
+            views: '21K lượt xem',
+            timeAgo: '1 tháng trước',
+            videoUrl: 'https://www.youtube.com/@NguoiXayNen',
+            status: 'published',
+            createdAt: '2026-09-15'
         }
     ];
 
@@ -649,45 +751,291 @@ const INVAMAX_TOOLKIT_STORE = (function () {
         }
     }
 
-    // Tải dữ liệu chính thức từ assets/data/toolkits.json trên server
+    // Tải dữ liệu chính thức từ assets/data/toolkits.json, articles.json, videos.json trên server
     async function fetchRemoteData() {
         try {
             const dataUrl = resolveAssetUrl('assets/data/toolkits.json') + '?t=' + Date.now();
             const res = await fetch(dataUrl);
-            if (!res.ok) return null;
-            const remoteItems = await res.json();
-            if (Array.isArray(remoteItems) && remoteItems.length > 0) {
-                saveAll(remoteItems);
-                return remoteItems;
+            if (res.ok) {
+                const remoteItems = await res.json();
+                if (Array.isArray(remoteItems) && remoteItems.length > 0) {
+                    saveAll(remoteItems);
+                }
             }
         } catch (e) {
-            console.warn('[ToolkitStore] Không thể tải dữ liệu từ máy chủ:', e);
+            console.warn('[ToolkitStore] Không thể tải toolkits.json:', e);
         }
-        return null;
+
+        try {
+            const artUrl = resolveAssetUrl('assets/data/articles.json') + '?t=' + Date.now();
+            const resArt = await fetch(artUrl);
+            if (resArt.ok) {
+                const remoteArticles = await resArt.json();
+                if (Array.isArray(remoteArticles) && remoteArticles.length > 0) {
+                    saveArticles(remoteArticles);
+                }
+            }
+        } catch (e) {
+            console.warn('[ToolkitStore] Không thể tải articles.json:', e);
+        }
+
+        try {
+            const vidUrl = resolveAssetUrl('assets/data/videos.json') + '?t=' + Date.now();
+            const resVid = await fetch(vidUrl);
+            if (resVid.ok) {
+                const remoteVideos = await resVid.json();
+                if (Array.isArray(remoteVideos) && remoteVideos.length > 0) {
+                    saveVideos(remoteVideos);
+                }
+            }
+        } catch (e) {
+            console.warn('[ToolkitStore] Không thể tải videos.json:', e);
+        }
+
+        return getAll();
+    }
+
+    // ========================================================
+    // QUẢN LÝ BÀI VIẾT MỚI & TIÊU BIỂU (ARTICLES)
+    // ========================================================
+    function getArticles() {
+        try {
+            const raw = localStorage.getItem(ARTICLES_STORAGE_KEY);
+            if (!raw) {
+                saveArticles(DEFAULT_ARTICLES);
+                return DEFAULT_ARTICLES;
+            }
+            const parsed = JSON.parse(raw);
+            return Array.isArray(parsed) && parsed.length > 0 ? parsed : DEFAULT_ARTICLES;
+        } catch (e) {
+            return DEFAULT_ARTICLES;
+        }
+    }
+
+    function saveArticles(list) {
+        if (!Array.isArray(list)) return [];
+        localStorage.setItem(ARTICLES_STORAGE_KEY, JSON.stringify(list));
+        return list;
+    }
+
+    function saveArticle(item) {
+        if (!item || !item.id) return null;
+        let list = getArticles();
+        const idx = list.findIndex(a => a.id === item.id);
+        if (idx !== -1) {
+            list[idx] = { ...list[idx], ...item };
+        } else {
+            list.unshift(item);
+        }
+        return saveArticles(list);
+    }
+
+    function deleteArticle(id) {
+        let list = getArticles();
+        list = list.filter(a => a.id !== id);
+        saveArticles(list);
+        return true;
+    }
+
+    function moveArticle(id, direction) {
+        let list = getArticles();
+        const idx = list.findIndex(a => a.id === id);
+        if (idx === -1) return null;
+        if (direction === 'up' && idx > 0) {
+            const temp = list[idx];
+            list[idx] = list[idx - 1];
+            list[idx - 1] = temp;
+        } else if (direction === 'down' && idx < list.length - 1) {
+            const temp = list[idx];
+            list[idx] = list[idx + 1];
+            list[idx + 1] = temp;
+        }
+        return saveArticles(list);
+    }
+
+    function moveArticleToIndex(id, targetIndex) {
+        let list = getArticles();
+        const fromIdx = list.findIndex(a => a.id === id);
+        if (fromIdx === -1) return null;
+        const clampedTarget = Math.max(0, Math.min(list.length - 1, Number(targetIndex)));
+        if (fromIdx === clampedTarget) return list;
+        const [movedItem] = list.splice(fromIdx, 1);
+        list.splice(clampedTarget, 0, movedItem);
+        return saveArticles(list);
+    }
+
+    function resetArticlesToDefault() {
+        return saveArticles(DEFAULT_ARTICLES);
+    }
+
+    function renderArticleCardHTML(art) {
+        const thumb = resolveAssetUrl(art.thumbnail || 'assets/images/resources/art-5steps.jpg');
+        const link = resolveAssetUrl(art.link || 'articles.html');
+        return `
+            <article class="art-card-light" data-id="${escapeHTML(art.id)}">
+                <div class="art-thumb-wrap">
+                    <img src="${thumb}" alt="${escapeHTML(art.title)}" loading="lazy">
+                    <span class="art-tag-badge-solid">${escapeHTML(art.category || 'Tri thức')}</span>
+                </div>
+                <div class="art-body-light">
+                    <h3 class="art-title-light">${escapeHTML(art.title)}</h3>
+                    <p class="art-excerpt-light">${escapeHTML(art.excerpt || '')}</p>
+                    <div class="art-meta-footer-light">
+                        <div class="art-meta-left">
+                            <span class="art-meta-item"><i data-lucide="calendar" style="width: 12px; height: 12px;"></i> ${escapeHTML(art.dateDisplay || '')}</span>
+                            <span class="art-meta-item"><i data-lucide="eye" style="width: 12px; height: 12px;"></i> ${escapeHTML(art.views || '')}</span>
+                        </div>
+                        <a href="${link}" class="art-arrow-btn" aria-label="Xem bài viết"><i data-lucide="arrow-right" style="width: 15px; height: 15px;"></i></a>
+                    </div>
+                </div>
+            </article>
+        `;
+    }
+
+    // ========================================================
+    // QUẢN LÝ VIDEO HỌC NHANH (VIDEOS)
+    // ========================================================
+    function getVideos() {
+        try {
+            const raw = localStorage.getItem(VIDEOS_STORAGE_KEY);
+            if (!raw) {
+                saveVideos(DEFAULT_VIDEOS);
+                return DEFAULT_VIDEOS;
+            }
+            const parsed = JSON.parse(raw);
+            return Array.isArray(parsed) && parsed.length > 0 ? parsed : DEFAULT_VIDEOS;
+        } catch (e) {
+            return DEFAULT_VIDEOS;
+        }
+    }
+
+    function saveVideos(list) {
+        if (!Array.isArray(list)) return [];
+        localStorage.setItem(VIDEOS_STORAGE_KEY, JSON.stringify(list));
+        return list;
+    }
+
+    function saveVideo(item) {
+        if (!item || !item.id) return null;
+        let list = getVideos();
+        const idx = list.findIndex(v => v.id === item.id);
+        if (idx !== -1) {
+            list[idx] = { ...list[idx], ...item };
+        } else {
+            list.unshift(item);
+        }
+        return saveVideos(list);
+    }
+
+    function deleteVideo(id) {
+        let list = getVideos();
+        list = list.filter(v => v.id !== id);
+        saveVideos(list);
+        return true;
+    }
+
+    function moveVideo(id, direction) {
+        let list = getVideos();
+        const idx = list.findIndex(v => v.id === id);
+        if (idx === -1) return null;
+        if (direction === 'up' && idx > 0) {
+            const temp = list[idx];
+            list[idx] = list[idx - 1];
+            list[idx - 1] = temp;
+        } else if (direction === 'down' && idx < list.length - 1) {
+            const temp = list[idx];
+            list[idx] = list[idx + 1];
+            list[idx + 1] = temp;
+        }
+        return saveVideos(list);
+    }
+
+    function moveVideoToIndex(id, targetIndex) {
+        let list = getVideos();
+        const fromIdx = list.findIndex(v => v.id === id);
+        if (fromIdx === -1) return null;
+        const clampedTarget = Math.max(0, Math.min(list.length - 1, Number(targetIndex)));
+        if (fromIdx === clampedTarget) return list;
+        const [movedItem] = list.splice(fromIdx, 1);
+        list.splice(clampedTarget, 0, movedItem);
+        return saveVideos(list);
+    }
+
+    function resetVideosToDefault() {
+        return saveVideos(DEFAULT_VIDEOS);
+    }
+
+    function renderVideoCardHTML(vid) {
+        const thumb = resolveAssetUrl(vid.thumbnail || 'assets/images/resources/vid-intro.jpg');
+        const vUrl = vid.videoUrl || 'https://www.youtube.com/@NguoiXayNen';
+        return `
+            <a href="${vUrl}" target="_blank" rel="noopener" class="vid-card-light" data-id="${escapeHTML(vid.id)}">
+                <div class="vid-thumb-wrap">
+                    <img src="${thumb}" alt="${escapeHTML(vid.title)}" loading="lazy">
+                    <div class="vid-play-btn-circle"><i data-lucide="play"></i></div>
+                    ${vid.duration ? `<span class="vid-duration-pill">${escapeHTML(vid.duration)}</span>` : ''}
+                </div>
+                <div class="vid-body-light">
+                    <h3 class="vid-title-light">${escapeHTML(vid.title)}</h3>
+                    <div class="vid-meta-footer-light">
+                        <span class="vid-meta-item"><i data-lucide="play-circle" style="width: 12px; height: 12px;"></i> ${escapeHTML(vid.views || '0 lượt xem')}</span>
+                        <span class="vid-meta-item"><i data-lucide="clock" style="width: 12px; height: 12px;"></i> ${escapeHTML(vid.timeAgo || '')}</span>
+                    </div>
+                </div>
+            </a>
+        `;
     }
 
     // Khởi tạo và đồng bộ hiển thị lên trang resources.html
     async function initResourcesPage() {
-        const grid = document.querySelector('#toolkit .res-grid-4');
-        if (!grid) return;
-
-        // 1. Render ngay lập tức từ bộ nhớ cục bộ để trang không bị trễ
-        const localItems = getAll().filter(t => t.status !== 'draft');
-        if (localItems && localItems.length > 0) {
-            grid.innerHTML = localItems.map(renderCardHTML).join('');
-            if (window.lucide && typeof window.lucide.createIcons === 'function') {
-                window.lucide.createIcons();
+        // 1. Render Articles
+        const artGrid = document.querySelector('#articles .res-grid-4');
+        if (artGrid) {
+            const publishedArticles = getArticles().filter(a => a.status !== 'draft');
+            if (publishedArticles.length > 0) {
+                artGrid.innerHTML = publishedArticles.map(renderArticleCardHTML).join('');
             }
         }
 
-        // 2. Tải ngầm dữ liệu mới nhất từ server/GitHub và cập nhật mượt mà
-        const remoteItems = await fetchRemoteData();
-        if (remoteItems) {
-            const published = remoteItems.filter(t => t.status !== 'draft');
-            grid.innerHTML = published.map(renderCardHTML).join('');
-            if (window.lucide && typeof window.lucide.createIcons === 'function') {
-                window.lucide.createIcons();
+        // 2. Render Toolkit
+        const toolGrid = document.querySelector('#toolkit .res-grid-4');
+        if (toolGrid) {
+            const publishedTools = getAll().filter(t => t.status !== 'draft');
+            if (publishedTools.length > 0) {
+                toolGrid.innerHTML = publishedTools.map(renderCardHTML).join('');
             }
+        }
+
+        // 3. Render Videos
+        const vidGrid = document.querySelector('#video .res-grid-4');
+        if (vidGrid) {
+            const publishedVideos = getVideos().filter(v => v.status !== 'draft');
+            if (publishedVideos.length > 0) {
+                vidGrid.innerHTML = publishedVideos.map(renderVideoCardHTML).join('');
+            }
+        }
+
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+            window.lucide.createIcons();
+        }
+
+        // 4. Tải ngầm dữ liệu mới nhất từ server/GitHub và cập nhật
+        await fetchRemoteData();
+
+        if (artGrid) {
+            const publishedArticles = getArticles().filter(a => a.status !== 'draft');
+            artGrid.innerHTML = publishedArticles.map(renderArticleCardHTML).join('');
+        }
+        if (toolGrid) {
+            const publishedTools = getAll().filter(t => t.status !== 'draft');
+            toolGrid.innerHTML = publishedTools.map(renderCardHTML).join('');
+        }
+        if (vidGrid) {
+            const publishedVideos = getVideos().filter(v => v.status !== 'draft');
+            vidGrid.innerHTML = publishedVideos.map(renderVideoCardHTML).join('');
+        }
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+            window.lucide.createIcons();
         }
     }
 
@@ -714,14 +1062,32 @@ const INVAMAX_TOOLKIT_STORE = (function () {
         generatePdfThumbnail,
         autoGenerateMissingThumbnails,
         resolveAssetUrl,
-        fetchRemoteData
+        fetchRemoteData,
+        // Articles API
+        getArticles,
+        saveArticles,
+        saveArticle,
+        deleteArticle,
+        moveArticle,
+        moveArticleToIndex,
+        resetArticlesToDefault,
+        renderArticleCardHTML,
+        // Videos API
+        getVideos,
+        saveVideos,
+        saveVideo,
+        deleteVideo,
+        moveVideo,
+        moveVideoToIndex,
+        resetVideosToDefault,
+        renderVideoCardHTML
     };
 })();
 
 // Tự động khởi chạy trên trang resources
 if (typeof document !== 'undefined') {
     document.addEventListener('DOMContentLoaded', function () {
-        if (document.querySelector('#toolkit .res-grid-4')) {
+        if (document.querySelector('#toolkit .res-grid-4') || document.querySelector('#articles .res-grid-4') || document.querySelector('#video .res-grid-4')) {
             INVAMAX_TOOLKIT_STORE.initResourcesPage();
         }
         // Tự động quét và sinh thumbnail thực tế nếu có tài liệu PDF chưa có ảnh bìa

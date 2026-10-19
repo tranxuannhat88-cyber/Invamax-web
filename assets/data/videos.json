@@ -1,0 +1,46 @@
+[
+  {
+    "id": "vid-lean-intro-12p",
+    "title": "Giới thiệu Lean Manufacturing trong 12 phút",
+    "thumbnail": "assets/images/resources/vid-intro.jpg",
+    "duration": "12:34",
+    "views": "32K lượt xem",
+    "timeAgo": "2 tuần trước",
+    "videoUrl": "https://www.youtube.com/@NguoiXayNen",
+    "status": "published",
+    "createdAt": "2026-10-05"
+  },
+  {
+    "id": "vid-5-loi-thuong-gap",
+    "title": "5 lỗi thường gặp khi triển khai cải tiến tại nhà máy",
+    "thumbnail": "assets/images/resources/vid-mistakes.jpg",
+    "duration": "18:20",
+    "views": "24K lượt xem",
+    "timeAgo": "3 tuần trước",
+    "videoUrl": "https://www.youtube.com/@NguoiXayNen",
+    "status": "published",
+    "createdAt": "2026-09-28"
+  },
+  {
+    "id": "vid-ai-du-bao-san-xuat",
+    "title": "Ứng dụng AI trong dự báo sản xuất",
+    "thumbnail": "assets/images/resources/vid-ai-pred.jpg",
+    "duration": "15:10",
+    "views": "18K lượt xem",
+    "timeAgo": "1 tháng trước",
+    "videoUrl": "https://www.youtube.com/@NguoiXayNen",
+    "status": "published",
+    "createdAt": "2026-09-19"
+  },
+  {
+    "id": "vid-xay-dung-cost-down",
+    "title": "Cách xây dựng hệ thống Cost Down bền vững",
+    "thumbnail": "assets/images/resources/vid-costdown-sys.jpg",
+    "duration": "10:45",
+    "views": "21K lượt xem",
+    "timeAgo": "1 tháng trước",
+    "videoUrl": "https://www.youtube.com/@NguoiXayNen",
+    "status": "published",
+    "createdAt": "2026-09-15"
+  }
+]
