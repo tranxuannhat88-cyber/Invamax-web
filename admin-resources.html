@@ -936,6 +936,235 @@
         }
 
         /* ========================================================
+           OFFICIAL WEBSITE RESOURCE (TOOLKIT) REPLICA STYLES IN ADMIN
+           ======================================================== */
+        .res-admin-web-hero {
+            position: relative;
+            width: 100%;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 18px;
+            padding: 28px 30px 24px;
+            margin-bottom: 28px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+        }
+        .res-admin-web-hero .res-hero-bg-wrap {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            min-width: 420px;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+        .res-admin-web-hero .res-hero-bg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: right top;
+            opacity: 0.28;
+            mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.35) 25%, black 100%);
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.35) 25%, black 100%);
+        }
+        .res-admin-hero-top {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .res-admin-toolbar-btns {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .btn-add-res-main {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 11px 20px;
+            background: #ff6900;
+            color: #ffffff !important;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 6px 18px rgba(255, 105, 0, 0.32);
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        .btn-add-res-main:hover {
+            background: #e05d00;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px rgba(255, 105, 0, 0.42);
+        }
+        .btn-add-res-main svg {
+            width: 18px;
+            height: 18px;
+            stroke-width: 2.6;
+        }
+        .btn-reorder-res {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 10px 16px;
+            background: #0f172a;
+            color: #ffffff !important;
+            border: 1px solid #1e293b;
+            border-radius: 10px;
+            font-size: 13.5px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        .btn-reorder-res:hover {
+            background: #1e293b;
+            transform: translateY(-1px);
+        }
+        .btn-reorder-res svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Order & Reorder Controls on Toolkit Cards */
+        .res-order-overlay {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            z-index: 4;
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            background: rgba(15, 23, 42, 0.86);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            border-radius: 8px;
+            padding: 3px 5px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        }
+        .res-order-btn {
+            width: 24px;
+            height: 24px;
+            border: none;
+            background: rgba(255, 255, 255, 0.14);
+            color: #ffffff;
+            border-radius: 5px;
+            font-size: 10px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.15s;
+        }
+        .res-order-btn:hover:not(:disabled) {
+            background: #ff6900;
+        }
+        .res-order-btn:disabled {
+            opacity: 0.3;
+            cursor: default;
+        }
+        .res-order-select {
+            background: transparent;
+            color: #ffffff;
+            border: none;
+            font-size: 11.5px;
+            font-weight: 800;
+            padding: 0 4px;
+            cursor: pointer;
+            outline: none;
+            text-align: center;
+        }
+        .res-order-select option {
+            background: #0f172a;
+            color: #ffffff;
+            font-weight: 700;
+        }
+        .tool-card-light {
+            position: relative;
+            cursor: pointer;
+        }
+        .tool-card-light.drag-over {
+            border: 2.5px dashed #ff6900 !important;
+            transform: scale(1.02) !important;
+            box-shadow: 0 12px 30px rgba(255, 105, 0, 0.22) !important;
+        }
+        .tool-card-light.res-dragging {
+            opacity: 0.55;
+        }
+        .reorder-res-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 14px;
+            background: #ffffff;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            cursor: grab;
+            transition: all 0.18s ease;
+        }
+        .reorder-res-item:hover {
+            border-color: #cbd5e1;
+            background: #f8fafc;
+        }
+        .reorder-res-item.drag-over {
+            border: 2px dashed #ff6900;
+            background: #fff7ed;
+        }
+        .res-card-admin-actions {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: auto;
+            padding-top: 12px;
+            border-top: 1px solid #f1f5f9;
+            flex-wrap: wrap;
+        }
+        .btn-res-card-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            border: 1px solid #cbd5e1;
+            background: #ffffff;
+            color: #334155;
+            transition: all 0.2s ease;
+        }
+        .btn-res-card-action:hover {
+            transform: translateY(-1px);
+        }
+        .btn-res-card-action svg {
+            width: 13px;
+            height: 13px;
+        }
+        .res-card-file-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            padding: 5px 10px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            word-break: break-all;
+        }
+
+        /* ========================================================
            OFFICIAL WEBSITE CASE STUDY REPLICA STYLES IN ADMIN
            ======================================================== */
         .cs-admin-web-hero {
@@ -1450,189 +1679,106 @@
 
         <!-- PANE 1: KHO TRI THỨC & TÀI LIỆU -->
         <div id="sectionResources" class="admin-section-pane">
-            <!-- Quick Stats -->
-        <section class="admin-stats-grid">
-            <div class="stat-card">
-                <div class="stat-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+            <!-- HERO HEADER & FILTER BAR (GIỐNG TRANG WEB CHÍNH THỨC vi/resources.html) -->
+            <section class="res-admin-web-hero">
+                <div class="res-hero-bg-wrap">
+                    <img src="assets/images/resources/hero-light-bg.jpg" alt="INVAMAX Factory" class="res-hero-bg">
+                    <div class="res-hero-gradient-overlay"></div>
                 </div>
-                <div class="stat-info">
-                    <h4>Tổng số tài liệu</h4>
-                    <div class="stat-number" id="statTotalDocs">0</div>
-                </div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon" style="background: rgba(16, 185, 129, 0.1); color: #10b981;">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M8 13h8"/><path d="M8 17h8"/><path d="M10 9h4"/></svg>
-                </div>
-                <div class="stat-info">
-                    <h4>Biểu mẫu Excel (XLSX)</h4>
-                    <div class="stat-number" id="statXlsxDocs">0</div>
-                </div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon" style="background: rgba(59, 130, 246, 0.1); color: #3b82f6;">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-                </div>
-                <div class="stat-info">
-                    <h4>Khung Word / PDF</h4>
-                    <div class="stat-number" id="statOtherDocs">0</div>
-                </div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon" style="background: rgba(99, 102, 241, 0.1); color: #6366f1;">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                </div>
-                <div class="stat-info">
-                    <h4>Tổng lượt tải</h4>
-                    <div class="stat-number" id="statTotalDownloads">0</div>
-                </div>
-            </div>
-        </section>
 
-        <!-- Main Layout: Form Left, List Right -->
-        <div class="admin-main-grid">
-            <!-- LEFT COLUMN: ADD / EDIT FORM -->
-            <section class="admin-panel">
-                <div class="panel-header">
-                    <h3 id="formPanelTitle">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="var(--admin-orange)" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
-                        Thêm tài liệu mới
-                    </h3>
-                </div>
-                <div class="panel-body">
-                    <!-- Edit Mode Alert Banner -->
-                    <div id="editModeBanner" class="edit-mode-banner">
-                        <div class="banner-text">
-                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-                            <span>Đang chỉnh sửa: <strong id="editingDocName">...</strong></span>
-                        </div>
-                        <button type="button" class="btn-exit-edit" onclick="cancelEdit()">Hủy sửa</button>
+                <div class="res-admin-hero-top">
+                    <div class="res-hero-left">
+                        <div class="res-hero-eyebrow">KHO TRI THỨC &amp; TÀI LIỆU</div>
+                        <h1 class="res-hero-title" style="margin-bottom: 6px;">Kho Tài liệu &amp; <span>Toolkit</span></h1>
+                        <p class="res-hero-subtitle" style="white-space: normal; margin-bottom: 8px;">Bộ công cụ, biểu mẫu chuẩn hóa và tài liệu thực chiến giúp bạn triển khai ngay trong công việc.</p>
                     </div>
 
-                    <form id="docForm" onsubmit="handleSaveDoc(event)">
-                        <input type="hidden" id="editDocId" value="">
-
-                        <!-- Title -->
-                        <div class="form-group">
-                            <label class="form-label" for="docTitle">Tên tài liệu / Bộ công cụ <span class="req">*</span></label>
-                            <input type="text" id="docTitle" class="form-input" placeholder="VD: Checklist đánh giá hiện trạng nhà máy" required>
-                        </div>
-
-                        <!-- Format Tag -->
-                        <div class="form-group">
-                            <label class="form-label" for="docFormat">Định dạng file hiển thị <span class="req">*</span></label>
-                            <select id="docFormat" class="form-select" required>
-                                <option value="XLSX">Excel (.XLSX)</option>
-                                <option value="DOCX">Word (.DOCX)</option>
-                                <option value="PDF">Tài liệu PDF (.PDF)</option>
-                                <option value="PPTX">PowerPoint (.PPTX)</option>
-                                <option value="ZIP">Tệp nén (.ZIP / .RAR)</option>
-                            </select>
-                        </div>
-
-                        <!-- Description -->
-                        <div class="form-group">
-                            <label class="form-label" for="docDesc">Mô tả ngắn tài liệu <span class="req">*</span></label>
-                            <textarea id="docDesc" class="form-textarea" placeholder="Tóm tắt 1-2 câu về nội dung và lợi ích tài liệu mang lại cho doanh nghiệp..." required></textarea>
-                        </div>
-
-                        <!-- File Upload Source Tabs -->
-                        <div class="form-group">
-                            <label class="form-label">Tệp đính kèm hoặc đường link tải <span class="req">*</span></label>
-                            
-                            <div class="tab-buttons">
-                                <button type="button" class="tab-btn active" id="tabUploadBtn" onclick="switchFileTab('upload')">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-                                    Tải file từ máy tính
-                                </button>
-                                <button type="button" class="tab-btn" id="tabLinkBtn" onclick="switchFileTab('link')">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-                                    Link Drive / Tải ngoài
-                                </button>
-                            </div>
-
-                            <!-- Tab 1: Local File Upload -->
-                            <div id="fileUploadContainer">
-                                <div class="dropzone" id="dropzoneBox">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-                                    <p><strong>Kéo thả tệp vào đây</strong> hoặc bấm để chọn</p>
-                                    <span>Hỗ trợ .xlsx, .docx, .pdf, .zip (tối đa 25MB)</span>
-                                    <input type="file" id="docFileInput" onchange="handleFileSelect(event)">
-                                </div>
-                                <div id="selectedFileInfo" class="file-selected-box" style="display: none;">
-                                    <span id="selectedFileName">Đã chọn file</span>
-                                    <button type="button" onclick="clearSelectedFile()" style="background:none;border:none;color:#ef4444;cursor:pointer;font-weight:bold;">Xóa file</button>
-                                </div>
-                            </div>
-
-                            <!-- Tab 2: External Link Input -->
-                            <div id="fileLinkContainer" style="display: none;">
-                                <input type="url" id="docFileUrl" class="form-input" placeholder="https://drive.google.com/file/d/... hoặc link tải trực tiếp">
-                                <small style="color: #64748b; font-size: 12px; margin-top: 4px; display: block;">
-                                    Dán link chia sẻ Google Drive, Onedrive... với quyền <em>Bất kỳ ai có liên kết đều có thể tải</em>.
-                                </small>
-                            </div>
-                        </div>
-
-                        <!-- Thumbnail / Real Document Cover -->
-                        <div class="form-group">
-                            <label class="form-label" style="display: flex; justify-content: space-between; align-items: center;">
-                                <span>Ảnh bìa / Thumbnail thực tế</span>
-                                <small style="font-weight: normal; color: #059669;" id="thumbAutoNotice">Tự động tạo nếu là file PDF</small>
-                            </label>
-                            <div id="thumbPreviewBox" style="display: none; align-items: center; gap: 12px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                                <img id="thumbPreviewImg" src="" alt="Thumbnail preview" style="width: 50px; height: 64px; object-fit: cover; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
-                                <div style="flex: 1; font-size: 12px;">
-                                    <strong style="color: #059669; display: block;">✓ Đã có ảnh bìa thực tế</strong>
-                                    <span id="thumbPreviewNote" style="color: #64748b;">Trích xuất từ trang 1 của file</span>
-                                </div>
-                                <button type="button" onclick="clearSelectedThumbnail()" style="background: none; border: none; color: #ef4444; font-size: 12px; font-weight: 600; cursor: pointer;">Xóa ảnh</button>
-                            </div>
-                            <div style="display: flex; gap: 8px;">
-                                <label for="docThumbInput" class="btn-action" style="flex: 1; text-align: center; cursor: pointer; background: #ffffff; border: 1px dashed #cbd5e1; padding: 8px; border-radius: 6px; font-size: 12px; color: #475569; display: flex; align-items: center; justify-content: center; gap: 6px;">
-                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-                                    Chọn ảnh bìa từ máy tính (nếu muốn)
-                                </label>
-                                <input type="file" id="docThumbInput" accept="image/*" style="display: none;" onchange="handleThumbnailSelect(event)">
-                            </div>
-                        </div>
-
-                        <!-- Submit Button -->
-                        <button type="submit" class="btn-submit" id="btnSubmitDoc">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
-                            <span id="submitBtnText">Lưu &amp; Đăng lên Website</span>
+                    <!-- Thanh công cụ Quản trị trên Hero -->
+                    <div class="res-admin-toolbar-btns">
+                        <button type="button" class="btn-add-res-main" onclick="openAddDocModal()">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                            Thêm tài liệu
                         </button>
-                    </form>
-                </div>
-            </section>
-
-            <!-- RIGHT COLUMN: DOCUMENT LIST WITH FULL BUTTON LABELS & ICONS -->
-            <section class="admin-panel">
-                <div class="panel-header">
-                    <h3>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="var(--admin-orange)" stroke-width="2.2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-                        Danh sách tài liệu trên Website
-                    </h3>
-                    <div style="display: flex; gap: 8px;">
-                        <button onclick="exportJSONBackup()" class="btn-nav-outline" style="background: #f1f5f9; color: #334155; border-color: #cbd5e1; font-size: 12.5px; padding: 6px 12px;" title="Tải file sao lưu JSON">
-                            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        <button type="button" class="btn-reorder-res" onclick="openResReorderModal()" title="Sắp xếp thứ tự hiển thị các tài liệu trên website">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/><polyline points="5 9 12 2 19 9"/></svg>
+                            Sắp xếp thứ tự
+                        </button>
+                        <button type="button" onclick="syncToolkitsToGitHubManual(true)" class="btn-nav-outline" style="background: #f8fafc; color: #0f172a; border-color: #cbd5e1; font-size: 13px; padding: 9px 14px;" title="Đẩy dữ liệu lên GitHub">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="var(--admin-orange)" stroke-width="2.2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                            Đăng GitHub
+                        </button>
+                        <button type="button" onclick="exportJSONBackup()" class="btn-nav-outline" style="background: #f8fafc; color: #334155; border-color: #cbd5e1; font-size: 13px; padding: 9px 12px;" title="Tải file sao lưu JSON các tài liệu">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                             Sao lưu JSON
                         </button>
-                        <button onclick="resetDefaultDocs()" class="btn-nav-outline" style="background: #f1f5f9; color: #dc2626; border-color: #fca5a5; font-size: 12.5px; padding: 6px 12px;" title="Khôi phục lại 4 tài liệu mẫu ban đầu">
-                            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                        <button type="button" onclick="resetDefaultDocs()" class="btn-nav-outline" style="background: #fef2f2; color: #dc2626; border-color: #fecaca; font-size: 13px; padding: 9px 12px;" title="Khôi phục lại dữ liệu mẫu ban đầu">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
                             Khôi phục gốc
                         </button>
                     </div>
                 </div>
-                <div class="panel-body">
-                    <div id="docsListContainer">
-                        <!-- Rendered dynamically by JavaScript -->
+
+                <!-- Action Bar: Filter Pills and Search Bar on Same Row (Giống hệt website) -->
+                <div class="res-hero-action-bar" style="position: relative; z-index: 2; margin-top: 20px; flex-wrap: wrap;">
+                    <div class="res-filter-pills-light" id="resFilterPills" style="flex-wrap: wrap;">
+                        <button type="button" class="res-pill-btn active" onclick="setResFilter('all', this)">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                            Tất cả tài liệu (<span id="statResTotal">0</span>)
+                        </button>
+                        <button type="button" class="res-pill-btn" onclick="setResFilter('xlsx', this)">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M8 13h8"/><path d="M8 17h8"/><path d="M10 9h4"/></svg>
+                            Biểu mẫu Excel (<span id="statResXlsx">0</span>)
+                        </button>
+                        <button type="button" class="res-pill-btn" onclick="setResFilter('docx', this)">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                            Khung Word (<span id="statResDocx">0</span>)
+                        </button>
+                        <button type="button" class="res-pill-btn" onclick="setResFilter('pdf', this)">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><circle cx="10" cy="13" r="2"/></svg>
+                            Tài liệu PDF (<span id="statResPdf">0</span>)
+                        </button>
+                        <button type="button" class="res-pill-btn" onclick="setResFilter('other', this)">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                            Khác (<span id="statResOther">0</span>)
+                        </button>
+                    </div>
+
+                    <!-- Search Bar with Orange Round Button -->
+                    <div class="res-search-wrap-light" style="width: 300px;">
+                        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#64748b" stroke-width="2.2" style="margin-right: 8px; flex-shrink: 0;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        <input type="text" id="resAdminSearchInput" placeholder="Tìm kiếm tài liệu, biểu mẫu, từ khóa..." oninput="filterDocsList()" aria-label="Tìm kiếm">
+                        <button type="button" class="res-search-submit-btn" onclick="filterDocsList()" aria-label="Tìm kiếm">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#ffffff" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        </button>
                     </div>
                 </div>
             </section>
-        </div>
-    </div><!-- /#sectionResources -->
+
+            <!-- SECTION HEADER & 4-COLUMN WEBSITE CARD GRID -->
+            <div style="margin-bottom: 40px;">
+                <div class="res-sec-header" style="margin-bottom: 22px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
+                    <div class="res-sec-title-wrap">
+                        <h2 class="res-sec-title">Toolkit &amp; Bộ công cụ thực tiễn</h2>
+                        <p class="res-sec-desc">Hiển thị trực quan theo giao diện thẻ trên website. Kéo thả hoặc dùng mũi tên để sắp xếp thứ tự.</p>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <button type="button" class="btn-reorder-res" onclick="openResReorderModal()" style="padding: 9px 15px; font-size: 13px;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                            Sắp xếp thứ tự
+                        </button>
+                        <button type="button" class="btn-add-res-main" onclick="openAddDocModal()" style="padding: 9px 18px; font-size: 13.5px;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                            Thêm tài liệu
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 4-Column Grid (Giống hệt #toolkit trên vi/resources.html) -->
+                <div class="res-grid-4" id="docsListContainer">
+                    <!-- Rendered dynamically by JavaScript -->
+                </div>
+            </div>
+        </div><!-- /#sectionResources -->
 
     <!-- ========================================================
          SUB-PAGE 2: QUẢN LÝ CASE STUDY
