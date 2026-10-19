@@ -1,5 +1,31 @@
 [
   {
+    "id": "cs-1792391629391",
+    "badge": "CASE STUDY 05",
+    "categories": [
+      "Lean & Cải tiến",
+      "Số hóa & dữ liệu"
+    ],
+    "category": "Lean & Cải tiến, Số hóa & dữ liệu",
+    "title": "Số hóa việc nhập báo cáo sản xuất",
+    "desc": "- Sử dụng máy tính bảng để nhập sản lượng, số lượng hàng lỗi mỗi mẻ sản xuất qua Appsheet. Dữ liệu được cập nhật trực tiếp vào báo cáo ngày. \n- Công nhân không phải ghi báo cáo giấy, nhân viên thống kê không cần phải nhập dữ liệu từ báo cáo giấy vào máy tính.",
+    "client": "Bộ phận sản xuất",
+    "highlight": "Công nhân nhập báo cáo sản xuất vào máy tính bảng thay thế cho ghi báo cáo giấy.",
+    "link": "",
+    "thumbnail": "",
+    "thumbSource": "auto",
+    "pdfUrl": "",
+    "fileUrl": "",
+    "fileName": "",
+    "fileSize": "",
+    "fileFormat": "",
+    "images": [],
+    "status": "published",
+    "createdAt": "2026-10-19",
+    "dateDisplay": "19 thg 10, 2026",
+    "views": "1.2K lượt xem"
+  },
+  {
     "id": "cs-productivity-pencil",
     "badge": "CASE STUDY 01",
     "categories": [
