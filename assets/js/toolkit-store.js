@@ -93,7 +93,7 @@ var INVAMAX_TOOLKIT_STORE = (function () {
             title: 'Ứng dụng AI trong sản xuất: Cơ hội và lộ trình triển khai',
             category: 'Digital & AI',
             excerpt: 'Những ứng dụng thực tế của AI trong sản xuất và gợi ý lộ trình phù hợp cho doanh nghiệp Việt Nam.',
-            thumbnail: 'assets/images/resources/art-ai-production.jpg?v=2',
+            thumbnail: 'assets/images/resources/ai-hero-conveyor.jpg?v=4',
             dateDisplay: '8 thg 10, 2026',
             views: '1.6K lượt xem',
             link: 'vi/article-ung-dung-ai.html',
