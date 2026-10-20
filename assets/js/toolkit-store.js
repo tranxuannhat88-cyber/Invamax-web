@@ -69,7 +69,7 @@ var INVAMAX_TOOLKIT_STORE = (function () {
             title: '5 bước triển khai Lean hiệu quả tại nhà máy sản xuất',
             category: 'Lean & Cải tiến',
             excerpt: 'Hướng dẫn thực tế từ các dự án triển khai Lean, giúp doanh nghiệp cải thiện năng suất và giảm lãng phí bền vững.',
-            thumbnail: 'assets/images/resources/art-5steps.jpg',
+            thumbnail: 'assets/images/resources/art-5steps.jpg?v=5',
             dateDisplay: '12 thg 10, 2026',
             views: '2.4K lượt xem',
             link: 'vi/article-5-buoc-trien-khai-lean.html',
