@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI in Manufacturing: Opportunities &amp; Implementation Roadmap | INVAMAX</title>
+    <meta name="description" content="Explore practical AI applications in manufacturing (AI Vision, predictive maintenance, scheduling, analytics) and an actionable implementation roadmap from INVAMAX.">
+    
+    <link rel="canonical" href="https://invamax.com/en/article-ung-dung-ai.html">
+    <link rel="alternate" hreflang="vi" href="https://invamax.com/vi/article-ung-dung-ai.html">
+    <link rel="alternate" hreflang="x-default" href="https://invamax.com/vi/article-ung-dung-ai.html">
+    
+    <meta property="og:title" content="AI in Manufacturing: Opportunities &amp; Implementation Roadmap | INVAMAX">
+    <meta property="og:description" content="Practical applications of AI in manufacturing and an actionable roadmap for industrial enterprises. Start from operational problems, not technology.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://invamax.com/en/article-ung-dung-ai.html">
+    <meta property="og:image" content="https://invamax.com/assets/images/resources/art-ai-production.jpg?v=3">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI in Manufacturing: Opportunities &amp; Implementation Roadmap | INVAMAX">
+    <meta name="twitter:description" content="Practical applications of AI on the shop floor and an actionable implementation roadmap for manufacturing enterprises.">
+    <meta name="twitter:image" content="https://invamax.com/assets/images/resources/art-ai-production.jpg?v=3">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Global CSS -->
+    <link rel="icon" type="image/jpeg" href="../assets/images/favicon.jpg">
+    <link rel="stylesheet" href="../assets/css/style.css?v=18">
+    <link rel="stylesheet" href="../assets/css/navbar.css?v=13">
+    
+    <style>
+        :root {
+            --inv-orange: #f97316;
+            --inv-orange-dark: #ea580c;
+            --inv-dark: #0f172a;
+            --inv-slate: #334155;
+            --inv-muted: #64748b;
+            --inv-border: #e2e8f0;
+            --inv-bg-light: #f8fafc;
+            --inv-blue: #0284c7;
+            --inv-green: #16a34a;
+            --inv-purple: #9333ea;
+            --inv-red: #e11d48;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: var(--inv-slate);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.55;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Top Action / Breadcrumbs Bar */
+        .poster-top-bar {
+            padding: 92px 20px 14px;
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .ai-breadcrumb {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12.5px;
+            color: #64748b;
+            flex-wrap: wrap;
+        }
+        .ai-breadcrumb a {
+            color: #64748b;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .ai-breadcrumb a:hover {
+            color: var(--inv-orange);
+        }
+        .ai-breadcrumb .sep {
+            color: #cbd5e1;
+            font-size: 11px;
+        }
+        .ai-breadcrumb .current {
+            color: #1e293b;
+            font-weight: 600;
+        }
+        .poster-action-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .poster-action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            color: #475569;
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .poster-action-btn:hover {
+            border-color: var(--inv-orange);
+            color: var(--inv-orange);
+            background: #fff8f3;
+        }
+
+        /* MAIN DOCUMENT CARD CONTAINER */
+        .ai-document-card {
+            max-width: 1000px;
+            margin: 0 auto 50px auto;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 25px rgba(15, 23, 42, 0.06);
+            border: 1px solid #e2e8f0;
+            padding: 34px 38px 40px;
+            box-sizing: border-box;
+        }
+
+        /* HEADER GRID */
+        .ai-header-grid {
+            display: grid;
+            grid-template-columns: 1.25fr 1fr;
+            gap: 24px;
+            align-items: center;
+            padding-bottom: 20px;
+        }
+        .ai-tag-badge {
+            display: inline-block;
+            background: #f97316;
+            color: #ffffff;
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 3px 9px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        .ai-main-title {
+            font-size: 26px;
+            font-weight: 800;
+            color: #0f172a;
+            line-height: 1.25;
+            margin: 0 0 10px 0;
+            letter-spacing: -0.4px;
+        }
+        .ai-main-subtitle {
+            font-size: 13.5px;
+            color: #475569;
+            line-height: 1.45;
+            margin: 0 0 14px 0;
+        }
+        .ai-meta-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            font-size: 11.5px;
+            color: #64748b;
+        }
+        .ai-meta-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .ai-hero-img-wrap {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+            aspect-ratio: 16 / 9;
+            background: #0f172a;
+        }
+        .ai-hero-img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* INTRO LEAD BOX */
+        .ai-lead-box {
+            border-left: 3.5px solid #f97316;
+            background: #fffaf5;
+            padding: 14px 18px;
+            border-radius: 0 6px 6px 0;
+            margin: 8px 0 28px;
+            border-top: 1px solid #fef3c7;
+            border-right: 1px solid #fef3c7;
+            border-bottom: 1px solid #fef3c7;
+        }
+        .ai-lead-box p {
+            margin: 0;
+            font-size: 12.5px;
+            line-height: 1.6;
+            color: #334155;
+        }
+
+        /* SECTION HEADINGS */
+        .ai-section {
+            margin-top: 28px;
+            padding-top: 6px;
+        }
+        .ai-sec-title {
+            font-size: 17px;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 0 0 6px 0;
+            letter-spacing: -0.2px;
+        }
+        .ai-sec-subtext {
+            font-size: 12px;
+            color: #475569;
+            margin: 0 0 16px 0;
+            line-height: 1.5;
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+        }
+        .ai-bullet-orange {
+            color: #f97316;
+            font-size: 14px;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        /* SECTION 1: 4 PILLARS */
+        .sec1-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+        .sec1-card {
+            border-radius: 8px;
+            padding: 16px 12px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .sec1-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+        }
+        .sec1-card.c-blue { background: #f0f7ff; border: 1px solid #e0f2fe; }
+        .sec1-card.c-orange { background: #fff7ed; border: 1px solid #ffedd5; }
+        .sec1-card.c-green { background: #f0fdf4; border: 1px solid #dcfce7; }
+        .sec1-card.c-purple { background: #faf5ff; border: 1px solid #f3e8ff; }
+
+        .sec1-icon {
+            margin-bottom: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .c-blue .sec1-icon { color: #0284c7; }
+        .c-orange .sec1-icon { color: #ea580c; }
+        .c-green .sec1-icon { color: #16a34a; }
+        .c-purple .sec1-icon { color: #9333ea; }
+
+        .sec1-title {
+            font-size: 13.5px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .c-blue .sec1-title { color: #0284c7; }
+        .c-orange .sec1-title { color: #ea580c; }
+        .c-green .sec1-title { color: #16a34a; }
+        .c-purple .sec1-title { color: #9333ea; }
+
+        .sec1-desc {
+            font-size: 11px;
+            color: #475569;
+            line-height: 1.45;
+            margin: 0;
+        }
+
+        /* SECTION 2: 6 APPS GRID */
+        .sec2-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+        .sec2-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.2s ease;
+        }
+        .sec2-card:hover {
+            border-color: #cbd5e1;
+            box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+        }
+        .sec2-thumb {
+            width: 100%;
+            height: 115px;
+            object-fit: cover;
+            display: block;
+            background: #0f172a;
+        }
+        .sec2-body {
+            padding: 10px 12px 14px;
+        }
+        .sec2-title {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 0 0 4px 0;
+            line-height: 1.35;
+        }
+        .sec2-desc {
+            font-size: 11px;
+            color: #64748b;
+            line-height: 1.45;
+            margin: 0;
+        }
+
+        /* SECTION 3: 4 BARRIERS */
+        .sec3-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+        .sec3-card {
+            border-radius: 8px;
+            padding: 16px 12px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .sec3-card.b-green { background: #f0fdf4; border: 1px solid #dcfce7; }
+        .sec3-card.b-blue { background: #f0f7ff; border: 1px solid #e0f2fe; }
+        .sec3-card.b-orange { background: #fff7ed; border: 1px solid #ffedd5; }
+        .sec3-card.b-coral { background: #fff1f2; border: 1px solid #ffe4e6; }
+
+        .sec3-icon {
+            margin-bottom: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .b-green .sec3-icon { color: #16a34a; }
+        .b-blue .sec3-icon { color: #0284c7; }
+        .b-orange .sec3-icon { color: #ea580c; }
+        .b-coral .sec3-icon { color: #e11d48; }
+
+        .sec3-title {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 0 0 6px 0;
+            line-height: 1.35;
+        }
+        .sec3-desc {
+            font-size: 11px;
+            color: #64748b;
+            line-height: 1.45;
+            margin: 0;
+        }
+
+        /* SECTION 4: 5 STEPS STEPPER */
+        .sec4-stepper {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr auto 1fr;
+            align-items: center;
+            gap: 6px;
+            background: #ffffff;
+            padding: 10px 0;
+        }
+        .sec4-step {
+            text-align: center;
+            padding: 4px;
+        }
+        .sec4-circle {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #f97316;
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 12.5px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+        }
+        .sec4-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 0 0 4px 0;
+        }
+        .sec4-desc {
+            font-size: 10.5px;
+            color: #64748b;
+            line-height: 1.4;
+            margin: 0;
+        }
+        .sec4-plus {
+            color: #94a3b8;
+            font-size: 15px;
+            font-weight: 600;
+            text-align: center;
+            user-select: none;
+        }
+
+        /* SECTION 5: 90 DAYS PROCESS FLOW */
+        .sec5-timeline-container {
+            margin-top: 10px;
+        }
+        .sec5-flow-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin-bottom: 6px;
+        }
+        .sec5-col {
+            text-align: center;
+        }
+        .sec5-time {
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+        .sec5-time.t1 { color: #0284c7; }
+        .sec5-time.t2 { color: #ea580c; }
+        .sec5-time.t3 { color: #ea580c; }
+        .sec5-time.t4 { color: #e11d48; }
+        .sec5-time.t5 { color: #0f172a; }
+        
+        .sec5-name {
+            font-size: 11.5px;
+            color: #334155;
+            font-weight: 600;
+        }
+
+        /* Connected Arrow Underline Bar */
+        .sec5-arrow-bar {
+            position: relative;
+            height: 10px;
+            display: flex;
+            align-items: center;
+            margin-top: 8px;
+        }
+        .sec5-bar-seg {
+            height: 3px;
+            flex: 1;
+        }
+        .sec5-bar-seg.s1 { background: #0284c7; }
+        .sec5-bar-seg.s2 { background: #ea580c; }
+        .sec5-bar-seg.s3 { background: #ea580c; }
+        .sec5-bar-seg.s4 { background: #e11d48; }
+        .sec5-bar-seg.s5 { background: #0f172a; }
+        .sec5-arrow-tip {
+            width: 0;
+            height: 0;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            border-left: 7px solid #0f172a;
+            margin-left: -2px;
+        }
+
+        /* SECTION 6: EVALUATION TABLE + FORMULA */
+        .sec6-grid {
+            display: grid;
+            grid-template-columns: 1.35fr 1fr;
+            gap: 16px;
+            align-items: stretch;
+        }
+        .sec6-table-wrap {
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .sec6-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11.5px;
+            text-align: left;
+        }
+        .sec6-table th {
+            background: #f8fafc;
+            color: #0f172a;
+            font-weight: 700;
+            padding: 8px 12px;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 11.5px;
+        }
+        .sec6-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #f1f5f9;
+            color: #334155;
+            line-height: 1.4;
+        }
+        .sec6-table tr:last-child td {
+            border-bottom: none;
+        }
+        .sec6-table tr:hover td {
+            background: #fafcff;
+        }
+
+        .sec6-formula-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 22px 18px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .sec6-formula-title {
+            font-size: 15px;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 8px 0 6px 0;
+        }
+        .sec6-formula-sub1 {
+            font-size: 12px;
+            color: #475569;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+        .sec6-formula-sub2 {
+            font-size: 11.5px;
+            color: #64748b;
+        }
+
+        /* SECTION 7: 4 LAYERS FLOW */
+        .sec7-flow {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+            align-items: center;
+            gap: 8px;
+        }
+        .sec7-card {
+            border-radius: 8px;
+            padding: 14px 10px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .sec7-card.l-green { background: #f0fdf4; border: 1px solid #dcfce7; }
+        .sec7-card.l-blue { background: #f0f7ff; border: 1px solid #e0f2fe; }
+        .sec7-card.l-purple { background: #faf5ff; border: 1px solid #f3e8ff; }
+        .sec7-card.l-navy { background: #f1f5f9; border: 1px solid #e2e8f0; }
+
+        .sec7-icon-circle {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 6px;
+        }
+        .l-green .sec7-icon-circle { background: #dcfce7; color: #16a34a; }
+        .l-blue .sec7-icon-circle { background: #e0f2fe; color: #0284c7; }
+        .l-purple .sec7-icon-circle { background: #f3e8ff; color: #9333ea; }
+        .l-navy .sec7-icon-circle { background: #e2e8f0; color: #0f172a; }
+
+        .sec7-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 0 0 4px 0;
+        }
+        .sec7-desc {
+            font-size: 10.5px;
+            color: #64748b;
+            line-height: 1.4;
+            margin: 0;
+        }
+        .sec7-arrow {
+            color: #0284c7;
+            font-size: 15px;
+            user-select: none;
+            text-align: center;
+        }
+
+        /* CONCLUSION BLOCK */
+        .sec-conclusion {
+            background: #fffaf5;
+            border: 1.5px solid #fed7aa;
+            border-radius: 8px;
+            padding: 18px 22px;
+            display: grid;
+            grid-template-columns: 1fr 54px;
+            gap: 16px;
+            align-items: center;
+            margin: 28px 0 0;
+        }
+        .sec-conclusion-title {
+            font-size: 14.5px;
+            font-weight: 800;
+            color: #ea580c;
+            margin: 0 0 6px 0;
+        }
+        .sec-conclusion-text {
+            font-size: 12px;
+            color: #475569;
+            line-height: 1.55;
+            margin: 0;
+        }
+
+        /* CTA BOX */
+        .sec-cta {
+            background: #f0f7ff;
+            border: 1px solid #dbeafe;
+            border-radius: 8px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            margin-bottom: 28px;
+        }
+        .sec-cta-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .sec-cta-title {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 0 0 4px 0;
+        }
+        .sec-cta-desc {
+            font-size: 11.5px;
+            color: #64748b;
+            line-height: 1.45;
+            margin: 0;
+        }
+        .btn-cta-orange {
+            background: #f97316;
+            color: #ffffff;
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: background 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .btn-cta-orange:hover {
+            background: #ea580c;
+        }
+
+        /* RELATED ARTICLES SECTION */
+        .related-section {
+            border-top: 1px dashed #cbd5e1;
+            padding-top: 24px;
+            margin-top: 24px;
+        }
+        .related-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 0 0 14px 0;
+        }
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+        .rel-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.2s ease;
+        }
+        .rel-card:hover {
+            border-color: #cbd5e1;
+            box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+        }
+        .rel-thumb {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            display: block;
+            background: #0f172a;
+        }
+        .rel-body {
+            padding: 10px 12px 12px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .rel-tag {
+            font-size: 9.5px;
+            font-weight: 800;
+            color: #ea580c;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            margin-bottom: 5px;
+        }
+        .rel-card-title {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: #0f172a;
+            line-height: 1.35;
+            margin: 0 0 10px 0;
+        }
+        .rel-footer {
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 11px;
+            color: #94a3b8;
+        }
+        .rel-footer-meta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .rel-arrow {
+            color: #f97316;
+            font-weight: 800;
+            font-size: 13px;
+        }
+
+        /* RESPONSIVE BREAKPOINTS */
+        @media (max-width: 900px) {
+            .ai-document-card {
+                padding: 24px 20px;
+                margin-bottom: 30px;
+            }
+            .ai-header-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+            .sec1-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .sec2-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .sec3-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .sec4-stepper {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            .sec4-plus {
+                display: none;
+            }
+            .sec5-flow-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .sec6-grid {
+                grid-template-columns: 1fr;
+            }
+            .sec7-flow {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            .sec7-arrow {
+                display: none;
+            }
+            .sec-cta {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .poster-top-bar {
+                padding: 80px 16px 12px;
+            }
+            .ai-main-title {
+                font-size: 21px;
+            }
+            .sec1-grid, .sec2-grid, .sec3-grid, .sec5-flow-grid {
+                grid-template-columns: 1fr;
+            }
+            .sec-conclusion {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* PRINT STYLES */
+        @media print {
+            body { background: #ffffff !important; }
+            .navbar, .poster-top-bar, footer, #contactModal { display: none !important; }
+            .ai-document-card {
+                box-shadow: none !important;
+                border: none !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                max-width: 100% !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="logo">INVA<span>MAX</span></a>
+            <div class="nav-links">
+                <div class="nav-item"><a href="/" class="nav-title">Home</a></div>
+                <div class="nav-item">    
+                    <a href="#" class="nav-title">Solutions <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i></a>
+                    <div class="nav-dropdown">
+                        <a href="factory-transformation.html">Factory Transformation &amp; Operational Upgrade</a>
+                        <a href="operate-transform.html">Factory Operations Management</a>
+                        <a href="factory-assessment.html">Digital Factory Operations Platform</a>
+                    </div>
+                </div>
+                <div class="nav-item"><a href="capabilities.html" class="nav-title">Capabilities</a></div>
+                <div class="nav-item"><a href="news.html" class="nav-title">Events</a></div>
+                <div class="nav-item"><a href="case-studies.html" class="nav-title">Case Studies</a></div>
+                <div class="nav-item"><a href="resources.html" class="nav-title active">Insights</a></div>
+                <div class="nav-item"><a href="about.html" class="nav-title">Philosophy</a></div>
+                
+                <div class="lang-switcher">
+                    <a href="/vi/article-ung-dung-ai.html" onclick="switchLanguage('vi');" style="display: flex; align-items: center; gap: 4px; opacity: 0.75;">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" width="16" height="11" style="border-radius: 2px;" alt="VN">Tiếng Việt
+                    </a>
+                    <span style="color: rgba(255,255,255,0.25);">/</span>
+                    <a href="/en/article-ung-dung-ai.html" onclick="switchLanguage('en');" class="active" style="display: flex; align-items: center; gap: 4px;">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" width="16" height="11" style="border-radius: 2px;" alt="EN">English
+                    </a>
+                </div>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Open menu"><i data-lucide="menu"></i></button>
+        </div>
+    </nav>
+
+    <!-- Top Action Toolbar with Breadcrumbs -->
+    <div class="poster-top-bar">
+        <div class="ai-breadcrumb">
+            <a href="/en/"><i data-lucide="home" style="width: 13px; height: 13px;"></i></a>
+            <span class="sep">/</span>
+            <a href="resources.html">Insights</a>
+            <span class="sep">/</span>
+            <a href="resources.html#articles">Digital &amp; AI</a>
+            <span class="sep">/</span>
+            <span class="current">AI in Manufacturing: Opportunities &amp; Implementation Roadmap</span>
+        </div>
+        <div class="poster-action-group">
+            <button type="button" onclick="window.print()" class="poster-action-btn" title="Print this document">
+                <i data-lucide="printer" style="width: 13px; height: 13px;"></i> Print Document
+            </button>
+            <a href="resources.html" class="poster-action-btn" title="Back to insights hub">
+                <i data-lucide="arrow-left" style="width: 13px; height: 13px;"></i> All Articles
+            </a>
+        </div>
+    </div>
+
+    <!-- MAIN AI DOCUMENT CARD -->
+    <main class="ai-document-card" id="aiPosterDocument">
+
+        <!-- HEADER: Title on left, Factory & AI screen on right -->
+        <header class="ai-header-grid">
+            <div class="ai-header-left">
+                <span class="ai-tag-badge">DIGITAL &amp; AI</span>
+                <h1 class="ai-main-title">AI in Manufacturing:<br>Opportunities &amp; Roadmap</h1>
+                <p class="ai-main-subtitle">
+                    Practical applications of AI on the shop floor and an actionable roadmap for manufacturing enterprises.
+                </p>
+                <div class="ai-meta-row">
+                    <span class="ai-meta-item"><i data-lucide="calendar" style="width: 13px; height: 13px;"></i> October 8, 2026</span>
+                    <span class="ai-meta-item"><i data-lucide="eye" style="width: 13px; height: 13px;"></i> 1.6K views</span>
+                    <span class="ai-meta-item"><i data-lucide="clock" style="width: 13px; height: 13px;"></i> 14 min read</span>
+                </div>
+            </div>
+            <div class="ai-header-right">
+                <div class="ai-hero-img-wrap">
+                    <img src="../assets/images/resources/ai-hero-conveyor.jpg?v=3" alt="AI in Manufacturing: Opportunities and Implementation Roadmap" class="ai-hero-img" loading="eager">
+                </div>
+            </div>
+        </header>
+
+        <!-- INTRO LEAD BOX -->
+        <div class="ai-lead-box">
+            <p>Artificial Intelligence (AI) is unlocking powerful frontiers in plant management, shop-floor execution, and continuous improvement. This guide helps manufacturing leaders identify high-ROI use cases, practical prerequisites, and an actionable implementation roadmap aligned with industrial operations.</p>
+        </div>
+
+        <!-- SECTION 1: WHAT VALUE CAN AI CREATE? -->
+        <section class="ai-section">
+            <h2 class="ai-sec-title">1. What Value Can AI Create for Manufacturing Plants?</h2>
+            <p class="ai-sec-subtext">
+                <span class="ai-bullet-orange">▪</span>
+                <span>In an industrial environment, AI empowers manufacturing operations across four core capabilities: Detection, Prediction, Recommendation, and Knowledge Automation.</span>
+            </p>
+
+            <div class="sec1-grid">
+                <!-- 1. Detection -->
+                <div class="sec1-card c-blue">
+                    <div class="sec1-icon"><i data-lucide="scan-search" style="width: 26px; height: 26px;"></i></div>
+                    <div class="sec1-title">Detection</div>
+                    <p class="sec1-desc">Detect surface anomalies, dimension errors, and process deviations from visual inspection and machine sensor streams.</p>
+                </div>
+
+                <!-- 2. Prediction -->
+                <div class="sec1-card c-orange">
+                    <div class="sec1-icon"><i data-lucide="trending-up" style="width: 26px; height: 26px;"></i></div>
+                    <div class="sec1-title">Prediction</div>
+                    <p class="sec1-desc">Forecast machine breakdown risks, material consumption, yield variations, and schedule delays before they occur.</p>
+                </div>
+
+                <!-- 3. Recommendation -->
+                <div class="sec1-card c-green">
+                    <div class="sec1-icon"><i data-lucide="lightbulb" style="width: 26px; height: 26px;"></i></div>
+                    <div class="sec1-title">Recommendation</div>
+                    <p class="sec1-desc">Recommend optimal production sequencing, preventative maintenance slots, and dynamic resource allocation.</p>
+                </div>
+
+                <!-- 4. Knowledge Automation -->
+                <div class="sec1-card c-purple">
+                    <div class="sec1-icon"><i data-lucide="sparkles" style="width: 26px; height: 26px;"></i></div>
+                    <div class="sec1-title">Knowledge Automation</div>
+                    <p class="sec1-desc">Automate shift reporting, technical SOP queries, root-cause summaries, and frontline work instructions.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: SIX HIGH-IMPACT AI APPLICATIONS -->
+        <section class="ai-section">
+            <h2 class="ai-sec-title">2. Six High-Impact AI Applications in Manufacturing</h2>
+            <p class="ai-sec-subtext">
+                <span class="ai-bullet-orange">▪</span>
+                <span>AI can be deployed across various shop-floor domains. Below are six proven applications delivering measurable business impact.</span>
+            </p>
+
+            <div class="sec2-grid">
+                <!-- 2.1 AI Vision -->
+                <div class="sec2-card">
+                    <img src="../assets/images/resources/ai-app-1.jpg?v=3" alt="2.1 Automated Quality Inspection (AI Vision)" class="sec2-thumb" loading="lazy">
+                    <div class="sec2-body">
+                        <h3 class="sec2-title">2.1 Quality Inspection (AI Vision)</h3>
+                        <p class="sec2-desc">Detect cosmetic defects, missing components, and assembly misalignments with high-speed automated computer vision.</p>
+                    </div>
+                </div>
+
+                <!-- 2.2 Predictive Maintenance -->
+                <div class="sec2-card">
+                    <img src="../assets/images/resources/ai-app-2.jpg?v=3" alt="2.2 Predictive Maintenance (PdM)" class="sec2-thumb" loading="lazy">
+                    <div class="sec2-body">
+                        <h3 class="sec2-title">2.2 Predictive Maintenance (PdM)</h3>
+                        <p class="sec2-desc">Analyze vibration, thermal, and current sensor telemetry to forecast mechanical failures and prevent unplanned downtime.</p>
+                    </div>
+                </div>
+
+                <!-- 2.3 Scheduling -->
+                <div class="sec2-card">
+                    <img src="../assets/images/resources/ai-app-3.jpg?v=3" alt="2.3 AI Production Planning & Dispatching" class="sec2-thumb" loading="lazy">
+                    <div class="sec2-body">
+                        <h3 class="sec2-title">2.3 Production Planning &amp; Scheduling</h3>
+                        <p class="sec2-desc">Forecast demand, optimize master schedules, balance machine capacities, and minimize delivery lead times.</p>
+                    </div>
+                </div>
+
+                <!-- 2.4 Data Analysis -->
+                <div class="sec2-card">
+                    <img src="../assets/images/resources/ai-app-4.jpg?v=3" alt="2.4 Operational Analytics & Decision Support" class="sec2-thumb" loading="lazy">
+                    <div class="sec2-body">
+                        <h3 class="sec2-title">2.4 Analytics &amp; Decision Support</h3>
+                        <p class="sec2-desc">Uncover productivity bottlenecks, synthesize multi-plant executive reports, and flag real-time process deviations.</p>
+                    </div>
+                </div>
+
+                <!-- 2.5 Knowledge Management -->
+                <div class="sec2-card">
+                    <img src="../assets/images/resources/art-ai-production.jpg?v=3" alt="2.5 Knowledge Management & Workforce Training" class="sec2-thumb" loading="lazy">
+                    <div class="sec2-body">
+                        <h3 class="sec2-title">2.5 Knowledge Base &amp; Workforce Training</h3>
+                        <p class="sec2-desc">Instant SOP retrieval, multilingual troubleshooting assistants, and automated onboarding materials for technical operators.</p>
+                    </div>
+                </div>
+
+                <!-- 2.6 Energy & Cost -->
+                <div class="sec2-card">
+                    <img src="../assets/images/resources/ai-app-6.jpg?v=3" alt="2.6 Energy & Utility Cost Optimization" class="sec2-thumb" loading="lazy">
+                    <div class="sec2-body">
+                        <h3 class="sec2-title">2.6 Energy &amp; Utility Cost Optimization</h3>
+                        <p class="sec2-desc">Monitor energy load profiles, detect baseline anomalies, and recommend load-shifting strategies to slash utility spend.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: WHY MANY FACTORIES ARE NOT READY -->
+        <section class="ai-section">
+            <h2 class="ai-sec-title">3. Why Many Factories Are Not Yet Ready for AI</h2>
+            <p class="ai-sec-subtext">
+                <span class="ai-bullet-orange">▪</span>
+                <span>The most common barriers stem from fragmented data, unstructured processes, vague goals, and organizational capability gaps.</span>
+            </p>
+
+            <div class="sec3-grid">
+                <!-- 1. Unstandardized Processes -->
+                <div class="sec3-card b-green">
+                    <div class="sec3-icon"><i data-lucide="settings" style="width: 24px; height: 24px;"></i></div>
+                    <div class="sec3-title">Unstandardized Processes</div>
+                    <p class="sec3-desc">Identical tasks executed differently across shifts, creating noisy inputs that derail machine learning models.</p>
+                </div>
+
+                <!-- 2. Missing Data -->
+                <div class="sec3-card b-blue">
+                    <div class="sec3-icon"><i data-lucide="database" style="width: 24px; height: 24px;"></i></div>
+                    <div class="sec3-title">Incomplete or Unreliable Data</div>
+                    <p class="sec3-desc">Shop-floor records logged manually on paper with gaps, latency, and conflicting historical entries.</p>
+                </div>
+
+                <!-- 3. Lack of Clear Objectives -->
+                <div class="sec3-card b-orange">
+                    <div class="sec3-icon"><i data-lucide="target" style="width: 24px; height: 24px;"></i></div>
+                    <div class="sec3-title">Lack of Defined Business Goals</div>
+                    <p class="sec3-desc">Adopting AI purely as a technology showcase without tying it to measurable scrap, OEE, or margin improvements.</p>
+                </div>
+
+                <!-- 4. Ownership Gap -->
+                <div class="sec3-card b-coral">
+                    <div class="sec3-icon"><i data-lucide="users" style="width: 24px; height: 24px;"></i></div>
+                    <div class="sec3-title">Ownership &amp; Skill Gaps</div>
+                    <p class="sec3-desc">No cross-functional champion connecting domain manufacturing expertise with data science solutions.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: 5-STEP IMPLEMENTATION ROADMAP -->
+        <section class="ai-section">
+            <h2 class="ai-sec-title">4. 5-Step AI Implementation Roadmap for Factories</h2>
+            <p class="ai-sec-subtext">
+                <span class="ai-bullet-orange">▪</span>
+                <span>For small and medium enterprises, start small with measurable ROI, validate rigorously, and scale systematically.</span>
+            </p>
+
+            <div class="sec4-stepper">
+                <!-- Step 1 -->
+                <div class="sec4-step">
+                    <div class="sec4-circle">1</div>
+                    <div class="sec4-title">Baseline Assessment</div>
+                    <p class="sec4-desc">Pinpoint high-value operational bottlenecks and establish baseline KPIs.</p>
+                </div>
+
+                <div class="sec4-plus">+</div>
+
+                <!-- Step 2 -->
+                <div class="sec4-step">
+                    <div class="sec4-circle">2</div>
+                    <div class="sec4-title">Data Standardization</div>
+                    <p class="sec4-desc">Audit data pipelines, verify sensor accuracy, and select suitable AI architectures.</p>
+                </div>
+
+                <div class="sec4-plus">+</div>
+
+                <!-- Step 3 -->
+                <div class="sec4-step">
+                    <div class="sec4-circle">3</div>
+                    <div class="sec4-title">Pilot Proof of Concept</div>
+                    <p class="sec4-desc">Deploy a focused pilot on a single critical machine or high-scrap station.</p>
+                </div>
+
+                <div class="sec4-plus">+</div>
+
+                <!-- Step 4 -->
+                <div class="sec4-step">
+                    <div class="sec4-circle">4</div>
+                    <div class="sec4-title">Performance Evaluation</div>
+                    <p class="sec4-desc">Compare before vs. after metrics to validate financial and operational ROI.</p>
+                </div>
+
+                <div class="sec4-plus">+</div>
+
+                <!-- Step 5 -->
+                <div class="sec4-step">
+                    <div class="sec4-circle">5</div>
+                    <div class="sec4-title">Standardize &amp; Scale</div>
+                    <p class="sec4-desc">Train frontline operators, embed into daily SOPs, and roll out plant-wide.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: 90-DAY QUICK START ROADMAP -->
+        <section class="ai-section">
+            <h2 class="ai-sec-title">5. 90-Day Quick-Start Roadmap for AI in Manufacturing</h2>
+            <p class="ai-sec-subtext">
+                <span class="ai-bullet-orange">▪</span>
+                <span>A structured 90-day sprint for manufacturers taking their first practical steps into applied AI.</span>
+            </p>
+
+            <div class="sec5-timeline-container">
+                <div class="sec5-flow-grid">
+                    <div class="sec5-col">
+                        <div class="sec5-time t1">Days 1 – 15</div>
+                        <div class="sec5-name">Problem Scoping</div>
+                    </div>
+                    <div class="sec5-col">
+                        <div class="sec5-time t2">Days 16 – 30</div>
+                        <div class="sec5-name">Data Preparation</div>
+                    </div>
+                    <div class="sec5-col">
+                        <div class="sec5-time t3">Days 31 – 60</div>
+                        <div class="sec5-name">Pilot Deployment</div>
+                    </div>
+                    <div class="sec5-col">
+                        <div class="sec5-time t4">Days 61 – 75</div>
+                        <div class="sec5-name">Field Validation</div>
+                    </div>
+                    <div class="sec5-col">
+                        <div class="sec5-time t5">Days 76 – 90</div>
+                        <div class="sec5-name">Scale Decision</div>
+                    </div>
+                </div>
+
+                <!-- Horizontal Process Connector Line -->
+                <div class="sec5-arrow-bar">
+                    <div class="sec5-bar-seg s1"></div>
+                    <div class="sec5-bar-seg s2"></div>
+                    <div class="sec5-bar-seg s3"></div>
+                    <div class="sec5-bar-seg s4"></div>
+                    <div class="sec5-bar-seg s5"></div>
+                    <div class="sec5-arrow-tip"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: MEASURING AI ROI -->
+        <section class="ai-section">
+            <h2 class="ai-sec-title">6. How to Measure AI Return on Investment (ROI)?</h2>
+            <p class="ai-sec-subtext">
+                <span class="ai-bullet-orange">▪</span>
+                <span>AI initiatives must be evaluated on tangible shop-floor impacts and net financial returns.</span>
+            </p>
+
+            <div class="sec6-grid">
+                <!-- KPI Benchmark Table -->
+                <div class="sec6-table-wrap">
+                    <table class="sec6-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 38%;">Use Case</th>
+                                <th style="width: 62%;">Core Evaluation KPIs</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Quality Inspection</strong></td>
+                                <td>Defect detection rate, false positive rate, escape rate</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Predictive Maintenance</strong></td>
+                                <td>Unplanned downtime, MTBF (Mean Time Between Failures), MTTR</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Production Scheduling</strong></td>
+                                <td>On-time in-full (OTIF), manufacturing lead time, WIP inventory</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Operational Analytics</strong></td>
+                                <td>Reporting turnaround speed, anomaly detection lead time</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Knowledge Management</strong></td>
+                                <td>SOP retrieval time, new operator onboarding cycle</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Energy Management</strong></td>
+                                <td>kWh per output unit, peak load demand charges</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Net Impact Formula Card -->
+                <div class="sec6-formula-card">
+                    <div style="color: #f97316; margin-bottom: 4px;">
+                        <i data-lucide="bar-chart-2" style="width: 26px; height: 26px;"></i>
+                    </div>
+                    <div class="sec6-formula-title">Net Impact =</div>
+                    <div class="sec6-formula-sub1">Verified Financial Gains</div>
+                    <div class="sec6-formula-sub2">&minus; Total Implementation &amp; Operating Costs</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 7: AI DOES NOT REPLACE MANAGEMENT FOUNDATIONS -->
+        <section class="ai-section">
+            <h2 class="ai-sec-title">7. AI Does Not Replace Core Management Foundations</h2>
+            <p class="ai-sec-subtext">
+                <span class="ai-bullet-orange">▪</span>
+                <span>AI delivers peak value only when built upon a disciplined operational foundation and trustworthy data.</span>
+            </p>
+
+            <div class="sec7-flow">
+                <!-- Layer 1 -->
+                <div class="sec7-card l-green">
+                    <div class="sec7-icon-circle"><i data-lucide="clipboard-check" style="width: 17px; height: 17px;"></i></div>
+                    <div class="sec7-title">Operational Standardization</div>
+                    <p class="sec7-desc">Establish stable SOPs, visual standards, and clear accountability.</p>
+                </div>
+
+                <div class="sec7-arrow">➔</div>
+
+                <!-- Layer 2 -->
+                <div class="sec7-card l-blue">
+                    <div class="sec7-icon-circle"><i data-lucide="database" style="width: 17px; height: 17px;"></i></div>
+                    <div class="sec7-title">Data Digitization</div>
+                    <p class="sec7-desc">Capture shop-floor data digitally with connected, searchable systems.</p>
+                </div>
+
+                <div class="sec7-arrow">➔</div>
+
+                <!-- Layer 3 -->
+                <div class="sec7-card l-purple">
+                    <div class="sec7-icon-circle"><i data-lucide="line-chart" style="width: 17px; height: 17px;"></i></div>
+                    <div class="sec7-title">Analytics &amp; Optimization</div>
+                    <p class="sec7-desc">Leverage descriptive analytics to isolate bottlenecks and stabilize flow.</p>
+                </div>
+
+                <div class="sec7-arrow">➔</div>
+
+                <!-- Layer 4 -->
+                <div class="sec7-card l-navy">
+                    <div class="sec7-icon-circle"><i data-lucide="cpu" style="width: 17px; height: 17px;"></i></div>
+                    <div class="sec7-title">Applied AI Integration</div>
+                    <p class="sec7-desc">Deploy AI where targeted detection, prediction, and recommendations generate maximum ROI.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONCLUSION -->
+        <div class="sec-conclusion">
+            <div>
+                <h3 class="sec-conclusion-title">Conclusion: Start from the Operational Problem, Not the Technology</h3>
+                <p class="sec-conclusion-text">
+                    Artificial intelligence presents immense opportunities for modern manufacturing. However, successful AI adoption does not begin with selecting a shiny algorithm or software suite. It begins by diagnosing the root operational constraint, quantifying the business value, standardizing data foundations, and deploying solutions with measurable, sustainable ROI.
+                </p>
+            </div>
+            <div style="text-align: right; display: flex; align-items: center; justify-content: flex-end;">
+                <i data-lucide="lightbulb" style="width: 44px; height: 44px; color: #f97316; stroke-width: 1.75;"></i>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <img src="../assets/images/home/logo-invamax-original.png" alt="INVAMAX">
+                <p>Factory Operations &amp; Growth Partner</p>
+                <h5 style="color: white; margin-bottom: 14px; margin-top: 26px; font-size: 0.95rem; font-weight: 600;">Connect With Us</h5>
+                <div class="social-links" style="display: flex; gap: 8px; align-items: center;">
+                    <a href="https://www.linkedin.com/in/xuannhattran/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-linkedin" style="color: white; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; border: 1px solid #0A66C2; background: #0A66C2; padding: 0; margin: 0; line-height: 1; transition: all 0.3s;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block; margin: auto;"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    </a>
+                    <a href="https://www.youtube.com/@NguoiXayNen" target="_blank" rel="noopener" aria-label="YouTube" class="social-youtube" style="color: white; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; border: 1px solid #FF0000; background: #FF0000; padding: 0; margin: 0; line-height: 1; transition: all 0.3s;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block; margin: auto;"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                    </a>
+                    <a href="https://www.facebook.com/invamax.vanhanhtinhgon" target="_blank" rel="noopener" aria-label="Facebook" class="social-facebook" style="color: white; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; border: 1px solid #1877F2; background: #1877F2; padding: 0; margin: 0; line-height: 1; transition: all 0.3s;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block; margin: auto;"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                    </a>
+                    <a href="https://zalo.me/0988911869" target="_blank" rel="noopener" aria-label="Zalo" class="social-zalo" style="color: white; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; border: 1px solid #0068FF; background: #0068FF; padding: 0; margin: 0; line-height: 1; transition: all 0.3s;">
+                        <span style="font-size: 11px; font-weight: 800; font-family: 'Inter', sans-serif; line-height: 1; display: inline-flex; align-items: center; justify-content: center; margin: auto;">Zalo</span>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h4>Solutions</h4>
+                <a href="factory-transformation.html">Factory Transformation &amp; Operational Upgrade</a>
+                <a href="operate-transform.html">Factory Operations Management</a>
+                <a href="factory-assessment.html">Digital Factory Operations Platform</a>
+            </div>
+            <div>
+                <h4>About Us</h4>
+                <a href="capabilities.html">Capabilities</a>
+                <a href="news.html">Events</a>
+                <a href="case-studies.html">Case Studies</a>
+                <a href="resources.html">Insights</a>
+                <a href="about.html">Philosophy</a>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <p class="footer-company-name">INVAMAX INVESTMENT AND DEVELOPMENT CO., LTD</p>
+                <div class="contact-info" style="display: flex; flex-direction: column; gap: 8px;">
+                    <div class="contact-item" style="display: flex; align-items: flex-start; gap: 8px;">
+                        <i data-lucide="map-pin" style="width: 16px; height: 16px; color: #f97316; flex-shrink: 0; margin-top: 3px;"></i>
+                        <span>Office: 3rd Floor, Dolphin Plaza, 28 Tran Binh, My Dinh 2, Nam Tu Liem, Hanoi, Vietnam</span>
+                    </div>
+                    <div class="contact-item" style="display: flex; align-items: center; gap: 8px;">
+                        <i data-lucide="phone" style="width: 16px; height: 16px; color: #f97316; flex-shrink: 0;"></i>
+                        <a href="tel:0988911869" style="color: inherit; text-decoration: none;">0988 911 869</a>
+                    </div>
+                    <div class="contact-item" style="display: flex; align-items: center; gap: 8px;">
+                        <i data-lucide="mail" style="width: 16px; height: 16px; color: #f97316; flex-shrink: 0;"></i>
+                        <a href="mailto:contact@invamax.com" style="color: inherit; text-decoration: none;">contact@invamax.com</a>
+                    </div>
+                    <div class="contact-item" style="display: flex; align-items: center; gap: 8px;">
+                        <i data-lucide="globe" style="width: 16px; height: 16px; color: #f97316; flex-shrink: 0;"></i>
+                        <span>invamax.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                <p>&copy; 2026 INVAMAX. All rights reserved.</p>
+                <p>Solid Foundation &mdash; Effortless Operations</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeContactModal()">&times;</button>
+            <div class="modal-header">
+                <h3>Request Digital &amp; AI Consultation</h3>
+                <p>Get a readiness assessment and practical AI adoption roadmap from INVAMAX industrial experts.</p>
+            </div>
+            
+            <form id="contactForm" onsubmit="handleFormSubmit(event)">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Full Name *</label>
+                        <input type="text" name="hoTen" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label>Job Title *</label>
+                        <input type="text" name="chucDanh" required placeholder="Plant Manager / Operations Director">
+                    </div>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Phone Number *</label>
+                        <input type="tel" name="soDienThoai" required placeholder="+84 988...">
+                    </div>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" name="email" required placeholder="email@company.com">
+                    </div>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Factory / Company Name *</label>
+                        <input type="text" name="tenNhaMay" required placeholder="XYZ Manufacturing Co., Ltd.">
+                    </div>
+                    <div class="form-group">
+                        <label>Factory Address *</label>
+                        <input type="text" name="diaChi" required placeholder="Industrial Park, Province...">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Consultation Request *</label>
+                    <textarea name="noiDung" rows="3" required placeholder="Describe the operational challenge you want to address (vision inspection, predictive maintenance, scheduling, or data readiness)..."></textarea>
+                </div>
+                
+                <button type="submit" id="btnSubmitForm" class="btn btn-orange">
+                    Submit Consultation Request &rarr;
+                </button>
+            </form>
+            
+            <div id="formSuccess" style="display: none; text-align: center; padding: 24px 0;">
+                <div style="color: #22c55e; font-size: 2.8rem; margin-bottom: 10px;">&#10004;</div>
+                <h3 style="color: #16a34a; font-size: 1.25rem; margin: 0;">Submission Successful!</h3>
+                <p style="color: #475569; margin-top: 8px; font-size: 0.92rem;">Thank you. An INVAMAX expert will reach out to you shortly to discuss solutions.</p>
+                <button type="button" class="btn btn-outline" style="margin-top: 16px; color: #17251e; border-color: #cbd5e1;" onclick="closeContactModal()">Close Window</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/main.js?v=6"></script>
+    <script>
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+            lucide.createIcons({ attrs: { "stroke-width": 2 } });
+        }
+
+        function openContactModal() {
+            const modal = document.getElementById('contactModal');
+            if (modal) {
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeContactModal() {
+            const modal = document.getElementById('contactModal');
+            if (modal) {
+                modal.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const form = document.getElementById('contactForm');
+            const success = document.getElementById('formSuccess');
+            if (form && success) {
+                form.style.display = 'none';
+                success.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
