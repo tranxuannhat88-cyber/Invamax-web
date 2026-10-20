@@ -969,12 +969,11 @@ var INVAMAX_TOOLKIT_STORE = (function () {
 
     function renderVideoCardHTML(vid) {
         const thumb = resolveAssetUrl(vid.thumbnail || 'assets/images/resources/vid-intro.jpg');
-        const vUrl = vid.videoUrl || 'https://www.youtube.com/@NguoiXayNen';
         return `
-            <a href="${vUrl}" target="_blank" rel="noopener" class="vid-card-light" data-id="${escapeHTML(vid.id)}">
+            <div class="vid-card-light" data-id="${escapeHTML(vid.id)}" style="cursor: default;">
                 <div class="vid-thumb-wrap">
                     <img src="${thumb}" alt="${escapeHTML(vid.title)}" loading="lazy">
-                    <div class="vid-play-btn-circle"><i data-lucide="play"></i></div>
+                    <div class="vid-play-btn-circle" style="pointer-events: none;"><i data-lucide="play"></i></div>
                     ${vid.duration ? `<span class="vid-duration-pill">${escapeHTML(vid.duration)}</span>` : ''}
                 </div>
                 <div class="vid-body-light">
@@ -984,7 +983,7 @@ var INVAMAX_TOOLKIT_STORE = (function () {
                         <span class="vid-meta-item"><i data-lucide="clock" style="width: 12px; height: 12px;"></i> ${escapeHTML(vid.timeAgo || '')}</span>
                     </div>
                 </div>
-            </a>
+            </div>
         `;
     }
 

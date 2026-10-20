@@ -1108,6 +1108,7 @@ svg.res-feat-icon {
     text-decoration: none;
     transition: all 0.3s ease;
     box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+    cursor: default;
 }
 .vid-card-light:hover {
     border-color: #cbd5e1;
