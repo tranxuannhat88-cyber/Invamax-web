@@ -21,7 +21,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="../assets/css/main.css">
+        <!-- Global CSS -->
+    <link rel="icon" type="image/jpeg" href="../assets/images/favicon.jpg">
+    <link rel="stylesheet" href="../assets/css/style.css?v=18">
+    <link rel="stylesheet" href="../assets/css/navbar.css?v=13">
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
@@ -59,7 +62,7 @@
         /* Reading Progress */
         .reading-progress-bar {
             position: fixed;
-            top: 0;
+            top: 52px;
             left: 0;
             height: 3px;
             background: linear-gradient(90deg, #ff6600, #ff8533);
@@ -72,7 +75,7 @@
         .hero-banner-section {
             background: linear-gradient(135deg, #070d1e 0%, #0d1733 100%);
             color: #ffffff;
-            padding: 36px 0 44px;
+            padding: 92px 0 44px;
             position: relative;
             overflow: hidden;
             border-bottom: 1px solid rgba(255,255,255,0.06);
@@ -904,9 +907,7 @@
             }
         }
         @media (max-width: 640px) {
-            .nav-menu, .nav-search {
-                display: none;
-            }
+            
             .hero-title {
                 font-size: 26px;
             }
