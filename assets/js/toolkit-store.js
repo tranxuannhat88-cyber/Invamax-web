@@ -105,10 +105,10 @@ var INVAMAX_TOOLKIT_STORE = (function () {
             title: '10 cơ hội giảm chi phí sản xuất nhanh chóng',
             category: 'Cost Down',
             excerpt: 'Những giải pháp cost down có thể triển khai trong 3–6 tháng, dựa trên các dự án thực tế.',
-            thumbnail: 'assets/images/resources/art-cost-10opp.jpg',
+            thumbnail: 'assets/images/resources/art-cost-10opp.jpg?v=2',
             dateDisplay: '5 thg 10, 2026',
             views: '2.1K lượt xem',
-            link: 'vi/articles.html',
+            link: 'vi/article-10-co-hoi-giam-chi-phi.html',
             status: 'published',
             createdAt: '2026-10-05'
         }
