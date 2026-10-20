@@ -84,7 +84,7 @@ var INVAMAX_TOOLKIT_STORE = (function () {
             thumbnail: 'assets/images/resources/art-oee.jpg',
             dateDisplay: '10 thg 10, 2026',
             views: '1.8K lượt xem',
-            link: 'vi/articles.html',
+            link: 'vi/article-chi-so-oee.html',
             status: 'published',
             createdAt: '2026-10-10'
         },

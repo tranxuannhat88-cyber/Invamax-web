@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Chỉ số OEE: Cách đo lường và cải thiện hiệu quả thiết bị | INVAMAX</title>
+    <meta name="description" content="Hiểu đúng về OEE, cách tính ba chỉ số thành phần (Availability, Performance, Quality) và 5 bước cải thiện hiệu suất thiết bị trong nhà máy sản xuất từ chuyên gia INVAMAX.">
+    
+    <link rel="canonical" href="https://invamax.com/vi/article-chi-so-oee.html">
+    <link rel="alternate" hreflang="vi" href="https://invamax.com/vi/article-chi-so-oee.html">
+    <link rel="alternate" hreflang="x-default" href="https://invamax.com/vi/article-chi-so-oee.html">
+    
+    <meta property="og:title" content="Chỉ số OEE: Cách đo lường và cải thiện hiệu quả thiết bị | INVAMAX">
+    <meta property="og:description" content="Hiểu đúng về OEE, cách tính ba chỉ số thành phần và phương pháp cải thiện hiệu suất thiết bị trong nhà máy sản xuất.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://invamax.com/vi/article-chi-so-oee.html">
+    <meta property="og:image" content="https://invamax.com/assets/images/resources/art-oee.jpg">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Chỉ số OEE: Cách đo lường và cải thiện hiệu quả thiết bị | INVAMAX">
+    <meta name="twitter:description" content="Hiểu đúng về OEE, cách tính ba chỉ số thành phần và phương pháp cải thiện hiệu suất thiết bị trong nhà máy sản xuất.">
+    <meta name="twitter:image" content="https://invamax.com/assets/images/resources/art-oee.jpg">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Global CSS -->
+    <link rel="icon" type="image/jpeg" href="../assets/images/favicon.jpg">
+    <link rel="stylesheet" href="../assets/css/style.css?v=18">
+    <link rel="stylesheet" href="../assets/css/navbar.css?v=13">
+    
+    <style>
+        body {
+            background-color: #f1f5f9;
+            color: #334155;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Top Action Bar */
+        .poster-top-bar {
+            padding: 100px 20px 16px;
+            max-width: 880px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .poster-back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #64748b;
+            text-decoration: none;
+            font-size: 13.5px;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+        .poster-back-btn:hover {
+            color: #f97316;
+        }
+        .poster-action-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .poster-action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            color: #475569;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12.5px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .poster-action-btn:hover {
+            border-color: #f97316;
+            color: #f97316;
+            background: #fff8f3;
+        }
+
+        /* Main Document Card */
+        .lean-poster-card {
+            max-width: 860px;
+            margin: 0 auto 50px auto;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.07);
+            border: 1px solid #e2e8f0;
+            padding: 40px 42px 42px;
+            box-sizing: border-box;
+        }
+
+        /* Header Section */
+        .poster-header-grid {
+            display: grid;
+            grid-template-columns: 1.25fr 1fr;
+            gap: 24px;
+            align-items: center;
+            padding-bottom: 22px;
+        }
+        .poster-tag {
+            display: inline-block;
+            background: #f97316;
+            color: #ffffff;
+            font-size: 10.5px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 3px 10px;
+            border-radius: 4px;
+            margin-bottom: 12px;
+        }
+        .poster-title {
+            font-size: 26px;
+            font-weight: 800;
+            color: #0f172a;
+            line-height: 1.28;
+            margin: 0 0 12px 0;
+            letter-spacing: -0.3px;
+        }
+        .poster-subtitle {
+            font-size: 13.5px;
+            color: #475569;
+            line-height: 1.55;
+            margin: 0 0 16px 0;
+        }
+        .poster-meta-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            font-size: 12px;
+            color: #64748b;
+        }
+        .poster-meta-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .poster-meta-item i {
+            width: 13px;
+            height: 13px;
+            color: #64748b;
+        }
+        .poster-hero-img-wrap {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+            aspect-ratio: 16 / 9;
+            background: #0f172a;
+        }
+        .poster-hero-img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Lead Quote Box */
+        .poster-lead-quote {
+            border-left: 3.5px solid #f97316;
+            background: #f8fafc;
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 18px 0 28px 0;
+            font-size: 13.2px;
+            line-height: 1.65;
+            color: #334155;
+        }
+        .poster-lead-quote p {
+            margin: 0 0 10px 0;
+        }
+        .poster-lead-quote p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Section Headings */
+        .section-block {
+            margin-bottom: 34px;
+        }
+        .sec-num-heading {
+            font-size: 18px;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 0 0 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding-bottom: 6px;
+            border-bottom: 1.5px solid #f1f5f9;
+        }
+        .sec-num-heading .num-badge {
+            color: #f97316;
+            font-size: 16px;
+            font-weight: 900;
+        }
+        .subsec-heading {
+            font-size: 15px;
+            font-weight: 700;
+            color: #1e293b;
+            margin: 18px 0 8px 0;
+        }
+        .sec-body-p {
+            font-size: 13.2px;
+            color: #475569;
+            line-height: 1.65;
+            margin: 0 0 12px 0;
+        }
+
+        /* 3-Pillar Component Grid */
+        .pillars-3grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin: 16px 0 20px 0;
+        }
+        .pillar-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 14px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .pillar-card-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .pillar-letter {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #f97316;
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .pillar-name {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: #0f172a;
+        }
+        .pillar-desc {
+            font-size: 12px;
+            color: #64748b;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Formula Box */
+        .formula-callout {
+            background: #fff7ed;
+            border: 1px solid #fed7aa;
+            border-left: 4px solid #f97316;
+            border-radius: 8px;
+            padding: 14px 18px;
+            margin: 16px 0 18px 0;
+        }
+        .formula-label {
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #ea580c;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+        .formula-equation {
+            font-size: 16px;
+            font-weight: 800;
+            color: #0f172a;
+            letter-spacing: -0.2px;
+        }
+        .formula-subtext {
+            font-size: 12.2px;
+            color: #64748b;
+            margin-top: 6px;
+            line-height: 1.5;
+        }
+
+        /* Calculation Step Cards */
+        .calc-step-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 16px 18px;
+            margin-bottom: 16px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+        }
+        .calc-example-box {
+            background: #f8fafc;
+            border-left: 3px solid #0284c7;
+            border-radius: 0 6px 6px 0;
+            padding: 10px 14px;
+            margin-top: 10px;
+            font-size: 12.5px;
+            color: #334155;
+            line-height: 1.55;
+        }
+        .calc-note-box {
+            background: #fefce8;
+            border-left: 3px solid #eab308;
+            border-radius: 0 6px 6px 0;
+            padding: 9px 13px;
+            margin-top: 8px;
+            font-size: 12px;
+            color: #713f12;
+            line-height: 1.5;
+        }
+
+        /* Clean Data Tables */
+        .table-responsive-wrap {
+            overflow-x: auto;
+            margin: 14px 0 20px 0;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+        .data-table-clean {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12.8px;
+            text-align: left;
+        }
+        .data-table-clean th {
+            background: #f8fafc;
+            color: #0f172a;
+            font-weight: 700;
+            padding: 9px 14px;
+            border-bottom: 1px solid #cbd5e1;
+        }
+        .data-table-clean td {
+            padding: 8px 14px;
+            border-bottom: 1px solid #e2e8f0;
+            color: #334155;
+        }
+        .data-table-clean tr:last-child td {
+            border-bottom: none;
+        }
+        .data-table-clean tr:hover td {
+            background: #f8fafc;
+        }
+        .data-table-clean .row-highlight td {
+            background: #fff7ed;
+            font-weight: 700;
+            color: #ea580c;
+        }
+        .data-table-clean .row-total td {
+            background: #f1f5f9;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        /* Step Checklist Card */
+        .step-checklist-card {
+            background: #f8fafc;
+            border-radius: 7px;
+            padding: 12px 15px;
+            box-sizing: border-box;
+            margin: 8px 0 14px 0;
+        }
+        .step-checklist-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+        .step-checklist-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 12.3px;
+            line-height: 1.5;
+            color: #334155;
+        }
+        .bullet-dot {
+            color: #f97316;
+            font-size: 16px;
+            font-weight: 900;
+            line-height: 1;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+        .step-output-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: #ecfdf5;
+            border: 1px solid #a7f3d0;
+            color: #065f46;
+            font-size: 11.5px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-top: 6px;
+        }
+
+        /* 2-Column Grid for Steps / Mistakes */
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 14px 0 20px 0;
+        }
+        .card-box {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 16px 18px;
+            display: flex;
+            flex-direction: column;
+        }
+        .card-box-header {
+            font-size: 14px;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 0 0 6px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .card-num-circle {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #fed7aa;
+            color: #c2410c;
+            font-size: 11px;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        /* Key Takeaway Callout */
+        .callout-insight {
+            background: #f0fdf4;
+            border-left: 3.5px solid #16a34a;
+            border-radius: 0 8px 8px 0;
+            padding: 12px 16px;
+            margin: 14px 0 20px 0;
+            font-size: 12.8px;
+            color: #14532d;
+            line-height: 1.6;
+        }
+        .callout-insight strong {
+            color: #166534;
+        }
+
+        /* Bottom Hero Callout Banner */
+        .poster-bottom-banner {
+            background: linear-gradient(135deg, #072a20 0%, #0c382b 100%);
+            border-radius: 8px;
+            padding: 22px 26px;
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 22px;
+            align-items: center;
+            color: #ffffff;
+            margin-top: 28px;
+            box-sizing: border-box;
+        }
+        .banner-quote-left {
+            font-size: 15px;
+            line-height: 1.45;
+            font-weight: 700;
+        }
+        .banner-quote-line1 {
+            color: #f97316;
+            font-weight: 800;
+        }
+        .banner-box-right {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 14px 16px;
+            border-radius: 6px;
+        }
+        .banner-icon-chart {
+            color: #f97316;
+            width: 26px;
+            height: 26px;
+            min-width: 26px;
+        }
+        .banner-box-text {
+            font-size: 12px;
+            color: #d1fae5;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Reference Links */
+        .ref-links-wrap {
+            margin-top: 24px;
+            padding-top: 18px;
+            border-top: 1px solid #e2e8f0;
+            font-size: 12px;
+            color: #64748b;
+        }
+        .ref-links-wrap h4 {
+            font-size: 12px;
+            font-weight: 700;
+            color: #334155;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin: 0 0 8px 0;
+        }
+        .ref-links-wrap ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .ref-links-wrap a {
+            color: #f97316;
+            text-decoration: none;
+            transition: underline 0.2s ease;
+        }
+        .ref-links-wrap a:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .poster-top-bar {
+                padding-top: 85px;
+            }
+            .lean-poster-card {
+                padding: 24px 18px;
+                border-radius: 0;
+                margin-bottom: 30px;
+            }
+            .poster-header-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+            .poster-title {
+                font-size: 21px;
+            }
+            .pillars-3grid {
+                grid-template-columns: 1fr;
+            }
+            .grid-2col {
+                grid-template-columns: 1fr;
+            }
+            .poster-bottom-banner {
+                grid-template-columns: 1fr;
+                padding: 18px 18px;
+                gap: 16px;
+            }
+        }
+
+        /* Print Media Style */
+        @media print {
+            .navbar, .poster-top-bar, footer {
+                display: none !important;
+            }
+            body {
+                background: #ffffff !important;
+            }
+            .lean-poster-card {
+                box-shadow: none !important;
+                border: none !important;
+                padding: 0 !important;
+                max-width: 100% !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="logo">INVA<span>MAX</span></a>
+            <div class="nav-links">
+                <div class="nav-item"><a href="/" class="nav-title">Trang chủ</a></div>
+                <div class="nav-item">    
+                    <a href="#" class="nav-title">Giải pháp <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i></a>
+                    <div class="nav-dropdown">
+                        <a href="factory-transformation.html">Tái cấu trúc & nâng cấp vận hành</a>
+                        <a href="operate-transform.html">Điều hành Nhà máy</a>
+                        <a href="factory-assessment.html">Nền tảng số vận hành nhà máy</a>
+                    </div>
+                </div>
+                <div class="nav-item"><a href="capabilities.html" class="nav-title">Năng lực</a></div>
+                <div class="nav-item"><a href="tin-tuc.html" class="nav-title">Sự kiện</a></div>
+                <div class="nav-item"><a href="case-studies.html" class="nav-title">Case Study</a></div>
+                <div class="nav-item"><a href="resources.html" class="nav-title active">Tri thức</a></div>
+                <div class="nav-item"><a href="about.html" class="nav-title">Triết lý INVAMAX</a></div>
+                
+                <div class="lang-switcher">
+                    <a href="/vi/article-chi-so-oee.html" class="active" style="display: flex; align-items: center; gap: 4px;">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" width="16" height="11" style="border-radius: 2px;" alt="VN">Tiếng Việt
+                    </a>
+                    <span style="color: rgba(255,255,255,0.25);">/</span>
+                    <a href="/en/" style="display: flex; align-items: center; gap: 4px; opacity: 0.75;">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" width="16" height="11" style="border-radius: 2px;" alt="EN">English
+                    </a>
+                </div>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Mở menu"><i data-lucide="menu"></i></button>
+        </div>
+    </nav>
+
+    <!-- Top Action Toolbar -->
+    <div class="poster-top-bar">
+        <a href="resources.html#articles" class="poster-back-btn">
+            <i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i> Quay lại Tri thức
+        </a>
+        <div class="poster-action-group">
+            <button type="button" onclick="window.print()" class="poster-action-btn" title="In tài liệu này">
+                <i data-lucide="printer" style="width: 14px; height: 14px;"></i> In tài liệu
+            </button>
+        </div>
+    </div>
+
+    <!-- MAIN OEE POSTER DOCUMENT CARD -->
+    <main class="lean-poster-card" id="oeePosterDocument">
+
+        <!-- HEADER: Tiêu đề bên trái, Ảnh kỹ sư điều khiển OEE bên phải -->
+        <header class="poster-header-grid">
+            <div class="poster-header-left">
+                <span class="poster-tag">QUẢN TRỊ NHÀ MÁY</span>
+                <h1 class="poster-title">Chỉ số OEE: Cách đo lường và cải thiện hiệu quả thiết bị</h1>
+                <p class="poster-subtitle">
+                    Hiểu đúng về OEE, cách tính ba chỉ số thành phần và phương pháp cải thiện hiệu suất thiết bị trong nhà máy sản xuất.
+                </p>
+                <div class="poster-meta-row">
+                    <span class="poster-meta-item"><i data-lucide="calendar"></i> 10 tháng 10, 2026</span>
+                    <span class="poster-meta-item"><i data-lucide="eye"></i> 1.8K lượt xem</span>
+                    <span class="poster-meta-item"><i data-lucide="clock"></i> 12 phút đọc</span>
+                </div>
+            </div>
+            <div class="poster-hero-img-wrap">
+                <img src="../assets/images/resources/art-oee.jpg" alt="Kỹ sư INVAMAX theo dõi chỉ số OEE trên bảng điều khiển thông minh" class="poster-hero-img">
+            </div>
+        </header>
+
+        <!-- LEAD INTRO QUOTE -->
+        <div class="poster-lead-quote">
+            <p>Trong nhiều nhà máy, máy móc vẫn hoạt động mỗi ngày, công nhân vẫn làm việc đủ ca nhưng sản lượng thực tế thường thấp hơn năng lực thiết kế. Nguyên nhân có thể đến từ việc máy dừng đột xuất, chạy chậm hơn tốc độ tiêu chuẩn, phải điều chỉnh nhiều lần hoặc tạo ra sản phẩm không đạt chất lượng.</p>
+            <p>Nếu chỉ nhìn vào sản lượng cuối ngày hoặc số giờ máy hoạt động, người quản lý khó xác định chính xác hiệu quả thiết bị đang bị mất ở đâu. Đó là lý do <strong>OEE (Overall Equipment Effectiveness)</strong> trở thành một chỉ số quan trọng trong quản trị sản xuất và bảo trì năng suất toàn diện (TPM).</p>
+            <p>Tuy nhiên, giá trị lớn nhất của OEE không phải nằm ở việc tính ra một con số phần trăm, mà ở khả năng giúp nhà máy <strong>nhận diện tổn thất, xác định nguyên nhân và lựa chọn hành động cải tiến phù hợp</strong>.</p>
+        </div>
+
+        <!-- PHẦN 01: OEE LÀ GÌ? -->
+        <section class="section-block">
+            <h2 class="sec-num-heading">
+                <span class="num-badge">01.</span> OEE là gì?
+            </h2>
+            <p class="sec-body-p">
+                OEE là chỉ số đo lường hiệu quả tổng thể của thiết bị, phản ánh mức độ sử dụng thời gian sản xuất theo kế hoạch để tạo ra sản phẩm đạt chất lượng, ở tốc độ lý tưởng. OEE được cấu thành từ ba yếu tố:
+            </p>
+
+            <div class="pillars-3grid">
+                <!-- A -->
+                <div class="pillar-card">
+                    <div class="pillar-card-header">
+                        <span class="pillar-letter">A</span>
+                        <span class="pillar-name">Availability</span>
+                    </div>
+                    <p class="pillar-desc"><strong>Tính sẵn sàng:</strong> Thiết bị có thực sự chạy trong khoảng thời gian được lên kế hoạch sản xuất hay không?</p>
+                </div>
+
+                <!-- P -->
+                <div class="pillar-card">
+                    <div class="pillar-card-header">
+                        <span class="pillar-letter">P</span>
+                        <span class="pillar-name">Performance</span>
+                    </div>
+                    <p class="pillar-desc"><strong>Hiệu suất vận hành:</strong> Khi thiết bị chạy, tốc độ sản xuất thực tế có đạt mức lý tưởng hay không?</p>
+                </div>
+
+                <!-- Q -->
+                <div class="pillar-card">
+                    <div class="pillar-card-header">
+                        <span class="pillar-letter">Q</span>
+                        <span class="pillar-name">Quality</span>
+                    </div>
+                    <p class="pillar-desc"><strong>Chất lượng:</strong> Trong tổng sản lượng tạo ra, bao nhiêu sản phẩm đạt chất lượng ngay từ lần đầu?</p>
+                </div>
+            </div>
+
+            <!-- Formula Box -->
+            <div class="formula-callout">
+                <div class="formula-label">Công thức tổng quát</div>
+                <div class="formula-equation">OEE = Availability × Performance × Quality</div>
+                <div class="formula-subtext">
+                    <strong>Ví dụ:</strong> Một thiết bị có Availability = 90%, Performance = 85%, Quality = 98%.<br>
+                    Khi đó: <strong>OEE = 90% × 85% × 98% = 74,97%</strong>.<br>
+                    Điều này có nghĩa thời gian sản xuất hiệu quả tương đương khoảng 74,97% thời gian sản xuất theo kế hoạch. Phần còn lại không chỉ là thời gian máy dừng mà còn bao gồm tổn thất tốc độ và chất lượng.
+                </div>
+            </div>
+        </section>
+
+        <!-- PHẦN 02: CÁCH TÍNH BA CHỈ SỐ THÀNH PHẦN -->
+        <section class="section-block">
+            <h2 class="sec-num-heading">
+                <span class="num-badge">02.</span> Cách tính ba chỉ số thành phần của OEE
+            </h2>
+
+            <!-- 2.1 Availability -->
+            <div class="calc-step-card">
+                <h3 class="subsec-heading" style="margin-top: 0; color: #0f172a;">2.1. Availability – Tính sẵn sàng</h3>
+                <p class="sec-body-p" style="margin-bottom: 8px;">
+                    Availability đo lường tỷ lệ thời gian thiết bị thực sự vận hành so với thời gian được lên kế hoạch sản xuất:
+                </p>
+                <div class="formula-callout" style="margin: 8px 0 10px 0; padding: 10px 14px;">
+                    <div class="formula-equation" style="font-size: 14.5px;">Availability = (Thời gian chạy thực tế / Thời gian sản xuất theo kế hoạch) × 100%</div>
+                </div>
+                <p class="sec-body-p" style="font-size: 12.5px; margin-bottom: 6px;">Trong đó:</p>
+                <ul style="font-size: 12.3px; color: #475569; padding-left: 20px; margin: 0 0 8px 0; line-height: 1.55;">
+                    <li><strong>Thời gian sản xuất theo kế hoạch (Planned Production Time):</strong> Thời gian thiết bị được dự kiến dùng cho sản xuất, không bao gồm các khoảng không lên lịch như nghỉ ăn giữa ca theo quy định.</li>
+                    <li><strong>Thời gian chạy thực tế (Run Time):</strong> Thời gian sản xuất theo kế hoạch trừ đi thời gian dừng máy được ghi nhận.</li>
+                </ul>
+                <p class="sec-body-p" style="font-size: 12.3px; color: #64748b; margin-bottom: 6px;">
+                    <em>Tổn thất ảnh hưởng:</em> Hỏng máy, chuyển đổi mã hàng, điều chỉnh thiết bị và các sự cố khiến máy không thể chạy trong thời gian đã lên kế hoạch.
+                </p>
+                <div class="calc-example-box">
+                    <strong>Ví dụ thực tế:</strong> Một ca kéo dài 480 phút, trong đó có 30 phút nghỉ không lên lịch và 45 phút dừng máy.<br>
+                    • Thời gian sản xuất theo kế hoạch = 480 − 30 = 450 phút.<br>
+                    • Thời gian chạy thực tế = 450 − 45 = 405 phút.<br>
+                    <strong>Availability = 405 / 450 × 100% = 90%</strong>
+                </div>
+            </div>
+
+            <!-- 2.2 Performance -->
+            <div class="calc-step-card">
+                <h3 class="subsec-heading" style="margin-top: 0; color: #0f172a;">2.2. Performance – Hiệu suất vận hành</h3>
+                <p class="sec-body-p" style="margin-bottom: 8px;">
+                    Performance phản ánh khả năng chạy đúng tốc độ lý tưởng của thiết bị:
+                </p>
+                <div class="formula-callout" style="margin: 8px 0 10px 0; padding: 10px 14px;">
+                    <div class="formula-equation" style="font-size: 14.5px;">Performance = (Chu kỳ lý tưởng × Tổng sản lượng) / Thời gian chạy thực tế × 100%</div>
+                </div>
+                <p class="sec-body-p" style="font-size: 12.3px; color: #64748b; margin-bottom: 6px;">
+                    <em>Tổn thất ảnh hưởng:</em> Giảm tốc độ, dừng máy ngắn, cấp vật tư không ổn định, thao tác chưa tối ưu và những bất thường làm tăng thời gian chu kỳ.
+                </p>
+                <div class="calc-example-box">
+                    <strong>Ví dụ thực tế:</strong> Thiết bị có chu kỳ lý tưởng 30 giây/sản phẩm (tương đương 0,5 phút/sản phẩm). Trong 405 phút chạy thực tế, thiết bị sản xuất 700 sản phẩm.<br>
+                    • Thời gian lý tưởng để tạo ra 700 sản phẩm = 700 × 0,5 = 350 phút.<br>
+                    <strong>Performance = 350 / 405 × 100% = 86,42%</strong>
+                </div>
+                <div class="calc-note-box">
+                    <strong>Lưu ý quan trọng:</strong> Cần xác định chu kỳ lý tưởng phù hợp với từng sản phẩm hoặc mã hàng. Nếu sản xuất nhiều mã có tốc độ khác nhau, phải tính tổng thời gian lý tưởng theo từng mã thay vì sử dụng một chu kỳ chung không phù hợp.
+                </div>
+            </div>
+
+            <!-- 2.3 Quality -->
+            <div class="calc-step-card">
+                <h3 class="subsec-heading" style="margin-top: 0; color: #0f172a;">2.3. Quality – Chất lượng</h3>
+                <p class="sec-body-p" style="margin-bottom: 8px;">
+                    Quality phản ánh tỷ lệ sản phẩm đạt yêu cầu ngay từ lần đầu:
+                </p>
+                <div class="formula-callout" style="margin: 8px 0 10px 0; padding: 10px 14px;">
+                    <div class="formula-equation" style="font-size: 14.5px;">Quality = Sản lượng đạt lần đầu / Tổng sản lượng × 100%</div>
+                </div>
+                <p class="sec-body-p" style="font-size: 12.3px; color: #64748b; margin-bottom: 6px;">
+                    <em>Tổn thất ảnh hưởng:</em> Sản phẩm lỗi, phế phẩm, sản phẩm phải sửa chữa và sản lượng không đạt trong giai đoạn khởi động thiết bị.
+                </p>
+                <div class="calc-example-box">
+                    <strong>Ví dụ thực tế:</strong> Tổng sản lượng: 700 sản phẩm; Sản lượng đạt ngay từ lần đầu: 680 sản phẩm; Sản phẩm lỗi hoặc làm lại: 20 sản phẩm.<br>
+                    <strong>Quality = 680 / 700 × 100% = 97,14%</strong>
+                </div>
+                <div class="calc-note-box">
+                    <strong>Nguyên tắc:</strong> Sản phẩm phải làm lại không nên được tính là sản phẩm đạt ngay từ lần đầu, dù sau khi sửa chữa có thể được giao cho khách hàng.
+                </div>
+            </div>
+        </section>
+
+        <!-- PHẦN 03: VÍ DỤ TÍNH OEE HOÀN CHỈNH TẠI NHÀ MÁY -->
+        <section class="section-block">
+            <h2 class="sec-num-heading">
+                <span class="num-badge">03.</span> Ví dụ tính OEE hoàn chỉnh tại một nhà máy
+            </h2>
+            <p class="sec-body-p">
+                Giả sử một thiết bị sản xuất có dữ liệu trong một ca làm việc như sau:
+            </p>
+
+            <div class="table-responsive-wrap">
+                <table class="data-table-clean">
+                    <thead>
+                        <tr>
+                            <th>Chỉ tiêu dữ liệu thu thập</th>
+                            <th style="width: 160px; text-align: right;">Giá trị</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Thời gian ca làm việc</td>
+                            <td style="text-align: right; font-weight: 600;">480 phút</td>
+                        </tr>
+                        <tr>
+                            <td>Thời gian nghỉ không lên lịch sản xuất</td>
+                            <td style="text-align: right; font-weight: 600;">30 phút</td>
+                        </tr>
+                        <tr style="background: #f8fafc;">
+                            <td><strong>Thời gian sản xuất theo kế hoạch</strong></td>
+                            <td style="text-align: right; font-weight: 700; color: #0284c7;">450 phút</td>
+                        </tr>
+                        <tr>
+                            <td>Tổng thời gian dừng máy ghi nhận</td>
+                            <td style="text-align: right; font-weight: 600;">45 phút</td>
+                        </tr>
+                        <tr style="background: #f8fafc;">
+                            <td><strong>Thời gian chạy thực tế</strong></td>
+                            <td style="text-align: right; font-weight: 700; color: #0284c7;">405 phút</td>
+                        </tr>
+                        <tr>
+                            <td>Chu kỳ lý tưởng</td>
+                            <td style="text-align: right; font-weight: 600;">0,5 phút/sản phẩm</td>
+                        </tr>
+                        <tr>
+                            <td>Tổng sản lượng tạo ra</td>
+                            <td style="text-align: right; font-weight: 600;">700 sản phẩm</td>
+                        </tr>
+                        <tr>
+                            <td>Sản phẩm đạt ngay lần đầu (Good)</td>
+                            <td style="text-align: right; font-weight: 600;">680 sản phẩm</td>
+                        </tr>
+                        <tr>
+                            <td>Sản phẩm lỗi hoặc phải làm lại (Scrap/Rework)</td>
+                            <td style="text-align: right; font-weight: 600; color: #dc2626;">20 sản phẩm</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Bảng kết quả tính toán -->
+            <div class="table-responsive-wrap">
+                <table class="data-table-clean">
+                    <thead>
+                        <tr>
+                            <th>Chỉ số thành phần</th>
+                            <th style="width: 160px; text-align: right;">Kết quả</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Availability (Tính sẵn sàng)</td>
+                            <td style="text-align: right; font-weight: 700;">90,00%</td>
+                        </tr>
+                        <tr>
+                            <td>Performance (Hiệu suất vận hành)</td>
+                            <td style="text-align: right; font-weight: 700;">86,42%</td>
+                        </tr>
+                        <tr>
+                            <td>Quality (Chất lượng)</td>
+                            <td style="text-align: right; font-weight: 700;">97,14%</td>
+                        </tr>
+                        <tr class="row-highlight">
+                            <td><strong>OEE (Overall Equipment Effectiveness)</strong></td>
+                            <td style="text-align: right; font-size: 15px;"><strong>75,56%</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="formula-callout" style="padding: 10px 16px;">
+                <div class="formula-label">Kiểm chứng nhanh công thức trực tiếp</div>
+                <div class="formula-equation" style="font-size: 14.5px;">
+                    OEE = (Sản lượng đạt × Chu kỳ lý tưởng) / Thời gian sản xuất theo kế hoạch
+                </div>
+                <div class="formula-subtext">
+                    OEE = (680 × 0,5) / 450 × 100% = <strong>75,56%</strong> (Kết quả hoàn toàn trùng khớp).
+                </div>
+            </div>
+
+            <!-- Bảng tổn thất tương đương -->
+            <h3 class="subsec-heading">Điều gì đang xảy ra với 24,44% hiệu quả bị mất?</h3>
+            <p class="sec-body-p">Từ dữ liệu trên, có thể quy đổi tổn thất về thời gian tương đương trong 450 phút kế hoạch:</p>
+
+            <div class="table-responsive-wrap">
+                <table class="data-table-clean">
+                    <thead>
+                        <tr>
+                            <th>Thành phần thời gian</th>
+                            <th style="width: 160px; text-align: right;">Thời gian quy đổi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="row-total">
+                            <td>Thời gian sản xuất theo kế hoạch</td>
+                            <td style="text-align: right;">450 phút (100%)</td>
+                        </tr>
+                        <tr>
+                            <td>Tổn thất do dừng máy (Availability Loss)</td>
+                            <td style="text-align: right; color: #dc2626; font-weight: 600;">45 phút</td>
+                        </tr>
+                        <tr>
+                            <td>Tổn thất tương đương do giảm tốc độ (Performance Loss)</td>
+                            <td style="text-align: right; color: #ea580c; font-weight: 600;">55 phút</td>
+                        </tr>
+                        <tr>
+                            <td>Tổn thất tương đương do chất lượng (Quality Loss)</td>
+                            <td style="text-align: right; color: #eab308; font-weight: 600;">10 phút</td>
+                        </tr>
+                        <tr class="row-highlight">
+                            <td><strong>Thời gian sản xuất hoàn toàn hiệu quả (Fully Productive Time)</strong></td>
+                            <td style="text-align: right; font-size: 14px;"><strong>340 phút</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="callout-insight">
+                <strong>Nhận xét quan trọng:</strong> Như vậy, trong 450 phút sản xuất theo kế hoạch, chỉ có 340 phút thực sự tạo ra sản phẩm đạt chất lượng ở tốc độ lý tưởng.<br>
+                Nếu nhà máy chỉ tập trung giảm thời gian dừng máy, họ sẽ bỏ qua những tổn thất khác có thể còn lớn hơn. Trong ví dụ này, <strong>tổn thất hiệu suất tương đương 55 phút, cao hơn 45 phút dừng máy</strong>. Đó chính là giá trị của việc phân tích OEE theo từng thành phần, thay vì chỉ theo dõi một con số tổng hợp.<br>
+                <span style="font-size: 11px; color: #15803d; margin-top: 4px; display: block;"><em>* Đây là ví dụ minh họa phương pháp tính, không phải dữ liệu từ dự án đã triển khai của INVAMAX.</em></span>
+            </div>
+        </section>
+
+        <!-- PHẦN 04: SÁU NHÓM TỔN THẤT CHÍNH (SIX BIG LOSSES) -->
+        <section class="section-block">
+            <h2 class="sec-num-heading">
+                <span class="num-badge">04.</span> Sáu nhóm tổn thất chính ảnh hưởng đến OEE
+            </h2>
+            <p class="sec-body-p">
+                Trong phương pháp TPM, các tổn thất ảnh hưởng đến OEE thường được phân thành <strong>Six Big Losses – Sáu tổn thất lớn</strong>:
+            </p>
+
+            <div class="table-responsive-wrap">
+                <table class="data-table-clean">
+                    <thead>
+                        <tr>
+                            <th style="width: 140px;">Nhóm OEE</th>
+                            <th style="width: 180px;">Loại tổn thất</th>
+                            <th>Ví dụ thực tế tại hiện trường</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span style="color: #0284c7; font-weight: 700;">Availability</span></td>
+                            <td><strong>Hỏng máy</strong></td>
+                            <td>Hỏng động cơ, cảm biến, sự cố hệ thống truyền động cơ khí, thủy lực.</td>
+                        </tr>
+                        <tr>
+                            <td><span style="color: #0284c7; font-weight: 700;">Availability</span></td>
+                            <td><strong>Thiết lập &amp; điều chỉnh</strong></td>
+                            <td>Chuyển đổi mã hàng (changeover), thay khuôn, gá đặt, căn chỉnh thông số máy.</td>
+                        </tr>
+                        <tr>
+                            <td><span style="color: #ea580c; font-weight: 700;">Performance</span></td>
+                            <td><strong>Dừng máy ngắn</strong></td>
+                            <td>Kẹt vật tư, cảm biến báo lỗi giả, dừng vài giây đến vài phút để can thiệp.</td>
+                        </tr>
+                        <tr>
+                            <td><span style="color: #ea580c; font-weight: 700;">Performance</span></td>
+                            <td><strong>Giảm tốc độ</strong></td>
+                            <td>Máy chạy thấp hơn tốc độ thiết kế do thiết bị cũ, vật tư kém hoặc công nhân ghìm tốc.</td>
+                        </tr>
+                        <tr>
+                            <td><span style="color: #16a34a; font-weight: 700;">Quality</span></td>
+                            <td><strong>Sản phẩm lỗi</strong></td>
+                            <td>Sai lệch kích thước, lỗi ngoại quan, lỗi lắp ráp phát sinh trong quá trình chạy ổn định.</td>
+                        </tr>
+                        <tr>
+                            <td><span style="color: #16a34a; font-weight: 700;">Quality</span></td>
+                            <td><strong>Tổn thất khởi động</strong></td>
+                            <td>Phế phẩm khi chạy thử, gia nhiệt, ổn định nhiệt độ hoặc căn chỉnh sau chuyển mã.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="sec-body-p">
+                Mỗi nhóm tổn thất cần có phương pháp ghi nhận và đối sách riêng. Ví dụ, bảo trì phòng ngừa có thể giảm hỏng máy, nhưng khó giải quyết tận gốc vấn đề chạy chậm do cấp vật tư không ổn định. Tương tự, tăng tốc độ máy không có nhiều ý nghĩa nếu thiết bị liên tục tạo ra sản phẩm lỗi. Muốn nâng OEE, nhà máy phải xác định đúng loại tổn thất đang chi phối kết quả.
+            </p>
+        </section>
+
+        <!-- PHẦN 05: NĂM BƯỚC CẢI THIỆN OEE TẠI NHÀ MÁY -->
+        <section class="section-block">
+            <h2 class="sec-num-heading">
+                <span class="num-badge">05.</span> Năm bước cải thiện OEE tại nhà máy
+            </h2>
+
+            <!-- Bước 1 -->
+            <div class="calc-step-card">
+                <h3 class="subsec-heading" style="margin-top: 0; color: #0f172a;">Bước 1. Xác định phạm vi và tiêu chuẩn đo lường</h3>
+                <p class="sec-body-p" style="margin-bottom: 6px;">
+                    Không nhất thiết phải triển khai OEE đồng loạt cho toàn bộ thiết bị ngay từ đầu. Nên ưu tiên thiết bị hoặc dây chuyền có vai trò quan trọng, đang tạo ra điểm nghẽn sản xuất hoặc có tổn thất lớn. Trước khi đo, cần thống nhất:
+                </p>
+                <div class="step-checklist-card">
+                    <ul>
+                        <li><span class="bullet-dot">•</span><span>Thiết bị hoặc dây chuyền được theo dõi.</span></li>
+                        <li><span class="bullet-dot">•</span><span>Phạm vi thời gian sản xuất theo kế hoạch.</span></li>
+                        <li><span class="bullet-dot">•</span><span>Quy định ghi nhận dừng máy (dừng bao nhiêu phút được tính là downtime).</span></li>
+                        <li><span class="bullet-dot">•</span><span>Chu kỳ lý tưởng của từng mã hàng.</span></li>
+                        <li><span class="bullet-dot">•</span><span>Cách xác định tổng sản lượng và sản phẩm đạt lần đầu.</span></li>
+                        <li><span class="bullet-dot">•</span><span>Người chịu trách nhiệm ghi nhận và xác nhận dữ liệu.</span></li>
+                    </ul>
+                </div>
+                <div class="step-output-badge"><i data-lucide="check-circle" style="width: 13px; height: 13px;"></i> Đầu ra: Quy định đo OEE thống nhất và dữ liệu tiêu chuẩn của thiết bị.</div>
+            </div>
+
+            <!-- Bước 2 -->
+            <div class="calc-step-card">
+                <h3 class="subsec-heading" style="margin-top: 0; color: #0f172a;">Bước 2. Thu thập dữ liệu OEE hằng ngày</h3>
+                <p class="sec-body-p" style="margin-bottom: 6px;">
+                    Dữ liệu phải được ghi nhận sát với hiện trường. Tối thiểu cần có thời gian chạy, thời gian dừng, mã nguyên nhân dừng máy, sản lượng, chu kỳ lý tưởng và số lượng sản phẩm đạt.
+                </p>
+                <div class="step-checklist-card">
+                    <ul>
+                        <li><span class="bullet-dot">•</span><span>Có thể bắt đầu bằng biểu mẫu giấy hoặc Excel, sau đó số hóa khi phương pháp đo đã ổn định.</span></li>
+                        <li><span class="bullet-dot">•</span><span>Không nên đầu tư hệ thống dashboard phức tạp khi dữ liệu đầu vào chưa nhất quán.</span></li>
+                    </ul>
+                </div>
+                <div class="step-output-badge"><i data-lucide="check-circle" style="width: 13px; height: 13px;"></i> Đầu ra: Báo cáo Availability, Performance, Quality và OEE theo ca hoặc ngày.</div>
+            </div>
+
+            <!-- Bước 3 -->
+            <div class="calc-step-card">
+                <h3 class="subsec-heading" style="margin-top: 0; color: #0f172a;">Bước 3. Phân tích tổn thất theo Pareto</h3>
+                <p class="sec-body-p" style="margin-bottom: 6px;">
+                    Sau khi có dữ liệu, cần xác định tổn thất nào chiếm tỷ trọng lớn nhất. Ví dụ, trong một tuần, thời gian dừng máy có thể tập trung ở ba nguyên nhân: Chờ nguyên vật liệu, Chuyển đổi mã hàng, Hỏng cảm biến.
+                </p>
+                <div class="step-checklist-card">
+                    <ul>
+                        <li><span class="bullet-dot">•</span><span>Thay vì yêu cầu tất cả bộ phận cùng giảm dừng máy, nhà máy nên lựa chọn nguyên nhân có tác động lớn và khả năng cải tiến rõ ràng.</span></li>
+                        <li><span class="bullet-dot">•</span><span>Sử dụng biểu đồ Pareto để sắp xếp các nguyên nhân theo mức độ ảnh hưởng.</span></li>
+                        <li><span class="bullet-dot">•</span><span>Kết hợp 5 Why, A3 hoặc phân tích dữ liệu để tìm nguyên nhân gốc rễ.</span></li>
+                    </ul>
+                </div>
+                <div class="step-output-badge"><i data-lucide="check-circle" style="width: 13px; height: 13px;"></i> Đầu ra: Danh sách tổn thất ưu tiên và nguyên nhân cần xử lý.</div>
+            </div>
+
+            <!-- Bước 4 -->
+            <div class="calc-step-card">
+                <h3 class="subsec-heading" style="margin-top: 0; color: #0f172a;">Bước 4. Triển khai cải tiến đúng nguyên nhân</h3>
+                <p class="sec-body-p" style="margin-bottom: 6px;">
+                    Mỗi nhóm tổn thất có thể yêu cầu một cách tiếp cận khác nhau:
+                </p>
+                <div class="step-checklist-card">
+                    <ul>
+                        <li><span class="bullet-dot">•</span><span><strong>Đối với Availability:</strong> Bảo trì phòng ngừa &amp; tự quản, cải tiến độ tin cậy thiết bị, áp dụng SMED để giảm thời gian chuyển đổi mã hàng, chuẩn hóa quy trình xử lý sự cố.</span></li>
+                        <li><span class="bullet-dot">•</span><span><strong>Đối với Performance:</strong> Phân tích và cải tiến thời gian chu kỳ, cải thiện phương pháp cấp vật tư, loại bỏ các lần dừng ngắn lặp lại, tối ưu bố trí thao tác.</span></li>
+                        <li><span class="bullet-dot">•</span><span><strong>Đối với Quality:</strong> Phân tích nguyên nhân lỗi, áp dụng Poka-Yoke ngăn ngừa sai lỗi, kiểm soát thông số quá trình, chuẩn hóa điều kiện khởi động.</span></li>
+                    </ul>
+                </div>
+                <div class="step-output-badge"><i data-lucide="check-circle" style="width: 13px; height: 13px;"></i> Đầu ra: Giải pháp được triển khai, có mục tiêu định lượng, người chịu trách nhiệm, thời hạn và dữ liệu trước–sau.</div>
+            </div>
+
+            <!-- Bước 5 -->
+            <div class="calc-step-card">
+                <h3 class="subsec-heading" style="margin-top: 0; color: #0f172a;">Bước 5. Chuẩn hóa và duy trì quản trị OEE</h3>
+                <p class="sec-body-p" style="margin-bottom: 6px;">
+                    Một chương trình nâng OEE sẽ khó bền vững nếu chỉ được thực hiện trong một đợt cải tiến. Nhà máy cần xây dựng cơ chế quản trị thường xuyên:
+                </p>
+                <div class="step-checklist-card">
+                    <ul>
+                        <li><span class="bullet-dot">•</span><span>Theo dõi OEE theo ca, ngày và tuần.</span></li>
+                        <li><span class="bullet-dot">•</span><span>Xem xét các nguyên nhân tổn thất lớn trong các cuộc họp sản xuất hàng ngày.</span></li>
+                        <li><span class="bullet-dot">•</span><span>Phân công và theo dõi hành động cải tiến liên tục.</span></li>
+                        <li><span class="bullet-dot">•</span><span>Chuẩn hóa những giải pháp có hiệu quả vào quy trình chuẩn (SOP).</span></li>
+                        <li><span class="bullet-dot">•</span><span>Đào tạo đội ngũ nhận diện bất thường và xử lý ngay tại hiện trường (Gemba).</span></li>
+                    </ul>
+                </div>
+                <div class="step-output-badge"><i data-lucide="check-circle" style="width: 13px; height: 13px;"></i> Đầu ra: OEE trở thành một phần của hệ thống quản trị vận hành hằng ngày, thay vì chỉ là một KPI trên bảng báo cáo.</div>
+            </div>
+        </section>
+
+        <!-- PHẦN 06: NHỮNG SAI LẦM PHỔ BIẾN KHI SỬ DỤNG OEE -->
+        <section class="section-block">
+            <h2 class="sec-num-heading">
+                <span class="num-badge">06.</span> Những sai lầm phổ biến khi sử dụng OEE
+            </h2>
+
+            <div class="grid-2col">
+                <!-- 1 -->
+                <div class="card-box">
+                    <div class="card-box-header">
+                        <span class="card-num-circle">1</span>
+                        <span>Chỉ quan tâm đến OEE tổng thể</span>
+                    </div>
+                    <p class="sec-body-p" style="font-size: 12.3px; margin: 0;">
+                        Hai máy có cùng OEE 75% nhưng một máy có tổn thất do dừng máy, trong khi máy kia có tổn thất lớn do chạy chậm. Đối sách cải tiến của hai máy phải hoàn toàn khác nhau.
+                    </p>
+                </div>
+
+                <!-- 2 -->
+                <div class="card-box">
+                    <div class="card-box-header">
+                        <span class="card-num-circle">2</span>
+                        <span>Không thống nhất cách tính thời gian</span>
+                    </div>
+                    <p class="sec-body-p" style="font-size: 12.3px; margin: 0;">
+                        Nếu mỗi bộ phận có cách loại trừ thời gian nghỉ, chuyển đổi mã hàng hoặc dừng máy khác nhau, số liệu OEE sẽ thiếu nhất quán và mất tính so sánh.
+                    </p>
+                </div>
+
+                <!-- 3 -->
+                <div class="card-box">
+                    <div class="card-box-header">
+                        <span class="card-num-circle">3</span>
+                        <span>Sử dụng chu kỳ lý tưởng không chính xác</span>
+                    </div>
+                    <p class="sec-body-p" style="font-size: 12.3px; margin: 0;">
+                        Chu kỳ tiêu chuẩn đặt quá chậm có thể khiến Performance vượt 100% hoặc che giấu tổn thất tốc độ. Cần kiểm tra lại dữ liệu kỹ thuật khi xuất hiện tình trạng này.
+                    </p>
+                </div>
+
+                <!-- 4 -->
+                <div class="card-box">
+                    <div class="card-box-header">
+                        <span class="card-num-circle">4</span>
+                        <span>Chạy theo tỷ lệ OEE mà bỏ qua thực tế</span>
+                    </div>
+                    <p class="sec-body-p" style="font-size: 12.3px; margin: 0;">
+                        Không nên coi 85% là mục tiêu bắt buộc cho tất cả thiết bị. Mục tiêu cần dựa trên loại công nghệ, sản phẩm, độ ổn định và vai trò của thiết bị trong toàn dây chuyền.
+                    </p>
+                </div>
+
+                <!-- 5 -->
+                <div class="card-box">
+                    <div class="card-box-header">
+                        <span class="card-num-circle">5</span>
+                        <span>Cải thiện cục bộ nhưng bỏ qua dòng chảy</span>
+                    </div>
+                    <p class="sec-body-p" style="font-size: 12.3px; margin: 0;">
+                        Một máy có OEE cao chưa chắc làm tăng sản lượng toàn nhà máy nếu công đoạn trước hoặc sau vẫn là điểm nghẽn (Bottleneck).
+                    </p>
+                </div>
+
+                <!-- 6 -->
+                <div class="card-box">
+                    <div class="card-box-header">
+                        <span class="card-num-circle">6</span>
+                        <span>Đo lường nhưng không có hành động</span>
+                    </div>
+                    <p class="sec-body-p" style="font-size: 12.3px; margin: 0;">
+                        Dashboard đẹp không giúp nâng hiệu suất nếu người quản lý không phân tích tổn thất, giao trách nhiệm và kiểm tra kết quả cải tiến định kỳ.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PHẦN 07: OEE TRONG QUẢN TRỊ NHÀ MÁY -->
+        <section class="section-block">
+            <h2 class="sec-num-heading">
+                <span class="num-badge">07.</span> OEE nên được tích hợp vào quản trị nhà máy như thế nào?
+            </h2>
+            <p class="sec-body-p">
+                OEE phát huy giá trị lớn nhất khi được kết nối hữu cơ với các hoạt động quản trị khác trong nhà máy:
+            </p>
+
+            <div class="step-checklist-card" style="padding: 14px 18px;">
+                <ul>
+                    <li>
+                        <span class="bullet-dot">•</span>
+                        <span><strong>Quản lý sản xuất:</strong> Sử dụng OEE để phát hiện sự suy giảm hiệu suất, xác định điểm nghẽn và kịp thời điều chỉnh kế hoạch sản xuất.</span>
+                    </li>
+                    <li>
+                        <span class="bullet-dot">•</span>
+                        <span><strong>Quản lý thiết bị:</strong> Phân tích dừng máy, cải tiến độ tin cậy, lập kế hoạch bảo trì phòng ngừa và theo dõi hiệu quả sau sửa chữa.</span>
+                    </li>
+                    <li>
+                        <span class="bullet-dot">•</span>
+                        <span><strong>Quản lý chất lượng:</strong> Kết nối dữ liệu lỗi với mã hàng, thông số quá trình và điều kiện vận hành thiết bị.</span>
+                    </li>
+                    <li>
+                        <span class="bullet-dot">•</span>
+                        <span><strong>Hoạt động Kaizen:</strong> Lựa chọn vấn đề cải tiến dựa trên dữ liệu tổn thất đo được, theo dõi kết quả thực tế trước – sau.</span>
+                    </li>
+                    <li>
+                        <span class="bullet-dot">•</span>
+                        <span><strong>Chuyển đổi số:</strong> Số hóa dữ liệu thiết bị, sản lượng, dừng máy và chất lượng nhằm giảm thời gian tổng hợp và hỗ trợ ra quyết định nhanh chóng.</span>
+                    </li>
+                </ul>
+            </div>
+            <p class="sec-body-p" style="margin-top: 10px;">
+                Điều quan trọng là thiết lập một cơ chế quản trị thống nhất từ dữ liệu đến hành động, trong đó mỗi bất thường đều có người chịu trách nhiệm xử lý.
+            </p>
+        </section>
+
+        <!-- KẾT LUẬN -->
+        <section class="section-block" style="margin-bottom: 24px;">
+            <h2 class="sec-num-heading">
+                <i data-lucide="check-circle-2" style="width: 20px; height: 20px; color: #16a34a;"></i> Kết luận: OEE không chỉ là chỉ số, mà là công cụ cải tiến hiệu quả thiết bị
+            </h2>
+            <p class="sec-body-p">
+                OEE giúp nhà máy trả lời ba câu hỏi quan trọng:<br>
+                <strong>1. Thiết bị có đang chạy khi cần chạy?</strong><br>
+                <strong>2. Khi chạy, thiết bị có đạt tốc độ kỳ vọng?</strong><br>
+                <strong>3. Sản phẩm tạo ra có đạt chất lượng ngay từ lần đầu?</strong>
+            </p>
+            <p class="sec-body-p">
+                Từ đó, doanh nghiệp có thể xác định tổn thất, lựa chọn ưu tiên và triển khai cải tiến dựa trên dữ liệu thay vì cảm tính. Mục tiêu cuối cùng không phải là tạo ra một con số OEE thật cao trên báo cáo, mà là <strong>nâng cao năng lực sản xuất thực tế, giảm lãng phí và cải thiện hiệu quả sử dụng nguồn lực</strong>.
+            </p>
+        </section>
+
+        <!-- BANNER TỔNG KẾT XANH ĐẬM (DNA INVAMAX) -->
+        <div class="poster-bottom-banner">
+            <div class="banner-quote-left">
+                <span class="banner-quote-line1">Nâng cao hiệu quả vận hành nhà máy cùng INVAMAX</span><br>
+                <span>Xây nền vững – Vận hành nhẹ: Biến chỉ số OEE thành công cụ hành động và cải tiến thực chất mỗi ngày.</span>
+            </div>
+            <div class="banner-box-right">
+                <i data-lucide="trending-up" class="banner-icon-chart"></i>
+                <p class="banner-box-text">
+                    INVAMAX hỗ trợ doanh nghiệp đánh giá hiện trạng, xác định điểm nghẽn, cải tiến hiệu suất thiết bị thông qua Lean, Kaizen và phương pháp quản trị <strong>INVAMAX FOS™</strong>.
+                </p>
+            </div>
+        </div>
+
+        <!-- NGUỒN THAM KHẢO CHUYÊN MÔN -->
+        <div class="ref-links-wrap">
+            <h4>Nguồn tham khảo chuyên môn</h4>
+            <ul>
+                <li>• Lean Enterprise Institute – <a href="https://www.lean.org/lexicon-terms/overall-equipment-effectiveness/" target="_blank" rel="noopener">Overall Equipment Effectiveness (OEE)</a></li>
+                <li>• OEE.com – <a href="https://www.oee.com/calculating-oee/" target="_blank" rel="noopener">OEE Calculation &amp; Standards</a></li>
+                <li>• OEE.com – <a href="https://www.oee.com/oee-six-big-losses/" target="_blank" rel="noopener">The Six Big Losses in TPM</a></li>
+            </ul>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <img src="../assets/images/home/logo-invamax-original.png" alt="INVAMAX">
+                <p>Đối tác vận hành và phát triển nhà máy</p>
+                <h5 style="color: white; margin-bottom: 14px; margin-top: 26px; font-size: 0.95rem; font-weight: 600;">Kết nối với chúng tôi</h5>
+                <div class="social-links" style="display: flex; gap: 8px; align-items: center;">
+                    <a href="https://www.linkedin.com/in/xuannhattran/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-linkedin" style="color: white; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; border: 1px solid #0A66C2; background: #0A66C2; padding: 0; margin: 0; line-height: 1; transition: all 0.3s;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block; margin: auto;"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    </a>
+                    <a href="https://www.youtube.com/@NguoiXayNen" target="_blank" rel="noopener" aria-label="YouTube" class="social-youtube" style="color: white; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; border: 1px solid #FF0000; background: #FF0000; padding: 0; margin: 0; line-height: 1; transition: all 0.3s;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block; margin: auto;"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                    </a>
+                    <a href="https://www.facebook.com/invamax.vanhanhtinhgon" target="_blank" rel="noopener" aria-label="Facebook" class="social-facebook" style="color: white; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; border: 1px solid #1877F2; background: #1877F2; padding: 0; margin: 0; line-height: 1; transition: all 0.3s;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block; margin: auto;"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                    </a>
+                    <a href="https://zalo.me/0988911869" target="_blank" rel="noopener" aria-label="Zalo" class="social-zalo" style="color: white; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; border: 1px solid #0068FF; background: #0068FF; padding: 0; margin: 0; line-height: 1; transition: all 0.3s;">
+                        <span style="font-size: 11px; font-weight: 800; font-family: 'Inter', sans-serif; line-height: 1; display: inline-flex; align-items: center; justify-content: center; margin: auto;">Zalo</span>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h4>Giải pháp</h4>
+                <a href="factory-transformation.html">Tái cấu trúc & nâng cấp vận hành</a>
+                <a href="operate-transform.html">Điều hành nhà máy</a>
+                <a href="factory-assessment.html">Nền tảng số vận hành nhà máy</a>
+            </div>
+            <div>
+                <h4>Về chúng tôi</h4>
+                <a href="capabilities.html">Năng lực</a>
+                <a href="tin-tuc.html">Sự kiện</a>
+                <a href="case-studies.html">Case Study</a>
+                <a href="resources.html">Tri thức</a>
+                <a href="about.html">Triết lý INVAMAX</a>
+            </div>
+            <div>
+                <h4>Liên hệ</h4>
+                <p class="footer-company-name">CÔNG TY TNHH ĐẦU TƯ VÀ PHÁT TRIỂN INVAMAX</p>
+                <div class="contact-info" style="display: flex; flex-direction: column; gap: 8px;">
+                    <div class="contact-item" style="display: flex; align-items: center; gap: 8px; height: 22px; font-size: 12px; line-height: 1; white-space: nowrap;">
+                        <span style="width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i data-lucide="phone" style="width: 14px; height: 14px; color: var(--primary);"></i>
+                        </span>
+                        <a href="tel:0988911869" style="color: inherit; text-decoration: none; display: inline-flex; align-items: center;">0988 911 869</a>
+                    </div>
+                    <div class="contact-item" style="display: flex; align-items: center; gap: 8px; height: 22px; font-size: 12px; line-height: 1; white-space: nowrap;">
+                        <span style="width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i data-lucide="mail" style="width: 14px; height: 14px; color: var(--primary);"></i>
+                        </span>
+                        <a href="mailto:contact@invamax.com" style="color: inherit; text-decoration: none; display: inline-flex; align-items: center;">contact@invamax.com</a>
+                    </div>
+                    <div class="contact-item" style="display: flex; align-items: center; gap: 8px; height: 22px; font-size: 12px; line-height: 1; white-space: nowrap;">
+                        <span style="width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i data-lucide="globe" style="width: 14px; height: 14px; color: var(--primary);"></i>
+                        </span>
+                        <a href="https://invamax.com" style="color: inherit; text-decoration: none; display: inline-flex; align-items: center;">invamax.com</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                <p>&copy; 2026 INVAMAX. All rights reserved.</p>
+                <p>Xây nền vững &mdash; Vận hành nhẹ</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js?v=6"></script>
+    <script>
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+            lucide.createIcons({ attrs: { "stroke-width": 2 } });
+        }
+    </script>
+</body>
+</html>
