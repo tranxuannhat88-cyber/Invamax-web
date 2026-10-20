@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Ứng dụng AI trong sản xuất: Cơ hội và lộ trình triển khai | INVAMAX</title>
-    <meta name="description" content="Những ứng dụng thực tế của AI trong sản xuất (AI Vision, Predictive Maintenance, điều độ, phân tích dữ liệu) và gợi ý lộ trình 5 bước phù hợp cho doanh nghiệp Việt Nam từ INVAMAX.">
+    <meta name="description" content="Những ứng dụng thực tế của AI trong sản xuất (AI Vision, Predictive Maintenance, điều độ, phân tích dữ liệu) và gợi ý lộ trình phù hợp cho doanh nghiệp Việt Nam từ INVAMAX.">
     
     <link rel="canonical" href="https://invamax.com/vi/article-ung-dung-ai.html">
     <link rel="alternate" hreflang="vi" href="https://invamax.com/vi/article-ung-dung-ai.html">
@@ -35,34 +35,33 @@
     
     <style>
         :root {
-            --ai-primary: #f97316;
-            --ai-primary-dark: #ea580c;
-            --ai-dark: #0f172a;
-            --ai-slate: #334155;
-            --ai-muted: #64748b;
-            --ai-border: #e2e8f0;
-            --ai-card-bg: #ffffff;
-            --ai-green: #16a34a;
-            --ai-blue: #0284c7;
-            --ai-purple: #9333ea;
-            --ai-amber: #d97706;
-            --ai-red: #e11d48;
+            --inv-orange: #f97316;
+            --inv-orange-dark: #ea580c;
+            --inv-dark: #0f172a;
+            --inv-slate: #334155;
+            --inv-muted: #64748b;
+            --inv-border: #e2e8f0;
+            --inv-bg-light: #f8fafc;
+            --inv-blue: #0284c7;
+            --inv-green: #16a34a;
+            --inv-purple: #9333ea;
+            --inv-red: #e11d48;
         }
 
         body {
-            background-color: #f1f5f9;
-            color: var(--ai-slate);
+            background-color: #f8fafc;
+            color: var(--inv-slate);
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             margin: 0;
             padding: 0;
-            line-height: 1.6;
+            line-height: 1.55;
             -webkit-font-smoothing: antialiased;
         }
 
         /* Top Action / Breadcrumbs Bar */
         .poster-top-bar {
-            padding: 96px 20px 14px;
-            max-width: 1040px;
+            padding: 92px 20px 14px;
+            max-width: 1000px;
             margin: 0 auto;
             display: flex;
             align-items: center;
@@ -84,7 +83,7 @@
             transition: color 0.2s ease;
         }
         .ai-breadcrumb a:hover {
-            color: var(--ai-primary);
+            color: var(--inv-orange);
         }
         .ai-breadcrumb .sep {
             color: #cbd5e1;
@@ -106,7 +105,7 @@
             background: #ffffff;
             border: 1px solid #cbd5e1;
             color: #475569;
-            padding: 6px 12px;
+            padding: 5px 12px;
             border-radius: 6px;
             font-size: 12px;
             font-weight: 600;
@@ -115,20 +114,20 @@
             transition: all 0.2s ease;
         }
         .poster-action-btn:hover {
-            border-color: var(--ai-primary);
-            color: var(--ai-primary);
+            border-color: var(--inv-orange);
+            color: var(--inv-orange);
             background: #fff8f3;
         }
 
-        /* Main Infographic Card Container */
+        /* MAIN DOCUMENT CARD CONTAINER */
         .ai-document-card {
-            max-width: 1040px;
+            max-width: 1000px;
             margin: 0 auto 50px auto;
             background: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 4px 30px rgba(15, 23, 42, 0.08);
+            border-radius: 10px;
+            box-shadow: 0 4px 25px rgba(15, 23, 42, 0.06);
             border: 1px solid #e2e8f0;
-            padding: 38px 42px 42px;
+            padding: 34px 38px 40px;
             box-sizing: border-box;
         }
 
@@ -136,24 +135,24 @@
         .ai-header-grid {
             display: grid;
             grid-template-columns: 1.25fr 1fr;
-            gap: 28px;
+            gap: 24px;
             align-items: center;
-            padding-bottom: 22px;
+            padding-bottom: 20px;
         }
         .ai-tag-badge {
             display: inline-block;
             background: #f97316;
             color: #ffffff;
-            font-size: 10.5px;
+            font-size: 10px;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            padding: 4px 10px;
+            padding: 3px 9px;
             border-radius: 4px;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
         .ai-main-title {
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 800;
             color: #0f172a;
             line-height: 1.25;
@@ -161,18 +160,17 @@
             letter-spacing: -0.4px;
         }
         .ai-main-subtitle {
-            font-size: 14.5px;
+            font-size: 13.5px;
             color: #475569;
-            line-height: 1.5;
-            margin: 0 0 16px 0;
-            font-style: italic;
+            line-height: 1.45;
+            margin: 0 0 14px 0;
         }
         .ai-meta-row {
             display: flex;
             align-items: center;
-            gap: 18px;
+            gap: 16px;
             flex-wrap: wrap;
-            font-size: 12px;
+            font-size: 11.5px;
             color: #64748b;
         }
         .ai-meta-item {
@@ -182,9 +180,9 @@
         }
         .ai-hero-img-wrap {
             position: relative;
-            border-radius: 10px;
+            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 3px 14px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
             aspect-ratio: 16 / 9;
             background: #0f172a;
         }
@@ -198,754 +196,561 @@
         /* INTRO LEAD BOX */
         .ai-lead-box {
             border-left: 3.5px solid #f97316;
-            background: #f8fafc;
-            padding: 18px 22px;
-            border-radius: 0 8px 8px 0;
-            margin: 6px 0 30px;
-            border-top: 1px solid #edf2f7;
-            border-right: 1px solid #edf2f7;
-            border-bottom: 1px solid #edf2f7;
+            background: #fffaf5;
+            padding: 14px 18px;
+            border-radius: 0 6px 6px 0;
+            margin: 8px 0 28px;
+            border-top: 1px solid #fef3c7;
+            border-right: 1px solid #fef3c7;
+            border-bottom: 1px solid #fef3c7;
         }
         .ai-lead-box p {
-            margin: 0 0 10px 0;
-            font-size: 13.5px;
-            line-height: 1.65;
+            margin: 0;
+            font-size: 12.5px;
+            line-height: 1.6;
             color: #334155;
         }
-        .ai-lead-box p:last-child {
-            margin-bottom: 0;
-        }
-        .ai-lead-highlight {
-            font-weight: 700;
-            color: #0f172a;
-        }
 
-        /* SECTION STYLING */
+        /* SECTION HEADINGS */
         .ai-section {
-            border-top: 1px dashed #cbd5e1;
-            padding-top: 26px;
-            margin-top: 26px;
+            margin-top: 28px;
+            padding-top: 6px;
         }
         .ai-sec-title {
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 800;
             color: #0f172a;
-            margin: 0 0 10px 0;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            margin: 0 0 6px 0;
             letter-spacing: -0.2px;
         }
-        .ai-sec-title .sec-num {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 26px;
-            height: 26px;
-            background: #fff7ed;
-            color: #ea580c;
-            border: 1px solid #fed7aa;
-            border-radius: 6px;
-            font-size: 12.5px;
-            font-weight: 800;
-        }
         .ai-sec-subtext {
-            font-size: 13px;
+            font-size: 12px;
             color: #475569;
-            margin: 0 0 18px 0;
-            line-height: 1.6;
+            margin: 0 0 16px 0;
+            line-height: 1.5;
             display: flex;
             align-items: baseline;
             gap: 6px;
         }
-        .ai-sec-subtext .ai-dash {
+        .ai-bullet-orange {
             color: #f97316;
-            font-weight: 800;
-        }
-
-        /* 4 PILLARS GRID (Section 01) */
-        .pillars-4grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 14px;
-            margin-bottom: 18px;
-        }
-        .pillar-card {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 16px 14px;
-            display: flex;
-            flex-direction: column;
-            transition: all 0.2s ease;
-            position: relative;
-        }
-        .pillar-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(15, 23, 42, 0.06);
-            border-color: #cbd5e1;
-        }
-        .pillar-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 8px;
-        }
-        .pillar-icon-box {
-            width: 32px;
-            height: 32px;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-        .pillar-card.p-detect .pillar-icon-box { background: #eff6ff; color: #2563eb; }
-        .pillar-card.p-predict .pillar-icon-box { background: #ecfdf5; color: #059669; }
-        .pillar-card.p-recommend .pillar-icon-box { background: #fef3c7; color: #d97706; }
-        .pillar-card.p-auto .pillar-icon-box { background: #faf5ff; color: #9333ea; }
-        
-        .pillar-name {
-            font-size: 13.5px;
-            font-weight: 700;
-            color: #0f172a;
-            line-height: 1.3;
-        }
-        .pillar-desc {
-            font-size: 12px;
-            color: #475569;
-            line-height: 1.5;
-            margin: 0;
-        }
-
-        /* Value Checklist Box */
-        .value-checklist-grid {
-            display: grid;
-            grid-template-columns: 1.3fr 1fr;
-            gap: 16px;
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 16px 18px;
-            margin-top: 14px;
-            align-items: center;
-        }
-        .value-check-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        .value-check-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 8px;
-            font-size: 12.5px;
-            color: #334155;
-            line-height: 1.45;
-        }
-        .value-check-list .chk {
-            color: #16a34a;
-            font-weight: 800;
-            flex-shrink: 0;
-        }
-        .value-quote-callout {
-            border-left: 3px solid #ea580c;
-            padding-left: 14px;
-            font-size: 12.5px;
-            font-weight: 600;
-            color: #0f172a;
-            line-height: 1.55;
-            background: #ffffff;
-            padding: 12px 14px;
-            border-radius: 0 6px 6px 0;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-        }
-
-        /* 6 APPLICATIONS GRID (Section 02) */
-        .apps-6grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-        }
-        .app-card {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 18px 20px;
-            transition: all 0.2s ease;
-            display: flex;
-            flex-direction: column;
-        }
-        .app-card:hover {
-            border-color: #cbd5e1;
-            box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
-        }
-        .app-top {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 10px;
-        }
-        .app-badge-num {
-            background: #fff7ed;
-            color: #ea580c;
-            border: 1px solid #fed7aa;
-            font-size: 11px;
-            font-weight: 800;
-            padding: 2px 7px;
-            border-radius: 4px;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-        .app-card-title {
             font-size: 14px;
-            font-weight: 700;
-            color: #0f172a;
-            line-height: 1.35;
-            margin: 0;
-        }
-        .app-card-subtitle {
-            font-size: 11px;
-            font-weight: 600;
-            color: #64748b;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-        }
-        .app-card-lead {
-            font-size: 12px;
-            color: #334155;
-            line-height: 1.5;
-            margin: 0 0 12px 0;
-        }
-        .app-sub-section {
-            margin-top: 10px;
-            padding-top: 10px;
-            border-top: 1px dashed #e2e8f0;
-        }
-        .app-sub-title {
-            font-size: 11.5px;
-            font-weight: 700;
-            color: #0f172a;
-            margin-bottom: 6px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        .app-bullets {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 8px 0;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-        .app-bullets li {
-            font-size: 11.5px;
-            color: #475569;
-            line-height: 1.45;
-            padding-left: 12px;
-            position: relative;
-        }
-        .app-bullets li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: #f97316;
-            font-weight: 800;
-        }
-        .app-case-box {
-            background: #f8fafc;
-            border-left: 2.5px solid #0284c7;
-            padding: 8px 10px;
-            border-radius: 0 4px 4px 0;
-            font-size: 11.5px;
-            color: #334155;
-            line-height: 1.5;
-            margin: 8px 0;
-        }
-        .app-kpi-row {
-            margin-top: auto;
-            padding-top: 10px;
-            border-top: 1px solid #f1f5f9;
-            font-size: 11.5px;
-            color: #64748b;
-            line-height: 1.45;
-        }
-        .app-kpi-row strong {
-            color: #0f172a;
+            font-weight: 900;
+            line-height: 1;
         }
 
-        /* 4 BARRIERS GRID (Section 03) */
-        .barriers-4grid {
+        /* SECTION 1: 4 PILLARS */
+        .sec1-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 14px;
-        }
-        .barrier-card {
-            background: #fffbfa;
-            border: 1px solid #fecdd3;
-            border-radius: 8px;
-            padding: 16px 14px;
-            display: flex;
-            flex-direction: column;
-        }
-        .barrier-num {
-            display: inline-block;
-            color: #e11d48;
-            font-size: 11px;
-            font-weight: 800;
-            margin-bottom: 6px;
-            text-transform: uppercase;
-        }
-        .barrier-title {
-            font-size: 13px;
-            font-weight: 700;
-            color: #9f1239;
-            margin: 0 0 8px 0;
-            line-height: 1.35;
-        }
-        .barrier-desc {
-            font-size: 11.5px;
-            color: #475569;
-            line-height: 1.5;
-            margin: 0;
-        }
-        .barrier-callout {
-            margin-top: 16px;
-            background: #0f172a;
-            color: #ffffff;
-            padding: 14px 18px;
-            border-radius: 8px;
-            font-size: 13px;
-            font-weight: 600;
-            text-align: center;
-            line-height: 1.5;
-        }
-
-        /* 5-STEP ROADMAP STEPPER (Section 04) */
-        .steps-container {
-            display: flex;
-            flex-direction: column;
             gap: 12px;
         }
-        .step-row-card {
-            display: grid;
-            grid-template-columns: 80px 1.4fr 1fr;
-            gap: 16px;
-            align-items: center;
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
+        .sec1-card {
             border-radius: 8px;
-            padding: 14px 16px;
-            transition: all 0.2s ease;
-        }
-        .step-row-card:hover {
-            border-color: #cbd5e1;
-            box-shadow: 0 3px 12px rgba(15, 23, 42, 0.05);
-        }
-        .step-num-col {
+            padding: 16px 12px;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-        .step-badge-circle {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: #fff7ed;
-            color: #ea580c;
-            border: 2px solid #fdba74;
+        .sec1-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+        }
+        .sec1-card.c-blue { background: #f0f7ff; border: 1px solid #e0f2fe; }
+        .sec1-card.c-orange { background: #fff7ed; border: 1px solid #ffedd5; }
+        .sec1-card.c-green { background: #f0fdf4; border: 1px solid #dcfce7; }
+        .sec1-card.c-purple { background: #faf5ff; border: 1px solid #f3e8ff; }
+
+        .sec1-icon {
+            margin-bottom: 8px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 13px;
-            font-weight: 800;
         }
-        .step-info-col h3 {
+        .c-blue .sec1-icon { color: #0284c7; }
+        .c-orange .sec1-icon { color: #ea580c; }
+        .c-green .sec1-icon { color: #16a34a; }
+        .c-purple .sec1-icon { color: #9333ea; }
+
+        .sec1-title {
+            font-size: 13.5px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .c-blue .sec1-title { color: #0284c7; }
+        .c-orange .sec1-title { color: #ea580c; }
+        .c-green .sec1-title { color: #16a34a; }
+        .c-purple .sec1-title { color: #9333ea; }
+
+        .sec1-desc {
+            font-size: 11px;
+            color: #475569;
+            line-height: 1.45;
+            margin: 0;
+        }
+
+        /* SECTION 2: 6 APPS GRID */
+        .sec2-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+        .sec2-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.2s ease;
+        }
+        .sec2-card:hover {
+            border-color: #cbd5e1;
+            box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+        }
+        .sec2-thumb {
+            width: 100%;
+            height: 115px;
+            object-fit: cover;
+            display: block;
+            background: #0f172a;
+        }
+        .sec2-body {
+            padding: 10px 12px 14px;
+        }
+        .sec2-title {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 0 0 4px 0;
+            line-height: 1.35;
+        }
+        .sec2-desc {
+            font-size: 11px;
+            color: #64748b;
+            line-height: 1.45;
+            margin: 0;
+        }
+
+        /* SECTION 3: 4 BARRIERS */
+        .sec3-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+        .sec3-card {
+            border-radius: 8px;
+            padding: 16px 12px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .sec3-card.b-green { background: #f0fdf4; border: 1px solid #dcfce7; }
+        .sec3-card.b-blue { background: #f0f7ff; border: 1px solid #e0f2fe; }
+        .sec3-card.b-orange { background: #fff7ed; border: 1px solid #ffedd5; }
+        .sec3-card.b-coral { background: #fff1f2; border: 1px solid #ffe4e6; }
+
+        .sec3-icon {
+            margin-bottom: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .b-green .sec3-icon { color: #16a34a; }
+        .b-blue .sec3-icon { color: #0284c7; }
+        .b-orange .sec3-icon { color: #ea580c; }
+        .b-coral .sec3-icon { color: #e11d48; }
+
+        .sec3-title {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 0 0 6px 0;
+            line-height: 1.35;
+        }
+        .sec3-desc {
+            font-size: 11px;
+            color: #64748b;
+            line-height: 1.45;
+            margin: 0;
+        }
+
+        /* SECTION 4: 5 STEPS STEPPER */
+        .sec4-stepper {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr auto 1fr;
+            align-items: center;
+            gap: 6px;
+            background: #ffffff;
+            padding: 10px 0;
+        }
+        .sec4-step {
+            text-align: center;
+            padding: 4px;
+        }
+        .sec4-circle {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #f97316;
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 12.5px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+        }
+        .sec4-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 0 0 4px 0;
+        }
+        .sec4-desc {
+            font-size: 10.5px;
+            color: #64748b;
+            line-height: 1.4;
+            margin: 0;
+        }
+        .sec4-plus {
+            color: #94a3b8;
+            font-size: 15px;
+            font-weight: 600;
+            text-align: center;
+            user-select: none;
+        }
+
+        /* SECTION 5: 90 DAYS PROCESS FLOW */
+        .sec5-timeline-container {
+            margin-top: 10px;
+        }
+        .sec5-flow-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin-bottom: 6px;
+        }
+        .sec5-col {
+            text-align: center;
+        }
+        .sec5-time {
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+        .sec5-time.t1 { color: #0284c7; }
+        .sec5-time.t2 { color: #ea580c; }
+        .sec5-time.t3 { color: #ea580c; }
+        .sec5-time.t4 { color: #e11d48; }
+        .sec5-time.t5 { color: #0f172a; }
+        
+        .sec5-name {
+            font-size: 11.5px;
+            color: #334155;
+            font-weight: 600;
+        }
+
+        /* Connected Arrow Underline Bar */
+        .sec5-arrow-bar {
+            position: relative;
+            height: 10px;
+            display: flex;
+            align-items: center;
+            margin-top: 8px;
+        }
+        .sec5-bar-seg {
+            height: 3px;
+            flex: 1;
+        }
+        .sec5-bar-seg.s1 { background: #0284c7; }
+        .sec5-bar-seg.s2 { background: #ea580c; }
+        .sec5-bar-seg.s3 { background: #ea580c; }
+        .sec5-bar-seg.s4 { background: #e11d48; }
+        .sec5-bar-seg.s5 { background: #0f172a; }
+        .sec5-arrow-tip {
+            width: 0;
+            height: 0;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            border-left: 7px solid #0f172a;
+            margin-left: -2px;
+        }
+
+        /* SECTION 6: EVALUATION TABLE + FORMULA */
+        .sec6-grid {
+            display: grid;
+            grid-template-columns: 1.35fr 1fr;
+            gap: 16px;
+            align-items: stretch;
+        }
+        .sec6-table-wrap {
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .sec6-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11.5px;
+            text-align: left;
+        }
+        .sec6-table th {
+            background: #f8fafc;
+            color: #0f172a;
+            font-weight: 700;
+            padding: 8px 12px;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 11.5px;
+        }
+        .sec6-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #f1f5f9;
+            color: #334155;
+            line-height: 1.4;
+        }
+        .sec6-table tr:last-child td {
+            border-bottom: none;
+        }
+        .sec6-table tr:hover td {
+            background: #fafcff;
+        }
+
+        .sec6-formula-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 22px 18px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .sec6-formula-title {
+            font-size: 15px;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 8px 0 6px 0;
+        }
+        .sec6-formula-sub1 {
+            font-size: 12px;
+            color: #475569;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+        .sec6-formula-sub2 {
+            font-size: 11.5px;
+            color: #64748b;
+        }
+
+        /* SECTION 7: 4 LAYERS FLOW */
+        .sec7-flow {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+            align-items: center;
+            gap: 8px;
+        }
+        .sec7-card {
+            border-radius: 8px;
+            padding: 14px 10px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .sec7-card.l-green { background: #f0fdf4; border: 1px solid #dcfce7; }
+        .sec7-card.l-blue { background: #f0f7ff; border: 1px solid #e0f2fe; }
+        .sec7-card.l-purple { background: #faf5ff; border: 1px solid #f3e8ff; }
+        .sec7-card.l-navy { background: #f1f5f9; border: 1px solid #e2e8f0; }
+
+        .sec7-icon-circle {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 6px;
+        }
+        .l-green .sec7-icon-circle { background: #dcfce7; color: #16a34a; }
+        .l-blue .sec7-icon-circle { background: #e0f2fe; color: #0284c7; }
+        .l-purple .sec7-icon-circle { background: #f3e8ff; color: #9333ea; }
+        .l-navy .sec7-icon-circle { background: #e2e8f0; color: #0f172a; }
+
+        .sec7-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 0 0 4px 0;
+        }
+        .sec7-desc {
+            font-size: 10.5px;
+            color: #64748b;
+            line-height: 1.4;
+            margin: 0;
+        }
+        .sec7-arrow {
+            color: #0284c7;
+            font-size: 15px;
+            user-select: none;
+            text-align: center;
+        }
+
+        /* CONCLUSION BLOCK */
+        .sec-conclusion {
+            background: #fffaf5;
+            border: 1.5px solid #fed7aa;
+            border-radius: 8px;
+            padding: 18px 22px;
+            display: grid;
+            grid-template-columns: 1fr 54px;
+            gap: 16px;
+            align-items: center;
+            margin: 28px 0 16px;
+        }
+        .sec-conclusion-title {
+            font-size: 14.5px;
+            font-weight: 800;
+            color: #ea580c;
+            margin: 0 0 6px 0;
+        }
+        .sec-conclusion-text {
+            font-size: 12px;
+            color: #475569;
+            line-height: 1.55;
+            margin: 0;
+        }
+
+        /* CTA BOX */
+        .sec-cta {
+            background: #f0f7ff;
+            border: 1px solid #dbeafe;
+            border-radius: 8px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            margin-bottom: 28px;
+        }
+        .sec-cta-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .sec-cta-title {
             font-size: 13.5px;
             font-weight: 700;
             color: #0f172a;
             margin: 0 0 4px 0;
         }
-        .step-info-col p {
-            font-size: 12px;
-            color: #475569;
-            margin: 0;
-            line-height: 1.45;
-        }
-        .step-output-col {
-            background: #f8fafc;
-            border-left: 3px solid #16a34a;
-            padding: 8px 12px;
-            border-radius: 0 6px 6px 0;
+        .sec-cta-desc {
             font-size: 11.5px;
-            color: #334155;
-            line-height: 1.4;
-        }
-        .step-output-col strong {
-            color: #16a34a;
-            font-weight: 700;
-            display: block;
-            margin-bottom: 2px;
-            font-size: 10.5px;
-            text-transform: uppercase;
-            letter-spacing: 0.4px;
-        }
-
-        /* 90-DAY TIMELINE TABLE (Section 05) */
-        .clean-table-wrap {
-            overflow-x: auto;
-            border-radius: 8px;
-            border: 1px solid #e2e8f0;
-            margin-bottom: 16px;
-        }
-        .clean-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 12.5px;
-            text-align: left;
-        }
-        .clean-table th {
-            background: #f8fafc;
-            color: #0f172a;
-            font-weight: 700;
-            padding: 10px 14px;
-            border-bottom: 1px solid #e2e8f0;
-            font-size: 12px;
-        }
-        .clean-table td {
-            padding: 10px 14px;
-            border-bottom: 1px solid #f1f5f9;
-            color: #334155;
-            line-height: 1.45;
-        }
-        .clean-table tr:last-child td {
-            border-bottom: none;
-        }
-        .clean-table tr:hover td {
-            background: #fbfcfe;
-        }
-        .badge-time {
-            display: inline-block;
-            background: #eff6ff;
-            color: #1d4ed8;
-            font-weight: 700;
-            font-size: 11px;
-            padding: 3px 8px;
-            border-radius: 4px;
-        }
-
-        /* 4 SELECTION CRITERIA */
-        .criteria-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin-top: 14px;
-        }
-        .criteria-card {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 6px;
-            padding: 12px 14px;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
-        .criteria-num {
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            background: #f1f5f9;
-            color: #475569;
-            font-size: 11px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            margin-top: 1px;
-        }
-        .criteria-text {
-            font-size: 12px;
-            color: #334155;
-            line-height: 1.45;
-            margin: 0;
-        }
-
-        /* SECTION 06: INVESTMENT & NET BENEFIT FORMULA */
-        .formula-box-styled {
-            background: #fff7ed;
-            border: 1.5px solid #fed7aa;
-            border-radius: 8px;
-            padding: 16px 20px;
-            margin: 16px 0;
-            text-align: center;
-        }
-        .formula-text {
-            font-size: 14px;
-            font-weight: 800;
-            color: #c2410c;
-            line-height: 1.4;
-        }
-        .formula-sub {
-            font-size: 12px;
-            color: #7c2d12;
-            margin-top: 4px;
-        }
-
-        .before-after-box {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 16px 18px;
-            margin-top: 14px;
-        }
-        .before-after-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 18px;
-            margin-top: 10px;
-        }
-        .ba-col h4 {
-            font-size: 12px;
-            font-weight: 700;
-            color: #0f172a;
-            margin: 0 0 6px 0;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-        }
-        .ba-col ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-        .ba-col li {
-            font-size: 11.5px;
-            color: #475569;
-            line-height: 1.45;
-            padding-left: 12px;
-            position: relative;
-        }
-        .ba-col li::before {
-            content: "–";
-            position: absolute;
-            left: 0;
             color: #64748b;
-        }
-
-        /* 4 LAYERS (Section 07) */
-        .layers-stack {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin: 16px 0;
-        }
-        .layer-item {
-            display: grid;
-            grid-template-columns: 180px 1fr;
-            gap: 14px;
-            align-items: center;
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 12px 16px;
-            transition: all 0.2s ease;
-        }
-        .layer-item:hover {
-            border-color: #cbd5e1;
-            box-shadow: 0 3px 10px rgba(15, 23, 42, 0.04);
-        }
-        .layer-item.l1 { border-left: 4px solid #64748b; }
-        .layer-item.l2 { border-left: 4px solid #0284c7; }
-        .layer-item.l3 { border-left: 4px solid #16a34a; }
-        .layer-item.l4 { border-left: 4px solid #ea580c; background: #fffbf9; }
-        .layer-title {
-            font-size: 12.5px;
-            font-weight: 700;
-            color: #0f172a;
-        }
-        .layer-desc {
-            font-size: 12px;
-            color: #475569;
+            line-height: 1.45;
             margin: 0;
-            line-height: 1.45;
-        }
-
-        .risk-warning-box {
-            background: #fff8f5;
-            border-left: 3px solid #ea580c;
-            border-radius: 0 8px 8px 0;
-            padding: 14px 18px;
-            margin-top: 16px;
-            font-size: 12px;
-            color: #334155;
-            line-height: 1.55;
-        }
-        .risk-warning-box strong {
-            color: #c2410c;
-        }
-
-        /* SECTION 08: STARTING POINTS FOR VIETNAMESE SMES */
-        .sme-points-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin: 14px 0;
-        }
-        .sme-point-card {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 6px;
-            padding: 12px 14px;
-            font-size: 12px;
-            color: #334155;
-            line-height: 1.45;
-            display: flex;
-            align-items: flex-start;
-            gap: 8px;
-        }
-        .sme-point-card .dot {
-            color: #f97316;
-            font-size: 14px;
-            font-weight: 800;
-            line-height: 1;
-            margin-top: 2px;
-        }
-
-        /* ACTION SPLIT GRID (Section Conclusion) */
-        .action-split-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 16px;
-            margin-top: 14px;
-        }
-        .action-card-left {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 20px 22px;
-        }
-        .action-card-header {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 13.5px;
-            font-weight: 700;
-            color: #0f172a;
-            margin-bottom: 14px;
-        }
-        .action-check-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .action-check-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 8px;
-            font-size: 12px;
-            color: #334155;
-            line-height: 1.45;
-        }
-        .action-check-list .check-icon {
-            color: #16a34a;
-            font-weight: 800;
-            flex-shrink: 0;
-        }
-
-        .action-card-right {
-            background: #0f172a;
-            color: #ffffff;
-            border-radius: 8px;
-            padding: 20px 22px;
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 18px;
-            align-items: center;
-        }
-        .cta-content-col h4 {
-            font-size: 13.5px;
-            font-weight: 700;
-            color: #ffffff;
-            margin: 0 0 6px 0;
-            line-height: 1.4;
-        }
-        .cta-content-col p {
-            font-size: 11.5px;
-            color: #94a3b8;
-            margin: 0 0 14px 0;
-            line-height: 1.45;
         }
         .btn-cta-orange {
+            background: #f97316;
+            color: #ffffff;
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: background 0.2s ease;
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: #f97316;
-            color: #ffffff;
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 700;
-            border: none;
-            cursor: pointer;
-            transition: background 0.2s ease;
-            text-decoration: none;
         }
         .btn-cta-orange:hover {
             background: #ea580c;
         }
-        .cta-list-col {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+
+        /* RELATED ARTICLES SECTION */
+        .related-section {
+            border-top: 1px dashed #cbd5e1;
+            padding-top: 24px;
+            margin-top: 24px;
+        }
+        .related-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 0 0 14px 0;
+        }
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+        .rel-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
             display: flex;
             flex-direction: column;
-            gap: 8px;
-            font-size: 11.5px;
-            color: #cbd5e1;
-            line-height: 1.4;
+            transition: all 0.2s ease;
         }
-        .cta-list-col li {
+        .rel-card:hover {
+            border-color: #cbd5e1;
+            box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+        }
+        .rel-thumb {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            display: block;
+            background: #0f172a;
+        }
+        .rel-body {
+            padding: 10px 12px 12px;
             display: flex;
-            align-items: flex-start;
-            gap: 6px;
+            flex-direction: column;
+            flex-grow: 1;
         }
-        .cta-list-col .check-icon {
+        .rel-tag {
+            font-size: 9.5px;
+            font-weight: 800;
+            color: #ea580c;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            margin-bottom: 5px;
+        }
+        .rel-card-title {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: #0f172a;
+            line-height: 1.35;
+            margin: 0 0 10px 0;
+        }
+        .rel-footer {
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 11px;
+            color: #94a3b8;
+        }
+        .rel-footer-meta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .rel-arrow {
             color: #f97316;
             font-weight: 800;
-        }
-
-        /* References Box */
-        .ref-box {
-            margin-top: 24px;
-            padding-top: 14px;
-            border-top: 1px dashed #cbd5e1;
-            font-size: 11.5px;
-            color: #64748b;
-        }
-        .ref-box strong {
-            color: #334155;
-        }
-        .ref-list {
-            margin: 6px 0 10px;
-            padding-left: 18px;
-            color: #64748b;
-        }
-        .ref-list li {
-            margin-bottom: 3px;
-        }
-        .disclaimer-text {
-            font-style: italic;
-            color: #94a3b8;
-            font-size: 11px;
-            margin: 6px 0 0;
+            font-size: 13px;
         }
 
         /* RESPONSIVE BREAKPOINTS */
@@ -958,41 +763,40 @@
                 grid-template-columns: 1fr;
                 gap: 18px;
             }
-            .pillars-4grid {
+            .sec1-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .apps-6grid {
-                grid-template-columns: 1fr;
-            }
-            .barriers-4grid {
+            .sec2-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .value-checklist-grid {
+            .sec3-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .sec4-stepper {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            .sec4-plus {
+                display: none;
+            }
+            .sec5-flow-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .sec6-grid {
                 grid-template-columns: 1fr;
             }
-            .step-row-card {
-                grid-template-columns: 60px 1fr;
-            }
-            .step-output-col {
-                grid-column: span 2;
-            }
-            .action-split-grid {
+            .sec7-flow {
                 grid-template-columns: 1fr;
+                gap: 10px;
             }
-            .action-card-right {
-                grid-template-columns: 1fr;
+            .sec7-arrow {
+                display: none;
             }
-            .layer-item {
-                grid-template-columns: 1fr;
-                gap: 6px;
+            .sec-cta {
+                flex-direction: column;
+                align-items: flex-start;
             }
-            .sme-points-grid {
-                grid-template-columns: 1fr;
-            }
-            .criteria-grid {
-                grid-template-columns: 1fr;
-            }
-            .before-after-grid {
+            .related-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -1002,9 +806,12 @@
                 padding: 80px 16px 12px;
             }
             .ai-main-title {
-                font-size: 22px;
+                font-size: 21px;
             }
-            .pillars-4grid, .barriers-4grid {
+            .sec1-grid, .sec2-grid, .sec3-grid, .sec5-flow-grid {
+                grid-template-columns: 1fr;
+            }
+            .sec-conclusion {
                 grid-template-columns: 1fr;
             }
         }
@@ -1020,7 +827,6 @@
                 margin: 0 !important;
                 max-width: 100% !important;
             }
-            .ai-section { page-break-inside: avoid; }
         }
     </style>
 </head>
@@ -1073,10 +879,10 @@
         </div>
         <div class="poster-action-group">
             <button type="button" onclick="window.print()" class="poster-action-btn" title="In tài liệu này">
-                <i data-lucide="printer" style="width: 14px; height: 14px;"></i> In tài liệu
+                <i data-lucide="printer" style="width: 13px; height: 13px;"></i> In tài liệu
             </button>
             <a href="resources.html" class="poster-action-btn" title="Quay lại kho tri thức">
-                <i data-lucide="arrow-left" style="width: 14px; height: 14px;"></i> Danh sách bài viết
+                <i data-lucide="arrow-left" style="width: 13px; height: 13px;"></i> Danh sách bài viết
             </a>
         </div>
     </div>
@@ -1084,7 +890,7 @@
     <!-- MAIN AI DOCUMENT CARD -->
     <main class="ai-document-card" id="aiPosterDocument">
 
-        <!-- HEADER: Tiêu đề bên trái, Ảnh kỹ sư bên phải -->
+        <!-- HEADER: Tiêu đề bên trái, Ảnh nhà máy & màn hình AI bên phải -->
         <header class="ai-header-grid">
             <div class="ai-header-left">
                 <span class="ai-tag-badge">DIGITAL &amp; AI</span>
@@ -1096,749 +902,446 @@
                     <span class="ai-meta-item"><i data-lucide="calendar" style="width: 13px; height: 13px;"></i> 8 tháng 10, 2026</span>
                     <span class="ai-meta-item"><i data-lucide="eye" style="width: 13px; height: 13px;"></i> 1.6K lượt xem</span>
                     <span class="ai-meta-item"><i data-lucide="clock" style="width: 13px; height: 13px;"></i> 14 phút đọc</span>
-                    <span class="ai-meta-item"><i data-lucide="user-check" style="width: 13px; height: 13px;"></i> Chuyên gia INVAMAX</span>
                 </div>
             </div>
             <div class="ai-header-right">
                 <div class="ai-hero-img-wrap">
-                    <img src="../assets/images/resources/art-ai-production.jpg?v=2" alt="Ứng dụng AI trong sản xuất: Cơ hội và lộ trình triển khai" class="ai-hero-img" loading="eager">
+                    <img src="../assets/images/resources/ai-hero-sample.jpg" alt="Ứng dụng AI trong sản xuất: Cơ hội và lộ trình triển khai" class="ai-hero-img" loading="eager">
                 </div>
             </div>
         </header>
 
         <!-- INTRO LEAD BOX -->
         <div class="ai-lead-box">
-            <p>Trí tuệ nhân tạo (AI) đang mở ra những khả năng mới trong quản trị, vận hành và cải tiến nhà máy. Từ kiểm tra chất lượng bằng hình ảnh, phân tích nguyên nhân dừng máy đến hỗ trợ lập kế hoạch sản xuất, AI có thể giúp doanh nghiệp xử lý dữ liệu và đưa ra quyết định hiệu quả hơn.</p>
-            <p>Tuy nhiên, với nhiều doanh nghiệp sản xuất, đặc biệt là doanh nghiệp vừa và nhỏ, câu hỏi quan trọng không phải là <strong>“Có nên ứng dụng AI hay không?”</strong> mà là: <span class="ai-lead-highlight">“Nhà máy nên ứng dụng AI vào đâu để tạo ra giá trị thực tế?”</span></p>
-            <p>Một hệ thống AI hiện đại không tự động giải quyết được những vấn đề về tổ chức, quy trình hay dữ liệu thiếu chính xác. Muốn AI phát huy hiệu quả, nhà máy cần có cách tiếp cận phù hợp, bắt đầu từ vấn đề vận hành, xây dựng dữ liệu đáng tin cậy và lựa chọn giải pháp công nghệ theo mức độ sẵn sàng.</p>
+            <p>Trí tuệ nhân tạo (AI) đang mở ra những khả năng mới trong quản trị, vận hành và cải tiến nhà máy. Bài viết này giúp doanh nghiệp hiểu AI có thể tạo ra giá trị gì, những ứng dụng thực tế, các điều kiện cần thiết và lộ trình triển khai phù hợp với bối cảnh sản xuất tại Việt Nam.</p>
         </div>
 
-        <!-- PHẦN 01: AI CÓ THỂ TẠO RA GIÁ TRỊ GÌ? -->
+        <!-- PHẦN 1: AI CÓ THỂ TẠO RA GIÁ TRỊ GÌ? -->
         <section class="ai-section">
-            <h2 class="ai-sec-title">
-                <span class="sec-num">01</span>
-                AI có thể tạo ra giá trị gì cho nhà máy sản xuất?
-            </h2>
+            <h2 class="ai-sec-title">1. AI có thể tạo ra giá trị gì cho nhà máy sản xuất?</h2>
             <p class="ai-sec-subtext">
-                <span class="ai-dash">—</span>
-                <span>Trong môi trường sản xuất công nghiệp, AI hỗ trợ doanh nghiệp tập trung theo bốn hướng chính:</span>
+                <span class="ai-bullet-orange">▪</span>
+                <span>Trong môi trường sản xuất, AI có thể hỗ trợ doanh nghiệp theo bốn hướng chính: nhận diện, dự báo, đề xuất và tự động hóa công việc tri thức.</span>
             </p>
 
-            <!-- 4 Pillars Grid -->
-            <div class="pillars-4grid">
-                <div class="pillar-card p-detect">
-                    <div class="pillar-header">
-                        <div class="pillar-icon-box"><i data-lucide="scan" style="width: 18px; height: 18px;"></i></div>
-                        <span class="pillar-name">Nhận diện</span>
-                    </div>
-                    <p class="pillar-desc">Phát hiện bất thường từ hình ảnh, dữ liệu thiết bị, dữ liệu chất lượng hoặc quá trình vận hành thời gian thực.</p>
+            <div class="sec1-grid">
+                <!-- 1. Nhận diện -->
+                <div class="sec1-card c-blue">
+                    <div class="sec1-icon"><i data-lucide="scan-search" style="width: 26px; height: 26px;"></i></div>
+                    <div class="sec1-title">Nhận diện</div>
+                    <p class="sec1-desc">Phát hiện bất thường từ hình ảnh, dữ liệu thiết bị, chất lượng quá trình vận hành.</p>
                 </div>
 
-                <div class="pillar-card p-predict">
-                    <div class="pillar-header">
-                        <div class="pillar-icon-box"><i data-lucide="trending-up" style="width: 18px; height: 18px;"></i></div>
-                        <span class="pillar-name">Dự báo</span>
-                    </div>
-                    <p class="pillar-desc">Ước tính nguy cơ hỏng máy, nhu cầu nguyên vật liệu, sản lượng hoặc khả năng chậm tiến độ giao hàng.</p>
+                <!-- 2. Dự báo -->
+                <div class="sec1-card c-orange">
+                    <div class="sec1-icon"><i data-lucide="trending-up" style="width: 26px; height: 26px;"></i></div>
+                    <div class="sec1-title">Dự báo</div>
+                    <p class="sec1-desc">Ước tính nguy cơ hỏng máy, nhu cầu nguyên vật liệu, sản lượng hoặc khả năng chậm tiến độ.</p>
                 </div>
 
-                <div class="pillar-card p-recommend">
-                    <div class="pillar-header">
-                        <div class="pillar-icon-box"><i data-lucide="cpu" style="width: 18px; height: 18px;"></i></div>
-                        <span class="pillar-name">Đề xuất</span>
-                    </div>
-                    <p class="pillar-desc">Hỗ trợ lựa chọn phương án sản xuất, lịch bảo trì, cách phân bổ nguồn lực hoặc hành động xử lý vấn đề.</p>
+                <!-- 3. Đề xuất -->
+                <div class="sec1-card c-green">
+                    <div class="sec1-icon"><i data-lucide="lightbulb" style="width: 26px; height: 26px;"></i></div>
+                    <div class="sec1-title">Đề xuất</div>
+                    <p class="sec1-desc">Hỗ trợ lựa chọn phương án sản xuất, lịch bảo trì, cách phân bổ nguồn lực.</p>
                 </div>
 
-                <div class="pillar-card p-auto">
-                    <div class="pillar-header">
-                        <div class="pillar-icon-box"><i data-lucide="sparkles" style="width: 18px; height: 18px;"></i></div>
-                        <span class="pillar-name">Tự động hóa tri thức</span>
-                    </div>
-                    <p class="pillar-desc">Tổng hợp báo cáo, tra cứu tài liệu quy trình, phân tích thông tin và hỗ trợ xây dựng hướng dẫn công việc (SOP).</p>
-                </div>
-            </div>
-
-            <!-- Value checklist & Principle -->
-            <div class="value-checklist-grid">
-                <div>
-                    <strong style="display: block; font-size: 12px; color: #0f172a; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.3px;">Cơ hội cải thiện quan trọng cho nhà máy:</strong>
-                    <ul class="value-check-list">
-                        <li><span class="chk">✓</span><span>Giảm thời gian phát hiện và phân tích nguyên nhân vấn đề.</span></li>
-                        <li><span class="chk">✓</span><span>Hạn chế tối đa công việc tổng hợp, đối soát dữ liệu thủ công.</span></li>
-                        <li><span class="chk">✓</span><span>Nâng cao năng lực kiểm soát chất lượng và tình trạng thiết bị.</span></li>
-                        <li><span class="chk">✓</span><span>Hỗ trợ lập kế hoạch và điều phối nguồn lực tối ưu theo ràng buộc.</span></li>
-                        <li><span class="chk">✓</span><span>Giúp ban quản lý đưa ra quyết định dựa trên dữ liệu tin cậy.</span></li>
-                    </ul>
-                </div>
-                <div class="value-quote-callout">
-                    <span style="color: #ea580c; font-weight: 800; display: block; margin-bottom: 4px; font-size: 11px; text-transform: uppercase;">Nguyên tắc cốt lõi</span>
-                    AI không đồng nghĩa với tự động hóa toàn bộ nhà máy. AI nên được xem là một <strong>công cụ bổ sung năng lực cho con người và hệ thống quản trị</strong>, không phải giải pháp thay thế mọi hoạt động quản lý.
+                <!-- 4. Tự động hóa tri thức -->
+                <div class="sec1-card c-purple">
+                    <div class="sec1-icon"><i data-lucide="sparkles" style="width: 26px; height: 26px;"></i></div>
+                    <div class="sec1-title">Tự động hóa công việc tri thức</div>
+                    <p class="sec1-desc">Tổng hợp báo cáo, tra cứu tài liệu, phân tích thông tin và hỗ trợ xây dựng hướng dẫn công việc.</p>
                 </div>
             </div>
         </section>
 
-        <!-- PHẦN 02: SÁU ỨNG DỤNG AI TIÊU BIỂU -->
+        <!-- PHẦN 2: SÁU ỨNG DỤNG AI TIÊU BIỂU -->
         <section class="ai-section">
-            <h2 class="ai-sec-title">
-                <span class="sec-num">02</span>
-                Sáu ứng dụng AI tiêu biểu trong sản xuất
-            </h2>
+            <h2 class="ai-sec-title">2. Sáu ứng dụng AI tiêu biểu trong sản xuất</h2>
             <p class="ai-sec-subtext">
-                <span class="ai-dash">—</span>
-                <span>Chi tiết các ứng dụng thực tế có khả năng mang lại ROI cao và tình huống triển khai cụ thể:</span>
+                <span class="ai-bullet-orange">▪</span>
+                <span>AI có thể được ứng dụng ở nhiều lĩnh vực trong nhà máy. Dưới đây là sáu ứng dụng tiêu biểu và ví dụ thực tế.</span>
             </p>
 
-            <div class="apps-6grid">
-                <!-- 2.1 AI Vision Inspection -->
-                <div class="app-card">
-                    <div class="app-top">
-                        <span class="app-badge-num">2.1</span>
-                        <div>
-                            <h3 class="app-card-title">AI kiểm tra chất lượng sản phẩm</h3>
-                            <span class="app-card-subtitle">AI Vision Inspection</span>
-                        </div>
-                    </div>
-                    <p class="app-card-lead">Kiểm tra chất lượng là lĩnh vực trực quan nhất. Thông qua camera công nghiệp và công nghệ thị giác máy tính, AI nhận diện các đặc điểm bất thường trên sản phẩm theo thời gian thực.</p>
-                    
-                    <div class="app-sub-section">
-                        <div class="app-sub-title"><i data-lucide="check" style="width: 14px; height: 14px; color: #f97316;"></i> Ví dụ ứng dụng:</div>
-                        <ul class="app-bullets">
-                            <li>Phát hiện lỗi ngoại quan trên bề mặt sản phẩm (xước, nứt, đổi màu, ba-via).</li>
-                            <li>Kiểm tra sự hiện diện hoặc thiếu sót của linh kiện lắp ráp.</li>
-                            <li>Phân loại sản phẩm theo kích thước, tem nhãn, đặc tính hình ảnh.</li>
-                            <li>Nhận diện lỗi lắp ráp sai vị trí hoặc sai lệch góc độ.</li>
-                        </ul>
-                    </div>
-
-                    <div class="app-case-box">
-                        <strong>Tình huống minh họa:</strong> Nhà máy linh kiện thử nghiệm camera kết hợp AI để phát hiện lỗi bavia và thiếu ốc. Nhân viên QC chịu trách nhiệm xác nhận các cảnh báo bất thường, giúp giảm tải mỏi mắt và tăng 40% tốc độ kiểm.
-                    </div>
-
-                    <div class="app-kpi-row">
-                        <strong>Chỉ số cần theo dõi:</strong> Tỷ lệ phát hiện lỗi, tỷ lệ bỏ sót lỗi (False Negative), tỷ lệ loại nhầm (False Positive), chu kỳ kiểm tra (Inspection Time) và chi phí kiểm trên đơn vị sản phẩm.
+            <div class="sec2-grid">
+                <!-- 2.1 AI Vision -->
+                <div class="sec2-card">
+                    <img src="../assets/images/resources/ai-app-1.jpg" alt="2.1 Kiểm tra chất lượng sản phẩm (AI Vision)" class="sec2-thumb" loading="lazy">
+                    <div class="sec2-body">
+                        <h3 class="sec2-title">2.1 Kiểm tra chất lượng sản phẩm (AI Vision)</h3>
+                        <p class="sec2-desc">Phát hiện lỗi ngoại quan, thiếu linh kiện, sai vị trí lắp ráp... bằng công nghệ xử lý hình ảnh.</p>
                     </div>
                 </div>
 
                 <!-- 2.2 Predictive Maintenance -->
-                <div class="app-card">
-                    <div class="app-top">
-                        <span class="app-badge-num">2.2</span>
-                        <div>
-                            <h3 class="app-card-title">AI dự báo hỏng máy</h3>
-                            <span class="app-card-subtitle">Predictive Maintenance (PdM)</span>
-                        </div>
-                    </div>
-                    <p class="app-card-lead">AI phân tích dữ liệu rung động, nhiệt độ, dòng điện, áp suất, thời gian chạy và lịch sử bảo trì để nhận diện dấu hiệu suy thoái trước khi thiết bị dừng đột xuất gây nghẽn dây chuyền.</p>
-                    
-                    <div class="app-sub-section">
-                        <div class="app-sub-title"><i data-lucide="check" style="width: 14px; height: 14px; color: #f97316;"></i> Ví dụ ứng dụng:</div>
-                        <ul class="app-bullets">
-                            <li>Phát hiện bất thường từ dữ liệu cảm biến rung động động cơ, hộp số.</li>
-                            <li>Theo dõi xu hướng gia tăng nhiệt độ ổ trục, bơm thủy lực.</li>
-                            <li>Nhận diện thiết bị có nguy cơ suy giảm hiệu suất để bảo trì phòng ngừa.</li>
-                            <li>Tối ưu hóa vòng đời phụ tùng thay thế dựa trên trạng thái thực tế.</li>
-                        </ul>
-                    </div>
-
-                    <div class="app-case-box" style="border-left-color: #d97706;">
-                        <strong>Lưu ý:</strong> Không phải mọi máy đều cần AI dự báo. Với các máy đơn giản, chi phí dừng máy thấp, việc bảo trì phòng ngừa định kỳ và kiểm soát 5S/bôi trơn chuẩn hóa là lựa chọn kinh tế hơn nhiều.
-                    </div>
-
-                    <div class="app-kpi-row">
-                        <strong>Chỉ số cần theo dõi:</strong> Thời gian dừng máy ngoài kế hoạch (Unplanned Downtime), MTBF (Mean Time Between Failures), MTTR (Mean Time to Repair), độ chính xác cảnh báo và chi phí bảo trì.
+                <div class="sec2-card">
+                    <img src="../assets/images/resources/ai-app-2.jpg" alt="2.2 Dự báo hỏng máy (Predictive Maintenance)" class="sec2-thumb" loading="lazy">
+                    <div class="sec2-body">
+                        <h3 class="sec2-title">2.2 Dự báo hỏng máy (Predictive Maintenance)</h3>
+                        <p class="sec2-desc">Phân tích dữ liệu rung động, nhiệt độ, dòng điện... để dự báo nguy cơ hỏng hóc.</p>
                     </div>
                 </div>
 
-                <!-- 2.3 Scheduling & Dispatching -->
-                <div class="app-card">
-                    <div class="app-top">
-                        <span class="app-badge-num">2.3</span>
-                        <div>
-                            <h3 class="app-card-title">AI hỗ trợ lập kế hoạch &amp; điều độ</h3>
-                            <span class="app-card-subtitle">Production Scheduling &amp; Dispatching</span>
-                        </div>
-                    </div>
-                    <p class="app-card-lead">Khi nhà máy có nhiều đơn hàng, đa chủng loại, máy móc và ràng buộc giao hàng, thuật toán tối ưu hóa giúp lập lịch sản xuất nhanh chóng và linh hoạt điều chỉnh khi có sự cố phát sinh.</p>
-                    
-                    <div class="app-sub-section">
-                        <div class="app-sub-title"><i data-lucide="check" style="width: 14px; height: 14px; color: #f97316;"></i> Ví dụ ứng dụng:</div>
-                        <ul class="app-bullets">
-                            <li>Sắp xếp thứ tự chạy mã hàng giảm thiểu thời gian chuyển đổi khuôn (Changeover).</li>
-                            <li>Cân bằng tải giữa các máy và dây chuyền theo năng lực thực tế.</li>
-                            <li>Dự báo nguy cơ chậm tiến độ để cảnh báo sớm cho bộ phận kế hoạch.</li>
-                            <li>Mô phỏng các kịch bản ứng phó khi phát sinh sự cố máy hoặc thiếu vật tư.</li>
-                        </ul>
-                    </div>
-
-                    <div class="app-case-box">
-                        <strong>Tình huống minh họa:</strong> Khi máy chính gặp sự cố dừng 4 tiếng, thay vì mất nửa ngày để sắp xếp lại lịch thủ công trên Excel, thuật toán AI đề xuất phương án điều độ thay thế chỉ trong vài phút.
-                    </div>
-
-                    <div class="app-kpi-row">
-                        <strong>Chỉ số cần theo dõi:</strong> Tỷ lệ giao hàng đúng hạn (OTIF), thời gian lập kế hoạch, tỷ lệ thay đổi lịch đột xuất, tồn kho bán thành phẩm (WIP) và Lead time sản xuất.
+                <!-- 2.3 Scheduling -->
+                <div class="sec2-card">
+                    <img src="../assets/images/resources/ai-app-3.jpg" alt="2.3 Hỗ trợ lập kế hoạch và điều độ sản xuất" class="sec2-thumb" loading="lazy">
+                    <div class="sec2-body">
+                        <h3 class="sec2-title">2.3 Hỗ trợ lập kế hoạch và điều độ sản xuất</h3>
+                        <p class="sec2-desc">Dự báo nhu cầu, tối ưu lịch sản xuất, cân đối công suất và giảm nguy cơ chậm tiến độ.</p>
                     </div>
                 </div>
 
-                <!-- 2.4 Data Analytics -->
-                <div class="app-card">
-                    <div class="app-top">
-                        <span class="app-badge-num">2.4</span>
-                        <div>
-                            <h3 class="app-card-title">AI phân tích dữ liệu &amp; hỗ trợ quản trị</h3>
-                            <span class="app-card-subtitle">Operational Analytics &amp; RCA</span>
-                        </div>
-                    </div>
-                    <p class="app-card-lead">Nhà máy sinh ra lượng lớn dữ liệu rời rạc giữa ERP, MES, IoT, sổ sách. AI giúp xâu chuỗi thông tin, phát hiện các mối tương quan ẩn và tìm kiếm nguyên nhân gốc rễ (Root Cause Analysis).</p>
-                    
-                    <div class="app-sub-section">
-                        <div class="app-sub-title"><i data-lucide="check" style="width: 14px; height: 14px; color: #f97316;"></i> Ví dụ ứng dụng:</div>
-                        <ul class="app-bullets">
-                            <li>Tự động tổng hợp báo cáo sản xuất, năng suất ca và OEE mỗi ngày.</li>
-                            <li>Phân tích nguyên nhân gốc rễ gây ra phế phẩm hoặc thời gian dừng máy.</li>
-                            <li>Phát hiện mối tương quan giữa thông số công nghệ (nhiệt độ, áp suất) và chất lượng.</li>
-                            <li>Cảnh báo sớm khi các chỉ số vận hành có xu hướng lệch khỏi dải kiểm soát.</li>
-                        </ul>
-                    </div>
-
-                    <div class="app-case-box">
-                        <strong>Giá trị quản trị:</strong> Chuyển từ việc báo cáo sự vụ sau khi đã xảy ra (hồi tố) sang việc phân tích xu hướng dự báo và đưa ra quyết định dựa trên dữ liệu kiểm chứng.
-                    </div>
-
-                    <div class="app-kpi-row">
-                        <strong>Chỉ số cần theo dõi:</strong> Thời gian lập báo cáo quản trị, thời gian phát hiện bất thường, tỷ lệ quyết định cải tiến có bằng chứng dữ liệu hỗ trợ.
+                <!-- 2.4 Data Analysis -->
+                <div class="sec2-card">
+                    <img src="../assets/images/resources/ai-app-4.jpg" alt="2.4 Phân tích dữ liệu và hỗ trợ quản trị" class="sec2-thumb" loading="lazy">
+                    <div class="sec2-body">
+                        <h3 class="sec2-title">2.4 Phân tích dữ liệu và hỗ trợ quản trị</h3>
+                        <p class="sec2-desc">Phân tích nguyên nhân suy giảm năng suất, tổng hợp báo cáo và phát hiện bất thường.</p>
                     </div>
                 </div>
 
                 <!-- 2.5 Knowledge Management -->
-                <div class="app-card">
-                    <div class="app-top">
-                        <span class="app-badge-num">2.5</span>
-                        <div>
-                            <h3 class="app-card-title">AI quản lý tri thức &amp; đào tạo</h3>
-                            <span class="app-card-subtitle">Knowledge Assistant &amp; SOP AI</span>
-                        </div>
-                    </div>
-                    <p class="app-card-lead">Kinh nghiệm vận hành và xử lý sự cố thường nằm rải rác hoặc chỉ lưu lại trong trí nhớ của một số thợ lành nghề. Generative AI và Trợ lý ảo giúp tra cứu tức thì và chuẩn hóa tri thức nội bộ.</p>
-                    
-                    <div class="app-sub-section">
-                        <div class="app-sub-title"><i data-lucide="check" style="width: 14px; height: 14px; color: #f97316;"></i> Ví dụ ứng dụng:</div>
-                        <ul class="app-bullets">
-                            <li>Trợ lý AI giúp kỹ thuật viên tra cứu nhanh quy trình thao tác chuẩn (SOP).</li>
-                            <li>Tra cứu lịch sử mã lỗi thiết bị và các phương án xử lý đã từng thành công.</li>
-                            <li>Hỗ trợ biên soạn tài liệu kỹ thuật, checklist kiểm tra định kỳ nhanh chóng.</li>
-                            <li>Hỗ trợ đào tạo công nhân mới thông qua tương tác hỏi - đáp nghiệp vụ trực tiếp.</li>
-                        </ul>
-                    </div>
-
-                    <div class="app-case-box">
-                        <strong>Lợi ích trực tiếp:</strong> Giảm phụ thuộc vào cá nhân, rút ngắn thời gian làm quen máy của công nhân mới và bảo toàn bí quyết công nghệ khi có biến động nhân sự.
-                    </div>
-
-                    <div class="app-kpi-row">
-                        <strong>Chỉ số cần theo dõi:</strong> Thời gian tra cứu tài liệu quy trình, thời gian đào tạo hội nhập, tỷ lệ sự cố xử lý được ngay tại ca, mức độ chính xác của phản hồi.
+                <div class="sec2-card">
+                    <img src="../assets/images/resources/art-ai-production.jpg?v=2" alt="2.5 Quản trị tri thức và đào tạo nhân viên" class="sec2-thumb" loading="lazy">
+                    <div class="sec2-body">
+                        <h3 class="sec2-title">2.5 Quản trị tri thức và đào tạo nhân viên</h3>
+                        <p class="sec2-desc">Hỗ trợ tra cứu quy trình, tài liệu kỹ thuật và xây dựng nội dung đào tạo.</p>
                     </div>
                 </div>
 
                 <!-- 2.6 Energy & Cost -->
-                <div class="app-card">
-                    <div class="app-top">
-                        <span class="app-badge-num">2.6</span>
-                        <div>
-                            <h3 class="app-card-title">AI quản lý năng lượng &amp; chi phí</h3>
-                            <span class="app-card-subtitle">Energy &amp; Cost Optimization</span>
-                        </div>
-                    </div>
-                    <p class="app-card-lead">Chi phí điện năng, hơi nóng, khí nén và nguyên vật liệu chiếm tỷ trọng lớn trong giá thành. AI nhận diện các vùng lãng phí ngầm và gợi ý phương án vận hành tiết kiệm tối đa.</p>
-                    
-                    <div class="app-sub-section">
-                        <div class="app-sub-title"><i data-lucide="check" style="width: 14px; height: 14px; color: #f97316;"></i> Ví dụ ứng dụng:</div>
-                        <ul class="app-bullets">
-                            <li>Phân tích tiêu thụ điện theo từng ca, từng dòng máy và từng mã sản phẩm.</li>
-                            <li>Nhận diện điểm bất thường như rò rỉ khí nén, máy chạy không tải kéo dài.</li>
-                            <li>Đề xuất lịch chạy các cụm máy tiêu tốn năng lượng tránh khung giờ cao điểm giá điện.</li>
-                            <li>Tính toán chỉ số năng lượng tiêu hao trên từng đơn vị sản phẩm hoàn chỉnh.</li>
-                        </ul>
-                    </div>
-
-                    <div class="app-case-box">
-                        <strong>Tác động bền vững:</strong> Giảm trực tiếp hóa đơn tiền điện hàng tháng, đồng thời hỗ trợ nhà máy đáp ứng các tiêu chuẩn báo cáo ESG và kiểm kê khí nhà kính.
-                    </div>
-
-                    <div class="app-kpi-row">
-                        <strong>Chỉ số cần theo dõi:</strong> Suất tiêu hao điện năng (kWh/đơn vị sản phẩm), chi phí năng lượng tổng thể, tỷ lệ phát hiện sớm bất thường và thời gian hoàn vốn đầu tư.
+                <div class="sec2-card">
+                    <img src="../assets/images/resources/ai-app-6.jpg" alt="2.6 Quản lý năng lượng và chi phí" class="sec2-thumb" loading="lazy">
+                    <div class="sec2-body">
+                        <h3 class="sec2-title">2.6 Quản lý năng lượng và chi phí</h3>
+                        <p class="sec2-desc">Phân tích tiêu thụ năng lượng, phát hiện bất thường và đề xuất giải pháp tối ưu.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- PHẦN 03: VÌ SAO NHIỀU NHÀ MÁY CHƯA SẴN SÀNG? -->
+        <!-- PHẦN 3: VÌ SAO NHIỀU NHÀ MÁY CHƯA SẴN SÀNG? -->
         <section class="ai-section">
-            <h2 class="ai-sec-title">
-                <span class="sec-num">03</span>
-                Vì sao nhiều nhà máy chưa sẵn sàng ứng dụng AI?
-            </h2>
+            <h2 class="ai-sec-title">3. Vì sao nhiều nhà máy chưa sẵn sàng ứng dụng AI?</h2>
             <p class="ai-sec-subtext">
-                <span class="ai-dash">—</span>
-                <span>Thực tế triển khai cho thấy rào cản lớn nhất không nằm ở thuật toán, mà ở bốn khoảng trống căn bản sau:</span>
+                <span class="ai-bullet-orange">▪</span>
+                <span>Trở ngại lớn nhất thường nằm ở quy trình, dữ liệu, mục tiêu và nguồn lực.</span>
             </p>
 
-            <div class="barriers-4grid">
-                <div class="barrier-card">
-                    <span class="barrier-num">Rào cản 01</span>
-                    <h3 class="barrier-title">Quy trình chưa được chuẩn hóa</h3>
-                    <p class="barrier-desc">Nếu một công đoạn chưa có quy trình chuẩn, thao tác giữa các ca làm việc khác nhau, máy móc chưa ổn định thì dữ liệu đầu vào sẽ dao động ngẫu nhiên, khiến AI không thể tìm ra quy luật tối ưu.</p>
+            <div class="sec3-grid">
+                <!-- 1. Quy trình chưa chuẩn hóa -->
+                <div class="sec3-card b-green">
+                    <div class="sec3-icon"><i data-lucide="settings" style="width: 24px; height: 24px;"></i></div>
+                    <div class="sec3-title">Quy trình chưa chuẩn hóa</div>
+                    <p class="sec3-desc">Cùng một công việc nhưng mỗi người thực hiện khác nhau.</p>
                 </div>
 
-                <div class="barrier-card">
-                    <span class="barrier-num">Rào cản 02</span>
-                    <h3 class="barrier-title">Dữ liệu thiếu hoặc không tin cậy</h3>
-                    <p class="barrier-desc">Dữ liệu ghi chép thủ công trên giấy, nhập liệu trễ nhiều ngày hoặc thiếu trung thực ("garbage in, garbage out"). Mô hình AI tối tân nhất cũng sẽ đưa ra kết quả vô nghĩa nếu dữ liệu nền tảng bị sai lệch.</p>
+                <!-- 2. Dữ liệu thiếu -->
+                <div class="sec3-card b-blue">
+                    <div class="sec3-icon"><i data-lucide="database" style="width: 24px; height: 24px;"></i></div>
+                    <div class="sec3-title">Dữ liệu thiếu hoặc không tin cậy</div>
+                    <p class="sec3-desc">Dữ liệu không đầy đủ, sai lệch hoặc không nhất quán.</p>
                 </div>
 
-                <div class="barrier-card">
-                    <span class="barrier-num">Rào cản 03</span>
-                    <h3 class="barrier-title">Thiếu mục tiêu kinh doanh rõ ràng</h3>
-                    <p class="barrier-desc">Nhiều dự án được bắt đầu vì tâm lý sợ tụt hậu công nghệ thay vì giải quyết nỗi đau cụ thể: bài toán nào gây mất tiền nhiều nhất? Đo lường tổn thất hiện tại ra sao? Vì sao giải pháp thường chưa đủ?</p>
+                <!-- 3. Thiếu mục tiêu -->
+                <div class="sec3-card b-orange">
+                    <div class="sec3-icon"><i data-lucide="target" style="width: 24px; height: 24px;"></i></div>
+                    <div class="sec3-title">Thiếu mục tiêu rõ ràng</div>
+                    <p class="sec3-desc">Triển khai AI chỉ vì công nghệ đó đang phổ biến.</p>
                 </div>
 
-                <div class="barrier-card">
-                    <span class="barrier-num">Rào cản 04</span>
-                    <h3 class="barrier-title">Thiếu người chủ trì nghiệp vụ</h3>
-                    <p class="barrier-desc">Phó thác toàn bộ dự án AI cho phòng CNTT hoặc nhà cung cấp phần mềm bên ngoài. Dự án thiếu sự đồng hành sát sao của quản đốc sản xuất, trưởng phòng bảo trì hoặc quản lý chất lượng.</p>
+                <!-- 4. Thiếu người chịu trách nhiệm -->
+                <div class="sec3-card b-coral">
+                    <div class="sec3-icon"><i data-lucide="users" style="width: 24px; height: 24px;"></i></div>
+                    <div class="sec3-title">Thiếu người chịu trách nhiệm</div>
+                    <p class="sec3-desc">Không có đầu mối nghiệp vụ để xác định và đánh giá bài toán.</p>
                 </div>
-            </div>
-
-            <div class="barrier-callout">
-                AI chỉ thực sự phát huy giá trị khi được tích hợp chặt chẽ vào thói quen làm việc và cơ chế ra quyết định hàng ngày của đội ngũ nhà máy.
             </div>
         </section>
 
-        <!-- PHẦN 04: LỘ TRÌNH 5 BƯỚC ỨNG DỤNG AI -->
+        <!-- PHẦN 4: LỘ TRÌNH 5 BƯỚC -->
         <section class="ai-section">
-            <h2 class="ai-sec-title">
-                <span class="sec-num">04</span>
-                Lộ trình 5 bước ứng dụng AI trong nhà máy
-            </h2>
+            <h2 class="ai-sec-title">4. Lộ trình 5 bước ứng dụng AI trong nhà máy</h2>
             <p class="ai-sec-subtext">
-                <span class="ai-dash">—</span>
-                <span>Phương pháp luận của INVAMAX dành cho doanh nghiệp sản xuất: <strong>bắt đầu nhỏ, đo lường được và mở rộng khi có hiệu quả</strong>:</span>
+                <span class="ai-bullet-orange">▪</span>
+                <span>Đối với doanh nghiệp vừa và nhỏ, nên bắt đầu nhỏ, đo lường được và mở rộng khi có hiệu quả.</span>
             </p>
 
-            <div class="steps-container">
+            <div class="sec4-stepper">
                 <!-- Bước 1 -->
-                <div class="step-row-card">
-                    <div class="step-num-col">
-                        <div class="step-badge-circle">01</div>
-                    </div>
-                    <div class="step-info-col">
-                        <h3>Bước 1: Đánh giá hiện trạng &amp; xác định bài toán ưu tiên</h3>
-                        <p>Rà soát quy trình, năng lực thiết bị, mức độ sẵn sàng dữ liệu và nhân lực. Phân tích tổn thất vận hành theo năng suất, chất lượng, chi phí hoặc thời gian để chọn đúng một bài toán điểm nhắm có ROI rõ ràng.</p>
-                    </div>
-                    <div class="step-output-col">
-                        <strong>Đầu ra cụ thể</strong>
-                        Danh sách bài toán tiềm năng, chỉ số KPI cơ sở (baseline) và thứ tự ưu tiên đầu tư.
-                    </div>
+                <div class="sec4-step">
+                    <div class="sec4-circle">1</div>
+                    <div class="sec4-title">Đánh giá hiện trạng</div>
+                    <p class="sec4-desc">Xác định bài toán ưu tiên và KPI hiện trạng.</p>
                 </div>
+
+                <div class="sec4-plus">+</div>
 
                 <!-- Bước 2 -->
-                <div class="step-row-card">
-                    <div class="step-num-col">
-                        <div class="step-badge-circle">02</div>
-                    </div>
-                    <div class="step-info-col">
-                        <h3>Bước 2: Chuẩn hóa dữ liệu &amp; xác định phương án công nghệ</h3>
-                        <p>Kiểm tra độ sạch và tính đầy đủ của dữ liệu. Đánh giá xem vấn đề có thực sự cần AI hay có thể giải quyết nhanh hơn bằng Lean, chuẩn hóa quy trình hoặc tự động hóa dựa trên luật (rule-based). Lựa chọn công nghệ vừa vặn.</p>
-                    </div>
-                    <div class="step-output-col">
-                        <strong>Đầu ra cụ thể</strong>
-                        Phạm vi ứng dụng, bộ tiêu chuẩn dữ liệu, phương án công nghệ và kế hoạch thử nghiệm.
-                    </div>
+                <div class="sec4-step">
+                    <div class="sec4-circle">2</div>
+                    <div class="sec4-title">Chuẩn hóa dữ liệu</div>
+                    <p class="sec4-desc">Kiểm tra dữ liệu và lựa chọn phương án công nghệ.</p>
                 </div>
+
+                <div class="sec4-plus">+</div>
 
                 <!-- Bước 3 -->
-                <div class="step-row-card">
-                    <div class="step-num-col">
-                        <div class="step-badge-circle">03</div>
-                    </div>
-                    <div class="step-info-col">
-                        <h3>Bước 3: Thử nghiệm tại một khu vực điểm (Pilot)</h3>
-                        <p>Triển khai thử trên một máy, một dây chuyền hoặc một cụm nghiệp vụ hẹp. Trong giai đoạn đầu, hệ thống AI chỉ đóng vai trò đưa ra cảnh báo hoặc đề xuất để kỹ sư con người thẩm định trước khi quyết định.</p>
-                    </div>
-                    <div class="step-output-col">
-                        <strong>Đầu ra cụ thể</strong>
-                        Nguyên mẫu giải pháp hoạt động thực tế và bộ dữ liệu kiểm chứng tính khả thi.
-                    </div>
+                <div class="sec4-step">
+                    <div class="sec4-circle">3</div>
+                    <div class="sec4-title">Thử nghiệm (Pilot)</div>
+                    <p class="sec4-desc">Triển khai thử ở một khu vực cụ thể.</p>
                 </div>
+
+                <div class="sec4-plus">+</div>
 
                 <!-- Bước 4 -->
-                <div class="step-row-card">
-                    <div class="step-num-col">
-                        <div class="step-badge-circle">04</div>
-                    </div>
-                    <div class="step-info-col">
-                        <h3>Bước 4: Đánh giá hiệu quả &amp; hoàn thiện giải pháp</h3>
-                        <p>So sánh trước - sau theo các KPI cam kết: độ chính xác thuật toán, tác động năng suất/chi phí, khả năng tiếp nhận của công nhân và tổng chi phí sở hữu (TCO). Không mở rộng nếu chưa chứng minh được giá trị thực tế.</p>
-                    </div>
-                    <div class="step-output-col">
-                        <strong>Đầu ra cụ thể</strong>
-                        Báo cáo ROI thực nghiệm và quyết định tiếp tục nhân rộng, hiệu chỉnh hoặc dừng lại.
-                    </div>
+                <div class="sec4-step">
+                    <div class="sec4-circle">4</div>
+                    <div class="sec4-title">Đánh giá hiệu quả</div>
+                    <p class="sec4-desc">So sánh trước - sau, kiểm chứng giá trị thực tế.</p>
                 </div>
+
+                <div class="sec4-plus">+</div>
 
                 <!-- Bước 5 -->
-                <div class="step-row-card">
-                    <div class="step-num-col">
-                        <div class="step-badge-circle">05</div>
-                    </div>
-                    <div class="step-info-col">
-                        <h3>Bước 5: Chuẩn hóa, đào tạo &amp; mở rộng quy mô</h3>
-                        <p>Xây dựng quy chế vận hành, phân quyền sử dụng, cơ chế kiểm soát chất lượng dữ liệu và quy trình xử lý khi AI báo sai. Đào tạo chuyển giao toàn diện cho người vận hành trước khi nhân rộng sang các khu vực khác.</p>
-                    </div>
-                    <div class="step-output-col">
-                        <strong>Đầu ra cụ thể</strong>
-                        Hệ thống tích hợp vào quy trình vận hành chuẩn, đội ngũ làm chủ và cơ chế cải tiến liên tục.
-                    </div>
+                <div class="sec4-step">
+                    <div class="sec4-circle">5</div>
+                    <div class="sec4-title">Chuẩn hóa và mở rộng</div>
+                    <p class="sec4-desc">Đào tạo, tích hợp vào vận hành và mở rộng khi đạt yêu cầu.</p>
                 </div>
             </div>
         </section>
 
-        <!-- PHẦN 05: LỘ TRÌNH 90 NGÀY BẮT ĐẦU -->
+        <!-- PHẦN 5: LỘ TRÌNH 90 NGÀY -->
         <section class="ai-section">
-            <h2 class="ai-sec-title">
-                <span class="sec-num">05</span>
-                Lộ trình 90 ngày để bắt đầu AI trong sản xuất
-            </h2>
+            <h2 class="ai-sec-title">5. Lộ trình 90 ngày để bắt đầu AI trong sản xuất</h2>
             <p class="ai-sec-subtext">
-                <span class="ai-dash">—</span>
-                <span>Doanh nghiệp chưa có nhiều kinh nghiệm về AI có thể tham khảo khung thời gian thử nghiệm thực tế dưới đây:</span>
+                <span class="ai-bullet-orange">▪</span>
+                <span>Gợi ý lộ trình thử nghiệm cho doanh nghiệp chưa có nhiều kinh nghiệm về AI.</span>
             </p>
 
-            <div class="clean-table-wrap">
-                <table class="clean-table">
-                    <thead>
-                        <tr>
-                            <th style="width: 22%;">Giai đoạn</th>
-                            <th style="width: 18%;">Thời gian</th>
-                            <th style="width: 32%;">Công việc trọng tâm</th>
-                            <th style="width: 28%;">Kết quả đầu ra</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>1. Đánh giá bài toán</strong></td>
-                            <td><span class="badge-time">Ngày 1 – 15</span></td>
-                            <td>Khảo sát hiện trạng, lựa chọn bài toán và thống nhất bộ chỉ số KPI</td>
-                            <td>Tài liệu bài toán ưu tiên &amp; mục tiêu đo lường</td>
-                        </tr>
-                        <tr>
-                            <td><strong>2. Chuẩn bị dữ liệu</strong></td>
-                            <td><span class="badge-time">Ngày 16 – 30</span></td>
-                            <td>Kiểm tra chất lượng dữ liệu, thiết kế luồng thông tin và giải pháp thử nghiệm</td>
-                            <td>Bộ dữ liệu sạch &amp; thiết kế kiến trúc Pilot</td>
-                        </tr>
-                        <tr>
-                            <td><strong>3. Triển khai Pilot</strong></td>
-                            <td><span class="badge-time">Ngày 31 – 60</span></td>
-                            <td>Cấu hình hệ thống, lắp đặt thiết bị/camera, kết nối dữ liệu và chạy thử</td>
-                            <td>Hệ thống AI chạy thử nghiệm trên dây chuyền</td>
-                        </tr>
-                        <tr>
-                            <td><strong>4. Đánh giá thực tế</strong></td>
-                            <td><span class="badge-time">Ngày 61 – 75</span></td>
-                            <td>Đo lường kết quả thực tế, phân tích sai lệch, cảnh báo sai và hạch toán chi phí</td>
-                            <td>Báo cáo nghiệm thu hiệu quả Pilot thực tế</td>
-                        </tr>
-                        <tr>
-                            <td><strong>5. Hoàn thiện quyết định</strong></td>
-                            <td><span class="badge-time">Ngày 76 – 90</span></td>
-                            <td>Chuẩn hóa quy trình thao tác, đào tạo người dùng và lập kế hoạch mở rộng</td>
-                            <td>SOP vận hành &amp; Lộ trình nhân rộng chính thức</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <p style="font-size: 11.5px; color: #64748b; font-style: italic; margin: 0 0 16px 0;">
-                * Đây là khung lộ trình tham khảo cho một thử nghiệm phạm vi hẹp (Pilot), không phải cam kết hoàn thành mọi hệ thống AI phức tạp trong 90 ngày.
-            </p>
-
-            <!-- Tiêu chí chọn dự án đầu tiên -->
-            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 18px 20px;">
-                <h3 style="font-size: 13.5px; font-weight: 700; color: #0f172a; margin: 0 0 8px 0;">
-                    Nhà máy nên chọn dự án AI đầu tiên như thế nào?
-                </h3>
-                <p style="font-size: 12.5px; color: #475569; margin: 0 0 12px 0;">
-                    Ưu tiên bài toán đáp ứng đồng thời <strong>bốn điều kiện then chốt</strong>:
-                </p>
-
-                <div class="criteria-grid">
-                    <div class="criteria-card">
-                        <span class="criteria-num">1</span>
-                        <p class="criteria-text">Có vấn đề vận hành cụ thể và chi phí tổn thất đo đếm được bằng tiền hoặc thời gian.</p>
+            <div class="sec5-timeline-container">
+                <div class="sec5-flow-grid">
+                    <div class="sec5-col">
+                        <div class="sec5-time t1">Ngày 1 – 15</div>
+                        <div class="sec5-name">Đánh giá bài toán</div>
                     </div>
-                    <div class="criteria-card">
-                        <span class="criteria-num">2</span>
-                        <p class="criteria-text">Có sẵn dữ liệu hoặc có thể thu thập đủ dữ liệu tin cậy trong phạm vi thời gian hợp lý.</p>
+                    <div class="sec5-col">
+                        <div class="sec5-time t2">Ngày 16 – 30</div>
+                        <div class="sec5-name">Chuẩn bị dữ liệu</div>
                     </div>
-                    <div class="criteria-card">
-                        <span class="criteria-num">3</span>
-                        <p class="criteria-text">Giải pháp có thể triển khai thử nghiệm mà không làm gián đoạn kế hoạch sản xuất hiện tại.</p>
+                    <div class="sec5-col">
+                        <div class="sec5-time t3">Ngày 31 – 60</div>
+                        <div class="sec5-name">Triển khai Pilot</div>
                     </div>
-                    <div class="criteria-card">
-                        <span class="criteria-num">4</span>
-                        <p class="criteria-text">Có người phụ trách nghiệp vụ (sản xuất, QC, bảo trì) đủ năng lực và thời gian kiểm chứng kết quả.</p>
+                    <div class="sec5-col">
+                        <div class="sec5-time t4">Ngày 61 – 75</div>
+                        <div class="sec5-name">Đánh giá thực tế</div>
+                    </div>
+                    <div class="sec5-col">
+                        <div class="sec5-time t5">Ngày 76 – 90</div>
+                        <div class="sec5-name">Hoàn thiện quyết định</div>
                     </div>
                 </div>
 
-                <div style="margin-top: 14px; padding-top: 12px; border-top: 1px dashed #cbd5e1; font-size: 12.5px; font-weight: 600; color: #ea580c;">
-                    Một dự án nhỏ mang lại hiệu quả đo được có giá trị hơn rất nhiều một hệ thống AI hoành tráng nhưng không ai dùng trong công việc hằng ngày.
+                <!-- Horizontal Process Connector Line -->
+                <div class="sec5-arrow-bar">
+                    <div class="sec5-bar-seg s1"></div>
+                    <div class="sec5-bar-seg s2"></div>
+                    <div class="sec5-bar-seg s3"></div>
+                    <div class="sec5-bar-seg s4"></div>
+                    <div class="sec5-bar-seg s5"></div>
+                    <div class="sec5-arrow-tip"></div>
                 </div>
             </div>
         </section>
 
-        <!-- PHẦN 06: ĐÁNH GIÁ HIỆU QUẢ ĐẦU TƯ AI -->
+        <!-- PHẦN 6: ĐÁNH GIÁ HIỆU QUẢ ĐẦU TƯ AI -->
         <section class="ai-section">
-            <h2 class="ai-sec-title">
-                <span class="sec-num">06</span>
-                Đánh giá hiệu quả đầu tư AI như thế nào?
-            </h2>
+            <h2 class="ai-sec-title">6. Đánh giá hiệu quả đầu tư AI như thế nào?</h2>
             <p class="ai-sec-subtext">
-                <span class="ai-dash">—</span>
-                <span>Hiệu quả của AI không nằm ở mức độ phức tạp của thuật toán hay số lượng tính năng, mà ở <strong>tác động kinh tế và vận hành thực tế</strong>:</span>
+                <span class="ai-bullet-orange">▪</span>
+                <span>Hiệu quả của AI cần được đánh giá dựa trên tác động thực tế đến vận hành và tài chính.</span>
             </p>
 
-            <div class="clean-table-wrap">
-                <table class="clean-table">
-                    <thead>
-                        <tr>
-                            <th style="width: 32%;">Ứng dụng AI</th>
-                            <th style="width: 68%;">Chỉ số đo lường hiệu quả (KPIs)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>AI kiểm tra chất lượng</strong></td>
-                            <td>Tỷ lệ phát hiện lỗi, tỷ lệ bỏ sót lỗi, tỷ lệ loại nhầm phôi tốt, thời gian kiểm tra trung bình mỗi sản phẩm.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>AI dự báo bảo trì</strong></td>
-                            <td>Thời gian dừng máy ngoài kế hoạch (giờ/tháng), chỉ số MTBF, MTTR, tỷ lệ cảnh báo chính xác, chi phí linh kiện thay thế.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>AI lập kế hoạch &amp; điều độ</strong></td>
-                            <td>Tỷ lệ giao hàng đúng hạn (OTIF), thời gian lập kế hoạch sản xuất, tồn kho bán thành phẩm (WIP), Lead time toàn chuỗi.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>AI phân tích dữ liệu</strong></td>
-                            <td>Thời gian tổng hợp báo cáo quản trị, thời gian phát hiện bất thường, tỷ lệ quyết định cải tiến có số liệu chứng minh.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>AI quản lý tri thức &amp; đào tạo</strong></td>
-                            <td>Thời gian tra cứu tài liệu nghiệp vụ, thời gian đào tạo thợ mới, tỷ lệ câu hỏi kỹ thuật giải quyết được ngay tại ca sản xuất.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>AI quản lý năng lượng</strong></td>
-                            <td>Suất tiêu thụ điện năng trên đơn vị sản phẩm (kWh/unit), tổng chi phí năng lượng hàng tháng, tỷ lệ phát hiện sớm rò rỉ.</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Công thức Net Benefit -->
-            <div class="formula-box-styled">
-                <div class="formula-text">
-                    Hiệu quả ròng = Giá trị lợi ích được xác nhận − Tổng chi phí triển khai và vận hành liên quan
+            <div class="sec6-grid">
+                <!-- Bảng KPI -->
+                <div class="sec6-table-wrap">
+                    <table class="sec6-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 38%;">Ứng dụng</th>
+                                <th style="width: 62%;">KPI đánh giá</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Kiểm tra chất lượng</strong></td>
+                                <td>Tỷ lệ phát hiện lỗi, bỏ sót, loại nhầm</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Bảo trì dự báo</strong></td>
+                                <td>Dừng máy ngoài kế hoạch, MTBF, MTTR</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Lập kế hoạch sản xuất</strong></td>
+                                <td>Giao hàng đúng hạn, lead time, tồn kho</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Phân tích dữ liệu</strong></td>
+                                <td>Thời gian báo cáo, phát hiện bất thường</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Quản trị tri thức</strong></td>
+                                <td>Thời gian tra cứu, thời gian đào tạo</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Quản lý năng lượng</strong></td>
+                                <td>kWh/đơn vị sản phẩm, chi phí năng lượng</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="formula-sub">
-                    Chỉ khi hiệu quả ròng đạt mức sinh lời chấp nhận được và các tiêu chuẩn an toàn được bảo đảm, doanh nghiệp mới nên xem xét nhân rộng.
-                </div>
-            </div>
 
-            <!-- Ví dụ minh họa thực tế -->
-            <div class="before-after-box">
-                <h3 style="font-size: 13px; font-weight: 700; color: #0f172a; margin: 0 0 6px 0;">
-                    Ví dụ minh họa: Đánh giá dự án AI Vision kiểm tra chất lượng
-                </h3>
-                <p style="font-size: 12px; color: #475569; margin: 0;">
-                    Để xác định dự án có thực sự hiệu quả kinh tế, doanh nghiệp phải đo lường song song hai giai đoạn:
-                </p>
-
-                <div class="before-after-grid">
-                    <div class="ba-col">
-                        <h4 style="color: #64748b;">Trước khi triển khai cần đo:</h4>
-                        <ul>
-                            <li>Thời gian kiểm tra trung bình cho một sản phẩm.</li>
-                            <li>Số lượng nhân sự kiểm tra ngoại quan trên mỗi ca.</li>
-                            <li>Tỷ lệ lỗi lọt qua mắt thường sang khách hàng hoặc công đoạn sau.</li>
-                            <li>Tổng chi phí nhân công và chi phí đền bù hàng lỗi hàng tháng.</li>
-                        </ul>
+                <!-- Thẻ công thức Hiệu quả ròng -->
+                <div class="sec6-formula-card">
+                    <div style="color: #f97316; margin-bottom: 4px;">
+                        <i data-lucide="bar-chart-2" style="width: 26px; height: 26px;"></i>
                     </div>
-
-                    <div class="ba-col">
-                        <h4 style="color: #16a34a;">Sau thử nghiệm cần tính toán đủ:</h4>
-                        <ul>
-                            <li>Mức giảm tỷ lệ lỗi lọt và năng suất kiểm tra gia tăng.</li>
-                            <li>Chi phí khấu hao thiết bị camera, bản quyền phần mềm và điện toán.</li>
-                            <li>Chi phí bảo trì hệ thống và chi phí công sức thẩm định cảnh báo.</li>
-                            <li>Tổn thất phát sinh do cảnh báo sai (loại nhầm sản phẩm đạt).</li>
-                        </ul>
-                    </div>
+                    <div class="sec6-formula-title">Hiệu quả ròng =</div>
+                    <div class="sec6-formula-sub1">Giá trị lợi ích được xác nhận</div>
+                    <div class="sec6-formula-sub2">— Tổng chi phí triển khai và vận hành liên quan.</div>
                 </div>
             </div>
         </section>
 
-        <!-- PHẦN 07: AI KHÔNG THAY THẾ NỀN TẢNG QUẢN TRỊ -->
+        <!-- PHẦN 7: AI KHÔNG THAY THẾ NỀN TẢNG QUẢN TRỊ -->
         <section class="ai-section">
-            <h2 class="ai-sec-title">
-                <span class="sec-num">07</span>
-                AI không thay thế nền tảng quản trị nhà máy
-            </h2>
+            <h2 class="ai-sec-title">7. AI không thay thế nền tảng quản trị nhà máy</h2>
             <p class="ai-sec-subtext">
-                <span class="ai-dash">—</span>
-                <span>Một nhà máy chưa có tiêu chuẩn vận hành ổn định, chưa quản lý dữ liệu kỷ luật thì đưa AI vào chỉ làm rối thêm hệ thống. Ngược lại, khi nền tảng vững vàng, AI là đòn bẩy bứt phá:</span>
+                <span class="ai-bullet-orange">▪</span>
+                <span>AI phát huy hiệu quả khi được triển khai trên nền tảng vận hành và dữ liệu đủ tin cậy.</span>
             </p>
 
-            <!-- 4 Layers Stack -->
-            <div class="layers-stack">
-                <div class="layer-item l1">
-                    <span class="layer-title">Lớp 1 – Chuẩn hóa vận hành</span>
-                    <p class="layer-desc">Thiết lập quy trình thao tác chuẩn (SOP), phân công trách nhiệm rõ ràng, chuẩn hóa thông số máy và định nghĩa các chỉ số đo lường cốt lõi.</p>
+            <div class="sec7-flow">
+                <!-- Lớp 1 -->
+                <div class="sec7-card l-green">
+                    <div class="sec7-icon-circle"><i data-lucide="clipboard-check" style="width: 17px; height: 17px;"></i></div>
+                    <div class="sec7-title">Chuẩn hóa vận hành</div>
+                    <p class="sec7-desc">Thiết lập quy trình, tiêu chuẩn và trách nhiệm.</p>
                 </div>
-                <div class="layer-item l2">
-                    <span class="layer-title">Lớp 2 – Số hóa dữ liệu</span>
-                    <p class="layer-desc">Đưa dữ liệu vận hành lên hệ thống số (ERP, MES, IoT), bảo đảm thông tin chính xác, thời gian thực, kết nối thông suốt và dễ truy xuất.</p>
-                </div>
-                <div class="layer-item l3">
-                    <span class="layer-title">Lớp 3 – Phân tích &amp; tối ưu</span>
-                    <p class="layer-desc">Sử dụng dữ liệu, phương pháp thống kê và công cụ quản trị (Lean, Six Sigma, SPC) để nhận diện lãng phí, nghẽn dòng chảy và cải tiến liên tục.</p>
-                </div>
-                <div class="layer-item l4">
-                    <span class="layer-title" style="color: #ea580c;">Lớp 4 – Ứng dụng AI</span>
-                    <p class="layer-desc">Áp dụng AI ở các bài toán phù hợp để gia tăng năng lực nhận diện siêu tốc, dự báo sớm sự cố, tối ưu hóa đa biến và tự động hóa xử lý tri thức.</p>
-                </div>
-            </div>
 
-            <p style="font-size: 12px; color: #475569; margin: 8px 0;">
-                Bốn lớp này có thể phát triển đan xen tùy hiện trạng thực tế của từng nhà máy, nhưng các ứng dụng AI quan trọng luôn đòi hỏi một nền tảng dữ liệu và cơ chế quản trị đủ tin cậy.
-            </p>
+                <div class="sec7-arrow">➔</div>
 
-            <!-- Rủi ro cần kiểm soát -->
-            <div class="risk-warning-box">
-                <strong style="display: block; margin-bottom: 6px; font-size: 12.5px;">Những rủi ro then chốt cần kiểm soát khi đưa AI vào sản xuất:</strong>
-                <ul style="margin: 0; padding-left: 18px;">
-                    <li><strong>Bảo mật thông tin:</strong> Bảo vệ nghiêm ngặt bí quyết công nghệ, công thức sản phẩm, bản vẽ CAD và dữ liệu khách hàng. Tuyệt đối không dùng các công cụ AI công cộng để phân tích tài liệu mật khi chưa có chính sách kiểm soát.</li>
-                    <li><strong>Độ chính xác và trôi mô hình (Model Drift):</strong> Khi điều kiện môi trường thay đổi (ánh sáng xưởng thay đổi, mã hàng mới), mô hình AI có thể suy giảm độ chính xác và cần cơ chế hiệu chuẩn định kỳ.</li>
-                    <li><strong>Kiểm soát độc lập:</strong> Các quyết định tác động trực tiếp đến an toàn tính mạng con người, an toàn thiết bị áp lực và chất lượng xuất hàng bắt buộc phải có cơ chế ngắt/xác nhận độc lập, không phó mặc 100% cho AI.</li>
-                </ul>
+                <!-- Lớp 2 -->
+                <div class="sec7-card l-blue">
+                    <div class="sec7-icon-circle"><i data-lucide="database" style="width: 17px; height: 17px;"></i></div>
+                    <div class="sec7-title">Số hóa dữ liệu</div>
+                    <p class="sec7-desc">Đưa dữ liệu lên hệ thống số, kết nối và dễ truy xuất.</p>
+                </div>
+
+                <div class="sec7-arrow">➔</div>
+
+                <!-- Lớp 3 -->
+                <div class="sec7-card l-purple">
+                    <div class="sec7-icon-circle"><i data-lucide="line-chart" style="width: 17px; height: 17px;"></i></div>
+                    <div class="sec7-title">Phân tích và tối ưu</div>
+                    <p class="sec7-desc">Sử dụng dữ liệu và công cụ phân tích để cải thiện hiệu quả.</p>
+                </div>
+
+                <div class="sec7-arrow">➔</div>
+
+                <!-- Lớp 4 -->
+                <div class="sec7-card l-navy">
+                    <div class="sec7-icon-circle"><i data-lucide="cpu" style="width: 17px; height: 17px;"></i></div>
+                    <div class="sec7-title">Ứng dụng AI</div>
+                    <p class="sec7-desc">Áp dụng AI ở các bài toán phù hợp để tăng khả năng nhận diện, dự báo và đề xuất.</p>
+                </div>
             </div>
         </section>
 
-        <!-- PHẦN 08: DOANH NGHIỆP VIỆT NAM NÊN BẮT ĐẦU TỪ ĐÂU? -->
-        <section class="ai-section">
-            <h2 class="ai-sec-title">
-                <span class="sec-num">08</span>
-                Doanh nghiệp Việt Nam nên bắt đầu từ đâu?
-            </h2>
-            <p class="ai-sec-subtext">
-                <span class="ai-dash">—</span>
-                <span>Đối với phần lớn doanh nghiệp sản xuất vừa và nhỏ (SME), không cần bắt đầu bằng những hệ thống công nghệ đồ sộ tốn kém. Hãy chọn những bài toán điểm có tính khả thi cao:</span>
-            </p>
-
-            <div class="sme-points-grid">
-                <div class="sme-point-card">
-                    <span class="dot">•</span>
-                    <span>Tự động hóa tổng hợp báo cáo sản xuất hàng ngày và phân tích xu hướng OEE.</span>
-                </div>
-                <div class="sme-point-card">
-                    <span class="dot">•</span>
-                    <span>Xây dựng trợ lý AI tra cứu nhanh quy trình thao tác chuẩn (SOP) và tài liệu nội bộ.</span>
-                </div>
-                <div class="sme-point-card">
-                    <span class="dot">•</span>
-                    <span>Phân tích dữ liệu lịch sử các đợt dừng máy lớn và thống kê nguyên nhân lỗi chất lượng.</span>
-                </div>
-                <div class="sme-point-card">
-                    <span class="dot">•</span>
-                    <span>Thử nghiệm kiểm tra ngoại quan bằng AI Vision tại một công đoạn có tỷ lệ phế phẩm cao.</span>
-                </div>
-                <div class="sme-point-card">
-                    <span class="dot">•</span>
-                    <span>Ứng dụng thuật toán hỗ trợ dự báo nhu cầu nguyên vật liệu và cân đối lịch chạy máy.</span>
-                </div>
-                <div class="sme-point-card">
-                    <span class="dot">•</span>
-                    <span>Rà soát biểu đồ tiêu thụ điện để cắt giảm tổn thất chạy không tải ngoài giờ.</span>
-                </div>
-            </div>
-
-            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px 18px; margin-top: 14px; font-size: 12.5px; color: #334155; line-height: 1.6;">
-                <strong>Góc nhìn thực tế:</strong> Trong nhiều trường hợp, <em>chuẩn hóa quy trình làm việc, cải tiến Layout mặt bằng, áp dụng phương pháp Lean hoặc tổ chức lại kỷ luật ghi chép dữ liệu</em> có thể mang lại hiệu quả nhanh hơn và ít tốn kém hơn việc triển khai AI. Hãy chỉ chọn AI khi giá trị gia tăng của công nghệ đủ lớn để bù đắp cho chi phí đầu tư và độ phức tạp vận hành.
-            </div>
-        </section>
-
-        <!-- PHẦN KẾT LUẬN & HÀNH ĐỘNG ĐỀ XUẤT -->
-        <section class="ai-section" style="margin-bottom: 10px;">
-            <h2 class="ai-sec-title">
-                <span class="sec-num"><i data-lucide="flag" style="width: 14px; height: 14px;"></i></span>
-                Kết luận: Bắt đầu từ bài toán vận hành, không phải từ công nghệ
-            </h2>
-            <p class="ai-sec-subtext">
-                <span class="ai-dash">—</span>
-                <span>Ứng dụng AI thành công không bắt đầu từ việc lựa chọn một phần mềm hay mô hình thời thượng. Nó bắt đầu từ việc hiểu đúng bài toán đau đầu nhất của nhà máy, chuẩn hóa dữ liệu nền và triển khai có đo lường:</span>
-            </p>
-
-            <div style="background: #fff7ed; border-left: 3.5px solid #ea580c; padding: 12px 16px; border-radius: 0 6px 6px 0; font-size: 13.5px; font-weight: 700; color: #9a3412; margin-bottom: 16px;">
-                “Đừng hỏi nhà máy có thể ứng dụng AI vào đâu trước khi hiểu rõ nhà máy đang cần giải quyết vấn đề gì.”
-            </div>
-
-            <!-- Action Split Card: Bên trái Checklist, Bên phải CTA INVAMAX -->
-            <div class="action-split-grid">
-                <!-- Thẻ trái: Hành động đề xuất -->
-                <div class="action-card-left">
-                    <div class="action-card-header">
-                        <i data-lucide="check-circle-2" style="width: 18px; height: 18px; color: #16a34a;"></i>
-                        <span>Checklist hành động cho nhà máy</span>
-                    </div>
-                    <ul class="action-check-list">
-                        <li><span class="check-icon">✓</span><span>Rà soát hiện trạng: Xác định tổn thất lớn nhất về phế phẩm, dừng máy hay giao hàng trễ.</span></li>
-                        <li><span class="check-icon">✓</span><span>Chuẩn hóa vận hành: Tối ưu quy trình thao tác và kỷ luật ghi chép dữ liệu trước.</span></li>
-                        <li><span class="check-icon">✓</span><span>Chọn bài toán điểm: Triển khai thử nghiệm 90 ngày cho một máy hoặc dây chuyền hẹp.</span></li>
-                        <li><span class="check-icon">✓</span><span>Đo lường hiệu quả ròng: Chỉ đầu tư nhân rộng khi ROI và độ an toàn được chứng minh.</span></li>
-                    </ul>
-                </div>
-
-                <!-- Thẻ phải: Khối kêu gọi tư vấn INVAMAX -->
-                <div class="action-card-right">
-                    <div class="cta-content-col">
-                        <h4>Đồng hành chuyển đổi số và ứng dụng AI cùng INVAMAX</h4>
-                        <p>Với triết lý <strong>“Xây nền vững – Vận hành nhẹ”</strong>, chúng tôi hỗ trợ doanh nghiệp đánh giá hiện trạng, chuẩn hóa quy trình và lựa chọn giải pháp AI phù hợp nhất với năng lực vận hành.</p>
-                        <button type="button" onclick="openContactModal()" class="btn-cta-orange">
-                            Liên hệ tư vấn cùng chuyên gia &rarr;
-                        </button>
-                    </div>
-                    <ul class="cta-list-col">
-                        <li><span class="check-icon">✓</span><span>Đánh giá mức độ sẵn sàng số hóa</span></li>
-                        <li><span class="check-icon">✓</span><span>INVAMAX Factory Platform tối ưu</span></li>
-                        <li><span class="check-icon">✓</span><span>Tư vấn giải pháp đo lường được ROI</span></li>
-                        <li><span class="check-icon">✓</span><span>Đồng hành chuyển đổi bền vững</span></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- References Box -->
-            <div class="ref-box">
-                <strong>Tài liệu tham khảo chuyên ngành:</strong>
-                <ul class="ref-list">
-                    <li>World Economic Forum – Global Lighthouse Network 2025.</li>
-                    <li>NIST – Artificial Intelligence Risk Management Framework (AI RMF 1.0).</li>
-                    <li>NIST – AI RMF Playbook for Industrial Organizations.</li>
-                </ul>
-                <p class="disclaimer-text">
-                    * Nội dung tình huống trong bài viết được sử dụng nhằm mục đích minh họa phương pháp luận triển khai; không phải kết quả dự án thực tế của INVAMAX.
+        <!-- KẾT LUẬN -->
+        <div class="sec-conclusion">
+            <div>
+                <h3 class="sec-conclusion-title">Kết luận: Bắt đầu từ bài toán vận hành, không phải từ công nghệ</h3>
+                <p class="sec-conclusion-text">
+                    AI đang tạo ra nhiều cơ hội đổi mới trong sản xuất. Tuy nhiên, ứng dụng AI thành công không bắt đầu từ việc lựa chọn một phần mềm hay mô hình công nghệ, mà từ việc hiểu đúng vấn đề của nhà máy, xác định giá trị cần tạo ra, chuẩn hóa dữ liệu và triển khai giải pháp có khả năng đo lường hiệu quả.
                 </p>
             </div>
-        </section>
+            <div style="text-align: right; display: flex; align-items: center; justify-content: flex-end;">
+                <i data-lucide="lightbulb" style="width: 44px; height: 44px; color: #f97316; stroke-width: 1.75;"></i>
+            </div>
+        </div>
+
+        <!-- CTA INVAMAX -->
+        <div class="sec-cta">
+            <div class="sec-cta-left">
+                <i data-lucide="factory" style="width: 36px; height: 36px; color: #0284c7; flex-shrink: 0;"></i>
+                <div>
+                    <h4 class="sec-cta-title">Đồng hành chuyển đổi số và ứng dụng AI cùng INVAMAX</h4>
+                    <p class="sec-cta-desc">Với triết lý "Xây nền vững – Vận hành nhẹ", INVAMAX hỗ trợ doanh nghiệp đánh giá hiện trạng, chuẩn hóa quy trình và lựa chọn giải pháp công nghệ phù hợp với mục tiêu vận hành.</p>
+                </div>
+            </div>
+            <button type="button" onclick="openContactModal()" class="btn-cta-orange">
+                Liên hệ với chúng tôi &rarr;
+            </button>
+        </div>
+
+        <!-- BÀI VIẾT LIÊN QUAN -->
+        <div class="related-section">
+            <h3 class="related-title">Bài viết liên quan</h3>
+            
+            <div class="related-grid">
+                <!-- Rel 1 -->
+                <a href="article-5-buoc-trien-khai-lean.html" class="rel-card">
+                    <img src="../assets/images/resources/ai-rel-1.jpg" alt="5 bước triển khai chuyển đổi số tại nhà máy" class="rel-thumb" loading="lazy">
+                    <div class="rel-body">
+                        <span class="rel-tag">DIGITAL &amp; AI</span>
+                        <h4 class="rel-card-title">5 bước triển khai chuyển đổi số tại nhà máy</h4>
+                        <div class="rel-footer">
+                            <div class="rel-footer-meta">
+                                <span><i data-lucide="calendar" style="width: 11px; height: 11px; display: inline-block; vertical-align: -1px;"></i> 2 tháng 10, 2026</span>
+                                <span><i data-lucide="eye" style="width: 11px; height: 11px; display: inline-block; vertical-align: -1px;"></i> 1.2K lượt xem</span>
+                            </div>
+                            <span class="rel-arrow">&rarr;</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Rel 2 -->
+                <a href="article-chi-so-oee.html" class="rel-card">
+                    <img src="../assets/images/resources/art-oee.jpg" alt="OEE: Cách đo lường và cải thiện hiệu quả thiết bị" class="rel-thumb" loading="lazy">
+                    <div class="rel-body">
+                        <span class="rel-tag" style="color: #0284c7;">QUẢN TRỊ NHÀ MÁY</span>
+                        <h4 class="rel-card-title">OEE: Cách đo lường và cải thiện hiệu quả thiết bị</h4>
+                        <div class="rel-footer">
+                            <div class="rel-footer-meta">
+                                <span><i data-lucide="calendar" style="width: 11px; height: 11px; display: inline-block; vertical-align: -1px;"></i> 10 tháng 10, 2026</span>
+                                <span><i data-lucide="eye" style="width: 11px; height: 11px; display: inline-block; vertical-align: -1px;"></i> 1.8K lượt xem</span>
+                            </div>
+                            <span class="rel-arrow">&rarr;</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Rel 3 -->
+                <a href="articles.html" class="rel-card">
+                    <img src="../assets/images/resources/ai-rel-3.jpg" alt="Data-driven Manufacturing: Quản trị nhà máy bằng dữ liệu" class="rel-thumb" loading="lazy">
+                    <div class="rel-body">
+                        <span class="rel-tag">DIGITAL &amp; AI</span>
+                        <h4 class="rel-card-title">Data-driven Manufacturing: Quản trị nhà máy bằng dữ liệu</h4>
+                        <div class="rel-footer">
+                            <div class="rel-footer-meta">
+                                <span><i data-lucide="calendar" style="width: 11px; height: 11px; display: inline-block; vertical-align: -1px;"></i> 15 tháng 9, 2026</span>
+                                <span><i data-lucide="eye" style="width: 11px; height: 11px; display: inline-block; vertical-align: -1px;"></i> 1.4K lượt xem</span>
+                            </div>
+                            <span class="rel-arrow">&rarr;</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
 
     </main>
 
