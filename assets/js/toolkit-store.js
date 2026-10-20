@@ -96,7 +96,7 @@ var INVAMAX_TOOLKIT_STORE = (function () {
             thumbnail: 'assets/images/resources/art-ai.jpg',
             dateDisplay: '8 thg 10, 2026',
             views: '1.6K lượt xem',
-            link: 'vi/articles.html',
+            link: 'vi/article-ung-dung-ai.html',
             status: 'published',
             createdAt: '2026-10-08'
         },

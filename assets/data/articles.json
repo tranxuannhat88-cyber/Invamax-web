@@ -1,50 +1,50 @@
 [
-  {
-    "id": "art-5-buoc-lean",
-    "title": "5 bước triển khai Lean hiệu quả tại nhà máy sản xuất",
-    "category": "Lean & Cải tiến",
-    "excerpt": "Hướng dẫn thực tế từ các dự án triển khai Lean, giúp doanh nghiệp cải thiện năng suất và giảm lãng phí bền vững.",
-    "thumbnail": "assets/images/resources/art-5steps.jpg",
-    "dateDisplay": "12 thg 10, 2026",
-    "views": "2.4K lượt xem",
-    "link": "vi/article-5-buoc-trien-khai-lean.html",
-    "status": "published",
-    "createdAt": "2026-10-12"
-  },
-  {
-    "id": "art-chi-so-oee",
-    "title": "Chỉ số OEE: Cách đo lường và cải thiện hiệu quả thiết bị",
-    "category": "Quản trị nhà máy",
-    "excerpt": "Hiểu đúng về OEE và các bước triển khai cải tiến hiệu quả trong nhà máy.",
-    "thumbnail": "assets/images/resources/art-oee.jpg",
-    "dateDisplay": "10 thg 10, 2026",
-    "views": "1.8K lượt xem",
-    "link": "vi/article-chi-so-oee.html",
-    "status": "published",
-    "createdAt": "2026-10-10"
-  },
-  {
-    "id": "art-ung-dung-ai",
-    "title": "Ứng dụng AI trong sản xuất: Cơ hội và lộ trình triển khai",
-    "category": "Digital & AI",
-    "excerpt": "Những ứng dụng thực tế của AI trong sản xuất và gợi ý lộ trình phù hợp cho doanh nghiệp Việt Nam.",
-    "thumbnail": "assets/images/resources/art-ai.jpg",
-    "dateDisplay": "8 thg 10, 2026",
-    "views": "1.6K lượt xem",
-    "link": "vi/articles.html",
-    "status": "published",
-    "createdAt": "2026-10-08"
-  },
-  {
-    "id": "art-10-co-hoi-giam-chi-phi",
-    "title": "10 cơ hội giảm chi phí sản xuất nhanh chóng",
-    "category": "Cost Down",
-    "excerpt": "Những giải pháp cost down có thể triển khai trong 3–6 tháng, dựa trên các dự án thực tế.",
-    "thumbnail": "assets/images/resources/art-cost-10opp.jpg",
-    "dateDisplay": "5 thg 10, 2026",
-    "views": "2.1K lượt xem",
-    "link": "vi/articles.html",
-    "status": "published",
-    "createdAt": "2026-10-05"
-  }
-]
+    {
+        "id": "art-5-buoc-lean",
+        "title": "5 bước triển khai Lean hiệu quả tại nhà máy sản xuất",
+        "category": "Lean & Cải tiến",
+        "excerpt": "Hướng dẫn thực tế từ các dự án triển khai Lean, giúp doanh nghiệp cải thiện năng suất và giảm lãng phí bền vững.",
+        "thumbnail": "assets/images/resources/art-5steps.jpg",
+        "dateDisplay": "12 thg 10, 2026",
+        "views": "2.4K lượt xem",
+        "link": "vi/article-5-buoc-trien-khai-lean.html",
+        "status": "published",
+        "createdAt": "2026-10-12"
+    },
+    {
+        "id": "art-chi-so-oee",
+        "title": "Chỉ số OEE: Cách đo lường và cải thiện hiệu quả thiết bị",
+        "category": "Quản trị nhà máy",
+        "excerpt": "Hiểu đúng về OEE và các bước triển khai cải tiến hiệu quả trong nhà máy.",
+        "thumbnail": "assets/images/resources/art-oee.jpg",
+        "dateDisplay": "10 thg 10, 2026",
+        "views": "1.8K lượt xem",
+        "link": "vi/article-chi-so-oee.html",
+        "status": "published",
+        "createdAt": "2026-10-10"
+    },
+    {
+        "id": "art-ung-dung-ai",
+        "title": "Ứng dụng AI trong sản xuất: Cơ hội và lộ trình triển khai",
+        "category": "Digital & AI",
+        "excerpt": "Những ứng dụng thực tế của AI trong sản xuất và gợi ý lộ trình phù hợp cho doanh nghiệp Việt Nam.",
+        "thumbnail": "assets/images/resources/art-ai.jpg",
+        "dateDisplay": "8 thg 10, 2026",
+        "views": "1.6K lượt xem",
+        "link": "vi/article-ung-dung-ai.html",
+        "status": "published",
+        "createdAt": "2026-10-08"
+    },
+    {
+        "id": "art-10-co-hoi-giam-chi-phi",
+        "title": "10 cơ hội giảm chi phí sản xuất nhanh chóng",
+        "category": "Cost Down",
+        "excerpt": "Những giải pháp cost down có thể triển khai trong 3–6 tháng, dựa trên các dự án thực tế.",
+        "thumbnail": "assets/images/resources/art-cost-10opp.jpg",
+        "dateDisplay": "5 thg 10, 2026",
+        "views": "2.1K lượt xem",
+        "link": "vi/articles.html",
+        "status": "published",
+        "createdAt": "2026-10-05"
+    }
+]
