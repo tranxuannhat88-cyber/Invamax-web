@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>5 Steps to Effective Lean Manufacturing Implementation | INVAMAX</title>
+    <meta name="description" content="Practical guidance from plant deployments: how to implement Lean manufacturing, eliminate shopfloor waste, and build sustainable Kaizen culture.">
+    
+    <link rel="canonical" href="https://invamax.com/en/article-5-buoc-trien-khai-lean.html">
+    <link rel="alternate" hreflang="vi" href="https://invamax.com/vi/article-5-buoc-trien-khai-lean.html">
+    <link rel="alternate" hreflang="x-default" href="https://invamax.com/vi/article-5-buoc-trien-khai-lean.html">
+    
+    <meta property="og:title" content="5 Steps to Effective Lean Manufacturing Implementation | INVAMAX">
+    <meta property="og:description" content="Practical guidance from plant deployments: how to implement Lean manufacturing, eliminate shopfloor waste, and build sustainable Kaizen culture.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://invamax.com/en/article-5-buoc-trien-khai-lean.html">
+    <meta property="og:image" content="https://invamax.com/assets/images/resources/art-5-buoc-lean-infographic.jpg">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="5 Steps to Effective Lean Manufacturing Implementation | INVAMAX">
+    <meta name="twitter:description" content="Practical guidance from plant deployments, helping manufacturers improve labor productivity and sustainably eliminate waste.">
+    <meta name="twitter:image" content="https://invamax.com/assets/images/resources/art-5-buoc-lean-infographic.jpg">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Global CSS -->
+    <link rel="icon" type="image/jpeg" href="../assets/images/favicon.jpg">
+    <link rel="stylesheet" href="../assets/css/style.css?v=18">
+    <link rel="stylesheet" href="../assets/css/navbar.css?v=13">
+    
+    <style>
+        body {
+            background-color: #f1f5f9;
+            color: #334155;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Top Action Bar */
+        .poster-top-bar {
+            padding: 100px 20px 16px;
+            max-width: 880px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .poster-back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #64748b;
+            text-decoration: none;
+            font-size: 13.5px;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+        .poster-back-btn:hover {
+            color: #f97316;
+        }
+        .poster-action-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .poster-action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            color: #475569;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12.5px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .poster-action-btn:hover {
+            border-color: #f97316;
+            color: #f97316;
+            background: #fff8f3;
+        }
+
+        /* Main Poster Document Card */
+        .lean-poster-card {
+            max-width: 860px;
+            margin: 0 auto 50px auto;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.07);
+            border: 1px solid #e2e8f0;
+            padding: 40px 42px 42px;
+            box-sizing: border-box;
+        }
+
+        /* Header Section */
+        .poster-header-grid {
+            display: grid;
+            grid-template-columns: 1.32fr 1fr;
+            gap: 24px;
+            align-items: center;
+            padding-bottom: 22px;
+        }
+        .poster-tag {
+            display: inline-block;
+            background: #f97316;
+            color: #ffffff;
+            font-size: 10.5px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 3px 10px;
+            border-radius: 4px;
+            margin-bottom: 12px;
+        }
+        .poster-title {
+            font-size: 27px;
+            font-weight: 800;
+            color: #0f172a;
+            line-height: 1.25;
+            margin: 0 0 12px 0;
+            letter-spacing: -0.3px;
+        }
+        .poster-subtitle {
+            font-size: 13.5px;
+            color: #475569;
+            line-height: 1.5;
+            margin: 0 0 16px 0;
+        }
+        .poster-meta-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            font-size: 12px;
+            color: #64748b;
+        }
+        .poster-meta-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .poster-meta-item i {
+            width: 13px;
+            height: 13px;
+            color: #64748b;
+        }
+        .poster-hero-img-wrap {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+        }
+        .poster-hero-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Lead Quote Box */
+        .poster-lead-quote {
+            border-left: 3.5px solid #f97316;
+            background: #f8fafc;
+            padding: 13px 18px;
+            border-radius: 0 8px 8px 0;
+            margin: 18px 0 28px 0;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #334155;
+        }
+        .poster-lead-quote p {
+            margin: 0 0 6px 0;
+        }
+        .poster-lead-quote p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Step 1 Row */
+        .step-row-1 {
+            display: grid;
+            grid-template-columns: 1.15fr 1fr;
+            gap: 22px;
+            align-items: center;
+            margin-bottom: 26px;
+        }
+        .step-heading {
+            font-size: 16.5px;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 0 0 6px 0;
+            line-height: 1.35;
+        }
+        .step-desc {
+            font-size: 12.8px;
+            color: #475569;
+            line-height: 1.5;
+            margin: 0 0 9px 0;
+        }
+        .step-checklist-card {
+            background: #f8fafc;
+            border-radius: 7px;
+            padding: 12px 15px;
+            box-sizing: border-box;
+        }
+        .step-checklist-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .step-checklist-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 7px;
+            font-size: 12.2px;
+            line-height: 1.5;
+            color: #334155;
+        }
+        .bullet-dot {
+            color: #f97316;
+            font-size: 16px;
+            font-weight: 900;
+            line-height: 1;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+        .step-blocks-img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+            display: block;
+            object-fit: cover;
+        }
+
+        /* 2-Column Grid for Steps 2-3 & 4-5 */
+        .step-2col-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+            margin-bottom: 26px;
+        }
+        .step-col-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        .step-col-card .step-checklist-card {
+            flex-grow: 1;
+        }
+
+        /* Bottom Hero Callout Banner */
+        .poster-bottom-banner {
+            background: linear-gradient(135deg, #072a20 0%, #0c382b 100%);
+            border-radius: 8px;
+            padding: 22px 26px;
+            display: grid;
+            grid-template-columns: 1.35fr 1fr;
+            gap: 22px;
+            align-items: center;
+            color: #ffffff;
+            margin-top: 28px;
+            box-sizing: border-box;
+        }
+        .banner-quote-left {
+            font-size: 15.5px;
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1.45;
+            margin: 0;
+        }
+        .banner-quote-line1 {
+            border-bottom: 2.5px solid #f97316;
+            display: inline-block;
+            padding-bottom: 3px;
+            margin-bottom: 3px;
+        }
+        .banner-box-right {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.25);
+            border-radius: 7px;
+            padding: 13px 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .banner-icon-chart {
+            color: #f97316;
+            width: 26px;
+            height: 26px;
+            min-width: 26px;
+        }
+        .banner-box-text {
+            font-size: 12.2px;
+            color: #d1fae5;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Bottom Consultation Box */
+        .poster-consult-box {
+            max-width: 860px;
+            margin: 0 auto 60px auto;
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            padding: 30px 36px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+        }
+        .poster-consult-left h3 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 0 0 6px 0;
+        }
+        .poster-consult-left p {
+            font-size: 0.92rem;
+            color: #64748b;
+            margin: 0;
+        }
+        .btn-consult-orange {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #f97316;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 11px 22px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            box-shadow: 0 3px 10px rgba(249, 115, 22, 0.3);
+        }
+        .btn-consult-orange:hover {
+            background: #ea580c;
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .poster-top-bar {
+                padding-top: 85px;
+            }
+            .lean-poster-card {
+                padding: 24px 20px;
+                border-radius: 0;
+                margin-bottom: 30px;
+            }
+            .poster-header-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+            .poster-title {
+                font-size: 21px;
+            }
+            .step-row-1 {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .step-2col-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .poster-bottom-banner {
+                grid-template-columns: 1fr;
+                padding: 18px 18px;
+                gap: 16px;
+            }
+            .poster-consult-box {
+                padding: 24px 20px;
+                text-align: center;
+                justify-content: center;
+            }
+        }
+
+        /* Print Media Style */
+        @media print {
+            .navbar, .poster-top-bar, .poster-consult-box, footer {
+                display: none !important;
+            }
+            body {
+                background: #ffffff !important;
+            }
+            .lean-poster-card {
+                box-shadow: none !important;
+                border: none !important;
+                padding: 0 !important;
+                max-width: 100% !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="logo">INVA<span>MAX</span></a>
+            <div class="nav-links">
+                <div class="nav-item"><a href="/" class="nav-title">Home</a></div>
+                <div class="nav-item">    
+                    <a href="#" class="nav-title">Solutions <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i></a>
+                    <div class="nav-dropdown">
+                        <a href="factory-transformation.html">Factory Transformation &amp; Operational Upgrade</a>
+                        <a href="operate-transform.html">Factory Operations Management</a>
+                        <a href="factory-assessment.html">Digital Factory Operations Platform</a>
+                    </div>
+                </div>
+                <div class="nav-item"><a href="capabilities.html" class="nav-title">Capabilities</a></div>
+                <div class="nav-item"><a href="news.html" class="nav-title">Events</a></div>
+                <div class="nav-item"><a href="case-studies.html" class="nav-title">Case Studies</a></div>
+                <div class="nav-item"><a href="resources.html" class="nav-title active">Insights</a></div>
+                <div class="nav-item"><a href="about.html" class="nav-title">Philosophy</a></div>
+                
+                <div class="lang-switcher">
+                    <a href="/vi/article-5-buoc-trien-khai-lean.html" class="active" style="display: flex; align-items: center; gap: 4px;">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" width="16" height="11" style="border-radius: 2px;" alt="VN">Tiếng Việt
+                    </a>
+                    <span style="color: rgba(255,255,255,0.25);">/</span>
+                    <a href="/en/" style="display: flex; align-items: center; gap: 4px; opacity: 0.75;">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" width="16" height="11" style="border-radius: 2px;" alt="EN">English
+                    </a>
+                </div>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Open menu"><i data-lucide="menu"></i></button>
+        </div>
+    </nav>
+
+    <!-- Top Action Toolbar -->
+    <div class="poster-top-bar">
+        <a href="resources.html#articles" class="poster-back-btn">
+            <i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i> Back to Insights
+        </a>
+        <div class="poster-action-group">
+            <a href="../assets/images/resources/art-5-buoc-lean-infographic.jpg" download="INVAMAX_5_Buoc_Trien_Khai_Lean.jpg" class="poster-action-btn" title="Download high-resolution poster">
+                <i data-lucide="download" style="width: 14px; height: 14px;"></i> Download Poster
+            </a>
+            <button type="button" onclick="window.print()" class="poster-action-btn" title="Print this document">
+                <i data-lucide="printer" style="width: 14px; height: 14px;"></i> Print Document
+            </button>
+        </div>
+    </div>
+
+    <!-- MAIN LEAN POSTER -->
+    <main class="lean-poster-card" id="leanPosterDocument">
+
+        <!-- HEADER -->
+        <header class="poster-header-grid">
+            <div class="poster-header-left">
+                <span class="poster-tag">LEAN &amp; KAIZEN</span>
+                <h1 class="poster-title">5 Steps to Effective Lean Implementation<br>in Manufacturing Plants</h1>
+                <p class="poster-subtitle">
+                    Practical guidance from plant deployments, helping manufacturers improve labor productivity and sustainably eliminate waste.
+                </p>
+                <div class="poster-meta-row">
+                    <span class="poster-meta-item"><i data-lucide="calendar"></i> October 12, 2026</span>
+                    <span class="poster-meta-item"><i data-lucide="eye"></i> 2.4K views</span>
+                    <span class="poster-meta-item"><i data-lucide="clock"></i> 12 min read</span>
+                </div>
+            </div>
+            <div class="poster-hero-img-wrap">
+                <img src="../assets/images/resources/lean-step-engineer.jpg?v=7" alt="INVAMAX Lean Manufacturing implementation on the factory floor" class="poster-hero-img">
+            </div>
+        </header>
+
+        <!-- LEAD QUOTE -->
+        <div class="poster-lead-quote">
+            <p>Lean is not merely a toolkit; it is an operating mindset and systematic discipline that empowers factories to generate maximum customer value with minimum waste. Yet, many enterprises struggle because Lean is implemented piecemeal, lacking strategic direction and sustainable governance.</p>
+            <p>This guide outlines 5 field-tested steps to implementing Lean, synthesized from hands-on factory transformations, helping you start right, execute with discipline, and sustain gains long term.</p>
+        </div>
+
+        <!-- BƯỚC 1 + ẢNH GỖ BẬC THANG -->
+        <div class="step-row-1">
+            <div class="step-col-left">
+                <h2 class="step-heading">1. Understand Lean Mindset &amp; Define Clear Objectives</h2>
+                <p class="step-desc">
+                    Lean is an operational system designed to eliminate shopfloor waste, optimize continuous flow, and maximize customer value. Before kicking off, leadership must clarify:
+                </p>
+                <div class="step-checklist-card">
+                    <ul>
+                        <li>
+                            <span class="bullet-dot">•</span>
+                            <span>What is the primary objective of Lean? (labor productivity boost, cost down, lead-time reduction, zero-defect quality...)</span>
+                        </li>
+                        <li>
+                            <span class="bullet-dot">•</span>
+                            <span>What is the implementation scope? (a pilot line, a specific workshop, or the entire manufacturing plant)</span>
+                        </li>
+                        <li>
+                            <span class="bullet-dot">•</span>
+                            <span>What is the expected timeframe and target milestone horizon?</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="step-col-right">
+                <img src="../assets/images/resources/lean-step-blocks.jpg" alt="5 core Lean principles: Identify Value, Map the Flow, Eliminate Waste, Create Flow, Continuous Improvement" class="step-blocks-img">
+            </div>
+        </div>
+
+        <!-- HÀNG 2: BƯỚC 2 & BƯỚC 3 (2 CỘT SONG SONG) -->
+        <div class="step-2col-grid">
+            <!-- Step 2 -->
+            <div class="step-col-card">
+                <h2 class="step-heading">2. Gemba Baseline Assessment &amp; Diagnostics</h2>
+                <p class="step-desc">
+                    Go to the Gemba—observe shopfloor reality to uncover core bottlenecks. Key activities include:
+                </p>
+                <div class="step-checklist-card">
+                    <ul>
+                        <li>
+                            <span class="bullet-dot">•</span>
+                            <span>Map the current-state Value Stream Mapping (VSM)</span>
+                        </li>
+                        <li>
+                            <span class="bullet-dot">•</span>
+                            <span>Measure baseline metrics: OEE, takt time, WIP inventory, defect rates...</span>
+                        </li>
+                        <li>
+                            <span class="bullet-dot">•</span>
+                            <span>Identify the 8 Types of Waste (Muda) across manufacturing processes</span>
+                        </li>
+                        <li>
+                            <span class="bullet-dot">•</span>
+                            <span>Prioritize high-impact levers using Pareto (80/20) analysis</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step-col-card">
+                <h2 class="step-heading">3. Develop an Actionable Implementation Plan</h2>
+                <p class="step-desc">
+                    Based on diagnostic findings, formulate a structured deployment plan covering:
+                </p>
+                <div class="step-checklist-card">
+                    <ul>
+                        <li>
+                            <span class="bullet-dot">•</span>
+                            <span>Select scope and priority workstreams</span>
+                        </li>
+                        <li>
+                            <span class="bullet-dot">•</span>
+                            <span>Define quantified target metrics (SMART targets)</span>
+                        </li>
+                        <li>
+                            <span class="bullet-dot">•</span>
+                            <span>Select fit-for-purpose Lean tools (5S, Kaizen, SMED, Standard Work...)</span>
+                        </li>
+                        <li>
+                            <span class="bullet-dot">•</span>
+                            <span>Assign clear ownership, core taskforce, and necessary resources</span>
+                        </li>
+                        <li>
+                            <span class="bullet-dot">•</span>
+                            <span>Establish project milestones and review cadences</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- HÀNG 3: BƯỚC 4 & BƯỚC 5 (2 CỘT SONG SONG) -->
+        <div class="step-2col-grid">
+            <!-- Step 4 -->
+            <div class="step-col-card">
+                <h2 class="step-heading">4. Execute &amp; Drive Shopfloor Transformation</h2>
+                <p class="step-desc">
+                    Execute targeted solutions per plan, starting with quick wins to build team momentum and frontline confidence.
+                </p>
+                <div class="step-checklist-card">
+                    <ul>
+                        <li>
+                            <span class="bullet-dot">•</span>
+                            <span>Apply right-sized Lean tools targeted to specific shopfloor bottlenecks</span>
+                        </li>
+                        <li>
+                            <span class="bullet-dot">•</span>
+                            <span>Conduct hands-on coaching and practical shopfloor training</span>
+                        </li>
+                        <li>
+                            <span class="bullet-dot">•</span>
+                            <span>Measure and verify performance gains after every Kaizen event</span>
+                        </li>
+                        <li>
+                            <span class="bullet-dot">•</span>
+                            <span>Standardize and scale proven improvements to adjacent lines</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="step-col-card">
+                <h2 class="step-heading">5. Sustain &amp; Institutionalize Continuous Improvement</h2>
+                <p class="step-desc">
+                    Lean delivers long-term ROI only when sustained daily and integrated into the plant's operating DNA.
+                </p>
+                <div class="step-checklist-card">
+                    <ul>
+                        <li>
+                            <span class="bullet-dot">•</span>
+                            <span>Standardize all verified improvements and workflow designs</span>
+                        </li>
+                        <li>
+                            <span class="bullet-dot">•</span>
+                            <span>Embed new routines into Standard Operating Procedures (SOPs)</span>
+                        </li>
+                        <li>
+                            <span class="bullet-dot">•</span>
+                            <span>Establish daily tiered management boards and layered audits</span>
+                        </li>
+                        <li>
+                            <span class="bullet-dot">•</span>
+                            <span>Cultivate an organic culture of continuous improvement (PDCA)</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- SUMMARY BANNER -->
+        <div class="poster-bottom-banner">
+            <div class="banner-quote-left">
+                <span class="banner-quote-line1">Lean is not a short-term campaign,</span><br>
+                <span>but an ongoing journey to build a leaner, more resilient, and higher-performing factory every single day.</span>
+            </div>
+            <div class="banner-box-right">
+                <i data-lucide="trending-up" class="banner-icon-chart"></i>
+                <p class="banner-box-text">
+                    Start with a focused pilot area, execute with disciplined methodology, achieve visible quick wins, and scale proven success plant-wide.
+                </p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <img src="../assets/images/home/logo-invamax-original.png" alt="INVAMAX">
+                <p>Factory Operations &amp; Transformation Partner</p>
+                <h5 style="color: white; margin-bottom: 14px; margin-top: 26px; font-size: 0.95rem; font-weight: 600;">Connect with Us</h5>
+                <div class="social-links" style="display: flex; gap: 8px; align-items: center;">
+                    <a href="https://www.linkedin.com/in/xuannhattran/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-linkedin" style="color: white; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; border: 1px solid #0A66C2; background: #0A66C2; padding: 0; margin: 0; line-height: 1; transition: all 0.3s;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block; margin: auto;"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    </a>
+                    <a href="https://www.youtube.com/@NguoiXayNen" target="_blank" rel="noopener" aria-label="YouTube" class="social-youtube" style="color: white; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; border: 1px solid #FF0000; background: #FF0000; padding: 0; margin: 0; line-height: 1; transition: all 0.3s;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block; margin: auto;"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                    </a>
+                    <a href="https://www.facebook.com/invamax.vanhanhtinhgon" target="_blank" rel="noopener" aria-label="Facebook" class="social-facebook" style="color: white; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; border: 1px solid #1877F2; background: #1877F2; padding: 0; margin: 0; line-height: 1; transition: all 0.3s;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block; margin: auto;"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                    </a>
+                    <a href="https://zalo.me/0988911869" target="_blank" rel="noopener" aria-label="Zalo" class="social-zalo" style="color: white; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; border: 1px solid #0068FF; background: #0068FF; padding: 0; margin: 0; line-height: 1; transition: all 0.3s;">
+                        <span style="font-size: 11px; font-weight: 800; font-family: 'Inter', sans-serif; line-height: 1; display: inline-flex; align-items: center; justify-content: center; margin: auto;">Zalo</span>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h4>Solutions</h4>
+                <a href="factory-transformation.html">Factory Transformation &amp; Operational Upgrade</a>
+                <a href="operate-transform.html">Factory Operations Management</a>
+                <a href="factory-assessment.html">Digital Factory Operations Platform</a>
+            </div>
+            <div>
+                <h4>About Us</h4>
+                <a href="capabilities.html">Capabilities</a>
+                <a href="news.html">Events</a>
+                <a href="case-studies.html">Case Studies</a>
+                <a href="resources.html">Insights</a>
+                <a href="about.html">Philosophy</a>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <p class="footer-company-name">INVAMAX INVESTMENT AND DEVELOPMENT CO., LTD.</p>
+                <div class="contact-info" style="display: flex; flex-direction: column; gap: 8px;">
+                    <div class="contact-item" style="display: flex; align-items: center; gap: 8px; height: 22px; font-size: 12px; line-height: 1; white-space: nowrap;">
+                        <span style="width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block; margin: auto;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </span>
+                        <a href="tel:0988911869" style="color: inherit; text-decoration: none; display: inline-flex; align-items: center; line-height: 1;">0988 911 869</a>
+                    </div>
+                    <div class="contact-item" style="display: flex; align-items: center; gap: 8px; height: 22px; font-size: 12px; line-height: 1; white-space: nowrap;">
+                        <span style="width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block; margin: auto;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </span>
+                        <a href="mailto:info@invamax.vn" style="color: inherit; text-decoration: none; display: inline-flex; align-items: center; line-height: 1;">info@invamax.vn</a>
+                    </div>
+                    <div class="contact-item" style="display: flex; align-items: center; gap: 8px; height: 22px; font-size: 12px; line-height: 1; white-space: nowrap;">
+                        <span style="width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block; margin: auto;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </span>
+                        <span style="display: inline-flex; align-items: center; line-height: 1;">Dong Loi, Vinh Thinh, Hai Phong City, Vietnam</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <span>&copy; 2026 INVAMAX. All rights reserved.</span>
+        </div>
+    </footer>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" type="button" onclick="closeContactModal()" aria-label="Close">&times;</button>
+            <h2>Request Consultation</h2>
+            <p>Please submit your information, and an INVAMAX specialist will reach out shortly.</p>
+            
+            <form id="leadForm" onsubmit="submitForm(event)">
+                <div style="opacity: 0; position: absolute; top: 0; left: 0; height: 0; width: 0; z-index: -1; overflow: hidden;">
+                    <label for="website_url">Website URL</label>
+                    <input type="text" id="website_url" name="website_url" tabindex="-1" autocomplete="off">
+                </div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Full Name *</label>
+                        <input type="text" name="hoTen" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label>Job Title *</label>
+                        <input type="text" name="chucDanh" required placeholder="Director / Plant Manager">
+                    </div>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Phone Number *</label>
+                        <input type="tel" name="soDienThoai" required placeholder="+84 988...">
+                    </div>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" name="email" required placeholder="email@congty.com">
+                    </div>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Factory / Company Name *</label>
+                        <input type="text" name="tenNhaMay" required placeholder="XYZ Manufacturing Co., Ltd.">
+                    </div>
+                    <div class="form-group">
+                        <label>Factory Address *</label>
+                        <input type="text" name="diaChi" required placeholder="Industrial Park, Province...">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Consultation Request / Current Challenge *</label>
+                    <textarea name="noiDung" rows="3" required placeholder="Briefly describe your factory's current Lean goals, challenges, or requirements..."></textarea>
+                </div>
+                
+                <button type="submit" id="btnSubmitForm" class="btn btn-orange" style="width: 100%; justify-content: center; padding: 12px; font-weight: 700; background: #f97316; color: #fff; border: none; border-radius: 8px; cursor: pointer;">
+                    Submit Consultation Request &rarr;
+                </button>
+            </form>
+            
+            <div id="formSuccess" style="display: none; text-align: center; padding: 24px 0;">
+                <div style="color: #22c55e; font-size: 2.8rem; margin-bottom: 10px;">&#10004;</div>
+                <h3 style="color: #16a34a; font-size: 1.25rem; margin: 0;">Submission Successful!</h3>
+                <p style="color: #475569; margin-top: 8px; font-size: 0.92rem;">Thank you. An INVAMAX expert will reach out to you shortly.</p>
+                <button type="button" class="btn btn-outline" style="margin-top: 16px; color: #17251e; border-color: #cbd5e1;" onclick="closeContactModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/main.js?v=6"></script>
+    <script>
+        lucide.createIcons({ attrs: { "stroke-width": 2.2 } });
+
+        function openContactModal() {
+            const modal = document.getElementById('contactModal');
+            if (modal) modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeContactModal() {
+            const modal = document.getElementById('contactModal');
+            if (modal) modal.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+
+        function submitForm(e) {
+            e.preventDefault();
+            const form = e.target;
+            const submitBtn = document.getElementById('btnSubmitForm');
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerText = 'Sending...';
+            }
+            setTimeout(() => {
+                form.style.display = 'none';
+                document.getElementById('formSuccess').style.display = 'block';
+            }, 400);
+        }
+    </script>
+</body>
+</html>
