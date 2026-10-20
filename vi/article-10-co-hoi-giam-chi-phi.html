@@ -28,34 +28,13 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
-        :root {
-            --poster-primary: #ff6600;
-            --poster-primary-hover: #e55c00;
-            --poster-navy: #091124;
-            --poster-navy-card: #0d1733;
-            --poster-text-main: #0f172a;
-            --poster-text-muted: #475569;
-            --poster-text-light: #64748b;
-            --poster-border: #e2e8f0;
-            --poster-bg-page: #f8fafc;
-            --poster-bg-white: #ffffff;
-            --poster-green-bg: #e8f5e9;
-            --poster-green-border: #c8e6c9;
-            --poster-green-text: #1b5e20;
-            --poster-orange-bg: #fff3e0;
-            --poster-orange-border: #ffe0b2;
-            --poster-orange-text: #e65100;
-            --poster-blue-bg: #e3f2fd;
-            --poster-blue-border: #bbdefb;
-            --poster-blue-text: #1565c0;
-        }
-
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-color: var(--poster-bg-page);
-            color: var(--poster-text-main);
+            background-color: #f1f5f9;
+            color: #334155;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             margin: 0;
             padding: 0;
+            line-height: 1.55;
             -webkit-font-smoothing: antialiased;
         }
 
@@ -71,189 +50,167 @@
             transition: width 0.1s ease-out;
         }
 
-        /* Hero Banner */
-        .hero-banner-section {
-            background: linear-gradient(135deg, #070d1e 0%, #0d1733 100%);
-            color: #ffffff;
-            padding: 92px 0 44px;
-            position: relative;
-            overflow: hidden;
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-        }
-        .hero-banner-container {
-            max-width: 1200px;
+        /* Top Action / Breadcrumbs Bar */
+        .poster-top-bar {
+            padding: 92px 20px 14px;
+            max-width: 1080px;
             margin: 0 auto;
-            padding: 0 24px;
-            display: grid;
-            grid-template-columns: 1.18fr 0.82fr;
-            gap: 36px;
-            align-items: center;
-        }
-        .hero-breadcrumb {
             display: flex;
             align-items: center;
-            gap: 6px;
-            font-size: 12.5px;
-            color: #94a3b8;
-            margin-bottom: 16px;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
         }
-        .hero-breadcrumb a {
-            color: #94a3b8;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        .hero-breadcrumb a:hover {
-            color: #ffffff;
-        }
-        .hero-badge-tag {
-            display: inline-block;
-            background: var(--poster-primary);
-            color: #ffffff;
-            font-size: 11px;
-            font-weight: 800;
-            padding: 4px 10px;
-            border-radius: 4px;
-            letter-spacing: 0.6px;
-            text-transform: uppercase;
-            margin-bottom: 14px;
-        }
-        .hero-title {
-            font-size: 34px;
-            font-weight: 800;
-            line-height: 1.25;
-            color: #ffffff;
-            margin: 0 0 14px 0;
-            letter-spacing: -0.5px;
-        }
-        .hero-subtitle {
-            font-size: 15.5px;
-            line-height: 1.6;
-            color: #cbd5e1;
-            margin: 0 0 22px 0;
-            font-weight: 400;
-        }
-        .hero-meta-row {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            font-size: 12.5px;
-            color: #94a3b8;
-        }
-        .hero-meta-item {
+        .ai-breadcrumb {
             display: inline-flex;
             align-items: center;
             gap: 6px;
+            font-size: 12.5px;
+            color: #64748b;
+            flex-wrap: wrap;
         }
-
-        /* Hero Right: Engineer + Floating Overlay */
-        .hero-img-box {
-            position: relative;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-            border: 1px solid rgba(255,255,255,0.1);
-            max-height: 300px;
+        .ai-breadcrumb a {
+            color: #64748b;
+            text-decoration: none;
+            transition: color 0.2s ease;
         }
-        .hero-img-box img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            display: block;
+        .ai-breadcrumb a:hover {
+            color: var(--poster-primary);
         }
-        .hero-floating-widget {
-            position: absolute;
-            right: 14px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 200px;
-            background: rgba(10, 17, 36, 0.88);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 10px;
-            padding: 12px 14px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            color: #ffffff;
-        }
-        .widget-header-title {
-            font-size: 11px;
-            font-weight: 800;
-            letter-spacing: 0.8px;
-            text-transform: uppercase;
-            color: #ffffff;
-            margin-bottom: 6px;
-        }
-        .widget-chart-wrap {
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        .widget-big-metric {
-            font-size: 22px;
-            font-weight: 900;
-            color: #ff6600;
-            line-height: 1;
-            display: flex;
-            align-items: center;
-            gap: 2px;
-        }
-        .widget-metric-list {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            font-size: 11px;
-        }
-        .widget-metric-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+        .ai-breadcrumb .sep {
             color: #cbd5e1;
+            font-size: 11px;
         }
-        .widget-metric-row span:first-child {
+        .ai-breadcrumb .current {
+            color: #1e293b;
+            font-weight: 600;
+        }
+        .poster-action-group {
             display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .poster-action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            color: #475569;
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .poster-action-btn:hover {
+            border-color: var(--poster-primary);
+            color: var(--poster-primary);
+            background: #fff8f3;
+        }
+
+        /* MAIN DOCUMENT CARD CONTAINER */
+        .cost-document-card {
+            max-width: 1080px;
+            margin: 0 auto 50px auto;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 25px rgba(15, 23, 42, 0.06);
+            border: 1px solid #e2e8f0;
+            padding: 34px 38px 40px;
+            box-sizing: border-box;
+        }
+
+        /* HEADER GRID */
+        .cost-header-grid {
+            display: grid;
+            grid-template-columns: 1.22fr 1fr;
+            gap: 24px;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .cost-tag-badge {
+            display: inline-block;
+            background: #f97316;
+            color: #ffffff;
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 3px 9px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        .cost-main-title {
+            font-size: 26px;
+            font-weight: 800;
+            color: #0f172a;
+            line-height: 1.25;
+            margin: 0 0 10px 0;
+            letter-spacing: -0.4px;
+        }
+        .cost-main-subtitle {
+            font-size: 13.5px;
+            color: #475569;
+            line-height: 1.45;
+            margin: 0 0 14px 0;
+        }
+        .cost-meta-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            font-size: 11.5px;
+            color: #64748b;
+        }
+        .cost-meta-item {
+            display: inline-flex;
             align-items: center;
             gap: 5px;
         }
-        .widget-metric-row span:last-child {
-            font-weight: 700;
-            color: #ffffff;
-        }
-
-        /* Main Container */
-        .main-content-layout {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 30px 24px 60px;
-        }
-
-        /* Callout Intro Card */
-        .callout-intro-card {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-left: 4px solid var(--poster-primary);
+        .cost-hero-img-wrap {
+            position: relative;
             border-radius: 8px;
-            padding: 18px 24px;
-            margin-bottom: 32px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            overflow: hidden;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+            aspect-ratio: 16 / 9;
+            background: #0f172a;
         }
-        .callout-intro-card p.headline {
-            font-size: 14.5px;
+        .cost-hero-img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* INTRO LEAD BOX */
+        .cost-lead-box {
+            border-left: 3.5px solid #f97316;
+            background: #fffaf5;
+            padding: 14px 18px;
+            border-radius: 0 6px 6px 0;
+            margin: 20px 0 28px;
+            border-top: 1px solid #ffedd5;
+            border-right: 1px solid #ffedd5;
+            border-bottom: 1px solid #ffedd5;
+        }
+        .cost-lead-box p.headline {
+            font-size: 13.5px;
             font-weight: 700;
             color: #0f172a;
             margin: 0 0 6px 0;
             line-height: 1.5;
         }
-        .callout-intro-card p.desc {
-            font-size: 13.5px;
+        .cost-lead-box p.desc {
+            font-size: 12.5px;
             color: var(--poster-text-muted);
             margin: 0;
             line-height: 1.6;
         }
-
-        /* Section Headings */
+/* Section Headings */
         .section-block {
             margin-bottom: 38px;
         }
@@ -876,11 +833,15 @@
 
         /* Responsive Breakpoints */
         @media (max-width: 992px) {
-            .hero-banner-container {
+            .cost-header-grid {
                 grid-template-columns: 1fr;
             }
-            .hero-img-box {
-                max-width: 500px;
+            .cost-main-title {
+                font-size: 22px;
+            }
+            .cost-document-card {
+                padding: 24px 20px;
+                margin: 0 12px 40px;
             }
             .ipo-layout-grid {
                 grid-template-columns: 1fr;
@@ -961,76 +922,53 @@
         </div>
     </nav>
 
-    <!-- Hero Banner Section -->
-    <section class="hero-banner-section">
-        <div class="hero-banner-container">
-            <!-- Left Info -->
-            <div class="hero-info-col">
-                <div class="hero-breadcrumb">
-                    <a href="index.html"><i data-lucide="home" style="width: 12px; height: 12px;"></i></a>
-                    <span>/</span>
-                    <a href="resources.html">Tri thức</a>
-                    <span>/</span>
-                    <a href="resources.html?tag=Cost%20Down">Cost Down</a>
-                    <span>/</span>
-                    <span>10 cơ hội giảm chi phí sản xuất nhanh chóng</span>
-                </div>
-                <span class="hero-badge-tag">COST DOWN</span>
-                <h1 class="hero-title">10 cơ hội giảm chi phí<br>sản xuất nhanh chóng</h1>
-                <p class="hero-subtitle">Những giải pháp cost down có thể triển khai trong 3–6 tháng, dựa trên các dự án thực tế.</p>
-                <div class="hero-meta-row">
-                    <span class="hero-meta-item"><i data-lucide="calendar" style="width: 13px; height: 13px;"></i> 5 tháng 10, 2026</span>
-                    <span class="hero-meta-item"><i data-lucide="eye" style="width: 13px; height: 13px;"></i> 2.1K lượt xem</span>
-                    <span class="hero-meta-item"><i data-lucide="clock" style="width: 13px; height: 13px;"></i> 15 phút đọc</span>
-                </div>
-            </div>
-
-            <!-- Right Hero Image with Floating Glassmorphic Widget -->
-            <div class="hero-img-box">
-                <img src="../assets/images/factory-transformation-engineer.jpg" alt="10 cơ hội giảm chi phí sản xuất nhanh chóng" loading="eager">
-                
-                <!-- Floating Glassmorphic COST DOWN Widget -->
-                <div class="hero-floating-widget">
-                    <div class="widget-header-title">COST DOWN</div>
-                    <div class="widget-chart-wrap">
-                        <div class="widget-big-metric">
-                            <i data-lucide="trending-down" style="width: 18px; height: 18px; color: #ff6600;"></i>
-                            <span>-18.5%</span>
-                        </div>
-                        <!-- Mini Declining Step Sparkline SVG -->
-                        <svg width="60" height="24" viewBox="0 0 60 24" fill="none">
-                            <path d="M2 4 L16 8 L32 14 L46 18 L58 22" stroke="#ff6600" stroke-width="2.5" stroke-linecap="round"/>
-                            <circle cx="58" cy="22" r="2.5" fill="#ff6600"/>
-                        </svg>
-                    </div>
-                    <div class="widget-metric-list">
-                        <div class="widget-metric-row">
-                            <span><i data-lucide="package" style="width: 11px; height: 11px; color: #94a3b8;"></i> Material</span>
-                            <span>-12%</span>
-                        </div>
-                        <div class="widget-metric-row">
-                            <span><i data-lucide="user" style="width: 11px; height: 11px; color: #94a3b8;"></i> Labor</span>
-                            <span>-20%</span>
-                        </div>
-                        <div class="widget-metric-row">
-                            <span><i data-lucide="zap" style="width: 11px; height: 11px; color: #94a3b8;"></i> Energy</span>
-                            <span>-15%</span>
-                        </div>
-                        <div class="widget-metric-row">
-                            <span><i data-lucide="settings" style="width: 11px; height: 11px; color: #94a3b8;"></i> Process</span>
-                            <span>-10%</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Top Action Toolbar with Breadcrumbs -->
+    <div class="poster-top-bar">
+        <div class="ai-breadcrumb">
+            <a href="/"><i data-lucide="home" style="width: 13px; height: 13px;"></i></a>
+            <span class="sep">/</span>
+            <a href="resources.html">Tri thức</a>
+            <span class="sep">/</span>
+            <a href="resources.html?tag=Cost%20Down">Cost Down</a>
+            <span class="sep">/</span>
+            <span class="current">10 cơ hội giảm chi phí sản xuất nhanh chóng</span>
         </div>
-    </section>
+        <div class="poster-action-group">
+            <button type="button" onclick="window.print()" class="poster-action-btn" title="In tài liệu này">
+                <i data-lucide="printer" style="width: 13px; height: 13px;"></i> In tài liệu
+            </button>
+            <a href="resources.html" class="poster-action-btn" title="Quay lại kho tri thức">
+                <i data-lucide="arrow-left" style="width: 13px; height: 13px;"></i> Danh sách bài viết
+            </a>
+        </div>
+    </div>
 
-    <!-- Main Container -->
-    <main class="main-content-layout">
+    <!-- MAIN DOCUMENT CARD CONTAINER -->
+    <main class="cost-document-card" id="costPosterDocument">
 
-        <!-- Callout Intro Card -->
-        <div class="callout-intro-card">
+        <!-- HEADER: Tiêu đề bên trái, Ảnh nhà máy bên phải -->
+        <header class="cost-header-grid">
+            <div class="cost-header-left">
+                <span class="cost-tag-badge">COST DOWN</span>
+                <h1 class="cost-main-title">10 cơ hội giảm chi phí<br>sản xuất nhanh chóng</h1>
+                <p class="cost-main-subtitle">
+                    Những giải pháp cost down có thể triển khai trong 3–6 tháng, dựa trên các dự án thực tế.
+                </p>
+                <div class="cost-meta-row">
+                    <span class="cost-meta-item"><i data-lucide="calendar" style="width: 13px; height: 13px;"></i> 5 tháng 10, 2026</span>
+                    <span class="cost-meta-item"><i data-lucide="eye" style="width: 13px; height: 13px;"></i> 2.1K lượt xem</span>
+                    <span class="cost-meta-item"><i data-lucide="clock" style="width: 13px; height: 13px;"></i> 15 phút đọc</span>
+                </div>
+            </div>
+            <div class="cost-header-right">
+                <div class="cost-hero-img-wrap">
+                    <img src="../assets/images/resources/art-cost-10opp.jpg?v=2" alt="10 cơ hội giảm chi phí sản xuất nhanh chóng" class="cost-hero-img" loading="eager">
+                </div>
+            </div>
+        </header>
+
+        <!-- INTRO LEAD BOX -->
+        <div class="cost-lead-box">
             <p class="headline">Giảm chi phí sản xuất không chỉ là cắt giảm, mà là <u>loại bỏ lãng phí, tối ưu nguồn lực</u> và nâng cao hiệu quả vận hành.</p>
             <p class="desc">Bài viết này tổng hợp 10 cơ hội cost down có thể triển khai nhanh trong 3–6 tháng, dựa trên kinh nghiệm thực tế tại nhiều nhà máy sản xuất và theo khung phân tích chi phí IPO (<strong>Input – Process – Output</strong>) của INVAMAX.</p>
         </div>
