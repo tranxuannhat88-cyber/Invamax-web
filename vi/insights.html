@@ -36,7 +36,7 @@
     <link rel="icon" type="image/jpeg" href="../assets/images/favicon.jpg">
     <link rel="stylesheet" href="../assets/css/style.css?v=18">
     <link rel="stylesheet" href="../assets/css/navbar.css?v=13">
-    <link rel="stylesheet" href="../assets/css/invamax-resources.css?v=16">
+    <link rel="stylesheet" href="../assets/css/invamax-resources.css?v=20261021_1345">
     <script type="application/ld+json">
     {
     "@context": "https://schema.org",
@@ -546,6 +546,248 @@
     </footer>
     
 
+    
+    <!-- EMBEDDED BULLETPROOF STYLES FOR EXCEL SPREADSHEET PREVIEW -->
+    <style id="invamax-excel-preview-inline-css">
+    .doc-preview-modal-dialog.modal-fullscreen {
+        max-width: 98vw !important;
+        width: 98vw !important;
+        max-height: 96vh !important;
+        height: 96vh !important;
+        border-radius: 10px !important;
+        transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+    .doc-preview-modal-dialog.modal-fullscreen .doc-preview-modal-body {
+        padding: 10px 14px !important;
+        height: calc(100% - 110px) !important;
+    }
+    .doc-preview-modal-dialog.modal-fullscreen .doc-preview-excel-wrap {
+        height: 100% !important;
+        max-height: none !important;
+    }
+
+    .doc-preview-excel-wrap {
+        display: flex !important;
+        flex-direction: column !important;
+        height: 600px !important;
+        max-height: 75vh !important;
+        border: 1.5px solid #cbd5e1 !important;
+        border-radius: 10px !important;
+        overflow: hidden !important;
+        background: #ffffff !important;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04) !important;
+    }
+
+    .excel-preview-loading {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 12px !important;
+        padding: 60px 20px !important;
+        background: #f8fafc !important;
+        color: #475569 !important;
+        font-size: 13.5px !important;
+        font-weight: 600 !important;
+    }
+    .excel-loading-spinner {
+        width: 32px !important;
+        height: 32px !important;
+        border: 3.5px solid #e2e8f0 !important;
+        border-top-color: #15803d !important;
+        border-radius: 50% !important;
+        animation: excelSpin 0.8s linear infinite !important;
+    }
+    @keyframes excelSpin {
+        to { transform: rotate(360deg); }
+    }
+
+    .excel-viewer-toolbar {
+        flex-shrink: 0 !important;
+        height: 44px !important;
+        background: #f8fafc !important;
+        border-bottom: 1px solid #cbd5e1 !important;
+        padding: 0 14px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 12px !important;
+        box-sizing: border-box !important;
+    }
+    .excel-toolbar-left {
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        min-width: 0 !important;
+    }
+    .excel-badge {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 4px !important;
+        background: #15803d !important;
+        color: #ffffff !important;
+        font-size: 10.5px !important;
+        font-weight: 800 !important;
+        padding: 3px 8px !important;
+        border-radius: 4px !important;
+        letter-spacing: 0.5px !important;
+        flex-shrink: 0 !important;
+    }
+    .excel-sheet-title {
+        font-size: 13px !important;
+        font-weight: 700 !important;
+        color: #0f172a !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+    .excel-stats-pill {
+        font-size: 11px !important;
+        color: #64748b !important;
+        background: #e2e8f0 !important;
+        padding: 2.5px 8px !important;
+        border-radius: 10px !important;
+        font-weight: 600 !important;
+        flex-shrink: 0 !important;
+    }
+
+    .excel-toolbar-right {
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        flex-shrink: 0 !important;
+    }
+    .excel-search-box {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+        background: #ffffff !important;
+        border: 1px solid #cbd5e1 !important;
+        border-radius: 6px !important;
+        padding: 3px 8px !important;
+    }
+    .excel-search-box input {
+        border: none !important;
+        outline: none !important;
+        font-size: 12px !important;
+        color: #1e293b !important;
+        width: 140px !important;
+        background: transparent !important;
+    }
+    .excel-search-count {
+        font-size: 11px !important;
+        color: #ea580c !important;
+        font-weight: 600 !important;
+        white-space: nowrap !important;
+    }
+    .excel-fullscreen-toggle-btn {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 28px !important;
+        height: 28px !important;
+        border-radius: 6px !important;
+        border: 1px solid #cbd5e1 !important;
+        background: #ffffff !important;
+        color: #475569 !important;
+        cursor: pointer !important;
+        transition: all 0.2s !important;
+    }
+    .excel-fullscreen-toggle-btn:hover {
+        background: #f1f5f9 !important;
+        color: #0f172a !important;
+        border-color: #94a3b8 !important;
+    }
+
+    .excel-grid-container {
+        flex: 1 1 auto !important;
+        min-height: 0 !important;
+        overflow: auto !important;
+        background: #ffffff !important;
+        position: relative !important;
+    }
+
+    /* Table Grid Styling */
+    .excel-grid-container table {
+        border-collapse: collapse !important;
+        border-spacing: 0 !important;
+        width: max-content !important;
+        min-width: 100% !important;
+        table-layout: auto !important;
+        empty-cells: show !important;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+        font-size: 12px !important;
+        color: #1e293b !important;
+        background: #ffffff !important;
+    }
+    .excel-grid-container td,
+    .excel-grid-container th {
+        border: 1px solid #cbd5e1 !important;
+        padding: 6px 10px !important;
+        min-width: 48px !important;
+        height: 24px !important;
+        line-height: 1.45 !important;
+        vertical-align: top !important;
+        white-space: pre-wrap !important;
+        word-break: break-word !important;
+        box-sizing: border-box !important;
+    }
+    .excel-grid-container td:empty {
+        min-width: 36px !important;
+        background: #fafbfc !important;
+    }
+    .excel-grid-container tr:hover td {
+        background-color: rgba(241, 245, 249, 0.65) !important;
+    }
+    .excel-grid-container td.excel-highlight {
+        background-color: #fef08a !important;
+        color: #854d0e !important;
+        font-weight: 700 !important;
+        outline: 2px solid #eab308 !important;
+    }
+
+    .excel-sheet-tabs-bar {
+        flex-shrink: 0 !important;
+        height: 40px !important;
+        background: #f1f5f9 !important;
+        border-top: 1.5px solid #cbd5e1 !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 4px !important;
+        padding: 0 12px !important;
+        overflow-x: auto !important;
+        box-sizing: border-box !important;
+    }
+    .excel-sheet-tab {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+        height: 28px !important;
+        padding: 0 14px !important;
+        font-size: 12px !important;
+        font-weight: 600 !important;
+        color: #475569 !important;
+        background: #e2e8f0 !important;
+        border: 1px solid #cbd5e1 !important;
+        border-radius: 4px !important;
+        cursor: pointer !important;
+        white-space: nowrap !important;
+        transition: all 0.15s ease !important;
+    }
+    .excel-sheet-tab:hover {
+        background: #ffffff !important;
+        color: #0f172a !important;
+    }
+    .excel-sheet-tab.active {
+        background: #ffffff !important;
+        color: #15803d !important;
+        border-color: #cbd5e1 !important;
+        border-top: 2.5px solid #15803d !important;
+        font-weight: 700 !important;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+    }
+    </style>
+
     <!-- MODAL XEM TRƯỚC TÀI LIỆU (PREVIEW MODAL) -->
     <div id="docPreviewModal" class="doc-preview-modal-backdrop" onclick="closeDocPreviewModal(event)">
         <div class="doc-preview-modal-dialog" onclick="event.stopPropagation()">
@@ -877,7 +1119,7 @@
             });
 
             let html = XLSX.utils.sheet_to_html(sheet, { header: '', footer: '' });
-            html = html.replace(/>#VALUE!</g, '>[INVAMAX]<');
+            html = html.replace(/>#VALUE!</g, '><span style="color:#ea580c; font-weight:800; font-size:13px; letter-spacing:0.5px;">INVAMAX</span><');
             gridEl.innerHTML = html;
 
             if (sheet['!ref']) {
