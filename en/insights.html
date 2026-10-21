@@ -36,7 +36,7 @@
     <link rel="icon" type="image/jpeg" href="../assets/images/favicon.jpg">
     <link rel="stylesheet" href="../assets/css/style.css?v=18">
     <link rel="stylesheet" href="../assets/css/navbar.css?v=13">
-    <link rel="stylesheet" href="../assets/css/invamax-resources.css?v=20261021_1345">
+    <link rel="stylesheet" href="../assets/css/invamax-resources.css?v=20261021_1400">
     <script type="application/ld+json">
     {
     "@context": "https://schema.org",
@@ -716,34 +716,18 @@
         position: relative !important;
     }
 
-    /* Table Grid Styling */
+    /* Table Grid Styling (Proportional & Clean) */
     .excel-grid-container table {
         border-collapse: collapse !important;
         border-spacing: 0 !important;
-        width: max-content !important;
-        min-width: 100% !important;
-        table-layout: auto !important;
-        empty-cells: show !important;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
-        font-size: 12px !important;
-        color: #1e293b !important;
         background: #ffffff !important;
+        margin: 0 auto !important;
     }
     .excel-grid-container td,
     .excel-grid-container th {
-        border: 1px solid #cbd5e1 !important;
-        padding: 6px 10px !important;
-        min-width: 48px !important;
-        height: 24px !important;
-        line-height: 1.45 !important;
-        vertical-align: top !important;
-        white-space: pre-wrap !important;
+        overflow: hidden !important;
         word-break: break-word !important;
         box-sizing: border-box !important;
-    }
-    .excel-grid-container td:empty {
-        min-width: 36px !important;
-        background: #fafbfc !important;
     }
     .excel-grid-container tr:hover td {
         background-color: rgba(241, 245, 249, 0.65) !important;
@@ -888,7 +872,7 @@
         <!-- SheetJS Vendor Script for Native Browser Excel (.xlsx/.xls) Preview -->
     <script src="../assets/js/vendor/xlsx.full.min.js"></script>
     <!-- Pre-compiled Excel preview data for instantaneous 0ms loading -->
-    <script src="../assets/js/excel-previews-data.js?v=20261021_1350"></script>
+    <script src="../assets/js/excel-previews-data.js?v=20261021_1400"></script>
     <script>
         if (typeof XLSX === 'undefined') {
             const s = document.createElement('script');
