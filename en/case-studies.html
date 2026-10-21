@@ -1033,7 +1033,7 @@
     </div>
 
     <script src="../assets/js/main.js?v=6"></script>
-    <script src="../assets/js/case-study-store.js?v=20261019_1415"></script>
+    <script src="../assets/js/case-study-store.js?v=20261021_02"></script>
     <script>
         function switchLanguage(lang) {
             localStorage.setItem('invamax_language', lang);
@@ -1186,6 +1186,9 @@
             if (!cs) {
                 console.warn('Case study does not exist:', csIdOrObj);
                 return;
+            }
+            if (typeof normalizeCsItemToEn === 'function') {
+                cs = normalizeCsItemToEn(cs);
             }
 
             const modal = document.getElementById('csDetailModal');
@@ -1374,10 +1377,10 @@
         async function loadDynamicCaseStudies() {
             let list = null;
             if (typeof INVAMAX_CASE_STUDY_STORE !== 'undefined' && typeof INVAMAX_CASE_STUDY_STORE.init === 'function') {
-                list = await INVAMAX_CASE_STUDY_STORE.init('../assets/data/case-studies.json');
+                list = await INVAMAX_CASE_STUDY_STORE.init('../assets/data/case-studies-en.json');
             } else {
                 try {
-                    const local = localStorage.getItem('invamax_case_studies_v1');
+                    const local = localStorage.getItem('invamax_case_studies_en_v1') || localStorage.getItem('invamax_case_studies_v1');
                     if (local) {
                         const parsed = JSON.parse(local);
                         if (Array.isArray(parsed) && parsed.length > 0) list = parsed;
@@ -1397,17 +1400,71 @@
             }
         }
 
+        const EN_TRANSLATIONS = {
+            'Hành trình tăng năng suất lao động 42,3% trong 4 năm': {
+                title: '42.3% Labor Productivity Improvement Journey Over 4 Years',
+                client: 'Pencil Manufacturing Plant',
+                highlight: '+42.3% UPH',
+                desc: 'Increased labor productivity from 742 to 1,056 UPH over 4 years of operational systems transformation.',
+                categories: ['Lean & Improvement', 'Productivity']
+            },
+            'Số hóa việc nhập báo cáo sản xuất': {
+                title: 'Digitalization of Production Reporting',
+                client: 'Production Department',
+                highlight: 'Operators log reports on tablets, replacing paper sheets.',
+                desc: '- Utilized tablet-based input via AppSheet to record hourly output and defect counts per batch, updating directly to real-time daily reports.\n- Eliminated paper reports; data clerks no longer need to manually transcribe paper records into spreadsheets.',
+                categories: ['Lean & Improvement', 'Digital & Data']
+            },
+            'Trực quan hóa báo cáo sản xuất': {
+                title: 'Visual Production Management & Dashboards',
+                client: 'Production Department',
+                highlight: 'High Visibility - Instant Information',
+                desc: 'Established dynamic visual production dashboards using charts, tables, and color-coded status indicators for rapid operational response.',
+                categories: ['Digital & Data']
+            },
+            'Tổng hợp các cải tiến 2025': {
+                title: 'Summary of 2025 Operational Improvements',
+                client: 'Stationery Manufacturing',
+                highlight: 'Higher Productivity - Leaner Workforce',
+                desc: 'Identified shopfloor wastes and line bottlenecks, applying targeted Kaizen problem-solving to achieve higher production throughput.',
+                categories: ['Lean & Improvement', 'Productivity']
+            },
+            'Dự án chuẩn hóa Layout & thực hiện 5S tại xưởng gia công cơ khí': {
+                title: 'Layout Standardization & 5S Implementation in Machining Workshop',
+                client: 'Precision CNC Machining',
+                highlight: 'Organized - Clean - High Productivity',
+                desc: 'Transformed a disorganized machining floor into an organized, clean, and highly productive environment through layout re-engineering and 5S.',
+                categories: ['Lean & Improvement']
+            }
+        };
+
+        const CAT_MAP_EN = {
+            'lean & cải tiến': 'Lean & Improvement',
+            'số hóa & dữ liệu': 'Digital & Data',
+            'tăng năng suất': 'Productivity',
+            'tối ưu chi phí': 'Cost Optimization'
+        };
+
+        function normalizeCsItemToEn(cs) {
+            const mapped = EN_TRANSLATIONS[cs.title] || {};
+            const item = { ...cs, ...mapped };
+            let rawCats = Array.isArray(item.categories) && item.categories.length > 0 
+                ? item.categories 
+                : (item.category ? item.category.split(',').map(s => s.trim()).filter(Boolean) : ['Lean & Improvement']);
+            item.categories = rawCats.map(c => CAT_MAP_EN[c.toLowerCase().trim()] || c);
+            return item;
+        }
+
         function renderCaseStudiesToDOM(items) {
             const grid = document.getElementById('caseStudiesGrid');
             if (!grid) return;
             const published = items.filter(it => it.status !== 'draft');
             if (published.length === 0) return;
 
-            grid.innerHTML = published.map(cs => {
-                const cats = Array.isArray(cs.categories) && cs.categories.length > 0 
-                    ? cs.categories 
-                    : (cs.category ? cs.category.split(',').map(s => s.trim()).filter(Boolean) : ['Lean & Improvement']);
-                const primaryCat = (cats[0] || 'LEAN & CONTINUOUS IMPROVEMENT').toUpperCase();
+            grid.innerHTML = published.map(rawCs => {
+                const cs = normalizeCsItemToEn(rawCs);
+                const cats = cs.categories;
+                const primaryCat = (cats[0] || 'LEAN & IMPROVEMENT').toUpperCase();
                 const catAttr = cats.join(', ').toLowerCase();
                 const thumb = resolveAssetUrl(cs.thumbnail || 'assets/images/resources/art-5steps.jpg');
                 const dateText = cs.dateDisplay || cs.createdAt || 'Oct 12, 2026';

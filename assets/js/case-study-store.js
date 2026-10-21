@@ -5,16 +5,159 @@
  */
 
 const INVAMAX_CASE_STUDY_STORE = (function () {
-    const STORAGE_KEY = 'invamax_case_studies_v1';
-    const LOCAL_MODIFIED_KEY = 'invamax_case_studies_local_modified';
+    const isEN = (typeof document !== 'undefined' && document.documentElement && document.documentElement.lang === 'en') ||
+                 (typeof window !== 'undefined' && window.location && window.location.pathname.includes('/en/'));
+
+    const STORAGE_KEY = isEN ? 'invamax_case_studies_en_v1' : 'invamax_case_studies_v1';
+    const LOCAL_MODIFIED_KEY = isEN ? 'invamax_case_studies_en_local_modified' : 'invamax_case_studies_local_modified';
 
     // IndexedDB configuration for unlimited file & image storage (hundreds of MBs)
-    const IDB_NAME = 'invamax_case_studies_db';
+    const IDB_NAME = isEN ? 'invamax_case_studies_en_db' : 'invamax_case_studies_db';
     const IDB_VERSION = 1;
     const IDB_STORE = 'case_studies_store';
     const IDB_MAIN_KEY = 'all_case_studies';
 
-    const DEFAULT_CASE_STUDIES = [
+    const DEFAULT_CASE_STUDIES_EN = [
+        {
+                "id": "cs-productivity-pencil",
+                "badge": "CASE STUDY 01",
+                "categories": [
+                        "Lean & Improvement",
+                        "Productivity"
+                ],
+                "category": "Lean & Improvement, Productivity",
+                "title": "42.3% Labor Productivity Improvement Journey Over 4 Years",
+                "desc": "Increased labor productivity from 742 to 1,056 UPH over 4 years of operational systems transformation.",
+                "client": "Pencil Manufacturing Plant",
+                "highlight": "+42.3% UPH",
+                "link": "",
+                "thumbnail": "assets/images/case-study/thumb-cs-productivity-pencil.jpg",
+                "pdfUrl": "assets/docs/cs-file-cs-productivity-pencil.pdf",
+                "images": [],
+                "status": "published",
+                "createdAt": "2026-10-12",
+                "dateDisplay": "Oct 12, 2026",
+                "views": "2.4K views",
+                "thumbSource": "pdf-auto",
+                "fileUrl": "assets/docs/cs-file-cs-productivity-pencil.pdf",
+                "fileName": "INVAMAX_CaseStudy_2022-2025.pdf",
+                "fileSize": "4.47 MB",
+                "fileFormat": "PDF",
+                "updatedAt": "2026-10-18"
+        },
+        {
+                "id": "cs-1792391629391",
+                "badge": "CASE STUDY 05",
+                "categories": [
+                        "Lean & Improvement",
+                        "Digital & Data"
+                ],
+                "category": "Lean & Improvement, Digital & Data",
+                "title": "Digitalization of Production Reporting",
+                "desc": "- Utilized tablet-based input via AppSheet to record hourly output and defect counts per batch, updating directly to real-time daily reports.\\n- Eliminated paper reports; data clerks no longer need to manually transcribe paper records into spreadsheets.",
+                "client": "Production Department",
+                "highlight": "Operators log reports on tablets, replacing paper sheets.",
+                "link": "",
+                "thumbnail": "assets/images/case-study/thumb-cs-1792391629391.jpg",
+                "thumbSource": "custom",
+                "pdfUrl": "assets/docs/cs-file-cs-1792391629391.pdf",
+                "fileUrl": "assets/docs/cs-file-cs-1792391629391.pdf",
+                "fileName": "INVAMAX_Digital_Production_Reporting_Kaizen.pdf",
+                "fileSize": "1.45 MB",
+                "fileFormat": "PDF",
+                "images": [
+                        "assets/images/case-study/cs-detail-cs-1792391629391-1.jpg",
+                        "assets/images/case-study/cs-detail-cs-1792391629391-2.jpg",
+                        "assets/images/case-study/cs-detail-cs-1792391629391-3.jpg"
+                ],
+                "status": "published",
+                "createdAt": "2026-10-19",
+                "dateDisplay": "Oct 19, 2026",
+                "views": "1.2K views",
+                "updatedAt": "2026-10-19"
+        },
+        {
+                "id": "cs-1792227507057",
+                "badge": "CASE STUDY 06",
+                "categories": [
+                        "Digital & Data"
+                ],
+                "category": "Digital & Data",
+                "title": "Visual Production Management & Dashboards",
+                "desc": "Established dynamic visual production dashboards using charts, tables, and color-coded status indicators for rapid operational response.",
+                "client": "Production Department",
+                "highlight": "High Visibility - Instant Information",
+                "link": "",
+                "thumbnail": "assets/images/case-study/thumb-cs-1792227507057.jpg",
+                "pdfUrl": "assets/docs/cs-file-cs-1792227507057.pdf",
+                "fileUrl": "assets/docs/cs-file-cs-1792227507057.pdf",
+                "fileName": "INVAMAX_Visual_Production_Report.pdf",
+                "fileSize": "1.21 MB",
+                "fileFormat": "PDF",
+                "images": [],
+                "status": "published",
+                "createdAt": "2026-10-17",
+                "dateDisplay": "Oct 17, 2026",
+                "views": "1.2K views",
+                "updatedAt": "2026-10-17",
+                "thumbSource": "pdf-auto"
+        },
+        {
+                "id": "cs-1792225273414",
+                "badge": "CASE STUDY 05",
+                "categories": [
+                        "Lean & Improvement",
+                        "Productivity"
+                ],
+                "category": "Lean & Improvement, Productivity",
+                "title": "Summary of 2025 Operational Improvements",
+                "desc": "Identified shopfloor wastes and line bottlenecks, applying targeted Kaizen problem-solving to achieve higher production throughput.",
+                "client": "Stationery Manufacturing",
+                "highlight": "Higher Productivity - Leaner Workforce",
+                "link": "",
+                "thumbnail": "assets/images/case-study/thumb-cs-1792225273414.jpg",
+                "pdfUrl": "assets/docs/cs-file-cs-1792225273414.pdf",
+                "fileUrl": "assets/docs/cs-file-cs-1792225273414.pdf",
+                "fileName": "INVAMAX_2025_Kaizen_Summary_Report.pdf",
+                "fileSize": "7.42 MB",
+                "fileFormat": "PDF",
+                "images": [],
+                "status": "published",
+                "createdAt": "2026-10-17",
+                "dateDisplay": "Oct 17, 2026",
+                "views": "1.2K views",
+                "updatedAt": "2026-10-17",
+                "thumbSource": "pdf-auto"
+        },
+        {
+                "id": "cs-1792224796463",
+                "badge": "CASE STUDY 04",
+                "categories": [
+                        "Lean & Improvement"
+                ],
+                "category": "Lean & Improvement",
+                "title": "Layout Standardization & 5S Implementation in Machining Workshop",
+                "desc": "Transformed a disorganized machining floor into an organized, clean, and highly productive environment through layout re-engineering and 5S.",
+                "client": "Precision CNC Machining",
+                "highlight": "Organized - Clean - High Productivity",
+                "link": "",
+                "thumbnail": "assets/images/case-study/thumb-cs-1792224796463.jpg",
+                "pdfUrl": "assets/docs/cs-file-cs-1792224796463.pdf",
+                "fileUrl": "assets/docs/cs-file-cs-1792224796463.pdf",
+                "fileName": "INVAMAX_Layout_Standardization_5S_GiaNghiaCNC.pdf",
+                "fileSize": "36.86 MB",
+                "fileFormat": "PDF",
+                "images": [],
+                "status": "published",
+                "createdAt": "2026-10-17",
+                "dateDisplay": "Oct 17, 2026",
+                "views": "1.2K views",
+                "updatedAt": "2026-10-17",
+                "thumbSource": "custom"
+        }
+];
+
+    const DEFAULT_CASE_STUDIES_VI = [
         {
             id: 'cs-productivity-pencil',
             badge: 'CASE STUDY 01',
@@ -134,6 +277,8 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
             views: '1.8K lượt xem'
         }
     ];
+
+    const DEFAULT_CASE_STUDIES = isEN ? DEFAULT_CASE_STUDIES_EN : DEFAULT_CASE_STUDIES_VI;
 
     // In-memory cache so synchronous getAll() / getById() always returns full data immediately
     let memoryList = null;
@@ -589,13 +734,22 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
     }
 
     // Initialize store from IndexedDB -> localStorage -> Remote JSON
-    async function init(remoteJsonUrl = 'assets/data/case-studies.json') {
+    async function init(remoteJsonUrl) {
+        if (!remoteJsonUrl) {
+            remoteJsonUrl = isEN ? 'assets/data/case-studies-en.json' : 'assets/data/case-studies.json';
+        } else if (isEN && remoteJsonUrl.includes('case-studies.json')) {
+            remoteJsonUrl = remoteJsonUrl.replace('case-studies.json', 'case-studies-en.json');
+        }
+
         const isAdminPage = typeof window !== 'undefined' && window.location && window.location.pathname.toLowerCase().includes('admin');
         const isLocalModified = Boolean(localStorage.getItem(LOCAL_MODIFIED_KEY));
 
+        // Purge any stale Vietnamese records if we are running in English mode
+        const hasStaleVnInEn = (list) => isEN && Array.isArray(list) && list.some(item => /[àáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]/i.test(item.title || ''));
+
         // 1. Check IndexedDB first (contains full high-res images & files)
         const idbList = await getListFromIDB();
-        if (idbList && idbList.length > 0) {
+        if (idbList && idbList.length > 0 && !hasStaleVnInEn(idbList)) {
             memoryList = idbList.map(normalizeItem);
         } else {
             // 2. Check localStorage
@@ -603,7 +757,7 @@ const INVAMAX_CASE_STUDY_STORE = (function () {
                 const raw = localStorage.getItem(STORAGE_KEY);
                 if (raw) {
                     const parsed = JSON.parse(raw);
-                    if (Array.isArray(parsed) && parsed.length > 0) {
+                    if (Array.isArray(parsed) && parsed.length > 0 && !hasStaleVnInEn(parsed)) {
                         memoryList = parsed.map(normalizeItem);
                         await saveListToIDB(memoryList);
                     }

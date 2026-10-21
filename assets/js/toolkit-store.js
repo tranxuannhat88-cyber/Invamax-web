@@ -4,13 +4,171 @@
  */
 
 var INVAMAX_TOOLKIT_STORE = (function () {
-    const STORAGE_KEY = 'invamax_toolkits_v2';
-    const ARTICLES_STORAGE_KEY = 'invamax_resources_articles_v1';
-    const VIDEOS_STORAGE_KEY = 'invamax_resources_videos_v1';
+    const isEN = (typeof document !== 'undefined' && document.documentElement && document.documentElement.lang === 'en') ||
+                 (typeof window !== 'undefined' && window.location && window.location.pathname.includes('/en/'));
+
+    const STORAGE_KEY = isEN ? 'invamax_toolkits_en_v2' : 'invamax_toolkits_v2';
+    const ARTICLES_STORAGE_KEY = isEN ? 'invamax_resources_articles_en_v1' : 'invamax_resources_articles_v1';
+    const VIDEOS_STORAGE_KEY = isEN ? 'invamax_resources_videos_en_v1' : 'invamax_resources_videos_v1';
     const SETTINGS_KEY = 'invamax_admin_settings_v1';
 
-    // Dữ liệu mặc định 4 tài liệu gốc
-    const DEFAULT_TOOLKITS = [
+    // Dữ liệu mặc định tiếng Anh
+    const DEFAULT_TOOLKITS_EN = [
+        {
+                "id": "tool-huong-dan-giam-chi-phi",
+                "title": "Manufacturing Cost Reduction Guide",
+                "format": "PDF",
+                "desc": "Comprehensive guide on factory cost-reduction methodology:\\n- Cost structure definition.\\n- Waste identification & elimination.\\n- Sustainable cost optimization.",
+                "fileUrl": "idb:tool-huong-dan-giam-chi-phi",
+                "fileName": "INVAMAX_Manufacturing_Cost_Reduction_Guide.pdf",
+                "fileSize": "9.28 MB",
+                "createdAt": "2026-10-05",
+                "downloads": 311,
+                "status": "published",
+                "thumbnail": "assets/images/resources/thumb-tool-huong-dan-giam-chi-phi.jpg",
+                "updatedAt": "2026-10-19T02:54:02.295Z"
+        },
+        {
+                "id": "tool-checklist-danh-gia",
+                "title": "Lean & Effective 5S Implementation Guide",
+                "format": "PDF",
+                "desc": "Practical step-by-step guidebook to deploy, standardize, and sustain 5S successfully on your factory floor.",
+                "fileUrl": "assets/docs/IVM-Huong-dan-thuc-hien-5S-Tinh-gon-Hieu-qua.pdf",
+                "fileName": "IVM - Lean & Effective 5S Implementation Guide.pdf",
+                "fileSize": "6.16 MB",
+                "thumbnail": "assets/images/resources/thumb-5s-guide.jpg",
+                "createdAt": "2026-10-10",
+                "downloads": 242,
+                "status": "published"
+        },
+        {
+                "id": "tool-ke-hoach-lean-a3",
+                "title": "A3 Report - Structured Lean Problem-Solving Template",
+                "format": "XLSX",
+                "desc": "Standard Toyota-aligned 7-step A3 template for structured root-cause problem solving, planning, and Kaizen execution.",
+                "fileUrl": "assets/docs/INVAMAX_A3_Report_7_Buoc_Editable.xlsx",
+                "fileName": "INVAMAX_A3_Report_7_Steps_Editable.xlsx",
+                "fileSize": "0.17 MB",
+                "createdAt": "2026-10-08",
+                "downloads": 185,
+                "status": "published",
+                "thumbnail": "assets/images/resources/thumb-tool-ke-hoach-lean-a3.jpg",
+                "updatedAt": "2026-10-19T07:52:44.410Z"
+        },
+        {
+                "id": "tool-bieu-mau-oee",
+                "title": "OEE Tracking & Analysis Template",
+                "format": "XLSX",
+                "desc": "Standard spreadsheet template for tracking, analyzing, and reporting Overall Equipment Effectiveness in production.",
+                "fileUrl": "assets/docs/INVAMAX_OEE_Tracking_Dashboard.xlsx",
+                "fileName": "INVAMAX_OEE_Tracking_Dashboard.xlsx",
+                "fileSize": "0.05 MB",
+                "createdAt": "2026-10-01",
+                "downloads": 295,
+                "status": "published",
+                "thumbnail": "assets/images/resources/thumb-tool-bieu-mau-oee.jpg",
+                "updatedAt": "2026-10-19T08:43:46.474Z"
+        }
+];
+    const DEFAULT_ARTICLES_EN = [
+        {
+                "id": "art-5-buoc-lean",
+                "title": "5 Steps to Implement Lean Effectively in Manufacturing",
+                "category": "Lean & Improvement",
+                "excerpt": "Practical shopfloor insights from Lean deployment projects, helping manufacturers boost productivity and eliminate waste sustainably.",
+                "thumbnail": "assets/images/resources/art-5steps.jpg",
+                "dateDisplay": "Oct 12, 2026",
+                "views": "2.4K views",
+                "link": "en/article-5-buoc-trien-khai-lean.html",
+                "status": "published",
+                "createdAt": "2026-10-12"
+        },
+        {
+                "id": "art-chi-so-oee",
+                "title": "OEE Metric: How to Measure and Improve Equipment Effectiveness",
+                "category": "Factory Management",
+                "excerpt": "Demystifying OEE calculations, loss categorization, and proven steps to systematically boost equipment performance.",
+                "thumbnail": "assets/images/resources/art-oee.jpg",
+                "dateDisplay": "Oct 10, 2026",
+                "views": "1.8K views",
+                "link": "en/article-chi-so-oee.html",
+                "status": "published",
+                "createdAt": "2026-10-10"
+        },
+        {
+                "id": "art-ung-dung-ai",
+                "title": "Applying AI in Manufacturing: Opportunities and Implementation Roadmap",
+                "category": "Digital & AI",
+                "excerpt": "Real-world industrial AI use cases in quality, scheduling, and predictive maintenance with a tailored roadmap for enterprises.",
+                "thumbnail": "assets/images/resources/ai-hero-conveyor.jpg?v=4",
+                "dateDisplay": "Oct 08, 2026",
+                "views": "1.6K views",
+                "link": "en/article-ung-dung-ai.html",
+                "status": "published",
+                "createdAt": "2026-10-08"
+        },
+        {
+                "id": "art-10-co-hoi-giam-chi-phi",
+                "title": "10 Immediate Cost-Reduction Opportunities for Factories",
+                "category": "Cost Down",
+                "excerpt": "Actionable, high-impact cost down solutions that can be executed in 3–6 months based on actual manufacturing turnaround cases.",
+                "thumbnail": "assets/images/resources/art-cost-10opp.jpg?v=2",
+                "dateDisplay": "Oct 05, 2026",
+                "views": "2.1K views",
+                "link": "en/article-10-co-hoi-giam-chi-phi.html",
+                "status": "published",
+                "createdAt": "2026-10-05"
+        }
+];
+    const DEFAULT_VIDEOS_EN = [
+        {
+                "id": "vid-lean-intro-12p",
+                "title": "Introduction to Lean Manufacturing in 12 Minutes",
+                "thumbnail": "assets/images/resources/vid-intro.jpg",
+                "duration": "12:34",
+                "views": "32K views",
+                "timeAgo": "2 weeks ago",
+                "videoUrl": "https://www.youtube.com/@NguoiXayNen",
+                "status": "published",
+                "createdAt": "2026-10-05"
+        },
+        {
+                "id": "vid-5-loi-thuong-gap",
+                "title": "5 Common Pitfalls When Implementing Kaizen in Factories",
+                "thumbnail": "assets/images/resources/vid-mistakes.jpg",
+                "duration": "18:20",
+                "views": "24K views",
+                "timeAgo": "3 weeks ago",
+                "videoUrl": "https://www.youtube.com/@NguoiXayNen",
+                "status": "published",
+                "createdAt": "2026-09-28"
+        },
+        {
+                "id": "vid-ai-du-bao-san-xuat",
+                "title": "AI Applications in Manufacturing Demand & Scheduling",
+                "thumbnail": "assets/images/resources/vid-ai-pred.jpg",
+                "duration": "15:10",
+                "views": "18K views",
+                "timeAgo": "1 month ago",
+                "videoUrl": "https://www.youtube.com/@NguoiXayNen",
+                "status": "published",
+                "createdAt": "2026-09-19"
+        },
+        {
+                "id": "vid-xay-dung-cost-down",
+                "title": "How to Build a Sustainable Cost Down Governance System",
+                "thumbnail": "assets/images/resources/vid-costdown-sys.jpg",
+                "duration": "10:45",
+                "views": "21K views",
+                "timeAgo": "1 month ago",
+                "videoUrl": "https://www.youtube.com/@NguoiXayNen",
+                "status": "published",
+                "createdAt": "2026-09-15"
+        }
+];
+
+    // Dữ liệu mặc định 4 tài liệu gốc tiếng Việt
+    const DEFAULT_TOOLKITS_VI = [
         {
             id: 'tool-checklist-danh-gia',
             title: 'Hướng dẫn thực hiện 5S Tinh gọn & Hiệu quả',
@@ -62,8 +220,8 @@ var INVAMAX_TOOLKIT_STORE = (function () {
         }
     ];
 
-    // Dữ liệu mặc định 4 bài viết mới & tiêu biểu
-    const DEFAULT_ARTICLES = [
+    // Dữ liệu mặc định 4 bài viết mới & tiêu biểu tiếng Việt
+    const DEFAULT_ARTICLES_VI = [
         {
             id: 'art-5-buoc-lean',
             title: '5 bước triển khai Lean hiệu quả tại nhà máy sản xuất',
@@ -114,8 +272,8 @@ var INVAMAX_TOOLKIT_STORE = (function () {
         }
     ];
 
-    // Dữ liệu mặc định 4 video học nhanh
-    const DEFAULT_VIDEOS = [
+    // Dữ liệu mặc định 4 video học nhanh tiếng Việt
+    const DEFAULT_VIDEOS_VI = [
         {
             id: 'vid-lean-intro-12p',
             title: 'Giới thiệu Lean Manufacturing trong 12 phút',
@@ -161,6 +319,10 @@ var INVAMAX_TOOLKIT_STORE = (function () {
             createdAt: '2026-09-15'
         }
     ];
+
+    const DEFAULT_TOOLKITS = isEN ? DEFAULT_TOOLKITS_EN : DEFAULT_TOOLKITS_VI;
+    const DEFAULT_ARTICLES = isEN ? DEFAULT_ARTICLES_EN : DEFAULT_ARTICLES_VI;
+    const DEFAULT_VIDEOS = isEN ? DEFAULT_VIDEOS_EN : DEFAULT_VIDEOS_VI;
 
     // IndexedDB Cấu hình để lưu file thực tế (Dung lượng không giới hạn: lên tới hàng GB)
     const IDB_NAME = 'invamax_toolkit_files_db';
@@ -249,6 +411,12 @@ var INVAMAX_TOOLKIT_STORE = (function () {
             }
             let data = JSON.parse(raw);
             if (!Array.isArray(data) || data.length === 0) {
+                return DEFAULT_TOOLKITS;
+            }
+
+            // In English mode, purge any stale Vietnamese items
+            if (isEN && data.some(it => /[àáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]/i.test(it.title || ''))) {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(DEFAULT_TOOLKITS));
                 return DEFAULT_TOOLKITS;
             }
 
@@ -675,7 +843,7 @@ var INVAMAX_TOOLKIT_STORE = (function () {
         const resolvedThumb = resolveAssetUrl(tool.thumbnail);
         const hasRealThumb = !!resolvedThumb;
         const thumbHTML = hasRealThumb ? `
-            <div class="tool-thumb-box" onclick="INVAMAX_TOOLKIT_STORE.handlePreview('${tool.id}', event)" title="Bấm để xem trước tài liệu">
+            <div class="tool-thumb-box" onclick="INVAMAX_TOOLKIT_STORE.handlePreview('${tool.id}', event)" title="${isEN ? 'Click to preview document' : 'Bấm để xem trước tài liệu'}">
                 <img src="${resolvedThumb}" alt="${escapeHTML(tool.title)}" class="tool-thumb-img">
                 <div class="tool-thumb-overlay">
                     <i data-lucide="eye" style="width: 16px; height: 16px; color: #ffffff;"></i>
@@ -702,10 +870,10 @@ var INVAMAX_TOOLKIT_STORE = (function () {
                 <p class="tool-desc-light">${escapeHTML(tool.desc || '')}</p>
                 <div class="tool-card-actions">
                     <button type="button" class="tool-btn-preview" onclick="INVAMAX_TOOLKIT_STORE.handlePreview('${tool.id}', event)">
-                        <i data-lucide="eye"></i> Xem tài liệu
+                        <i data-lucide="eye"></i> ${isEN ? 'Preview' : 'Xem tài liệu'}
                     </button>
                     <a href="${downloadHref}" ${downloadAttr} class="tool-download-btn" onclick="INVAMAX_TOOLKIT_STORE.handleDownload('${tool.id}', event)">
-                        <i data-lucide="download"></i> Tải xuống
+                        <i data-lucide="download"></i> ${isEN ? 'Download' : 'Tải xuống'}
                     </a>
                 </div>
             </div>
@@ -755,8 +923,12 @@ var INVAMAX_TOOLKIT_STORE = (function () {
 
     // Tải dữ liệu chính thức từ assets/data/toolkits.json, articles.json, videos.json trên server
     async function fetchRemoteData() {
+        const toolkitsFile = isEN ? 'assets/data/toolkits-en.json' : 'assets/data/toolkits.json';
+        const articlesFile = isEN ? 'assets/data/articles-en.json' : 'assets/data/articles.json';
+        const videosFile = isEN ? 'assets/data/videos-en.json' : 'assets/data/videos.json';
+
         try {
-            const dataUrl = resolveAssetUrl('assets/data/toolkits.json') + '?t=' + Date.now();
+            const dataUrl = resolveAssetUrl(toolkitsFile) + '?t=' + Date.now();
             const res = await fetch(dataUrl);
             if (res.ok) {
                 const remoteItems = await res.json();
@@ -765,11 +937,11 @@ var INVAMAX_TOOLKIT_STORE = (function () {
                 }
             }
         } catch (e) {
-            console.warn('[ToolkitStore] Không thể tải toolkits.json:', e);
+            console.warn('[ToolkitStore] Không thể tải ' + toolkitsFile + ':', e);
         }
 
         try {
-            const artUrl = resolveAssetUrl('assets/data/articles.json') + '?t=' + Date.now();
+            const artUrl = resolveAssetUrl(articlesFile) + '?t=' + Date.now();
             const resArt = await fetch(artUrl);
             if (resArt.ok) {
                 const remoteArticles = await resArt.json();
@@ -778,11 +950,11 @@ var INVAMAX_TOOLKIT_STORE = (function () {
                 }
             }
         } catch (e) {
-            console.warn('[ToolkitStore] Không thể tải articles.json:', e);
+            console.warn('[ToolkitStore] Không thể tải ' + articlesFile + ':', e);
         }
 
         try {
-            const vidUrl = resolveAssetUrl('assets/data/videos.json') + '?t=' + Date.now();
+            const vidUrl = resolveAssetUrl(videosFile) + '?t=' + Date.now();
             const resVid = await fetch(vidUrl);
             if (resVid.ok) {
                 const remoteVideos = await resVid.json();
@@ -791,7 +963,7 @@ var INVAMAX_TOOLKIT_STORE = (function () {
                 }
             }
         } catch (e) {
-            console.warn('[ToolkitStore] Không thể tải videos.json:', e);
+            console.warn('[ToolkitStore] Không thể tải ' + videosFile + ':', e);
         }
 
         return getAll();
@@ -808,7 +980,13 @@ var INVAMAX_TOOLKIT_STORE = (function () {
                 return DEFAULT_ARTICLES;
             }
             const parsed = JSON.parse(raw);
-            return Array.isArray(parsed) && parsed.length > 0 ? parsed : DEFAULT_ARTICLES;
+            if (!Array.isArray(parsed) || parsed.length === 0) return DEFAULT_ARTICLES;
+
+            if (isEN && parsed.some(it => /[àáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]/i.test(it.title || ''))) {
+                saveArticles(DEFAULT_ARTICLES);
+                return DEFAULT_ARTICLES;
+            }
+            return parsed;
         } catch (e) {
             return DEFAULT_ARTICLES;
         }
@@ -872,20 +1050,41 @@ var INVAMAX_TOOLKIT_STORE = (function () {
 
     function renderArticleCardHTML(art) {
         const thumb = resolveAssetUrl(art.thumbnail || 'assets/images/resources/art-5steps.jpg');
-        const link = resolveAssetUrl(art.link || 'articles.html');
+        let artLink = art.link || (isEN ? 'en/articles.html' : 'vi/articles.html');
+        if (isEN && artLink.startsWith('vi/')) {
+            artLink = 'en/' + artLink.substring(3);
+        } else if (!isEN && artLink.startsWith('en/')) {
+            artLink = 'vi/' + artLink.substring(3);
+        }
+        const link = resolveAssetUrl(artLink);
+
+        let dateDisplay = art.dateDisplay || '';
+        if (isEN && dateDisplay.includes('thg ')) {
+            const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+            dateDisplay = dateDisplay.replace(/(\d+)\s+thg\s+(\d+),\s+(\d+)/, (m, d, mo, y) => {
+                return (months[parseInt(mo, 10)-1] || mo) + ' ' + d + ', ' + y;
+            });
+        }
+        let viewsText = art.views || '';
+        if (isEN && viewsText.includes('lượt xem')) {
+            viewsText = viewsText.replace('lượt xem', 'views');
+        }
+
+        const categoryText = art.category || (isEN ? 'Insights' : 'Tri thức');
+
         return `
             <a href="${link}" class="art-card-light" data-id="${escapeHTML(art.id)}">
                 <div class="art-thumb-wrap">
                     <img src="${thumb}" alt="${escapeHTML(art.title)}" loading="lazy">
-                    <span class="art-tag-badge-solid">${escapeHTML(art.category || 'Tri thức')}</span>
+                    <span class="art-tag-badge-solid">${escapeHTML(categoryText)}</span>
                 </div>
                 <div class="art-body-light">
                     <h3 class="art-title-light">${escapeHTML(art.title)}</h3>
                     <p class="art-excerpt-light">${escapeHTML(art.excerpt || '')}</p>
                     <div class="art-meta-footer-light">
                         <div class="art-meta-left">
-                            <span class="art-meta-item"><i data-lucide="calendar" style="width: 12px; height: 12px;"></i> ${escapeHTML(art.dateDisplay || '')}</span>
-                            <span class="art-meta-item"><i data-lucide="eye" style="width: 12px; height: 12px;"></i> ${escapeHTML(art.views || '')}</span>
+                            <span class="art-meta-item"><i data-lucide="calendar" style="width: 12px; height: 12px;"></i> ${escapeHTML(dateDisplay)}</span>
+                            <span class="art-meta-item"><i data-lucide="eye" style="width: 12px; height: 12px;"></i> ${escapeHTML(viewsText)}</span>
                         </div>
                         <span class="art-arrow-btn" aria-hidden="true"><i data-lucide="arrow-right" style="width: 15px; height: 15px;"></i></span>
                     </div>
@@ -905,7 +1104,13 @@ var INVAMAX_TOOLKIT_STORE = (function () {
                 return DEFAULT_VIDEOS;
             }
             const parsed = JSON.parse(raw);
-            return Array.isArray(parsed) && parsed.length > 0 ? parsed : DEFAULT_VIDEOS;
+            if (!Array.isArray(parsed) || parsed.length === 0) return DEFAULT_VIDEOS;
+
+            if (isEN && parsed.some(it => /[àáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]/i.test(it.title || ''))) {
+                saveVideos(DEFAULT_VIDEOS);
+                return DEFAULT_VIDEOS;
+            }
+            return parsed;
         } catch (e) {
             return DEFAULT_VIDEOS;
         }
@@ -969,6 +1174,15 @@ var INVAMAX_TOOLKIT_STORE = (function () {
 
     function renderVideoCardHTML(vid) {
         const thumb = resolveAssetUrl(vid.thumbnail || 'assets/images/resources/vid-intro.jpg');
+        let viewsText = vid.views || (isEN ? '0 views' : '0 lượt xem');
+        if (isEN && viewsText.includes('lượt xem')) {
+            viewsText = viewsText.replace('lượt xem', 'views');
+        }
+        let timeAgoText = vid.timeAgo || '';
+        if (isEN) {
+            timeAgoText = timeAgoText.replace('tuần trước', 'weeks ago').replace('tháng trước', 'months ago');
+        }
+
         return `
             <div class="vid-card-light" data-id="${escapeHTML(vid.id)}" style="cursor: default;">
                 <div class="vid-thumb-wrap">
@@ -979,8 +1193,8 @@ var INVAMAX_TOOLKIT_STORE = (function () {
                 <div class="vid-body-light">
                     <h3 class="vid-title-light">${escapeHTML(vid.title)}</h3>
                     <div class="vid-meta-footer-light">
-                        <span class="vid-meta-item"><i data-lucide="play-circle" style="width: 12px; height: 12px;"></i> ${escapeHTML(vid.views || '0 lượt xem')}</span>
-                        <span class="vid-meta-item"><i data-lucide="clock" style="width: 12px; height: 12px;"></i> ${escapeHTML(vid.timeAgo || '')}</span>
+                        <span class="vid-meta-item"><i data-lucide="play-circle" style="width: 12px; height: 12px;"></i> ${escapeHTML(viewsText)}</span>
+                        <span class="vid-meta-item"><i data-lucide="clock" style="width: 12px; height: 12px;"></i> ${escapeHTML(timeAgoText)}</span>
                     </div>
                 </div>
             </div>
@@ -1004,7 +1218,7 @@ var INVAMAX_TOOLKIT_STORE = (function () {
         // Nút lùi (Trang trước)
         const prevDisabled = currentPage <= 1 ? 'disabled' : '';
         const prevClick = currentPage > 1 ? `onclick="${changePageFnName}(${currentPage - 1})"` : '';
-        html += `<button type="button" class="res-page-btn res-page-prev" ${prevDisabled} ${prevClick} aria-label="Trang trước" title="Trang trước"><i data-lucide="chevron-left"></i></button>`;
+        html += `<button type="button" class="res-page-btn res-page-prev" ${prevDisabled} ${prevClick} aria-label="${isEN ? 'Previous page' : 'Trang trước'}" title="${isEN ? 'Previous page' : 'Trang trước'}"><i data-lucide="chevron-left"></i></button>`;
         
         // Danh sách số trang
         let pages = [];
@@ -1026,14 +1240,14 @@ var INVAMAX_TOOLKIT_STORE = (function () {
             } else {
                 const activeClass = p === currentPage ? 'active' : '';
                 const clickAttr = p !== currentPage ? `onclick="${changePageFnName}(${p})"` : '';
-                html += `<button type="button" class="res-page-btn res-page-num ${activeClass}" ${clickAttr} aria-label="Trang ${p}">${p}</button>`;
+                html += `<button type="button" class="res-page-btn res-page-num ${activeClass}" ${clickAttr} aria-label="${(isEN ? 'Page ' : 'Trang ') + p}">${p}</button>`;
             }
         });
         
         // Nút tiến (Trang sau)
         const nextDisabled = currentPage >= totalPages ? 'disabled' : '';
         const nextClick = currentPage < totalPages ? `onclick="${changePageFnName}(${currentPage + 1})"` : '';
-        html += `<button type="button" class="res-page-btn res-page-next" ${nextDisabled} ${nextClick} aria-label="Trang sau" title="Trang sau"><i data-lucide="chevron-right"></i></button>`;
+        html += `<button type="button" class="res-page-btn res-page-next" ${nextDisabled} ${nextClick} aria-label="${isEN ? 'Next page' : 'Trang sau'}" title="${isEN ? 'Next page' : 'Trang sau'}"><i data-lucide="chevron-right"></i></button>`;
         
         html += '</div>';
         return html;

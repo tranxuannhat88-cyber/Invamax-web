@@ -1,0 +1,46 @@
+[
+  {
+    "id": "vid-lean-intro-12p",
+    "title": "Introduction to Lean Manufacturing in 12 Minutes",
+    "thumbnail": "assets/images/resources/vid-intro.jpg",
+    "duration": "12:34",
+    "views": "32K views",
+    "timeAgo": "2 weeks ago",
+    "videoUrl": "https://www.youtube.com/@NguoiXayNen",
+    "status": "published",
+    "createdAt": "2026-10-05"
+  },
+  {
+    "id": "vid-5-loi-thuong-gap",
+    "title": "5 Common Pitfalls When Implementing Kaizen in Factories",
+    "thumbnail": "assets/images/resources/vid-mistakes.jpg",
+    "duration": "18:20",
+    "views": "24K views",
+    "timeAgo": "3 weeks ago",
+    "videoUrl": "https://www.youtube.com/@NguoiXayNen",
+    "status": "published",
+    "createdAt": "2026-09-28"
+  },
+  {
+    "id": "vid-ai-du-bao-san-xuat",
+    "title": "AI Applications in Manufacturing Demand & Scheduling",
+    "thumbnail": "assets/images/resources/vid-ai-pred.jpg",
+    "duration": "15:10",
+    "views": "18K views",
+    "timeAgo": "1 month ago",
+    "videoUrl": "https://www.youtube.com/@NguoiXayNen",
+    "status": "published",
+    "createdAt": "2026-09-19"
+  },
+  {
+    "id": "vid-xay-dung-cost-down",
+    "title": "How to Build a Sustainable Cost Down Governance System",
+    "thumbnail": "assets/images/resources/vid-costdown-sys.jpg",
+    "duration": "10:45",
+    "views": "21K views",
+    "timeAgo": "1 month ago",
+    "videoUrl": "https://www.youtube.com/@NguoiXayNen",
+    "status": "published",
+    "createdAt": "2026-09-15"
+  }
+]

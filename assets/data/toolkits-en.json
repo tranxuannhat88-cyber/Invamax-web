@@ -1,0 +1,57 @@
+[
+  {
+    "id": "tool-huong-dan-giam-chi-phi",
+    "title": "Manufacturing Cost Reduction Guide",
+    "format": "PDF",
+    "desc": "Comprehensive guide on factory cost-reduction methodology:\\n- Cost structure definition.\\n- Waste identification & elimination.\\n- Sustainable cost optimization.",
+    "fileUrl": "idb:tool-huong-dan-giam-chi-phi",
+    "fileName": "INVAMAX_Manufacturing_Cost_Reduction_Guide.pdf",
+    "fileSize": "9.28 MB",
+    "createdAt": "2026-10-05",
+    "downloads": 311,
+    "status": "published",
+    "thumbnail": "assets/images/resources/thumb-tool-huong-dan-giam-chi-phi.jpg",
+    "updatedAt": "2026-10-19T02:54:02.295Z"
+  },
+  {
+    "id": "tool-checklist-danh-gia",
+    "title": "Lean & Effective 5S Implementation Guide",
+    "format": "PDF",
+    "desc": "Practical step-by-step guidebook to deploy, standardize, and sustain 5S successfully on your factory floor.",
+    "fileUrl": "assets/docs/IVM-Huong-dan-thuc-hien-5S-Tinh-gon-Hieu-qua.pdf",
+    "fileName": "IVM - Lean & Effective 5S Implementation Guide.pdf",
+    "fileSize": "6.16 MB",
+    "thumbnail": "assets/images/resources/thumb-5s-guide.jpg",
+    "createdAt": "2026-10-10",
+    "downloads": 242,
+    "status": "published"
+  },
+  {
+    "id": "tool-ke-hoach-lean-a3",
+    "title": "A3 Report - Structured Lean Problem-Solving Template",
+    "format": "XLSX",
+    "desc": "Standard Toyota-aligned 7-step A3 template for structured root-cause problem solving, planning, and Kaizen execution.",
+    "fileUrl": "assets/docs/INVAMAX_A3_Report_7_Buoc_Editable.xlsx",
+    "fileName": "INVAMAX_A3_Report_7_Steps_Editable.xlsx",
+    "fileSize": "0.17 MB",
+    "createdAt": "2026-10-08",
+    "downloads": 185,
+    "status": "published",
+    "thumbnail": "assets/images/resources/thumb-tool-ke-hoach-lean-a3.jpg",
+    "updatedAt": "2026-10-19T07:52:44.410Z"
+  },
+  {
+    "id": "tool-bieu-mau-oee",
+    "title": "OEE Tracking & Analysis Template",
+    "format": "XLSX",
+    "desc": "Standard spreadsheet template for tracking, analyzing, and reporting Overall Equipment Effectiveness in production.",
+    "fileUrl": "assets/docs/INVAMAX_OEE_Tracking_Dashboard.xlsx",
+    "fileName": "INVAMAX_OEE_Tracking_Dashboard.xlsx",
+    "fileSize": "0.05 MB",
+    "createdAt": "2026-10-01",
+    "downloads": 295,
+    "status": "published",
+    "thumbnail": "assets/images/resources/thumb-tool-bieu-mau-oee.jpg",
+    "updatedAt": "2026-10-19T08:43:46.474Z"
+  }
+]

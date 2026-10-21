@@ -1,0 +1,50 @@
+[
+  {
+    "id": "art-5-buoc-lean",
+    "title": "5 Steps to Implement Lean Effectively in Manufacturing",
+    "category": "Lean & Improvement",
+    "excerpt": "Practical shopfloor insights from Lean deployment projects, helping manufacturers boost productivity and eliminate waste sustainably.",
+    "thumbnail": "assets/images/resources/art-5steps.jpg",
+    "dateDisplay": "Oct 12, 2026",
+    "views": "2.4K views",
+    "link": "en/article-5-buoc-trien-khai-lean.html",
+    "status": "published",
+    "createdAt": "2026-10-12"
+  },
+  {
+    "id": "art-chi-so-oee",
+    "title": "OEE Metric: How to Measure and Improve Equipment Effectiveness",
+    "category": "Factory Management",
+    "excerpt": "Demystifying OEE calculations, loss categorization, and proven steps to systematically boost equipment performance.",
+    "thumbnail": "assets/images/resources/art-oee.jpg",
+    "dateDisplay": "Oct 10, 2026",
+    "views": "1.8K views",
+    "link": "en/article-chi-so-oee.html",
+    "status": "published",
+    "createdAt": "2026-10-10"
+  },
+  {
+    "id": "art-ung-dung-ai",
+    "title": "Applying AI in Manufacturing: Opportunities and Implementation Roadmap",
+    "category": "Digital & AI",
+    "excerpt": "Real-world industrial AI use cases in quality, scheduling, and predictive maintenance with a tailored roadmap for enterprises.",
+    "thumbnail": "assets/images/resources/ai-hero-conveyor.jpg?v=4",
+    "dateDisplay": "Oct 08, 2026",
+    "views": "1.6K views",
+    "link": "en/article-ung-dung-ai.html",
+    "status": "published",
+    "createdAt": "2026-10-08"
+  },
+  {
+    "id": "art-10-co-hoi-giam-chi-phi",
+    "title": "10 Immediate Cost-Reduction Opportunities for Factories",
+    "category": "Cost Down",
+    "excerpt": "Actionable, high-impact cost down solutions that can be executed in 3–6 months based on actual manufacturing turnaround cases.",
+    "thumbnail": "assets/images/resources/art-cost-10opp.jpg?v=2",
+    "dateDisplay": "Oct 05, 2026",
+    "views": "2.1K views",
+    "link": "en/article-10-co-hoi-giam-chi-phi.html",
+    "status": "published",
+    "createdAt": "2026-10-05"
+  }
+]
