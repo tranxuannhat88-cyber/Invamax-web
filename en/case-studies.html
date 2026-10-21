@@ -667,7 +667,7 @@
         <div class="res-hero-container">
             <div class="res-hero-grid">
                 <div class="res-hero-left">
-                    <div class="res-hero-eyebrow">DỰ ÁN &amp; CASE STUDY</div>
+                    <div class="res-hero-eyebrow">PROJECTS &amp; CASE STUDIES</div>
                     <h1 class="res-hero-title">Case Study <span>INVAMAX</span></h1>
                     <p class="res-hero-subtitle">Field-proven practices in operating model transformation, labor productivity enhancement, and cost reduction from real factory projects.</p>
                 </div>
@@ -706,7 +706,7 @@
             <div class="cs-modern-card" data-id="cs-productivity-pencil" data-categories="productivity, lean & improvement" onclick="openCaseStudyDetailModal('cs-productivity-pencil')">
                 <div class="cs-thumb-wrap">
                     <img src="../assets/images/resources/art-5steps.jpg" alt="42.3% Productivity Increase at a Pencil Factory" class="cs-thumb-img" loading="lazy">
-                    <span class="cs-cat-badge">LEAN &amp; CẢI TIẾN</span>
+                    <span class="cs-cat-badge">LEAN &amp; CONTINUOUS IMPROVEMENT</span>
                 </div>
                 <div class="cs-body">
                     <h3 class="cs-title">42.3% Productivity Increase at a Pencil Factory</h3>
@@ -733,7 +733,7 @@
             <div class="cs-modern-card" data-id="cs-kaizen-cost-pencil" data-categories="cost, lean & improvement" onclick="openCaseStudyDetailModal('cs-kaizen-cost-pencil')">
                 <div class="cs-thumb-wrap">
                     <img src="../assets/images/resources/art-costdown.jpg" alt="$432,873 USD/Year in Kaizen Value at a Pencil Factory" class="cs-thumb-img" loading="lazy">
-                    <span class="cs-cat-badge">GIẢM CHI PHÍ</span>
+                    <span class="cs-cat-badge">COST REDUCTION</span>
                 </div>
                 <div class="cs-body">
                     <h3 class="cs-title">$432,873 USD/Year in Kaizen Value at a Pencil Factory</h3>
@@ -760,7 +760,7 @@
             <div class="cs-modern-card" data-id="cs-operating-model-pencil" data-categories="lean & improvement, productivity" onclick="openCaseStudyDetailModal('cs-operating-model-pencil')">
                 <div class="cs-thumb-wrap">
                     <img src="../assets/images/operations/operations.jpg" alt="Operating Model Transformation at a Pencil Factory" class="cs-thumb-img" loading="lazy">
-                    <span class="cs-cat-badge">LEAN &amp; CẢI TIẾN</span>
+                    <span class="cs-cat-badge">LEAN &amp; CONTINUOUS IMPROVEMENT</span>
                 </div>
                 <div class="cs-body">
                     <h3 class="cs-title">Operating Model Transformation at a Pencil Factory</h3>
@@ -857,13 +857,13 @@
         </div>
     </footer>
 
-    <!-- CỬA SỔ XEM CHI TIẾT CASE STUDY (DETAIL MODAL) -->
+    <!-- CASE STUDY DETAIL MODAL -->
     <div id="csDetailModal" class="cs-detail-modal-backdrop" onclick="closeCaseStudyDetailModal(event)">
         <div class="cs-detail-modal-dialog" onclick="event.stopPropagation()">
             <!-- Header: Title, Actions (Fullscreen), Close X -->
             <div class="cs-detail-modal-header">
                 <div class="cs-modal-header-left">
-                    <span id="csModalBadge" class="cs-modal-cat-badge">LEAN &amp; CẢI TIẾN</span>
+                    <span id="csModalBadge" class="cs-modal-cat-badge">LEAN &amp; CONTINUOUS IMPROVEMENT</span>
                     <h3 id="csModalHeaderTitle" class="cs-modal-header-title">Case Study Details</h3>
                 </div>
                 <div class="cs-modal-header-actions">
@@ -1272,7 +1272,7 @@
                     const resolved = resolveAssetUrl(imgUrl);
                     return `
                         <div class="cs-gallery-thumb-item ${idx === 0 ? 'active' : ''}" onclick="selectCsGalleryImage('${resolved}', this)">
-                            <img src="${resolved}" alt="Ảnh ${idx + 1}" loading="lazy">
+                            <img src="${resolved}" alt="Image ${idx + 1}" loading="lazy">
                         </div>
                     `;
                 }).join('');
@@ -1407,7 +1407,7 @@
                 const cats = Array.isArray(cs.categories) && cs.categories.length > 0 
                     ? cs.categories 
                     : (cs.category ? cs.category.split(',').map(s => s.trim()).filter(Boolean) : ['Lean & Improvement']);
-                const primaryCat = (cats[0] || 'LEAN & CẢI TIẾN').toUpperCase();
+                const primaryCat = (cats[0] || 'LEAN & CONTINUOUS IMPROVEMENT').toUpperCase();
                 const catAttr = cats.join(', ').toLowerCase();
                 const thumb = resolveAssetUrl(cs.thumbnail || 'assets/images/resources/art-5steps.jpg');
                 const dateText = cs.dateDisplay || cs.createdAt || 'Oct 12, 2026';
