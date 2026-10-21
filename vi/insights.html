@@ -570,6 +570,48 @@
                     <iframe id="previewIframe" src="about:blank" title="Xem trước nội dung"></iframe>
                 </div>
 
+                <!-- Excel Spreadsheet Interactive Viewer -->
+                <div id="previewExcelContainer" class="doc-preview-excel-wrap" style="display: none;">
+                    <!-- Loading state -->
+                    <div id="excelLoadingIndicator" class="excel-preview-loading" style="display: none;">
+                        <div class="excel-loading-spinner"></div>
+                        <span id="excelLoadingText">Đang tải và xử lý bảng tính Excel...</span>
+                    </div>
+
+                    <!-- Toolbar -->
+                    <div id="excelViewerToolbar" class="excel-viewer-toolbar">
+                        <div class="excel-toolbar-left">
+                            <span class="excel-badge">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><path d="M8 13h2"/><path d="M8 17h2"/><path d="M14 13h2"/><path d="M14 17h2"/></svg>
+                                EXCEL PREVIEW
+                            </span>
+                            <span id="excelCurrentSheetTitle" class="excel-sheet-title">Sheet 1</span>
+                            <span id="excelSheetStats" class="excel-stats-pill">0 dòng × 0 cột</span>
+                        </div>
+                        <div class="excel-toolbar-right">
+                            <div class="excel-search-box">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                                <input type="text" id="excelSearchInput" placeholder="Tìm kiếm ô..." oninput="handleExcelSearch(this.value)">
+                                <span id="excelSearchCount" class="excel-search-count"></span>
+                            </div>
+                            <button type="button" class="excel-fullscreen-toggle-btn" onclick="toggleDocModalFullscreen()" title="Phóng to / thu nhỏ toàn màn hình">
+                                <svg id="excelFsIconExpand" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+                                <svg id="excelFsIconCompress" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;"><path d="M4 14h6v6"/><path d="M20 10h-6V4"/><path d="m14 10 7-7"/><path d="m3 21 7-7"/></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Excel Table Grid Scroll Area -->
+                    <div id="excelGridContainer" class="excel-grid-container">
+                        <!-- Table inserted dynamically -->
+                    </div>
+
+                    <!-- Bottom Sheet Tabs Bar -->
+                    <div id="excelSheetTabsBar" class="excel-sheet-tabs-bar">
+                        <!-- Dynamic sheet tabs inserted dynamically -->
+                    </div>
+                </div>
+
                 <!-- Fallback notice for office/binary files -->
                 <div id="previewOfficeNotice" style="background: #f8fafc; border: 1.5px dashed #cbd5e1; border-radius: 12px; padding: 28px 20px; text-align: center; margin-top: 10px;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 12px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
@@ -591,6 +633,15 @@
     <script>
         if (window.pdfjsLib) {
             pdfjsLib.GlobalWorkerOptions.workerSrc = '../assets/js/vendor/pdf.worker.min.js';
+        }
+    </script>
+        <!-- SheetJS Vendor Script for Native Browser Excel (.xlsx/.xls) Preview -->
+    <script src="../assets/js/vendor/xlsx.full.min.js"></script>
+    <script>
+        if (typeof XLSX === 'undefined') {
+            const s = document.createElement('script');
+            s.src = 'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';
+            document.head.appendChild(s);
         }
     </script>
     <script src="../assets/js/toolkit-store.js?v=20261020_1036"></script>
@@ -691,9 +742,193 @@
     <script>
         lucide.createIcons({ attrs: { "stroke-width": 2.2 } });
 
-        let activePreviewBlobUrl = null;
-
         // Preview Modal Controls
+        let activePreviewBlobUrl = null;
+        let currentExcelWorkbook = null;
+        let currentExcelItem = null;
+
+        function escapeHTML(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
+        function toggleDocModalFullscreen() {
+            const dialog = document.querySelector('.doc-preview-modal-dialog');
+            const iconExp = document.getElementById('excelFsIconExpand');
+            const iconComp = document.getElementById('excelFsIconCompress');
+            const openTabBtn = document.getElementById('previewOpenTabBtn');
+            if (!dialog) return;
+
+            dialog.classList.toggle('modal-fullscreen');
+            const isFs = dialog.classList.contains('modal-fullscreen');
+            if (iconExp && iconComp) {
+                iconExp.style.display = isFs ? 'none' : 'inline-block';
+                iconComp.style.display = isFs ? 'inline-block' : 'none';
+            }
+            if (openTabBtn) {
+                openTabBtn.innerHTML = isFs 
+                    ? '<i data-lucide="minimize-2"></i> Thu nhỏ' 
+                    : '<i data-lucide="maximize-2"></i> Toàn màn hình';
+                if (window.lucide && typeof window.lucide.createIcons === 'function') {
+                    window.lucide.createIcons();
+                }
+            }
+        }
+
+        async function renderExcelPreview(item, downloadUrl) {
+            const excelWrap = document.getElementById('previewExcelContainer');
+            const iframeWrap = document.getElementById('previewIframeContainer');
+            const officeNotice = document.getElementById('previewOfficeNotice');
+            const loadingEl = document.getElementById('excelLoadingIndicator');
+            const gridEl = document.getElementById('excelGridContainer');
+            const tabsBar = document.getElementById('excelSheetTabsBar');
+            const searchInput = document.getElementById('excelSearchInput');
+            const searchCount = document.getElementById('excelSearchCount');
+
+            if (searchInput) searchInput.value = '';
+            if (searchCount) searchCount.innerText = '';
+            if (iframeWrap) iframeWrap.style.display = 'none';
+            if (officeNotice) officeNotice.style.display = 'none';
+            if (excelWrap) excelWrap.style.display = 'flex';
+            if (loadingEl) loadingEl.style.display = 'flex';
+            if (gridEl) gridEl.innerHTML = '';
+            if (tabsBar) tabsBar.innerHTML = '';
+
+            try {
+                let arrayBuffer;
+                if (downloadUrl.startsWith('data:')) {
+                    const base64 = downloadUrl.split(',')[1];
+                    const binaryString = window.atob(base64);
+                    const len = binaryString.length;
+                    const bytes = new Uint8Array(len);
+                    for (let i = 0; i < len; i++) {
+                        bytes[i] = binaryString.charCodeAt(i);
+                    }
+                    arrayBuffer = bytes.buffer;
+                } else {
+                    const resolvedUrl = INVAMAX_TOOLKIT_STORE.resolveAssetUrl(downloadUrl);
+                    const resp = await fetch(resolvedUrl);
+                    if (!resp.ok) throw new Error('Không thể tải tệp Excel (' + resp.status + ')');
+                    arrayBuffer = await resp.arrayBuffer();
+                }
+
+                if (typeof XLSX === 'undefined') {
+                    throw new Error('Thư viện SheetJS chưa sẵn sàng.');
+                }
+
+                currentExcelWorkbook = XLSX.read(arrayBuffer, { type: 'array', cellDates: true });
+                currentExcelItem = item;
+
+                loadingEl.style.display = 'none';
+
+                renderExcelSheetTabs(currentExcelWorkbook);
+
+                if (currentExcelWorkbook.SheetNames && currentExcelWorkbook.SheetNames.length > 0) {
+                    selectExcelSheet(currentExcelWorkbook.SheetNames[0]);
+                }
+            } catch (err) {
+                console.error('Lỗi hiển thị xem trước Excel:', err);
+                if (loadingEl) loadingEl.style.display = 'none';
+                if (excelWrap) excelWrap.style.display = 'none';
+                if (officeNotice) officeNotice.style.display = 'block';
+            }
+        }
+
+        function renderExcelSheetTabs(wb) {
+            const tabsBar = document.getElementById('excelSheetTabsBar');
+            if (!tabsBar || !wb || !wb.SheetNames) return;
+            tabsBar.innerHTML = '';
+
+            wb.SheetNames.forEach((sheetName, index) => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'excel-sheet-tab' + (index === 0 ? ' active' : '');
+                btn.setAttribute('data-sheet', sheetName);
+                btn.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 4px; vertical-align: middle;"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><line x1="3" x2="21" y1="9" y2="9"/><line x1="3" x2="21" y1="15" y2="15"/><line x1="9" x2="9" y1="3" y2="21"/><line x1="15" x2="15" y1="3" y2="21"/></svg>
+                    ${escapeHTML(sheetName)}
+                `;
+                btn.onclick = () => selectExcelSheet(sheetName);
+                tabsBar.appendChild(btn);
+            });
+        }
+
+        function selectExcelSheet(sheetName) {
+            if (!currentExcelWorkbook || !currentExcelWorkbook.Sheets[sheetName]) return;
+            const sheet = currentExcelWorkbook.Sheets[sheetName];
+            const gridEl = document.getElementById('excelGridContainer');
+            const titleEl = document.getElementById('excelCurrentSheetTitle');
+            const statsEl = document.getElementById('excelSheetStats');
+
+            if (titleEl) titleEl.innerText = sheetName;
+
+            const tabs = document.querySelectorAll('.excel-sheet-tab');
+            tabs.forEach(tab => {
+                if (tab.getAttribute('data-sheet') === sheetName) {
+                    tab.classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                }
+            });
+
+            let html = XLSX.utils.sheet_to_html(sheet, { header: '', footer: '' });
+            html = html.replace(/>#VALUE!</g, '>[INVAMAX]<');
+            gridEl.innerHTML = html;
+
+            if (sheet['!ref']) {
+                const range = XLSX.utils.decode_range(sheet['!ref']);
+                const rowCount = range.e.r - range.s.r + 1;
+                const colCount = range.e.c - range.s.c + 1;
+                if (statsEl) statsEl.innerText = `${rowCount} dòng × ${colCount} cột`;
+            } else {
+                if (statsEl) statsEl.innerText = 'Trống';
+            }
+
+            gridEl.scrollTop = 0;
+            gridEl.scrollLeft = 0;
+        }
+
+        function handleExcelSearch(query) {
+            const gridEl = document.getElementById('excelGridContainer');
+            const countEl = document.getElementById('excelSearchCount');
+            if (!gridEl) return;
+
+            const prevHighlights = gridEl.querySelectorAll('.excel-highlight');
+            prevHighlights.forEach(el => el.classList.remove('excel-highlight'));
+
+            if (!query || query.trim() === '') {
+                if (countEl) countEl.innerText = '';
+                return;
+            }
+
+            const q = query.trim().toLowerCase();
+            const cells = gridEl.querySelectorAll('td, th');
+            let matchCount = 0;
+            let firstMatch = null;
+
+            cells.forEach(cell => {
+                const txt = (cell.innerText || '').toLowerCase();
+                if (txt.includes(q)) {
+                    cell.classList.add('excel-highlight');
+                    matchCount++;
+                    if (!firstMatch) firstMatch = cell;
+                }
+            });
+
+            if (countEl) {
+                countEl.innerText = matchCount > 0 ? `${matchCount} kết quả` : 'Không có';
+            }
+
+            if (firstMatch) {
+                firstMatch.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+            }
+        }
+
         async function openDocPreviewModal(item) {
             if (!item) return;
             const modal = document.getElementById('docPreviewModal');
@@ -709,7 +944,7 @@
             const fmtBadge = document.getElementById('previewModalFormat');
             if (fmtBadge) {
                 fmtBadge.innerText = fmt;
-                fmtBadge.className = 'tool-format-badge ' + (['XLSX', 'XLS'].includes(fmt) ? 'fmt-xlsx' : (['DOCX', 'DOC'].includes(fmt) ? 'fmt-docx' : 'fmt-pdf'));
+                fmtBadge.className = 'tool-format-badge ' + (['XLSX', 'XLS', 'CSV'].includes(fmt) ? 'fmt-xlsx' : (['DOCX', 'DOC'].includes(fmt) ? 'fmt-docx' : 'fmt-pdf'));
             }
 
             const sizeEl = document.getElementById('previewModalSize');
@@ -750,15 +985,31 @@
                 dlBtn.onclick = (e) => INVAMAX_TOOLKIT_STORE.handleDownload(item.id, e);
             }
 
-            // Check if previewable in iframe (PDF or web link)
+            // Check if previewable
             const iframeWrap = document.getElementById('previewIframeContainer');
             const iframe = document.getElementById('previewIframe');
+            const excelWrap = document.getElementById('previewExcelContainer');
             const officeNotice = document.getElementById('previewOfficeNotice');
 
             const isPdf = fmt === 'PDF' || (downloadUrl && downloadUrl.startsWith('data:application/pdf')) || (item.fileName && item.fileName.toLowerCase().endsWith('.pdf'));
+            const isExcel = ['XLSX', 'XLS', 'CSV'].includes(fmt) || (downloadUrl && (downloadUrl.endsWith('.xlsx') || downloadUrl.endsWith('.xls') || downloadUrl.endsWith('.csv'))) || (item.fileName && (item.fileName.toLowerCase().endsWith('.xlsx') || item.fileName.toLowerCase().endsWith('.xls')));
 
-            if (downloadUrl && isPdf && downloadUrl.startsWith('data:')) {
-                // Chuyển DataURL Base64 lớn thành Blob URL để trình duyệt hiển thị PDF mượt mà không bị trắng màn hình
+            if (isExcel && downloadUrl && downloadUrl !== '#') {
+                // 1. EXCEL SPREADSHEET PREVIEW
+                const resolvedDlUrl = INVAMAX_TOOLKIT_STORE.resolveAssetUrl(downloadUrl);
+                renderExcelPreview(item, downloadUrl);
+
+                openTabBtn.href = '#';
+                openTabBtn.onclick = (e) => { e.preventDefault(); toggleDocModalFullscreen(); };
+                openTabBtn.innerHTML = '<i data-lucide="maximize-2"></i> Toàn màn hình';
+                openTabBtn.style.display = 'inline-flex';
+
+                directDlBtn.href = resolvedDlUrl;
+                directDlBtn.setAttribute('download', item.fileName || (item.title + '.xlsx'));
+                directDlBtn.style.display = 'inline-flex';
+            } else if (downloadUrl && isPdf && downloadUrl.startsWith('data:')) {
+                // 2. BASE64 PDF PREVIEW
+                if (excelWrap) excelWrap.style.display = 'none';
                 const blobUrl = INVAMAX_TOOLKIT_STORE.base64ToBlobUrl(downloadUrl, 'application/pdf');
                 if (blobUrl) {
                     activePreviewBlobUrl = blobUrl;
@@ -767,6 +1018,8 @@
                     officeNotice.style.display = 'none';
 
                     openTabBtn.href = blobUrl;
+                    openTabBtn.onclick = null;
+                    openTabBtn.innerHTML = '<i data-lucide="external-link"></i> Toàn màn hình';
                     openTabBtn.style.display = 'inline-flex';
 
                     directDlBtn.href = blobUrl;
@@ -778,30 +1031,37 @@
                     officeNotice.style.display = 'block';
                 }
             } else if (downloadUrl && downloadUrl.includes('drive.google.com')) {
-                // Link Google Drive
+                // 3. GOOGLE DRIVE LINK
+                if (excelWrap) excelWrap.style.display = 'none';
                 let embedUrl = downloadUrl.replace(/\/view(\?usp=sharing)?$/, '/preview');
                 iframe.src = embedUrl;
                 iframeWrap.style.display = 'block';
                 officeNotice.style.display = 'none';
 
                 openTabBtn.href = downloadUrl;
+                openTabBtn.onclick = null;
+                openTabBtn.innerHTML = '<i data-lucide="external-link"></i> Toàn màn hình';
                 openTabBtn.style.display = 'inline-flex';
                 directDlBtn.href = downloadUrl;
                 directDlBtn.style.display = 'inline-flex';
             } else if (downloadUrl && (downloadUrl.startsWith('http') || downloadUrl.endsWith('.pdf') || isPdf)) {
-                // Link web trực tiếp hoặc file PDF cục bộ trong assets/docs
+                // 4. DIRECT HTTP LINK / LOCAL PDF FILE
+                if (excelWrap) excelWrap.style.display = 'none';
                 const resolvedPdfUrl = INVAMAX_TOOLKIT_STORE.resolveAssetUrl(downloadUrl);
                 iframe.src = resolvedPdfUrl + (isPdf ? '#view=FitH&toolbar=1' : '');
                 iframeWrap.style.display = 'block';
                 officeNotice.style.display = 'none';
 
                 openTabBtn.href = resolvedPdfUrl;
+                openTabBtn.onclick = null;
+                openTabBtn.innerHTML = '<i data-lucide="external-link"></i> Toàn màn hình';
                 openTabBtn.style.display = 'inline-flex';
                 directDlBtn.href = resolvedPdfUrl;
                 if (isPdf) directDlBtn.setAttribute('download', item.fileName || (item.title + '.pdf'));
                 directDlBtn.style.display = 'inline-flex';
             } else {
-                // File office nhị phân nội bộ (xlsx, docx)
+                // 5. OTHER BINARY / FALLBACK
+                if (excelWrap) excelWrap.style.display = 'none';
                 iframe.src = 'about:blank';
                 iframeWrap.style.display = 'none';
                 officeNotice.style.display = 'block';
@@ -819,16 +1079,32 @@
                 return;
             }
             const modal = document.getElementById('docPreviewModal');
+            const dialog = document.querySelector('.doc-preview-modal-dialog');
+            if (dialog) {
+                dialog.classList.remove('modal-fullscreen');
+                const iconExp = document.getElementById('excelFsIconExpand');
+                const iconComp = document.getElementById('excelFsIconCompress');
+                if (iconExp && iconComp) {
+                    iconExp.style.display = 'inline-block';
+                    iconComp.style.display = 'none';
+                }
+            }
             if (modal) {
                 modal.classList.remove('show');
                 const iframe = document.getElementById('previewIframe');
                 if (iframe) iframe.src = 'about:blank';
-                if (activePreviewBlobUrl) {
-                    URL.revokeObjectURL(activePreviewBlobUrl);
-                    activePreviewBlobUrl = null;
-                }
-                document.body.style.overflow = '';
+                const excelWrap = document.getElementById('previewExcelContainer');
+                if (excelWrap) excelWrap.style.display = 'none';
+                const gridEl = document.getElementById('excelGridContainer');
+                if (gridEl) gridEl.innerHTML = '';
+                currentExcelWorkbook = null;
+                currentExcelItem = null;
             }
+            if (activePreviewBlobUrl) {
+                URL.revokeObjectURL(activePreviewBlobUrl);
+                activePreviewBlobUrl = null;
+            }
+            document.body.style.overflow = '';
         }
 
         document.addEventListener('keydown', function(e) {
