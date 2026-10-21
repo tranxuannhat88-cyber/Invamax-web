@@ -827,7 +827,7 @@ var INVAMAX_TOOLKIT_STORE = (function () {
         return url;
     }
 
-    // Render HTML card cho trang resources.html
+    // Render HTML card cho trang insights.html
     function renderCardHTML(tool) {
         const fmt = (tool.format || 'PDF').toUpperCase();
         let badgeClass = 'fmt-pdf';
@@ -1361,7 +1361,7 @@ var INVAMAX_TOOLKIT_STORE = (function () {
         renderVideosSection(page, true);
     }
 
-    // Khởi tạo và đồng bộ hiển thị lên trang resources.html
+    // Khởi tạo và đồng bộ hiển thị lên trang insights.html
     async function initResourcesPage() {
         // 1. Render Articles với phân trang
         renderArticlesSection(1, false);
