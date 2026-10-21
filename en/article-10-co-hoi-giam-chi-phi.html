@@ -327,7 +327,7 @@
         .process-card .ipo-card-list li::before { color: var(--poster-orange-text); }
         .output-card .ipo-card-list li::before { color: var(--poster-blue-text); }
 
-        /* Donut Chart Card */
+        /* Pie Chart Card (Solid 100% Circle, No Cutouts) */
         .donut-card-box {
             background: #ffffff;
             border: 1px solid #e2e8f0;
@@ -353,23 +353,24 @@
         }
         .donut-svg-wrap {
             position: relative;
-            width: 105px;
-            height: 105px;
+            width: 108px;
+            height: 108px;
             flex-shrink: 0;
         }
         .donut-svg-wrap svg {
             width: 100%;
             height: 100%;
-            transform: rotate(-90deg);
+            display: block;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.06));
         }
-        .donut-center-label {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 14px;
-            font-weight: 800;
-            color: #0f172a;
+        .pie-slice {
+            transition: transform 0.2s ease, filter 0.2s ease;
+            transform-origin: 50px 50px;
+            cursor: pointer;
+        }
+        .pie-slice:hover {
+            filter: brightness(1.08);
+            transform: scale(1.03);
         }
         .donut-legend-list {
             display: flex;
@@ -544,27 +545,27 @@
             border-top: 1px dashed #f1f5f9;
         }
 
-        /* Section 4: Case Study 3 Columns */
+        /* Section 4: Case Study Grid (2 Columns: Chart & Outcomes) */
         .case-results-grid {
             display: grid;
-            grid-template-columns: 1.15fr 1fr 1.05fr;
-            gap: 16px;
+            grid-template-columns: 1.15fr 1fr;
+            gap: 20px;
             align-items: stretch;
         }
         .case-panel {
             background: #ffffff;
             border: 1px solid #e2e8f0;
             border-radius: 8px;
-            padding: 16px;
+            padding: 18px 20px;
             box-shadow: 0 2px 6px rgba(0,0,0,0.02);
             display: flex;
             flex-direction: column;
         }
         .case-panel-title {
-            font-size: 13.5px;
+            font-size: 14px;
             font-weight: 700;
             color: #0f172a;
-            margin: 0 0 12px 0;
+            margin: 0 0 14px 0;
         }
 
         /* Bar Chart Visual */
@@ -578,20 +579,21 @@
             display: flex;
             align-items: center;
             justify-content: flex-end;
-            gap: 14px;
-            font-size: 11px;
+            gap: 16px;
+            font-size: 11.5px;
             color: #64748b;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
         .legend-indicator {
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 6px;
+            font-weight: 500;
         }
         .legend-sq {
-            width: 10px;
-            height: 10px;
-            border-radius: 2px;
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
             display: inline-block;
         }
         .legend-sq.grey { background: #94a3b8; }
@@ -600,44 +602,63 @@
             display: flex;
             align-items: flex-end;
             justify-content: space-around;
-            height: 120px;
-            border-bottom: 1px solid #cbd5e1;
-            padding-bottom: 4px;
+            height: 135px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 6px;
             position: relative;
         }
         .bar-group {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 6px;
-            width: 28%;
+            gap: 8px;
+            width: 30%;
         }
         .bars-pair {
             display: flex;
             align-items: flex-end;
-            gap: 5px;
-            height: 100px;
+            justify-content: center;
+            gap: 8px;
+            height: 105px;
+        }
+        .bar-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            height: 100%;
+        }
+        .bar-val {
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 4px;
+            white-space: nowrap;
+        }
+        .bar-val.grey {
+            color: #475569;
+        }
+        .bar-val.orange {
+            color: #ea580c;
         }
         .bar-single {
-            width: 18px;
-            border-radius: 3px 3px 0 0;
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            font-size: 9.5px;
-            font-weight: 700;
-            color: #ffffff;
-            padding-top: 2px;
-            box-sizing: border-box;
+            width: 26px;
+            border-radius: 4px 4px 0 0;
+            transition: all 0.2s ease;
         }
         .bar-single.grey { background: #94a3b8; }
         .bar-single.orange { background: #ea580c; }
+        .bar-col:hover .bar-single {
+            filter: brightness(1.08);
+            transform: scaleY(1.02);
+            transform-origin: bottom;
+        }
         .bar-group-label {
-            font-size: 10.5px;
+            font-size: 11.5px;
             font-weight: 600;
-            color: #475569;
+            color: #334155;
             text-align: center;
-            line-height: 1.2;
+            line-height: 1.3;
         }
 
         /* Results List */
@@ -1064,24 +1085,21 @@
                     <div class="donut-card-title">Example: Unit Cost Breakdown (Before Improvement)</div>
                     <div class="donut-flex-wrap">
                         <div class="donut-svg-wrap">
-                            <!-- Conic Donut SVG -->
-                            <svg viewBox="0 0 36 36">
-                                <!-- Background Circle -->
-                                <circle cx="18" cy="18" r="15.915" fill="#ffffff"/>
-                                <!-- 52% Nguyen vat lieu (Blue #2563eb) -->
-                                <circle cx="18" cy="18" r="15.915" fill="transparent" stroke="#2563eb" stroke-width="5" stroke-dasharray="52 48" stroke-dashoffset="0"/>
-                                <!-- 18% Nhan cong (Orange #f97316) -->
-                                <circle cx="18" cy="18" r="15.915" fill="transparent" stroke="#f97316" stroke-width="5" stroke-dasharray="18 82" stroke-dashoffset="-52"/>
-                                <!-- 12% Chi phi chung (Light Blue #38bdf8) -->
-                                <circle cx="18" cy="18" r="15.915" fill="transparent" stroke="#38bdf8" stroke-width="5" stroke-dasharray="12 88" stroke-dashoffset="-70"/>
-                                <!-- 8% Nang luong (Dark navy #1e293b) -->
-                                <circle cx="18" cy="18" r="15.915" fill="transparent" stroke="#1e293b" stroke-width="5" stroke-dasharray="8 92" stroke-dashoffset="-82"/>
-                                <!-- 5% Dong goi (Coral #f43f5e) -->
-                                <circle cx="18" cy="18" r="15.915" fill="transparent" stroke="#f43f5e" stroke-width="5" stroke-dasharray="5 95" stroke-dashoffset="-90"/>
-                                <!-- 5% Khac (Grey #94a3b8) -->
-                                <circle cx="18" cy="18" r="15.915" fill="transparent" stroke="#94a3b8" stroke-width="5" stroke-dasharray="5 95" stroke-dashoffset="-95"/>
+                            <!-- Solid Pie Chart SVG (100% full, no hollow cutout) -->
+                            <svg viewBox="0 0 100 100">
+                                <!-- 52% Raw Materials (Blue #2563eb) -->
+                                <path class="pie-slice" d="M 50.0 50.0 L 50.00 4.00 A 46.0 46.0 0 1 1 44.23 95.64 Z" fill="#2563eb" stroke="#ffffff" stroke-width="1.5" stroke-linejoin="round"><title>Raw Materials: 52%</title></path>
+                                <!-- 18% Direct Labor (Orange #f97316) -->
+                                <path class="pie-slice" d="M 50.0 50.0 L 44.23 95.64 A 46.0 46.0 0 0 1 6.25 64.21 Z" fill="#f97316" stroke="#ffffff" stroke-width="1.5" stroke-linejoin="round"><title>Direct Labor: 18%</title></path>
+                                <!-- 12% Factory Overhead (Light Blue #38bdf8) -->
+                                <path class="pie-slice" d="M 50.0 50.0 L 6.25 64.21 A 46.0 46.0 0 0 1 8.38 30.41 Z" fill="#38bdf8" stroke="#ffffff" stroke-width="1.5" stroke-linejoin="round"><title>Factory Overhead: 12%</title></path>
+                                <!-- 8% Utilities & Energy (Dark navy #1e293b) -->
+                                <path class="pie-slice" d="M 50.0 50.0 L 8.38 30.41 A 46.0 46.0 0 0 1 22.96 12.79 Z" fill="#1e293b" stroke="#ffffff" stroke-width="1.5" stroke-linejoin="round"><title>Utilities & Energy: 8%</title></path>
+                                <!-- 5% Packaging (Coral #f43f5e) -->
+                                <path class="pie-slice" d="M 50.0 50.0 L 22.96 12.79 A 46.0 46.0 0 0 1 35.79 6.25 Z" fill="#f43f5e" stroke="#ffffff" stroke-width="1.5" stroke-linejoin="round"><title>Packaging: 5%</title></path>
+                                <!-- 5% Other Costs (Slate #64748b) -->
+                                <path class="pie-slice" d="M 50.0 50.0 L 35.79 6.25 A 46.0 46.0 0 0 1 50.00 4.00 Z" fill="#64748b" stroke="#ffffff" stroke-width="1.5" stroke-linejoin="round"><title>Other Costs: 5%</title></path>
                             </svg>
-                            <div class="donut-center-label">100%</div>
                         </div>
                         <div class="donut-legend-list">
                             <div class="donut-legend-item">
@@ -1105,7 +1123,7 @@
                                 <span class="donut-legend-pct">5%</span>
                             </div>
                             <div class="donut-legend-item">
-                                <div class="donut-legend-left"><span class="donut-dot" style="background:#94a3b8;"></span> Other Costs</div>
+                                <div class="donut-legend-left"><span class="donut-dot" style="background:#64748b;"></span> Other Costs</div>
                                 <span class="donut-legend-pct">5%</span>
                             </div>
                         </div>
@@ -1333,8 +1351,8 @@
 
         <!-- SECTION 4: REAL-WORLD CASE STUDY -->
         <section class="section-block">
-            <h2 class="sec-title">4. Real-World Case: Cost-Down Results After 4 Months</h2>
-            <p class="sec-desc">Below is a consolidated case study from a precision mechanical factory project (8 shop-floor operators, 400 m² footprint).</p>
+            <h2 class="sec-title">4. Case Study: Cost-Down Results After 4 Months</h2>
+            <p class="sec-desc">Below is a case study from a precision mechanical factory (8 shop-floor operators, 400 m² footprint).</p>
 
             <div class="case-results-grid">
                 <!-- Col 1: Bar Chart Comparison -->
@@ -1349,24 +1367,42 @@
                             <!-- Group 1: Input -->
                             <div class="bar-group">
                                 <div class="bars-pair">
-                                    <div class="bar-single grey" style="height: 58px;">35%</div>
-                                    <div class="bar-single orange" style="height: 44px;">26%</div>
+                                    <div class="bar-col">
+                                        <span class="bar-val grey">35%</span>
+                                        <div class="bar-single grey" style="height: 58px;"></div>
+                                    </div>
+                                    <div class="bar-col">
+                                        <span class="bar-val orange">26%</span>
+                                        <div class="bar-single orange" style="height: 44px;"></div>
+                                    </div>
                                 </div>
                                 <div class="bar-group-label">Input<br>(Materials)</div>
                             </div>
                             <!-- Group 2: Process -->
                             <div class="bar-group">
                                 <div class="bars-pair">
-                                    <div class="bar-single grey" style="height: 75px;">45%</div>
-                                    <div class="bar-single orange" style="height: 63px;">38%</div>
+                                    <div class="bar-col">
+                                        <span class="bar-val grey">45%</span>
+                                        <div class="bar-single grey" style="height: 75px;"></div>
+                                    </div>
+                                    <div class="bar-col">
+                                        <span class="bar-val orange">38%</span>
+                                        <div class="bar-single orange" style="height: 63px;"></div>
+                                    </div>
                                 </div>
                                 <div class="bar-group-label">Process<br>(Production)</div>
                             </div>
                             <!-- Group 3: Output -->
                             <div class="bar-group">
                                 <div class="bars-pair">
-                                    <div class="bar-single grey" style="height: 33px;">20%</div>
-                                    <div class="bar-single orange" style="height: 25px;">15%</div>
+                                    <div class="bar-col">
+                                        <span class="bar-val grey">20%</span>
+                                        <div class="bar-single grey" style="height: 33px;"></div>
+                                    </div>
+                                    <div class="bar-col">
+                                        <span class="bar-val orange">15%</span>
+                                        <div class="bar-single orange" style="height: 25px;"></div>
+                                    </div>
                                 </div>
                                 <div class="bar-group-label">Output<br>(Fulfillment)</div>
                             </div>
@@ -1386,14 +1422,6 @@
                         <li class="res-metric-item"><span class="arrow-up">&uarr;</span> <span><strong>Overall Productivity:</strong> +25%</span></li>
                         <li class="res-metric-item"><span class="arrow-down">&darr;</span> <span><strong>Order Lead Time:</strong> -30%</span></li>
                     </ul>
-                </div>
-
-                <!-- Col 3: Testimonial Quote -->
-                <div class="case-quote-panel">
-                    <div class="quote-mark">“</div>
-                    <p class="quote-text">&ldquo;We didn't need massive capital investment; we simply focused on high-visibility quick wins with rigorous measurement. After 4 months, manufacturing costs fell by 18.5% and productivity surged by 25%.&rdquo;</p>
-                    <p class="quote-author">&mdash; Managing Director, Precision Mechanical Plant</p>
-                    <p class="quote-company">(8 shop-floor operators, 400 m&sup2; footprint)</p>
                 </div>
             </div>
         </section>
