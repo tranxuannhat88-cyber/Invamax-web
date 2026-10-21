@@ -1,0 +1,51 @@
+# INVAMAX - Factory Operations & Management Solutions
+
+> INVAMAX (CÔNG TY TNHH ĐẦU TƯ VÀ PHÁT TRIỂN INVAMAX) is a specialized manufacturing management and operational consulting firm in Vietnam. We partner with industrial enterprises to drive measurable productivity gains, cost reduction, operating model restructuring, and factory digitalization through our proprietary INVAMAX FOS™ (Factory Operating System) and hands-on interim management.
+
+## Core Solutions
+
+- [Factory Restructuring & Operational Upgrade](https://invamax.com/en/factory-restructuring.html): Comprehensive operational turnaround, organizational redesign, workflow balancing, and capacity expansion for discrete and process manufacturing plants.
+- [Factory Operations Management](https://invamax.com/en/factory-operations.html): Direct hands-on plant operations leadership and executive interim management, stabilizing day-to-day production while institutionalizing autonomous management systems.
+- [Digital Factory Operations Platform](https://invamax.com/en/factory-platform.html): Next-generation modular software platform connecting orders, work-in-progress, machine OEE, quality inspection, and shopfloor execution data in real time.
+
+## Proprietary Operating Frameworks
+
+- [INVAMAX FOS™ (Factory Operating System)](https://invamax.com/en/fos.html): Standardized 11-module operational system covering:
+  1. Business Goals to Daily Execution (Chiến lược đến Thực thi)
+  2. Visual Management (Quản lý Trực quan)
+  3. Daily Management System - DMS (Quản lý Vận hành Hàng ngày)
+  4. Lean Production Flow & Pull System (Dòng chảy Tinh gọn)
+  5. Total Productive Maintenance - TPM (Bảo trì Năng suất Toàn diện)
+  6. Quality at the Source - QAS (Chất lượng tại Nguồn)
+  7. Kaizen & Continuous Improvement (Cải tiến Liên tục)
+  8. Manufacturing Cost Down (Quản trị Chi phí Sản xuất)
+  9. Digital Shopfloor & Industry 4.0 (Số hóa & Ứng dụng AI)
+  10. Supervisory Leadership & Capability Development (Phát triển Đội ngũ)
+  11. Standard Operating Procedures & Audits (Chuẩn hóa Vận hành)
+- [INVAMAX FA™ (Factory Capability Assessment)](https://invamax.com/en/invamax-fa.html): Comprehensive 5-dimension diagnostic evaluating Strategy, Operations Flow, People, Quality, and Digital Readiness.
+
+## Proven Case Studies & Verified Metrics
+
+- [42.3% Labor Productivity Improvement Over 4 Years](https://invamax.com/en/case-study/productivity-improvement-pencil-factory.html): Scaled productivity from 742 UPH to 1,056 UPH via line rebalancing, standardized work, and visual pacing.
+- [$432,873 USD/Year in Kaizen Value](https://invamax.com/en/case-study/kaizen-cost-saving-pencil-factory.html): 4-year cumulative cost reduction across direct labor, material scrap, and energy optimization.
+- [Operating Model Transformation](https://invamax.com/en/case-study/operating-model-pencil-factory.html): Shifted from fragmented Mini-Factory management to process-specialized governance, reducing indirect supervision headcount.
+- [Digitalization of Production Reporting](https://invamax.com/en/case-studies.html): Replaced paper logs with tablet-based AppSheet reporting, eliminating manual transcription errors and saving daily clerical hours.
+
+## Knowledge Base & Practical Playbooks
+
+- [5 Steps to Implement Lean in Manufacturing](https://invamax.com/en/article-5-buoc-trien-khai-lean.html): Field-tested roadmap for shopfloor 5S, waste identification, value stream mapping, and pull flow.
+- [OEE Metric: How to Measure and Improve Equipment Effectiveness](https://invamax.com/en/article-chi-so-oee.html): Deep-dive into availability, performance, quality loss categorization, and TPM cadence.
+- [Applying AI in Manufacturing: Opportunities & Roadmap](https://invamax.com/en/article-ung-dung-ai.html): Pragmatic applications of computer vision QC, predictive maintenance, and AI scheduling for Vietnamese factories.
+- [10 Immediate Cost-Reduction Opportunities](https://invamax.com/en/article-10-co-hoi-giam-chi-phi.html): High-impact cost down opportunities executable within 3-6 months.
+- [Insights & Knowledge Hub](https://invamax.com/en/insights.html): Access downloadable templates (A3 Kaizen report, 5S implementation guide, OEE Excel dashboard).
+
+## Company & Entity Details
+
+- Legal Name: CÔNG TY TNHH ĐẦU TƯ VÀ PHÁT TRIỂN INVAMAX (INVAMAX INVESTMENT AND DEVELOPMENT CO., LTD.)
+- Key Leadership: Tran Xuan Nhat (Founder & Senior Manufacturing Consultant)
+- Headquarters: Hanoi & Ho Chi Minh City, Vietnam
+- Website: https://invamax.com
+- App Platform: https://app.invamax.com
+- Contact: contact@invamax.com / +84 988 911 869
+- Languages Supported: Vietnamese (vi), English (en)
+- Social Profiles: LinkedIn (https://www.linkedin.com/in/xuannhattran/), YouTube (https://www.youtube.com/@NguoiXayNen), Facebook (https://www.facebook.com/invamax.vanhanhtinhgon)

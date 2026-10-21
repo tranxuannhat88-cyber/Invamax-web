@@ -1,195 +1,417 @@
-<?xml version='1.0' encoding='utf-8'?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns:html="http://www.w3.org/1999/xhtml" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://invamax.com/vi/index.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/index.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/index.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/index.html"/>
+  </url>
+  <url>
+    <loc>https://invamax.com/en/index.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/index.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/index.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/index.html"/>
+  </url>
+  <url>
+    <loc>https://invamax.com/vi/factory-restructuring.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/factory-restructuring.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/factory-restructuring.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/factory-restructuring.html"/>
+  </url>
+  <url>
+    <loc>https://invamax.com/en/factory-restructuring.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/factory-restructuring.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/factory-restructuring.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/factory-restructuring.html"/>
+  </url>
+  <url>
+    <loc>https://invamax.com/vi/factory-operations.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/factory-operations.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/factory-operations.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/factory-operations.html"/>
+  </url>
+  <url>
+    <loc>https://invamax.com/en/factory-operations.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/factory-operations.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/factory-operations.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/factory-operations.html"/>
+  </url>
+  <url>
+    <loc>https://invamax.com/vi/factory-platform.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/factory-platform.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/factory-platform.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/factory-platform.html"/>
+  </url>
+  <url>
+    <loc>https://invamax.com/en/factory-platform.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/factory-platform.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/factory-platform.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/factory-platform.html"/>
+  </url>
+  <url>
+    <loc>https://invamax.com/vi/capabilities.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/capabilities.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/capabilities.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/capabilities.html"/>
+  </url>
+  <url>
+    <loc>https://invamax.com/en/capabilities.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/capabilities.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/capabilities.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/capabilities.html"/>
+  </url>
+  <url>
+    <loc>https://invamax.com/vi/case-studies.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/case-studies.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/case-studies.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/case-studies.html"/>
+  </url>
+  <url>
+    <loc>https://invamax.com/en/case-studies.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/case-studies.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/case-studies.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/case-studies.html"/>
+  </url>
+  <url>
+    <loc>https://invamax.com/vi/insights.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/insights.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/insights.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/insights.html"/>
+  </url>
+  <url>
+    <loc>https://invamax.com/en/insights.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/insights.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/insights.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/insights.html"/>
+  </url>
   <url>
     <loc>https://invamax.com/vi/about.html</loc>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/about.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://invamax.com/en/about.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/about.html" />
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/about.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/about.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/about.html"/>
   </url>
   <url>
     <loc>https://invamax.com/en/about.html</loc>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/about.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://invamax.com/en/about.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/about.html" />
-  </url>
-  <url>
-    <loc>https://invamax.com/vi/article-6-noi-dau.html</loc>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/article-6-noi-dau.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://invamax.com/en/article-6-noi-dau.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/article-6-noi-dau.html" />
-  </url>
-  <url>
-    <loc>https://invamax.com/en/article-6-noi-dau.html</loc>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/article-6-noi-dau.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://invamax.com/en/article-6-noi-dau.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/article-6-noi-dau.html" />
-  </url>
-  <url>
-    <loc>https://invamax.com/vi/article-fos-la-gi.html</loc>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/article-fos-la-gi.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://invamax.com/en/article-fos-la-gi.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/article-fos-la-gi.html" />
-  </url>
-  <url>
-    <loc>https://invamax.com/en/article-fos-la-gi.html</loc>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/article-fos-la-gi.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://invamax.com/en/article-fos-la-gi.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/article-fos-la-gi.html" />
-  </url>
-  <url>
-    <loc>https://invamax.com/vi/article-lean-va-dao.html</loc>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/article-lean-va-dao.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://invamax.com/en/article-lean-va-dao.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/article-lean-va-dao.html" />
-  </url>
-  <url>
-    <loc>https://invamax.com/en/article-lean-va-dao.html</loc>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/article-lean-va-dao.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://invamax.com/en/article-lean-va-dao.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/article-lean-va-dao.html" />
-  </url>
-  <url>
-    <loc>https://invamax.com/vi/articles.html</loc>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/articles.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://invamax.com/en/articles.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/articles.html" />
-  </url>
-  <url>
-    <loc>https://invamax.com/en/articles.html</loc>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/articles.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://invamax.com/en/articles.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/articles.html" />
-  </url>
-  <url>
-    <loc>https://invamax.com/vi/digital-ai.html</loc>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/digital-ai.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://invamax.com/en/digital-ai.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/digital-ai.html" />
-  </url>
-  <url>
-    <loc>https://invamax.com/en/digital-ai.html</loc>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/digital-ai.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://invamax.com/en/digital-ai.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/digital-ai.html" />
-  </url>
-  <url>
-    <loc>https://invamax.com/vi/factory-assessment.html</loc>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/factory-assessment.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://invamax.com/en/factory-assessment.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/factory-assessment.html" />
-  </url>
-  <url>
-    <loc>https://invamax.com/en/factory-assessment.html</loc>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/factory-assessment.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://invamax.com/en/factory-assessment.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/factory-assessment.html" />
-  </url>
-  <url>
-    <loc>https://invamax.com/vi/factory-transformation.html</loc>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/factory-transformation.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://invamax.com/en/factory-transformation.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/factory-transformation.html" />
-  </url>
-  <url>
-    <loc>https://invamax.com/en/factory-transformation.html</loc>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/factory-transformation.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://invamax.com/en/factory-transformation.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/factory-transformation.html" />
-  </url>
-  <url>
-    <loc>https://invamax.com/vi/focused-improvement.html</loc>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/focused-improvement.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://invamax.com/en/focused-improvement.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/focused-improvement.html" />
-  </url>
-  <url>
-    <loc>https://invamax.com/en/focused-improvement.html</loc>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/focused-improvement.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://invamax.com/en/focused-improvement.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/focused-improvement.html" />
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/about.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/about.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/about.html"/>
   </url>
   <url>
     <loc>https://invamax.com/vi/fos.html</loc>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/fos.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://invamax.com/en/fos.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/fos.html" />
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/fos.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/fos.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/fos.html"/>
   </url>
   <url>
     <loc>https://invamax.com/en/fos.html</loc>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/fos.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://invamax.com/en/fos.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/fos.html" />
-  </url>
-  <url>
-    <loc>https://invamax.com/vi/</loc>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://invamax.com/en/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/" />
-  </url>
-  <url>
-    <loc>https://invamax.com/en/</loc>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://invamax.com/en/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/" />
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/fos.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/fos.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/fos.html"/>
   </url>
   <url>
     <loc>https://invamax.com/vi/invamax-fa.html</loc>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/invamax-fa.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://invamax.com/en/invamax-fa.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/invamax-fa.html" />
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/invamax-fa.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/invamax-fa.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/invamax-fa.html"/>
   </url>
   <url>
     <loc>https://invamax.com/en/invamax-fa.html</loc>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/invamax-fa.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://invamax.com/en/invamax-fa.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/invamax-fa.html" />
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/invamax-fa.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/invamax-fa.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/invamax-fa.html"/>
   </url>
   <url>
     <loc>https://invamax.com/vi/lean.html</loc>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/lean.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://invamax.com/en/lean.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/lean.html" />
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/lean.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/lean.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/lean.html"/>
   </url>
   <url>
     <loc>https://invamax.com/en/lean.html</loc>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/lean.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://invamax.com/en/lean.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/lean.html" />
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/lean.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/lean.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/lean.html"/>
   </url>
   <url>
-    <loc>https://invamax.com/vi/operate-transform.html</loc>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/operate-transform.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://invamax.com/en/operate-transform.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/operate-transform.html" />
+    <loc>https://invamax.com/vi/tin-tuc.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/tin-tuc.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/news.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/news.html"/>
   </url>
   <url>
-    <loc>https://invamax.com/en/operate-transform.html</loc>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/operate-transform.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://invamax.com/en/operate-transform.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/operate-transform.html" />
+    <loc>https://invamax.com/en/news.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/tin-tuc.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/news.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/news.html"/>
   </url>
   <url>
-    <loc>https://invamax.com/vi/platform.html</loc>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/platform.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://invamax.com/en/platform.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/platform.html" />
+    <loc>https://invamax.com/vi/tu-muc-tieu-kinh-doanh-den-thuc-thi-hang-ngay.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/tu-muc-tieu-kinh-doanh-den-thuc-thi-hang-ngay.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/from-business-goals-to-daily-execution.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/from-business-goals-to-daily-execution.html"/>
   </url>
   <url>
-    <loc>https://invamax.com/en/platform.html</loc>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/platform.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://invamax.com/en/platform.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/platform.html" />
+    <loc>https://invamax.com/en/from-business-goals-to-daily-execution.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/tu-muc-tieu-kinh-doanh-den-thuc-thi-hang-ngay.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/from-business-goals-to-daily-execution.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/from-business-goals-to-daily-execution.html"/>
   </url>
   <url>
-    <loc>https://invamax.com/vi/resources.html</loc>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/resources.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://invamax.com/en/resources.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/resources.html" />
+    <loc>https://invamax.com/vi/article-5-buoc-trien-khai-lean.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/article-5-buoc-trien-khai-lean.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/article-5-buoc-trien-khai-lean.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/article-5-buoc-trien-khai-lean.html"/>
   </url>
   <url>
-    <loc>https://invamax.com/en/resources.html</loc>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/resources.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://invamax.com/en/resources.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/resources.html" />
+    <loc>https://invamax.com/en/article-5-buoc-trien-khai-lean.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/article-5-buoc-trien-khai-lean.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/article-5-buoc-trien-khai-lean.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/article-5-buoc-trien-khai-lean.html"/>
+  </url>
+  <url>
+    <loc>https://invamax.com/vi/article-chi-so-oee.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/article-chi-so-oee.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/article-chi-so-oee.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/article-chi-so-oee.html"/>
+  </url>
+  <url>
+    <loc>https://invamax.com/en/article-chi-so-oee.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/article-chi-so-oee.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/article-chi-so-oee.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/article-chi-so-oee.html"/>
+  </url>
+  <url>
+    <loc>https://invamax.com/vi/article-ung-dung-ai.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/article-ung-dung-ai.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/article-ung-dung-ai.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/article-ung-dung-ai.html"/>
+  </url>
+  <url>
+    <loc>https://invamax.com/en/article-ung-dung-ai.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/article-ung-dung-ai.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/article-ung-dung-ai.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/article-ung-dung-ai.html"/>
+  </url>
+  <url>
+    <loc>https://invamax.com/vi/article-10-co-hoi-giam-chi-phi.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/article-10-co-hoi-giam-chi-phi.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/article-10-co-hoi-giam-chi-phi.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/article-10-co-hoi-giam-chi-phi.html"/>
+  </url>
+  <url>
+    <loc>https://invamax.com/en/article-10-co-hoi-giam-chi-phi.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/article-10-co-hoi-giam-chi-phi.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/article-10-co-hoi-giam-chi-phi.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/article-10-co-hoi-giam-chi-phi.html"/>
+  </url>
+  <url>
+    <loc>https://invamax.com/vi/article-fos-la-gi.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/article-fos-la-gi.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/article-fos-la-gi.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/article-fos-la-gi.html"/>
+  </url>
+  <url>
+    <loc>https://invamax.com/en/article-fos-la-gi.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/article-fos-la-gi.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/article-fos-la-gi.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/article-fos-la-gi.html"/>
+  </url>
+  <url>
+    <loc>https://invamax.com/vi/article-6-noi-dau.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/article-6-noi-dau.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/article-6-noi-dau.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/article-6-noi-dau.html"/>
+  </url>
+  <url>
+    <loc>https://invamax.com/en/article-6-noi-dau.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/article-6-noi-dau.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/article-6-noi-dau.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/article-6-noi-dau.html"/>
+  </url>
+  <url>
+    <loc>https://invamax.com/vi/article-lean-va-dao.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/article-lean-va-dao.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/article-lean-va-dao.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/article-lean-va-dao.html"/>
+  </url>
+  <url>
+    <loc>https://invamax.com/en/article-lean-va-dao.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/article-lean-va-dao.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/article-lean-va-dao.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/article-lean-va-dao.html"/>
+  </url>
+  <url>
+    <loc>https://invamax.com/vi/case-study/productivity-improvement-pencil-factory.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/case-study/productivity-improvement-pencil-factory.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/case-study/productivity-improvement-pencil-factory.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/case-study/productivity-improvement-pencil-factory.html"/>
+  </url>
+  <url>
+    <loc>https://invamax.com/en/case-study/productivity-improvement-pencil-factory.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/case-study/productivity-improvement-pencil-factory.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/case-study/productivity-improvement-pencil-factory.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/case-study/productivity-improvement-pencil-factory.html"/>
+  </url>
+  <url>
+    <loc>https://invamax.com/vi/case-study/kaizen-cost-saving-pencil-factory.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/case-study/kaizen-cost-saving-pencil-factory.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/case-study/kaizen-cost-saving-pencil-factory.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/case-study/kaizen-cost-saving-pencil-factory.html"/>
+  </url>
+  <url>
+    <loc>https://invamax.com/en/case-study/kaizen-cost-saving-pencil-factory.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/case-study/kaizen-cost-saving-pencil-factory.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/case-study/kaizen-cost-saving-pencil-factory.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/case-study/kaizen-cost-saving-pencil-factory.html"/>
+  </url>
+  <url>
+    <loc>https://invamax.com/vi/case-study/operating-model-pencil-factory.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/case-study/operating-model-pencil-factory.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/case-study/operating-model-pencil-factory.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/case-study/operating-model-pencil-factory.html"/>
+  </url>
+  <url>
+    <loc>https://invamax.com/en/case-study/operating-model-pencil-factory.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <html:link rel="alternate" hreflang="vi" href="https://invamax.com/vi/case-study/operating-model-pencil-factory.html"/>
+    <html:link rel="alternate" hreflang="en" href="https://invamax.com/en/case-study/operating-model-pencil-factory.html"/>
+    <html:link rel="alternate" hreflang="x-default" href="https://invamax.com/en/case-study/operating-model-pencil-factory.html"/>
   </url>
 </urlset>

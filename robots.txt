@@ -1,0 +1,38 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /admin-resources.html
+Disallow: /api/
+Disallow: /backend/
+
+# Welcoming AI Search Engines and LLM Crawlers (GEO Optimization)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Cohere-ai
+Allow: /
+
+# Sitemap and AI Knowledge Index
+Sitemap: https://invamax.com/sitemap.xml
+LLMs-Txt: https://invamax.com/llms.txt

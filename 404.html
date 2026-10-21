@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Trang không tìm thấy | Page Not Found | INVAMAX</title>
+    <meta name="robots" content="noindex, follow">
+    <link rel="icon" type="image/png" href="assets/images/home/logo-invamax-original.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            --primary: #ea580c;
+            --primary-hover: #c2410c;
+            --bg-dark: #090e17;
+            --card-bg: #111827;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Ambient Glow */
+        .ambient-glow {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(234, 88, 12, 0.15) 0%, rgba(9, 14, 23, 0) 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .error-card {
+            position: relative;
+            z-index: 1;
+            max-width: 620px;
+            width: 100%;
+            background: rgba(17, 24, 39, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 48px 36px;
+            text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .logo-wrap {
+            margin-bottom: 28px;
+        }
+
+        .logo-wrap img {
+            height: 42px;
+            width: auto;
+        }
+
+        .code-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 9999px;
+            background: rgba(234, 88, 12, 0.12);
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .error-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            line-height: 1.25;
+            margin-bottom: 14px;
+            color: #ffffff;
+        }
+
+        .error-desc {
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 32px;
+        }
+
+        .divider {
+            height: 1px;
+            background: var(--border-color);
+            margin: 24px 0;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 24px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #ffffff;
+            border: 1px solid transparent;
+            box-shadow: 0 4px 14px rgba(234, 88, 12, 0.35);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: #cbd5e1;
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .footer-note {
+            margin-top: 24px;
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        @media (max-width: 640px) {
+            .error-card {
+                padding: 36px 24px;
+            }
+            .error-title {
+                font-size: 1.75rem;
+            }
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ambient-glow"></div>
+
+    <div class="error-card">
+        <div class="logo-wrap">
+            <a href="/">
+                <img src="assets/images/home/logo-invamax-original.png" alt="INVAMAX">
+            </a>
+        </div>
+
+        <div class="code-badge">
+            <i data-lucide="alert-triangle" style="width: 16px; height: 16px;"></i>
+            <span>Lỗi 404 &bull; Page Not Found</span>
+        </div>
+
+        <h1 class="error-title">Trang không tồn tại<br><span style="color: var(--primary); font-size: 1.5rem; font-weight: 600;">The page you requested was not found</span></h1>
+
+        <p class="error-desc">
+            Đường dẫn bạn truy cập có thể đã được thay đổi hoặc không còn khả dụng.<br>
+            <em>The link you followed may be broken or the page may have been moved.</em>
+        </p>
+
+        <div class="btn-group">
+            <a href="/" class="btn btn-primary" id="homeBtn">
+                <i data-lucide="home"></i>
+                <span>Trang Chủ / Home</span>
+            </a>
+            <a href="vi/insights.html" class="btn btn-secondary" id="insightsBtn">
+                <i data-lucide="book-open"></i>
+                <span>Tri Thức / Insights</span>
+            </a>
+            <a href="vi/factory-restructuring.html" class="btn btn-secondary" id="solutionsBtn">
+                <i data-lucide="layers"></i>
+                <span>Giải Pháp / Solutions</span>
+            </a>
+        </div>
+
+        <div class="divider"></div>
+
+        <p class="footer-note">
+            &copy; 2026 INVAMAX INVESTMENT AND DEVELOPMENT CO., LTD. All rights reserved.
+        </p>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // Auto-detect browser preferred language or referral path
+        (function() {
+            const isEn = window.location.pathname.includes('/en/') || 
+                         (navigator.language && navigator.language.toLowerCase().startsWith('en') && !window.location.pathname.includes('/vi/'));
+            
+            if (isEn) {
+                const homeBtn = document.getElementById('homeBtn');
+                const insightsBtn = document.getElementById('insightsBtn');
+                const solutionsBtn = document.getElementById('solutionsBtn');
+                
+                if (homeBtn) homeBtn.href = '/en/';
+                if (insightsBtn) insightsBtn.href = '/en/insights.html';
+                if (solutionsBtn) solutionsBtn.href = '/en/factory-restructuring.html';
+            }
+        })();
+    </script>
+</body>
+</html>
