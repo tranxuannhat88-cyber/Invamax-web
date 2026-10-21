@@ -579,16 +579,27 @@
     }
 
     .excel-preview-loading {
-        display: flex !important;
+        display: none !important;
         flex-direction: column !important;
         align-items: center !important;
         justify-content: center !important;
         gap: 12px !important;
-        padding: 60px 20px !important;
+        padding: 50px 20px !important;
         background: #f8fafc !important;
         color: #475569 !important;
         font-size: 13.5px !important;
         font-weight: 600 !important;
+    }
+    .excel-preview-loading.active {
+        display: flex !important;
+    }
+    .doc-preview-modal-dialog.excel-mode .doc-preview-modal-body {
+        overflow: hidden !important;
+        padding: 14px 18px !important;
+    }
+    .doc-preview-modal-dialog.excel-mode .doc-preview-excel-wrap {
+        height: 600px !important;
+        max-height: calc(88vh - 120px) !important;
     }
     .excel-loading-spinner {
         width: 32px !important;
@@ -879,6 +890,8 @@
     </script>
         <!-- SheetJS Vendor Script for Native Browser Excel (.xlsx/.xls) Preview -->
     <script src="../assets/js/vendor/xlsx.full.min.js"></script>
+    <!-- Pre-compiled Excel preview data for instantaneous 0ms loading -->
+    <script src="../assets/js/excel-previews-data.js?v=20261021_1350"></script>
     <script>
         if (typeof XLSX === 'undefined') {
             const s = document.createElement('script');
@@ -1023,6 +1036,9 @@
         }
 
         async function renderExcelPreview(item, downloadUrl) {
+            const dialog = document.querySelector('.doc-preview-modal-dialog');
+            if (dialog) dialog.classList.add('excel-mode');
+
             const excelWrap = document.getElementById('previewExcelContainer');
             const iframeWrap = document.getElementById('previewIframeContainer');
             const officeNotice = document.getElementById('previewOfficeNotice');
@@ -1037,7 +1053,30 @@
             if (iframeWrap) iframeWrap.style.display = 'none';
             if (officeNotice) officeNotice.style.display = 'none';
             if (excelWrap) excelWrap.style.display = 'flex';
-            if (loadingEl) loadingEl.style.display = 'flex';
+
+            // Determine filename for cache lookup
+            const fileName = (item.fileName || (downloadUrl ? downloadUrl.split('/').pop().split('?')[0] : '')).trim();
+
+            // FAST PATH: Instant render from pre-compiled cache (0ms latency, zero parse lag)
+            if (window.INVAMAX_EXCEL_PREVIEWS && window.INVAMAX_EXCEL_PREVIEWS[fileName]) {
+                const cached = window.INVAMAX_EXCEL_PREVIEWS[fileName];
+                currentExcelWorkbook = {
+                    isCached: true,
+                    SheetNames: cached.sheetNames,
+                    sheets: cached.sheets
+                };
+                currentExcelItem = item;
+                if (loadingEl) loadingEl.classList.remove('active');
+
+                renderExcelSheetTabsFromNames(cached.sheetNames);
+                if (cached.sheetNames && cached.sheetNames.length > 0) {
+                    selectExcelSheet(cached.sheetNames[0]);
+                }
+                return;
+            }
+
+            // DYNAMIC PATH: Load and parse via SheetJS
+            if (loadingEl) loadingEl.classList.add('active');
             if (gridEl) gridEl.innerHTML = '';
             if (tabsBar) tabsBar.innerHTML = '';
 
@@ -1063,30 +1102,30 @@
                     throw new Error('Thư viện SheetJS chưa sẵn sàng.');
                 }
 
-                currentExcelWorkbook = XLSX.read(arrayBuffer, { type: 'array', cellDates: true });
+                // Fast parse: omit formulas for maximum performance
+                currentExcelWorkbook = XLSX.read(arrayBuffer, { type: 'array', cellDates: true, cellFormula: false });
                 currentExcelItem = item;
 
-                loadingEl.style.display = 'none';
+                if (loadingEl) loadingEl.classList.remove('active');
 
-                renderExcelSheetTabs(currentExcelWorkbook);
-
+                renderExcelSheetTabsFromNames(currentExcelWorkbook.SheetNames);
                 if (currentExcelWorkbook.SheetNames && currentExcelWorkbook.SheetNames.length > 0) {
                     selectExcelSheet(currentExcelWorkbook.SheetNames[0]);
                 }
             } catch (err) {
                 console.error('Lỗi hiển thị xem trước Excel:', err);
-                if (loadingEl) loadingEl.style.display = 'none';
+                if (loadingEl) loadingEl.classList.remove('active');
                 if (excelWrap) excelWrap.style.display = 'none';
                 if (officeNotice) officeNotice.style.display = 'block';
             }
         }
 
-        function renderExcelSheetTabs(wb) {
+        function renderExcelSheetTabsFromNames(sheetNames) {
             const tabsBar = document.getElementById('excelSheetTabsBar');
-            if (!tabsBar || !wb || !wb.SheetNames) return;
+            if (!tabsBar || !sheetNames) return;
             tabsBar.innerHTML = '';
 
-            wb.SheetNames.forEach((sheetName, index) => {
+            sheetNames.forEach((sheetName, index) => {
                 const btn = document.createElement('button');
                 btn.type = 'button';
                 btn.className = 'excel-sheet-tab' + (index === 0 ? ' active' : '');
@@ -1101,8 +1140,7 @@
         }
 
         function selectExcelSheet(sheetName) {
-            if (!currentExcelWorkbook || !currentExcelWorkbook.Sheets[sheetName]) return;
-            const sheet = currentExcelWorkbook.Sheets[sheetName];
+            if (!currentExcelWorkbook) return;
             const gridEl = document.getElementById('excelGridContainer');
             const titleEl = document.getElementById('excelCurrentSheetTitle');
             const statsEl = document.getElementById('excelSheetStats');
@@ -1118,17 +1156,26 @@
                 }
             });
 
-            let html = XLSX.utils.sheet_to_html(sheet, { header: '', footer: '' });
-            html = html.replace(/>#VALUE!</g, '><span style="color:#ea580c; font-weight:800; font-size:13px; letter-spacing:0.5px;">INVAMAX</span><');
-            gridEl.innerHTML = html;
+            if (currentExcelWorkbook.isCached) {
+                const sheetData = currentExcelWorkbook.sheets[sheetName];
+                if (sheetData) {
+                    gridEl.innerHTML = sheetData.html;
+                    if (statsEl) statsEl.innerText = sheetData.stats || '';
+                }
+            } else if (currentExcelWorkbook.Sheets && currentExcelWorkbook.Sheets[sheetName]) {
+                const sheet = currentExcelWorkbook.Sheets[sheetName];
+                let html = XLSX.utils.sheet_to_html(sheet, { header: '', footer: '' });
+                html = html.replace(/>#VALUE!</g, '><span style="color:#ea580c; font-weight:800; font-size:13px; letter-spacing:0.5px;">INVAMAX</span><');
+                gridEl.innerHTML = html;
 
-            if (sheet['!ref']) {
-                const range = XLSX.utils.decode_range(sheet['!ref']);
-                const rowCount = range.e.r - range.s.r + 1;
-                const colCount = range.e.c - range.s.c + 1;
-                if (statsEl) statsEl.innerText = `${rowCount} dòng × ${colCount} cột`;
-            } else {
-                if (statsEl) statsEl.innerText = 'Trống';
+                if (sheet['!ref']) {
+                    const range = XLSX.utils.decode_range(sheet['!ref']);
+                    const rowCount = range.e.r - range.s.r + 1;
+                    const colCount = range.e.c - range.s.c + 1;
+                    if (statsEl) statsEl.innerText = `${rowCount} dòng × ${colCount} cột`;
+                } else {
+                    if (statsEl) statsEl.innerText = 'Trống';
+                }
             }
 
             gridEl.scrollTop = 0;
@@ -1192,7 +1239,7 @@
             const sizeEl = document.getElementById('previewModalSize');
             if (sizeEl) sizeEl.innerText = item.fileSize || '1 MB';
             const dlEl = document.getElementById('previewModalDownloads');
-            if (dlEl) dlEl.innerText = (item.downloads || 0) + ' lượt tải';
+            if (dlEl) dlEl.innerText = (item.downloads || 0) + (' lượt tải');
 
             // Download Button Setup
             const dlBtn = document.getElementById('previewModalDownloadBtn');
@@ -1243,7 +1290,7 @@
 
                 openTabBtn.href = '#';
                 openTabBtn.onclick = (e) => { e.preventDefault(); toggleDocModalFullscreen(); };
-                openTabBtn.innerHTML = '<i data-lucide="maximize-2"></i> Toàn màn hình';
+                openTabBtn.innerHTML = '<i data-lucide="maximize-2"></i> ' + ('Toàn màn hình');
                 openTabBtn.style.display = 'inline-flex';
 
                 directDlBtn.href = resolvedDlUrl;
@@ -1251,6 +1298,8 @@
                 directDlBtn.style.display = 'inline-flex';
             } else if (downloadUrl && isPdf && downloadUrl.startsWith('data:')) {
                 // 2. BASE64 PDF PREVIEW
+                const dialog = document.querySelector('.doc-preview-modal-dialog');
+                if (dialog) dialog.classList.remove('excel-mode');
                 if (excelWrap) excelWrap.style.display = 'none';
                 const blobUrl = INVAMAX_TOOLKIT_STORE.base64ToBlobUrl(downloadUrl, 'application/pdf');
                 if (blobUrl) {
@@ -1261,7 +1310,7 @@
 
                     openTabBtn.href = blobUrl;
                     openTabBtn.onclick = null;
-                    openTabBtn.innerHTML = '<i data-lucide="external-link"></i> Toàn màn hình';
+                    openTabBtn.innerHTML = '<i data-lucide="external-link"></i> ' + ('Toàn màn hình');
                     openTabBtn.style.display = 'inline-flex';
 
                     directDlBtn.href = blobUrl;
@@ -1274,6 +1323,8 @@
                 }
             } else if (downloadUrl && downloadUrl.includes('drive.google.com')) {
                 // 3. GOOGLE DRIVE LINK
+                const dialog = document.querySelector('.doc-preview-modal-dialog');
+                if (dialog) dialog.classList.remove('excel-mode');
                 if (excelWrap) excelWrap.style.display = 'none';
                 let embedUrl = downloadUrl.replace(/\/view(\?usp=sharing)?$/, '/preview');
                 iframe.src = embedUrl;
@@ -1282,12 +1333,14 @@
 
                 openTabBtn.href = downloadUrl;
                 openTabBtn.onclick = null;
-                openTabBtn.innerHTML = '<i data-lucide="external-link"></i> Toàn màn hình';
+                openTabBtn.innerHTML = '<i data-lucide="external-link"></i> ' + ('Toàn màn hình');
                 openTabBtn.style.display = 'inline-flex';
                 directDlBtn.href = downloadUrl;
                 directDlBtn.style.display = 'inline-flex';
             } else if (downloadUrl && (downloadUrl.startsWith('http') || downloadUrl.endsWith('.pdf') || isPdf)) {
                 // 4. DIRECT HTTP LINK / LOCAL PDF FILE
+                const dialog = document.querySelector('.doc-preview-modal-dialog');
+                if (dialog) dialog.classList.remove('excel-mode');
                 if (excelWrap) excelWrap.style.display = 'none';
                 const resolvedPdfUrl = INVAMAX_TOOLKIT_STORE.resolveAssetUrl(downloadUrl);
                 iframe.src = resolvedPdfUrl + (isPdf ? '#view=FitH&toolbar=1' : '');
@@ -1296,13 +1349,15 @@
 
                 openTabBtn.href = resolvedPdfUrl;
                 openTabBtn.onclick = null;
-                openTabBtn.innerHTML = '<i data-lucide="external-link"></i> Toàn màn hình';
+                openTabBtn.innerHTML = '<i data-lucide="external-link"></i> ' + ('Toàn màn hình');
                 openTabBtn.style.display = 'inline-flex';
                 directDlBtn.href = resolvedPdfUrl;
                 if (isPdf) directDlBtn.setAttribute('download', item.fileName || (item.title + '.pdf'));
                 directDlBtn.style.display = 'inline-flex';
             } else {
                 // 5. OTHER BINARY / FALLBACK
+                const dialog = document.querySelector('.doc-preview-modal-dialog');
+                if (dialog) dialog.classList.remove('excel-mode');
                 if (excelWrap) excelWrap.style.display = 'none';
                 iframe.src = 'about:blank';
                 iframeWrap.style.display = 'none';
@@ -1324,6 +1379,7 @@
             const dialog = document.querySelector('.doc-preview-modal-dialog');
             if (dialog) {
                 dialog.classList.remove('modal-fullscreen');
+                dialog.classList.remove('excel-mode');
                 const iconExp = document.getElementById('excelFsIconExpand');
                 const iconComp = document.getElementById('excelFsIconCompress');
                 if (iconExp && iconComp) {
@@ -1339,6 +1395,8 @@
                 if (excelWrap) excelWrap.style.display = 'none';
                 const gridEl = document.getElementById('excelGridContainer');
                 if (gridEl) gridEl.innerHTML = '';
+                const loadingEl = document.getElementById('excelLoadingIndicator');
+                if (loadingEl) loadingEl.classList.remove('active');
                 currentExcelWorkbook = null;
                 currentExcelItem = null;
             }

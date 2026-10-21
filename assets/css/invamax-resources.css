@@ -1408,16 +1408,19 @@ svg.res-feat-icon {
 }
 
 .excel-preview-loading {
-    display: flex;
+    display: none !important;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 12px;
-    padding: 60px 20px;
+    padding: 50px 20px;
     background: #f8fafc;
     color: #475569;
     font-size: 13.5px;
     font-weight: 600;
+}
+.excel-preview-loading.active {
+    display: flex !important;
 }
 .excel-loading-spinner {
     width: 32px;
@@ -1597,4 +1600,13 @@ svg.res-feat-icon {
     border-top: 2.5px solid #15803d;
     font-weight: 700;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.doc-preview-modal-dialog.excel-mode .doc-preview-modal-body {
+    overflow: hidden !important;
+    padding: 14px 18px !important;
+}
+.doc-preview-modal-dialog.excel-mode .doc-preview-excel-wrap {
+    height: 600px !important;
+    max-height: calc(88vh - 120px) !important;
 }
