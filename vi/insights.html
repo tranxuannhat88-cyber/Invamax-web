@@ -579,14 +579,9 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><path d="M8 13h2"/><path d="M8 17h2"/><path d="M14 13h2"/><path d="M14 17h2"/></svg>
                     </div>
                     <h4 id="officeNoticeHeading" style="font-size: 17px; font-weight: 800; color: #0f172a; margin-bottom: 8px;">Tài liệu định dạng Excel (.xlsx)</h4>
-                    <p id="officeNoticeDesc" style="font-size: 14px; color: #475569; max-width: 540px; margin: 0 auto 20px; line-height: 1.6;">
+                    <p id="officeNoticeDesc" style="font-size: 14px; color: #475569; max-width: 540px; margin: 0 auto; line-height: 1.6;">
                         Tài liệu này bao gồm biểu mẫu chuyên sâu và công thức tính toán tự động của INVAMAX. Để đảm bảo hiển thị đúng và sử dụng trọn vẹn các tính năng, vui lòng tải tệp về máy để mở trực tiếp bằng Microsoft Excel hoặc Google Sheets.
                     </p>
-                    <div style="display: flex; justify-content: center; gap: 12px;">
-                        <a id="officeNoticeDownloadBtn" href="#" class="tool-download-btn" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; font-size: 14px; font-weight: 700; border-radius: 8px; text-decoration: none;">
-                            <i data-lucide="download"></i> Tải tệp này về máy để xem
-                        </a>
-                    </div>
                 </div>
             </div>
             <div class="doc-preview-modal-footer">
@@ -733,7 +728,6 @@
             const dlBtn = document.getElementById('previewModalDownloadBtn');
             const directDlBtn = document.getElementById('previewDirectDownloadBtn');
             const openTabBtn = document.getElementById('previewOpenTabBtn');
-            const officeNoticeDlBtn = document.getElementById('officeNoticeDownloadBtn');
             const toolbarDocName = document.getElementById('previewToolbarDocName');
             if (toolbarDocName) toolbarDocName.innerText = item.fileName || item.title;
 
@@ -759,12 +753,6 @@
                 directDlBtn.href = resolvedDlUrl;
                 directDlBtn.setAttribute('download', fileName);
                 directDlBtn.style.display = 'inline-flex';
-
-                if (officeNoticeDlBtn) {
-                    officeNoticeDlBtn.href = resolvedDlUrl;
-                    officeNoticeDlBtn.setAttribute('download', fileName);
-                    officeNoticeDlBtn.onclick = () => INVAMAX_TOOLKIT_STORE.incrementDownload(item.id);
-                }
             } else {
                 dlBtn.href = '#';
                 dlBtn.onclick = (e) => INVAMAX_TOOLKIT_STORE.handleDownload(item.id, e);
