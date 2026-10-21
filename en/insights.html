@@ -36,7 +36,7 @@
     <link rel="icon" type="image/jpeg" href="../assets/images/favicon.jpg">
     <link rel="stylesheet" href="../assets/css/style.css?v=18">
     <link rel="stylesheet" href="../assets/css/navbar.css?v=13">
-    <link rel="stylesheet" href="../assets/css/invamax-resources.css?v=20261021_1400">
+    <link rel="stylesheet" href="../assets/css/invamax-resources.css?v=1792566552">
     <script type="application/ld+json">
     {
     "@context": "https://schema.org",
@@ -804,53 +804,20 @@
                     <iframe id="previewIframe" src="about:blank" title="Document Preview"></iframe>
                 </div>
 
-                <!-- Excel Spreadsheet Interactive Viewer -->
-                <div id="previewExcelContainer" class="doc-preview-excel-wrap" style="display: none;">
-                    <!-- Loading state -->
-                    <div id="excelLoadingIndicator" class="excel-preview-loading" style="display: none;">
-                        <div class="excel-loading-spinner"></div>
-                        <span id="excelLoadingText">Loading and parsing Excel spreadsheet...</span>
+                                <!-- Notice for Excel/Office files: Download to view -->
+                <div id="previewOfficeNotice" style="display: none; background: #f8fafc; border: 1.5px dashed #cbd5e1; border-radius: 14px; padding: 36px 24px; text-align: center; margin: 12px 0;">
+                    <div style="width: 64px; height: 64px; border-radius: 14px; background: #ecfdf5; border: 1.5px solid #a7f3d0; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 16px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><path d="M8 13h2"/><path d="M8 17h2"/><path d="M14 13h2"/><path d="M14 17h2"/></svg>
                     </div>
-
-                    <!-- Toolbar -->
-                    <div id="excelViewerToolbar" class="excel-viewer-toolbar">
-                        <div class="excel-toolbar-left">
-                            <span class="excel-badge">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><path d="M8 13h2"/><path d="M8 17h2"/><path d="M14 13h2"/><path d="M14 17h2"/></svg>
-                                EXCEL PREVIEW
-                            </span>
-                            <span id="excelCurrentSheetTitle" class="excel-sheet-title">Sheet 1</span>
-                            <span id="excelSheetStats" class="excel-stats-pill">0 rows × 0 cols</span>
-                        </div>
-                        <div class="excel-toolbar-right">
-                            <div class="excel-search-box">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-                                <input type="text" id="excelSearchInput" placeholder="Search spreadsheet..." oninput="handleExcelSearch(this.value)">
-                                <span id="excelSearchCount" class="excel-search-count"></span>
-                            </div>
-                            <button type="button" class="excel-fullscreen-toggle-btn" onclick="toggleDocModalFullscreen()" title="Toggle fullscreen view">
-                                <svg id="excelFsIconExpand" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
-                                <svg id="excelFsIconCompress" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;"><path d="M4 14h6v6"/><path d="M20 10h-6V4"/><path d="m14 10 7-7"/><path d="m3 21 7-7"/></svg>
-                            </button>
-                        </div>
+                    <h4 id="officeNoticeHeading" style="font-size: 17px; font-weight: 800; color: #0f172a; margin-bottom: 8px;">Excel Spreadsheet File (.xlsx)</h4>
+                    <p id="officeNoticeDesc" style="font-size: 14px; color: #475569; max-width: 540px; margin: 0 auto 20px; line-height: 1.6;">
+                        This document contains structured templates and formulas optimized for INVAMAX standards. Please download the file to open and use it directly with Microsoft Excel or Google Sheets.
+                    </p>
+                    <div style="display: flex; justify-content: center; gap: 12px;">
+                        <a id="officeNoticeDownloadBtn" href="#" class="tool-download-btn" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; font-size: 14px; font-weight: 700; border-radius: 8px; text-decoration: none;">
+                            <i data-lucide="download"></i> Download file to view
+                        </a>
                     </div>
-
-                    <!-- Excel Table Grid Scroll Area -->
-                    <div id="excelGridContainer" class="excel-grid-container">
-                        <!-- Table inserted dynamically -->
-                    </div>
-
-                    <!-- Bottom Sheet Tabs Bar -->
-                    <div id="excelSheetTabsBar" class="excel-sheet-tabs-bar">
-                        <!-- Dynamic sheet tabs inserted dynamically -->
-                    </div>
-                </div>
-
-                <!-- Fallback notice for office/binary files -->
-                <div id="previewOfficeNotice" style="background: #f8fafc; border: 1.5px dashed #cbd5e1; border-radius: 12px; padding: 28px 20px; text-align: center; margin-top: 10px;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 12px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
-                    <h4 style="font-size: 16px; font-weight: 700; color: #1e293b; margin-bottom: 6px;">Visual Document Preview</h4>
-                    <p style="font-size: 13.5px; color: #64748b; max-width: 500px; margin: 0 auto 16px; line-height: 1.5;">This document is in standard INVAMAX industrial format. Download the master file to utilize all features and calculation formulas.</p>
                 </div>
             </div>
             <div class="doc-preview-modal-footer">
@@ -869,18 +836,7 @@
             pdfjsLib.GlobalWorkerOptions.workerSrc = '../assets/js/vendor/pdf.worker.min.js';
         }
     </script>
-        <!-- SheetJS Vendor Script for Native Browser Excel (.xlsx/.xls) Preview -->
-    <script src="../assets/js/vendor/xlsx.full.min.js"></script>
-    <!-- Pre-compiled Excel preview data for instantaneous 0ms loading -->
-    <script src="../assets/js/excel-previews-data.js?v=20261021_1400"></script>
-    <script>
-        if (typeof XLSX === 'undefined') {
-            const s = document.createElement('script');
-            s.src = 'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';
-            document.head.appendChild(s);
-        }
-    </script>
-    <script src="../assets/js/toolkit-store.js?v=20261021_02"></script>
+        <script src="../assets/js/toolkit-store.js?v=20261021_02"></script>
         <!-- Contact Modal -->
     <div id="contactModal" class="modal-overlay">
         <div class="modal-content">
@@ -978,226 +934,8 @@
     <script>
         lucide.createIcons({ attrs: { "stroke-width": 2.2 } });
 
-        // Preview Modal Controls
+                // Preview Modal Controls
         let activePreviewBlobUrl = null;
-        let currentExcelWorkbook = null;
-        let currentExcelItem = null;
-
-        function escapeHTML(str) {
-            if (!str) return '';
-            return String(str)
-                .replace(/&/g, '&amp;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;')
-                .replace(/"/g, '&quot;')
-                .replace(/'/g, '&#039;');
-        }
-
-        function toggleDocModalFullscreen() {
-            const dialog = document.querySelector('.doc-preview-modal-dialog');
-            const iconExp = document.getElementById('excelFsIconExpand');
-            const iconComp = document.getElementById('excelFsIconCompress');
-            const openTabBtn = document.getElementById('previewOpenTabBtn');
-            if (!dialog) return;
-
-            dialog.classList.toggle('modal-fullscreen');
-            const isFs = dialog.classList.contains('modal-fullscreen');
-            if (iconExp && iconComp) {
-                iconExp.style.display = isFs ? 'none' : 'inline-block';
-                iconComp.style.display = isFs ? 'inline-block' : 'none';
-            }
-            if (openTabBtn) {
-                openTabBtn.innerHTML = isFs 
-                    ? '<i data-lucide="minimize-2"></i> Minimize' 
-                    : '<i data-lucide="maximize-2"></i> Fullscreen';
-                if (window.lucide && typeof window.lucide.createIcons === 'function') {
-                    window.lucide.createIcons();
-                }
-            }
-        }
-
-        async function renderExcelPreview(item, downloadUrl) {
-            const dialog = document.querySelector('.doc-preview-modal-dialog');
-            if (dialog) dialog.classList.add('excel-mode');
-
-            const excelWrap = document.getElementById('previewExcelContainer');
-            const iframeWrap = document.getElementById('previewIframeContainer');
-            const officeNotice = document.getElementById('previewOfficeNotice');
-            const loadingEl = document.getElementById('excelLoadingIndicator');
-            const gridEl = document.getElementById('excelGridContainer');
-            const tabsBar = document.getElementById('excelSheetTabsBar');
-            const searchInput = document.getElementById('excelSearchInput');
-            const searchCount = document.getElementById('excelSearchCount');
-
-            if (searchInput) searchInput.value = '';
-            if (searchCount) searchCount.innerText = '';
-            if (iframeWrap) iframeWrap.style.display = 'none';
-            if (officeNotice) officeNotice.style.display = 'none';
-            if (excelWrap) excelWrap.style.display = 'flex';
-
-            // Determine filename for cache lookup
-            const fileName = (item.fileName || (downloadUrl ? downloadUrl.split('/').pop().split('?')[0] : '')).trim();
-
-            // FAST PATH: Instant render from pre-compiled cache (0ms latency, zero parse lag)
-            if (window.INVAMAX_EXCEL_PREVIEWS && window.INVAMAX_EXCEL_PREVIEWS[fileName]) {
-                const cached = window.INVAMAX_EXCEL_PREVIEWS[fileName];
-                currentExcelWorkbook = {
-                    isCached: true,
-                    SheetNames: cached.sheetNames,
-                    sheets: cached.sheets
-                };
-                currentExcelItem = item;
-                if (loadingEl) loadingEl.classList.remove('active');
-
-                renderExcelSheetTabsFromNames(cached.sheetNames);
-                if (cached.sheetNames && cached.sheetNames.length > 0) {
-                    selectExcelSheet(cached.sheetNames[0]);
-                }
-                return;
-            }
-
-            // DYNAMIC PATH: Load and parse via SheetJS
-            if (loadingEl) loadingEl.classList.add('active');
-            if (gridEl) gridEl.innerHTML = '';
-            if (tabsBar) tabsBar.innerHTML = '';
-
-            try {
-                let arrayBuffer;
-                if (downloadUrl.startsWith('data:')) {
-                    const base64 = downloadUrl.split(',')[1];
-                    const binaryString = window.atob(base64);
-                    const len = binaryString.length;
-                    const bytes = new Uint8Array(len);
-                    for (let i = 0; i < len; i++) {
-                        bytes[i] = binaryString.charCodeAt(i);
-                    }
-                    arrayBuffer = bytes.buffer;
-                } else {
-                    const resolvedUrl = INVAMAX_TOOLKIT_STORE.resolveAssetUrl(downloadUrl);
-                    const resp = await fetch(resolvedUrl);
-                    if (!resp.ok) throw new Error('Could not load Excel file (' + resp.status + ')');
-                    arrayBuffer = await resp.arrayBuffer();
-                }
-
-                if (typeof XLSX === 'undefined') {
-                    throw new Error('SheetJS library is not ready.');
-                }
-
-                // Fast parse: omit formulas for maximum performance
-                currentExcelWorkbook = XLSX.read(arrayBuffer, { type: 'array', cellDates: true, cellFormula: false });
-                currentExcelItem = item;
-
-                if (loadingEl) loadingEl.classList.remove('active');
-
-                renderExcelSheetTabsFromNames(currentExcelWorkbook.SheetNames);
-                if (currentExcelWorkbook.SheetNames && currentExcelWorkbook.SheetNames.length > 0) {
-                    selectExcelSheet(currentExcelWorkbook.SheetNames[0]);
-                }
-            } catch (err) {
-                console.error('Lỗi hiển thị xem trước Excel:', err);
-                if (loadingEl) loadingEl.classList.remove('active');
-                if (excelWrap) excelWrap.style.display = 'none';
-                if (officeNotice) officeNotice.style.display = 'block';
-            }
-        }
-
-        function renderExcelSheetTabsFromNames(sheetNames) {
-            const tabsBar = document.getElementById('excelSheetTabsBar');
-            if (!tabsBar || !sheetNames) return;
-            tabsBar.innerHTML = '';
-
-            sheetNames.forEach((sheetName, index) => {
-                const btn = document.createElement('button');
-                btn.type = 'button';
-                btn.className = 'excel-sheet-tab' + (index === 0 ? ' active' : '');
-                btn.setAttribute('data-sheet', sheetName);
-                btn.innerHTML = `
-                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 4px; vertical-align: middle;"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><line x1="3" x2="21" y1="9" y2="9"/><line x1="3" x2="21" y1="15" y2="15"/><line x1="9" x2="9" y1="3" y2="21"/><line x1="15" x2="15" y1="3" y2="21"/></svg>
-                    ${escapeHTML(sheetName)}
-                `;
-                btn.onclick = () => selectExcelSheet(sheetName);
-                tabsBar.appendChild(btn);
-            });
-        }
-
-        function selectExcelSheet(sheetName) {
-            if (!currentExcelWorkbook) return;
-            const gridEl = document.getElementById('excelGridContainer');
-            const titleEl = document.getElementById('excelCurrentSheetTitle');
-            const statsEl = document.getElementById('excelSheetStats');
-
-            if (titleEl) titleEl.innerText = sheetName;
-
-            const tabs = document.querySelectorAll('.excel-sheet-tab');
-            tabs.forEach(tab => {
-                if (tab.getAttribute('data-sheet') === sheetName) {
-                    tab.classList.add('active');
-                } else {
-                    tab.classList.remove('active');
-                }
-            });
-
-            if (currentExcelWorkbook.isCached) {
-                const sheetData = currentExcelWorkbook.sheets[sheetName];
-                if (sheetData) {
-                    gridEl.innerHTML = sheetData.html;
-                    if (statsEl) statsEl.innerText = sheetData.stats || '';
-                }
-            } else if (currentExcelWorkbook.Sheets && currentExcelWorkbook.Sheets[sheetName]) {
-                const sheet = currentExcelWorkbook.Sheets[sheetName];
-                let html = XLSX.utils.sheet_to_html(sheet, { header: '', footer: '' });
-                html = html.replace(/>#VALUE!</g, '><span style="color:#ea580c; font-weight:800; font-size:13px; letter-spacing:0.5px;">INVAMAX</span><');
-                gridEl.innerHTML = html;
-
-                if (sheet['!ref']) {
-                    const range = XLSX.utils.decode_range(sheet['!ref']);
-                    const rowCount = range.e.r - range.s.r + 1;
-                    const colCount = range.e.c - range.s.c + 1;
-                    if (statsEl) statsEl.innerText = `${rowCount} rows × ${colCount} cols`;
-                } else {
-                    if (statsEl) statsEl.innerText = 'Empty';
-                }
-            }
-
-            gridEl.scrollTop = 0;
-            gridEl.scrollLeft = 0;
-        }
-
-        function handleExcelSearch(query) {
-            const gridEl = document.getElementById('excelGridContainer');
-            const countEl = document.getElementById('excelSearchCount');
-            if (!gridEl) return;
-
-            const prevHighlights = gridEl.querySelectorAll('.excel-highlight');
-            prevHighlights.forEach(el => el.classList.remove('excel-highlight'));
-
-            if (!query || query.trim() === '') {
-                if (countEl) countEl.innerText = '';
-                return;
-            }
-
-            const q = query.trim().toLowerCase();
-            const cells = gridEl.querySelectorAll('td, th');
-            let matchCount = 0;
-            let firstMatch = null;
-
-            cells.forEach(cell => {
-                const txt = (cell.innerText || '').toLowerCase();
-                if (txt.includes(q)) {
-                    cell.classList.add('excel-highlight');
-                    matchCount++;
-                    if (!firstMatch) firstMatch = cell;
-                }
-            });
-
-            if (countEl) {
-                countEl.innerText = matchCount > 0 ? `${matchCount} matches` : 'No match';
-            }
-
-            if (firstMatch) {
-                firstMatch.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
-            }
-        }
 
         async function openDocPreviewModal(item) {
             if (!item) return;
@@ -1220,12 +958,13 @@
             const sizeEl = document.getElementById('previewModalSize');
             if (sizeEl) sizeEl.innerText = item.fileSize || '1 MB';
             const dlEl = document.getElementById('previewModalDownloads');
-            if (dlEl) dlEl.innerText = (item.downloads || 0) + (' downloads');
+            if (dlEl) dlEl.innerText = (item.downloads || 0) + ' downloads';
 
             // Download Button Setup
             const dlBtn = document.getElementById('previewModalDownloadBtn');
             const directDlBtn = document.getElementById('previewDirectDownloadBtn');
             const openTabBtn = document.getElementById('previewOpenTabBtn');
+            const officeNoticeDlBtn = document.getElementById('officeNoticeDownloadBtn');
             const toolbarDocName = document.getElementById('previewToolbarDocName');
             if (toolbarDocName) toolbarDocName.innerText = item.fileName || item.title;
 
@@ -1234,54 +973,49 @@
                 downloadUrl = await INVAMAX_TOOLKIT_STORE.getFileFromDB(item.id);
             }
 
-            // Dọn dẹp Blob URL trước đó nếu có
             if (activePreviewBlobUrl) {
                 URL.revokeObjectURL(activePreviewBlobUrl);
                 activePreviewBlobUrl = null;
             }
 
+            const fileName = item.fileName || (item.title + '.' + fmt.toLowerCase());
+
             if (downloadUrl && downloadUrl !== '#') {
                 const resolvedDlUrl = INVAMAX_TOOLKIT_STORE.resolveAssetUrl(downloadUrl);
                 dlBtn.href = resolvedDlUrl;
-                if (downloadUrl.startsWith('data:') || downloadUrl.endsWith('.pdf')) {
-                    dlBtn.setAttribute('download', item.fileName || (item.title + '.' + fmt.toLowerCase()));
-                } else {
-                    dlBtn.setAttribute('target', '_blank');
-                    dlBtn.setAttribute('rel', 'noopener');
-                }
+                dlBtn.setAttribute('download', fileName);
                 dlBtn.onclick = () => INVAMAX_TOOLKIT_STORE.incrementDownload(item.id);
+
+                directDlBtn.href = resolvedDlUrl;
+                directDlBtn.setAttribute('download', fileName);
+                directDlBtn.style.display = 'inline-flex';
+
+                if (officeNoticeDlBtn) {
+                    officeNoticeDlBtn.href = resolvedDlUrl;
+                    officeNoticeDlBtn.setAttribute('download', fileName);
+                    officeNoticeDlBtn.onclick = () => INVAMAX_TOOLKIT_STORE.incrementDownload(item.id);
+                }
             } else {
                 dlBtn.href = '#';
                 dlBtn.onclick = (e) => INVAMAX_TOOLKIT_STORE.handleDownload(item.id, e);
             }
 
-            // Check if previewable
             const iframeWrap = document.getElementById('previewIframeContainer');
             const iframe = document.getElementById('previewIframe');
-            const excelWrap = document.getElementById('previewExcelContainer');
             const officeNotice = document.getElementById('previewOfficeNotice');
 
             const isPdf = fmt === 'PDF' || (downloadUrl && downloadUrl.startsWith('data:application/pdf')) || (item.fileName && item.fileName.toLowerCase().endsWith('.pdf'));
-            const isExcel = ['XLSX', 'XLS', 'CSV'].includes(fmt) || (downloadUrl && (downloadUrl.endsWith('.xlsx') || downloadUrl.endsWith('.xls') || downloadUrl.endsWith('.csv'))) || (item.fileName && (item.fileName.toLowerCase().endsWith('.xlsx') || item.fileName.toLowerCase().endsWith('.xls')));
+            const isExcel = ['XLSX', 'XLS', 'CSV', 'DOCX', 'DOC', 'PPTX'].includes(fmt) || (downloadUrl && (downloadUrl.endsWith('.xlsx') || downloadUrl.endsWith('.xls') || downloadUrl.endsWith('.csv'))) || (item.fileName && (item.fileName.toLowerCase().endsWith('.xlsx') || item.fileName.toLowerCase().endsWith('.xls')));
 
-            if (isExcel && downloadUrl && downloadUrl !== '#') {
-                // 1. EXCEL SPREADSHEET PREVIEW
-                const resolvedDlUrl = INVAMAX_TOOLKIT_STORE.resolveAssetUrl(downloadUrl);
-                renderExcelPreview(item, downloadUrl);
+            if (isExcel) {
+                // Excel/Office: Download only notice
+                iframe.src = 'about:blank';
+                iframeWrap.style.display = 'none';
+                officeNotice.style.display = 'block';
 
-                openTabBtn.href = '#';
-                openTabBtn.onclick = (e) => { e.preventDefault(); toggleDocModalFullscreen(); };
-                openTabBtn.innerHTML = '<i data-lucide="maximize-2"></i> ' + ('Fullscreen');
-                openTabBtn.style.display = 'inline-flex';
-
-                directDlBtn.href = resolvedDlUrl;
-                directDlBtn.setAttribute('download', item.fileName || (item.title + '.xlsx'));
-                directDlBtn.style.display = 'inline-flex';
+                if (openTabBtn) openTabBtn.style.display = 'none';
             } else if (downloadUrl && isPdf && downloadUrl.startsWith('data:')) {
-                // 2. BASE64 PDF PREVIEW
-                const dialog = document.querySelector('.doc-preview-modal-dialog');
-                if (dialog) dialog.classList.remove('excel-mode');
-                if (excelWrap) excelWrap.style.display = 'none';
+                // PDF Base64
                 const blobUrl = INVAMAX_TOOLKIT_STORE.base64ToBlobUrl(downloadUrl, 'application/pdf');
                 if (blobUrl) {
                     activePreviewBlobUrl = blobUrl;
@@ -1289,60 +1023,49 @@
                     iframeWrap.style.display = 'block';
                     officeNotice.style.display = 'none';
 
-                    openTabBtn.href = blobUrl;
-                    openTabBtn.onclick = null;
-                    openTabBtn.innerHTML = '<i data-lucide="external-link"></i> ' + ('Fullscreen');
-                    openTabBtn.style.display = 'inline-flex';
-
-                    directDlBtn.href = blobUrl;
-                    directDlBtn.setAttribute('download', item.fileName || (item.title + '.pdf'));
-                    directDlBtn.style.display = 'inline-flex';
+                    if (openTabBtn) {
+                        openTabBtn.href = blobUrl;
+                        openTabBtn.onclick = null;
+                        openTabBtn.innerHTML = '<i data-lucide="external-link"></i> Fullscreen';
+                        openTabBtn.style.display = 'inline-flex';
+                    }
                 } else {
                     iframe.src = 'about:blank';
                     iframeWrap.style.display = 'none';
                     officeNotice.style.display = 'block';
+                    if (openTabBtn) openTabBtn.style.display = 'none';
                 }
             } else if (downloadUrl && downloadUrl.includes('drive.google.com')) {
-                // 3. GOOGLE DRIVE LINK
-                const dialog = document.querySelector('.doc-preview-modal-dialog');
-                if (dialog) dialog.classList.remove('excel-mode');
-                if (excelWrap) excelWrap.style.display = 'none';
+                // Google Drive
                 let embedUrl = downloadUrl.replace(/\/view(\?usp=sharing)?$/, '/preview');
                 iframe.src = embedUrl;
                 iframeWrap.style.display = 'block';
                 officeNotice.style.display = 'none';
 
-                openTabBtn.href = downloadUrl;
-                openTabBtn.onclick = null;
-                openTabBtn.innerHTML = '<i data-lucide="external-link"></i> ' + ('Fullscreen');
-                openTabBtn.style.display = 'inline-flex';
-                directDlBtn.href = downloadUrl;
-                directDlBtn.style.display = 'inline-flex';
+                if (openTabBtn) {
+                    openTabBtn.href = downloadUrl;
+                    openTabBtn.onclick = null;
+                    openTabBtn.innerHTML = '<i data-lucide="external-link"></i> Fullscreen';
+                    openTabBtn.style.display = 'inline-flex';
+                }
             } else if (downloadUrl && (downloadUrl.startsWith('http') || downloadUrl.endsWith('.pdf') || isPdf)) {
-                // 4. DIRECT HTTP LINK / LOCAL PDF FILE
-                const dialog = document.querySelector('.doc-preview-modal-dialog');
-                if (dialog) dialog.classList.remove('excel-mode');
-                if (excelWrap) excelWrap.style.display = 'none';
+                // Direct PDF
                 const resolvedPdfUrl = INVAMAX_TOOLKIT_STORE.resolveAssetUrl(downloadUrl);
                 iframe.src = resolvedPdfUrl + (isPdf ? '#view=FitH&toolbar=1' : '');
                 iframeWrap.style.display = 'block';
                 officeNotice.style.display = 'none';
 
-                openTabBtn.href = resolvedPdfUrl;
-                openTabBtn.onclick = null;
-                openTabBtn.innerHTML = '<i data-lucide="external-link"></i> ' + ('Fullscreen');
-                openTabBtn.style.display = 'inline-flex';
-                directDlBtn.href = resolvedPdfUrl;
-                if (isPdf) directDlBtn.setAttribute('download', item.fileName || (item.title + '.pdf'));
-                directDlBtn.style.display = 'inline-flex';
+                if (openTabBtn) {
+                    openTabBtn.href = resolvedPdfUrl;
+                    openTabBtn.onclick = null;
+                    openTabBtn.innerHTML = '<i data-lucide="external-link"></i> Fullscreen';
+                    openTabBtn.style.display = 'inline-flex';
+                }
             } else {
-                // 5. OTHER BINARY / FALLBACK
-                const dialog = document.querySelector('.doc-preview-modal-dialog');
-                if (dialog) dialog.classList.remove('excel-mode');
-                if (excelWrap) excelWrap.style.display = 'none';
                 iframe.src = 'about:blank';
                 iframeWrap.style.display = 'none';
                 officeNotice.style.display = 'block';
+                if (openTabBtn) openTabBtn.style.display = 'none';
             }
 
             modal.classList.add('show');
@@ -1357,29 +1080,10 @@
                 return;
             }
             const modal = document.getElementById('docPreviewModal');
-            const dialog = document.querySelector('.doc-preview-modal-dialog');
-            if (dialog) {
-                dialog.classList.remove('modal-fullscreen');
-                dialog.classList.remove('excel-mode');
-                const iconExp = document.getElementById('excelFsIconExpand');
-                const iconComp = document.getElementById('excelFsIconCompress');
-                if (iconExp && iconComp) {
-                    iconExp.style.display = 'inline-block';
-                    iconComp.style.display = 'none';
-                }
-            }
             if (modal) {
                 modal.classList.remove('show');
                 const iframe = document.getElementById('previewIframe');
                 if (iframe) iframe.src = 'about:blank';
-                const excelWrap = document.getElementById('previewExcelContainer');
-                if (excelWrap) excelWrap.style.display = 'none';
-                const gridEl = document.getElementById('excelGridContainer');
-                if (gridEl) gridEl.innerHTML = '';
-                const loadingEl = document.getElementById('excelLoadingIndicator');
-                if (loadingEl) loadingEl.classList.remove('active');
-                currentExcelWorkbook = null;
-                currentExcelItem = null;
             }
             if (activePreviewBlobUrl) {
                 URL.revokeObjectURL(activePreviewBlobUrl);
