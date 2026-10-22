@@ -94,6 +94,19 @@
             color: #1e293b;
             font-weight: 600;
         }
+                .poster-back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #64748b;
+            text-decoration: none;
+            font-size: 13.5px;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+        .poster-back-btn:hover {
+            color: #f97316;
+        }
         .poster-action-group {
             display: flex;
             align-items: center;
@@ -942,11 +955,11 @@
                 <div class="nav-item"><a href="about.html" class="nav-title">Philosophy</a></div>
                 
                 <div class="lang-switcher">
-                    <a href="/vi/article-chi-so-oee.html" class="active" style="display: flex; align-items: center; gap: 4px;">
+                    <a href="/vi/article-chi-so-oee.html" style="display: flex; align-items: center; gap: 4px;">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" width="16" height="11" style="border-radius: 2px;" alt="VN">Tiếng Việt
                     </a>
                     <span style="color: rgba(255,255,255,0.25);">/</span>
-                    <a href="/en/" style="display: flex; align-items: center; gap: 4px; opacity: 0.75;">
+                    <a href="/en/article-chi-so-oee.html" class="active" style="display: flex; align-items: center; gap: 4px;">
                         <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" width="16" height="11" style="border-radius: 2px;" alt="EN">English
                     </a>
                 </div>
@@ -956,18 +969,12 @@
     </nav>
 
     <!-- Top Action Toolbar with Breadcrumbs -->
-    <div class="poster-top-bar">
-        <div class="oee-breadcrumb">
-            <a href="/"><i data-lucide="home" style="width: 13px; height: 13px;"></i></a>
-            <span class="sep">/</span>
-            <a href="insights.html">Insights</a>
-            <span class="sep">/</span>
-            <a href="insights.html#articles">Factory Management</a>
-            <span class="sep">/</span>
-            <span class="current">OEE Metric: How to Measure and Improve Equipment Effectiveness</span>
-        </div>
+        <div class="poster-top-bar">
+        <a href="insights.html#articles" class="poster-back-btn">
+            <i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i> Back to Insights
+        </a>
         <div class="poster-action-group">
-            <button type="button" onclick="window.print()" class="poster-action-btn" title="Print this document">
+            <button type="button" onclick="window.print()" class="poster-action-btn" title="Print Document">
                 <i data-lucide="printer" style="width: 14px; height: 14px;"></i> Print Document
             </button>
         </div>

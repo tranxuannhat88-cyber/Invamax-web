@@ -129,6 +129,62 @@
             .article-hero-image { height: 300px; }
             .article-body { font-size: 1.05rem; padding-top: 40px; }
         }
+    
+        /* Top Action Bar Standard */
+        .poster-top-bar {
+            max-width: 1000px;
+            margin: 0 auto 36px auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            text-align: left;
+        }
+        .poster-back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 13.5px;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+        .poster-back-btn:hover {
+            color: #f97316;
+        }
+        .poster-action-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .poster-action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            color: #475569;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 12.5px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .poster-action-btn:hover {
+            border-color: #f97316;
+            color: #f97316;
+            background: #fff8f3;
+        }
+        @media print {
+            .navbar, .poster-top-bar, footer {
+                display: none !important;
+            }
+        }
+
     </style>
     
     <style>
@@ -243,8 +299,15 @@
     <main>
         <section class="article-hero">
             <div class="container">
-                <div style="text-align: left; max-width: 1000px; margin: 0 auto;">
-                    <a href="../en/articles.html" class="back-link"><i data-lucide="arrow-left" style="width: 18px;"></i> Back to articles</a>
+                                <div class="poster-top-bar">
+                    <a href="insights.html#articles" class="poster-back-btn">
+                        <i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i> Back to Insights
+                    </a>
+                    <div class="poster-action-group">
+                        <button type="button" onclick="window.print()" class="poster-action-btn" title="Print Document">
+                            <i data-lucide="printer" style="width: 14px; height: 14px;"></i> Print Document
+                        </button>
+                    </div>
                 </div>
                 <span class="article-hero-category">System Management</span>
                 <h1>What is INVAMAX FOS? Building a solid foundation for a lean-operating factory</h1>

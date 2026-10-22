@@ -93,6 +93,19 @@
             color: #1e293b;
             font-weight: 600;
         }
+                .poster-back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #64748b;
+            text-decoration: none;
+            font-size: 13.5px;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+        .poster-back-btn:hover {
+            color: #f97316;
+        }
         .poster-action-group {
             display: flex;
             align-items: center;
@@ -897,23 +910,14 @@
     </nav>
 
     <!-- Top Action Toolbar with Breadcrumbs -->
-    <div class="poster-top-bar">
-        <div class="ai-breadcrumb">
-            <a href="/en/"><i data-lucide="home" style="width: 13px; height: 13px;"></i></a>
-            <span class="sep">/</span>
-            <a href="insights.html">Insights</a>
-            <span class="sep">/</span>
-            <a href="insights.html#articles">Digital &amp; AI</a>
-            <span class="sep">/</span>
-            <span class="current">AI in Manufacturing: Opportunities &amp; Implementation Roadmap</span>
-        </div>
+        <div class="poster-top-bar">
+        <a href="insights.html#articles" class="poster-back-btn">
+            <i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i> Back to Insights
+        </a>
         <div class="poster-action-group">
-            <button type="button" onclick="window.print()" class="poster-action-btn" title="Print this document">
-                <i data-lucide="printer" style="width: 13px; height: 13px;"></i> Print Document
+            <button type="button" onclick="window.print()" class="poster-action-btn" title="Print Document">
+                <i data-lucide="printer" style="width: 14px; height: 14px;"></i> Print Document
             </button>
-            <a href="insights.html" class="poster-action-btn" title="Back to insights hub">
-                <i data-lucide="arrow-left" style="width: 13px; height: 13px;"></i> All Articles
-            </a>
         </div>
     </div>
 
