@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hiểu về Lean Manufacturing trong 10 phút | INVAMAX</title>
+    <meta name="description" content="Lean không chỉ là loại bỏ lãng phí. Đó là phương pháp tư duy và tổ chức vận hành giúp nhà máy tạo ra nhiều giá trị hơn với ít nguồn lực hơn. Đọc tổng quan trong 10 phút.">
+    
+    <link rel="canonical" href="https://invamax.com/vi/article-hieu-ve-lean-manufacturing.html">
+    <link rel="alternate" hreflang="vi" href="https://invamax.com/vi/article-hieu-ve-lean-manufacturing.html">
+    <link rel="alternate" hreflang="en" href="https://invamax.com/en/article-hieu-ve-lean-manufacturing.html">
+    <link rel="alternate" hreflang="x-default" href="https://invamax.com/en/article-hieu-ve-lean-manufacturing.html">
+    
+    <meta property="og:title" content="Hiểu về Lean Manufacturing trong 10 phút | INVAMAX">
+    <meta property="og:description" content="Lean không chỉ là loại bỏ lãng phí. Đó là phương pháp tư duy và tổ chức vận hành giúp nhà máy tạo ra nhiều giá trị hơn với ít nguồn lực hơn.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://invamax.com/vi/article-hieu-ve-lean-manufacturing.html">
+    <meta property="og:image" content="https://invamax.com/assets/images/resources/lean-manufacturing-framework.jpg">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Hiểu về Lean Manufacturing trong 10 phút | INVAMAX">
+    <meta name="twitter:description" content="Khám phá bản chất của Lean Manufacturing: 5 nguyên lý cốt lõi, 7+1 loại lãng phí và các công cụ thực chiến trong 10 phút.">
+    <meta name="twitter:image" content="https://invamax.com/assets/images/resources/lean-manufacturing-framework.jpg">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Global CSS -->
+    <link rel="icon" type="image/jpeg" href="../assets/images/favicon.jpg">
+    <link rel="stylesheet" href="../assets/css/style.css?v=18">
+    <link rel="stylesheet" href="../assets/css/navbar.css?v=13">
+    
+    <style>
+        body {
+            background-color: #f1f5f9;
+            color: #334155;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.65;
+        }
+
+        /* Top Action Bar Standard */
+        .poster-top-bar {
+            padding: 100px 20px 16px;
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .poster-back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #64748b;
+            text-decoration: none;
+            font-size: 13.5px;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+        .poster-back-btn:hover {
+            color: #f97316;
+        }
+        .poster-action-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .poster-action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            color: #475569;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 12.5px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .poster-action-btn:hover {
+            border-color: #f97316;
+            color: #f97316;
+            background: #fff8f3;
+        }
+
+        /* Main Article Card */
+        .article-main-card {
+            max-width: 900px;
+            margin: 0 auto 50px auto;
+            background: #ffffff;
+            border-radius: 14px;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e2e8f0;
+            padding: 44px 48px;
+            box-sizing: border-box;
+        }
+
+        /* Header Section */
+        .article-header-grid {
+            display: grid;
+            grid-template-columns: 1.25fr 1fr;
+            gap: 28px;
+            align-items: center;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .article-tag {
+            display: inline-block;
+            background: #f97316;
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 3.5px 11px;
+            border-radius: 4px;
+            margin-bottom: 12px;
+        }
+        .article-title {
+            font-size: 30px;
+            font-weight: 900;
+            color: #0f172a;
+            line-height: 1.25;
+            margin: 0 0 14px 0;
+            letter-spacing: -0.4px;
+        }
+        .article-subtitle {
+            font-size: 14px;
+            color: #475569;
+            line-height: 1.55;
+            margin: 0 0 16px 0;
+            font-style: italic;
+        }
+        .article-meta-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            font-size: 12.5px;
+            color: #64748b;
+        }
+        .article-meta-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .article-meta-item i {
+            width: 14px;
+            height: 14px;
+            color: #f97316;
+        }
+        .article-hero-img-wrap {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.09);
+            border: 1px solid #e2e8f0;
+        }
+        .article-hero-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Lead Quote Callout */
+        .article-lead-box {
+            border-left: 4px solid #f97316;
+            background: #fff7ed;
+            padding: 18px 22px;
+            border-radius: 0 10px 10px 0;
+            margin: 28px 0 32px 0;
+            font-size: 14px;
+            line-height: 1.65;
+            color: #334155;
+        }
+        .article-lead-box h3 {
+            margin: 0 0 8px 0;
+            font-size: 16px;
+            font-weight: 800;
+            color: #9a3412;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .article-lead-box ul {
+            margin: 8px 0 12px 18px;
+            padding: 0;
+        }
+        .article-lead-box li {
+            margin-bottom: 4px;
+        }
+
+        /* Content Sections */
+        .content-section {
+            margin: 36px 0;
+        }
+        .section-heading {
+            font-size: 21px;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 0 0 16px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #f1f5f9;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-heading .num {
+            color: #f97316;
+            font-size: 22px;
+        }
+        .sub-heading {
+            font-size: 16.5px;
+            font-weight: 700;
+            color: #1e293b;
+            margin: 22px 0 10px 0;
+        }
+        p {
+            margin: 0 0 14px 0;
+            font-size: 14.5px;
+            color: #334155;
+        }
+
+        /* Highlight Formula Box */
+        .formula-box {
+            background: #f8fafc;
+            border: 1.5px dashed #cbd5e1;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 18px 0;
+            font-size: 15px;
+            text-align: center;
+            color: #0f172a;
+        }
+        .formula-box strong {
+            color: #ea580c;
+        }
+
+        /* 2-Col Grid Cards */
+        .cards-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin: 18px 0;
+        }
+        .pillar-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 18px 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .pillar-card:hover {
+            transform: translateY(-2px);
+            border-color: #fdba74;
+        }
+        .pillar-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        .pillar-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            background: #fff7ed;
+            color: #ea580c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .pillar-title {
+            font-size: 15px;
+            font-weight: 800;
+            color: #0f172a;
+        }
+        .pillar-desc {
+            font-size: 13.5px;
+            color: #475569;
+            margin: 0;
+            line-height: 1.55;
+        }
+
+        /* Callout warning card */
+        .callout-box {
+            background: #f8fafc;
+            border-left: 4px solid #64748b;
+            padding: 14px 18px;
+            border-radius: 0 8px 8px 0;
+            margin: 18px 0;
+            font-size: 13.5px;
+        }
+        .callout-box.info {
+            background: #eff6ff;
+            border-left-color: #3b82f6;
+            color: #1e3a8a;
+        }
+        .callout-box.warning {
+            background: #fef2f2;
+            border-left-color: #ef4444;
+            color: #991b1b;
+        }
+        .callout-box.tip {
+            background: #f0fdf4;
+            border-left-color: #22c55e;
+            color: #14532d;
+        }
+
+        /* Modern Tables */
+        .lean-table-wrap {
+            overflow-x: auto;
+            margin: 18px 0 24px 0;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+        .lean-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13.5px;
+            text-align: left;
+            background: #ffffff;
+        }
+        .lean-table th {
+            background: #f8fafc;
+            color: #1e293b;
+            font-weight: 700;
+            padding: 12px 16px;
+            border-bottom: 1.5px solid #cbd5e1;
+        }
+        .lean-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #f1f5f9;
+            color: #334155;
+            vertical-align: top;
+        }
+        .lean-table tr:last-child td {
+            border-bottom: none;
+        }
+        .lean-table tr:hover td {
+            background: #fafafa;
+        }
+        .badge-va {
+            display: inline-block;
+            background: #dcfce7;
+            color: #15803d;
+            font-weight: 700;
+            font-size: 12px;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+        .badge-nnva {
+            display: inline-block;
+            background: #fef3c7;
+            color: #b45309;
+            font-weight: 700;
+            font-size: 12px;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+        .badge-nva {
+            display: inline-block;
+            background: #fee2e2;
+            color: #b91c1c;
+            font-weight: 700;
+            font-size: 12px;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        /* Progress Time Breakdown Card */
+        .time-breakdown-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 18px 22px;
+            margin: 18px 0;
+        }
+        .time-bar-wrap {
+            display: flex;
+            height: 28px;
+            border-radius: 6px;
+            overflow: hidden;
+            margin: 14px 0 12px 0;
+            font-size: 11.5px;
+            font-weight: 700;
+            color: #ffffff;
+            text-align: center;
+            line-height: 28px;
+        }
+        .tb-va { background: #22c55e; width: 58.3%; }
+        .tb-wait { background: #ef4444; width: 16.7%; }
+        .tb-sub { background: #f59e0b; width: 13.3%; }
+        .tb-aux { background: #64748b; width: 11.7%; }
+        .time-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-size: 12px;
+            color: #475569;
+        }
+        .tl-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .tl-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        /* Principles Stepper */
+        .principles-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin: 18px 0;
+        }
+        .principle-item {
+            display: flex;
+            gap: 16px;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 16px 20px;
+            align-items: flex-start;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+        }
+        .principle-num {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: #f97316;
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .principle-body h4 {
+            margin: 0 0 4px 0;
+            font-size: 15px;
+            font-weight: 800;
+            color: #0f172a;
+        }
+        .principle-body p {
+            margin: 0;
+            font-size: 13.5px;
+            color: #475569;
+        }
+
+        /* Summary Flow Banner */
+        .flow-banner {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            border-radius: 8px;
+            padding: 16px 20px;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 700;
+            text-align: center;
+            margin: 20px 0;
+            letter-spacing: 0.3px;
+        }
+        .flow-banner span {
+            color: #fb923c;
+        }
+
+        /* 3-Col Benefits Grid */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin: 18px 0;
+        }
+        .benefit-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 18px 16px;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+        .benefit-card:hover {
+            border-color: #f97316;
+            background: #ffffff;
+            transform: translateY(-2px);
+        }
+        .benefit-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: #fff7ed;
+            color: #ea580c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px auto;
+        }
+        .benefit-title {
+            font-size: 14.5px;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 6px;
+        }
+        .benefit-desc {
+            font-size: 12.5px;
+            color: #64748b;
+            margin: 0;
+            line-height: 1.45;
+        }
+
+        /* 4 Questions Grid */
+        .questions-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 18px 0;
+        }
+        .q-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 16px 18px;
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+        .q-badge {
+            background: #0f172a;
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 13px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            flex-shrink: 0;
+        }
+        .q-body h4 {
+            margin: 0 0 4px 0;
+            font-size: 14.5px;
+            font-weight: 800;
+            color: #0f172a;
+        }
+        .q-body p {
+            margin: 0;
+            font-size: 13px;
+            color: #475569;
+        }
+
+        /* Philosophy DNA Banner */
+        .philosophy-banner {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+            border-radius: 12px;
+            padding: 28px 32px;
+            color: #ffffff;
+            margin: 28px 0;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .philosophy-banner::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 200px; height: 100%;
+            background: radial-gradient(circle, rgba(249, 115, 22, 0.25) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .phi-tag {
+            display: inline-block;
+            background: #f97316;
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            padding: 3px 10px;
+            border-radius: 4px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+        .phi-title {
+            font-size: 22px;
+            font-weight: 900;
+            color: #ffffff;
+            margin: 0 0 16px 0;
+            letter-spacing: -0.2px;
+        }
+        .phi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .phi-col h4 {
+            color: #fdba74;
+            font-size: 15px;
+            margin: 0 0 6px 0;
+            font-weight: 800;
+        }
+        .phi-col p {
+            color: #e2e8f0;
+            font-size: 13px;
+            line-height: 1.55;
+            margin: 0;
+        }
+
+        /* 5 Key Takeaways Box */
+        .takeaways-box {
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            padding: 22px 26px;
+            margin: 24px 0;
+        }
+        .takeaways-box h3 {
+            margin: 0 0 14px 0;
+            font-size: 16px;
+            font-weight: 800;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .takeaways-box ol {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .takeaways-box li {
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #334155;
+            line-height: 1.55;
+        }
+        .takeaways-box li strong {
+            color: #0f172a;
+        }
+
+        /* Bottom Consultation Box */
+        .poster-consult-box {
+            max-width: 900px;
+            margin: 0 auto 60px auto;
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            padding: 32px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+        }
+        .poster-consult-left h3 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 0 0 6px 0;
+        }
+        .poster-consult-left p {
+            font-size: 0.95rem;
+            color: #64748b;
+            margin: 0;
+        }
+        .btn-consult-orange {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #f97316;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            box-shadow: 0 3px 12px rgba(249, 115, 22, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+        .btn-consult-orange:hover {
+            background: #ea580c;
+            transform: translateY(-2px);
+            color: #ffffff;
+        }
+
+        /* References section */
+        .ref-section {
+            border-top: 1px solid #e2e8f0;
+            padding-top: 20px;
+            margin-top: 36px;
+            font-size: 12.5px;
+            color: #64748b;
+        }
+        .ref-section h4 {
+            margin: 0 0 8px 0;
+            font-size: 13.5px;
+            font-weight: 700;
+            color: #334155;
+        }
+        .ref-section ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .ref-section li {
+            margin-bottom: 4px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .poster-top-bar {
+                padding-top: 85px;
+            }
+            .article-main-card {
+                padding: 24px 20px;
+                border-radius: 0;
+                margin-bottom: 30px;
+            }
+            .article-header-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .article-title {
+                font-size: 23px;
+            }
+            .cards-2col, .benefits-grid, .questions-grid, .phi-grid {
+                grid-template-columns: 1fr;
+            }
+            .poster-consult-box {
+                padding: 24px 20px;
+                text-align: center;
+                justify-content: center;
+            }
+        }
+
+        /* Print Media Style */
+        @media print {
+            .navbar, .poster-top-bar, .poster-consult-box, footer, #contactModal {
+                display: none !important;
+            }
+            body {
+                background: #ffffff !important;
+            }
+            .article-main-card {
+                box-shadow: none !important;
+                border: none !important;
+                padding: 0 !important;
+                max-width: 100% !important;
+            }
+        }
+    </style>
+    
+    <!-- JSON-LD Article Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Hiểu về Lean Manufacturing trong 10 phút",
+        "description": "Lean không chỉ là loại bỏ lãng phí. Đó là phương pháp tư duy và tổ chức vận hành giúp nhà máy tạo ra nhiều giá trị hơn với ít nguồn lực hơn.",
+        "image": "https://invamax.com/assets/images/resources/lean-manufacturing-framework.jpg",
+        "datePublished": "2026-10-23T08:00:00+07:00",
+        "dateModified": "2026-10-23T08:00:00+07:00",
+        "author": {
+            "@type": "Person",
+            "name": "Chuyên gia INVAMAX",
+            "url": "https://invamax.com/vi/about.html"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "INVAMAX",
+            "url": "https://invamax.com/vi/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://invamax.com/assets/images/home/logo-invamax-original.png"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://invamax.com/vi/article-hieu-ve-lean-manufacturing.html"
+        },
+        "inLanguage": "vi"
+    }
+    </script>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="logo">INVA<span>MAX</span></a>
+            <div class="nav-links">
+                <div class="nav-item"><a href="/" class="nav-title">Trang chủ</a></div>
+                <div class="nav-item">    
+                    <a href="#" class="nav-title">Giải pháp <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i></a>
+                    <div class="nav-dropdown">
+                        <a href="factory-restructuring.html">Tái cấu trúc &amp; Chuyển đổi Vận hành</a>
+                        <a href="factory-operations.html">Điều hành Sản xuất Nhà máy</a>
+                        <a href="factory-platform.html">Đánh giá Năng lực Nhà máy</a>
+                        <a href="focused-improvement.html">Cải tiến Trọng điểm</a>
+                        <a href="digital-ai.html">Tự động hoá, Số hoá &amp; AI</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-title">Năng lực <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i></a>
+                    <div class="nav-dropdown">
+                        <a href="invamax-fa.html">INVAMAX FA&trade; <span style="font-weight: normal; opacity: 0.8;">&mdash; Khung đánh giá năng lực nhà máy</span></a>
+                        <a href="fos.html">INVAMAX FOS&trade; <span style="font-weight: normal; opacity: 0.8;">&mdash; Hệ điều hành quản trị nhà máy</span></a>
+                        <a href="lean.html">Lean &amp; Cải tiến liên tục</a>
+                        <a href="platform.html">INVAMAX Platform <span style="font-weight: normal; opacity: 0.8;">&mdash; Nền tảng số hoá vận hành</span></a>
+                    </div>
+                </div>
+                <div class="nav-item"><a href="tin-tuc.html" class="nav-title">Sự kiện</a></div>
+                <div class="nav-item"><a href="case-studies.html" class="nav-title">Case Study</a></div>
+                <div class="nav-item"><a href="insights.html" class="nav-title active">Tri thức</a></div>
+                <div class="nav-item"><a href="about.html" class="nav-title">Triết lý INVAMAX</a></div>
+                
+                <div class="lang-switcher">
+                    <a href="/vi/article-hieu-ve-lean-manufacturing.html" class="active" style="display: flex; align-items: center; gap: 4px;">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" width="16" height="11" style="border-radius: 2px;" alt="VN">Tiếng Việt
+                    </a>
+                    <span style="color: rgba(255,255,255,0.25);">/</span>
+                    <a href="/en/article-hieu-ve-lean-manufacturing.html" style="display: flex; align-items: center; gap: 4px; opacity: 0.75;">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" width="16" height="11" style="border-radius: 2px;" alt="EN">English
+                    </a>
+                </div>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Mở menu"><i data-lucide="menu"></i></button>
+        </div>
+    </nav>
+
+    <!-- Top Action Toolbar Standard -->
+    <div class="poster-top-bar">
+        <a href="insights.html#articles" class="poster-back-btn">
+            <i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i> Quay lại Tri thức
+        </a>
+        <div class="poster-action-group">
+            <button type="button" onclick="window.print()" class="poster-action-btn" title="In tài liệu">
+                <i data-lucide="printer" style="width: 14px; height: 14px;"></i> In tài liệu
+            </button>
+        </div>
+    </div>
+
+    <!-- MAIN ARTICLE DOCUMENT CARD -->
+    <main class="article-main-card" id="leanArticleDocument">
+
+        <!-- HEADER -->
+        <header class="article-header-grid">
+            <div class="article-header-left">
+                <span class="article-tag">LEAN &amp; CẢI TIẾN</span>
+                <h1 class="article-title">Hiểu về Lean Manufacturing trong 10 phút</h1>
+                <p class="article-subtitle">
+                    Lean không chỉ là loại bỏ lãng phí. Đó là một phương pháp tư duy và tổ chức vận hành giúp nhà máy tạo ra nhiều giá trị hơn với ít nguồn lực hơn.
+                </p>
+                <div class="article-meta-row">
+                    <span class="article-meta-item"><i data-lucide="clock"></i> 10 phút đọc</span>
+                    <span class="article-meta-item"><i data-lucide="folder"></i> Lean &amp; Cải tiến</span>
+                    <span class="article-meta-item"><i data-lucide="calendar"></i> 23 tháng 10, 2026</span>
+                    <span class="article-meta-item"><i data-lucide="eye"></i> 1.8K lượt xem</span>
+                </div>
+            </div>
+            <div class="article-hero-img-wrap">
+                <img src="../assets/images/resources/lean-manufacturing-framework.jpg" alt="Lean Manufacturing Framework INVAMAX" class="article-hero-img">
+            </div>
+        </header>
+
+        <!-- LEAD QUOTE / INTRO -->
+        <div class="article-lead-box">
+            <h3><i data-lucide="alert-circle" style="width: 18px; height: 18px; color: #ea580c;"></i> Một nhà máy bận rộn chưa chắc là một nhà máy hiệu quả</h3>
+            <p>Hãy tưởng tượng một nhà máy với những hình ảnh quen thuộc hằng ngày:</p>
+            <ul>
+                <li>Công nhân liên tục đi lại để lấy nguyên vật liệu.</li>
+                <li>Máy móc chạy hết công suất nhưng bán thành phẩm (WIP) vẫn chất đống.</li>
+                <li>Bộ phận sản xuất liên tục tăng ca trong khi đơn hàng vẫn trễ hẹn giao cho khách.</li>
+                <li>Nhân viên kiểm tra chất lượng (QC) phải xử lý khối lượng lớn sản phẩm lỗi.</li>
+                <li>Quản lý dành phần lớn thời gian trong ngày chỉ để đôn đốc, điều phối và chữa cháy sự cố.</li>
+            </ul>
+            <p>
+                Nhìn bên ngoài, mọi người đều rất bận rộn. Nhưng liệu tất cả những hoạt động đó có <strong>thực sự tạo ra giá trị</strong>?
+            </p>
+            <p style="margin-top: 10px; font-weight: 700; color: #0f172a;">
+                Đây chính là câu hỏi đầu tiên của Lean Manufacturing. Mục tiêu không phải là khiến con người làm việc vất vả hơn, mà là thiết kế một hệ thống giúp công việc diễn ra thuận lợi, ít lãng phí và hiệu quả hơn.
+            </p>
+        </div>
+
+        <!-- 01. LEAN MANUFACTURING LÀ GÌ -->
+        <section class="content-section">
+            <h2 class="section-heading"><span class="num">01.</span> Lean Manufacturing là gì?</h2>
+            <p>
+                <strong>Lean Manufacturing (Sản xuất tinh gọn)</strong> là phương pháp quản trị sản xuất tập trung vào việc tạo ra giá trị cho khách hàng bằng cách liên tục loại bỏ lãng phí, cải thiện dòng chảy và nâng cao năng lực của con người cùng hệ thống vận hành.
+            </p>
+
+            <div class="formula-box">
+                <strong>Lean = Tối đa hóa giá trị cho khách hàng + Giảm thiểu lãng phí trong quá trình tạo ra giá trị.</strong>
+            </div>
+
+            <p>
+                Lean có nguồn gốc quan trọng từ Hệ thống sản xuất Toyota &ndash; <strong>Toyota Production System (TPS)</strong>, sau đó được nghiên cứu, hệ thống hóa và phổ biến rộng rãi trên toàn cầu. TPS được xây dựng trên hai trụ cột cốt lõi:
+            </p>
+
+            <div class="cards-2col">
+                <div class="pillar-card">
+                    <div class="pillar-header">
+                        <div class="pillar-icon"><i data-lucide="clock" style="width: 18px; height: 18px;"></i></div>
+                        <div class="pillar-title">Just-in-Time (Đúng thời điểm)</div>
+                    </div>
+                    <p class="pillar-desc">
+                        Chỉ sản xuất và cung cấp những gì cần thiết, với số lượng cần thiết, vào thời điểm cần thiết &ndash; loại bỏ tối đa tồn kho trung gian.
+                    </p>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-header">
+                        <div class="pillar-icon"><i data-lucide="shield-check" style="width: 18px; height: 18px;"></i></div>
+                        <div class="pillar-title">Jidoka (Chất lượng tại nguồn)</div>
+                    </div>
+                    <p class="pillar-desc">
+                        Thiết kế quá trình có khả năng tự phát hiện bất thường, dừng chuyền ngăn lỗi tiếp diễn và cho phép con người can thiệp triệt để gốc rễ.
+                    </p>
+                </div>
+            </div>
+
+            <div class="callout-box warning">
+                <strong style="color: #991b1b; display: flex; align-items: center; gap: 6px; margin-bottom: 4px;">
+                    <i data-lucide="info" style="width: 16px; height: 16px;"></i> Lean không đồng nghĩa với cắt giảm nhân sự
+                </strong>
+                Đây là một hiểu nhầm rất phổ biến. Nếu chỉ sa thải cắt giảm nhân sự mà không thay đổi quy trình, khối lượng công việc còn lại sẽ gây quá tải, làm tăng sai lỗi và suy giảm năng lực cạnh tranh. Lean bắt đầu bằng việc <strong>loại bỏ những công việc không cần thiết</strong>, chuẩn hóa thao tác và dòng chảy, sau đó tái sắp xếp nguồn lực để tạo ra năng lực sản xuất cao hơn.
+            </div>
+        </section>
+
+        <!-- 02. HIỂU ĐÚNG VỀ GIÁ TRỊ -->
+        <section class="content-section">
+            <h2 class="section-heading"><span class="num">02.</span> Nguyên lý quan trọng nhất: Hiểu đúng về giá trị</h2>
+            <p>
+                Trong Lean, <strong>giá trị (Value)</strong> được định nghĩa hoàn toàn từ góc nhìn của khách hàng. Khách hàng chỉ sẵn sàng chi trả cho các yếu tố trực tiếp biến đổi sản phẩm đáp ứng mong muốn của họ (chất lượng, tính năng, số lượng, thời gian giao hàng).
+            </p>
+            <p>Trong bất kỳ nhà máy nào, mọi hoạt động đều thuộc 3 nhóm chính:</p>
+
+            <div class="lean-table-wrap">
+                <table class="lean-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;">Loại hoạt động</th>
+                            <th style="width: 45%;">Ví dụ thực tế tại nhà máy</th>
+                            <th style="width: 30%;">Cách tiếp cận của Lean</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="badge-va">Tạo giá trị (VA)</span></td>
+                            <td>Gia công cơ khí, hàn, lắp ráp linh kiện, may hoàn thiện, đóng gói sản phẩm hoàn chỉnh</td>
+                            <td><strong>Tối ưu hiệu quả</strong> &amp; nâng cao độ chính xác</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge-nnva">Không tạo giá trị nhưng cần thiết (NNVA)</span></td>
+                            <td>Kiểm tra chất lượng bắt buộc, ghi chép nhật ký sản xuất, thiết lập máy (setup), chuẩn bị vật tư</td>
+                            <td><strong>Đơn giản hóa</strong> &amp; giảm thiểu thời gian thực hiện</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge-nva">Lãng phí thuần túy (NVA)</span></td>
+                            <td>Công nhân đứng chờ máy, đi tìm dụng cụ, chuyển WIP vòng vèo, làm lại phế phẩm</td>
+                            <td><strong>Tìm cách loại bỏ triệt để</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="time-breakdown-card">
+                <h4 style="margin: 0 0 6px 0; font-size: 14.5px; font-weight: 800; color: #0f172a;">
+                    Ví dụ phân tích chu kỳ thao tác 60 giây của một công nhân:
+                </h4>
+                <div class="time-bar-wrap">
+                    <div class="tb-va" title="35s Thao tác gia công (VA)">35s Gia công (58%)</div>
+                    <div class="tb-wait" title="10s Đi lấy vật tư (NVA)">10s Lấy vật tư</div>
+                    <div class="tb-sub" title="8s Chờ máy (NVA)">8s Chờ</div>
+                    <div class="tb-aux" title="7s Thao tác phụ (NNVA)">7s Phụ</div>
+                </div>
+                <div class="time-legend">
+                    <div class="tl-item"><span class="tl-dot" style="background: #22c55e;"></span> 35s Gia công trực tiếp (VA)</div>
+                    <div class="tl-item"><span class="tl-dot" style="background: #ef4444;"></span> 10s Đi lại lấy vật tư (NVA - Lãng phí di chuyển)</div>
+                    <div class="tl-item"><span class="tl-dot" style="background: #f59e0b;"></span> 8s Chờ máy/công đoạn trước (NVA - Lãng phí chờ đợi)</div>
+                    <div class="tl-item"><span class="tl-dot" style="background: #64748b;"></span> 7s Sắp xếp chi tiết phụ (NNVA)</div>
+                </div>
+                <p style="margin: 12px 0 0 0; font-size: 13.5px; font-weight: 700; color: #ea580c;">
+                    &rarr; Lean không bắt đầu bằng câu hỏi: &ldquo;Làm thế nào để công nhân gia công nhanh hơn?&rdquo;, mà bắt đầu bằng câu hỏi: &ldquo;Làm thế nào để loại bỏ 25 giây lãng phí không tạo giá trị?&rdquo;.
+                </p>
+            </div>
+        </section>
+
+        <!-- 03. NĂM NGUYÊN LÝ CỐT LÕI -->
+        <section class="content-section">
+            <h2 class="section-heading"><span class="num">03.</span> Năm nguyên lý cốt lõi của Lean (Womack &amp; Jones)</h2>
+            <p>
+                Trong tác phẩm kinh điển <em>Lean Thinking</em>, James P. Womack và Daniel T. Jones đã hệ thống hóa tư duy tinh gọn thành 5 nguyên lý nền tảng:
+            </p>
+
+            <div class="principles-list">
+                <div class="principle-item">
+                    <div class="principle-num">1</div>
+                    <div class="principle-body">
+                        <h4>Value &ndash; Xác định giá trị</h4>
+                        <p>Hiểu thấu đáo khách hàng thực sự cần gì và sẵn sàng trả tiền cho điều gì. Mọi hoạt động không đóng góp vào việc tạo ra giá trị đều phải được xem xét cắt giảm.</p>
+                    </div>
+                </div>
+                <div class="principle-item">
+                    <div class="principle-num">2</div>
+                    <div class="principle-body">
+                        <h4>Value Stream &ndash; Nhận diện dòng giá trị</h4>
+                        <p>Lập bản đồ toàn bộ chuỗi mắt xích từ nguyên vật liệu đầu vào, các công đoạn gia công, kiểm tra đến xuất xưởng để nhận diện nơi phát sinh thời gian chờ, ùn tắc và thao tác thừa.</p>
+                    </div>
+                </div>
+                <div class="principle-item">
+                    <div class="principle-num">3</div>
+                    <div class="principle-body">
+                        <h4>Flow &ndash; Tạo dòng chảy liên tục</h4>
+                        <p>Thiết kế mặt bằng (Layout) và cân bằng chuyền để bán thành phẩm và thông tin di chuyển nhịp nhàng không bị tắc nghẽn, triệt tiêu việc chất đống giữa các khâu.</p>
+                    </div>
+                </div>
+                <div class="principle-item">
+                    <div class="principle-num">4</div>
+                    <div class="principle-body">
+                        <h4>Pull &ndash; Sản xuất theo cơ chế kéo</h4>
+                        <p>Công đoạn trước chỉ sản xuất khi nhận được tín hiệu yêu cầu từ công đoạn sau (theo nhu cầu thực tế của khách hàng), thay vì đẩy hàng loạt khiến kho quá tải.</p>
+                    </div>
+                </div>
+                <div class="principle-item">
+                    <div class="principle-num">5</div>
+                    <div class="principle-body">
+                        <h4>Perfection &ndash; Liên tục hướng tới sự hoàn thiện</h4>
+                        <p>Không có hệ thống nào hoàn hảo ngay từ ngày đầu. Doanh nghiệp cần xây dựng văn hóa phát hiện vấn đề, thử nghiệm cải tiến, kiểm chứng và chuẩn hóa không ngừng.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flow-banner">
+                Giá trị &rarr; <span>Dòng giá trị</span> &rarr; Dòng chảy liên tục &rarr; <span>Kéo theo nhu cầu</span> &rarr; Cải tiến không ngừng
+            </div>
+        </section>
+
+        <!-- 04. BẢY LOẠI LÃNG PHÍ (TIMWOOD) -->
+        <section class="content-section">
+            <h2 class="section-heading"><span class="num">04.</span> Bảy loại lãng phí trong sản xuất (7 Wastes - Muda)</h2>
+            <p>
+                Taiichi Ohno &ndash; cha đẻ TPS &ndash; đã chỉ ra 7 loại lãng phí phổ biến trong nhà máy (thường viết tắt là <strong>TIMWOOD</strong>), và trong quản trị hiện đại bổ sung thêm lãng phí thứ 8:
+            </p>
+
+            <div class="lean-table-wrap">
+                <table class="lean-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 8%;">STT</th>
+                            <th style="width: 32%;">Loại lãng phí</th>
+                            <th style="width: 60%;">Biểu hiện thực tế tại sàn sản xuất</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>01</strong></td>
+                            <td><strong style="color: #ea580c;">Overproduction (Sản xuất thừa)</strong></td>
+                            <td>Chạy máy vượt định mức đơn hàng, sản xuất sớm hơn nhu cầu chỉ để giữ máy luôn chạy</td>
+                        </tr>
+                        <tr>
+                            <td><strong>02</strong></td>
+                            <td><strong>Waiting (Chờ đợi)</strong></td>
+                            <td>Công nhân chờ khuôn gá, chờ kiểm tra chất lượng, chờ cấp vật tư hoặc chờ máy sửa xong</td>
+                        </tr>
+                        <tr>
+                            <td><strong>03</strong></td>
+                            <td><strong>Transportation (Vận chuyển thừa)</strong></td>
+                            <td>Xe nâng chạy vòng vèo, chở WIP qua nhiều kho trung gian cách xa nhau do Layout bất hợp lý</td>
+                        </tr>
+                        <tr>
+                            <td><strong>04</strong></td>
+                            <td><strong>Overprocessing (Gia công thừa)</strong></td>
+                            <td>Đánh bóng kỹ hơn mức khách hàng cần, đóng gói nhiều lớp dư thừa hoặc dùng dung sai quá mức cần thiết</td>
+                        </tr>
+                        <tr>
+                            <td><strong>05</strong></td>
+                            <td><strong>Inventory (Tồn kho thừa)</strong></td>
+                            <td>Nguyên liệu, bán thành phẩm và thành phẩm ứ đọng che giấu các vấn đề chất lượng và giam vốn</td>
+                        </tr>
+                        <tr>
+                            <td><strong>06</strong></td>
+                            <td><strong>Motion (Thao tác thừa)</strong></td>
+                            <td>Công nhân phải cúi lưng, với tay lên cao, đi lại nhiều bước chỉ để nhặt một con ốc hoặc dụng cụ</td>
+                        </tr>
+                        <tr>
+                            <td><strong>07</strong></td>
+                            <td><strong>Defects (Sai lỗi &amp; Phế phẩm)</strong></td>
+                            <td>Sản phẩm lỗi phải làm lại (rework), tiêu hao vật tư, giảm tỷ lệ giao hàng đúng hạn</td>
+                        </tr>
+                        <tr style="background: #fff8f3;">
+                            <td><strong>08</strong></td>
+                            <td><strong style="color: #9a3412;">Non-utilized Talent (Lãng phí trí tuệ)</strong></td>
+                            <td>Không lắng nghe, không tạo cơ chế để công nhân trực tiếp hiện trường đề xuất và tham gia Kaizen</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="callout-box warning">
+                <strong style="color: #991b1b; display: block; margin-bottom: 6px;">Vì sao Sản xuất thừa là &ldquo;Mẹ của mọi lãng phí&rdquo;?</strong>
+                Khi một nhà máy sản xuất trước nhu cầu: nó đòi hỏi thêm diện tích kho bãi, phát sinh bốc xếp vận chuyển, chôn chặt dòng vốn lưu động và nguy hiểm nhất là <strong>che giấu các khuyết tật chất lượng</strong> chỉ được phát hiện khi hàng đã tích tụ hàng ngàn sản phẩm. Vì vậy, <em>máy chạy 100% công suất chưa chắc là nhà máy đang vận hành tốt</em>.
+            </div>
+        </section>
+
+        <!-- 05. NHỮNG CÔNG CỤ LEAN PHỔ BIẾN -->
+        <section class="content-section">
+            <h2 class="section-heading"><span class="num">05.</span> Những công cụ Lean phổ biến</h2>
+            <p>
+                Lean là một hệ thống tư duy quản trị; các công cụ là phương tiện kỹ thuật để hiện thực hóa tư duy đó. Dưới đây là những công cụ thường được áp dụng trong nhà máy:
+            </p>
+
+            <div class="lean-table-wrap">
+                <table class="lean-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;">Công cụ Lean</th>
+                            <th style="width: 75%;">Mục đích triển khai chính</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>5S</strong></td>
+                            <td>Sàng lọc, Sắp xếp, Sạch sẽ, Săn sóc, Sẵn sàng &ndash; xây dựng nơi làm việc trực quan, chuẩn mực</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Kaizen</strong></td>
+                            <td>Văn hóa cải tiến liên tục từ những hành động nhỏ hàng ngày có kiểm chứng số liệu</td>
+                        </tr>
+                        <tr>
+                            <td><strong>VSM (Value Stream Mapping)</strong></td>
+                            <td>Bản đồ chuỗi giá trị &ndash; công cụ chẩn đoán trực quan toàn bộ dòng thông tin và dòng vật chất</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Standard Work</strong></td>
+                            <td>Công việc tiêu chuẩn &ndash; chuẩn hóa thao tác tốt nhất hiện tại để đảm bảo an toàn, chất lượng và năng suất</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Kanban</strong></td>
+                            <td>Thẻ lệnh điều phối sản xuất và cấp phát vật tư trực quan theo cơ chế kéo (Pull)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SMED (Quick Changeover)</strong></td>
+                            <td>Kỹ thuật rút ngắn thời gian chuyển đổi mã hàng / thay khuôn dưới 10 phút để sản xuất lô nhỏ linh hoạt</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Poka-Yoke</strong></td>
+                            <td>Cơ cấu chống sai lỗi tự động &ndash; thiết kế gá đặt để thao tác sai không thể lắp vừa hoặc báo động ngay</td>
+                        </tr>
+                        <tr>
+                            <td><strong>TPM (Bảo trì năng suất toàn diện)</strong></td>
+                            <td>Nâng cao độ tin cậy thiết bị, giảm thời gian dừng máy đột xuất thông qua bảo trì tự quản (Autonomous Maintenance)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>A3 / 5 Why</strong></td>
+                            <td>Phương pháp tư duy logic và công cụ phân tích giải quyết vấn đề tận gốc rễ trên một trang giấy A3</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="callout-box tip">
+                <strong>Nguyên tắc vàng của INVAMAX:</strong> Không bao giờ chọn công cụ trước rồi đi tìm nơi áp dụng. Hãy bắt đầu từ <em>nỗi đau và vấn đề cụ thể của nhà máy</em> (tồn kho, tỷ lệ lỗi, trễ hẹn, năng suất thấp), sau đó mới lựa chọn đúng công cụ phù hợp để xử lý.
+            </div>
+        </section>
+
+        <!-- 06. VÍ DỤ MINH HỌA -->
+        <section class="content-section">
+            <h2 class="section-heading"><span class="num">06.</span> Một ví dụ minh họa: Cách Lean giải bài toán thực tế</h2>
+            <p>
+                Xét một chuyền sản xuất cơ khí 4 công đoạn: <strong>Gia công &rarr; Hoàn thiện &rarr; Kiểm tra &rarr; Đóng gói</strong>.
+            </p>
+            <div class="pillar-card" style="margin-bottom: 16px; border-left: 4px solid #ea580c;">
+                <strong>Vấn đề hiện trường:</strong>
+                <ul style="margin: 6px 0 0 18px; padding: 0; font-size: 13.5px; color: #475569;">
+                    <li>Bán thành phẩm chất đống nghẽn tại khâu Hoàn thiện.</li>
+                    <li>Công nhân đóng gói thường xuyên rơi vào cảnh &ldquo;lúc ngồi chờ rảnh rỗi, lúc chạy đôn chạy đáo làm thêm giờ&rdquo;.</li>
+                    <li>Công nhân phải di chuyển 40 mét qua kho đệm để lấy hàng.</li>
+                </ul>
+            </div>
+
+            <div class="cards-2col">
+                <div class="pillar-card">
+                    <h4 style="margin: 0 0 8px 0; font-size: 14.5px; color: #64748b;">Cách tư duy truyền thống</h4>
+                    <p class="pillar-desc">
+                        Yêu cầu bộ phận Gia công chạy tối đa sản lượng để đạt KPI số lượng, bổ sung thêm 2 công nhân đóng gói để chạy bù khi hàng dồn về. Kết quả: Chi phí tăng, WIP càng phình to, nhưng đơn hàng vẫn giao trễ.
+                    </p>
+                </div>
+                <div class="pillar-card" style="border-color: #fdba74; background: #fffcf9;">
+                    <h4 style="margin: 0 0 8px 0; font-size: 14.5px; color: #ea580c;">Cách tư duy Lean</h4>
+                    <p class="pillar-desc">
+                        Tập trung vào <strong>Dòng chảy (Flow)</strong>: Đo chu kỳ từng công đoạn (Cycle Time) so với nhịp Takt Time. Điều chỉnh mặt bằng chữ U, cân bằng năng lực hoàn thiện, quy định giới hạn tồn kho trung gian (WIP cap). Toàn bộ hệ thống vận hành nhịp nhàng với ít nhân lực hơn.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 07. LỢI ÍCH CỦA LEAN -->
+        <section class="content-section">
+            <h2 class="section-heading"><span class="num">07.</span> Lean mang lại những lợi ích gì cho nhà máy?</h2>
+            <p>Khi được triển khai bài bản và duy trì đúng cách, Lean tạo ra tác động đồng bộ trên 6 khía cạnh vận hành:</p>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i data-lucide="zap"></i></div>
+                    <div class="benefit-title">Năng suất</div>
+                    <p class="benefit-desc">Giảm thời gian chờ, loại bỏ thao tác thừa, nâng cao sản lượng trên từng giờ công lao động.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i data-lucide="shield-check"></i></div>
+                    <div class="benefit-title">Chất lượng</div>
+                    <p class="benefit-desc">Kiểm soát sai lỗi tại nguồn, chuẩn hóa quy trình giúp giảm tỷ lệ phế phẩm và làm lại.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i data-lucide="trending-down"></i></div>
+                    <div class="benefit-title">Chi phí</div>
+                    <p class="benefit-desc">Cắt giảm tồn kho dư thừa, giảm chi phí lưu kho, tiết kiệm tiêu hao vật tư và mặt bằng.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i data-lucide="truck"></i></div>
+                    <div class="benefit-title">Giao hàng (OTD)</div>
+                    <p class="benefit-desc">Rút ngắn Lead Time tổng thể, phản ứng nhanh nhạy với biến động đơn hàng của khách.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i data-lucide="heart"></i></div>
+                    <div class="benefit-title">An toàn &amp; 5S</div>
+                    <p class="benefit-desc">Môi trường sản xuất ngăn nắp, giảm căng thẳng thể chất cho công nhân, hạn chế tai nạn.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i data-lucide="users"></i></div>
+                    <div class="benefit-title">Năng lực con người</div>
+                    <p class="benefit-desc">Xây dựng đội ngũ biết tư duy logic, tự phát hiện bất thường và chủ động giải quyết sự cố.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 08. BA HIỂU NHẦM PHỔ BIẾN -->
+        <section class="content-section">
+            <h2 class="section-heading"><span class="num">08.</span> Ba hiểu nhầm phổ biến về Lean</h2>
+            
+            <div class="principles-list">
+                <div class="principle-item">
+                    <div class="principle-num" style="background: #64748b;">1</div>
+                    <div class="principle-body">
+                        <h4>Hiểu nhầm 1: &ldquo;Lean chính là làm 5S&rdquo;</h4>
+                        <p>5S là nền móng giúp dọn dẹp và trực quan hóa hiện trường. Nhưng một nhà máy sạch bóng 5S vẫn có thể chịu tồn kho khổng lồ, chi phí cao và giao hàng trễ nếu dòng chảy không được thiết kế chuẩn mực. 5S là công cụ khởi đầu, Lean là hệ thống điều hành toàn diện.</p>
+                    </div>
+                </div>
+                <div class="principle-item">
+                    <div class="principle-num" style="background: #64748b;">2</div>
+                    <div class="principle-body">
+                        <h4>Hiểu nhầm 2: &ldquo;Lean là việc của riêng phòng Kaizen / Cải tiến&rdquo;</h4>
+                        <p>Nếu Lean chỉ được coi là nhiệm vụ của vài kỹ sư Kaizen trong khi quản lý sản xuất và công nhân vận hành đứng ngoài cuộc, các dự án sẽ nhanh chóng &ldquo;chết non&rdquo; khi chuyên gia rút đi. Lean chỉ thành công khi trở thành thói quen quản trị hàng ngày của chính đội ngũ hiện trường.</p>
+                    </div>
+                </div>
+                <div class="principle-item">
+                    <div class="principle-num" style="background: #64748b;">3</div>
+                    <div class="principle-body">
+                        <h4>Hiểu nhầm 3: &ldquo;Lean là dự án làm một lần là xong&rdquo;</h4>
+                        <p>Thị trường, đơn hàng, công nghệ và con người luôn thay đổi. Không có trạng thái hoàn hảo vĩnh cửu. Lean là năng lực cốt lõi giúp tổ chức học hỏi và liên tục tiến hóa mỗi ngày.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 09. BỐN CÂU HỎI BẮT ĐẦU -->
+        <section class="content-section">
+            <h2 class="section-heading"><span class="num">09.</span> Muốn bắt đầu Lean, hãy trả lời 4 câu hỏi này</h2>
+            <p>Doanh nghiệp chưa từng làm Lean không cần phải bắt đầu bằng một đề án đồ sộ tốn kém. Hãy chọn 1 chuyền hoặc 1 điểm nghẽn nghiêm trọng nhất và trả lời thẳng thắn:</p>
+
+            <div class="questions-grid">
+                <div class="q-card">
+                    <div class="q-badge">CÂU 1</div>
+                    <div class="q-body">
+                        <h4>Khách hàng thực sự cần giá trị gì?</h4>
+                        <p>Chất lượng, tiến độ giao hàng, hay giá cả đang là yếu tố sống còn được ưu tiên nhất?</p>
+                    </div>
+                </div>
+                <div class="q-card">
+                    <div class="q-badge">CÂU 2</div>
+                    <div class="q-body">
+                        <h4>Nhà máy đang lãng phí nguồn lực ở đâu?</h4>
+                        <p>Thời gian chờ, thao tác dư thừa, phế phẩm hay tồn kho WIP đang ngốn nhiều tiền nhất?</p>
+                    </div>
+                </div>
+                <div class="q-card">
+                    <div class="q-badge">CÂU 3</div>
+                    <div class="q-body">
+                        <h4>Nguyên nhân gốc rễ giới hạn kết quả là gì?</h4>
+                        <p>Vấn đề nằm ở thiết bị, con người, quy trình làm việc hay cơ chế giao kế hoạch?</p>
+                    </div>
+                </div>
+                <div class="q-card">
+                    <div class="q-badge">CÂU 4</div>
+                    <div class="q-body">
+                        <h4>Làm thế nào để chuẩn hóa và duy trì?</h4>
+                        <p>Thay đổi gì, đo bằng chỉ số nào và ai chịu trách nhiệm giám sát duy trì hàng ngày?</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 10. BẢN CHẤT CUỐI CÙNG & TRIẾT LÝ INVAMAX -->
+        <section class="content-section">
+            <h2 class="section-heading"><span class="num">10.</span> Bản chất cuối cùng của Lean: Xây dựng một hệ thống vận hành tốt hơn</h2>
+            <p>
+                Lean không được đo bằng số bảng biểu 5S hay số khẩu hiệu dán trên tường. Một nhà máy thực hành Lean thành công là nơi:
+            </p>
+            <ul style="margin: 0 0 16px 20px; font-size: 14.5px; color: #334155;">
+                <li>Công việc và thông tin được tổ chức minh bạch, thuận lợi cho người trực tiếp thao tác.</li>
+                <li>Bất thường phát sinh được phát hiện và xử lý kịp thời ngay tại nguồn.</li>
+                <li>Đội ngũ nhân sự hiểu rõ tiêu chuẩn và có năng lực chủ động cải tiến công việc.</li>
+                <li>Nguồn lực máy móc, vật tư được cấp phát nhịp nhàng theo đúng nhu cầu.</li>
+                <li>Kết quả cải tiến được chuẩn hóa vào hệ thống quản trị, không bị tụt lùi theo thời gian.</li>
+            </ul>
+
+            <!-- Philosophy DNA Banner -->
+            <div class="philosophy-banner">
+                <span class="phi-tag">Triết lý vận hành INVAMAX</span>
+                <div class="phi-title">XÂY NỀN VỮNG &ndash; VẬN HÀNH NHẸ</div>
+                <div class="phi-grid">
+                    <div class="phi-col">
+                        <h4>Xây Nền Vững</h4>
+                        <p>Chuẩn hóa quy trình, thiết lập hệ thống chỉ số đo lường tin cậy, nâng cao năng lực cho đội ngũ hiện trường và cơ chế quản trị kỷ luật.</p>
+                    </div>
+                    <div class="phi-col">
+                        <h4>Vận Hành Nhẹ</h4>
+                        <p>Triệt tiêu lãng phí, giảm tối đa sự phụ thuộc vào đôn đốc sự vụ thủ công, giúp nhà máy vận hành tự động hóa mượt mà và linh hoạt.</p>
+                    </div>
+                </div>
+            </div>
+
+            <p style="font-weight: 700; color: #0f172a;">
+                Lean không làm cho nhà máy hoàn toàn biến mất sự cố. Lean trang bị cho nhà máy năng lực phát hiện, giải quyết và ngăn ngừa vấn đề tốt hơn mỗi ngày.
+            </p>
+        </section>
+
+        <!-- 5 ĐIỀU CỐT LÕI CẦN NHỚ -->
+        <div class="takeaways-box">
+            <h3><i data-lucide="check-circle-2" style="color: #22c55e;"></i> Kết luận: 5 điều cốt lõi cần nhớ sau 10 phút đọc</h3>
+            <ol>
+                <li><strong>Lean bắt đầu từ giá trị của khách hàng</strong>, tuyệt đối không bắt đầu từ việc chạy theo công cụ.</li>
+                <li><strong>Lãng phí là mọi hoạt động tiêu tốn nguồn lực nhưng không tạo ra giá trị gia tăng</strong> mà khách hàng cần.</li>
+                <li><strong>Hiệu quả của toàn bộ dòng chảy</strong> luôn quan trọng hơn hiệu suất riêng lẻ của từng chiếc máy hay từng công đoạn.</li>
+                <li><strong>Con người và năng lực giải quyết vấn đề tại hiện trường</strong> là linh hồn của cải tiến liên tục (Kaizen).</li>
+                <li><strong>Lean chỉ thực sự bền vững</strong> khi trở thành một phần của hệ thống quản trị và thói quen vận hành hằng ngày.</li>
+            </ol>
+        </div>
+
+        <!-- REFERENCES -->
+        <footer class="ref-section">
+            <h4>Tài liệu tham khảo chuyên ngành:</h4>
+            <ul>
+                <li>James P. Womack &amp; Daniel T. Jones &ndash; <em>Lean Thinking: Banish Waste and Create Wealth in Your Corporation</em></li>
+                <li>Taiichi Ohno &ndash; <em>Toyota Production System: Beyond Large-Scale Production</em></li>
+                <li>Lean Enterprise Institute (LEI) &ndash; <em>What is Lean? &amp; The Five Principles of Lean</em></li>
+                <li>Shigeo Shingo &ndash; <em>A Study of the Toyota Production System from an Industrial Engineering Viewpoint</em></li>
+            </ul>
+        </footer>
+
+    </main>
+
+    <!-- BOTTOM CONSULTATION CTA BOX -->
+    <div class="poster-consult-box">
+        <div class="poster-consult-left">
+            <h3>Bắt đầu cải tiến vận hành cùng INVAMAX</h3>
+            <p>Đồng hành cùng doanh nghiệp nhận diện lãng phí, tái cấu trúc dòng chảy và xây dựng hệ điều hành nhà máy bền vững.</p>
+        </div>
+        <button type="button" onclick="openContactModal()" class="btn-consult-orange">
+            <i data-lucide="message-square" style="width: 18px; height: 18px;"></i> Trao đổi với chuyên gia INVAMAX
+        </button>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-col">
+                <a href="/" class="logo">INVA<span>MAX</span></a>
+                <p style="color: var(--text-muted); margin-top: 16px; font-size: 0.95rem; line-height: 1.6;">
+                    Đối tác Điều hành &amp; Chuyển đổi Mô hình Vận hành dành cho doanh nghiệp sản xuất. Đồng hành xây dựng năng lực nội tại bền vững.
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4>Giải pháp</h4>
+                <ul class="footer-links">
+                    <li><a href="factory-restructuring.html">Tái cấu trúc &amp; Chuyển đổi Vận hành</a></li>
+                    <li><a href="factory-operations.html">Điều hành Sản xuất Nhà máy</a></li>
+                    <li><a href="factory-platform.html">Đánh giá Năng lực Nhà máy</a></li>
+                    <li><a href="focused-improvement.html">Cải tiến Trọng điểm</a></li>
+                    <li><a href="digital-ai.html">Tự động hoá, Số hoá &amp; AI</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Năng lực &amp; Tri thức</h4>
+                <ul class="footer-links">
+                    <li><a href="invamax-fa.html">Khung đánh giá INVAMAX FA&trade;</a></li>
+                    <li><a href="fos.html">Hệ điều hành INVAMAX FOS&trade;</a></li>
+                    <li><a href="insights.html">Kho tri thức vận hành</a></li>
+                    <li><a href="case-studies.html">Case Study thực tế</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Liên hệ</h4>
+                <div class="contact-info">
+                    <p><i data-lucide="map-pin" style="width: 16px; height: 16px; margin-right: 8px; color: var(--primary);"></i> Tầng 3, Tòa nhà Dolphin Plaza, 28 Trần Bình, Mỹ Đình 2, Nam Từ Liêm, Hà Nội</p>
+                    <p><i data-lucide="phone" style="width: 16px; height: 16px; margin-right: 8px; color: var(--primary);"></i> Hotline: 0983 234 925</p>
+                    <p><i data-lucide="mail" style="width: 16px; height: 16px; margin-right: 8px; color: var(--primary);"></i> Email: info@invamax.com</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+                <p>&copy; 2026 INVAMAX. Bảo lưu mọi quyền.</p>
+                <div style="display: flex; gap: 20px; font-size: 0.85rem;">
+                    <a href="about.html" style="color: var(--text-muted); text-decoration: none;">Về chúng tôi</a>
+                    <a href="tin-tuc.html" style="color: var(--text-muted); text-decoration: none;">Tin tức</a>
+                    <a href="insights.html" style="color: var(--text-muted); text-decoration: none;">Tri thức</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL CONTACT -->
+    <div id="contactModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 9999; align-items: center; justify-content: center; backdrop-filter: blur(4px);">
+        <div style="background: #ffffff; border-radius: 12px; width: 90%; max-width: 520px; padding: 32px; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.3); border: 1px solid #e2e8f0;">
+            <button type="button" onclick="closeContactModal()" style="position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 24px; color: #94a3b8; cursor: pointer;">&times;</button>
+            <h3 style="font-size: 1.35rem; font-weight: 800; color: #0f172a; margin: 0 0 6px 0;">Đăng ký tư vấn cùng chuyên gia</h3>
+            <p style="font-size: 0.9rem; color: #64748b; margin: 0 0 20px 0;">Để lại thông tin, chuyên gia INVAMAX sẽ liên hệ trực tiếp trong vòng 24 giờ làm việc.</p>
+            
+            <form id="contactForm" onsubmit="handleContactSubmit(event)">
+                <div style="margin-bottom: 14px;">
+                    <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #334155; margin-bottom: 5px;">Họ và tên *</label>
+                    <input type="text" name="hoTen" required placeholder="Nguyễn Văn A" style="width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.95rem; box-sizing: border-box;">
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px;">
+                    <div>
+                        <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #334155; margin-bottom: 5px;">Số điện thoại *</label>
+                        <input type="tel" name="soDienThoai" required placeholder="0983xxxxxx" style="width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.95rem; box-sizing: border-box;">
+                    </div>
+                    <div>
+                        <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #334155; margin-bottom: 5px;">Email</label>
+                        <input type="email" name="email" placeholder="example@company.com" style="width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.95rem; box-sizing: border-box;">
+                    </div>
+                </div>
+                <div style="margin-bottom: 14px;">
+                    <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #334155; margin-bottom: 5px;">Tên nhà máy / Doanh nghiệp</label>
+                    <input type="text" name="tenNhaMay" placeholder="Công ty TNHH Sản xuất ABC" style="width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.95rem; box-sizing: border-box;">
+                </div>
+                <div style="margin-bottom: 18px;">
+                    <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #334155; margin-bottom: 5px;">Nhu cầu cần trao đổi</label>
+                    <textarea name="noiDung" rows="3" placeholder="Chia sẻ sơ bộ về khó khăn hiện tại (lãng phí, tồn kho, năng suất, 5S...)" style="width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.9rem; box-sizing: border-box; resize: vertical;"></textarea>
+                </div>
+                <button type="submit" style="width: 100%; background: #f97316; color: #ffffff; border: none; padding: 12px; border-radius: 6px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: background 0.2s;">
+                    Gửi yêu cầu tư vấn
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        lucide.createIcons();
+
+        function openContactModal() {
+            const modal = document.getElementById('contactModal');
+            if (modal) modal.style.display = 'flex';
+        }
+
+        function closeContactModal() {
+            const modal = document.getElementById('contactModal');
+            if (modal) modal.style.display = 'none';
+        }
+
+        window.onclick = function(e) {
+            const modal = document.getElementById('contactModal');
+            if (e.target === modal) {
+                closeContactModal();
+            }
+        };
+
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            const form = e.target;
+            const btn = form.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = 'Đang gửi...';
+            btn.disabled = true;
+
+            const formData = new FormData(form);
+            const data = {
+                nguon: 'Article Lean 10 Phut',
+                hoTen: formData.get('hoTen'),
+                soDienThoai: formData.get('soDienThoai'),
+                email: formData.get('email') || '',
+                tenNhaMay: formData.get('tenNhaMay') || '',
+                noiDung: formData.get('noiDung') || ''
+            };
+
+            const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyQz6yN2v500Hk5_t_o5h9fW9f9yR4p3nK7yB2w9e9e9/exec';
+
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            }).then(() => {
+                alert('Cảm ơn anh/chị! INVAMAX đã tiếp nhận thông tin và sẽ liên hệ sớm nhất.');
+                form.reset();
+                closeContactModal();
+            }).catch(() => {
+                alert('Đã tiếp nhận thông tin yêu cầu của anh/chị!');
+                form.reset();
+                closeContactModal();
+            }).finally(() => {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            });
+        }
+    </script>
+</body>
+</html>
