@@ -8,7 +8,7 @@ var INVAMAX_TOOLKIT_STORE = (function () {
                  (typeof window !== 'undefined' && window.location && window.location.pathname.includes('/en/'));
 
     const STORAGE_KEY = isEN ? 'invamax_toolkits_en_v2' : 'invamax_toolkits_v2';
-    const ARTICLES_STORAGE_KEY = isEN ? 'invamax_resources_articles_en_v2' : 'invamax_resources_articles_v2';
+    const ARTICLES_STORAGE_KEY = isEN ? 'invamax_resources_articles_en_v4' : 'invamax_resources_articles_v4';
     const VIDEOS_STORAGE_KEY = isEN ? 'invamax_resources_videos_en_v1' : 'invamax_resources_videos_v1';
     const SETTINGS_KEY = 'invamax_admin_settings_v1';
 
@@ -1005,13 +1005,30 @@ var INVAMAX_TOOLKIT_STORE = (function () {
                 saveArticles(DEFAULT_ARTICLES);
                 return DEFAULT_ARTICLES;
             }
-            const parsed = JSON.parse(raw);
-            if (!Array.isArray(parsed) || parsed.length === 0) return DEFAULT_ARTICLES;
+            let parsed = JSON.parse(raw);
+            if (!Array.isArray(parsed) || parsed.length === 0) {
+                saveArticles(DEFAULT_ARTICLES);
+                return DEFAULT_ARTICLES;
+            }
 
             if (isEN && parsed.some(it => /[àáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]/i.test(it.title || ''))) {
                 saveArticles(DEFAULT_ARTICLES);
                 return DEFAULT_ARTICLES;
             }
+
+            // Sync with DEFAULT_ARTICLES: always ensure all built-in articles exist
+            let needsUpdate = false;
+            for (let i = DEFAULT_ARTICLES.length - 1; i >= 0; i--) {
+                const def = DEFAULT_ARTICLES[i];
+                if (!parsed.some(a => a.id === def.id)) {
+                    parsed.unshift(def);
+                    needsUpdate = true;
+                }
+            }
+            if (needsUpdate) {
+                saveArticles(parsed);
+            }
+
             return parsed;
         } catch (e) {
             return DEFAULT_ARTICLES;
