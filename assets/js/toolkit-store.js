@@ -8,7 +8,7 @@ var INVAMAX_TOOLKIT_STORE = (function () {
                  (typeof window !== 'undefined' && window.location && window.location.pathname.includes('/en/'));
 
     const STORAGE_KEY = isEN ? 'invamax_toolkits_en_v2' : 'invamax_toolkits_v2';
-    const ARTICLES_STORAGE_KEY = isEN ? 'invamax_resources_articles_en_v4' : 'invamax_resources_articles_v4';
+    const ARTICLES_STORAGE_KEY = isEN ? 'invamax_resources_articles_en_v12' : 'invamax_resources_articles_v12';
     const VIDEOS_STORAGE_KEY = isEN ? 'invamax_resources_videos_en_v1' : 'invamax_resources_videos_v1';
     const SETTINGS_KEY = 'invamax_admin_settings_v1';
 
@@ -76,7 +76,7 @@ var INVAMAX_TOOLKIT_STORE = (function () {
                 "title": "Understanding Lean Manufacturing in 10 Minutes",
                 "category": "Lean & Improvement",
                 "excerpt": "Lean is not just about waste elimination. It is an operational mindset and system design philosophy enabling factories to generate greater customer value with fewer resources.",
-                "thumbnail": "assets/images/resources/lean-10-min-v3.jpg?v=20261024_1535",
+                "thumbnail": "assets/images/resources/lean-10-min-clean.jpg?v=20261024_1600",
                 "dateDisplay": "Oct 23, 2026",
                 "views": "1.8K views",
                 "link": "en/article-hieu-ve-lean-manufacturing.html",
@@ -240,7 +240,7 @@ var INVAMAX_TOOLKIT_STORE = (function () {
             title: 'Hiểu về Lean Manufacturing trong 10 phút',
             category: 'Lean & Cải tiến',
             excerpt: 'Lean không chỉ là loại bỏ lãng phí. Đó là phương pháp tư duy và tổ chức vận hành giúp nhà máy tạo ra nhiều giá trị hơn với ít nguồn lực hơn.',
-            thumbnail: 'assets/images/resources/lean-10-min-v3.jpg?v=20261024_1535',
+            thumbnail: 'assets/images/resources/lean-10-min-clean.jpg?v=20261024_1600',
             dateDisplay: '23 thg 10, 2026',
             views: '1.8K lượt xem',
             link: 'vi/article-hieu-ve-lean-manufacturing.html',
