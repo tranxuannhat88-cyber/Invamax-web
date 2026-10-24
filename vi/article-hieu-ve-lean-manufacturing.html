@@ -13,19 +13,21 @@
     <meta property="og:title" content="Hiểu về Lean Manufacturing trong 10 phút | INVAMAX">
     <meta property="og:description" content="Lean không chỉ là loại bỏ lãng phí. Khám phá 5 nguyên lý cốt lõi, 8 loại lãng phí và mô hình triển khai thực chiến cho nhà máy sản xuất.">
     <meta property="og:url" content="https://invamax.vn/vi/article-hieu-ve-lean-manufacturing.html">
-    <meta property="og:image" content="https://invamax.vn/assets/images/resources/lean-10-minutes-hero.jpg">
+    <meta property="og:image" content="https://invamax.vn/assets/images/resources/lean-10-minutes-hero.jpg?v=20261024_1445">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Hiểu về Lean Manufacturing trong 10 phút | INVAMAX">
     <meta name="twitter:description" content="Hướng dẫn toàn diện về Lean Manufacturing: nguyên lý, lãng phí và tư duy cải tiến dòng chảy cho nhà máy.">
-    <meta name="twitter:image" content="https://invamax.vn/assets/images/resources/lean-10-minutes-hero.jpg">
+    <meta name="twitter:image" content="https://invamax.vn/assets/images/resources/lean-10-minutes-hero.jpg?v=20261024_1445">
 
     <!-- Favicon -->
     <link rel="icon" href="../assets/images/home/logo-invamax-favico.png" type="image/png">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css?v=18">
+    <link rel="stylesheet" href="../assets/css/navbar.css?v=13">
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
@@ -968,41 +970,35 @@
 
     <!-- NAVBAR -->
     <nav class="navbar">
-        <div class="container nav-container">
-            <a href="index.html" class="logo">
-                <img src="../assets/images/home/logo-invamax-original.png" alt="INVAMAX Logo">
-            </a>
-            <button class="mobile-toggle" aria-label="Toggle Navigation">
-                <i data-lucide="menu"></i>
-            </button>
+        <div class="container">
+            <a href="/" class="logo">INVA<span>MAX</span></a>
             <div class="nav-links">
-                <a href="index.html" class="nav-item">Trang chủ</a>
-                <a href="about.html" class="nav-item">Về chúng tôi</a>
-                <div class="dropdown">
-                    <a href="factory-restructuring.html" class="dropdown-trigger">
-                        Giải pháp <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i>
-                    </a>
-                    <div class="dropdown-menu">
-                        <a href="factory-restructuring.html" class="dropdown-item">Tái cấu trúc nhà máy</a>
-                        <a href="factory-operations.html" class="dropdown-item">Thiết lập hệ thống vận hành</a>
-                        <a href="factory-platform.html" class="dropdown-item">Nền tảng số nhà máy</a>
+                <div class="nav-item"><a href="/" class="nav-title">Trang chủ</a></div>
+                <div class="nav-item">    
+                    <a href="#" class="nav-title">Giải pháp <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i></a>
+                    <div class="nav-dropdown">
+                        <a href="factory-restructuring.html">Tái cấu trúc & nâng cấp vận hành</a>
+                        <a href="factory-operations.html">Điều hành Nhà máy</a>
+                        <a href="factory-platform.html">Nền tảng số vận hành nhà máy</a>
                     </div>
                 </div>
-                <a href="insights.html" class="nav-item active">Tri thức</a>
-                <a href="case-studies.html" class="nav-item">Dự án</a>
-                <a href="contact.html" class="nav-item">Liên hệ</a>
+                <div class="nav-item"><a href="capabilities.html" class="nav-title">Năng lực</a></div>
+                <div class="nav-item"><a href="tin-tuc.html" class="nav-title">Sự kiện</a></div>
+                <div class="nav-item"><a href="case-studies.html" class="nav-title">Case Study</a></div>
+                <div class="nav-item"><a href="insights.html" class="nav-title active">Tri thức</a></div>
+                <div class="nav-item"><a href="about.html" class="nav-title">Triết lý INVAMAX</a></div>
                 
-                <div class="lang-switch" style="display: flex; align-items: center; gap: 8px; margin-left: 10px;">
-                    <a href="../vi/article-hieu-ve-lean-manufacturing.html" class="active" title="Tiếng Việt" style="display: flex; align-items: center; opacity: 1;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" alt="Tiếng Việt" style="width: 20px; height: 14px; object-fit: cover; border-radius: 2px;">
+                <div class="lang-switcher">
+                    <a href="/vi/article-hieu-ve-lean-manufacturing.html" class="active" style="display: flex; align-items: center; gap: 4px;">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" width="16" height="11" style="border-radius: 2px;" alt="VN">Tiếng Việt
                     </a>
-                    <span style="color: #cbd5e1; font-size: 12px;">|</span>
-                    <a href="../en/article-hieu-ve-lean-manufacturing.html" title="English" style="display: flex; align-items: center; opacity: 0.6; transition: opacity 0.2s;">
-                        <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" alt="English" style="width: 20px; height: 14px; object-fit: cover; border-radius: 2px;">
+                    <span style="color: rgba(255,255,255,0.25);">/</span>
+                    <a href="/en/article-hieu-ve-lean-manufacturing.html" style="display: flex; align-items: center; gap: 4px; opacity: 0.75;">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" width="16" height="11" style="border-radius: 2px;" alt="EN">English
                     </a>
                 </div>
-                <a href="contact.html" class="btn btn-primary" style="margin-left: 10px; padding: 8px 16px; font-size: 13px;">Tư vấn ngay</a>
             </div>
+            <button class="mobile-menu-btn" aria-label="Mở menu"><i data-lucide="menu"></i></button>
         </div>
     </nav>
 
@@ -1048,7 +1044,7 @@
             </div>
             <div class="article-header-right">
                 <div class="article-hero-img-wrap">
-                    <img src="../assets/images/resources/lean-10-minutes-hero.jpg" alt="Hiểu về Lean Manufacturing trong 10 phút" class="article-hero-img">
+                    <img src="../assets/images/resources/lean-10-minutes-hero.jpg?v=20261024_1445" alt="Hiểu về Lean Manufacturing trong 10 phút" class="article-hero-img">
                 </div>
             </div>
         </header>
