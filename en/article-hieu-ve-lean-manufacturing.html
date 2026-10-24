@@ -1000,6 +1000,84 @@
                 max-width: 100% !important;
             }
         }
+    
+        /* Table Styles for Lean Document */
+        .lean-table-wrap {
+            overflow-x: auto;
+            margin: 20px 0 24px 0;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+            background: #ffffff;
+        }
+        .lean-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14.5px;
+            text-align: left;
+        }
+        .lean-table th {
+            background: #f8fafc;
+            color: #0f172a;
+            font-weight: 700;
+            padding: 12px 18px;
+            border-bottom: 2px solid #e2e8f0;
+            font-size: 14px;
+        }
+        .lean-table td {
+            padding: 12px 18px;
+            border-bottom: 1px solid #f1f5f9;
+            color: #334155;
+            line-height: 1.5;
+        }
+        .lean-table tr:last-child td {
+            border-bottom: none;
+        }
+        .lean-table tr:hover td {
+            background: #fdfdfd;
+        }
+        .flow-pill-banner {
+            background: #fff7ed;
+            border: 1px solid #fed7aa;
+            border-radius: 10px;
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-weight: 700;
+            color: #c2410c;
+            font-size: 15px;
+            margin: 18px 0;
+            flex-wrap: wrap;
+        }
+        .lean-list {
+            margin: 12px 0 16px 20px;
+            padding: 0;
+            color: #334155;
+            line-height: 1.6;
+            font-size: 15.5px;
+        }
+        .lean-list li {
+            margin-bottom: 8px;
+        }
+        .reference-list {
+            list-style: none;
+            padding: 0;
+            margin: 12px 0 0 0;
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.7;
+        }
+        .reference-list li::before {
+            content: "•";
+            color: #ea580c;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
     </style>
 </head>
 <body>
@@ -1051,29 +1129,32 @@
     </div>
 
     <!-- MAIN ARTICLE DOCUMENT (EXPANDED TO 1200PX) -->
-    <main class="article-main-card" id="leanArticleDocument">
+        <!-- MAIN ARTICLE DOCUMENT (EXPANDED TO 1200PX) -->
+    <main class="article-container">
+        <article class="article-main-card">
 
-        <!-- HEADER SECTION -->
+        <!-- HEADER -->
         <header class="article-header-grid">
             <div class="article-header-left">
                 <span class="poster-tag">LEAN &amp; IMPROVEMENT</span>
                 <h1 class="article-title">Understanding Lean Manufacturing in 10 Minutes</h1>
                 <p class="article-subtitle">
-                    &ldquo;Lean is more than eliminating waste. It is a philosophy and operating system that enables factories to generate more value with fewer resources.&rdquo;
+                    “Lean is not just about waste elimination. It is an operational mindset and system design philosophy that helps factories create more value with fewer resources.”
                 </p>
+
                 <div class="article-meta-row">
-                    <div class="article-meta-item">
-                        <i data-lucide="clock" style="width: 15px; height: 15px; color: #ea580c;"></i>
-                        <span>Reading time: <strong>Approx. 10 minutes</strong></span>
-                    </div>
-                    <div class="article-meta-item">
-                        <i data-lucide="bookmark" style="width: 15px; height: 15px; color: #0284c7;"></i>
-                        <span>Category: <strong>Lean &amp; Improvement</strong></span>
-                    </div>
-                    <div class="article-meta-item">
-                        <i data-lucide="award" style="width: 15px; height: 15px; color: #16a34a;"></i>
-                        <span>By: <strong>INVAMAX Experts</strong></span>
-                    </div>
+                    <span class="article-meta-item">
+                        <i data-lucide="clock" style="width: 14px; height: 14px;"></i> Reading time: <strong>Approx. 10 minutes</strong>
+                    </span>
+                    <span class="article-meta-item">
+                        <i data-lucide="bookmark" style="width: 14px; height: 14px;"></i> Category: <strong>Lean &amp; Improvement</strong>
+                    </span>
+                </div>
+
+                <div class="article-meta-row" style="margin-top: 10px;">
+                    <span class="article-meta-item" style="color: #059669; font-weight: 600;">
+                        <i data-lucide="user-check" style="width: 14px; height: 14px;"></i> By: INVAMAX Expert
+                    </span>
                 </div>
             </div>
             <div class="article-header-right">
@@ -1083,192 +1164,215 @@
             </div>
         </header>
 
-        <!-- LEAD INTRO: BUSY DOES NOT EQUAL EFFECTIVE -->
+        <!-- LEAD BOX -->
         <div class="article-lead-box">
-            <h3>
-                <i data-lucide="alert-triangle" style="width: 22px; height: 22px; color: #ea580c;"></i>
-                A Busy Factory is Not Necessarily an Efficient Factory
+            <h3 style="font-size: 18px; font-weight: 700; color: #0f172a; margin-top: 0; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                <i data-lucide="alert-circle" style="color: #ea580c; width: 20px; height: 20px;"></i>
+                A Busy Factory Is Not Necessarily an Efficient Factory
             </h3>
-            <p>
-                Imagine a manufacturing plant with scenes that look lively and energetic on the surface:
+            <p style="margin-bottom: 10px; font-size: 15px; color: #334155;">
+                Imagine a factory with all-too-familiar scenes:
             </p>
-            
-            <div class="lead-grid">
-                <div class="lead-column">
-                    <h4 style="color: #dc2626;"><i data-lucide="eye" style="width: 15px; height: 15px; vertical-align: middle; margin-right: 4px;"></i> 5 Common Superficial Symptoms:</h4>
-                    <ul>
-                        <li>Operators constantly walking around to retrieve raw materials and tools.</li>
-                        <li>Machines running at full capacity yet piles of WIP cluttering the floor.</li>
-                        <li>Production teams working overtime while customer orders are still delayed.</li>
-                        <li>Quality inspectors bogged down handling large volumes of defective units.</li>
-                        <li>Managers spending most of their time fire-fighting and expediting crises.</li>
-                    </ul>
-                </div>
-                <div class="lead-column" style="background: #f0fdf4; border-color: #bbf7d0;">
-                    <h4 style="color: #15803d;"><i data-lucide="help-circle" style="width: 15px; height: 15px; vertical-align: middle; margin-right: 4px;"></i> The Core Lean Question:</h4>
-                    <p style="font-size: 14px; color: #166534; margin-bottom: 10px;">
-                        On the surface, everyone is working hard. But <strong>are all of these activities truly generating value that the customer is willing to pay for?</strong>
-                    </p>
-                    <p style="font-size: 13.5px; color: #166534; margin: 0; line-height: 1.5;">
-                        Lean enables organizations to distinguish between value-adding work, necessary non-value activities, and pure waste. The goal is <strong>designing an operating system where work flows smoothly, reliably, and efficiently</strong>.
-                    </p>
-                </div>
-            </div>
+            <ul class="lean-list" style="margin-top: 6px; margin-bottom: 16px;">
+                <li>Workers constantly walking back and forth to retrieve materials.</li>
+                <li>Machines running at full capacity yet work-in-progress piles up everywhere.</li>
+                <li>Production teams working overtime while customer orders are still delayed.</li>
+                <li>Quality inspectors overwhelmed dealing with defective products.</li>
+                <li>Managers spending most of their day urging, coordinating, and troubleshooting fires.</li>
+            </ul>
+            <p style="font-size: 15px; color: #334155; margin-bottom: 10px;">
+                On the surface, everyone appears busy. But are all these activities truly creating value?
+            </p>
+            <p style="font-size: 15px; color: #334155; margin-bottom: 10px;">
+                This is the very first question of Lean Manufacturing.
+            </p>
+            <p style="font-size: 15px; color: #334155; margin-bottom: 10px;">
+                Lean helps businesses examine their entire operational process to distinguish between value-adding activities, necessary non-value activities, and pure waste that can be eliminated.
+            </p>
+            <p style="font-size: 15px; color: #0f172a; font-weight: 600; margin-bottom: 0;">
+                The goal is not to make people work harder, but to design a system where work flows smoothly, with less waste and greater efficiency.
+            </p>
         </div>
 
         <!-- SECTION 01 -->
         <section class="content-section" id="sec-01">
             <h2 class="section-heading"><span class="num">01.</span> What is Lean Manufacturing?</h2>
             <p>
-                <strong>Lean Manufacturing</strong> is a systematic production methodology focused on maximizing customer value while continuously eliminating waste, establishing seamless flow, and developing human capabilities and management systems.
+                Lean Manufacturing is an operational management philosophy focused on creating value for customers by systematically eliminating waste, improving flow, and elevating the capabilities of people and operating systems.
             </p>
 
+            <p style="margin-bottom: 8px;">In simple terms:</p>
             <div class="formula-box">
                 <div class="formula-item">
-                    <i data-lucide="sparkles" style="color: #38bdf8;"></i>
-                    <span>MAXIMIZE CUSTOMER VALUE</span>
-                </div>
-                <div class="formula-sign">+</div>
-                <div class="formula-item">
-                    <i data-lucide="trash-2" style="color: #f87171;"></i>
-                    <span>ELIMINATE WASTE IN PROCESS FLOW</span>
-                </div>
-                <div class="formula-sign">=</div>
-                <div class="formula-result">
-                    LEAN MANUFACTURING
+                    <span class="formula-result">Lean</span>
+                    <span class="formula-sign">=</span>
+                    <span class="formula-item" style="color: #0284c7; font-weight: 700;">Maximizing customer value</span>
+                    <span class="formula-sign">+</span>
+                    <span class="formula-item" style="color: #ea580c; font-weight: 700;">Minimizing waste in the value creation process</span>
                 </div>
             </div>
 
             <p>
-                Lean originated from the renowned <strong>Toyota Production System (TPS)</strong>, which was subsequently researched, structured, and scaled worldwide across automotive, electronics, aerospace, FMCG, and logistics industries.
+                Lean originated primarily from the Toyota Production System (TPS), which was later studied, codified, and widely adopted across industries.
             </p>
 
-            <h3 class="sub-heading">Two Core Pillars of the Toyota Production System:</h3>
+            <p style="font-weight: 600; color: #0f172a; margin-top: 18px; margin-bottom: 10px;">
+                Toyota developed TPS on two fundamental pillars:
+            </p>
+
             <div class="cards-2col">
                 <div class="pillar-card">
                     <div class="pillar-card-header">
-                        <div class="pillar-icon"><i data-lucide="clock"></i></div>
-                        <div>
-                            <h4>Just-in-Time (JIT)</h4>
-                            <span style="font-size: 12px; font-weight: 700; color: #0284c7;">FLOW &amp; PACING</span>
+                        <div class="pillar-icon">
+                            <i data-lucide="zap" style="width: 20px; height: 20px;"></i>
                         </div>
+                        <h4 style="margin: 0; font-size: 16px; color: #0f172a; font-weight: 700;">Just-in-Time (JIT)</h4>
                     </div>
-                    <p>
-                        Producing and delivering only what is needed, in the exact quantity needed, at the exact time needed. Eliminates early overproduction and excessive buffer inventories.
+                    <p style="margin: 0; font-size: 14.5px; color: #475569; line-height: 1.55;">
+                        Produce and deliver only what is needed, in the amount needed, at the exact time needed.
                     </p>
                 </div>
+
                 <div class="pillar-card">
                     <div class="pillar-card-header">
-                        <div class="pillar-icon" style="background: #fef2f2; color: #dc2626;"><i data-lucide="shield-check"></i></div>
-                        <div>
-                            <h4>Jidoka (Quality at the Source)</h4>
-                            <span style="font-size: 12px; font-weight: 700; color: #dc2626;">AUTONOMATION &amp; STOP ON ERROR</span>
+                        <div class="pillar-icon">
+                            <i data-lucide="shield-check" style="width: 20px; height: 20px;"></i>
                         </div>
+                        <h4 style="margin: 0; font-size: 16px; color: #0f172a; font-weight: 700;">Jidoka (Quality at the Source)</h4>
                     </div>
-                    <p>
-                        Designing processes that automatically detect abnormalities and immediately halt production to prevent defective parts from advancing downstream, allowing immediate root cause countermeasures.
+                    <p style="margin: 0; font-size: 14.5px; color: #475569; line-height: 1.55;">
+                        Design processes capable of detecting abnormalities, stopping defect propagation, and empowering human intervention to solve root causes.
                     </p>
                 </div>
             </div>
 
+            <p style="margin-top: 18px;">
+                These two philosophies steer the production system toward stable flow, minimized inventory, and zero defect propagation down the line.
+            </p>
             <p>
-                Together, these two principles ensure a continuous, defect-free production flow with minimal inventory. Today, Lean is implemented across diverse sectors from precision machining and consumer electronics to food processing and medical devices.
+                Today, Lean is applied not only in automotive manufacturing, but also across precision engineering, electronics, food processing, textiles, logistics, services, and many other sectors.
             </p>
 
-            <div class="callout-box">
-                <h4><i data-lucide="info"></i> Critical Clarification: Lean Does Not Mean Headcount Reduction</h4>
-                <p>
-                    This is a widespread misconception. Downsizing staff without redesigning operational processes merely overwhelms the remaining workforce, escalating defects and burnout. Lean begins by <strong>eliminating unnecessary activities and non-value steps</strong>, stabilizing flow and workload balance; only then are resources reallocated effectively. A well-designed Lean system empowers workers with safer, more ergonomic, and higher-value tasks.
+            <div class="callout-box" style="margin-top: 22px;">
+                <h4 style="margin-top: 0; margin-bottom: 8px; color: #9a3412; font-size: 16px; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+                    <i data-lucide="alert-triangle" style="width: 18px; height: 18px;"></i>
+                    Lean Does Not Mean Headcount Reduction
+                </h4>
+                <p style="margin-bottom: 8px;">This is a common misconception.</p>
+                <p style="margin-bottom: 8px;">
+                    Cutting staff without redesigning processes overburdens remaining workers, increases defect rates, and impairs overall production capacity.
+                </p>
+                <p style="margin-bottom: 8px;">
+                    Lean begins by eliminating non-value-adding tasks, improving motion, flow, and coordination; only then are resources realigned appropriately.
+                </p>
+                <p style="margin-bottom: 0; font-weight: 600; color: #9a3412;">
+                    A sound Lean system must empower workers to operate more effectively, safely, and proactively.
                 </p>
             </div>
         </section>
 
         <!-- SECTION 02 -->
         <section class="content-section" id="sec-02">
-            <h2 class="section-heading"><span class="num">02.</span> The Most Important Principle: Defining Value Correctly</h2>
+            <h2 class="section-heading"><span class="num">02.</span> The Most Critical Principle: Understanding Value</h2>
             <p>
-                In Lean, <strong>Value</strong> is defined exclusively from the customer's perspective: a product that meets exact specifications for quality, features, quantity, price, and delivery timing.
+                In Lean, Value is defined strictly from the customer's perspective.
             </p>
             <p>
-                An activity is considered value-adding only when it <strong>directly transforms the product</strong> in ways the customer is willing to pay for, and is executed right the first time. In any factory, work falls into three distinct categories:
+                Customers demand products that meet their expectations regarding quality, features, quantity, price, and delivery lead time.
+            </p>
+            <p>
+                An activity is typically considered value-adding when it directly transforms the product in a way the customer desires and is executed right the first time.
+            </p>
+            <p style="font-weight: 600; color: #0f172a; margin-top: 14px;">
+                Consider the three types of activities in a factory:
             </p>
 
-            <div class="activity-3col">
-                <div class="act-card va">
-                    <span class="act-badge"><i data-lucide="check-circle" style="width: 14px; height: 14px;"></i> Category 1</span>
-                    <h4 class="act-title">Value-Added (VA)</h4>
-                    <p class="act-desc">
-                        Direct machining, fabrication, assembly, or final packaging steps that physically transform the product to customer requirements.
-                    </p>
-                    <div class="act-action">&rarr; Approach: Optimize efficiency, cycle time, and precision.</div>
-                </div>
-
-                <div class="act-card nnva">
-                    <span class="act-badge"><i data-lucide="alert-circle" style="width: 14px; height: 14px;"></i> Category 2</span>
-                    <h4 class="act-title">Necessary Non-Value-Added (NNVA)</h4>
-                    <p class="act-desc">
-                        Mandatory compliance inspections, documentation, and technical machine changeovers under current equipment constraints.
-                    </p>
-                    <div class="act-action">&rarr; Approach: Simplify, streamline, and minimize duration.</div>
-                </div>
-
-                <div class="act-card nva">
-                    <span class="act-badge"><i data-lucide="x-circle" style="width: 14px; height: 14px;"></i> Category 3</span>
-                    <h4 class="act-title">Pure Waste (NVA - Muda)</h4>
-                    <p class="act-desc">
-                        Waiting for parts, searching for tooling, convoluted transit routes, rework of defective parts, and buffer clutter.
-                    </p>
-                    <div class="act-action">&rarr; Approach: Identify and eliminate completely.</div>
-                </div>
+            <div class="lean-table-wrap">
+                <table class="lean-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;">Activity Type</th>
+                            <th style="width: 50%;">Shop Floor Examples</th>
+                            <th style="width: 25%;">Management Approach</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong style="color: #059669;">Value-Adding (VA)</strong></td>
+                            <td>Machining, assembling, or finishing products to customer specifications</td>
+                            <td><span style="background: #ecfdf5; color: #059669; padding: 4px 10px; border-radius: 6px; font-weight: 600; font-size: 13px;">Optimize efficiency</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: #0284c7;">Necessary Non-Value-Adding (NNVA)</strong></td>
+                            <td>Regulatory inspections, mandatory logging, process setups</td>
+                            <td><span style="background: #f0f9ff; color: #0284c7; padding: 4px 10px; border-radius: 6px; font-weight: 600; font-size: 13px;">Simplify &amp; compress</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: #dc2626;">Waste / Non-Value-Adding (NVA)</strong></td>
+                            <td>Waiting, searching for tools, redundant transport, rework</td>
+                            <td><span style="background: #fef2f2; color: #dc2626; padding: 4px 10px; border-radius: 6px; font-weight: 600; font-size: 13px;">Systematically eliminate</span></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
-            <!-- VISUAL CYCLE TIME BREAKDOWN -->
+            <!-- Cycle Time Case -->
             <div class="cycle-time-box">
                 <div class="cycle-time-header">
-                    <h4><i data-lucide="bar-chart-2" style="width: 18px; height: 18px; vertical-align: middle; color: #0284c7; margin-right: 6px;"></i> Illustrated 60-Second Cycle Time Breakdown:</h4>
-                    <span style="font-size: 13px; font-weight: 700; color: #16a34a; background: #dcfce7; padding: 4px 10px; border-radius: 6px;">True Value-Added: Only 35s (58%)</span>
+                    <div>
+                        <h4 style="margin: 0; font-size: 16px; font-weight: 700; color: #0f172a;">Illustrative Example:</h4>
+                        <p style="margin: 4px 0 0; font-size: 14px; color: #64748b;">
+                            A worker takes 60 seconds to complete a unit, composed of:
+                        </p>
+                    </div>
+                    <span style="background: #0f172a; color: #ffffff; padding: 4px 12px; border-radius: 20px; font-size: 13px; font-weight: 700;">Total: 60s</span>
                 </div>
-                
+
+                <ul class="lean-list" style="margin-bottom: 16px; font-size: 14.5px;">
+                    <li><strong>35 seconds</strong> of direct machining operation.</li>
+                    <li><strong>10 seconds</strong> walking to fetch parts.</li>
+                    <li><strong>8 seconds</strong> waiting for machines or preceding stations.</li>
+                    <li><strong>7 seconds</strong> handling auxiliary adjustments and sorting.</li>
+                </ul>
+
+                <!-- Visual Bar -->
                 <div class="cycle-bar-container">
-                    <div class="cycle-seg-1">Machining: 35s (58%)</div>
-                    <div class="cycle-seg-2">Material Fetch: 10s (17%)</div>
-                    <div class="cycle-seg-3">Wait: 8s (13%)</div>
-                    <div class="cycle-seg-4">Auxiliary: 7s</div>
+                    <div class="cycle-seg-1" style="width: 58.3%;" title="35s - Machining (VA)">35s Machining (58.3%)</div>
+                    <div class="cycle-seg-2" style="width: 16.7%;" title="10s - Fetching Parts">10s Parts</div>
+                    <div class="cycle-seg-3" style="width: 13.3%;" title="8s - Waiting">8s Waiting</div>
+                    <div class="cycle-seg-4" style="width: 11.7%;" title="7s - Handling">7s Auxiliary</div>
                 </div>
 
                 <div class="cycle-legend">
-                    <div class="cycle-legend-item">
-                        <span class="cycle-dot" style="background: #16a34a;"></span>
-                        <span><strong>35s Value-Added (VA):</strong> Direct part transformation</span>
-                    </div>
-                    <div class="cycle-legend-item">
-                        <span class="cycle-dot" style="background: #f97316;"></span>
-                        <span><strong>10s Motion Waste:</strong> Walking to retrieve parts</span>
-                    </div>
-                    <div class="cycle-legend-item">
-                        <span class="cycle-dot" style="background: #ef4444;"></span>
-                        <span><strong>8s Waiting Waste:</strong> Waiting for machine cycle</span>
-                    </div>
-                    <div class="cycle-legend-item">
-                        <span class="cycle-dot" style="background: #64748b;"></span>
-                        <span><strong>7s Auxiliary Handling:</strong> Clamping &amp; adjusting fixture</span>
-                    </div>
+                    <div class="cycle-legend-item"><span class="cycle-dot" style="background: #059669;"></span> 35s Machining (Value-Adding)</div>
+                    <div class="cycle-legend-item"><span class="cycle-dot" style="background: #f59e0b;"></span> 10s Fetching Parts (Motion Waste)</div>
+                    <div class="cycle-legend-item"><span class="cycle-dot" style="background: #ef4444;"></span> 8s Waiting for Machine / Preceding Station (Waiting Waste)</div>
+                    <div class="cycle-legend-item"><span class="cycle-dot" style="background: #94a3b8;"></span> 7s Auxiliary Handling (Necessary Non-Value-Adding)</div>
                 </div>
+
+                <p style="margin-top: 14px; font-size: 14.5px; color: #334155; margin-bottom: 8px;">
+                    In this example, direct value-adding transformation takes only 35 of the 60 seconds.
+                </p>
+                <p style="font-size: 14.5px; color: #334155; margin-bottom: 0;">
+                    Rather than urging the operator to work faster, the plant can optimize material staging, synchronize machinery, and streamline sequence of motions.
+                </p>
             </div>
 
-            <p style="font-weight: 600; color: #0f172a; font-size: 16px; margin-top: 14px;">
-                Instead of demanding that the operator work faster, Lean redesigns material bin placement, synchronizes machine tempo, and standardizes motions.
-            </p>
-            <p style="color: #c2410c; font-style: italic; font-weight: 700; font-size: 16px;">
-                &ldquo;Lean does not ask: 'How can operators work faster?' It asks: 'How can we eliminate unnecessary work entirely?'&rdquo;
-            </p>
+            <div style="background: #f8fafc; border-left: 4px solid #ea580c; padding: 14px 18px; margin-top: 18px; border-radius: 0 8px 8px 0;">
+                <p style="margin: 0; font-size: 15px; font-weight: 600; color: #1e293b; font-style: italic;">
+                    Lean does not begin with “How can workers work faster?”, but with “How can we eliminate unnecessary work?”.
+                </p>
+            </div>
         </section>
 
         <!-- SECTION 03 -->
         <section class="content-section" id="sec-03">
-            <h2 class="section-heading"><span class="num">03.</span> The Five Core Principles of Lean (Womack &amp; Jones)</h2>
+            <h2 class="section-heading"><span class="num">03.</span> The Five Core Principles of Lean</h2>
             <p>
-                In their landmark book <em>Lean Thinking</em>, James P. Womack and Daniel T. Jones codified Lean into five foundational principles:
+                James P. Womack and Daniel T. Jones codified Lean thinking into five core principles in their classic book <em>Lean Thinking</em>.
+            </p>
+            <p>
+                These are foundational principles of mindset, not to be confused with the procedural steps of executing a Lean project.
             </p>
 
             <div class="principles-stepper">
@@ -1338,330 +1442,393 @@
                 </div>
             </div>
 
+            <p style="font-size: 15px; color: #334155; margin-top: 16px; margin-bottom: 8px;">
+                The five principles form a cohesive operational loop:
+            </p>
             <div class="stepper-summary-flow">
                 <span>Value</span>
                 <span class="flow-arrow">&rarr;</span>
                 <span>Value Stream</span>
                 <span class="flow-arrow">&rarr;</span>
-                <span>Continuous Flow</span>
+                <span>Flow</span>
                 <span class="flow-arrow">&rarr;</span>
-                <span>Customer Pull</span>
+                <span>Pull</span>
                 <span class="flow-arrow">&rarr;</span>
-                <span>Relentless Perfection (Kaizen)</span>
+                <span>Perfection</span>
             </div>
         </section>
 
         <!-- SECTION 04 -->
         <section class="content-section" id="sec-04">
-            <h2 class="section-heading"><span class="num">04.</span> The Seven Wastes in Manufacturing (7+1 Muda)</h2>
+            <h2 class="section-heading"><span class="num">04.</span> The Seven Wastes in Lean Manufacturing</h2>
             <p>
-                Taiichi Ohno identified seven universal wastes in manufacturing (widely known as <strong>TIMWOOD</strong>). Modern management also emphasizes the 8th waste:
+                Taiichi Ohno identified seven common forms of waste in manufacturing systems.
+            </p>
+            <p>
+                Understanding these seven wastes gives plant leaders an acute lens for observing operations.
             </p>
 
-            <div class="wastes-grid">
-                <div class="waste-card">
-                    <div class="waste-card-top">
-                        <div class="waste-icon"><i data-lucide="layers"></i></div>
-                        <div class="waste-title-group">
-                            <div class="waste-title">Overproduction</div>
-                            <div class="waste-eng">TIMWOOD - 'O'</div>
-                        </div>
-                        <span class="waste-num">01</span>
-                    </div>
-                    <p class="waste-example">Producing more or earlier than current demand; the most insidious waste as it masks all other inefficiencies.</p>
-                </div>
-
-                <div class="waste-card">
-                    <div class="waste-card-top">
-                        <div class="waste-icon"><i data-lucide="hourglass"></i></div>
-                        <div class="waste-title-group">
-                            <div class="waste-title">Waiting</div>
-                            <div class="waste-eng">TIMWOOD - 'W'</div>
-                        </div>
-                        <span class="waste-num">02</span>
-                    </div>
-                    <p class="waste-example">Idle workers or equipment awaiting materials, work orders, inspections, machine maintenance, or instructions.</p>
-                </div>
-
-                <div class="waste-card">
-                    <div class="waste-card-top">
-                        <div class="waste-icon"><i data-lucide="truck"></i></div>
-                        <div class="waste-title-group">
-                            <div class="waste-title">Transportation</div>
-                            <div class="waste-eng">TIMWOOD - 'T'</div>
-                        </div>
-                        <span class="waste-num">03</span>
-                    </div>
-                    <p class="waste-example">Excessive moving of raw materials, WIP, and finished goods between facilities, staging areas, and warehouses.</p>
-                </div>
-
-                <div class="waste-card">
-                    <div class="waste-card-top">
-                        <div class="waste-icon"><i data-lucide="settings"></i></div>
-                        <div class="waste-title-group">
-                            <div class="waste-title">Overprocessing</div>
-                            <div class="waste-eng">TIMWOOD - 'O'</div>
-                        </div>
-                        <span class="waste-num">04</span>
-                    </div>
-                    <p class="waste-example">Performing redundant steps or tolerances beyond technical specifications that add zero perceived value.</p>
-                </div>
-
-                <div class="waste-card">
-                    <div class="waste-card-top">
-                        <div class="waste-icon"><i data-lucide="archive"></i></div>
-                        <div class="waste-title-group">
-                            <div class="waste-title">Excess Inventory</div>
-                            <div class="waste-eng">TIMWOOD - 'I'</div>
-                        </div>
-                        <span class="waste-num">05</span>
-                    </div>
-                    <p class="waste-example">Tying up working capital in raw stocks, work-in-process, and finished goods that increase obsolescence risks.</p>
-                </div>
-
-                <div class="waste-card">
-                    <div class="waste-card-top">
-                        <div class="waste-icon"><i data-lucide="footprints"></i></div>
-                        <div class="waste-title-group">
-                            <div class="waste-title">Unnecessary Motion</div>
-                            <div class="waste-eng">TIMWOOD - 'M'</div>
-                        </div>
-                        <span class="waste-num">06</span>
-                    </div>
-                    <p class="waste-example">Excessive bending, reaching, searching, and walking caused by non-ergonomic station and layout designs.</p>
-                </div>
-
-                <div class="waste-card">
-                    <div class="waste-card-top">
-                        <div class="waste-icon"><i data-lucide="alert-octagon"></i></div>
-                        <div class="waste-title-group">
-                            <div class="waste-title">Defects &amp; Rework</div>
-                            <div class="waste-eng">TIMWOOD - 'D'</div>
-                        </div>
-                        <span class="waste-num">07</span>
-                    </div>
-                    <p class="waste-example">Non-conforming items requiring costly rework, disassembly, scrap, and warranty claims.</p>
-                </div>
-
-                <div class="waste-card" style="border: 2px solid #ea580c; background: #fffaf5;">
-                    <div class="waste-card-top">
-                        <div class="waste-icon" style="background: #fff7ed; color: #ea580c;"><i data-lucide="users"></i></div>
-                        <div class="waste-title-group">
-                            <div class="waste-title" style="color: #c2410c;">Unused Talent</div>
-                            <div class="waste-eng">Non-utilized Skills</div>
-                        </div>
-                        <span class="waste-num" style="color: #ea580c;">08</span>
-                    </div>
-                    <p class="waste-example">Failing to engage frontline operators' practical insights and problem-solving creativity in daily improvements.</p>
-                </div>
+            <div class="lean-table-wrap">
+                <table class="lean-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 10%; text-align: center;">No.</th>
+                            <th style="width: 40%;">Waste Category</th>
+                            <th style="width: 50%;">Shop Floor Manifestation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="text-align: center; font-weight: 700; color: #ea580c;">1</td>
+                            <td><strong>Overproduction</strong></td>
+                            <td>Producing more or earlier than actual customer demand</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center; font-weight: 700; color: #ea580c;">2</td>
+                            <td><strong>Waiting</strong></td>
+                            <td>Operators waiting for parts, machines, or instructions</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center; font-weight: 700; color: #ea580c;">3</td>
+                            <td><strong>Transportation</strong></td>
+                            <td>Moving work-in-progress through redundant locations</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center; font-weight: 700; color: #ea580c;">4</td>
+                            <td><strong>Overprocessing</strong></td>
+                            <td>Extra processing or precision beyond customer specifications</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center; font-weight: 700; color: #ea580c;">5</td>
+                            <td><strong>Inventory</strong></td>
+                            <td>Raw materials and WIP exceeding reasonable operating buffers</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center; font-weight: 700; color: #ea580c;">6</td>
+                            <td><strong>Motion</strong></td>
+                            <td>Walking, bending, reaching, and searching for tools</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center; font-weight: 700; color: #ea580c;">7</td>
+                            <td><strong>Defects</strong></td>
+                            <td>Scrap, repairs, and rework</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
+
+            <p style="margin-top: 16px; margin-bottom: 8px;">
+                In modern Lean literature, an eighth waste is widely recognized:
+            </p>
+            <div style="background: #fff7ed; border-left: 4px solid #ea580c; padding: 14px 18px; border-radius: 0 8px 8px 0; margin-bottom: 20px;">
+                <h4 style="margin: 0 0 6px 0; color: #c2410c; font-size: 15.5px; font-weight: 700;">
+                    Non-utilized Talent – Underutilizing human potential and creativity
+                </h4>
+                <p style="margin: 0; font-size: 14.5px; color: #7c2d12;">
+                    For example, line operators recognize an ergonomic bottleneck but lack a channel or mechanism to propose and implement improvements.
+                </p>
+            </div>
+
+            <h3 style="font-size: 17px; font-weight: 700; color: #0f172a; margin-top: 24px; margin-bottom: 10px;">
+                Why is Overproduction Particularly Dangerous?
+            </h3>
+            <p>
+                Overproduction triggers and conceals virtually all other wastes.
+            </p>
+            <p style="margin-bottom: 8px;">When producing ahead of demand:</p>
+            <ul class="lean-list">
+                <li>Requires extra floor space and warehousing costs.</li>
+                <li>Incurs additional handling and transport labor.</li>
+                <li>Ties up working capital in materials and WIP.</li>
+                <li>Delays detection of quality issues.</li>
+                <li>Destroys production schedule flexibility.</li>
+            </ul>
+            <p>
+                Therefore, high machine utilization does not necessarily equal a well-run factory.
+            </p>
+            <p style="font-weight: 600; color: #0f172a;">
+                What truly matters is producing to actual demand while safeguarding flow efficiency.
+            </p>
         </section>
 
         <!-- SECTION 05 -->
         <section class="content-section" id="sec-05">
-            <h2 class="section-heading"><span class="num">05.</span> Essential Lean Tools &amp; Methodologies</h2>
+            <h2 class="section-heading"><span class="num">05.</span> Common Lean Tools</h2>
             <p>
-                Lean is an operational philosophy; its tools are tactical instruments engineered to resolve specific plant floor bottlenecks:
+                Lean is an overarching management philosophy; tools are simply enablers to bring that philosophy to life.
+            </p>
+            <p>
+                Common tools utilized across manufacturing plants:
             </p>
 
-            <div class="tools-3col">
-                <!-- Group 1 -->
-                <div class="tool-column">
-                    <div class="tool-col-header">
-                        <div class="tool-col-icon" style="background: #eff6ff; color: #0284c7;"><i data-lucide="grid"></i></div>
-                        <div>
-                            <h4>Foundations &amp; Standardization</h4>
-                            <span style="font-size: 11.5px; font-weight: 600; color: #64748b;">DISCIPLINE BASELINE</span>
-                        </div>
-                    </div>
-                    <div class="tool-item">
-                        <div class="tool-item-name">5S &amp; Visual Workplace <i data-lucide="check" style="width: 14px; color: #16a34a;"></i></div>
-                        <p class="tool-item-desc">Workplace organization, color-coded floor striping, visual shadow boards, and Andon anomaly alerts.</p>
-                    </div>
-                    <div class="tool-item">
-                        <div class="tool-item-name">Value Stream Mapping (VSM) <i data-lucide="check" style="width: 14px; color: #16a34a;"></i></div>
-                        <p class="tool-item-desc">End-to-end flowcharting of material and information flows to reveal process disconnects and delays.</p>
-                    </div>
-                    <div class="tool-item">
-                        <div class="tool-item-name">Standardized Work (SOP) <i data-lucide="check" style="width: 14px; color: #16a34a;"></i></div>
-                        <p class="tool-item-desc">Defining the optimal sequence, cycle time, and standard in-process inventory for repeatable quality.</p>
-                    </div>
-                </div>
+            <div class="lean-table-wrap">
+                <table class="lean-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 35%;">Tool</th>
+                            <th style="width: 65%;">Core Objective</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong style="color: #0284c7;">5S</strong></td>
+                            <td>Workplace organization, visual management, and standardization</td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: #0284c7;">Kaizen</strong></td>
+                            <td>Continuous improvement through verified, iterative changes</td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: #0284c7;">Value Stream Mapping (VSM)</strong></td>
+                            <td>Analyzing value streams and exposing systemic waste</td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: #0284c7;">Standard Work</strong></td>
+                            <td>Establishing consistent, efficient baseline procedures</td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: #0284c7;">Kanban</strong></td>
+                            <td>Regulating production and replenishment according to pull demand</td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: #0284c7;">SMED</strong></td>
+                            <td>Rapid changeover of tooling, dies, and product variants</td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: #0284c7;">Poka-Yoke</strong></td>
+                            <td>Mistake-proofing to prevent or catch errors at the source</td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: #0284c7;">TPM</strong></td>
+                            <td>Maximizing equipment reliability, uptime, and overall efficiency</td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: #0284c7;">A3 / 5 Why</strong></td>
+                            <td>Structured, root-cause problem solving</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-                <!-- Group 2 -->
-                <div class="tool-column">
-                    <div class="tool-col-header">
-                        <div class="tool-col-icon" style="background: #f0fdf4; color: #16a34a;"><i data-lucide="repeat"></i></div>
-                        <div>
-                            <h4>Flow &amp; WIP Control</h4>
-                            <span style="font-size: 11.5px; font-weight: 600; color: #64748b;">JUST-IN-TIME EXECUTION</span>
-                        </div>
-                    </div>
-                    <div class="tool-item">
-                        <div class="tool-item-name">Kanban Cards &amp; Signals <i data-lucide="check" style="width: 14px; color: #16a34a;"></i></div>
-                        <p class="tool-item-desc">Visual signals regulating pull replenishment to prevent overproduction and floor congestion.</p>
-                    </div>
-                    <div class="tool-item">
-                        <div class="tool-item-name">Quick Changeover (SMED) <i data-lucide="check" style="width: 14px; color: #16a34a;"></i></div>
-                        <p class="tool-item-desc">Reducing die and tooling setup times below 10 minutes to support small-batch flexible scheduling.</p>
-                    </div>
-                    <div class="tool-item">
-                        <div class="tool-item-name">Cellular Manufacturing <i data-lucide="check" style="width: 14px; color: #16a34a;"></i></div>
-                        <p class="tool-item-desc">Arranging equipment in U-shaped cells to minimize transit distances and enable one-piece flow.</p>
-                    </div>
-                </div>
+            <h3 style="font-size: 16.5px; font-weight: 700; color: #0f172a; margin-top: 24px; margin-bottom: 10px;">
+                Not Every Factory Needs to Deploy All Tools Simultaneously
+            </h3>
+            <p style="margin-bottom: 8px;">For example:</p>
+            <ul class="lean-list">
+                <li>If workers waste time searching for tools, start with 5S and workstation ergonomics.</li>
+                <li>If WIP constantly bottlenecks, analyze flow balance and takt time.</li>
+                <li>If changeover takes hours, SMED is the priority.</li>
+                <li>If defects recur, perform root-cause analysis and institute mistake-proofing.</li>
+            </ul>
 
-                <!-- Group 3 -->
-                <div class="tool-column">
-                    <div class="tool-col-header">
-                        <div class="tool-col-icon" style="background: #fff7ed; color: #ea580c;"><i data-lucide="shield-alert"></i></div>
-                        <div>
-                            <h4>Quality &amp; Continuous Kaizen</h4>
-                            <span style="font-size: 11.5px; font-weight: 600; color: #64748b;">ZERO-DEFECT CULTURE</span>
-                        </div>
-                    </div>
-                    <div class="tool-item">
-                        <div class="tool-item-name">Error-Proofing (Poka-Yoke) <i data-lucide="check" style="width: 14px; color: #16a34a;"></i></div>
-                        <p class="tool-item-desc">Mechanical pins, sensors, and fixture interlocks that physically prevent operator errors.</p>
-                    </div>
-                    <div class="tool-item">
-                        <div class="tool-item-name">5 Whys &amp; Fishbone Analysis <i data-lucide="check" style="width: 14px; color: #16a34a;"></i></div>
-                        <p class="tool-item-desc">Structured root-cause analysis preventing issue recurrence rather than treating symptoms.</p>
-                    </div>
-                    <div class="tool-item">
-                        <div class="tool-item-name">Kaizen (Continuous Improvement) <i data-lucide="check" style="width: 14px; color: #16a34a;"></i></div>
-                        <p class="tool-item-desc">Daily team engagement producing incremental improvements that compound into massive gains.</p>
-                    </div>
-                </div>
+            <div style="background: #f8fafc; border-left: 4px solid #0284c7; padding: 14px 18px; margin-top: 16px; border-radius: 0 8px 8px 0;">
+                <p style="margin: 0; font-size: 15px; font-weight: 600; color: #0f172a; font-style: italic;">
+                    Never select a tool and search for where to apply it. Define the problem first, then choose the appropriate tool.
+                </p>
             </div>
         </section>
 
         <!-- SECTION 06 -->
         <section class="content-section" id="sec-06">
-            <h2 class="section-heading"><span class="num">06.</span> Case Study: How Lean Solves Real-World Production Challenges</h2>
+            <h2 class="section-heading"><span class="num">06.</span> A Case Example: Understanding Lean on the Shop Floor</h2>
             <p>
-                Consider a precision machining line consisting of 4 sequential operations: <strong>Machining &rarr; Finishing &rarr; Quality Inspection &rarr; Packaging</strong>.
+                Consider an illustrative scenario across a 4-step production line:
             </p>
 
-            <div class="case-comparison-grid">
-                <div class="case-box before">
-                    <h4><i data-lucide="x-circle"></i> Before Lean (Traditional Batch-and-Push):</h4>
-                    <ul>
-                        <li>Each station processed large batches of 1,000 units before transferring to the next step.</li>
-                        <li>WIP piled up between operations, obstructing walkways and consuming warehouse footprint.</li>
-                        <li>A dimensional defect occurring at Station 1 wasn't detected until Station 3, spoiling an entire 1,000-unit batch.</li>
-                        <li>Total Lead Time from raw billet to packed order stretched to <strong>5 full days</strong>.</li>
-                    </ul>
-                </div>
-
-                <div class="case-box after">
-                    <h4><i data-lucide="check-circle-2"></i> After Lean (Synchronized Flow &amp; Pull):</h4>
-                    <ul>
-                        <li>Machines reconfigured in a compact U-shaped cell, balanced to customer Takt Time.</li>
-                        <li>One-piece flow or small containers of 20 units dispatched on Kanban demand signals.</li>
-                        <li>Defects at Station 1 are flagged by Station 2 within 30 seconds, limiting scrap to just 1 part.</li>
-                        <li>Total Manufacturing Lead Time slashed from 5 days down to <strong>4 hours</strong>!</li>
-                    </ul>
-                </div>
+            <div class="flow-pill-banner">
+                <span>Machining</span>
+                <span class="flow-arrow">&rarr;</span>
+                <span>Finishing</span>
+                <span class="flow-arrow">&rarr;</span>
+                <span>Inspection</span>
+                <span class="flow-arrow">&rarr;</span>
+                <span>Packaging</span>
             </div>
-            <p style="font-size: 15px; color: #475569; font-style: italic;">
-                Bottom line: Throughput increased by 25%, floor space freed up by 40%, defect scrap rates fell by 80%, and working capital locked in WIP was released.
+
+            <p style="font-weight: 600; color: #0f172a; margin-bottom: 8px;">The factory faces three symptoms:</p>
+            <ul class="lean-list">
+                <li><strong>First:</strong> Excessive WIP accumulates ahead of the finishing stage.</li>
+                <li><strong>Second:</strong> Operators travel long distances to retrieve parts.</li>
+                <li><strong>Third:</strong> The packaging station frequently sits idle waiting for product.</li>
+            </ul>
+
+            <p>
+                Traditional management might push machining to increase output or add overtime workers at packaging.
+            </p>
+            <p>
+                Under a Lean perspective, the entire flow must be evaluated holistically.
+            </p>
+
+            <div class="case-box" style="margin-top: 18px; margin-bottom: 20px;">
+                <h4 style="margin-top: 0; margin-bottom: 12px; color: #0f172a; font-size: 16px; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+                    <i data-lucide="compass" style="color: #ea580c; width: 18px; height: 18px;"></i>
+                    The Lean Approach
+                </h4>
+                <ol style="margin: 0 0 0 20px; padding: 0; color: #334155; line-height: 1.7; font-size: 15px;">
+                    <li><strong>Observe:</strong> Why does WIP pile up before finishing while packaging starves?</li>
+                    <li><strong>Measure:</strong> What is the true capacity and cycle time of each operation?</li>
+                    <li><strong>Analyze:</strong> Which step is the pacemaker bottleneck? Does transit inflate lead time?</li>
+                    <li><strong>Improve:</strong> Rebalance stations, reconfigure layout, streamline replenishment, and cap WIP buffers.</li>
+                    <li><strong>Verify:</strong> Compare throughput time, WIP levels, line yield, and idle time before versus after.</li>
+                </ol>
+            </div>
+
+            <h3 style="font-size: 16.5px; font-weight: 700; color: #0f172a; margin-top: 20px; margin-bottom: 8px;">
+                What Makes the Difference?
+            </h3>
+            <p>
+                Traditional management often fixates on local machine efficiencies in isolation.
+            </p>
+            <p>
+                Lean focuses on elevating the velocity and throughput of the entire value stream.
+            </p>
+            <p>
+                An individual machine may run fewer idle hours, yet the entire plant delivers faster when overall flow is harmonized.
+            </p>
+            <p style="font-size: 13.5px; color: #64748b; font-style: italic; margin-top: 12px;">
+                This is a conceptual illustration of methodology, not data from a specific client project.
             </p>
         </section>
 
         <!-- SECTION 07 -->
         <section class="content-section" id="sec-07">
-            <h2 class="section-heading"><span class="num">07.</span> Measurable Business Benefits of Lean</h2>
+            <h2 class="section-heading"><span class="num">07.</span> What Benefits Does Lean Deliver?</h2>
             <p>
-                When implemented systematically, Lean delivers compounding improvements across 6 core operational dimensions:
+                When implemented soundly, Lean drives significant gains across manufacturing operations:
             </p>
 
-            <div class="benefits-grid">
+            <div class="benefits-grid" style="margin-top: 20px; margin-bottom: 20px;">
                 <div class="benefit-card">
                     <div class="benefit-card-top">
-                        <div class="benefit-icon"><i data-lucide="dollar-sign"></i></div>
-                        <div class="benefit-title">1. Manufacturing Cost Reduction</div>
+                        <div class="benefit-icon" style="background: #eff6ff; color: #2563eb;">
+                            <i data-lucide="trending-up" style="width: 18px; height: 18px;"></i>
+                        </div>
+                        <h4 class="benefit-title">Productivity</h4>
                     </div>
-                    <p class="benefit-desc">Significant savings in holding costs, scrap loss, unnecessary overtime, and raw material waste.</p>
+                    <p class="benefit-desc">
+                        Compresses waiting time, redundant motion, process imbalances, and non-value tasks.
+                    </p>
                 </div>
 
                 <div class="benefit-card">
                     <div class="benefit-card-top">
-                        <div class="benefit-icon"><i data-lucide="trending-up"></i></div>
-                        <div class="benefit-title">2. Higher Labor &amp; Line Productivity</div>
+                        <div class="benefit-icon" style="background: #f0fdf4; color: #16a34a;">
+                            <i data-lucide="award" style="width: 18px; height: 18px;"></i>
+                        </div>
+                        <h4 class="benefit-title">Quality</h4>
                     </div>
-                    <p class="benefit-desc">Eliminating idle time and line bottlenecks drives higher output from existing headcount and equipment.</p>
+                    <p class="benefit-desc">
+                        Catches anomalies early, standardizes operations, and prevents recurring defect patterns.
+                    </p>
                 </div>
 
                 <div class="benefit-card">
                     <div class="benefit-card-top">
-                        <div class="benefit-icon"><i data-lucide="check-circle-2"></i></div>
-                        <div class="benefit-title">3. Quality at the Source</div>
+                        <div class="benefit-icon" style="background: #fefce8; color: #ca8a04;">
+                            <i data-lucide="dollar-sign" style="width: 18px; height: 18px;"></i>
+                        </div>
+                        <h4 class="benefit-title">Cost</h4>
                     </div>
-                    <p class="benefit-desc">Halting defect propagation elevates First-Time-Right (FTR) yields and protects brand reputation.</p>
+                    <p class="benefit-desc">
+                        Reduces scrap, rework hours, inventory carrying costs, and operational losses.
+                    </p>
                 </div>
 
                 <div class="benefit-card">
                     <div class="benefit-card-top">
-                        <div class="benefit-icon"><i data-lucide="clock"></i></div>
-                        <div class="benefit-title">4. Drastic Lead Time Compression</div>
+                        <div class="benefit-icon" style="background: #faf5ff; color: #9333ea;">
+                            <i data-lucide="truck" style="width: 18px; height: 18px;"></i>
+                        </div>
+                        <h4 class="benefit-title">Delivery</h4>
                     </div>
-                    <p class="benefit-desc">Accelerating product flow enables faster response times and reliable On-Time Delivery (OTD).</p>
+                    <p class="benefit-desc">
+                        Shortens lead times and builds agile responsiveness to demand fluctuations.
+                    </p>
                 </div>
 
                 <div class="benefit-card">
                     <div class="benefit-card-top">
-                        <div class="benefit-icon"><i data-lucide="maximize-2"></i></div>
-                        <div class="benefit-title">5. Floor Space Optimization</div>
+                        <div class="benefit-icon" style="background: #fff7ed; color: #ea580c;">
+                            <i data-lucide="shield" style="width: 18px; height: 18px;"></i>
+                        </div>
+                        <h4 class="benefit-title">Safety &amp; Ergonomics</h4>
                     </div>
-                    <p class="benefit-desc">Freeing 30% - 50% of plant floor space provides capacity to expand lines without facility investment.</p>
+                    <p class="benefit-desc">
+                        Eliminates awkward postures, excessive searching, fatigue, and hazards.
+                    </p>
                 </div>
 
                 <div class="benefit-card">
                     <div class="benefit-card-top">
-                        <div class="benefit-icon"><i data-lucide="users"></i></div>
-                        <div class="benefit-title">6. Sustainable Improvement Culture</div>
+                        <div class="benefit-icon" style="background: #fdf2f8; color: #db2777;">
+                            <i data-lucide="users" style="width: 18px; height: 18px;"></i>
+                        </div>
+                        <h4 class="benefit-title">People Capability</h4>
                     </div>
-                    <p class="benefit-desc">Empowered teams actively spot operational waste and implement daily grassroots Kaizen solutions.</p>
+                    <p class="benefit-desc">
+                        Empowers shop-floor teams to spot issues, propose Kaizen, and build problem-solving skills.
+                    </p>
                 </div>
             </div>
+
+            <p style="font-size: 14.5px; color: #475569; margin-bottom: 8px;">
+                However, one should never assume Lean will automatically yield a fixed percentage gain across all factories.
+            </p>
+            <p style="font-size: 14.5px; color: #475569; font-weight: 600;">
+                Actual outcomes depend on problem prioritization, operational discipline, and leadership commitment.
+            </p>
         </section>
 
         <!-- SECTION 08 -->
         <section class="content-section" id="sec-08">
-            <h2 class="section-heading"><span class="num">08.</span> Three Common Lean Misconceptions</h2>
-            
-            <div class="misconception-grid">
+            <h2 class="section-heading"><span class="num">08.</span> Three Common Misconceptions About Lean</h2>
+
+            <div class="misconception-grid" style="margin-top: 20px;">
+                <!-- Misc 1 -->
                 <div class="misc-card">
                     <div class="misc-wrong">
-                        <div class="misc-wrong-label"><i data-lucide="x"></i> Misconception 1</div>
-                        <div class="misc-wrong-text">Lean is a tool for payroll and headcount reduction</div>
+                        <span class="misc-wrong-label">MISCONCEPTION 1</span>
+                        <div class="misc-wrong-text">Lean is Just 5S</div>
                     </div>
                     <div class="misc-right">
-                        <div class="misc-right-label"><i data-lucide="check"></i> Operating Reality</div>
-                        <div class="misc-right-text">Lean eliminates wasted motion and unproductive friction so people focus on value-creating, safe, and fulfilling work.</div>
+                        <span class="misc-right-label">REALITY</span>
+                        <div class="misc-right-text">
+                            <p style="margin: 0 0 8px 0;">5S is a valuable workplace tool, but only a small building block of Lean.</p>
+                            <p style="margin: 0 0 8px 0;">A spotless factory can still suffer massive inventories, delayed shipments, or unbalanced lines.</p>
+                            <p style="margin: 0; font-weight: 600; color: #065f46;">5S organizes the workplace; Lean optimizes the entire value creation system.</p>
+                        </div>
                     </div>
                 </div>
 
+                <!-- Misc 2 -->
                 <div class="misc-card">
                     <div class="misc-wrong">
-                        <div class="misc-wrong-label"><i data-lucide="x"></i> Misconception 2</div>
-                        <div class="misc-wrong-text">Lean is just 5S tidying and floor painting</div>
+                        <span class="misc-wrong-label">MISCONCEPTION 2</span>
+                        <div class="misc-wrong-text">Lean is Solely the Kaizen Department's Job</div>
                     </div>
                     <div class="misc-right">
-                        <div class="misc-right-label"><i data-lucide="check"></i> Operating Reality</div>
-                        <div class="misc-right-text">5S is merely the visual foundation. True Lean synchronizes end-to-end flow, pacing, and management routines.</div>
+                        <span class="misc-right-label">REALITY</span>
+                        <div class="misc-right-text">
+                            <p style="margin: 0 0 8px 0;">The Kaizen team guides methodology and facilitates projects.</p>
+                            <p style="margin: 0 0 8px 0;">Yet Lean endures only when frontline supervisors and operators solve daily problems as part of normal operations.</p>
+                            <p style="margin: 0; font-weight: 600; color: #065f46;">If improvement is decoupled from daily management, results quickly fade.</p>
+                        </div>
                     </div>
                 </div>
 
+                <!-- Misc 3 -->
                 <div class="misc-card">
                     <div class="misc-wrong">
-                        <div class="misc-wrong-label"><i data-lucide="x"></i> Misconception 3</div>
-                        <div class="misc-wrong-text">Lean only applies to massive automotive giants</div>
+                        <span class="misc-wrong-label">MISCONCEPTION 3</span>
+                        <div class="misc-wrong-text">Lean is a One-Time Project</div>
                     </div>
                     <div class="misc-right">
-                        <div class="misc-right-label"><i data-lucide="check"></i> Operating Reality</div>
-                        <div class="misc-right-text">The principles of flow, pull, and waste reduction yield immediate, substantial ROI for SMEs across all industries.</div>
+                        <span class="misc-right-label">REALITY</span>
+                        <div class="misc-right-text">
+                            <p style="margin: 0 0 8px 0;">Lean is not a project with a fixed finish line.</p>
+                            <p style="margin: 0 0 8px 0;">As customer requirements, product mixes, equipment, and scale evolve, systems must continually adapt.</p>
+                            <p style="margin: 0; font-weight: 600; color: #065f46;">Lean is an organizational habit of everyday learning and continuous improvement.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1669,76 +1836,151 @@
 
         <!-- SECTION 09 -->
         <section class="content-section" id="sec-09">
-            <h2 class="section-heading"><span class="num">09.</span> Where to Begin: 4 Essential Diagnostic Questions</h2>
+            <h2 class="section-heading"><span class="num">09.</span> To Begin with Lean, Answer Four Questions</h2>
             <p>
-                Plants embarking on their Lean journey do not need massive, disruptive overhauls. Select a pilot line and ask these four pragmatic questions:
+                For a plant taking its first steps, an elaborate corporate-wide training campaign is not required.
+            </p>
+            <p>
+                Leadership can start on a single line, a critical process, or a glaring operational bottleneck.
+            </p>
+            <p style="font-weight: 600; color: #0f172a; margin-top: 14px; margin-bottom: 14px;">
+                Ask:
             </p>
 
             <div class="questions-4col">
                 <div class="q-card">
                     <span class="q-badge">QUESTION 1</span>
-                    <h4>Where is your primary operational bottleneck?</h4>
-                    <p>Which process is slowest, dictates factory throughput, and causes all upstream/downstream lines to wait?</p>
+                    <h4 style="margin: 0 0 8px 0; font-size: 15px; color: #0f172a; font-weight: 700;">What value does the customer truly prioritize?</h4>
+                    <p style="margin: 0; font-size: 13.5px; color: #64748b; line-height: 1.5;">
+                        Quality, lead time, specs, or cost requirements?
+                    </p>
                 </div>
 
                 <div class="q-card">
                     <span class="q-badge">QUESTION 2</span>
-                    <h4>Where does WIP accumulate the most on the floor?</h4>
-                    <p>Where are batches stacking up? Is it due to pacing mismatch, machine breakdowns, or missing materials?</p>
+                    <h4 style="margin: 0 0 8px 0; font-size: 15px; color: #0f172a; font-weight: 700;">Where are operational resources currently wasted?</h4>
+                    <p style="margin: 0; font-size: 13.5px; color: #64748b; line-height: 1.5;">
+                        Waiting, motion, transport, inventory, defects, or capacity?
+                    </p>
                 </div>
 
                 <div class="q-card">
                     <span class="q-badge">QUESTION 3</span>
-                    <h4>Which recurring defects consume the most rework hours?</h4>
-                    <p>What errors occur repeatedly, and which mechanical mistake-proofing (Poka-Yoke) mechanism can permanently prevent them?</p>
+                    <h4 style="margin: 0 0 8px 0; font-size: 15px; color: #0f172a; font-weight: 700;">What root cause constrains current performance?</h4>
+                    <p style="margin: 0; font-size: 13.5px; color: #64748b; line-height: 1.5;">
+                        People, machinery, methods, materials, or management systems?
+                    </p>
                 </div>
 
                 <div class="q-card">
                     <span class="q-badge">QUESTION 4</span>
-                    <h4>What non-value motions drain operator productivity?</h4>
-                    <p>Are operators walking, bending, or searching for tools? How can the immediate workstation be reconfigured to save effort?</p>
+                    <h4 style="margin: 0 0 8px 0; font-size: 15px; color: #0f172a; font-weight: 700;">How will changes be implemented and sustained?</h4>
+                    <p style="margin: 0; font-size: 13.5px; color: #64748b; line-height: 1.5;">
+                        What changes, who owns them, how are they measured and standardized?
+                    </p>
                 </div>
             </div>
+
+            <p style="margin-top: 18px; font-size: 15px; color: #334155;">
+                These four questions transform Lean from abstract theory into actionable operational insight.
+            </p>
+            <p style="font-size: 15px; color: #334155;">
+                For comprehensive transformation, plants proceed with roadmap planning, pilot testing, metric tracking, and team capability building.
+            </p>
         </section>
 
-        <!-- SECTION 10: EXECUTIVE CONCLUSION -->
-        <section class="content-section" id="sec-10" style="margin-bottom: 20px;">
-            <h2 class="section-heading"><span class="num">10.</span> The Essence of Lean: Building a Superior Operating System</h2>
+        <!-- SECTION 10 -->
+        <section class="content-section" id="sec-10">
+            <h2 class="section-heading"><span class="num">10.</span> The Ultimate Essence of Lean: Building a Better Operating System</h2>
             <p>
-                Lean is never measured by the quantity of posters on walls or 5S audits completed. A truly successful Lean manufacturing plant is one where:
+                Ultimately, Lean is not measured by the number of 5S audit boards, Kaizen suggestion slips, or tool implementations.
+            </p>
+            <p style="font-weight: 600; color: #0f172a; margin-bottom: 8px;">
+                A genuinely Lean factory is an environment where:
+            </p>
+            <ul class="lean-list">
+                <li>Workflow and information move unimpeded.</li>
+                <li>Problems are exposed and solved swiftly.</li>
+                <li>Frontline staff understand standards and actively improve them.</li>
+                <li>Resources are deployed proportionally to genuine demand.</li>
+                <li>Improvements are codified into standards and continuously elevated.</li>
+            </ul>
+
+            <p>
+                Where managers once spent their days expediting, fire-fighting, and handling recurring crises, a well-designed operating system brings stability and proactive control.
+            </p>
+            <p style="font-weight: 600; color: #0f172a; margin-top: 14px;">
+                This is the exact convergence between Lean thinking and the INVAMAX philosophy:
             </p>
 
-            <div class="conclusion-banner">
-                <h3>&ldquo;Solid Foundations &ndash; Agile Operations&rdquo;</h3>
-                <p>
-                    Work flows with clear rhythm; abnormalities are detected early and solved at the root; performance data is transparent; and every team member takes pride in driving continuous improvement.
+            <div style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #ffffff; padding: 24px; border-radius: 12px; margin: 18px 0;">
+                <h3 style="color: #ea580c; font-size: 20px; font-weight: 800; margin-top: 0; margin-bottom: 10px;">
+                    Build Firm Foundations &ndash; Operate with Agility
+                </h3>
+                <p style="color: #e2e8f0; font-size: 15px; line-height: 1.6; margin-bottom: 8px;">
+                    <strong>Building firm foundations</strong> means establishing robust processes, clear standards, capable people, and systematic governance.
                 </p>
-
-                <div class="takeaway-pills">
-                    <div class="takeaway-pill">
-                        <i data-lucide="check-circle-2"></i>
-                        <span>Lean is a long-term management discipline</span>
-                    </div>
-                    <div class="takeaway-pill">
-                        <i data-lucide="users"></i>
-                        <span>Frontline operators are the heart of improvement</span>
-                    </div>
-                    <div class="takeaway-pill">
-                        <i data-lucide="workflow"></i>
-                        <span>Balanced flow trumps keeping machines busy</span>
-                    </div>
-                    <div class="takeaway-pill">
-                        <i data-lucide="search"></i>
-                        <span>Abnormalities are opportunities to standardize</span>
-                    </div>
-                    <div class="takeaway-pill">
-                        <i data-lucide="sparkles"></i>
-                        <span>Daily operational habit rather than an event</span>
-                    </div>
-                </div>
+                <p style="color: #e2e8f0; font-size: 15px; line-height: 1.6; margin-bottom: 12px;">
+                    <strong>Operating with agility</strong> means eliminating wasteful overhead, reducing reliance on manual chasing, and enabling effortless cross-functional synchronization.
+                </p>
+                <p style="color: #cbd5e1; font-size: 14.5px; line-height: 1.6; margin-bottom: 0; font-style: italic; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 10px;">
+                    Lean does not promise a factory free of problems. Lean equips a factory with the institutional capability to detect, solve, and prevent problems better every single day.
+                </p>
             </div>
         </section>
 
+        <!-- CONCLUSION -->
+        <section class="content-section" style="border-top: 1px solid #e2e8f0; padding-top: 28px;">
+            <h2 class="section-heading" style="color: #0f172a;">Conclusion: Understanding Lean Takes 10 Minutes, Practicing Lean is a Journey</h2>
+            <p style="font-weight: 600; color: #0f172a; margin-bottom: 8px;">
+                If you remember only five takeaways from this guide:
+            </p>
+            <ul class="lean-list">
+                <li>Lean begins with customer value, not with tools.</li>
+                <li>Waste comprises all activities consuming resources without generating necessary value.</li>
+                <li>Total value-stream flow efficiency matters far more than isolated workstation speed.</li>
+                <li>People and daily problem-solving capabilities form the bedrock of continuous improvement.</li>
+                <li>Lean is sustainable only when woven into the fabric of daily operational management.</li>
+            </ul>
+            <p style="font-size: 15.5px; color: #0f172a; font-weight: 600; margin-top: 14px;">
+                Understanding Lean is straightforward. The genuine challenge lies in shifting operational perspective and embedding Lean principles into every shop-floor routine.
+            </p>
+
+            <!-- INVAMAX CTA -->
+            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; margin-top: 24px;">
+                <h3 style="color: #ea580c; font-size: 18px; font-weight: 700; margin-top: 0; margin-bottom: 10px;">
+                    Begin Operational Transformation with INVAMAX
+                </h3>
+                <p style="color: #334155; font-size: 15px; line-height: 1.6; margin-bottom: 10px;">
+                    INVAMAX partners with manufacturing enterprises to assess operational health, expose hidden waste, harmonize flow, and architect sustainable management systems.
+                </p>
+                <p style="color: #334155; font-size: 15px; line-height: 1.6; margin-bottom: 14px;">
+                    Through Lean, Kaizen, and the proprietary INVAMAX FOS&trade; methodology, we help factories achieve tangible performance breakthroughs while cultivating enduring improvement capability.
+                </p>
+                <p style="color: #475569; font-size: 14.5px; margin-bottom: 16px;">
+                    Explore factory transformation solutions at <a href="../index.html" style="color: #0284c7; font-weight: 600; text-decoration: underline;">invamax.com</a>.
+                </p>
+                <button type="button" onclick="openContactModal('Consulting for Lean Manufacturing Implementation')" style="background: #ea580c; color: #ffffff; border: none; padding: 12px 24px; border-radius: 8px; font-size: 14.5px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                    <i data-lucide="send" style="width: 16px; height: 16px;"></i> Contact INVAMAX Experts
+                </button>
+            </div>
+
+            <!-- REFERENCES -->
+            <div style="margin-top: 32px; padding-top: 20px; border-top: 1px solid #e2e8f0;">
+                <h4 style="font-size: 15px; font-weight: 700; color: #475569; margin-top: 0; margin-bottom: 8px;">
+                    References
+                </h4>
+                <ul class="reference-list">
+                    <li>Lean Enterprise Institute &ndash; What Is Lean?</li>
+                    <li>Lean Enterprise Institute &ndash; The Five Steps of Lean Implementation</li>
+                    <li>Lean Enterprise Institute &ndash; Seven Wastes</li>
+                    <li>Toyota Motor Corporation &ndash; Toyota Production System</li>
+                    <li>James P. Womack &amp; Daniel T. Jones &ndash; Lean Thinking</li>
+                </ul>
+            </div>
+        </section>
+
+        </article>
     </main>
 
     <!-- FOOTER -->

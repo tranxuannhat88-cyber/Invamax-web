@@ -1000,6 +1000,84 @@
                 max-width: 100% !important;
             }
         }
+    
+        /* Table Styles for Lean Document */
+        .lean-table-wrap {
+            overflow-x: auto;
+            margin: 20px 0 24px 0;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+            background: #ffffff;
+        }
+        .lean-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14.5px;
+            text-align: left;
+        }
+        .lean-table th {
+            background: #f8fafc;
+            color: #0f172a;
+            font-weight: 700;
+            padding: 12px 18px;
+            border-bottom: 2px solid #e2e8f0;
+            font-size: 14px;
+        }
+        .lean-table td {
+            padding: 12px 18px;
+            border-bottom: 1px solid #f1f5f9;
+            color: #334155;
+            line-height: 1.5;
+        }
+        .lean-table tr:last-child td {
+            border-bottom: none;
+        }
+        .lean-table tr:hover td {
+            background: #fdfdfd;
+        }
+        .flow-pill-banner {
+            background: #fff7ed;
+            border: 1px solid #fed7aa;
+            border-radius: 10px;
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-weight: 700;
+            color: #c2410c;
+            font-size: 15px;
+            margin: 18px 0;
+            flex-wrap: wrap;
+        }
+        .lean-list {
+            margin: 12px 0 16px 20px;
+            padding: 0;
+            color: #334155;
+            line-height: 1.6;
+            font-size: 15.5px;
+        }
+        .lean-list li {
+            margin-bottom: 8px;
+        }
+        .reference-list {
+            list-style: none;
+            padding: 0;
+            margin: 12px 0 0 0;
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.7;
+        }
+        .reference-list li::before {
+            content: "•";
+            color: #ea580c;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
     </style>
 </head>
 <body>
@@ -1051,29 +1129,32 @@
     </div>
 
     <!-- MAIN ARTICLE DOCUMENT (EXPANDED TO 1200PX) -->
-    <main class="article-main-card" id="leanArticleDocument">
+        <!-- MAIN ARTICLE DOCUMENT (EXPANDED TO 1200PX) -->
+    <main class="article-container">
+        <article class="article-main-card">
 
-        <!-- HEADER SECTION -->
+        <!-- HEADER -->
         <header class="article-header-grid">
             <div class="article-header-left">
                 <span class="poster-tag">LEAN &amp; CẢI TIẾN</span>
                 <h1 class="article-title">Hiểu về Lean Manufacturing trong 10 phút</h1>
                 <p class="article-subtitle">
-                    &ldquo;Lean không chỉ là loại bỏ lãng phí. Đó là một phương pháp tư duy và tổ chức vận hành giúp nhà máy tạo ra nhiều giá trị hơn với ít nguồn lực hơn.&rdquo;
+                    “Lean không chỉ là loại bỏ lãng phí. Đó là một phương pháp tư duy và tổ chức vận hành giúp nhà máy tạo ra nhiều giá trị hơn với ít nguồn lực hơn.”
                 </p>
+
                 <div class="article-meta-row">
-                    <div class="article-meta-item">
-                        <i data-lucide="clock" style="width: 15px; height: 15px; color: #ea580c;"></i>
-                        <span>Thời gian đọc: <strong>Khoảng 10 phút</strong></span>
-                    </div>
-                    <div class="article-meta-item">
-                        <i data-lucide="bookmark" style="width: 15px; height: 15px; color: #0284c7;"></i>
-                        <span>Chuyên mục: <strong>Lean &amp; Cải tiến</strong></span>
-                    </div>
-                    <div class="article-meta-item">
-                        <i data-lucide="award" style="width: 15px; height: 15px; color: #16a34a;"></i>
-                        <span>Bởi: <strong>Chuyên gia INVAMAX</strong></span>
-                    </div>
+                    <span class="article-meta-item">
+                        <i data-lucide="clock" style="width: 14px; height: 14px;"></i> Thời gian đọc: <strong>Khoảng 10 phút</strong>
+                    </span>
+                    <span class="article-meta-item">
+                        <i data-lucide="bookmark" style="width: 14px; height: 14px;"></i> Chuyên mục: <strong>Lean &amp; Cải tiến</strong>
+                    </span>
+                </div>
+
+                <div class="article-meta-row" style="margin-top: 10px;">
+                    <span class="article-meta-item" style="color: #059669; font-weight: 600;">
+                        <i data-lucide="user-check" style="width: 14px; height: 14px;"></i> Bởi: Chuyên gia INVAMAX
+                    </span>
                 </div>
             </div>
             <div class="article-header-right">
@@ -1083,102 +1164,109 @@
             </div>
         </header>
 
-        <!-- LEAD INTRO: BẬN RỘN CHƯA CHẮC LÀ HIỆU QUẢ -->
+        <!-- LEAD BOX -->
         <div class="article-lead-box">
-            <h3>
-                <i data-lucide="alert-triangle" style="width: 22px; height: 22px; color: #ea580c;"></i>
+            <h3 style="font-size: 18px; font-weight: 700; color: #0f172a; margin-top: 0; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                <i data-lucide="alert-circle" style="color: #ea580c; width: 20px; height: 20px;"></i>
                 Một nhà máy bận rộn chưa chắc là một nhà máy hiệu quả
             </h3>
-            <p>
-                Hãy tưởng tượng một nhà máy với những hình ảnh tưởng chừng như rất sôi nổi và năng động:
+            <p style="margin-bottom: 10px; font-size: 15px; color: #334155;">
+                Hãy tưởng tượng một nhà máy với những hình ảnh quen thuộc:
             </p>
-            
-            <div class="lead-grid">
-                <div class="lead-column">
-                    <h4 style="color: #dc2626;"><i data-lucide="eye" style="width: 15px; height: 15px; vertical-align: middle; margin-right: 4px;"></i> 5 Hình ảnh quen thuộc bên ngoài:</h4>
-                    <ul>
-                        <li>Công nhân liên tục đi lại để lấy nguyên vật liệu và đồ nghề.</li>
-                        <li>Máy móc chạy hết công suất nhưng bán thành phẩm (WIP) vẫn chất đống.</li>
-                        <li>Bộ phận sản xuất tăng ca liên tục trong khi đơn hàng vẫn chậm trễ.</li>
-                        <li>Nhân viên kiểm tra chất lượng (QC) phải xử lý khối lượng lớn sản phẩm lỗi.</li>
-                        <li>Quản lý dành phần lớn thời gian đôn đốc, điều phối và xử lý sự cố khẩn cấp.</li>
-                    </ul>
-                </div>
-                <div class="lead-column" style="background: #f0fdf4; border-color: #bbf7d0;">
-                    <h4 style="color: #15803d;"><i data-lucide="help-circle" style="width: 15px; height: 15px; vertical-align: middle; margin-right: 4px;"></i> Câu hỏi cốt lõi của Lean:</h4>
-                    <p style="font-size: 14px; color: #166534; margin-bottom: 10px;">
-                        Nhìn bề ngoài, tất cả mọi người đều đang bận rộn. Nhưng <strong>liệu tất cả những hoạt động đó có thực sự tạo ra giá trị mà khách hàng sẵn sàng trả tiền?</strong>
-                    </p>
-                    <p style="font-size: 13.5px; color: #166534; margin: 0; line-height: 1.5;">
-                        Lean giúp doanh nghiệp phân biệt hoạt động tạo giá trị, hoạt động cần thiết và lãng phí cần loại bỏ. Mục tiêu là <strong>thiết kế một hệ thống giúp công việc diễn ra thuận lợi, ít lãng phí và hiệu quả hơn</strong>.
-                    </p>
-                </div>
-            </div>
+            <ul class="lean-list" style="margin-top: 6px; margin-bottom: 16px;">
+                <li>Công nhân liên tục đi lại để lấy nguyên vật liệu.</li>
+                <li>Máy móc chạy hết công suất nhưng bán thành phẩm vẫn chất đống.</li>
+                <li>Bộ phận sản xuất tăng ca trong khi đơn hàng vẫn chậm.</li>
+                <li>Nhân viên kiểm tra chất lượng phải xử lý nhiều sản phẩm lỗi.</li>
+                <li>Quản lý dành phần lớn thời gian để đôn đốc, điều phối và giải quyết sự cố.</li>
+            </ul>
+            <p style="font-size: 15px; color: #334155; margin-bottom: 10px;">
+                Nhìn bên ngoài, mọi người đều bận rộn. Nhưng liệu tất cả những hoạt động đó có thực sự tạo ra giá trị?
+            </p>
+            <p style="font-size: 15px; color: #334155; margin-bottom: 10px;">
+                Đây chính là câu hỏi đầu tiên của Lean Manufacturing.
+            </p>
+            <p style="font-size: 15px; color: #334155; margin-bottom: 10px;">
+                Lean giúp doanh nghiệp nhìn lại toàn bộ quá trình vận hành để phân biệt đâu là hoạt động tạo ra giá trị, đâu là hoạt động cần thiết và đâu là lãng phí có thể loại bỏ.
+            </p>
+            <p style="font-size: 15px; color: #0f172a; font-weight: 600; margin-bottom: 0;">
+                Mục tiêu không phải là khiến con người làm việc vất vả hơn, mà là thiết kế một hệ thống giúp công việc diễn ra thuận lợi, ít lãng phí và hiệu quả hơn.
+            </p>
         </div>
 
         <!-- SECTION 01 -->
         <section class="content-section" id="sec-01">
             <h2 class="section-heading"><span class="num">01.</span> Lean Manufacturing là gì?</h2>
             <p>
-                <strong>Lean Manufacturing (Sản xuất tinh gọn)</strong> là phương pháp quản trị sản xuất tập trung vào việc tạo ra giá trị tối đa cho khách hàng bằng cách liên tục loại bỏ lãng phí, cải thiện dòng chảy và nâng cao năng lực của con người cùng hệ thống vận hành.
+                Lean Manufacturing (Sản xuất tinh gọn) là phương pháp quản trị sản xuất tập trung vào việc tạo ra giá trị cho khách hàng bằng cách liên tục loại bỏ lãng phí, cải thiện dòng chảy và nâng cao năng lực của con người cùng hệ thống vận hành.
             </p>
 
+            <p style="margin-bottom: 8px;">Nói đơn giản:</p>
             <div class="formula-box">
                 <div class="formula-item">
-                    <i data-lucide="sparkles" style="color: #38bdf8;"></i>
-                    <span>TỐI ĐA HÓA GIÁ TRỊ KHÁCH HÀNG</span>
-                </div>
-                <div class="formula-sign">+</div>
-                <div class="formula-item">
-                    <i data-lucide="trash-2" style="color: #f87171;"></i>
-                    <span>TRIỆT TIÊU LÃNG PHÍ TRONG DÒNG CHẢY</span>
-                </div>
-                <div class="formula-sign">=</div>
-                <div class="formula-result">
-                    LEAN MANUFACTURING
+                    <span class="formula-result">Lean</span>
+                    <span class="formula-sign">=</span>
+                    <span class="formula-item" style="color: #0284c7; font-weight: 700;">Tối đa hóa giá trị cho khách hàng</span>
+                    <span class="formula-sign">+</span>
+                    <span class="formula-item" style="color: #ea580c; font-weight: 700;">Giảm thiểu lãng phí trong quá trình tạo ra giá trị</span>
                 </div>
             </div>
 
             <p>
-                Lean có nguồn gốc quan trọng từ <strong>Hệ thống sản xuất Toyota &ndash; Toyota Production System (TPS)</strong>, sau đó được nghiên cứu, hệ thống hóa và phổ biến rộng rãi trên toàn cầu trong nhiều ngành sản xuất và dịch vụ.
+                Lean có nguồn gốc quan trọng từ Hệ thống sản xuất Toyota &ndash; Toyota Production System (TPS), sau đó được nghiên cứu, hệ thống hóa và phổ biến rộng rãi trong nhiều ngành.
             </p>
 
-            <h3 class="sub-heading">Hai trụ cột nền tảng của Hệ thống TPS:</h3>
+            <p style="font-weight: 600; color: #0f172a; margin-top: 18px; margin-bottom: 10px;">
+                Toyota phát triển TPS dựa trên hai trụ cột nổi bật:
+            </p>
+
             <div class="cards-2col">
                 <div class="pillar-card">
                     <div class="pillar-card-header">
-                        <div class="pillar-icon"><i data-lucide="clock"></i></div>
-                        <div>
-                            <h4>Just-in-Time (Đúng thời điểm)</h4>
-                            <span style="font-size: 12px; font-weight: 700; color: #0284c7;">DÒNG CHẢY VÀ TIẾN ĐỘ</span>
+                        <div class="pillar-icon">
+                            <i data-lucide="zap" style="width: 20px; height: 20px;"></i>
                         </div>
+                        <h4 style="margin: 0; font-size: 16px; color: #0f172a; font-weight: 700;">Just-in-Time (Đúng thời điểm)</h4>
                     </div>
-                    <p>
-                        Chỉ sản xuất và cung cấp đúng những gì cần thiết, với số lượng cần thiết, vào thời điểm cần thiết. Tránh sản xuất quá sớm, quá nhiều hoặc trữ tồn kho vượt nhu cầu thực tế.
+                    <p style="margin: 0; font-size: 14.5px; color: #475569; line-height: 1.55;">
+                        Chỉ sản xuất và cung cấp những gì cần thiết, với số lượng cần thiết, vào thời điểm cần thiết.
                     </p>
                 </div>
+
                 <div class="pillar-card">
                     <div class="pillar-card-header">
-                        <div class="pillar-icon" style="background: #fef2f2; color: #dc2626;"><i data-lucide="shield-check"></i></div>
-                        <div>
-                            <h4>Jidoka (Chất lượng tại nguồn)</h4>
-                            <span style="font-size: 12px; font-weight: 700; color: #dc2626;">TỰ ĐỘNG DỪNG KHI CÓ LỖI</span>
+                        <div class="pillar-icon">
+                            <i data-lucide="shield-check" style="width: 20px; height: 20px;"></i>
                         </div>
+                        <h4 style="margin: 0; font-size: 16px; color: #0f172a; font-weight: 700;">Jidoka (Chất lượng tại nguồn)</h4>
                     </div>
-                    <p>
-                        Thiết kế quá trình có khả năng tự phát hiện bất thường, dừng máy hoặc cảnh báo ngay lập tức để ngăn lỗi tiếp diễn, cho phép con người can thiệp xử lý dứt điểm nguyên nhân gốc rễ.
+                    <p style="margin: 0; font-size: 14.5px; color: #475569; line-height: 1.55;">
+                        Thiết kế quá trình có khả năng phát hiện bất thường, ngăn lỗi tiếp diễn và cho phép con người can thiệp để xử lý vấn đề.
                     </p>
                 </div>
             </div>
 
+            <p style="margin-top: 18px;">
+                Hai tư tưởng này giúp hệ thống sản xuất hướng tới dòng chảy ổn định, hạn chế tồn kho và không để lỗi chất lượng tiếp tục lan sang các công đoạn sau.
+            </p>
             <p>
-                Hai tư tưởng này giúp hệ thống sản xuất hướng tới dòng chảy ổn định, hạn chế tồn kho và không để lỗi chất lượng tiếp tục lan sang các công đoạn sau. Ngày nay, Lean không chỉ áp dụng trong sản xuất ô tô mà còn trong cơ khí, điện tử, thực phẩm, dệt may, bao bì, logistics và dược phẩm.
+                Ngày nay, Lean không chỉ được áp dụng trong sản xuất ô tô mà còn hiện diện trong cơ khí, điện tử, thực phẩm, may mặc, logistics, dịch vụ và nhiều lĩnh vực khác.
             </p>
 
-            <div class="callout-box">
-                <h4><i data-lucide="info"></i> Lưu ý quan trọng: Lean không đồng nghĩa với cắt giảm nhân sự</h4>
-                <p>
-                    Đây là một hiểu nhầm rất phổ biến. Nếu chỉ sa thải nhân sự mà không thay đổi quy trình, khối lượng công việc còn lại sẽ gây quá tải, làm tăng sai lỗi và suy giảm chất lượng. Lean bắt đầu bằng việc <strong>loại bỏ những thao tác và công việc thừa</strong>, cải thiện dòng chảy và cách phối hợp; sau đó mới tổ chức lại nguồn lực cho phù hợp. Một hệ thống Lean tốt phải giúp người lao động làm việc nhẹ nhàng, an toàn và chủ động hơn.
+            <div class="callout-box" style="margin-top: 22px;">
+                <h4 style="margin-top: 0; margin-bottom: 8px; color: #9a3412; font-size: 16px; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+                    <i data-lucide="alert-triangle" style="width: 18px; height: 18px;"></i>
+                    Lean không đồng nghĩa với cắt giảm nhân sự
+                </h4>
+                <p style="margin-bottom: 8px;">Đây là một hiểu nhầm phổ biến.</p>
+                <p style="margin-bottom: 8px;">
+                    Nếu chỉ cắt giảm nhân sự mà không thay đổi quy trình, khối lượng công việc còn lại có thể gây quá tải, tăng sai lỗi và giảm năng lực sản xuất.
+                </p>
+                <p style="margin-bottom: 8px;">
+                    Lean bắt đầu bằng việc loại bỏ những công việc không cần thiết, cải thiện thao tác, dòng chảy và cách phối hợp; sau đó mới tổ chức lại nguồn lực cho phù hợp.
+                </p>
+                <p style="margin-bottom: 0; font-weight: 600; color: #9a3412;">
+                    Một hệ thống Lean tốt phải giúp người lao động làm việc hiệu quả, an toàn và chủ động hơn.
                 </p>
             </div>
         </section>
@@ -1187,88 +1275,104 @@
         <section class="content-section" id="sec-02">
             <h2 class="section-heading"><span class="num">02.</span> Nguyên lý quan trọng nhất: Hiểu đúng về giá trị</h2>
             <p>
-                Trong Lean, <strong>giá trị (Value)</strong> luôn được định nghĩa từ góc nhìn của khách hàng: Sản phẩm đáp ứng yêu cầu về chất lượng, tính năng, số lượng, giá cả và thời gian giao hàng.
+                Trong Lean, giá trị (Value) được xác định từ góc nhìn của khách hàng.
             </p>
             <p>
-                Một hoạt động được coi là tạo giá trị khi nó <strong>trực tiếp biến đổi sản phẩm</strong> theo mong muốn của khách hàng và được thực hiện đúng ngay từ đầu. Hãy xem ba loại hoạt động trong nhà máy:
+                Khách hàng cần sản phẩm đáp ứng yêu cầu về chất lượng, tính năng, số lượng, giá cả và thời gian giao hàng.
+            </p>
+            <p>
+                Một hoạt động thường được coi là tạo giá trị khi nó trực tiếp biến đổi sản phẩm theo cách khách hàng mong muốn và được thực hiện đúng ngay từ đầu.
+            </p>
+            <p style="font-weight: 600; color: #0f172a; margin-top: 14px;">
+                Hãy xem ba loại hoạt động trong nhà máy:
             </p>
 
-            <div class="activity-3col">
-                <div class="act-card va">
-                    <span class="act-badge"><i data-lucide="check-circle" style="width: 14px; height: 14px;"></i> Nhóm 1</span>
-                    <h4 class="act-title">Tạo giá trị (VA - Value Added)</h4>
-                    <p class="act-desc">
-                        Những hoạt động trực tiếp gia công, chế tạo, lắp ráp hoặc đóng gói hoàn thiện sản phẩm theo đơn đặt hàng của khách hàng.
-                    </p>
-                    <div class="act-action">&rarr; Hướng tiếp cận: Tối ưu hóa hiệu suất và chất lượng.</div>
-                </div>
-
-                <div class="act-card nnva">
-                    <span class="act-badge"><i data-lucide="alert-circle" style="width: 14px; height: 14px;"></i> Nhóm 2</span>
-                    <h4 class="act-title">Không tạo giá trị nhưng cần thiết (NNVA)</h4>
-                    <p class="act-desc">
-                        Hoạt động kiểm tra an toàn bắt buộc, lập biên bản giao nhận, set-up máy móc theo quy trình kỹ thuật hiện hành.
-                    </p>
-                    <div class="act-action">&rarr; Hướng tiếp cận: Đơn giản hóa và rút ngắn thời gian thực hiện.</div>
-                </div>
-
-                <div class="act-card nva">
-                    <span class="act-badge"><i data-lucide="x-circle" style="width: 14px; height: 14px;"></i> Nhóm 3</span>
-                    <h4 class="act-title">Lãng phí thuần túy (NVA - Waste)</h4>
-                    <p class="act-desc">
-                        Chờ đợi nguyên liệu, tìm kiếm dụng cụ, di chuyển vật tư lòng vòng, sửa chữa chi tiết lỗi, tồn kho trung gian ùn tắc.
-                    </p>
-                    <div class="act-action">&rarr; Hướng tiếp cận: Tìm mọi cách loại bỏ triệt để.</div>
-                </div>
+            <div class="lean-table-wrap">
+                <table class="lean-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;">Loại hoạt động</th>
+                            <th style="width: 50%;">Ví dụ</th>
+                            <th style="width: 25%;">Cách tiếp cận</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong style="color: #059669;">Tạo giá trị (VA)</strong></td>
+                            <td>Gia công, lắp ráp hoặc hoàn thiện sản phẩm theo yêu cầu</td>
+                            <td><span style="background: #ecfdf5; color: #059669; padding: 4px 10px; border-radius: 6px; font-weight: 600; font-size: 13px;">Tối ưu hiệu quả</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: #0284c7;">Không tạo giá trị nhưng cần thiết (NNVA)</strong></td>
+                            <td>Một số hoạt động kiểm tra, ghi nhận bắt buộc, chuẩn bị theo yêu cầu hiện tại</td>
+                            <td><span style="background: #f0f9ff; color: #0284c7; padding: 4px 10px; border-radius: 6px; font-weight: 600; font-size: 13px;">Đơn giản hóa, giảm thời gian</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: #dc2626;">Lãng phí (NVA)</strong></td>
+                            <td>Chờ đợi, tìm dụng cụ, vận chuyển vòng vèo, làm lại sản phẩm lỗi</td>
+                            <td><span style="background: #fef2f2; color: #dc2626; padding: 4px 10px; border-radius: 6px; font-weight: 600; font-size: 13px;">Tìm cách loại bỏ</span></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
-            <!-- VISUAL CYCLE TIME BREAKDOWN -->
+            <!-- Cycle Time Case -->
             <div class="cycle-time-box">
                 <div class="cycle-time-header">
-                    <h4><i data-lucide="bar-chart-2" style="width: 18px; height: 18px; vertical-align: middle; color: #0284c7; margin-right: 6px;"></i> Ví dụ phân rã chu kỳ 60 giây của một công nhân:</h4>
-                    <span style="font-size: 13px; font-weight: 700; color: #16a34a; background: #dcfce7; padding: 4px 10px; border-radius: 6px;">Giá trị thực: Chỉ 35s (58%)</span>
+                    <div>
+                        <h4 style="margin: 0; font-size: 16px; font-weight: 700; color: #0f172a;">Ví dụ minh họa:</h4>
+                        <p style="margin: 4px 0 0; font-size: 14px; color: #64748b;">
+                            Một công nhân mất 60 giây để hoàn thành một sản phẩm, gồm:
+                        </p>
+                    </div>
+                    <span style="background: #0f172a; color: #ffffff; padding: 4px 12px; border-radius: 20px; font-size: 13px; font-weight: 700;">Tổng: 60s</span>
                 </div>
-                
+
+                <ul class="lean-list" style="margin-bottom: 16px; font-size: 14.5px;">
+                    <li><strong>35 giây</strong> thực hiện thao tác gia công.</li>
+                    <li><strong>10 giây</strong> đi lấy vật tư.</li>
+                    <li><strong>8 giây</strong> chờ máy hoặc công đoạn trước.</li>
+                    <li><strong>7 giây</strong> sắp xếp, xử lý những thao tác phụ.</li>
+                </ul>
+
+                <!-- Visual Bar -->
                 <div class="cycle-bar-container">
-                    <div class="cycle-seg-1">Gia công: 35s (58%)</div>
-                    <div class="cycle-seg-2">Lấy vật tư: 10s (17%)</div>
-                    <div class="cycle-seg-3">Chờ máy: 8s (13%)</div>
-                    <div class="cycle-seg-4">Thao tác phụ: 7s</div>
+                    <div class="cycle-seg-1" style="width: 58.3%;" title="35s - Gia công (VA)">35s Gia công (58.3%)</div>
+                    <div class="cycle-seg-2" style="width: 16.7%;" title="10s - Lấy vật tư">10s Vật tư</div>
+                    <div class="cycle-seg-3" style="width: 13.3%;" title="8s - Chờ máy">8s Chờ</div>
+                    <div class="cycle-seg-4" style="width: 11.7%;" title="7s - Thao tác phụ">7s Phụ</div>
                 </div>
 
                 <div class="cycle-legend">
-                    <div class="cycle-legend-item">
-                        <span class="cycle-dot" style="background: #16a34a;"></span>
-                        <span><strong>35s Tạo giá trị trực tiếp (VA):</strong> Gia công chi tiết</span>
-                    </div>
-                    <div class="cycle-legend-item">
-                        <span class="cycle-dot" style="background: #f97316;"></span>
-                        <span><strong>10s Lãng phí di chuyển:</strong> Đi lấy vật liệu xa bàn</span>
-                    </div>
-                    <div class="cycle-legend-item">
-                        <span class="cycle-dot" style="background: #ef4444;"></span>
-                        <span><strong>8s Lãng phí chờ đợi:</strong> Chờ máy hoặc công đoạn trước</span>
-                    </div>
-                    <div class="cycle-legend-item">
-                        <span class="cycle-dot" style="background: #64748b;"></span>
-                        <span><strong>7s Thao tác phụ:</strong> Sắp xếp, gá đặt chưa tối ưu</span>
-                    </div>
+                    <div class="cycle-legend-item"><span class="cycle-dot" style="background: #059669;"></span> 35s Gia công (Tạo giá trị)</div>
+                    <div class="cycle-legend-item"><span class="cycle-dot" style="background: #f59e0b;"></span> 10s Đi lấy vật tư (Lãng phí di chuyển)</div>
+                    <div class="cycle-legend-item"><span class="cycle-dot" style="background: #ef4444;"></span> 8s Chờ máy / chờ công đoạn (Lãng phí chờ đợi)</div>
+                    <div class="cycle-legend-item"><span class="cycle-dot" style="background: #94a3b8;"></span> 7s Sắp xếp, phụ trợ (Cần thiết nhưng không tạo giá trị)</div>
                 </div>
+
+                <p style="margin-top: 14px; font-size: 14.5px; color: #334155; margin-bottom: 8px;">
+                    Trong ví dụ này, thời gian gia công trực tiếp chỉ chiếm 35/60 giây.
+                </p>
+                <p style="font-size: 14.5px; color: #334155; margin-bottom: 0;">
+                    Thay vì yêu cầu công nhân gia công nhanh hơn, nhà máy có thể cải tiến vị trí vật tư, phối hợp thiết bị và trình tự thao tác.
+                </p>
             </div>
 
-            <p style="font-weight: 600; color: #0f172a; font-size: 16px; margin-top: 14px;">
-                Thay vì hối thúc công nhân phải gia công nhanh hơn, Lean tập trung cải tiến vị trí khay chứa vật tư, đồng bộ nhịp máy và chuẩn hóa thao tác.
-            </p>
-            <p style="color: #c2410c; font-style: italic; font-weight: 700; font-size: 16px;">
-                &ldquo;Lean không bắt đầu từ câu hỏi: 'Làm thế nào để công nhân làm nhanh hơn?', mà từ câu hỏi: 'Làm thế nào để loại bỏ những việc không cần thiết?'.&rdquo;
-            </p>
+            <div style="background: #f8fafc; border-left: 4px solid #ea580c; padding: 14px 18px; margin-top: 18px; border-radius: 0 8px 8px 0;">
+                <p style="margin: 0; font-size: 15px; font-weight: 600; color: #1e293b; font-style: italic;">
+                    Lean không bắt đầu từ câu hỏi “Làm thế nào để công nhân nhanh hơn?”, mà từ câu hỏi “Làm thế nào để loại bỏ những công việc không cần thiết?”.
+                </p>
+            </div>
         </section>
 
         <!-- SECTION 03 -->
         <section class="content-section" id="sec-03">
-            <h2 class="section-heading"><span class="num">03.</span> Năm nguyên lý cốt lõi của Lean (Womack &amp; Jones)</h2>
+            <h2 class="section-heading"><span class="num">03.</span> Năm nguyên lý cốt lõi của Lean</h2>
             <p>
-                Trong tác phẩm kinh điển <em>Lean Thinking</em>, hai chuyên gia James P. Womack và Daniel T. Jones đã đúc kết tư duy Lean thành 5 nguyên lý nền tảng:
+                James P. Womack và Daniel T. Jones đã hệ thống hóa tư duy Lean thành năm nguyên lý trong cuốn sách <em>Lean Thinking</em>.
+            </p>
+            <p>
+                Đây là năm nguyên lý nền tảng, không nên nhầm với năm bước tổ chức một dự án triển khai Lean cụ thể.
             </p>
 
             <div class="principles-stepper">
@@ -1276,12 +1380,12 @@
                     <div class="step-header">
                         <div class="step-num">1</div>
                         <div class="step-title-group">
-                            <div class="step-title">Xác định Giá trị</div>
+                            <div class="step-title">Value – Xác định giá trị</div>
                             <div class="step-sub">Value</div>
                         </div>
                     </div>
                     <p class="step-desc">
-                        Hiểu rõ khách hàng thực sự cần gì, chấp nhận chi trả cho thuộc tính nào của sản phẩm. Mọi việc không tạo ra giá trị này đều là đối tượng cần xem xét.
+                        Hiểu rõ khách hàng thực sự cần gì và sẵn sàng trả tiền cho điều gì. Mọi hoạt động không đóng góp vào việc tạo ra giá trị cần được xem xét lại.
                     </p>
                 </div>
 
@@ -1289,12 +1393,12 @@
                     <div class="step-header">
                         <div class="step-num">2</div>
                         <div class="step-title-group">
-                            <div class="step-title">Nhận diện Dòng giá trị</div>
+                            <div class="step-title">Value Stream – Nhận diện dòng giá trị</div>
                             <div class="step-sub">Value Stream</div>
                         </div>
                     </div>
                     <p class="step-desc">
-                        Vẽ lại toàn bộ chuỗi mắt xích từ đặt hàng, nguyên liệu, sản xuất đến bàn giao để phát hiện điểm nghẽn, thời gian chờ và tồn đọng.
+                        Xem xét toàn bộ chuỗi hoạt động từ tiếp nhận nhu cầu, chuẩn bị nguyên vật liệu, sản xuất đến giao hàng. Mục tiêu là nhận diện nơi phát sinh thời gian chờ, vận chuyển, tồn kho, thao tác thừa và các hoạt động không cần thiết.
                     </p>
                 </div>
 
@@ -1302,12 +1406,12 @@
                     <div class="step-header">
                         <div class="step-num">3</div>
                         <div class="step-title-group">
-                            <div class="step-title">Tạo Dòng chảy</div>
+                            <div class="step-title">Flow – Tạo dòng chảy liên tục</div>
                             <div class="step-sub">Flow</div>
                         </div>
                     </div>
                     <p class="step-desc">
-                        Bố trí máy móc và công đoạn liên tục, không bị đứt đoạn hay ách tắc; bán thành phẩm di chuyển mượt mà từng sản phẩm một.
+                        Tổ chức công việc để nguyên vật liệu, sản phẩm và thông tin di chuyển thuận lợi giữa các công đoạn. Giảm tình trạng ùn tắc, gián đoạn và bán thành phẩm tồn đọng.
                     </p>
                 </div>
 
@@ -1315,12 +1419,12 @@
                     <div class="step-header">
                         <div class="step-num">4</div>
                         <div class="step-title-group">
-                            <div class="step-title">Sản xuất Kéo</div>
+                            <div class="step-title">Pull – Sản xuất theo nhu cầu</div>
                             <div class="step-sub">Pull</div>
                         </div>
                     </div>
                     <p class="step-desc">
-                        Chỉ sản xuất khi có tín hiệu nhu cầu thực tế từ công đoạn sau hoặc đơn hàng khách, không đẩy hàng loạt gây ngập kho.
+                        Công đoạn trước cung cấp theo nhu cầu thực tế của công đoạn sau, thay vì sản xuất quá nhiều chỉ để giữ cho máy luôn bận rộn. Điều này giúp kiểm soát tồn kho và hạn chế sản xuất thừa.
                     </p>
                 </div>
 
@@ -1328,340 +1432,403 @@
                     <div class="step-header">
                         <div class="step-num">5</div>
                         <div class="step-title-group">
-                            <div class="step-title">Liên tục Hoàn thiện</div>
+                            <div class="step-title">Perfection – Liên tục hoàn thiện</div>
                             <div class="step-sub">Perfection</div>
                         </div>
                     </div>
                     <p class="step-desc">
-                        Không có hệ thống nào hoàn hảo tuyệt đối ngay từ đầu. Không ngừng đo lường, thử nghiệm giải pháp, chuẩn hóa chuẩn mới (Kaizen).
+                        Không có hệ thống nào hoàn hảo ngay từ đầu. Doanh nghiệp cần liên tục phát hiện vấn đề, thử nghiệm cải tiến, kiểm chứng kết quả và chuẩn hóa phương pháp tốt hơn.
                     </p>
                 </div>
             </div>
 
+            <p style="font-size: 15px; color: #334155; margin-top: 16px; margin-bottom: 8px;">
+                Năm nguyên lý tạo thành một tư duy xuyên suốt:
+            </p>
             <div class="stepper-summary-flow">
-                <span>Giá trị (Value)</span>
+                <span>Giá trị</span>
                 <span class="flow-arrow">&rarr;</span>
-                <span>Dòng giá trị (Value Stream)</span>
+                <span>Dòng giá trị</span>
                 <span class="flow-arrow">&rarr;</span>
-                <span>Dòng chảy liên tục (Flow)</span>
+                <span>Dòng chảy</span>
                 <span class="flow-arrow">&rarr;</span>
-                <span>Kéo theo nhu cầu (Pull)</span>
+                <span>Kéo theo nhu cầu</span>
                 <span class="flow-arrow">&rarr;</span>
-                <span>Cải tiến liên tục (Perfection)</span>
+                <span>Cải tiến liên tục</span>
             </div>
         </section>
 
         <!-- SECTION 04 -->
         <section class="content-section" id="sec-04">
-            <h2 class="section-heading"><span class="num">04.</span> Bảy loại lãng phí trong sản xuất (7 Wastes - Muda)</h2>
+            <h2 class="section-heading"><span class="num">04.</span> Bảy loại lãng phí trong Lean Manufacturing</h2>
             <p>
-                Taiichi Ohno đã phân loại 7 lãng phí phổ biến trong nhà máy (thường được gọi bằng từ viết tắt <strong>TIMWOOD</strong>). Trong quản trị hiện đại, người ta bổ sung thêm lãng phí thứ 8:
+                Taiichi Ohno đã xác định bảy loại lãng phí phổ biến trong hệ thống sản xuất.
+            </p>
+            <p>
+                Hiểu được bảy loại lãng phí này giúp người quản lý có thêm một cách quan sát nhà máy.
             </p>
 
-            <div class="wastes-grid">
-                <div class="waste-card">
-                    <div class="waste-card-top">
-                        <div class="waste-icon"><i data-lucide="layers"></i></div>
-                        <div class="waste-title-group">
-                            <div class="waste-title">Sản xuất thừa</div>
-                            <div class="waste-eng">Overproduction</div>
-                        </div>
-                        <span class="waste-num">01</span>
-                    </div>
-                    <p class="waste-example">Sản xuất nhiều hơn hoặc sớm hơn đơn hàng thực tế; lãng phí nguy hiểm nhất vì che giấu mọi lãng phí khác.</p>
-                </div>
-
-                <div class="waste-card">
-                    <div class="waste-card-top">
-                        <div class="waste-icon"><i data-lucide="hourglass"></i></div>
-                        <div class="waste-title-group">
-                            <div class="waste-title">Chờ đợi</div>
-                            <div class="waste-eng">Waiting</div>
-                        </div>
-                        <span class="waste-num">02</span>
-                    </div>
-                    <p class="waste-example">Công nhân chờ vật tư, chờ máy bảo trì, chờ kiểm định chất lượng hoặc chờ thông tin bản vẽ.</p>
-                </div>
-
-                <div class="waste-card">
-                    <div class="waste-card-top">
-                        <div class="waste-icon"><i data-lucide="truck"></i></div>
-                        <div class="waste-title-group">
-                            <div class="waste-title">Vận chuyển thừa</div>
-                            <div class="waste-eng">Transportation</div>
-                        </div>
-                        <span class="waste-num">03</span>
-                    </div>
-                    <p class="waste-example">Di chuyển nguyên vật liệu và bán thành phẩm qua nhiều kho bãi, vị trí trung gian không cần thiết.</p>
-                </div>
-
-                <div class="waste-card">
-                    <div class="waste-card-top">
-                        <div class="waste-icon"><i data-lucide="settings"></i></div>
-                        <div class="waste-title-group">
-                            <div class="waste-title">Gia công thừa</div>
-                            <div class="waste-eng">Overprocessing</div>
-                        </div>
-                        <span class="waste-num">04</span>
-                    </div>
-                    <p class="waste-example">Thực hiện thao tác hoặc độ chính xác vượt quá yêu cầu kỹ thuật mà khách hàng không sẵn sàng chi trả.</p>
-                </div>
-
-                <div class="waste-card">
-                    <div class="waste-card-top">
-                        <div class="waste-icon"><i data-lucide="archive"></i></div>
-                        <div class="waste-title-group">
-                            <div class="waste-title">Tồn kho thừa</div>
-                            <div class="waste-eng">Inventory</div>
-                        </div>
-                        <span class="waste-num">05</span>
-                    </div>
-                    <p class="waste-example">Nguyên liệu, bán thành phẩm (WIP) và thành phẩm tồn đọng quá nhiều, chôn vốn và tăng nguy cơ hư hỏng.</p>
-                </div>
-
-                <div class="waste-card">
-                    <div class="waste-card-top">
-                        <div class="waste-icon"><i data-lucide="footprints"></i></div>
-                        <div class="waste-title-group">
-                            <div class="waste-title">Thao tác thừa</div>
-                            <div class="waste-eng">Motion</div>
-                        </div>
-                        <span class="waste-num">06</span>
-                    </div>
-                    <p class="waste-example">Công nhân phải cúi, với, đi lại xa, tìm kiếm công cụ do nơi làm việc bố trí thiếu tính công thái học.</p>
-                </div>
-
-                <div class="waste-card">
-                    <div class="waste-card-top">
-                        <div class="waste-icon"><i data-lucide="alert-octagon"></i></div>
-                        <div class="waste-title-group">
-                            <div class="waste-title">Sai lỗi &amp; Phế phẩm</div>
-                            <div class="waste-eng">Defects</div>
-                        </div>
-                        <span class="waste-num">07</span>
-                    </div>
-                    <p class="waste-example">Sản phẩm không đạt chuẩn phải sửa chữa, gia công lại hoặc loại bỏ hoàn toàn, tốn chi phí và công sức.</p>
-                </div>
-
-                <div class="waste-card" style="border: 2px solid #ea580c; background: #fffaf5;">
-                    <div class="waste-card-top">
-                        <div class="waste-icon" style="background: #fff7ed; color: #ea580c;"><i data-lucide="users"></i></div>
-                        <div class="waste-title-group">
-                            <div class="waste-title" style="color: #c2410c;">Lãng phí năng lực</div>
-                            <div class="waste-eng">Non-utilized Talent</div>
-                        </div>
-                        <span class="waste-num" style="color: #ea580c;">08</span>
-                    </div>
-                    <p class="waste-example">Không lắng nghe và tận dụng ý tưởng cải tiến của công nhân trực tiếp &ndash; những người hiểu rõ lỗi nhất.</p>
-                </div>
+            <div class="lean-table-wrap">
+                <table class="lean-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 10%; text-align: center;">STT</th>
+                            <th style="width: 40%;">Lãng phí</th>
+                            <th style="width: 50%;">Ví dụ trong nhà máy</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="text-align: center; font-weight: 700; color: #ea580c;">1</td>
+                            <td><strong>Overproduction – Sản xuất thừa</strong></td>
+                            <td>Sản xuất nhiều hơn hoặc sớm hơn nhu cầu</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center; font-weight: 700; color: #ea580c;">2</td>
+                            <td><strong>Waiting – Chờ đợi</strong></td>
+                            <td>Công nhân chờ vật tư, máy hoặc thông tin</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center; font-weight: 700; color: #ea580c;">3</td>
+                            <td><strong>Transportation – Vận chuyển thừa</strong></td>
+                            <td>Chuyển bán thành phẩm qua nhiều vị trí không cần thiết</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center; font-weight: 700; color: #ea580c;">4</td>
+                            <td><strong>Overprocessing – Gia công thừa</strong></td>
+                            <td>Thực hiện thêm thao tác hoặc mức độ gia công khách hàng không yêu cầu</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center; font-weight: 700; color: #ea580c;">5</td>
+                            <td><strong>Inventory – Tồn kho thừa</strong></td>
+                            <td>Nguyên vật liệu và WIP vượt nhu cầu hợp lý</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center; font-weight: 700; color: #ea580c;">6</td>
+                            <td><strong>Motion – Thao tác thừa</strong></td>
+                            <td>Đi lại, cúi, với, tìm kiếm dụng cụ</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center; font-weight: 700; color: #ea580c;">7</td>
+                            <td><strong>Defects – Sai lỗi</strong></td>
+                            <td>Phế phẩm, sửa chữa, làm lại</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
+
+            <p style="margin-top: 16px; margin-bottom: 8px;">
+                Trong các tài liệu Lean hiện đại, người ta thường bổ sung loại lãng phí thứ tám:
+            </p>
+            <div style="background: #fff7ed; border-left: 4px solid #ea580c; padding: 14px 18px; border-radius: 0 8px 8px 0; margin-bottom: 20px;">
+                <h4 style="margin: 0 0 6px 0; color: #c2410c; font-size: 15.5px; font-weight: 700;">
+                    Non-utilized Talent – Không tận dụng năng lực và sáng kiến của con người
+                </h4>
+                <p style="margin: 0; font-size: 14.5px; color: #7c2d12;">
+                    Ví dụ, công nhân trực tiếp biết rõ một thao tác đang bất hợp lý nhưng không có cơ chế để đề xuất hoặc triển khai cải tiến.
+                </p>
+            </div>
+
+            <h3 style="font-size: 17px; font-weight: 700; color: #0f172a; margin-top: 24px; margin-bottom: 10px;">
+                Vì sao sản xuất thừa đặc biệt nguy hiểm?
+            </h3>
+            <p>
+                Sản xuất thừa có thể kéo theo nhiều lãng phí khác.
+            </p>
+            <p style="margin-bottom: 8px;">Khi nhà máy sản xuất trước nhu cầu:</p>
+            <ul class="lean-list">
+                <li>Cần thêm diện tích và chi phí lưu kho.</li>
+                <li>Phải vận chuyển, bốc xếp nhiều hơn.</li>
+                <li>Vốn bị giữ trong nguyên vật liệu và bán thành phẩm.</li>
+                <li>Những vấn đề chất lượng có thể được phát hiện muộn.</li>
+                <li>Kế hoạch sản xuất trở nên kém linh hoạt.</li>
+            </ul>
+            <p>
+                Vì vậy, máy chạy nhiều không nhất thiết đồng nghĩa với nhà máy vận hành tốt.
+            </p>
+            <p style="font-weight: 600; color: #0f172a;">
+                Điều quan trọng là sản xuất đúng nhu cầu và bảo đảm hiệu quả của toàn bộ dòng chảy.
+            </p>
         </section>
 
         <!-- SECTION 05 -->
         <section class="content-section" id="sec-05">
             <h2 class="section-heading"><span class="num">05.</span> Những công cụ Lean phổ biến</h2>
             <p>
-                Lean là một hệ thống tư duy; các công cụ là phương tiện kỹ thuật để giải quyết từng bài toán cụ thể trong nhà máy. Dưới đây là 3 nhóm công cụ cốt lõi:
+                Lean là một hệ tư duy quản trị; các công cụ chỉ là phương tiện giúp hiện thực hóa tư duy đó.
+            </p>
+            <p>
+                Một số công cụ thường được sử dụng trong nhà máy:
             </p>
 
-            <div class="tools-3col">
-                <!-- Group 1 -->
-                <div class="tool-column">
-                    <div class="tool-col-header">
-                        <div class="tool-col-icon" style="background: #eff6ff; color: #0284c7;"><i data-lucide="grid"></i></div>
-                        <div>
-                            <h4>Nhận diện &amp; Chuẩn hóa</h4>
-                            <span style="font-size: 11.5px; font-weight: 600; color: #64748b;">NỀN TẢNG VẬN HÀNH</span>
-                        </div>
-                    </div>
-                    <div class="tool-item">
-                        <div class="tool-item-name">5S &amp; Quản lý trực quan <i data-lucide="check" style="width: 14px; color: #16a34a;"></i></div>
-                        <p class="tool-item-desc">Sắp xếp nơi làm việc khoa học, trực quan hóa trạng thái bằng bảng biểu, vạch sơn, đèn cảnh báo Andon.</p>
-                    </div>
-                    <div class="tool-item">
-                        <div class="tool-item-name">Value Stream Mapping (VSM) <i data-lucide="check" style="width: 14px; color: #16a34a;"></i></div>
-                        <p class="tool-item-desc">Sơ đồ hóa toàn bộ dòng chảy vật tư và thông tin để nhận diện vị trí sinh ra lãng phí và nút thắt cổ chai.</p>
-                    </div>
-                    <div class="tool-item">
-                        <div class="tool-item-name">Chuẩn hóa công việc (SOP) <i data-lucide="check" style="width: 14px; color: #16a34a;"></i></div>
-                        <p class="tool-item-desc">Xác định trình tự thao tác chuẩn, thời gian chu kỳ (Cycle Time) và lượng tồn tiêu chuẩn tại vị trí.</p>
-                    </div>
-                </div>
+            <div class="lean-table-wrap">
+                <table class="lean-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 35%;">Công cụ</th>
+                            <th style="width: 65%;">Mục đích chính</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong style="color: #0284c7;">5S</strong></td>
+                            <td>Tổ chức nơi làm việc gọn gàng, trực quan và thuận tiện</td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: #0284c7;">Kaizen</strong></td>
+                            <td>Cải tiến liên tục thông qua những thay đổi có kiểm chứng</td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: #0284c7;">Value Stream Mapping (VSM)</strong></td>
+                            <td>Phân tích dòng giá trị và nhận diện lãng phí</td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: #0284c7;">Standard Work</strong></td>
+                            <td>Chuẩn hóa phương pháp làm việc hiệu quả</td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: #0284c7;">Kanban</strong></td>
+                            <td>Hỗ trợ điều tiết sản xuất và cấp vật tư theo nhu cầu</td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: #0284c7;">SMED</strong></td>
+                            <td>Giảm thời gian chuyển đổi mã hàng hoặc thay khuôn</td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: #0284c7;">Poka-Yoke</strong></td>
+                            <td>Ngăn ngừa hoặc phát hiện sai lỗi tại nguồn</td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: #0284c7;">TPM</strong></td>
+                            <td>Cải thiện độ tin cậy và hiệu quả thiết bị</td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: #0284c7;">A3 / 5 Why</strong></td>
+                            <td>Phân tích và giải quyết vấn đề có hệ thống</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-                <!-- Group 2 -->
-                <div class="tool-column">
-                    <div class="tool-col-header">
-                        <div class="tool-col-icon" style="background: #f0fdf4; color: #16a34a;"><i data-lucide="repeat"></i></div>
-                        <div>
-                            <h4>Dòng chảy &amp; Tiến độ</h4>
-                            <span style="font-size: 11.5px; font-weight: 600; color: #64748b;">KIỂM SOÁT TỒN KHO</span>
-                        </div>
-                    </div>
-                    <div class="tool-item">
-                        <div class="tool-item-name">Hệ thống thẻ Kanban <i data-lucide="check" style="width: 14px; color: #16a34a;"></i></div>
-                        <p class="tool-item-desc">Tín hiệu trực quan điều phối sản xuất theo cơ chế kéo (Pull), kiểm soát chặt chẽ mức tồn kho an toàn.</p>
-                    </div>
-                    <div class="tool-item">
-                        <div class="tool-item-name">Chuyển đổi nhanh (SMED) <i data-lucide="check" style="width: 14px; color: #16a34a;"></i></div>
-                        <p class="tool-item-desc">Rút ngắn thời gian thay khuôn, gá đặt máy dưới 10 phút, giúp nhà máy sản xuất linh hoạt lô nhỏ.</p>
-                    </div>
-                    <div class="tool-item">
-                        <div class="tool-item-name">Bố trí tế bào (Cellular) <i data-lucide="check" style="width: 14px; color: #16a34a;"></i></div>
-                        <p class="tool-item-desc">Bố trí chuyền sản xuất hình chữ U liên hoàn, thu ngắn cự ly di chuyển và tạo dòng chảy một sản phẩm.</p>
-                    </div>
-                </div>
+            <h3 style="font-size: 16.5px; font-weight: 700; color: #0f172a; margin-top: 24px; margin-bottom: 10px;">
+                Không phải nhà máy nào cũng cần triển khai tất cả công cụ
+            </h3>
+            <p style="margin-bottom: 8px;">Ví dụ:</p>
+            <ul class="lean-list">
+                <li>Nếu công nhân mất nhiều thời gian tìm kiếm dụng cụ, có thể bắt đầu từ 5S và cải tiến vị trí thao tác.</li>
+                <li>Nếu bán thành phẩm liên tục ùn tắc, cần phân tích dòng chảy và cân bằng năng lực.</li>
+                <li>Nếu chuyển đổi mã hàng quá lâu, SMED có thể phù hợp.</li>
+                <li>Nếu sản phẩm liên tục phát sinh lỗi, cần phân tích nguyên nhân và xây dựng phương pháp ngăn ngừa.</li>
+            </ul>
 
-                <!-- Group 3 -->
-                <div class="tool-column">
-                    <div class="tool-col-header">
-                        <div class="tool-col-icon" style="background: #fff7ed; color: #ea580c;"><i data-lucide="shield-alert"></i></div>
-                        <div>
-                            <h4>Chất lượng &amp; Cải tiến</h4>
-                            <span style="font-size: 11.5px; font-weight: 600; color: #64748b;">TRIỆT TIÊU SAI LỖI</span>
-                        </div>
-                    </div>
-                    <div class="tool-item">
-                        <div class="tool-item-name">Chống lỗi cơ học (Poka-Yoke) <i data-lucide="check" style="width: 14px; color: #16a34a;"></i></div>
-                        <p class="tool-item-desc">Thiết kế đồ gá hoặc cảm biến ngăn chặn sai sót ngay từ thao tác của con người, lỗi không thể xảy ra.</p>
-                    </div>
-                    <div class="tool-item">
-                        <div class="tool-item-name">5 Tại sao &amp; Biểu đồ Xương cá <i data-lucide="check" style="width: 14px; color: #16a34a;"></i></div>
-                        <p class="tool-item-desc">Công cụ truy tìm nguyên nhân gốc rễ (Root Cause Analysis) thay vì chỉ khắc phục triệu chứng bề mặt.</p>
-                    </div>
-                    <div class="tool-item">
-                        <div class="tool-item-name">Kaizen (Cải tiến liên tục) <i data-lucide="check" style="width: 14px; color: #16a34a;"></i></div>
-                        <p class="tool-item-desc">Triết lý huy động mọi thành viên đưa ra các cải tiến nhỏ mỗi ngày, tích lũy thành bước nhảy lớn.</p>
-                    </div>
-                </div>
+            <div style="background: #f8fafc; border-left: 4px solid #0284c7; padding: 14px 18px; margin-top: 16px; border-radius: 0 8px 8px 0;">
+                <p style="margin: 0; font-size: 15px; font-weight: 600; color: #0f172a; font-style: italic;">
+                    Không chọn công cụ rồi tìm nơi áp dụng. Hãy xác định vấn đề trước, sau đó mới chọn công cụ phù hợp.
+                </p>
             </div>
         </section>
 
         <!-- SECTION 06 -->
         <section class="content-section" id="sec-06">
-            <h2 class="section-heading"><span class="num">06.</span> Một ví dụ minh họa: Cách Lean giải bài toán thực tế</h2>
+            <h2 class="section-heading"><span class="num">06.</span> Một ví dụ để hiểu Lean trong nhà máy</h2>
             <p>
-                Xét một chuyền sản xuất cơ khí gồm 4 công đoạn: <strong>Gia công &rarr; Hoàn thiện &rarr; Kiểm tra chất lượng &rarr; Đóng gói</strong>.
+                Hãy xét một tình huống minh họa tại dây chuyền sản xuất gồm bốn công đoạn:
             </p>
 
-            <div class="case-comparison-grid">
-                <div class="case-box before">
-                    <h4><i data-lucide="x-circle"></i> Trước khi cải tiến (Mô hình truyền thống):</h4>
-                    <ul>
-                        <li>Mỗi công đoạn sản xuất theo lô lớn (Batch) 1.000 chi tiết rồi mới chuyển sang công đoạn kế tiếp.</li>
-                        <li>Bán thành phẩm (WIP) chất đống giữa các máy, chiếm dụng toàn bộ lối đi và mặt bằng xưởng.</li>
-                        <li>Nếu công đoạn 1 phát sinh lỗi sai kích thước, phải đợi đến công đoạn 3 (kiểm tra) mới phát hiện ra; toàn bộ lô 1.000 sản phẩm đã bị hỏng.</li>
-                        <li>Tổng thời gian từ khi cấp phôi đến lúc đóng gói (Lead Time) kéo dài đến <strong>5 ngày</strong>.</li>
-                    </ul>
-                </div>
-
-                <div class="case-box after">
-                    <h4><i data-lucide="check-circle-2"></i> Sau khi áp dụng Lean (Mô hình dòng chảy):</h4>
-                    <ul>
-                        <li>Bố trí các máy sát nhau theo cụm chữ U liên hoàn, cân bằng nhịp theo Takt Time thị trường.</li>
-                        <li>Giảm quy mô lô, chuyển giao theo dòng chảy 1 sản phẩm (One-piece flow) hoặc lô nhỏ 20 chi tiết bằng thẻ Kanban.</li>
-                        <li>Lỗi phát sinh ở công đoạn 1 được công đoạn 2 phát hiện ngay lập tức sau 30 giây; chỉ hỏng tối đa 1 chi tiết.</li>
-                        <li>Tổng thời gian Lead Time giảm từ 5 ngày xuống chỉ còn <strong>4 giờ</strong>!</li>
-                    </ul>
-                </div>
+            <div class="flow-pill-banner">
+                <span>Gia công</span>
+                <span class="flow-arrow">&rarr;</span>
+                <span>Hoàn thiện</span>
+                <span class="flow-arrow">&rarr;</span>
+                <span>Kiểm tra</span>
+                <span class="flow-arrow">&rarr;</span>
+                <span>Đóng gói</span>
             </div>
-            <p style="font-size: 15px; color: #475569; font-style: italic;">
-                Kết quả: Năng suất tổng thể tăng 25%, diện tích mặt bằng giải phóng 40%, phế phẩm giảm 80%, chi phí vốn chôn trong kho bán thành phẩm giảm triệt để.
+
+            <p style="font-weight: 600; color: #0f172a; margin-bottom: 8px;">Nhà máy gặp ba vấn đề:</p>
+            <ul class="lean-list">
+                <li><strong>Thứ nhất:</strong> Sản phẩm tồn đọng nhiều trước công đoạn hoàn thiện.</li>
+                <li><strong>Thứ hai:</strong> Công nhân phải di chuyển quãng đường dài để lấy bán thành phẩm.</li>
+                <li><strong>Thứ ba:</strong> Công đoạn đóng gói thường xuyên phải chờ sản phẩm.</li>
+            </ul>
+
+            <p>
+                Nếu áp dụng cách quản lý truyền thống, nhà máy có thể yêu cầu gia công tăng sản lượng hoặc bố trí thêm nhân lực đóng gói.
+            </p>
+            <p>
+                Nhưng dưới góc nhìn Lean, cần xem xét toàn bộ dòng chảy.
+            </p>
+
+            <div class="case-box" style="margin-top: 18px; margin-bottom: 20px;">
+                <h4 style="margin-top: 0; margin-bottom: 12px; color: #0f172a; font-size: 16px; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+                    <i data-lucide="compass" style="color: #ea580c; width: 18px; height: 18px;"></i>
+                    Cách tư duy Lean
+                </h4>
+                <ol style="margin: 0 0 0 20px; padding: 0; color: #334155; line-height: 1.7; font-size: 15px;">
+                    <li><strong>Quan sát:</strong> Vì sao sản phẩm tồn trước hoàn thiện nhưng đóng gói vẫn thiếu hàng?</li>
+                    <li><strong>Đo lường:</strong> Năng lực thực tế và thời gian chu kỳ từng công đoạn như thế nào?</li>
+                    <li><strong>Phân tích:</strong> Công đoạn nào đang giới hạn sản lượng? Việc vận chuyển và bố trí có làm tăng thời gian chờ không?</li>
+                    <li><strong>Cải tiến:</strong> Cân bằng công đoạn, thay đổi Layout, cải thiện phương pháp cấp WIP và thiết lập giới hạn tồn kho phù hợp.</li>
+                    <li><strong>Kiểm chứng:</strong> So sánh thời gian hoàn thành sản phẩm, lượng WIP, năng suất và thời gian chờ trước–sau.</li>
+                </ol>
+            </div>
+
+            <h3 style="font-size: 16.5px; font-weight: 700; color: #0f172a; margin-top: 20px; margin-bottom: 8px;">
+                Điều gì tạo ra khác biệt?
+            </h3>
+            <p>
+                Cách tiếp cận truyền thống dễ tập trung vào việc nâng hiệu suất từng công đoạn riêng lẻ.
+            </p>
+            <p>
+                Lean hướng tới nâng hiệu quả của toàn bộ quá trình tạo ra sản phẩm.
+            </p>
+            <p>
+                Một công đoạn có thể giảm thời gian máy hoạt động không cần thiết, nhưng toàn dây chuyền vẫn giao hàng tốt hơn nếu dòng chảy được cải thiện.
+            </p>
+            <p style="font-size: 13.5px; color: #64748b; font-style: italic; margin-top: 12px;">
+                Đây là tình huống minh họa phương pháp, không phải số liệu một dự án thực tế.
             </p>
         </section>
 
         <!-- SECTION 07 -->
         <section class="content-section" id="sec-07">
-            <h2 class="section-heading"><span class="num">07.</span> Lean mang lại những lợi ích gì cho nhà máy?</h2>
+            <h2 class="section-heading"><span class="num">07.</span> Lean mang lại những lợi ích gì?</h2>
             <p>
-                Khi được triển khai thực chất và duy trì bài bản, Lean tạo ra tác động đồng bộ trên 6 khía cạnh vận hành cốt lõi:
+                Khi được áp dụng đúng, Lean có thể hỗ trợ doanh nghiệp cải thiện nhiều khía cạnh của hoạt động sản xuất.
             </p>
 
-            <div class="benefits-grid">
+            <div class="benefits-grid" style="margin-top: 20px; margin-bottom: 20px;">
                 <div class="benefit-card">
                     <div class="benefit-card-top">
-                        <div class="benefit-icon"><i data-lucide="dollar-sign"></i></div>
-                        <div class="benefit-title">1. Tối ưu chi phí sản xuất</div>
+                        <div class="benefit-icon" style="background: #eff6ff; color: #2563eb;">
+                            <i data-lucide="trending-up" style="width: 18px; height: 18px;"></i>
+                        </div>
+                        <h4 class="benefit-title">Năng suất</h4>
                     </div>
-                    <p class="benefit-desc">Giảm mạnh chi phí lưu kho, chi phí phế phẩm, vật tư hao hụt và chi phí nhân công tăng ca đột xuất.</p>
+                    <p class="benefit-desc">
+                        Giảm thời gian chờ, thao tác thừa, mất cân bằng công việc và những hoạt động không tạo giá trị.
+                    </p>
                 </div>
 
                 <div class="benefit-card">
                     <div class="benefit-card-top">
-                        <div class="benefit-icon"><i data-lucide="trending-up"></i></div>
-                        <div class="benefit-title">2. Nâng cao năng suất lao động</div>
+                        <div class="benefit-icon" style="background: #f0fdf4; color: #16a34a;">
+                            <i data-lucide="award" style="width: 18px; height: 18px;"></i>
+                        </div>
+                        <h4 class="benefit-title">Chất lượng</h4>
                     </div>
-                    <p class="benefit-desc">Loại bỏ thời gian chết và nút thắt cổ chai, sản lượng đầu ra tăng lên trên cùng quy mô nhân sự và thiết bị.</p>
+                    <p class="benefit-desc">
+                        Phát hiện bất thường sớm, chuẩn hóa thao tác và giảm sự lặp lại của những lỗi đã biết.
+                    </p>
                 </div>
 
                 <div class="benefit-card">
                     <div class="benefit-card-top">
-                        <div class="benefit-icon"><i data-lucide="check-circle-2"></i></div>
-                        <div class="benefit-title">3. Kiểm soát chất lượng tại nguồn</div>
+                        <div class="benefit-icon" style="background: #fefce8; color: #ca8a04;">
+                            <i data-lucide="dollar-sign" style="width: 18px; height: 18px;"></i>
+                        </div>
+                        <h4 class="benefit-title">Chi phí</h4>
                     </div>
-                    <p class="benefit-desc">Ngăn chặn lỗi lan truyền, tỷ lệ sản phẩm đạt chuẩn ngay lần đầu (First Time Right - FTR) tăng vượt bậc.</p>
+                    <p class="benefit-desc">
+                        Giảm tiêu hao vật tư, phế phẩm, thời gian làm lại, tồn kho và các tổn thất trong quá trình vận hành.
+                    </p>
                 </div>
 
                 <div class="benefit-card">
                     <div class="benefit-card-top">
-                        <div class="benefit-icon"><i data-lucide="clock"></i></div>
-                        <div class="benefit-title">4. Rút ngắn thời gian giao hàng</div>
+                        <div class="benefit-icon" style="background: #faf5ff; color: #9333ea;">
+                            <i data-lucide="truck" style="width: 18px; height: 18px;"></i>
+                        </div>
+                        <h4 class="benefit-title">Giao hàng</h4>
                     </div>
-                    <p class="benefit-desc">Rút ngắn chu kỳ sản xuất (Lead Time), giao hàng đúng hạn, đáp ứng linh hoạt các đơn hàng gấp của đối tác.</p>
+                    <p class="benefit-desc">
+                        Cải thiện dòng chảy và khả năng phản ứng khi nhu cầu thay đổi.
+                    </p>
                 </div>
 
                 <div class="benefit-card">
                     <div class="benefit-card-top">
-                        <div class="benefit-icon"><i data-lucide="maximize-2"></i></div>
-                        <div class="benefit-title">5. Tối ưu không gian nhà xưởng</div>
+                        <div class="benefit-icon" style="background: #fff7ed; color: #ea580c;">
+                            <i data-lucide="shield" style="width: 18px; height: 18px;"></i>
+                        </div>
+                        <h4 class="benefit-title">An toàn và điều kiện làm việc</h4>
                     </div>
-                    <p class="benefit-desc">Giải phóng từ 30% - 50% diện tích sàn chứa WIP, tạo không gian mở rộng thêm chuyền mới mà không cần thuê đất.</p>
+                    <p class="benefit-desc">
+                        Loại bỏ thao tác không thuận tiện, giảm tìm kiếm, di chuyển không cần thiết và cải thiện môi trường làm việc.
+                    </p>
                 </div>
 
                 <div class="benefit-card">
                     <div class="benefit-card-top">
-                        <div class="benefit-icon"><i data-lucide="users"></i></div>
-                        <div class="benefit-title">6. Phát triển văn hóa cải tiến</div>
+                        <div class="benefit-icon" style="background: #fdf2f8; color: #db2777;">
+                            <i data-lucide="users" style="width: 18px; height: 18px;"></i>
+                        </div>
+                        <h4 class="benefit-title">Năng lực con người</h4>
                     </div>
-                    <p class="benefit-desc">Công nhân và quản lý chủ động nhận diện lãng phí, tự giác đề xuất sáng kiến cải tiến nhỏ mỗi ngày.</p>
+                    <p class="benefit-desc">
+                        Khuyến khích nhân viên nhận diện vấn đề, đề xuất cải tiến và phát triển kỹ năng giải quyết vấn đề.
+                    </p>
                 </div>
             </div>
+
+            <p style="font-size: 14.5px; color: #475569; margin-bottom: 8px;">
+                Tuy nhiên, không nên mặc định áp dụng Lean sẽ giúp mọi nhà máy tăng năng suất hay giảm chi phí theo một tỷ lệ cố định.
+            </p>
+            <p style="font-size: 14.5px; color: #475569; font-weight: 600;">
+                Hiệu quả thực tế phụ thuộc vào vấn đề được lựa chọn, điều kiện triển khai và khả năng duy trì giải pháp.
+            </p>
         </section>
 
         <!-- SECTION 08 -->
         <section class="content-section" id="sec-08">
             <h2 class="section-heading"><span class="num">08.</span> Ba hiểu nhầm phổ biến về Lean</h2>
-            
-            <div class="misconception-grid">
+
+            <div class="misconception-grid" style="margin-top: 20px;">
+                <!-- Misc 1 -->
                 <div class="misc-card">
                     <div class="misc-wrong">
-                        <div class="misc-wrong-label"><i data-lucide="x"></i> Hiểu nhầm 1</div>
-                        <div class="misc-wrong-text">Lean là cắt giảm nhân sự để giảm quỹ lương</div>
+                        <span class="misc-wrong-label">HIỂU NHẦM 1</span>
+                        <div class="misc-wrong-text">Lean chính là 5S</div>
                     </div>
                     <div class="misc-right">
-                        <div class="misc-right-label"><i data-lucide="check"></i> Bản chất thực tế</div>
-                        <div class="misc-right-text">Lean loại bỏ thao tác thừa và công việc vô nghĩa để người lao động tập trung vào hoạt động tạo giá trị, giảm quá tải và an toàn hơn.</div>
+                        <span class="misc-right-label">THỰC TẾ</span>
+                        <div class="misc-right-text">
+                            <p style="margin: 0 0 8px 0;">5S là một công cụ hữu ích, nhưng chỉ là một phần nhỏ của Lean.</p>
+                            <p style="margin: 0 0 8px 0;">Một nhà máy sạch sẽ, ngăn nắp vẫn có thể tồn kho lớn, giao hàng chậm hoặc có nhiều công đoạn mất cân bằng.</p>
+                            <p style="margin: 0; font-weight: 600; color: #065f46;">5S giúp tổ chức nơi làm việc. Lean giúp cải thiện toàn bộ hệ thống tạo ra giá trị.</p>
+                        </div>
                     </div>
                 </div>
 
+                <!-- Misc 2 -->
                 <div class="misc-card">
                     <div class="misc-wrong">
-                        <div class="misc-wrong-label"><i data-lucide="x"></i> Hiểu nhầm 2</div>
-                        <div class="misc-wrong-text">Lean chỉ là 5S và dọn dẹp quét dọn nhà xưởng</div>
+                        <span class="misc-wrong-label">HIỂU NHẦM 2</span>
+                        <div class="misc-wrong-text">Lean là hoạt động của bộ phận Kaizen</div>
                     </div>
                     <div class="misc-right">
-                        <div class="misc-right-label"><i data-lucide="check"></i> Bản chất thực tế</div>
-                        <div class="misc-right-text">5S chỉ là bước dọn nền trực quan. Lean là cả một hệ thống đồng bộ về dòng chảy vật tư, cân bằng nhịp độ và văn hóa quản trị.</div>
+                        <span class="misc-right-label">THỰC TẾ</span>
+                        <div class="misc-right-text">
+                            <p style="margin: 0 0 8px 0;">Bộ phận Kaizen có thể hướng dẫn phương pháp và hỗ trợ cải tiến.</p>
+                            <p style="margin: 0 0 8px 0;">Nhưng Lean chỉ có thể được duy trì khi đội ngũ quản lý và nhân viên trực tiếp tham gia giải quyết vấn đề trong công việc hằng ngày.</p>
+                            <p style="margin: 0; font-weight: 600; color: #065f46;">Nếu hoạt động cải tiến tách rời hệ thống quản trị, kết quả thường khó duy trì.</p>
+                        </div>
                     </div>
                 </div>
 
+                <!-- Misc 3 -->
                 <div class="misc-card">
                     <div class="misc-wrong">
-                        <div class="misc-wrong-label"><i data-lucide="x"></i> Hiểu nhầm 3</div>
-                        <div class="misc-wrong-text">Lean chỉ phù hợp với các tập đoàn ô tô khổng lồ</div>
+                        <span class="misc-wrong-label">HIỂU NHẦM 3</span>
+                        <div class="misc-wrong-text">Lean chỉ cần áp dụng một lần</div>
                     </div>
                     <div class="misc-right">
-                        <div class="misc-right-label"><i data-lucide="check"></i> Bản chất thực tế</div>
-                        <div class="misc-right-text">Nguyên lý loại bỏ lãng phí áp dụng hiệu quả cho mọi doanh nghiệp vừa và nhỏ (SME) ở mọi lĩnh vực sản xuất gia công và chế tạo.</div>
+                        <span class="misc-right-label">THỰC TẾ</span>
+                        <div class="misc-right-text">
+                            <p style="margin: 0 0 8px 0;">Lean không phải là một dự án có điểm kết thúc cố định.</p>
+                            <p style="margin: 0 0 8px 0;">Khi nhu cầu khách hàng, sản phẩm, thiết bị hoặc quy mô thay đổi, doanh nghiệp cần tiếp tục cải tiến.</p>
+                            <p style="margin: 0; font-weight: 600; color: #065f46;">Lean là quá trình xây dựng năng lực học hỏi và cải thiện mỗi ngày.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1669,76 +1836,151 @@
 
         <!-- SECTION 09 -->
         <section class="content-section" id="sec-09">
-            <h2 class="section-heading"><span class="num">09.</span> Muốn bắt đầu Lean, hãy trả lời 4 câu hỏi này</h2>
+            <h2 class="section-heading"><span class="num">09.</span> Muốn bắt đầu Lean, hãy trả lời bốn câu hỏi</h2>
             <p>
-                Doanh nghiệp chưa từng làm Lean không cần phải khởi đầu bằng một dự án đồ sộ tốn kém. Hãy chọn một khu vực thí điểm (Pilot Line) và cùng đội ngũ trả lời 4 câu hỏi thực tế sau:
+                Đối với một nhà máy chưa từng triển khai Lean, không nhất thiết phải bắt đầu bằng chương trình đào tạo quy mô lớn.
+            </p>
+            <p>
+                Người quản lý có thể bắt đầu từ một dây chuyền, một công đoạn hoặc một vấn đề đang ảnh hưởng rõ đến sản xuất.
+            </p>
+            <p style="font-weight: 600; color: #0f172a; margin-top: 14px; margin-bottom: 14px;">
+                Hãy trả lời:
             </p>
 
             <div class="questions-4col">
                 <div class="q-card">
                     <span class="q-badge">CÂU HỎI 1</span>
-                    <h4>Nút thắt cổ chai lớn nhất đang nằm ở đâu?</h4>
-                    <p>Công đoạn nào đang chậm nhất, khiến cả nhà máy phải chờ đợi và quyết định năng lực toàn chuyền?</p>
+                    <h4 style="margin: 0 0 8px 0; font-size: 15px; color: #0f172a; font-weight: 700;">Khách hàng thực sự cần giá trị gì?</h4>
+                    <p style="margin: 0; font-size: 13.5px; color: #64748b; line-height: 1.5;">
+                        Chất lượng, thời gian giao hàng, tính năng hoặc yêu cầu nào đang được ưu tiên?
+                    </p>
                 </div>
 
                 <div class="q-card">
                     <span class="q-badge">CÂU HỎI 2</span>
-                    <h4>Bán thành phẩm (WIP) đang ùn ứ nhiều nhất ở vị trí nào?</h4>
-                    <p>Nơi nào hàng hóa chất đống, nguyên nhân do sản xuất lệch nhịp, hỏng máy hay do thiếu vật tư phụ?</p>
+                    <h4 style="margin: 0 0 8px 0; font-size: 15px; color: #0f172a; font-weight: 700;">Nhà máy đang lãng phí nguồn lực ở đâu?</h4>
+                    <p style="margin: 0; font-size: 13.5px; color: #64748b; line-height: 1.5;">
+                        Thời gian chờ, thao tác, vận chuyển, tồn kho, sai lỗi hay công suất?
+                    </p>
                 </div>
 
                 <div class="q-card">
                     <span class="q-badge">CÂU HỎI 3</span>
-                    <h4>Những lỗi chất lượng nào đang lặp lại nhiều nhất?</h4>
-                    <p>Lỗi nào tốn nhiều giờ làm lại nhất và giải pháp chống lỗi cơ học (Poka-Yoke) nào có thể ngăn chặn tận gốc?</p>
+                    <h4 style="margin: 0 0 8px 0; font-size: 15px; color: #0f172a; font-weight: 700;">Nguyên nhân nào đang giới hạn kết quả?</h4>
+                    <p style="margin: 0; font-size: 13.5px; color: #64748b; line-height: 1.5;">
+                        Vấn đề đến từ con người, thiết bị, phương pháp, nguyên vật liệu hay cơ chế quản trị?
+                    </p>
                 </div>
 
                 <div class="q-card">
                     <span class="q-badge">CÂU HỎI 4</span>
-                    <h4>Công nhân đang mất thời gian nhiều nhất cho thao tác phụ nào?</h4>
-                    <p>Họ có phải đi tìm công cụ, bê vác nặng hay chờ xác nhận bản vẽ? Có thể sắp xếp lại vị trí để giảm thao tác không?</p>
+                    <h4 style="margin: 0 0 8px 0; font-size: 15px; color: #0f172a; font-weight: 700;">Làm thế nào để cải tiến và duy trì kết quả?</h4>
+                    <p style="margin: 0; font-size: 13.5px; color: #64748b; line-height: 1.5;">
+                        Cần thay đổi điều gì, ai chịu trách nhiệm, đo bằng chỉ số nào và chuẩn hóa ra sao?
+                    </p>
                 </div>
             </div>
+
+            <p style="margin-top: 18px; font-size: 15px; color: #334155;">
+                Bốn câu hỏi này giúp chuyển Lean từ kiến thức thành cách nhìn nhận và giải quyết vấn đề thực tế.
+            </p>
+            <p style="font-size: 15px; color: #334155;">
+                Đối với doanh nghiệp muốn triển khai bài bản, cần tiếp tục xây dựng kế hoạch, thử nghiệm giải pháp, đo lường kết quả và phát triển năng lực đội ngũ.
+            </p>
         </section>
 
-        <!-- SECTION 10: EXECUTIVE CONCLUSION -->
-        <section class="content-section" id="sec-10" style="margin-bottom: 20px;">
+        <!-- SECTION 10 -->
+        <section class="content-section" id="sec-10">
             <h2 class="section-heading"><span class="num">10.</span> Bản chất cuối cùng của Lean: Xây dựng một hệ thống vận hành tốt hơn</h2>
             <p>
-                Lean không được đo bằng số lượng bảng biểu 5S hay khẩu hiệu dán trên tường. Một nhà máy thực hành Lean thành công là nơi:
+                Sau tất cả, Lean không được đo bằng số bảng 5S, số ý tưởng Kaizen hay số lượng công cụ được triển khai.
+            </p>
+            <p style="font-weight: 600; color: #0f172a; margin-bottom: 8px;">
+                Một nhà máy thực hành Lean tốt là nơi:
+            </p>
+            <ul class="lean-list">
+                <li>Công việc và thông tin được tổ chức thuận lợi.</li>
+                <li>Vấn đề được phát hiện và giải quyết kịp thời.</li>
+                <li>Nhân viên hiểu tiêu chuẩn và có khả năng cải tiến công việc.</li>
+                <li>Nguồn lực được sử dụng phù hợp với nhu cầu.</li>
+                <li>Kết quả cải tiến được duy trì và tiếp tục hoàn thiện.</li>
+            </ul>
+
+            <p>
+                Nếu trước đây người quản lý phải thường xuyên đôn đốc, xử lý sự cố và giải quyết những vấn đề lặp lại, thì một hệ thống vận hành được xây dựng tốt sẽ giúp công việc trở nên chủ động và ổn định hơn.
+            </p>
+            <p style="font-weight: 600; color: #0f172a; margin-top: 14px;">
+                Đó cũng là điểm gặp nhau giữa tư duy Lean và triết lý của INVAMAX:
             </p>
 
-            <div class="conclusion-banner">
-                <h3>&ldquo;Xây nền vững &ndash; Vận hành nhẹ&rdquo;</h3>
-                <p>
-                    Công việc diễn ra có nhịp điệu rõ ràng; sự cố được phát hiện sớm và xử lý dứt điểm tại nguồn; dữ liệu vận hành minh bạch; và mỗi nhân viên đều tự hào đóng góp vào dòng chảy giá trị của tổ chức.
+            <div style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #ffffff; padding: 24px; border-radius: 12px; margin: 18px 0;">
+                <h3 style="color: #ea580c; font-size: 20px; font-weight: 800; margin-top: 0; margin-bottom: 10px;">
+                    Xây nền vững &ndash; Vận hành nhẹ
+                </h3>
+                <p style="color: #e2e8f0; font-size: 15px; line-height: 1.6; margin-bottom: 8px;">
+                    <strong>Xây nền vững</strong> là xây dựng quy trình, tiêu chuẩn, năng lực con người và cơ chế quản trị.
                 </p>
-
-                <div class="takeaway-pills">
-                    <div class="takeaway-pill">
-                        <i data-lucide="check-circle-2"></i>
-                        <span>Lean là hành trình quản trị dài hạn</span>
-                    </div>
-                    <div class="takeaway-pill">
-                        <i data-lucide="users"></i>
-                        <span>Con người là trung tâm của cải tiến</span>
-                    </div>
-                    <div class="takeaway-pill">
-                        <i data-lucide="workflow"></i>
-                        <span>Dòng chảy quan trọng hơn máy chạy bận</span>
-                    </div>
-                    <div class="takeaway-pill">
-                        <i data-lucide="search"></i>
-                        <span>Sai lỗi là cơ hội chuẩn hóa hệ thống</span>
-                    </div>
-                    <div class="takeaway-pill">
-                        <i data-lucide="sparkles"></i>
-                        <span>Trở thành thói quen vận hành mỗi ngày</span>
-                    </div>
-                </div>
+                <p style="color: #e2e8f0; font-size: 15px; line-height: 1.6; margin-bottom: 12px;">
+                    <strong>Vận hành nhẹ</strong> là giảm những hoạt động không cần thiết, hạn chế sự phụ thuộc vào đôn đốc thủ công và giúp hệ thống phối hợp hiệu quả hơn.
+                </p>
+                <p style="color: #cbd5e1; font-size: 14.5px; line-height: 1.6; margin-bottom: 0; font-style: italic; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 10px;">
+                    Lean không làm cho nhà máy hoàn toàn không có vấn đề. Lean giúp nhà máy có năng lực phát hiện, giải quyết và ngăn ngừa vấn đề tốt hơn mỗi ngày.
+                </p>
             </div>
         </section>
 
+        <!-- CONCLUSION -->
+        <section class="content-section" style="border-top: 1px solid #e2e8f0; padding-top: 28px;">
+            <h2 class="section-heading" style="color: #0f172a;">Kết luận: Hiểu Lean chỉ cần 10 phút, thực hành Lean là một hành trình</h2>
+            <p style="font-weight: 600; color: #0f172a; margin-bottom: 8px;">
+                Nếu chỉ cần ghi nhớ năm điều sau khi đọc bài viết này, hãy nhớ:
+            </p>
+            <ul class="lean-list">
+                <li>Lean bắt đầu từ giá trị khách hàng, không bắt đầu từ công cụ.</li>
+                <li>Lãng phí là những hoạt động tiêu hao nguồn lực nhưng không tạo ra giá trị cần thiết.</li>
+                <li>Hiệu quả của toàn bộ dòng chảy quan trọng hơn hiệu suất riêng lẻ của từng công đoạn.</li>
+                <li>Con người và khả năng giải quyết vấn đề là nền tảng của cải tiến liên tục.</li>
+                <li>Lean chỉ bền vững khi trở thành một phần của hệ thống quản trị và vận hành hằng ngày.</li>
+            </ul>
+            <p style="font-size: 15.5px; color: #0f172a; font-weight: 600; margin-top: 14px;">
+                Hiểu Lean không khó. Thách thức thực sự là thay đổi cách nhìn nhận vấn đề và đưa tư duy Lean vào từng hoạt động của nhà máy.
+            </p>
+
+            <!-- INVAMAX CTA -->
+            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; margin-top: 24px;">
+                <h3 style="color: #ea580c; font-size: 18px; font-weight: 700; margin-top: 0; margin-bottom: 10px;">
+                    Bắt đầu cải tiến vận hành cùng INVAMAX
+                </h3>
+                <p style="color: #334155; font-size: 15px; line-height: 1.6; margin-bottom: 10px;">
+                    INVAMAX đồng hành cùng doanh nghiệp sản xuất trong việc đánh giá hiện trạng, nhận diện lãng phí, cải thiện dòng chảy và xây dựng hệ thống quản trị vận hành.
+                </p>
+                <p style="color: #334155; font-size: 15px; line-height: 1.6; margin-bottom: 14px;">
+                    Thông qua Lean, Kaizen và phương pháp INVAMAX FOS&trade;, chúng tôi hướng tới giúp nhà máy không chỉ cải thiện kết quả trước mắt mà còn hình thành năng lực cải tiến lâu dài.
+                </p>
+                <p style="color: #475569; font-size: 14.5px; margin-bottom: 16px;">
+                    Khám phá giải pháp tái cấu trúc và nâng cấp vận hành nhà máy tại <a href="../index.html" style="color: #0284c7; font-weight: 600; text-decoration: underline;">invamax.com</a>.
+                </p>
+                <button type="button" onclick="openContactModal('Tư vấn triển khai Lean Manufacturing')" style="background: #ea580c; color: #ffffff; border: none; padding: 12px 24px; border-radius: 8px; font-size: 14.5px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                    <i data-lucide="send" style="width: 16px; height: 16px;"></i> Trao đổi với chuyên gia INVAMAX
+                </button>
+            </div>
+
+            <!-- REFERENCES -->
+            <div style="margin-top: 32px; padding-top: 20px; border-top: 1px solid #e2e8f0;">
+                <h4 style="font-size: 15px; font-weight: 700; color: #475569; margin-top: 0; margin-bottom: 8px;">
+                    Tài liệu tham khảo
+                </h4>
+                <ul class="reference-list">
+                    <li>Lean Enterprise Institute &ndash; What Is Lean?</li>
+                    <li>Lean Enterprise Institute &ndash; The Five Steps of Lean Implementation</li>
+                    <li>Lean Enterprise Institute &ndash; Seven Wastes</li>
+                    <li>Toyota Motor Corporation &ndash; Toyota Production System</li>
+                    <li>James P. Womack &amp; Daniel T. Jones &ndash; Lean Thinking</li>
+                </ul>
+            </div>
+        </section>
+
+        </article>
     </main>
 
     <!-- FOOTER -->
