@@ -2877,7 +2877,7 @@
                 duration: '12:34',
                 views: '32K lượt xem',
                 timeAgo: '2 tuần trước',
-                videoUrl: 'https://www.youtube.com/@NguoiXayNen',
+                videoUrl: 'https://youtube.com/@invamax?si=5aj2VVcbw5KCaFhI',
                 status: 'published'
             },
             {
@@ -2887,7 +2887,7 @@
                 duration: '18:20',
                 views: '24K lượt xem',
                 timeAgo: '3 tuần trước',
-                videoUrl: 'https://www.youtube.com/@NguoiXayNen',
+                videoUrl: 'https://youtube.com/@invamax?si=5aj2VVcbw5KCaFhI',
                 status: 'published'
             },
             {
@@ -2897,7 +2897,7 @@
                 duration: '15:10',
                 views: '18K lượt xem',
                 timeAgo: '1 tháng trước',
-                videoUrl: 'https://www.youtube.com/@NguoiXayNen',
+                videoUrl: 'https://youtube.com/@invamax?si=5aj2VVcbw5KCaFhI',
                 status: 'published'
             },
             {
@@ -2907,7 +2907,7 @@
                 duration: '10:45',
                 views: '21K lượt xem',
                 timeAgo: '1 tháng trước',
-                videoUrl: 'https://www.youtube.com/@NguoiXayNen',
+                videoUrl: 'https://youtube.com/@invamax?si=5aj2VVcbw5KCaFhI',
                 status: 'published'
             }
         ];
@@ -4297,7 +4297,7 @@
             currentVideoThumb = null;
             document.getElementById('editVideoId').value = '';
             document.getElementById('videoTitle').value = '';
-            document.getElementById('videoUrl').value = 'https://www.youtube.com/@NguoiXayNen';
+            document.getElementById('videoUrl').value = 'https://youtube.com/@invamax?si=5aj2VVcbw5KCaFhI';
             document.getElementById('videoDuration').value = '12:00';
             document.getElementById('videoViews').value = '20K lượt xem';
             document.getElementById('videoTimeAgo').value = 'Mới đăng';
@@ -4423,7 +4423,7 @@
             if (e) e.preventDefault();
             const id = currentEditingVideoId || ('vid-' + Date.now());
             const title = (document.getElementById('videoTitle')?.value || '').trim();
-            const videoUrl = (document.getElementById('videoUrl')?.value || 'https://www.youtube.com/@NguoiXayNen').trim();
+            const videoUrl = (document.getElementById('videoUrl')?.value || 'https://youtube.com/@invamax?si=5aj2VVcbw5KCaFhI').trim();
             const duration = (document.getElementById('videoDuration')?.value || '').trim();
             const views = (document.getElementById('videoViews')?.value || '10K lượt xem').trim();
             const timeAgo = (document.getElementById('videoTimeAgo')?.value || 'Mới đăng').trim();
@@ -4611,7 +4611,7 @@
             container.innerHTML = filtered.map((vid) => {
                 const globalIdx = allVideos.findIndex(it => it.id === vid.id);
                 const thumb = vid.thumbnail || 'assets/images/resources/vid-intro.jpg';
-                const vUrl = vid.videoUrl || 'https://www.youtube.com/@NguoiXayNen';
+                const vUrl = vid.videoUrl || 'https://youtube.com/@invamax?si=5aj2VVcbw5KCaFhI';
                 const positionOptions = allVideos.map((_, optIdx) => 
                     `<option value="${optIdx}" ${optIdx === globalIdx ? 'selected' : ''}>Vị trí #${optIdx + 1}</option>`
                 ).join('');

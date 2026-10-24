@@ -128,7 +128,7 @@ var INVAMAX_TOOLKIT_STORE = (function () {
                 "duration": "12:34",
                 "views": "32K views",
                 "timeAgo": "2 weeks ago",
-                "videoUrl": "https://www.youtube.com/@NguoiXayNen",
+                "videoUrl": "https://youtube.com/@invamax?si=5aj2VVcbw5KCaFhI",
                 "status": "published",
                 "createdAt": "2026-10-05"
         },
@@ -139,7 +139,7 @@ var INVAMAX_TOOLKIT_STORE = (function () {
                 "duration": "18:20",
                 "views": "24K views",
                 "timeAgo": "3 weeks ago",
-                "videoUrl": "https://www.youtube.com/@NguoiXayNen",
+                "videoUrl": "https://youtube.com/@invamax?si=5aj2VVcbw5KCaFhI",
                 "status": "published",
                 "createdAt": "2026-09-28"
         },
@@ -150,7 +150,7 @@ var INVAMAX_TOOLKIT_STORE = (function () {
                 "duration": "15:10",
                 "views": "18K views",
                 "timeAgo": "1 month ago",
-                "videoUrl": "https://www.youtube.com/@NguoiXayNen",
+                "videoUrl": "https://youtube.com/@invamax?si=5aj2VVcbw5KCaFhI",
                 "status": "published",
                 "createdAt": "2026-09-19"
         },
@@ -161,7 +161,7 @@ var INVAMAX_TOOLKIT_STORE = (function () {
                 "duration": "10:45",
                 "views": "21K views",
                 "timeAgo": "1 month ago",
-                "videoUrl": "https://www.youtube.com/@NguoiXayNen",
+                "videoUrl": "https://youtube.com/@invamax?si=5aj2VVcbw5KCaFhI",
                 "status": "published",
                 "createdAt": "2026-09-15"
         }
@@ -281,7 +281,7 @@ var INVAMAX_TOOLKIT_STORE = (function () {
             duration: '12:34',
             views: '32K lượt xem',
             timeAgo: '2 tuần trước',
-            videoUrl: 'https://www.youtube.com/@NguoiXayNen',
+            videoUrl: 'https://youtube.com/@invamax?si=5aj2VVcbw5KCaFhI',
             status: 'published',
             createdAt: '2026-10-05'
         },
@@ -292,7 +292,7 @@ var INVAMAX_TOOLKIT_STORE = (function () {
             duration: '18:20',
             views: '24K lượt xem',
             timeAgo: '3 tuần trước',
-            videoUrl: 'https://www.youtube.com/@NguoiXayNen',
+            videoUrl: 'https://youtube.com/@invamax?si=5aj2VVcbw5KCaFhI',
             status: 'published',
             createdAt: '2026-09-28'
         },
@@ -303,7 +303,7 @@ var INVAMAX_TOOLKIT_STORE = (function () {
             duration: '15:10',
             views: '18K lượt xem',
             timeAgo: '1 tháng trước',
-            videoUrl: 'https://www.youtube.com/@NguoiXayNen',
+            videoUrl: 'https://youtube.com/@invamax?si=5aj2VVcbw5KCaFhI',
             status: 'published',
             createdAt: '2026-09-19'
         },
@@ -314,7 +314,7 @@ var INVAMAX_TOOLKIT_STORE = (function () {
             duration: '10:45',
             views: '21K lượt xem',
             timeAgo: '1 tháng trước',
-            videoUrl: 'https://www.youtube.com/@NguoiXayNen',
+            videoUrl: 'https://youtube.com/@invamax?si=5aj2VVcbw5KCaFhI',
             status: 'published',
             createdAt: '2026-09-15'
         }

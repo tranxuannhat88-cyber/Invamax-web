@@ -1,0 +1,1541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Understanding Lean Manufacturing in 10 Minutes | INVAMAX</title>
+    <meta name="description" content="Lean is not just about waste elimination. It is a mindset and operational framework that enables factories to generate more value with fewer resources. Read our 10-minute guide.">
+    
+    <link rel="canonical" href="https://invamax.com/en/article-hieu-ve-lean-manufacturing.html">
+    <link rel="alternate" hreflang="vi" href="https://invamax.com/vi/article-hieu-ve-lean-manufacturing.html">
+    <link rel="alternate" hreflang="en" href="https://invamax.com/en/article-hieu-ve-lean-manufacturing.html">
+    <link rel="alternate" hreflang="x-default" href="https://invamax.com/en/article-hieu-ve-lean-manufacturing.html">
+    
+    <meta property="og:title" content="Understanding Lean Manufacturing in 10 Minutes | INVAMAX">
+    <meta property="og:description" content="Lean is not just about waste elimination. It is a mindset and operational framework that enables factories to generate more value with fewer resources.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://invamax.com/en/article-hieu-ve-lean-manufacturing.html">
+    <meta property="og:image" content="https://invamax.com/assets/images/resources/lean-manufacturing-framework.jpg">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Understanding Lean Manufacturing in 10 Minutes | INVAMAX">
+    <meta name="twitter:description" content="Discover the essence of Lean: 5 core principles, 7+1 wastes, and practical operational tools in 10 minutes.">
+    <meta name="twitter:image" content="https://invamax.com/assets/images/resources/lean-manufacturing-framework.jpg">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Global CSS -->
+    <link rel="icon" type="image/jpeg" href="../assets/images/favicon.jpg">
+    <link rel="stylesheet" href="../assets/css/style.css?v=18">
+    <link rel="stylesheet" href="../assets/css/navbar.css?v=13">
+    
+    <style>
+        body {
+            background-color: #f1f5f9;
+            color: #334155;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.65;
+        }
+
+        /* Top Action Bar Standard */
+        .poster-top-bar {
+            padding: 100px 20px 16px;
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .poster-back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #64748b;
+            text-decoration: none;
+            font-size: 13.5px;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+        .poster-back-btn:hover {
+            color: #f97316;
+        }
+        .poster-action-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .poster-action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            color: #475569;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 12.5px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .poster-action-btn:hover {
+            border-color: #f97316;
+            color: #f97316;
+            background: #fff8f3;
+        }
+
+        /* Main Article Card */
+        .article-main-card {
+            max-width: 900px;
+            margin: 0 auto 50px auto;
+            background: #ffffff;
+            border-radius: 14px;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e2e8f0;
+            padding: 44px 48px;
+            box-sizing: border-box;
+        }
+
+        /* Header Section */
+        .article-header-grid {
+            display: grid;
+            grid-template-columns: 1.25fr 1fr;
+            gap: 28px;
+            align-items: center;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .article-tag {
+            display: inline-block;
+            background: #f97316;
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 3.5px 11px;
+            border-radius: 4px;
+            margin-bottom: 12px;
+        }
+        .article-title {
+            font-size: 30px;
+            font-weight: 900;
+            color: #0f172a;
+            line-height: 1.25;
+            margin: 0 0 14px 0;
+            letter-spacing: -0.4px;
+        }
+        .article-subtitle {
+            font-size: 14px;
+            color: #475569;
+            line-height: 1.55;
+            margin: 0 0 16px 0;
+            font-style: italic;
+        }
+        .article-meta-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            font-size: 12.5px;
+            color: #64748b;
+        }
+        .article-meta-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .article-meta-item i {
+            width: 14px;
+            height: 14px;
+            color: #f97316;
+        }
+        .article-hero-img-wrap {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.09);
+            border: 1px solid #e2e8f0;
+        }
+        .article-hero-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Lead Quote Callout */
+        .article-lead-box {
+            border-left: 4px solid #f97316;
+            background: #fff7ed;
+            padding: 18px 22px;
+            border-radius: 0 10px 10px 0;
+            margin: 28px 0 32px 0;
+            font-size: 14px;
+            line-height: 1.65;
+            color: #334155;
+        }
+        .article-lead-box h3 {
+            margin: 0 0 8px 0;
+            font-size: 16px;
+            font-weight: 800;
+            color: #9a3412;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .article-lead-box ul {
+            margin: 8px 0 12px 18px;
+            padding: 0;
+        }
+        .article-lead-box li {
+            margin-bottom: 4px;
+        }
+
+        /* Content Sections */
+        .content-section {
+            margin: 36px 0;
+        }
+        .section-heading {
+            font-size: 21px;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 0 0 16px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #f1f5f9;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-heading .num {
+            color: #f97316;
+            font-size: 22px;
+        }
+        p {
+            margin: 0 0 14px 0;
+            font-size: 14.5px;
+            color: #334155;
+        }
+
+        /* Highlight Formula Box */
+        .formula-box {
+            background: #f8fafc;
+            border: 1.5px dashed #cbd5e1;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 18px 0;
+            font-size: 15px;
+            text-align: center;
+            color: #0f172a;
+        }
+        .formula-box strong {
+            color: #ea580c;
+        }
+
+        /* 2-Col Grid Cards */
+        .cards-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin: 18px 0;
+        }
+        .pillar-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 18px 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .pillar-card:hover {
+            transform: translateY(-2px);
+            border-color: #fdba74;
+        }
+        .pillar-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        .pillar-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            background: #fff7ed;
+            color: #ea580c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .pillar-title {
+            font-size: 15px;
+            font-weight: 800;
+            color: #0f172a;
+        }
+        .pillar-desc {
+            font-size: 13.5px;
+            color: #475569;
+            margin: 0;
+            line-height: 1.55;
+        }
+
+        /* Callout warning card */
+        .callout-box {
+            background: #f8fafc;
+            border-left: 4px solid #64748b;
+            padding: 14px 18px;
+            border-radius: 0 8px 8px 0;
+            margin: 18px 0;
+            font-size: 13.5px;
+        }
+        .callout-box.warning {
+            background: #fef2f2;
+            border-left-color: #ef4444;
+            color: #991b1b;
+        }
+        .callout-box.tip {
+            background: #f0fdf4;
+            border-left-color: #22c55e;
+            color: #14532d;
+        }
+
+        /* Modern Tables */
+        .lean-table-wrap {
+            overflow-x: auto;
+            margin: 18px 0 24px 0;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+        .lean-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13.5px;
+            text-align: left;
+            background: #ffffff;
+        }
+        .lean-table th {
+            background: #f8fafc;
+            color: #1e293b;
+            font-weight: 700;
+            padding: 12px 16px;
+            border-bottom: 1.5px solid #cbd5e1;
+        }
+        .lean-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #f1f5f9;
+            color: #334155;
+            vertical-align: top;
+        }
+        .lean-table tr:last-child td {
+            border-bottom: none;
+        }
+        .lean-table tr:hover td {
+            background: #fafafa;
+        }
+        .badge-va {
+            display: inline-block;
+            background: #dcfce7;
+            color: #15803d;
+            font-weight: 700;
+            font-size: 12px;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+        .badge-nnva {
+            display: inline-block;
+            background: #fef3c7;
+            color: #b45309;
+            font-weight: 700;
+            font-size: 12px;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+        .badge-nva {
+            display: inline-block;
+            background: #fee2e2;
+            color: #b91c1c;
+            font-weight: 700;
+            font-size: 12px;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        /* Progress Time Breakdown Card */
+        .time-breakdown-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 18px 22px;
+            margin: 18px 0;
+        }
+        .time-bar-wrap {
+            display: flex;
+            height: 28px;
+            border-radius: 6px;
+            overflow: hidden;
+            margin: 14px 0 12px 0;
+            font-size: 11.5px;
+            font-weight: 700;
+            color: #ffffff;
+            text-align: center;
+            line-height: 28px;
+        }
+        .tb-va { background: #22c55e; width: 58.3%; }
+        .tb-wait { background: #ef4444; width: 16.7%; }
+        .tb-sub { background: #f59e0b; width: 13.3%; }
+        .tb-aux { background: #64748b; width: 11.7%; }
+        .time-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-size: 12px;
+            color: #475569;
+        }
+        .tl-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .tl-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        /* Principles Stepper */
+        .principles-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin: 18px 0;
+        }
+        .principle-item {
+            display: flex;
+            gap: 16px;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 16px 20px;
+            align-items: flex-start;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+        }
+        .principle-num {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: #f97316;
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .principle-body h4 {
+            margin: 0 0 4px 0;
+            font-size: 15px;
+            font-weight: 800;
+            color: #0f172a;
+        }
+        .principle-body p {
+            margin: 0;
+            font-size: 13.5px;
+            color: #475569;
+        }
+
+        /* Summary Flow Banner */
+        .flow-banner {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            border-radius: 8px;
+            padding: 16px 20px;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 700;
+            text-align: center;
+            margin: 20px 0;
+            letter-spacing: 0.3px;
+        }
+        .flow-banner span {
+            color: #fb923c;
+        }
+
+        /* 3-Col Benefits Grid */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin: 18px 0;
+        }
+        .benefit-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 18px 16px;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+        .benefit-card:hover {
+            border-color: #f97316;
+            background: #ffffff;
+            transform: translateY(-2px);
+        }
+        .benefit-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: #fff7ed;
+            color: #ea580c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px auto;
+        }
+        .benefit-title {
+            font-size: 14.5px;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 6px;
+        }
+        .benefit-desc {
+            font-size: 12.5px;
+            color: #64748b;
+            margin: 0;
+            line-height: 1.45;
+        }
+
+        /* 4 Questions Grid */
+        .questions-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 18px 0;
+        }
+        .q-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 16px 18px;
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+        .q-badge {
+            background: #0f172a;
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 13px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            flex-shrink: 0;
+        }
+        .q-body h4 {
+            margin: 0 0 4px 0;
+            font-size: 14.5px;
+            font-weight: 800;
+            color: #0f172a;
+        }
+        .q-body p {
+            margin: 0;
+            font-size: 13px;
+            color: #475569;
+        }
+
+        /* Philosophy DNA Banner */
+        .philosophy-banner {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+            border-radius: 12px;
+            padding: 28px 32px;
+            color: #ffffff;
+            margin: 28px 0;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .philosophy-banner::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 200px; height: 100%;
+            background: radial-gradient(circle, rgba(249, 115, 22, 0.25) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .phi-tag {
+            display: inline-block;
+            background: #f97316;
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            padding: 3px 10px;
+            border-radius: 4px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+        .phi-title {
+            font-size: 22px;
+            font-weight: 900;
+            color: #ffffff;
+            margin: 0 0 16px 0;
+            letter-spacing: -0.2px;
+        }
+        .phi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .phi-col h4 {
+            color: #fdba74;
+            font-size: 15px;
+            margin: 0 0 6px 0;
+            font-weight: 800;
+        }
+        .phi-col p {
+            color: #e2e8f0;
+            font-size: 13px;
+            line-height: 1.55;
+            margin: 0;
+        }
+
+        /* 5 Key Takeaways Box */
+        .takeaways-box {
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            padding: 22px 26px;
+            margin: 24px 0;
+        }
+        .takeaways-box h3 {
+            margin: 0 0 14px 0;
+            font-size: 16px;
+            font-weight: 800;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .takeaways-box ol {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .takeaways-box li {
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #334155;
+            line-height: 1.55;
+        }
+        .takeaways-box li strong {
+            color: #0f172a;
+        }
+
+        /* Bottom Consultation Box */
+        .poster-consult-box {
+            max-width: 900px;
+            margin: 0 auto 60px auto;
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            padding: 32px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+        }
+        .poster-consult-left h3 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 0 0 6px 0;
+        }
+        .poster-consult-left p {
+            font-size: 0.95rem;
+            color: #64748b;
+            margin: 0;
+        }
+        .btn-consult-orange {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #f97316;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            box-shadow: 0 3px 12px rgba(249, 115, 22, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+        .btn-consult-orange:hover {
+            background: #ea580c;
+            transform: translateY(-2px);
+            color: #ffffff;
+        }
+
+        /* References section */
+        .ref-section {
+            border-top: 1px solid #e2e8f0;
+            padding-top: 20px;
+            margin-top: 36px;
+            font-size: 12.5px;
+            color: #64748b;
+        }
+        .ref-section h4 {
+            margin: 0 0 8px 0;
+            font-size: 13.5px;
+            font-weight: 700;
+            color: #334155;
+        }
+        .ref-section ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .ref-section li {
+            margin-bottom: 4px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .poster-top-bar {
+                padding-top: 85px;
+            }
+            .article-main-card {
+                padding: 24px 20px;
+                border-radius: 0;
+                margin-bottom: 30px;
+            }
+            .article-header-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .article-title {
+                font-size: 23px;
+            }
+            .cards-2col, .benefits-grid, .questions-grid, .phi-grid {
+                grid-template-columns: 1fr;
+            }
+            .poster-consult-box {
+                padding: 24px 20px;
+                text-align: center;
+                justify-content: center;
+            }
+        }
+
+        /* Print Media Style */
+        @media print {
+            .navbar, .poster-top-bar, .poster-consult-box, footer, #contactModal {
+                display: none !important;
+            }
+            body {
+                background: #ffffff !important;
+            }
+            .article-main-card {
+                box-shadow: none !important;
+                border: none !important;
+                padding: 0 !important;
+                max-width: 100% !important;
+            }
+        }
+    </style>
+    
+    <!-- JSON-LD Article Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Understanding Lean Manufacturing in 10 Minutes",
+        "description": "Lean is not just about waste elimination. It is a mindset and operational framework that enables factories to generate more value with fewer resources.",
+        "image": "https://invamax.com/assets/images/resources/lean-manufacturing-framework.jpg",
+        "datePublished": "2026-10-23T08:00:00+07:00",
+        "dateModified": "2026-10-23T08:00:00+07:00",
+        "author": {
+            "@type": "Person",
+            "name": "INVAMAX Expert",
+            "url": "https://invamax.com/en/about.html"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "INVAMAX",
+            "url": "https://invamax.com/en/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://invamax.com/assets/images/home/logo-invamax-original.png"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://invamax.com/en/article-hieu-ve-lean-manufacturing.html"
+        },
+        "inLanguage": "en"
+    }
+    </script>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="/en/" class="logo">INVA<span>MAX</span></a>
+            <div class="nav-links">
+                <div class="nav-item"><a href="/en/" class="nav-title">Home</a></div>
+                <div class="nav-item">    
+                    <a href="#" class="nav-title">Solutions <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i></a>
+                    <div class="nav-dropdown">
+                        <a href="factory-restructuring.html">Operating Model Transformation</a>
+                        <a href="factory-operations.html">Factory Operations</a>
+                        <a href="factory-platform.html">Factory Assessment</a>
+                        <a href="focused-improvement.html">Focused Improvement</a>
+                        <a href="digital-ai.html">Automation, Digital &amp; AI</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-title">Capabilities <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i></a>
+                    <div class="nav-dropdown">
+                        <a href="invamax-fa.html">INVAMAX FA&trade; <span style="font-weight: normal; opacity: 0.8;">&mdash; Factory Assessment Framework</span></a>
+                        <a href="fos.html">INVAMAX FOS&trade; <span style="font-weight: normal; opacity: 0.8;">&mdash; Factory Operating System</span></a>
+                        <a href="lean.html">Lean &amp; Continuous Improvement</a>
+                        <a href="platform.html">INVAMAX Platform <span style="font-weight: normal; opacity: 0.8;">&mdash; Digital Operations Platform</span></a>
+                    </div>
+                </div>
+                <div class="nav-item"><a href="news.html" class="nav-title">Events</a></div>
+                <div class="nav-item"><a href="case-studies.html" class="nav-title">Case Studies</a></div>
+                <div class="nav-item"><a href="insights.html" class="nav-title active">Insights</a></div>
+                <div class="nav-item"><a href="about.html" class="nav-title">Philosophy</a></div>
+                
+                <div class="lang-switcher">
+                    <a href="/vi/article-hieu-ve-lean-manufacturing.html" style="display: flex; align-items: center; gap: 4px; opacity: 0.75;">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg" width="16" height="11" style="border-radius: 2px;" alt="VN">Tiếng Việt
+                    </a>
+                    <span style="color: rgba(255,255,255,0.25);">/</span>
+                    <a href="/en/article-hieu-ve-lean-manufacturing.html" class="active" style="display: flex; align-items: center; gap: 4px;">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" width="16" height="11" style="border-radius: 2px;" alt="EN">English
+                    </a>
+                </div>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Open menu"><i data-lucide="menu"></i></button>
+        </div>
+    </nav>
+
+    <!-- Top Action Toolbar Standard -->
+    <div class="poster-top-bar">
+        <a href="insights.html#articles" class="poster-back-btn">
+            <i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i> Back to Insights
+        </a>
+        <div class="poster-action-group">
+            <button type="button" onclick="window.print()" class="poster-action-btn" title="Print Document">
+                <i data-lucide="printer" style="width: 14px; height: 14px;"></i> Print Document
+            </button>
+        </div>
+    </div>
+
+    <!-- MAIN ARTICLE DOCUMENT CARD -->
+    <main class="article-main-card" id="leanArticleDocument">
+
+        <!-- HEADER -->
+        <header class="article-header-grid">
+            <div class="article-header-left">
+                <span class="article-tag">LEAN &amp; KAIZEN</span>
+                <h1 class="article-title">Understanding Lean Manufacturing in 10 Minutes</h1>
+                <p class="article-subtitle">
+                    Lean is not just about waste elimination. It is an operational mindset and system design philosophy that helps factories deliver greater customer value with fewer resources.
+                </p>
+                <div class="article-meta-row">
+                    <span class="article-meta-item"><i data-lucide="clock"></i> 10 min read</span>
+                    <span class="article-meta-item"><i data-lucide="folder"></i> Lean &amp; Continuous Improvement</span>
+                    <span class="article-meta-item"><i data-lucide="calendar"></i> Oct 23, 2026</span>
+                    <span class="article-meta-item"><i data-lucide="eye"></i> 1.8K views</span>
+                </div>
+            </div>
+            <div class="article-hero-img-wrap">
+                <img src="../assets/images/resources/lean-manufacturing-framework.jpg" alt="Lean Manufacturing Framework INVAMAX" class="article-hero-img">
+            </div>
+        </header>
+
+        <!-- LEAD QUOTE / INTRO -->
+        <div class="article-lead-box">
+            <h3><i data-lucide="alert-circle" style="width: 18px; height: 18px; color: #ea580c;"></i> A Busy Factory is Not Necessarily an Efficient Factory</h3>
+            <p>Picture a typical day inside many manufacturing plants:</p>
+            <ul>
+                <li>Operators continuously walk back and forth fetching materials and tools.</li>
+                <li>Machines run at maximum capacity, yet work-in-process (WIP) piles up between stages.</li>
+                <li>Overtime is frequent, yet customer shipments are still delayed.</li>
+                <li>Quality inspectors spend extensive hours sorting and reworking defective parts.</li>
+                <li>Plant managers spend most of their workday chasing emergencies and firefighting issues.</li>
+            </ul>
+            <p>
+                From the outside, everyone looks extremely busy. But does all this activity <strong>truly create value</strong>?
+            </p>
+            <p style="margin-top: 10px; font-weight: 700; color: #0f172a;">
+                This is the foundational question of Lean Manufacturing. The goal is not to force people to work harder, but to design a system where work flows smoothly, waste is minimized, and outcomes are reliable.
+            </p>
+        </div>
+
+        <!-- 01. WHAT IS LEAN -->
+        <section class="content-section">
+            <h2 class="section-heading"><span class="num">01.</span> What is Lean Manufacturing?</h2>
+            <p>
+                <strong>Lean Manufacturing</strong> is an operational management philosophy focused on maximizing customer value by systematically eliminating waste, enhancing workflow, and elevating the problem-solving capabilities of both people and processes.
+            </p>
+
+            <div class="formula-box">
+                <strong>Lean = Maximize Customer Value + Minimize Waste in the Value-Creation Journey.</strong>
+            </div>
+
+            <p>
+                Lean originated from the renowned <strong>Toyota Production System (TPS)</strong>, which was later analyzed, codified, and popularized worldwide across diverse industrial sectors. TPS rests on two foundational pillars:
+            </p>
+
+            <div class="cards-2col">
+                <div class="pillar-card">
+                    <div class="pillar-header">
+                        <div class="pillar-icon"><i data-lucide="clock" style="width: 18px; height: 18px;"></i></div>
+                        <div class="pillar-title">Just-in-Time (JIT)</div>
+                    </div>
+                    <p class="pillar-desc">
+                        Making and delivering only what is needed, in the exact quantity needed, at the precise moment it is needed &ndash; drastically shrinking WIP and storage costs.
+                    </p>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-header">
+                        <div class="pillar-icon"><i data-lucide="shield-check" style="width: 18px; height: 18px;"></i></div>
+                        <div class="pillar-title">Jidoka (Autonomation / Quality at Source)</div>
+                    </div>
+                    <p class="pillar-desc">
+                        Designing processes with built-in mechanisms to detect abnormalities instantly, halt production to prevent defect propagation, and empower workers to solve root causes.
+                    </p>
+                </div>
+            </div>
+
+            <div class="callout-box warning">
+                <strong style="color: #991b1b; display: flex; align-items: center; gap: 6px; margin-bottom: 4px;">
+                    <i data-lucide="info" style="width: 16px; height: 16px;"></i> Lean Does Not Mean Headcount Reduction
+                </strong>
+                A frequent and dangerous misconception. Laying off workers without re-engineering processes creates overburden, increases defect rates, and destroys plant morale. Lean begins by <strong>eliminating non-value-adding tasks</strong>, standardizing workflows, and redirecting human capabilities toward higher-value activities.
+            </div>
+        </section>
+
+        <!-- 02. VALUE DEFINITION -->
+        <section class="content-section">
+            <h2 class="section-heading"><span class="num">02.</span> The Core Principle: Understanding Value</h2>
+            <p>
+                In Lean, <strong>Value</strong> is defined exclusively from the customer's perspective. Customers only pay for activities that physically transform materials into the exact product they ordered, with the required quality, features, quantity, and lead time.
+            </p>
+            <p>Across any factory, all human and machine activities fall into three categories:</p>
+
+            <div class="lean-table-wrap">
+                <table class="lean-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;">Activity Type</th>
+                            <th style="width: 45%;">Real-world Factory Example</th>
+                            <th style="width: 30%;">Lean Approach</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="badge-va">Value-Adding (VA)</span></td>
+                            <td>Machining, welding, component assembly, surface coating, finished packaging</td>
+                            <td><strong>Optimize efficiency</strong> &amp; quality precision</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge-nnva">Necessary Non-Value-Adding (NNVA)</span></td>
+                            <td>Regulatory quality inspection, machine changeover, documentation, staging materials</td>
+                            <td><strong>Simplify</strong> &amp; compress execution time</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge-nva">Pure Waste (NVA)</span></td>
+                            <td>Waiting for parts or machines, searching for tooling, convoluted transit routes, defect rework</td>
+                            <td><strong>Eliminate systematically</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="time-breakdown-card">
+                <h4 style="margin: 0 0 6px 0; font-size: 14.5px; font-weight: 800; color: #0f172a;">
+                    Illustrative Analysis: An Operator's 60-Second Cycle Time
+                </h4>
+                <div class="time-bar-wrap">
+                    <div class="tb-va" title="35s Value-adding machining">35s Transformation (58%)</div>
+                    <div class="tb-wait" title="10s Fetching materials (NVA)">10s Fetching</div>
+                    <div class="tb-sub" title="8s Waiting for machine (NVA)">8s Waiting</div>
+                    <div class="tb-aux" title="7s Staging secondary parts (NNVA)">7s Staging</div>
+                </div>
+                <div class="time-legend">
+                    <div class="tl-item"><span class="tl-dot" style="background: #22c55e;"></span> 35s Direct value-adding work (VA)</div>
+                    <div class="tl-item"><span class="tl-dot" style="background: #ef4444;"></span> 10s Walking to retrieve parts (NVA - Motion waste)</div>
+                    <div class="tl-item"><span class="tl-dot" style="background: #f59e0b;"></span> 8s Machine waiting time (NVA - Waiting waste)</div>
+                    <div class="tl-item"><span class="tl-dot" style="background: #64748b;"></span> 7s Clamping &amp; documentation (NNVA)</div>
+                </div>
+                <p style="margin: 12px 0 0 0; font-size: 13.5px; font-weight: 700; color: #ea580c;">
+                    &rarr; Lean does not begin with: &ldquo;How do we make operators work faster?&rdquo; but rather: &ldquo;How do we eliminate the 25 seconds of non-value-adding waste?&rdquo;
+                </p>
+            </div>
+        </section>
+
+        <!-- 03. 5 CORE PRINCIPLES -->
+        <section class="content-section">
+            <h2 class="section-heading"><span class="num">03.</span> The 5 Core Principles of Lean (Womack &amp; Jones)</h2>
+            <p>
+                In their seminal work <em>Lean Thinking</em>, James P. Womack and Daniel T. Jones crystallized Lean management into five interconnected principles:
+            </p>
+
+            <div class="principles-list">
+                <div class="principle-item">
+                    <div class="principle-num">1</div>
+                    <div class="principle-body">
+                        <h4>Value &ndash; Specify Value from Customer Eyes</h4>
+                        <p>Precisely identify what customers truly desire and what they are willing to purchase. Any operational step that does not contribute to this value must be questioned.</p>
+                    </div>
+                </div>
+                <div class="principle-item">
+                    <div class="principle-num">2</div>
+                    <div class="principle-body">
+                        <h4>Value Stream &ndash; Map the Value Stream</h4>
+                        <p>Chart the entire sequence of steps required to bring raw materials through production to the customer, exposing hidden bottlenecks, waiting periods, and inventory piles.</p>
+                    </div>
+                </div>
+                <div class="principle-item">
+                    <div class="principle-num">3</div>
+                    <div class="principle-body">
+                        <h4>Flow &ndash; Create Continuous Flow</h4>
+                        <p>Re-architect workstation layouts and balance cycle times so materials and information progress steadily without interruption or batch accumulation.</p>
+                    </div>
+                </div>
+                <div class="principle-item">
+                    <div class="principle-num">4</div>
+                    <div class="principle-body">
+                        <h4>Pull &ndash; Establish Customer Pull</h4>
+                        <p>Upstream operations produce only when a downstream process signals demand, replacing speculative batch-pushing with demand-driven replenishment.</p>
+                    </div>
+                </div>
+                <div class="principle-item">
+                    <div class="principle-num">5</div>
+                    <div class="principle-body">
+                        <h4>Perfection &ndash; Pursue Continuous Perfection</h4>
+                        <p>Recognize that no system is ever complete. Cultivate an organization-wide habit of root-cause problem solving and standardized improvements every single day.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flow-banner">
+                Value &rarr; <span>Value Stream</span> &rarr; Continuous Flow &rarr; <span>Customer Pull</span> &rarr; Relentless Kaizen
+            </div>
+        </section>
+
+        <!-- 04. 7 WASTES -->
+        <section class="content-section">
+            <h2 class="section-heading"><span class="num">04.</span> The 7+1 Wastes in Manufacturing (Muda)</h2>
+            <p>
+                Taiichi Ohno identified seven universal wastes in manufacturing systems (commonly memorized as <strong>TIMWOOD</strong>), alongside an eighth waste recognized in modern management:
+            </p>
+
+            <div class="lean-table-wrap">
+                <table class="lean-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 8%;">#</th>
+                            <th style="width: 32%;">Waste Category</th>
+                            <th style="width: 60%;">Common Shopfloor Manifestation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>01</strong></td>
+                            <td><strong style="color: #ea580c;">Overproduction</strong></td>
+                            <td>Producing ahead of demand or beyond batch requirements simply to keep machines occupied</td>
+                        </tr>
+                        <tr>
+                            <td><strong>02</strong></td>
+                            <td><strong>Waiting</strong></td>
+                            <td>Operators idle while waiting for material deliveries, tooling changes, quality approvals, or machine repairs</td>
+                        </tr>
+                        <tr>
+                            <td><strong>03</strong></td>
+                            <td><strong>Transportation</strong></td>
+                            <td>Forklifts moving WIP across distant warehouses due to disjointed plant layouts</td>
+                        </tr>
+                        <tr>
+                            <td><strong>04</strong></td>
+                            <td><strong>Overprocessing</strong></td>
+                            <td>Polishing parts beyond customer specs, adding redundant packaging layers, or excessive tolerance standards</td>
+                        </tr>
+                        <tr>
+                            <td><strong>05</strong></td>
+                            <td><strong>Inventory</strong></td>
+                            <td>Excessive raw materials, stagnant WIP, and unsold finished goods consuming working capital and masking errors</td>
+                        </tr>
+                        <tr>
+                            <td><strong>06</strong></td>
+                            <td><strong>Motion</strong></td>
+                            <td>Unnecessary physical movements: bending, reaching, searching for tools, or walking across lines</td>
+                        </tr>
+                        <tr>
+                            <td><strong>07</strong></td>
+                            <td><strong>Defects &amp; Rework</strong></td>
+                            <td>Scrap parts, rework labor, warranty claims, and customer trust erosion caused by process variability</td>
+                        </tr>
+                        <tr style="background: #fff8f3;">
+                            <td><strong>08</strong></td>
+                            <td><strong style="color: #9a3412;">Non-utilized Human Potential</strong></td>
+                            <td>Failing to listen to, empower, or engage shopfloor frontline operators in continuous improvement ideas</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="callout-box warning">
+                <strong style="color: #991b1b; display: block; margin-bottom: 6px;">Why Overproduction is the &ldquo;Root of All Evils&rdquo;</strong>
+                When a factory produces ahead of demand, it triggers an avalanche of downstream waste: warehouse congestion, excessive material handling, tied-up capital, and critically &ndash; <strong>concealed defects</strong> that remain undiscovered until thousands of bad units have accumulated.
+            </div>
+        </section>
+
+        <!-- 05. LEAN TOOLS -->
+        <section class="content-section">
+            <h2 class="section-heading"><span class="num">05.</span> Essential Lean Tools &amp; Methods</h2>
+            <p>
+                Lean is a management system; tools are technical enablers designed to solve specific operational constraints:
+            </p>
+
+            <div class="lean-table-wrap">
+                <table class="lean-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;">Lean Tool</th>
+                            <th style="width: 75%;">Primary Operational Objective</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>5S</strong></td>
+                            <td>Sort, Set in Order, Shine, Standardize, Sustain &ndash; foundational visual management and shopfloor discipline</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Kaizen</strong></td>
+                            <td>Incremental, continuous improvements driven by cross-functional teams with empirical verification</td>
+                        </tr>
+                        <tr>
+                            <td><strong>VSM (Value Stream Mapping)</strong></td>
+                            <td>Visual diagnostic blueprint depicting both material flows and information flows from dock to dock</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Standard Work</strong></td>
+                            <td>Documented best-known sequence of steps to guarantee repeatable quality, safety, and cycle time</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Kanban</strong></td>
+                            <td>Visual signal cards governing replenishment and inventory buffers based on actual downstream consumption</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SMED (Single-Minute Exchange of Die)</strong></td>
+                            <td>Methodology to slash equipment setup times below 10 minutes, unlocking agile high-mix, low-volume flexibility</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Poka-Yoke</strong></td>
+                            <td>Fail-safe mechanisms and sensor jigs that prevent mechanical errors from occurring physically</td>
+                        </tr>
+                        <tr>
+                            <td><strong>TPM (Total Productive Maintenance)</strong></td>
+                            <td>Autonomous and predictive maintenance routines to maximize Overall Equipment Effectiveness (OEE)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>A3 / 5 Why</strong></td>
+                            <td>Structured root-cause problem solving methodology condensed onto a single standardized sheet</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="callout-box tip">
+                <strong>INVAMAX Rule of Thumb:</strong> Never select a tool first and go hunting for a place to apply it. Always begin with <em>the factory's real pain points</em> (high inventory, long lead time, defect spikes), and then select the right tool to address the root cause.
+            </div>
+        </section>
+
+        <!-- 06. PRACTICAL CASE EXAMPLE -->
+        <section class="content-section">
+            <h2 class="section-heading"><span class="num">06.</span> A Practical Example: Lean Problem-Solving</h2>
+            <p>
+                Consider a mechanical assembly line across four sequential stages: <strong>Machining &rarr; Finishing &rarr; Quality Inspection &rarr; Packaging</strong>.
+            </p>
+            <div class="pillar-card" style="margin-bottom: 16px; border-left: 4px solid #ea580c;">
+                <strong>Observed Shopfloor Dilemma:</strong>
+                <ul style="margin: 6px 0 0 18px; padding: 0; font-size: 13.5px; color: #475569;">
+                    <li>Large mounds of unfinished components choke the entrance to the Finishing station.</li>
+                    <li>Packaging operators experience erratic workloads &ndash; idle at times, then rushing into mandatory overtime.</li>
+                    <li>Workers walk 40 meters to an intermediate buffer area to fetch batches.</li>
+                </ul>
+            </div>
+
+            <div class="cards-2col">
+                <div class="pillar-card">
+                    <h4 style="margin: 0 0 8px 0; font-size: 14.5px; color: #64748b;">Traditional Management Mindset</h4>
+                    <p class="pillar-desc">
+                        Urges Machining to maximize individual output to meet departmental KPIs, and assigns two extra temps to Packaging to absorb surges. Outcome: Ballooning inventory costs, higher defect exposure, yet customer orders still ship late.
+                    </p>
+                </div>
+                <div class="pillar-card" style="border-color: #fdba74; background: #fffcf9;">
+                    <h4 style="margin: 0 0 8px 0; font-size: 14.5px; color: #ea580c;">Lean Operational Mindset</h4>
+                    <p class="pillar-desc">
+                        Focuses on <strong>End-to-End Flow</strong>: Calculates stage cycle times against customer Takt Time. Reconfigures the line into a U-shaped cell, sets strict WIP limits, and balances line pacing. The entire line delivers reliably with lower total headcount.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 07. BENEFITS -->
+        <section class="content-section">
+            <h2 class="section-heading"><span class="num">07.</span> Measurable Benefits of Lean Deployment</h2>
+            <p>When properly grounded and sustained, Lean creates measurable improvements across six key operational dimensions:</p>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i data-lucide="zap"></i></div>
+                    <div class="benefit-title">Productivity</div>
+                    <p class="benefit-desc">Eliminating waiting and motion waste increases direct output per paid labor hour.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i data-lucide="shield-check"></i></div>
+                    <div class="benefit-title">Quality</div>
+                    <p class="benefit-desc">In-station quality checks and standardized work drastically reduce scrap and rework loops.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i data-lucide="trending-down"></i></div>
+                    <div class="benefit-title">Cost Reduction</div>
+                    <p class="benefit-desc">Slashing excess WIP and raw material buffers frees working capital and shopfloor square footage.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i data-lucide="truck"></i></div>
+                    <div class="benefit-title">On-Time Delivery</div>
+                    <p class="benefit-desc">Compressing manufacturing lead time equips factories to respond swiftly to volatile market demand.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i data-lucide="heart"></i></div>
+                    <div class="benefit-title">Safety &amp; Ergonomics</div>
+                    <p class="benefit-desc">Ergonomic workstation setups and 5S cleanliness reduce physical strain and shopfloor accidents.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i data-lucide="users"></i></div>
+                    <div class="benefit-title">People Capability</div>
+                    <p class="benefit-desc">Empowers operators and supervisors with systematic problem-solving habits that sustain long term.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 08. MISCONCEPTIONS -->
+        <section class="content-section">
+            <h2 class="section-heading"><span class="num">08.</span> Three Common Lean Misconceptions</h2>
+            
+            <div class="principles-list">
+                <div class="principle-item">
+                    <div class="principle-num" style="background: #64748b;">1</div>
+                    <div class="principle-body">
+                        <h4>Misconception 1: &ldquo;Lean is Just 5S Housekeeping&rdquo;</h4>
+                        <p>5S creates an organized visual workplace, but a sparkling clean shopfloor can still suffer catastrophic inventory bloat, high cost, and delivery failures if product flow is poorly engineered. 5S is the launchpad; Lean is the comprehensive operating system.</p>
+                    </div>
+                </div>
+                <div class="principle-item">
+                    <div class="principle-num" style="background: #64748b;">2</div>
+                    <div class="principle-body">
+                        <h4>Misconception 2: &ldquo;Lean is Strictly the Kaizen Team's Job&rdquo;</h4>
+                        <p>If Lean is relegated solely to a dedicated improvement committee while department heads and shift leaders carry on as usual, gains evaporate the moment consultants depart. Lean flourishes only when embedded in everyday shift routines.</p>
+                    </div>
+                </div>
+                <div class="principle-item">
+                    <div class="principle-num" style="background: #64748b;">3</div>
+                    <div class="principle-body">
+                        <h4>Misconception 3: &ldquo;Lean is a One-Time Project&rdquo;</h4>
+                        <p>Customer demands, raw materials, supplier lead times, and technologies evolve continuously. Lean is not a project with a finish line &ndash; it is the organizational capability to adapt, learn, and improve daily.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 09. 4 QUESTIONS -->
+        <section class="content-section">
+            <h2 class="section-heading"><span class="num">09.</span> Starting Your Lean Journey: Answer 4 Core Questions</h2>
+            <p>Manufacturers starting out do not need complex, multi-year initiatives. Begin at a single production cell or bottleneck and answer these four questions:</p>
+
+            <div class="questions-grid">
+                <div class="q-card">
+                    <div class="q-badge">Q1</div>
+                    <div class="q-body">
+                        <h4>What Value Does the Customer Truly Seek?</h4>
+                        <p>Is delivery speed, defect-free reliability, or price the primary critical-to-quality factor?</p>
+                    </div>
+                </div>
+                <div class="q-card">
+                    <div class="q-badge">Q2</div>
+                    <div class="q-body">
+                        <h4>Where is the Plant Bleeding Resources?</h4>
+                        <p>Are machine waiting times, awkward motions, rework loops, or WIP buffers draining margin?</p>
+                    </div>
+                </div>
+                <div class="q-card">
+                    <div class="q-badge">Q3</div>
+                    <div class="q-body">
+                        <h4>What Root Causes Restrict Performance?</h4>
+                        <p>Is the constraint stemming from machine downtime, operator skill gaps, or poor planning mechanisms?</p>
+                    </div>
+                </div>
+                <div class="q-card">
+                    <div class="q-badge">Q4</div>
+                    <div class="q-body">
+                        <h4>How Will We Standardize and Sustain?</h4>
+                        <p>What changes must be institutionalized, what KPIs tracked, and who owns daily governance?</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 10. INVAMAX PHILOSOPHY -->
+        <section class="content-section">
+            <h2 class="section-heading"><span class="num">10.</span> The Ultimate Essence of Lean: Building a Superior Operating System</h2>
+            <p>
+                Lean is not measured by the number of 5S shadow boards or posters hung on plant walls. A genuinely Lean factory exhibits five distinct characteristics:
+            </p>
+            <ul style="margin: 0 0 16px 20px; font-size: 14.5px; color: #334155;">
+                <li>Workflows and operational signals are transparent and effortless for frontline workers.</li>
+                <li>Deviations and defects are surfaced immediately and resolved at the source.</li>
+                <li>Operators understand baseline standards and possess the skills to initiate improvements.</li>
+                <li>Equipment and materials are delivered seamlessly in sync with actual demand.</li>
+                <li>Improvements are locked into standardized work to prevent regression over time.</li>
+            </ul>
+
+            <!-- Philosophy DNA Banner -->
+            <div class="philosophy-banner">
+                <span class="phi-tag">INVAMAX Operating Philosophy</span>
+                <div class="phi-title">SOLID FOUNDATION &ndash; AGILE OPERATIONS</div>
+                <div class="phi-grid">
+                    <div class="phi-col">
+                        <h4>Solid Foundation</h4>
+                        <p>Standardizing core processes, deploying accurate operational metrics, and building problem-solving capability across supervisory ranks.</p>
+                    </div>
+                    <div class="phi-col">
+                        <h4>Agile Operations</h4>
+                        <p>Eliminating non-value waste, minimizing reliance on manual firefighting, and facilitating smooth, synchronized factory execution.</p>
+                    </div>
+                </div>
+            </div>
+
+            <p style="font-weight: 700; color: #0f172a;">
+                Lean does not make a factory immune to unexpected problems. Lean equips the organization with the muscle memory to detect, solve, and prevent problems better every single day.
+            </p>
+        </section>
+
+        <!-- 5 KEY TAKEAWAYS -->
+        <div class="takeaways-box">
+            <h3><i data-lucide="check-circle-2" style="color: #22c55e;"></i> Conclusion: 5 Core Takeaways in 10 Minutes</h3>
+            <ol>
+                <li><strong>Lean starts with customer value</strong>, never with the blind adoption of tools.</li>
+                <li><strong>Waste is any activity consuming resources without adding value</strong> that the customer pays for.</li>
+                <li><strong>Total value-stream flow</strong> always takes precedence over individual machine utilization rates.</li>
+                <li><strong>Empowered frontline personnel</strong> are the heartbeat of sustainable continuous improvement (Kaizen).</li>
+                <li><strong>Lean endures only when embedded</strong> into daily factory governance and operating routines.</li>
+            </ol>
+        </div>
+
+        <!-- REFERENCES -->
+        <footer class="ref-section">
+            <h4>Authoritative References:</h4>
+            <ul>
+                <li>James P. Womack &amp; Daniel T. Jones &ndash; <em>Lean Thinking: Banish Waste and Create Wealth in Your Corporation</em></li>
+                <li>Taiichi Ohno &ndash; <em>Toyota Production System: Beyond Large-Scale Production</em></li>
+                <li>Lean Enterprise Institute (LEI) &ndash; <em>What is Lean? &amp; The Five Principles of Lean</em></li>
+                <li>Shigeo Shingo &ndash; <em>A Study of the Toyota Production System from an Industrial Engineering Viewpoint</em></li>
+            </ul>
+        </footer>
+
+    </main>
+
+    <!-- BOTTOM CONSULTATION CTA BOX -->
+    <div class="poster-consult-box">
+        <div class="poster-consult-left">
+            <h3>Begin Your Operational Transformation with INVAMAX</h3>
+            <p>Partnering with manufacturers to diagnose bottlenecks, eliminate shopfloor waste, and build sustainable factory operating systems.</p>
+        </div>
+        <button type="button" onclick="openContactModal()" class="btn-consult-orange">
+            <i data-lucide="message-square" style="width: 18px; height: 18px;"></i> Consult with an INVAMAX Specialist
+        </button>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <img src="../assets/images/home/logo-invamax-original.png" alt="INVAMAX">
+                <p>Factory Operations &amp; Transformation Partner</p>
+                <h5 style="color: white; margin-bottom: 14px; margin-top: 26px; font-size: 0.95rem; font-weight: 600;">Connect with Us</h5>
+                <div class="social-links" style="display: flex; gap: 8px; align-items: center;">
+                    <a href="https://www.linkedin.com/in/xuannhattran/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-linkedin" style="color: white; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; border: 1px solid #0A66C2; background: #0A66C2; padding: 0; margin: 0; line-height: 1; transition: all 0.3s;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block; margin: auto;"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    </a>
+                    <a href="https://youtube.com/@invamax?si=5aj2VVcbw5KCaFhI" target="_blank" rel="noopener" aria-label="YouTube" class="social-youtube" style="color: white; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; border: 1px solid #FF0000; background: #FF0000; padding: 0; margin: 0; line-height: 1; transition: all 0.3s;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block; margin: auto;"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                    </a>
+                    <a href="https://www.facebook.com/invamax.vanhanhtinhgon" target="_blank" rel="noopener" aria-label="Facebook" class="social-facebook" style="color: white; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; border: 1px solid #1877F2; background: #1877F2; padding: 0; margin: 0; line-height: 1; transition: all 0.3s;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block; margin: auto;"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                    </a>
+                    <a href="https://zalo.me/0988911869" target="_blank" rel="noopener" aria-label="Zalo" class="social-zalo" style="color: white; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; border: 1px solid #0068FF; background: #0068FF; padding: 0; margin: 0; line-height: 1; transition: all 0.3s;">
+                        <span style="font-size: 11px; font-weight: 800; font-family: 'Inter', sans-serif; line-height: 1; display: inline-flex; align-items: center; justify-content: center; margin: auto;">Zalo</span>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h4>Solutions</h4>
+                <a href="factory-restructuring.html">Operating Model Transformation</a>
+                <a href="factory-operations.html">Factory Operations</a>
+                <a href="factory-platform.html">Digital Operations Platform</a>
+            </div>
+            <div>
+                <h4>About Us</h4>
+                <a href="capabilities.html">Capabilities</a>
+                <a href="news.html">Events &amp; News</a>
+                <a href="case-studies.html">Case Studies</a>
+                <a href="insights.html">Insights</a>
+                <a href="about.html">INVAMAX Philosophy</a>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <p class="footer-company-name">INVAMAX INVESTMENT AND DEVELOPMENT CO., LTD</p>
+                <div class="contact-info" style="display: flex; flex-direction: column; gap: 8px;">
+                    <div class="contact-item" style="display: flex; align-items: center; gap: 8px; height: 22px; font-size: 12px; line-height: 1; white-space: nowrap;">
+                        <span style="width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block; margin: auto;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </span>
+                        <a href="tel:0988911869" style="color: inherit; text-decoration: none; display: inline-flex; align-items: center; line-height: 1;">+84 988 911 869</a>
+                    </div>
+                    <div class="contact-item" style="display: flex; align-items: center; gap: 8px; height: 22px; font-size: 12px; line-height: 1; white-space: nowrap;">
+                        <span style="width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block; margin: auto;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </span>
+                        <a href="mailto:info@invamax.vn" style="color: inherit; text-decoration: none; display: inline-flex; align-items: center; line-height: 1;">info@invamax.vn</a>
+                    </div>
+                    <div class="contact-item" style="display: flex; align-items: center; gap: 8px; height: 22px; font-size: 12px; line-height: 1; white-space: nowrap;">
+                        <span style="width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block; margin: auto;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </span>
+                        <span style="display: inline-flex; align-items: center; line-height: 1;">Dong Loi, Vinh Thinh, Hai Phong, Vietnam</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <span>&copy; 2026 INVAMAX. All rights reserved.</span>
+        </div>
+    </footer>
+
+    <!-- MODAL CONTACT -->
+    <div id="contactModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 9999; align-items: center; justify-content: center; backdrop-filter: blur(4px);">
+        <div style="background: #ffffff; border-radius: 12px; width: 90%; max-width: 520px; padding: 32px; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.3); border: 1px solid #e2e8f0;">
+            <button type="button" onclick="closeContactModal()" style="position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 24px; color: #94a3b8; cursor: pointer;">&times;</button>
+            <h3 style="font-size: 1.35rem; font-weight: 800; color: #0f172a; margin: 0 0 6px 0;">Consult with an INVAMAX Expert</h3>
+            <p style="font-size: 0.9rem; color: #64748b; margin: 0 0 20px 0;">Leave your information below and an INVAMAX specialist will reach out within 24 business hours.</p>
+            
+            <form id="contactForm" onsubmit="handleContactSubmit(event)">
+                <div style="margin-bottom: 14px;">
+                    <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #334155; margin-bottom: 5px;">Full Name *</label>
+                    <input type="text" name="hoTen" required placeholder="John Doe" style="width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.95rem; box-sizing: border-box;">
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px;">
+                    <div>
+                        <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #334155; margin-bottom: 5px;">Phone Number *</label>
+                        <input type="tel" name="soDienThoai" required placeholder="+84 983xxxxxx" style="width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.95rem; box-sizing: border-box;">
+                    </div>
+                    <div>
+                        <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #334155; margin-bottom: 5px;">Work Email</label>
+                        <input type="email" name="email" placeholder="example@company.com" style="width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.95rem; box-sizing: border-box;">
+                    </div>
+                </div>
+                <div style="margin-bottom: 14px;">
+                    <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #334155; margin-bottom: 5px;">Factory / Company Name</label>
+                    <input type="text" name="tenNhaMay" placeholder="ABC Manufacturing Co., Ltd" style="width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.95rem; box-sizing: border-box;">
+                </div>
+                <div style="margin-bottom: 18px;">
+                    <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #334155; margin-bottom: 5px;">Primary Operational Challenge</label>
+                    <textarea name="noiDung" rows="3" placeholder="Briefly describe your goals (e.g. waste reduction, inventory optimization, 5S setup, OEE boost...)" style="width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.9rem; box-sizing: border-box; resize: vertical;"></textarea>
+                </div>
+                <button type="submit" style="width: 100%; background: #f97316; color: #ffffff; border: none; padding: 12px; border-radius: 6px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: background 0.2s;">
+                    Request Consultation
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        lucide.createIcons();
+
+        function openContactModal() {
+            const modal = document.getElementById('contactModal');
+            if (modal) modal.style.display = 'flex';
+        }
+
+        function closeContactModal() {
+            const modal = document.getElementById('contactModal');
+            if (modal) modal.style.display = 'none';
+        }
+
+        window.onclick = function(e) {
+            const modal = document.getElementById('contactModal');
+            if (e.target === modal) {
+                closeContactModal();
+            }
+        };
+
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            const form = e.target;
+            const btn = form.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = 'Sending...';
+            btn.disabled = true;
+
+            const formData = new FormData(form);
+            const data = {
+                nguon: 'Article Lean 10 Min (EN)',
+                hoTen: formData.get('hoTen'),
+                soDienThoai: formData.get('soDienThoai'),
+                email: formData.get('email') || '',
+                tenNhaMay: formData.get('tenNhaMay') || '',
+                noiDung: formData.get('noiDung') || ''
+            };
+
+            const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyQz6yN2v500Hk5_t_o5h9fW9f9yR4p3nK7yB2w9e9e9/exec';
+
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            }).then(() => {
+                alert('Thank you! INVAMAX has received your consultation request and will contact you promptly.');
+                form.reset();
+                closeContactModal();
+            }).catch(() => {
+                alert('Request received! Thank you for contacting INVAMAX.');
+                form.reset();
+                closeContactModal();
+            }).finally(() => {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            });
+        }
+    </script>
+</body>
+</html>
