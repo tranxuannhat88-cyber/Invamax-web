@@ -569,22 +569,19 @@
             background: #ffffff;
             border: 1px solid #e2e8f0;
             border-radius: 12px;
-            padding: 20px 18px;
+            padding: 16px 18px;
             transition: all 0.2s ease;
-            position: relative;
         }
         .waste-card:hover {
             border-color: #f97316;
             box-shadow: 0 6px 16px rgba(0,0,0,0.06);
             transform: translateY(-2px);
         }
-        .waste-num {
-            position: absolute;
-            top: 14px;
-            right: 14px;
-            font-size: 12px;
-            font-weight: 800;
-            color: #cbd5e1;
+        .waste-card-top {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
         .waste-icon {
             width: 36px;
@@ -595,20 +592,34 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 12px;
+            flex-shrink: 0;
+            margin-bottom: 0;
+        }
+        .waste-title-group {
+            flex-grow: 1;
+            min-width: 0;
         }
         .waste-title {
-            font-size: 15px;
+            font-size: 14.5px;
             font-weight: 700;
             color: #0f172a;
-            margin: 0 0 4px 0;
+            margin: 0;
+            line-height: 1.3;
         }
         .waste-eng {
-            font-size: 11.5px;
+            font-size: 11px;
             font-weight: 600;
             color: #64748b;
             text-transform: uppercase;
-            margin-bottom: 8px;
+            margin-top: 2px;
+            letter-spacing: 0.02em;
+        }
+        .waste-num {
+            font-size: 13px;
+            font-weight: 800;
+            color: #cbd5e1;
+            flex-shrink: 0;
+            margin-left: auto;
         }
         .waste-example {
             font-size: 13px;
@@ -729,7 +740,7 @@
             background: #ffffff;
             border: 1px solid #e2e8f0;
             border-radius: 12px;
-            padding: 22px;
+            padding: 18px 20px;
             transition: all 0.2s ease;
         }
         .benefit-card:hover {
@@ -737,25 +748,33 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 18px rgba(0,0,0,0.05);
         }
+        .benefit-card-top {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
         .benefit-icon {
-            width: 38px;
-            height: 38px;
+            width: 36px;
+            height: 36px;
             border-radius: 8px;
             background: #eff6ff;
             color: #0284c7;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 12px;
+            flex-shrink: 0;
+            margin-bottom: 0;
         }
         .benefit-title {
-            font-size: 15.5px;
+            font-size: 15px;
             font-weight: 700;
             color: #0f172a;
-            margin: 0 0 6px 0;
+            margin: 0;
+            line-height: 1.35;
         }
         .benefit-desc {
-            font-size: 13.5px;
+            font-size: 13px;
             color: #64748b;
             line-height: 1.5;
             margin: 0;
@@ -1301,66 +1320,98 @@
 
             <div class="wastes-grid">
                 <div class="waste-card">
-                    <span class="waste-num">01</span>
-                    <div class="waste-icon"><i data-lucide="layers"></i></div>
-                    <div class="waste-title">Sản xuất thừa</div>
-                    <div class="waste-eng">Overproduction</div>
+                    <div class="waste-card-top">
+                        <div class="waste-icon"><i data-lucide="layers"></i></div>
+                        <div class="waste-title-group">
+                            <div class="waste-title">Sản xuất thừa</div>
+                            <div class="waste-eng">Overproduction</div>
+                        </div>
+                        <span class="waste-num">01</span>
+                    </div>
                     <p class="waste-example">Sản xuất nhiều hơn hoặc sớm hơn đơn hàng thực tế; lãng phí nguy hiểm nhất vì che giấu mọi lãng phí khác.</p>
                 </div>
 
                 <div class="waste-card">
-                    <span class="waste-num">02</span>
-                    <div class="waste-icon"><i data-lucide="hourglass"></i></div>
-                    <div class="waste-title">Chờ đợi</div>
-                    <div class="waste-eng">Waiting</div>
+                    <div class="waste-card-top">
+                        <div class="waste-icon"><i data-lucide="hourglass"></i></div>
+                        <div class="waste-title-group">
+                            <div class="waste-title">Chờ đợi</div>
+                            <div class="waste-eng">Waiting</div>
+                        </div>
+                        <span class="waste-num">02</span>
+                    </div>
                     <p class="waste-example">Công nhân chờ vật tư, chờ máy bảo trì, chờ kiểm định chất lượng hoặc chờ thông tin bản vẽ.</p>
                 </div>
 
                 <div class="waste-card">
-                    <span class="waste-num">03</span>
-                    <div class="waste-icon"><i data-lucide="truck"></i></div>
-                    <div class="waste-title">Vận chuyển thừa</div>
-                    <div class="waste-eng">Transportation</div>
+                    <div class="waste-card-top">
+                        <div class="waste-icon"><i data-lucide="truck"></i></div>
+                        <div class="waste-title-group">
+                            <div class="waste-title">Vận chuyển thừa</div>
+                            <div class="waste-eng">Transportation</div>
+                        </div>
+                        <span class="waste-num">03</span>
+                    </div>
                     <p class="waste-example">Di chuyển nguyên vật liệu và bán thành phẩm qua nhiều kho bãi, vị trí trung gian không cần thiết.</p>
                 </div>
 
                 <div class="waste-card">
-                    <span class="waste-num">04</span>
-                    <div class="waste-icon"><i data-lucide="settings"></i></div>
-                    <div class="waste-title">Gia công thừa</div>
-                    <div class="waste-eng">Overprocessing</div>
+                    <div class="waste-card-top">
+                        <div class="waste-icon"><i data-lucide="settings"></i></div>
+                        <div class="waste-title-group">
+                            <div class="waste-title">Gia công thừa</div>
+                            <div class="waste-eng">Overprocessing</div>
+                        </div>
+                        <span class="waste-num">04</span>
+                    </div>
                     <p class="waste-example">Thực hiện thao tác hoặc độ chính xác vượt quá yêu cầu kỹ thuật mà khách hàng không sẵn sàng chi trả.</p>
                 </div>
 
                 <div class="waste-card">
-                    <span class="waste-num">05</span>
-                    <div class="waste-icon"><i data-lucide="archive"></i></div>
-                    <div class="waste-title">Tồn kho thừa</div>
-                    <div class="waste-eng">Inventory</div>
+                    <div class="waste-card-top">
+                        <div class="waste-icon"><i data-lucide="archive"></i></div>
+                        <div class="waste-title-group">
+                            <div class="waste-title">Tồn kho thừa</div>
+                            <div class="waste-eng">Inventory</div>
+                        </div>
+                        <span class="waste-num">05</span>
+                    </div>
                     <p class="waste-example">Nguyên liệu, bán thành phẩm (WIP) và thành phẩm tồn đọng quá nhiều, chôn vốn và tăng nguy cơ hư hỏng.</p>
                 </div>
 
                 <div class="waste-card">
-                    <span class="waste-num">06</span>
-                    <div class="waste-icon"><i data-lucide="footprints"></i></div>
-                    <div class="waste-title">Thao tác thừa</div>
-                    <div class="waste-eng">Motion</div>
+                    <div class="waste-card-top">
+                        <div class="waste-icon"><i data-lucide="footprints"></i></div>
+                        <div class="waste-title-group">
+                            <div class="waste-title">Thao tác thừa</div>
+                            <div class="waste-eng">Motion</div>
+                        </div>
+                        <span class="waste-num">06</span>
+                    </div>
                     <p class="waste-example">Công nhân phải cúi, với, đi lại xa, tìm kiếm công cụ do nơi làm việc bố trí thiếu tính công thái học.</p>
                 </div>
 
                 <div class="waste-card">
-                    <span class="waste-num">07</span>
-                    <div class="waste-icon"><i data-lucide="alert-octagon"></i></div>
-                    <div class="waste-title">Sai lỗi &amp; Phế phẩm</div>
-                    <div class="waste-eng">Defects</div>
+                    <div class="waste-card-top">
+                        <div class="waste-icon"><i data-lucide="alert-octagon"></i></div>
+                        <div class="waste-title-group">
+                            <div class="waste-title">Sai lỗi &amp; Phế phẩm</div>
+                            <div class="waste-eng">Defects</div>
+                        </div>
+                        <span class="waste-num">07</span>
+                    </div>
                     <p class="waste-example">Sản phẩm không đạt chuẩn phải sửa chữa, gia công lại hoặc loại bỏ hoàn toàn, tốn chi phí và công sức.</p>
                 </div>
 
                 <div class="waste-card" style="border: 2px solid #ea580c; background: #fffaf5;">
-                    <span class="waste-num" style="color: #ea580c;">08</span>
-                    <div class="waste-icon" style="background: #fff7ed; color: #ea580c;"><i data-lucide="users"></i></div>
-                    <div class="waste-title" style="color: #c2410c;">Lãng phí năng lực</div>
-                    <div class="waste-eng">Non-utilized Talent</div>
+                    <div class="waste-card-top">
+                        <div class="waste-icon" style="background: #fff7ed; color: #ea580c;"><i data-lucide="users"></i></div>
+                        <div class="waste-title-group">
+                            <div class="waste-title" style="color: #c2410c;">Lãng phí năng lực</div>
+                            <div class="waste-eng">Non-utilized Talent</div>
+                        </div>
+                        <span class="waste-num" style="color: #ea580c;">08</span>
+                    </div>
                     <p class="waste-example">Không lắng nghe và tận dụng ý tưởng cải tiến của công nhân trực tiếp &ndash; những người hiểu rõ lỗi nhất.</p>
                 </div>
             </div>
@@ -1487,38 +1538,50 @@
 
             <div class="benefits-grid">
                 <div class="benefit-card">
-                    <div class="benefit-icon"><i data-lucide="dollar-sign"></i></div>
-                    <div class="benefit-title">1. Tối ưu chi phí sản xuất</div>
+                    <div class="benefit-card-top">
+                        <div class="benefit-icon"><i data-lucide="dollar-sign"></i></div>
+                        <div class="benefit-title">1. Tối ưu chi phí sản xuất</div>
+                    </div>
                     <p class="benefit-desc">Giảm mạnh chi phí lưu kho, chi phí phế phẩm, vật tư hao hụt và chi phí nhân công tăng ca đột xuất.</p>
                 </div>
 
                 <div class="benefit-card">
-                    <div class="benefit-icon"><i data-lucide="trending-up"></i></div>
-                    <div class="benefit-title">2. Nâng cao năng suất lao động</div>
+                    <div class="benefit-card-top">
+                        <div class="benefit-icon"><i data-lucide="trending-up"></i></div>
+                        <div class="benefit-title">2. Nâng cao năng suất lao động</div>
+                    </div>
                     <p class="benefit-desc">Loại bỏ thời gian chết và nút thắt cổ chai, sản lượng đầu ra tăng lên trên cùng quy mô nhân sự và thiết bị.</p>
                 </div>
 
                 <div class="benefit-card">
-                    <div class="benefit-icon"><i data-lucide="check-circle-2"></i></div>
-                    <div class="benefit-title">3. Kiểm soát chất lượng tại nguồn</div>
+                    <div class="benefit-card-top">
+                        <div class="benefit-icon"><i data-lucide="check-circle-2"></i></div>
+                        <div class="benefit-title">3. Kiểm soát chất lượng tại nguồn</div>
+                    </div>
                     <p class="benefit-desc">Ngăn chặn lỗi lan truyền, tỷ lệ sản phẩm đạt chuẩn ngay lần đầu (First Time Right - FTR) tăng vượt bậc.</p>
                 </div>
 
                 <div class="benefit-card">
-                    <div class="benefit-icon"><i data-lucide="clock"></i></div>
-                    <div class="benefit-title">4. Rút ngắn thời gian giao hàng</div>
+                    <div class="benefit-card-top">
+                        <div class="benefit-icon"><i data-lucide="clock"></i></div>
+                        <div class="benefit-title">4. Rút ngắn thời gian giao hàng</div>
+                    </div>
                     <p class="benefit-desc">Rút ngắn chu kỳ sản xuất (Lead Time), giao hàng đúng hạn, đáp ứng linh hoạt các đơn hàng gấp của đối tác.</p>
                 </div>
 
                 <div class="benefit-card">
-                    <div class="benefit-icon"><i data-lucide="maximize-2"></i></div>
-                    <div class="benefit-title">5. Tối ưu không gian nhà xưởng</div>
+                    <div class="benefit-card-top">
+                        <div class="benefit-icon"><i data-lucide="maximize-2"></i></div>
+                        <div class="benefit-title">5. Tối ưu không gian nhà xưởng</div>
+                    </div>
                     <p class="benefit-desc">Giải phóng từ 30% - 50% diện tích sàn chứa WIP, tạo không gian mở rộng thêm chuyền mới mà không cần thuê đất.</p>
                 </div>
 
                 <div class="benefit-card">
-                    <div class="benefit-icon"><i data-lucide="users"></i></div>
-                    <div class="benefit-title">6. Phát triển văn hóa cải tiến</div>
+                    <div class="benefit-card-top">
+                        <div class="benefit-icon"><i data-lucide="users"></i></div>
+                        <div class="benefit-title">6. Phát triển văn hóa cải tiến</div>
+                    </div>
                     <p class="benefit-desc">Công nhân và quản lý chủ động nhận diện lãng phí, tự giác đề xuất sáng kiến cải tiến nhỏ mỗi ngày.</p>
                 </div>
             </div>

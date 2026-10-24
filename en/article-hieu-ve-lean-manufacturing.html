@@ -569,22 +569,19 @@
             background: #ffffff;
             border: 1px solid #e2e8f0;
             border-radius: 12px;
-            padding: 20px 18px;
+            padding: 16px 18px;
             transition: all 0.2s ease;
-            position: relative;
         }
         .waste-card:hover {
             border-color: #f97316;
             box-shadow: 0 6px 16px rgba(0,0,0,0.06);
             transform: translateY(-2px);
         }
-        .waste-num {
-            position: absolute;
-            top: 14px;
-            right: 14px;
-            font-size: 12px;
-            font-weight: 800;
-            color: #cbd5e1;
+        .waste-card-top {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
         .waste-icon {
             width: 36px;
@@ -595,20 +592,34 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 12px;
+            flex-shrink: 0;
+            margin-bottom: 0;
+        }
+        .waste-title-group {
+            flex-grow: 1;
+            min-width: 0;
         }
         .waste-title {
-            font-size: 15px;
+            font-size: 14.5px;
             font-weight: 700;
             color: #0f172a;
-            margin: 0 0 4px 0;
+            margin: 0;
+            line-height: 1.3;
         }
         .waste-eng {
-            font-size: 11.5px;
+            font-size: 11px;
             font-weight: 600;
             color: #64748b;
             text-transform: uppercase;
-            margin-bottom: 8px;
+            margin-top: 2px;
+            letter-spacing: 0.02em;
+        }
+        .waste-num {
+            font-size: 13px;
+            font-weight: 800;
+            color: #cbd5e1;
+            flex-shrink: 0;
+            margin-left: auto;
         }
         .waste-example {
             font-size: 13px;
@@ -729,7 +740,7 @@
             background: #ffffff;
             border: 1px solid #e2e8f0;
             border-radius: 12px;
-            padding: 22px;
+            padding: 18px 20px;
             transition: all 0.2s ease;
         }
         .benefit-card:hover {
@@ -737,25 +748,33 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 18px rgba(0,0,0,0.05);
         }
+        .benefit-card-top {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
         .benefit-icon {
-            width: 38px;
-            height: 38px;
+            width: 36px;
+            height: 36px;
             border-radius: 8px;
             background: #eff6ff;
             color: #0284c7;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 12px;
+            flex-shrink: 0;
+            margin-bottom: 0;
         }
         .benefit-title {
-            font-size: 15.5px;
+            font-size: 15px;
             font-weight: 700;
             color: #0f172a;
-            margin: 0 0 6px 0;
+            margin: 0;
+            line-height: 1.35;
         }
         .benefit-desc {
-            font-size: 13.5px;
+            font-size: 13px;
             color: #64748b;
             line-height: 1.5;
             margin: 0;
@@ -1301,66 +1320,98 @@
 
             <div class="wastes-grid">
                 <div class="waste-card">
-                    <span class="waste-num">01</span>
-                    <div class="waste-icon"><i data-lucide="layers"></i></div>
-                    <div class="waste-title">Overproduction</div>
-                    <div class="waste-eng">TIMWOOD - 'O'</div>
+                    <div class="waste-card-top">
+                        <div class="waste-icon"><i data-lucide="layers"></i></div>
+                        <div class="waste-title-group">
+                            <div class="waste-title">Overproduction</div>
+                            <div class="waste-eng">TIMWOOD - 'O'</div>
+                        </div>
+                        <span class="waste-num">01</span>
+                    </div>
                     <p class="waste-example">Producing more or earlier than current demand; the most insidious waste as it masks all other inefficiencies.</p>
                 </div>
 
                 <div class="waste-card">
-                    <span class="waste-num">02</span>
-                    <div class="waste-icon"><i data-lucide="hourglass"></i></div>
-                    <div class="waste-title">Waiting</div>
-                    <div class="waste-eng">TIMWOOD - 'W'</div>
+                    <div class="waste-card-top">
+                        <div class="waste-icon"><i data-lucide="hourglass"></i></div>
+                        <div class="waste-title-group">
+                            <div class="waste-title">Waiting</div>
+                            <div class="waste-eng">TIMWOOD - 'W'</div>
+                        </div>
+                        <span class="waste-num">02</span>
+                    </div>
                     <p class="waste-example">Idle workers or equipment awaiting materials, work orders, inspections, machine maintenance, or instructions.</p>
                 </div>
 
                 <div class="waste-card">
-                    <span class="waste-num">03</span>
-                    <div class="waste-icon"><i data-lucide="truck"></i></div>
-                    <div class="waste-title">Transportation</div>
-                    <div class="waste-eng">TIMWOOD - 'T'</div>
+                    <div class="waste-card-top">
+                        <div class="waste-icon"><i data-lucide="truck"></i></div>
+                        <div class="waste-title-group">
+                            <div class="waste-title">Transportation</div>
+                            <div class="waste-eng">TIMWOOD - 'T'</div>
+                        </div>
+                        <span class="waste-num">03</span>
+                    </div>
                     <p class="waste-example">Excessive moving of raw materials, WIP, and finished goods between facilities, staging areas, and warehouses.</p>
                 </div>
 
                 <div class="waste-card">
-                    <span class="waste-num">04</span>
-                    <div class="waste-icon"><i data-lucide="settings"></i></div>
-                    <div class="waste-title">Overprocessing</div>
-                    <div class="waste-eng">TIMWOOD - 'O'</div>
+                    <div class="waste-card-top">
+                        <div class="waste-icon"><i data-lucide="settings"></i></div>
+                        <div class="waste-title-group">
+                            <div class="waste-title">Overprocessing</div>
+                            <div class="waste-eng">TIMWOOD - 'O'</div>
+                        </div>
+                        <span class="waste-num">04</span>
+                    </div>
                     <p class="waste-example">Performing redundant steps or tolerances beyond technical specifications that add zero perceived value.</p>
                 </div>
 
                 <div class="waste-card">
-                    <span class="waste-num">05</span>
-                    <div class="waste-icon"><i data-lucide="archive"></i></div>
-                    <div class="waste-title">Excess Inventory</div>
-                    <div class="waste-eng">TIMWOOD - 'I'</div>
+                    <div class="waste-card-top">
+                        <div class="waste-icon"><i data-lucide="archive"></i></div>
+                        <div class="waste-title-group">
+                            <div class="waste-title">Excess Inventory</div>
+                            <div class="waste-eng">TIMWOOD - 'I'</div>
+                        </div>
+                        <span class="waste-num">05</span>
+                    </div>
                     <p class="waste-example">Tying up working capital in raw stocks, work-in-process, and finished goods that increase obsolescence risks.</p>
                 </div>
 
                 <div class="waste-card">
-                    <span class="waste-num">06</span>
-                    <div class="waste-icon"><i data-lucide="footprints"></i></div>
-                    <div class="waste-title">Unnecessary Motion</div>
-                    <div class="waste-eng">TIMWOOD - 'M'</div>
+                    <div class="waste-card-top">
+                        <div class="waste-icon"><i data-lucide="footprints"></i></div>
+                        <div class="waste-title-group">
+                            <div class="waste-title">Unnecessary Motion</div>
+                            <div class="waste-eng">TIMWOOD - 'M'</div>
+                        </div>
+                        <span class="waste-num">06</span>
+                    </div>
                     <p class="waste-example">Excessive bending, reaching, searching, and walking caused by non-ergonomic station and layout designs.</p>
                 </div>
 
                 <div class="waste-card">
-                    <span class="waste-num">07</span>
-                    <div class="waste-icon"><i data-lucide="alert-octagon"></i></div>
-                    <div class="waste-title">Defects &amp; Rework</div>
-                    <div class="waste-eng">TIMWOOD - 'D'</div>
+                    <div class="waste-card-top">
+                        <div class="waste-icon"><i data-lucide="alert-octagon"></i></div>
+                        <div class="waste-title-group">
+                            <div class="waste-title">Defects &amp; Rework</div>
+                            <div class="waste-eng">TIMWOOD - 'D'</div>
+                        </div>
+                        <span class="waste-num">07</span>
+                    </div>
                     <p class="waste-example">Non-conforming items requiring costly rework, disassembly, scrap, and warranty claims.</p>
                 </div>
 
                 <div class="waste-card" style="border: 2px solid #ea580c; background: #fffaf5;">
-                    <span class="waste-num" style="color: #ea580c;">08</span>
-                    <div class="waste-icon" style="background: #fff7ed; color: #ea580c;"><i data-lucide="users"></i></div>
-                    <div class="waste-title" style="color: #c2410c;">Unused Talent</div>
-                    <div class="waste-eng">Non-utilized Skills</div>
+                    <div class="waste-card-top">
+                        <div class="waste-icon" style="background: #fff7ed; color: #ea580c;"><i data-lucide="users"></i></div>
+                        <div class="waste-title-group">
+                            <div class="waste-title" style="color: #c2410c;">Unused Talent</div>
+                            <div class="waste-eng">Non-utilized Skills</div>
+                        </div>
+                        <span class="waste-num" style="color: #ea580c;">08</span>
+                    </div>
                     <p class="waste-example">Failing to engage frontline operators' practical insights and problem-solving creativity in daily improvements.</p>
                 </div>
             </div>
@@ -1487,38 +1538,50 @@
 
             <div class="benefits-grid">
                 <div class="benefit-card">
-                    <div class="benefit-icon"><i data-lucide="dollar-sign"></i></div>
-                    <div class="benefit-title">1. Manufacturing Cost Reduction</div>
+                    <div class="benefit-card-top">
+                        <div class="benefit-icon"><i data-lucide="dollar-sign"></i></div>
+                        <div class="benefit-title">1. Manufacturing Cost Reduction</div>
+                    </div>
                     <p class="benefit-desc">Significant savings in holding costs, scrap loss, unnecessary overtime, and raw material waste.</p>
                 </div>
 
                 <div class="benefit-card">
-                    <div class="benefit-icon"><i data-lucide="trending-up"></i></div>
-                    <div class="benefit-title">2. Higher Labor &amp; Line Productivity</div>
+                    <div class="benefit-card-top">
+                        <div class="benefit-icon"><i data-lucide="trending-up"></i></div>
+                        <div class="benefit-title">2. Higher Labor &amp; Line Productivity</div>
+                    </div>
                     <p class="benefit-desc">Eliminating idle time and line bottlenecks drives higher output from existing headcount and equipment.</p>
                 </div>
 
                 <div class="benefit-card">
-                    <div class="benefit-icon"><i data-lucide="check-circle-2"></i></div>
-                    <div class="benefit-title">3. Quality at the Source</div>
+                    <div class="benefit-card-top">
+                        <div class="benefit-icon"><i data-lucide="check-circle-2"></i></div>
+                        <div class="benefit-title">3. Quality at the Source</div>
+                    </div>
                     <p class="benefit-desc">Halting defect propagation elevates First-Time-Right (FTR) yields and protects brand reputation.</p>
                 </div>
 
                 <div class="benefit-card">
-                    <div class="benefit-icon"><i data-lucide="clock"></i></div>
-                    <div class="benefit-title">4. Drastic Lead Time Compression</div>
+                    <div class="benefit-card-top">
+                        <div class="benefit-icon"><i data-lucide="clock"></i></div>
+                        <div class="benefit-title">4. Drastic Lead Time Compression</div>
+                    </div>
                     <p class="benefit-desc">Accelerating product flow enables faster response times and reliable On-Time Delivery (OTD).</p>
                 </div>
 
                 <div class="benefit-card">
-                    <div class="benefit-icon"><i data-lucide="maximize-2"></i></div>
-                    <div class="benefit-title">5. Floor Space Optimization</div>
+                    <div class="benefit-card-top">
+                        <div class="benefit-icon"><i data-lucide="maximize-2"></i></div>
+                        <div class="benefit-title">5. Floor Space Optimization</div>
+                    </div>
                     <p class="benefit-desc">Freeing 30% - 50% of plant floor space provides capacity to expand lines without facility investment.</p>
                 </div>
 
                 <div class="benefit-card">
-                    <div class="benefit-icon"><i data-lucide="users"></i></div>
-                    <div class="benefit-title">6. Sustainable Improvement Culture</div>
+                    <div class="benefit-card-top">
+                        <div class="benefit-icon"><i data-lucide="users"></i></div>
+                        <div class="benefit-title">6. Sustainable Improvement Culture</div>
+                    </div>
                     <p class="benefit-desc">Empowered teams actively spot operational waste and implement daily grassroots Kaizen solutions.</p>
                 </div>
             </div>
