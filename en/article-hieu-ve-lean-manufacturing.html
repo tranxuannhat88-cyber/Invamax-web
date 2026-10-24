@@ -22,7 +22,10 @@
     <meta name="twitter:image" content="https://invamax.vn/assets/images/resources/lean-10-min-clean.jpg?v=20261024_1600">
 
     <!-- Favicon -->
-    <link rel="icon" href="../assets/images/home/logo-invamax-favico.png" type="image/png">
+        <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="../assets/images/favicon.jpg?v=2">
+    <link rel="shortcut icon" type="image/jpeg" href="../assets/images/favicon.jpg?v=2">
+    <link rel="apple-touch-icon" href="../assets/images/favicon.jpg?v=2">
 
     <!-- CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -495,7 +498,7 @@
             background: #ffffff;
             border: 1px solid #e2e8f0;
             border-radius: 12px;
-            padding: 20px 16px;
+            padding: 14px 14px;
             position: relative;
             display: flex;
             flex-direction: column;
@@ -506,36 +509,53 @@
             transform: translateY(-3px);
             box-shadow: 0 6px 18px rgba(234, 88, 12, 0.1);
         }
+        .step-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
         .step-num {
-            width: 32px;
-            height: 32px;
-            border-radius: 8px;
+            width: 28px;
+            height: 28px;
+            min-width: 28px;
+            border-radius: 7px;
             background: #fff7ed;
             color: #ea580c;
             font-weight: 800;
-            font-size: 15px;
+            font-size: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 12px;
+            flex-shrink: 0;
+            margin-top: 1px;
+            margin-bottom: 0;
+        }
+        .step-title-group {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
         }
         .step-title {
-            font-size: 15.5px;
+            font-size: 14.5px;
             font-weight: 700;
             color: #0f172a;
-            margin: 0 0 6px 0;
+            margin: 0;
+            line-height: 1.25;
         }
         .step-sub {
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
             color: #0284c7;
             text-transform: uppercase;
-            margin-bottom: 8px;
+            letter-spacing: 0.3px;
+            margin: 0;
         }
         .step-desc {
-            font-size: 13px;
+            font-size: 12.8px;
             color: #64748b;
-            line-height: 1.5;
+            line-height: 1.45;
             margin: 0;
         }
         .stepper-summary-flow {
@@ -1253,47 +1273,67 @@
 
             <div class="principles-stepper">
                 <div class="step-card">
-                    <div class="step-num">1</div>
-                    <div class="step-title">Specify Value</div>
-                    <div class="step-sub">Value</div>
+                    <div class="step-header">
+                        <div class="step-num">1</div>
+                        <div class="step-title-group">
+                            <div class="step-title">Identify Value</div>
+                            <div class="step-sub">Value</div>
+                        </div>
+                    </div>
                     <p class="step-desc">
-                        Clearly articulate what the customer truly needs and is willing to pay for. Any process step that does not contribute to this is targeted for review.
+                        Understand what customers truly need and are willing to pay for. Anything not creating customer value is subject to scrutiny.
                     </p>
                 </div>
 
                 <div class="step-card">
-                    <div class="step-num">2</div>
-                    <div class="step-title">Map the Value Stream</div>
-                    <div class="step-sub">Value Stream</div>
+                    <div class="step-header">
+                        <div class="step-num">2</div>
+                        <div class="step-title-group">
+                            <div class="step-title">Map Value Stream</div>
+                            <div class="step-sub">Value Stream</div>
+                        </div>
+                    </div>
                     <p class="step-desc">
-                        Map all actions required from raw material receipt through production to customer delivery to identify delays, bottlenecks, and idle WIP.
+                        Map the entire sequence from order to delivery to pinpoint bottlenecks, waiting times, and inventory accumulation.
                     </p>
                 </div>
 
                 <div class="step-card">
-                    <div class="step-num">3</div>
-                    <div class="step-title">Create Continuous Flow</div>
-                    <div class="step-sub">Flow</div>
+                    <div class="step-header">
+                        <div class="step-num">3</div>
+                        <div class="step-title-group">
+                            <div class="step-title">Create Flow</div>
+                            <div class="step-sub">Flow</div>
+                        </div>
+                    </div>
                     <p class="step-desc">
-                        Arrange sequential processes without interruptions, batches, or detours; materials move smoothly one piece at a time.
+                        Align processes and equipment into continuous flow without disruptions or backlogs; move work-in-progress smoothly.
                     </p>
                 </div>
 
                 <div class="step-card">
-                    <div class="step-num">4</div>
-                    <div class="step-title">Establish Pull</div>
-                    <div class="step-sub">Pull</div>
+                    <div class="step-header">
+                        <div class="step-num">4</div>
+                        <div class="step-title-group">
+                            <div class="step-title">Establish Pull</div>
+                            <div class="step-sub">Pull</div>
+                        </div>
+                    </div>
                     <p class="step-desc">
-                        Produce only in response to downstream demand signals, preventing push production and warehouse congestion.
+                        Produce only in response to real customer orders or downstream pull signals, preventing batch overproduction.
                     </p>
                 </div>
 
                 <div class="step-card">
-                    <div class="step-num">5</div>
-                    <div class="step-title">Pursue Perfection</div>
-                    <div class="step-sub">Perfection</div>
+                    <div class="step-header">
+                        <div class="step-num">5</div>
+                        <div class="step-title-group">
+                            <div class="step-title">Seek Perfection</div>
+                            <div class="step-sub">Perfection</div>
+                        </div>
+                    </div>
                     <p class="step-desc">
-                        Continuous improvement (Kaizen) is an ongoing cycle. Systematically identify root causes, experiment, standardize, and repeat.
+                        No system is perfect initially. Constantly measure, experiment with solutions, and establish new standards (Kaizen).
                     </p>
                 </div>
             </div>
