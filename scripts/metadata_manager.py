@@ -10,6 +10,8 @@ import os
 import re
 import sys
 import json
+import urllib.request
+from PIL import Image
 
 BASE_URL = "https://invamax.com"
 
@@ -339,7 +341,6 @@ def generate_metadata_block(slug, lang="vi", custom_data=None):
     return block
 
 def strip_old_metadata(head_html):
-    # Remove existing <title>, description, canonical, alternates, og:*, twitter:*, and ld+json
     patterns = [
         r'<title>[^<]*</title>',
         r'<meta[^>]*name=[\'"]description[\'"][^>]*>',
@@ -351,14 +352,11 @@ def strip_old_metadata(head_html):
         r'<meta[^>]*name=[\'"]twitter:[^>]+>',
         r'<meta[^>]*content=[^>]*name=[\'"]twitter:[^>]+>',
         r'<script[^>]*type=[\'"]application/ld\+json[\'"][^>]*>[\s\S]*?</script>',
-        # Remove metadata comment headers
         r'<!--\s*(?:Title|SEO|Open Graph|Twitter Card|Schema|Article Structured Data|Canonical)[^>]*?-->'
     ]
     cleaned = head_html
     for pat in patterns:
         cleaned = re.sub(pat, '', cleaned, flags=re.IGNORECASE)
-    
-    # collapse multiple blank lines
     cleaned = re.sub(r'\n\s*\n\s*\n', '\n\n', cleaned)
     return cleaned
 
@@ -378,13 +376,9 @@ def update_article_file(repo_dir, rel_path, slug=None):
         return False
         
     head_content = html[head_start+6:head_end]
-    
-    # Determine lang
     lang = "en" if rel_path.startswith("en/") else "vi"
     
-    # Determine slug
     if not slug:
-        # Try matching filename
         fname = os.path.splitext(os.path.basename(rel_path))[0]
         if 'productivity-improvement-pencil-factory' in fname:
             slug = 'case-study-productivity-improvement-pencil-factory'
@@ -398,8 +392,6 @@ def update_article_file(repo_dir, rel_path, slug=None):
     meta_block = generate_metadata_block(slug, lang)
     cleaned_head = strip_old_metadata(head_content)
     
-    # Clean up whitespace around meta charset and viewport
-    # We want charset and viewport at top, followed by meta_block
     charset_viewport = ""
     cv_matches = re.findall(r'<meta[^>]+(?:charset|viewport)[^>]*>', cleaned_head, re.I)
     for m in cv_matches:
@@ -407,7 +399,6 @@ def update_article_file(repo_dir, rel_path, slug=None):
         charset_viewport += f"    {m}\n"
         
     cleaned_head = cleaned_head.strip()
-    
     new_head = f"\n{charset_viewport}\n{meta_block}\n\n    {cleaned_head}\n"
     new_html = html[:head_start+6] + new_head + html[head_end:]
     
@@ -415,6 +406,84 @@ def update_article_file(repo_dir, rel_path, slug=None):
         f.write(new_html)
     print(f"Successfully updated metadata in {rel_path}")
     return True
+
+def verify_all_metadata(repo_dir):
+    print("=" * 80)
+    print("VERIFYING OPEN GRAPH & PREVIEW METADATA ACROSS ALL ARTICLES")
+    print("=" * 80)
+    
+    all_passed = True
+    total_articles = 0
+    passed_articles = 0
+    
+    for slug, d in ARTICLE_REGISTRY.items():
+        og_img_rel = d['og_image']
+        og_img_abs = os.path.join(repo_dir, og_img_rel.replace('/', os.sep))
+        
+        # Check physical image
+        if not os.path.exists(og_img_abs):
+            print(f"[FAIL] Image file missing: {og_img_rel}")
+            all_passed = False
+            continue
+            
+        with Image.open(og_img_abs) as im:
+            w, h = im.size
+            if (w, h) != (1200, 630):
+                print(f"[FAIL] Image {og_img_rel} dimensions are {w}x{h}, expected 1200x630!")
+                all_passed = False
+                
+        for lang in ['vi', 'en']:
+            total_articles += 1
+            rel_path = d[lang]['path'].lstrip('/')
+            abs_path = os.path.join(repo_dir, rel_path.replace('/', os.sep))
+            
+            if not os.path.exists(abs_path):
+                print(f"[FAIL] Article file missing: {rel_path}")
+                all_passed = False
+                continue
+                
+            with open(abs_path, 'r', encoding='utf-8') as f:
+                content = f.read()
+                
+            # Verify required tags
+            checks = [
+                (r'<meta property="og:type" content="article">', "og:type"),
+                (r'<meta property="og:site_name" content="INVAMAX">', "og:site_name"),
+                (rf'<meta property="og:locale" content="{"vi_VN" if lang == "vi" else "en_US"}">', "og:locale"),
+                (r'<meta property="og:title" content="[^"]+">', "og:title"),
+                (r'<meta property="og:description" content="[^"]+">', "og:description"),
+                (rf'<meta property="og:url" content="https://invamax\.com/{rel_path}">', "og:url"),
+                (rf'<meta property="og:image" content="https://invamax\.com/{og_img_rel}">', "og:image"),
+                (rf'<meta property="og:image:secure_url" content="https://invamax\.com/{og_img_rel}">', "og:image:secure_url"),
+                (r'<meta property="og:image:width" content="1200">', "og:image:width"),
+                (r'<meta property="og:image:height" content="630">', "og:image:height"),
+                (r'<meta property="og:image:type" content="image/jpeg">', "og:image:type"),
+                (r'<meta name="twitter:card" content="summary_large_image">', "twitter:card"),
+                (r'<script type="application/ld\+json">[\s\S]*?"@type":\s*"Article"', "Schema.org JSON-LD")
+            ]
+            
+            file_ok = True
+            for pattern, name in checks:
+                if not re.search(pattern, content):
+                    print(f"[FAIL] {rel_path} missing or invalid: {name}")
+                    file_ok = False
+                    all_passed = False
+                    
+            # Check for bad hosts
+            bad_matches = re.findall(r'https?://(?:localhost|127\.0\.0\.1|invamax\.vn)', content)
+            if bad_matches:
+                print(f"[FAIL] {rel_path} contains forbidden domain(s): {set(bad_matches)}")
+                file_ok = False
+                all_passed = False
+                
+            if file_ok:
+                passed_articles += 1
+                print(f"[PASS] {rel_path} - Complete OG, Twitter, Canonical & 1200x630 Image!")
+
+    print("-" * 80)
+    print(f"SUMMARY: {passed_articles}/{total_articles} articles fully verified and passed!")
+    print("=" * 80)
+    return all_passed
 
 if __name__ == "__main__":
     repo_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
@@ -424,5 +493,7 @@ if __name__ == "__main__":
             en_file = d['en']['path'].lstrip('/')
             update_article_file(repo_path, vi_file, slug)
             update_article_file(repo_path, en_file, slug)
+    elif len(sys.argv) > 1 and sys.argv[1] == '--verify':
+        verify_all_metadata(repo_path)
     else:
-        print("Usage: python metadata_manager.py --all")
+        print("Usage: python metadata_manager.py [--all | --verify]")
