@@ -1,219 +1,133 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tiêu đề bài viết - INVAMAX</title>
+
+    <!-- Title & SEO Meta -->
+    <title>[Tiêu đề bài viết] | INVAMAX</title>
+    <meta name="description" content="[Mô tả ngắn gọn về nội dung bài viết, độ dài khoảng 140-160 ký tự].">
+    <link rel="canonical" href="https://invamax.com/vi/[slug-bai-viet].html">
+    <link rel="alternate" hreflang="vi" href="https://invamax.com/vi/[slug-bai-viet].html">
+    <link rel="alternate" hreflang="en" href="https://invamax.com/en/[slug-bai-viet].html">
+    <link rel="alternate" hreflang="x-default" href="https://invamax.com/vi/[slug-bai-viet].html">
+
+    <!-- Open Graph / Facebook / Zalo / LinkedIn -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="INVAMAX">
+    <meta property="og:locale" content="vi_VN">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:title" content="[Tiêu đề bài viết] | INVAMAX">
+    <meta property="og:description" content="[Mô tả ngắn gọn về nội dung bài viết].">
+    <meta property="og:url" content="https://invamax.com/vi/[slug-bai-viet].html">
+    <meta property="og:image" content="https://invamax.com/assets/images/og/[anh-dai-dien-1200x630].jpg">
+    <meta property="og:image:secure_url" content="https://invamax.com/assets/images/og/[anh-dai-dien-1200x630].jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="[Mô tả ảnh đại diện]">
+    <meta property="og:image:type" content="image/jpeg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="[Tiêu đề bài viết] | INVAMAX">
+    <meta name="twitter:description" content="[Mô tả ngắn gọn về nội dung bài viết].">
+    <meta name="twitter:image" content="https://invamax.com/assets/images/og/[anh-dai-dien-1200x630].jpg">
+    <meta name="twitter:image:alt" content="[Mô tả ảnh đại diện]">
+
+    <!-- Schema.org Article Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://invamax.com/vi/[slug-bai-viet].html"
+        },
+        "headline": "[Tiêu đề bài viết] | INVAMAX",
+        "description": "[Mô tả ngắn gọn về nội dung bài viết].",
+        "image": [
+            "https://invamax.com/assets/images/og/[anh-dai-dien-1200x630].jpg"
+        ],
+        "author": {
+            "@type": "Organization",
+            "name": "INVAMAX",
+            "url": "https://invamax.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "INVAMAX",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://invamax.com/assets/images/home/logo-invamax-original.png"
+            }
+        },
+        "datePublished": "2026-10-28",
+        "dateModified": "2026-10-28",
+        "inLanguage": "vi-VN"
+    }
+    </script>
     
-    <link rel="icon" type="image/jpeg" href="assets/images/favicon.jpg">
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="assets/images/favicon.jpg?v=2">
+    <link rel="shortcut icon" type="image/jpeg" href="assets/images/favicon.jpg?v=2">
+    <link rel="apple-touch-icon" href="assets/images/favicon.jpg?v=2">
+
+    <!-- CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css?v=18">
+    <link rel="stylesheet" href="assets/css/navbar.css?v=13">
     <script src="https://unpkg.com/lucide@latest"></script>
+
     <style>
+        .article-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
         .article-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 40px 32px;
+            border: 1px solid #e2e8f0;
             line-height: 1.8;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: #334155;
         }
         .article-content h1 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: #0f172a;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             line-height: 1.3;
-        }
-        .article-content h2 {
-            font-size: 1.8rem;
-            color: #1e293b;
-            margin-top: 40px;
-            margin-bottom: 15px;
-        }
-        .article-content img {
-            max-width: 100%;
-            border-radius: 24px;
-            margin: 20px 0;
         }
         .article-meta {
             color: #64748b;
             font-size: 0.95rem;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             padding-bottom: 20px;
             border-bottom: 1px solid #e2e8f0;
             display: flex;
             align-items: center;
             gap: 15px;
+            flex-wrap: wrap;
         }
     </style>
-    <meta name="google-site-verification" content="d9opRRlvn7gdYQvrvD_fqSJEh8E2KOLNiIyV_1hknA0" />
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container">
-            <a href="index.html" class="logo">INVA<span>MAX</span></a>
-            <div class="nav-links">
-                <div class="nav-item">
-                    <a href="index.html" class="nav-title" style="color: inherit; text-decoration: none;">Trang chủ</a>
-                </div>
-                <div class="nav-item">
-                    <a href="javascript:void(0)" class="nav-title" style="color: inherit; text-decoration: none;">Vận hành &amp; Chuyển đổi <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i></a>
-                    <div class="nav-dropdown">
-                        <a href="giai-phap.html">Factory Transformation</a>
-                        <a href="factory-operations.html">Operate &amp; Transform</a>
-                        <a href="kham-benh-online/gioi-thieu.html">Đánh giá hiện trạng</a>
-                        <a href="dich-vu.html#thiet-ke">Thiết kế mô hình mục tiêu</a>
-                        <a href="dich-vu.html#fos">Cải tiến &amp; Duy trì</a>
-                    </div>
-                </div>
-                <div class="nav-item">
-                    <a href="javascript:void(0)" class="nav-title" style="color: inherit; text-decoration: none;">Phương pháp <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i></a>
-                    <div class="nav-dropdown">
-                        <a href="kham-benh-online/gioi-thieu.html">INVAMAX FA™</a>
-                        <a href="dich-vu.html#fos">INVAMAX FOS™</a>
-                        <a href="dich-vu.html#ai-digital">Digital &amp; AI for Operations</a>
-                    </div>
-                </div>
-                <div class="nav-item">
-                    <a href="case-study.html" class="nav-title" style="color: inherit; text-decoration: none;">Case Study</a>
-                </div>
-                <div class="nav-item">
-                    <a href="javascript:void(0)" class="nav-title" style="color: inherit; text-decoration: none;">Tài nguyên <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i></a>
-                    <div class="nav-dropdown">
-                        <a href="tri-thuc.html">Tri thức &amp; Insights</a>
-                        <a href="thu-vien.html">Template &amp; Toolkit</a>
-                        <a href="thu-vien.html">Tài liệu chuyên sâu</a>
-                        <a href="kham-benh-online/gioi-thieu.html">Công cụ đánh giá</a>
-                    </div>
-                </div>
-                <div class="nav-item">
-                    <a href="javascript:void(0)" class="nav-title" style="color: inherit; text-decoration: none;">Về INVAMAX <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i></a>
-                    <div class="nav-dropdown">
-                        <a href="index.html">Giới thiệu INVAMAX</a>
-                        <a href="index.html#founder">Founder / Chuyên gia</a>
-                        <a href="index.html#cach-lam-viec">Cách chúng tôi làm việc</a>
-                        <a href="index.html#lien-he">Liên hệ</a>
-                    </div>
-                </div>
-                
-                <div class="nav-item lang-switcher" style="display: flex; gap: 8px; align-items: center; margin-left: auto;">
-                    <a href="#" class="active" style="color: var(--primary); font-weight: bold; padding: 0;">VN</a>
-                    <span style="color: var(--border-color);">|</span>
-                    <a href="#" style="color: var(--text-muted); padding: 0; opacity: 0.7;">EN</a>
-                </div>
-                <div id="auth-btn-container" style="margin-left: 15px; z-index: 100;"></div>
-                
-                
+    <main class="article-container">
+        <article class="article-content">
+            <h1>Tiêu đề bài viết mẫu</h1>
+            <div class="article-meta">
+                <span><i data-lucide="clock" style="width: 14px; height: 14px;"></i> Thời gian đọc: 10 phút</span>
+                <span><i data-lucide="bookmark" style="width: 14px; height: 14px;"></i> Chuyên mục: Lean & Cải tiến</span>
+                <span><i data-lucide="user-check" style="width: 14px; height: 14px;"></i> Bởi: Chuyên gia INVAMAX</span>
             </div>
-            <button class="mobile-menu-btn"><i data-lucide="menu"></i></button>
-        </div>
-    </nav>
-
-    <div class="page-header">
-        <div class="container">
-            <p class="page-desc" style="margin-bottom: 10px;"><a href="kien-thuc.html" style="color: white; opacity: 0.8; text-decoration: none;"><i data-lucide="arrow-left" style="width: 16px; height: 16px; vertical-align: middle;"></i> Trở về Góc Chia Sẻ</a></p>
-        </div>
-    </div>
-
-    <article class="article-content">
-        <h1>Tiêu đề bài viết của bạn nằm ở đây</h1>
-        
-        <div class="article-meta">
-            <span><i data-lucide="calendar" style="width: 16px; height: 16px; vertical-align: text-bottom;"></i> 18/07/2026</span>
-            <span><i data-lucide="tag" style="width: 16px; height: 16px; vertical-align: text-bottom;"></i> Lean Manufacturing</span>
-        </div>
-
-        <p>Đây là đoạn mở đầu bài viết (Sapo). Hãy viết một đoạn ngắn gọn, hấp dẫn để thu hút người đọc hiểu về chủ đề bạn sắp chia sẻ.</p>
-        
-        <h2>1. Tiêu đề phụ (Heading 2)</h2>
-        <p>Nội dung chi tiết của phần 1. Bạn có thể chèn thêm hình ảnh minh họa nếu cần:</p>
-        <!-- <img src="assets/images/hinh-anh-1.jpg" alt="Mô tả ảnh"> -->
-        
-        <h2>2. Tiêu đề phụ 2</h2>
-        <p>Nội dung chi tiết phần 2. Nếu muốn làm nổi bật, bạn có thể dùng <strong>chữ in đậm</strong> hoặc <em>chữ in nghiêng</em>.</p>
-        
-        <ul>
-            <li>Ý chính thứ nhất</li>
-            <li>Ý chính thứ hai</li>
-            <li>Ý chính thứ ba</li>
-        </ul>
-
-        <h2>Kết luận</h2>
-        <p>Tổng kết lại những điểm chính và kêu gọi hành động (ví dụ: liên hệ INVAMAX để được tư vấn thêm).</p>
-    </article>
-
-    
-    <!-- Back to Home Button -->
-        <section style="background: var(--bg-darker); padding: 40px 0 50px 0; text-align: center; border-radius: 16px;">
-        <div class="container">
-            <a href="index.html" class="btn btn-outline" style="display: inline-flex; padding: 12px 30px; font-size: 1.05rem; border-radius: 30px; text-decoration: none; align-items: center; gap: 8px; border: 1px solid rgba(255,255,255,0.1); color: var(--text-muted); transition: all 0.3s ease;" onmouseover="this.style.color='white'; this.style.borderColor='var(--primary)';" onmouseout="this.style.color='var(--text-muted)'; this.style.borderColor='rgba(255,255,255,0.1)';">
-                <i data-lucide="arrow-left" style="width: 18px; height: 18px;"></i> Quay lại trang chủ
-            </a>
-        </div>
-    </section>
-<footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <a href="index.html" class="logo mb-2" style="display: block;">INVA<span>MAX</span></a>
-                    <p class="text-muted mb-4">Mô hình vận hành nhà máy<br>Mô hình vận hành nhà máy.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Giải pháp</h4>
-                    <div class="footer-links">
-                        <a href="dich-vu.html">INVAMAX FOS</a>
-                        <a href="dich-vu.html">Khám bệnh nhà máy</a>
-                        <a href="san-pham.html">Thiết bị hỗ trợ sản xuất</a>
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h4>Về chúng tôi</h4>
-                    <div class="footer-links">
-                        <a href="index.html">Giới thiệu</a>
-                        <a href="kien-thuc.html">Bài viết</a>
-                        <a href="thu-vien.html">Thư viện</a>
-                    </div>
-                    <div class="social-links" style="margin-top: 24px; display: flex; gap: 16px;">
-                        <a href="https://www.linkedin.com/in/xuannhattran/" target="_blank" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='var(--primary)'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                        </a>
-                        <a href="https://www.facebook.com/invamax.vanhanhtinhgon" target="_blank" style="color: var(--text-muted); display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.background='var(--primary)'; this.style.color='white';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-muted)';">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-                        </a>
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h4>Liên hệ</h4>
-                    <p style="font-weight: 600; color: white; margin-bottom: 16px; font-size: 0.95rem;">CÔNG TY TNHH ĐẦU TƯ VÀ PHÁT TRIỂN INVAMAX</p>
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <i data-lucide="file-text"></i>
-                            <span>Mã số thuế: 0202236953</span>
-                        </div>
-                        <div class="contact-item">
-                            <i data-lucide="map-pin"></i>
-                            <span>Thôn Đông Lôi, xã Vĩnh Thịnh, TP Hải Phòng</span>
-                        </div>
-                        <div class="contact-item">
-                            <i data-lucide="phone"></i>
-                            <span>0988.911.869</span>
-                        </div>
-                        <div class="contact-item">
-                            <i data-lucide="mail"></i>
-                            <span>info@invamax.com</span>
-                        </div>
-                    </div>
-                
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 INVAMAX. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="assets/js/main.js?v=6"></script>
+            <p>Nội dung bài viết bắt đầu tại đây...</p>
+        </article>
+    </main>
     <script>
-        lucide.createIcons();
+        if (window.lucide) {
+            lucide.createIcons();
+        }
     </script>
 </body>
 </html>
