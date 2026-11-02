@@ -307,7 +307,7 @@
     align-items: center;
     gap: 16px;
     padding: 16px 14px 24px;
-    filter: blur(2.5px);
+    filter: blur(1.5px);
     transform: translateZ(0);
     pointer-events: none;
 }
@@ -1274,9 +1274,8 @@
             lucide.createIcons({ attrs: { "stroke-width": 2.2 } });
         }
 
-        // Blurred attachment preview: pages rendered crisp then softly blurred via CSS (blur: 2.5px)
-        // so layout, diagrams and headers are faintly visible ("lờ mờ") but details cannot be copied.
-        // The container is scrollable, allowing visitors to scroll through all real report pages.
+        // Blurred attachment preview: pre-rendered lightweight blurred images for instant 0ms load,
+        // with fallback to dynamic PDF.js extraction. Secure, fast, and scrollable.
         let csBlurRenderToken = 0;
         function loadPdfJsForPreview() {
             if (window.pdfjsLib) return Promise.resolve(true);
@@ -1301,6 +1300,22 @@
             if (!section || !pagesEl) return;
             const token = ++csBlurRenderToken;
             if (previewEl) previewEl.scrollTop = 0;
+
+            // INSTANT FAST PATH: Pre-rendered blurred preview images (loads immediately, 0s delay)
+            const previewImgs = Array.isArray(cs.previewImages) && cs.previewImages.length > 0
+                ? cs.previewImages
+                : [];
+
+            if (previewImgs.length > 0) {
+                section.style.display = 'block';
+                pagesEl.innerHTML = previewImgs.map((src, idx) => `
+                    <img src="${resolveAssetUrl(src)}" alt="Trang báo cáo ${idx + 1}" loading="${idx < 2 ? 'eager' : 'lazy'}">
+                `).join('');
+                lucide.createIcons({ attrs: { "stroke-width": 2.2 } });
+                return;
+            }
+
+            // FALLBACK PATH: Dynamic extraction if preview images are not yet generated
             pagesEl.innerHTML = '<div class="cs-blur-placeholder" title="Đang tải các trang báo cáo..."></div>';
 
             const rawFileUrl = cs.fileUrl || cs.pdfUrl || '';
@@ -1352,7 +1367,7 @@
                         appendPage(canvas);
                     }
                 } catch (err) {
-                    console.warn('Không tạo được bản xem trước làm mờ:', err);
+                    console.warn('Lỗi kết xuất bản xem trước:', err);
                 }
             }
 
