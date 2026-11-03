@@ -1,10 +1,34 @@
 [
     {
+        "id": "art-vi-sao-lean-that-bai",
+        "title": "Vì sao nhiều nhà máy áp dụng Lean nhưng thất bại?",
+        "category": "Lean & Cải tiến",
+        "excerpt": "Vì sao nhiều nhà máy triển khai Lean, 5S, Kaizen nhưng không đạt kết quả bền vững? Khám phá nguyên nhân và giải pháp từ góc nhìn Lean & Đạo.",
+        "thumbnail": "assets/images/resources/art-why-lean-fails.jpg",
+        "dateDisplay": "03 thg 11, 2026",
+        "views": "1.5K lượt xem",
+        "link": "vi/article-vi-sao-nhieu-nha-may-ap-dung-lean-that-bai.html",
+        "status": "published",
+        "createdAt": "2026-11-03"
+    },
+    {
+        "id": "art-hieu-ve-lean",
+        "title": "Hiểu về Lean Manufacturing trong 10 phút",
+        "category": "Lean & Cải tiến",
+        "excerpt": "Lean không chỉ là loại bỏ lãng phí. Đó là phương pháp tư duy và tổ chức vận hành giúp nhà máy tạo ra nhiều giá trị hơn với ít nguồn lực hơn.",
+        "thumbnail": "assets/images/resources/lean-10-min-clean.jpg?v=20261024_1600",
+        "dateDisplay": "23 thg 10, 2026",
+        "views": "1.8K lượt xem",
+        "link": "vi/article-hieu-ve-lean-manufacturing.html",
+        "status": "published",
+        "createdAt": "2026-10-23"
+    },
+    {
         "id": "art-5-buoc-lean",
         "title": "5 bước triển khai Lean hiệu quả tại nhà máy sản xuất",
         "category": "Lean & Cải tiến",
         "excerpt": "Hướng dẫn thực tế từ các dự án triển khai Lean, giúp doanh nghiệp cải thiện năng suất và giảm lãng phí bền vững.",
-        "thumbnail": "assets/images/resources/art-5steps.jpg",
+        "thumbnail": "assets/images/resources/art-5steps.jpg?v=7",
         "dateDisplay": "12 thg 10, 2026",
         "views": "2.4K lượt xem",
         "link": "vi/article-5-buoc-trien-khai-lean.html",

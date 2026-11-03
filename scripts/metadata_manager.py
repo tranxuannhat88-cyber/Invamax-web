@@ -17,6 +17,25 @@ BASE_URL = "https://invamax.com"
 
 # REGISTRY OF ALL ARTICLES AND CASE STUDIES
 ARTICLE_REGISTRY = {
+    "article-vi-sao-nhieu-nha-may-ap-dung-lean-that-bai": {
+        "og_image": "assets/images/og/og-why-lean-fails.jpg",
+        "date_published": "2026-11-03",
+        "date_modified": "2026-11-03",
+        "vi": {
+            "title": "Vì sao nhiều nhà máy áp dụng Lean nhưng thất bại? | INVAMAX",
+            "desc": "Vì sao nhiều nhà máy triển khai Lean, 5S, Kaizen nhưng không đạt kết quả bền vững? Khám phá nguyên nhân và giải pháp từ góc nhìn Lean & Đạo.",
+            "category": "Tri thức / Lean & Cải tiến",
+            "path": "/vi/article-vi-sao-nhieu-nha-may-ap-dung-lean-that-bai.html",
+            "image_alt": "Vì sao nhiều nhà máy áp dụng Lean nhưng thất bại? - INVAMAX"
+        },
+        "en": {
+            "title": "Why Do Many Factories Apply Lean Yet Fail? | INVAMAX",
+            "desc": "Why do many factories deploy Lean, 5S, and Kaizen without achieving lasting results? Discover the root causes and solutions from a Lean & Tao perspective.",
+            "category": "Insights / Lean & Improvement",
+            "path": "/en/article-vi-sao-nhieu-nha-may-ap-dung-lean-that-bai.html",
+            "image_alt": "Why Do Many Factories Apply Lean Yet Fail? - INVAMAX"
+        }
+    },
     "article-hieu-ve-lean-manufacturing": {
         "og_image": "assets/images/og/og-lean-10-minutes.jpg",
         "date_published": "2026-10-23",

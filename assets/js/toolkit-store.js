@@ -8,7 +8,7 @@ var INVAMAX_TOOLKIT_STORE = (function () {
                  (typeof window !== 'undefined' && window.location && window.location.pathname.includes('/en/'));
 
     const STORAGE_KEY = isEN ? 'invamax_toolkits_en_v2' : 'invamax_toolkits_v2';
-    const ARTICLES_STORAGE_KEY = isEN ? 'invamax_resources_articles_en_v12' : 'invamax_resources_articles_v12';
+    const ARTICLES_STORAGE_KEY = isEN ? 'invamax_resources_articles_en_v13' : 'invamax_resources_articles_v13';
     const VIDEOS_STORAGE_KEY = isEN ? 'invamax_resources_videos_en_v1' : 'invamax_resources_videos_v1';
     const SETTINGS_KEY = 'invamax_admin_settings_v1';
 
@@ -71,6 +71,18 @@ var INVAMAX_TOOLKIT_STORE = (function () {
         }
 ];
     const DEFAULT_ARTICLES_EN = [
+        {
+                "id": "art-vi-sao-lean-that-bai",
+                "title": "Why Do Many Factories Apply Lean Yet Fail?",
+                "category": "Lean & Improvement",
+                "excerpt": "Why do many factories deploy Lean, 5S, and Kaizen without achieving lasting results? Discover the root causes and solutions from a Lean & Tao perspective.",
+                "thumbnail": "assets/images/resources/art-why-lean-fails.jpg",
+                "dateDisplay": "Nov 03, 2026",
+                "views": "1.5K views",
+                "link": "en/article-vi-sao-nhieu-nha-may-ap-dung-lean-that-bai.html",
+                "status": "published",
+                "createdAt": "2026-11-03"
+        },
         {
                 "id": "art-hieu-ve-lean",
                 "title": "Understanding Lean Manufacturing in 10 Minutes",
@@ -235,6 +247,18 @@ var INVAMAX_TOOLKIT_STORE = (function () {
 
     // Dữ liệu mặc định 4 bài viết mới & tiêu biểu tiếng Việt
     const DEFAULT_ARTICLES_VI = [
+        {
+            id: 'art-vi-sao-lean-that-bai',
+            title: 'Vì sao nhiều nhà máy áp dụng Lean nhưng thất bại?',
+            category: 'Lean & Cải tiến',
+            excerpt: 'Vì sao nhiều nhà máy triển khai Lean, 5S, Kaizen nhưng không đạt kết quả bền vững? Khám phá nguyên nhân và giải pháp từ góc nhìn Lean & Đạo.',
+            thumbnail: 'assets/images/resources/art-why-lean-fails.jpg',
+            dateDisplay: '03 thg 11, 2026',
+            views: '1.5K lượt xem',
+            link: 'vi/article-vi-sao-nhieu-nha-may-ap-dung-lean-that-bai.html',
+            status: 'published',
+            createdAt: '2026-11-03'
+        },
         {
             id: 'art-hieu-ve-lean',
             title: 'Hiểu về Lean Manufacturing trong 10 phút',
