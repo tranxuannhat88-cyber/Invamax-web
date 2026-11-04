@@ -1110,6 +1110,9 @@ svg.res-feat-icon {
     box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
     cursor: default;
 }
+.vid-card-light.has-video {
+    cursor: pointer;
+}
 .vid-card-light:hover {
     border-color: #cbd5e1;
     transform: translateY(-4px);
@@ -1118,7 +1121,8 @@ svg.res-feat-icon {
 .vid-thumb-wrap {
     position: relative;
     width: 100%;
-    height: 155px;
+    aspect-ratio: 16 / 9;
+    height: auto;
     overflow: hidden;
     background: var(--iv-text);
 }
@@ -1181,7 +1185,7 @@ svg.res-feat-icon {
     font-weight: 800;
     color: var(--iv-text) !important;
     line-height: 1.4;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     min-height: 2.7em;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -1190,6 +1194,17 @@ svg.res-feat-icon {
 }
 .vid-card-light:hover .vid-title-light {
     color: var(--iv-orange) !important;
+}
+.vid-desc-light {
+    font-size: 0.8rem;
+    color: var(--iv-muted);
+    line-height: 1.5;
+    margin-bottom: 14px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    flex-grow: 1;
 }
 .vid-meta-footer-light {
     display: flex;
@@ -1205,6 +1220,62 @@ svg.res-feat-icon {
     display: flex;
     align-items: center;
     gap: 4px;
+}
+
+/* Video Player Modal */
+.vid-player-iframe-box {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #0f172a;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.18);
+    margin-bottom: 18px;
+}
+.vid-player-iframe-box iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+.vid-player-info-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid var(--iv-orange);
+    border-radius: 12px;
+    padding: 16px 20px;
+}
+.vid-player-info-desc {
+    font-size: 14px;
+    color: #334155;
+    line-height: 1.65;
+    margin: 0 0 12px 0;
+}
+.vid-player-highlights-title {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #0f172a;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin: 0 0 8px 0;
+}
+.vid-player-highlights-list {
+    margin: 0;
+    padding-left: 18px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px 18px;
+}
+.vid-player-highlights-list li {
+    font-size: 13px;
+    color: #475569;
+    line-height: 1.5;
+}
+@media (max-width: 768px) {
+    .vid-player-highlights-list {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* ==========================================================================

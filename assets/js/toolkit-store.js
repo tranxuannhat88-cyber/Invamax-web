@@ -9,7 +9,7 @@ var INVAMAX_TOOLKIT_STORE = (function () {
 
     const STORAGE_KEY = isEN ? 'invamax_toolkits_en_v2' : 'invamax_toolkits_v2';
     const ARTICLES_STORAGE_KEY = isEN ? 'invamax_resources_articles_en_v13' : 'invamax_resources_articles_v13';
-    const VIDEOS_STORAGE_KEY = isEN ? 'invamax_resources_videos_en_v1' : 'invamax_resources_videos_v1';
+    const VIDEOS_STORAGE_KEY = isEN ? 'invamax_resources_videos_en_v2' : 'invamax_resources_videos_v2';
     const SETTINGS_KEY = 'invamax_admin_settings_v1';
 
     // Dữ liệu mặc định tiếng Anh
@@ -148,18 +148,28 @@ var INVAMAX_TOOLKIT_STORE = (function () {
     const DEFAULT_VIDEOS_EN = [
         {
                 "id": "vid-lean-intro-12p",
-                "title": "Introduction to Lean Manufacturing in 12 Minutes",
-                "thumbnail": "assets/images/resources/vid-intro.jpg",
-                "duration": "12:34",
+                "title": "Understanding Lean Manufacturing in 10 Minutes",
+                "desc": "Explore Lean Manufacturing thinking—from the 5 core principles and identifying the 8 wastes to selecting improvement tools and applying them on the factory floor.",
+                "highlights": [
+                    "What is Lean Manufacturing? The true essence of lean production.",
+                    "Distinguishing Value-Added (VA), Necessary Non-Value-Added (NNVA), and Non-Value-Added (NVA) activities.",
+                    "The 5 Lean Principles: Value, Value Stream, Flow, Pull, and Perfection.",
+                    "The 8 common types of waste in manufacturing.",
+                    "Core improvement tools: 5S, Kaizen, Kanban, VSM, SMED, Poka-Yoke, TPM, and 5 Why.",
+                    "Real production line examples & how to start implementing Lean in your enterprise."
+                ],
+                "thumbnail": "assets/images/resources/vid-intro.jpg?v=2",
+                "duration": "11:07",
                 "views": "32K views",
-                "timeAgo": "2 weeks ago",
-                "videoUrl": "https://youtube.com/@invamax?si=5aj2VVcbw5KCaFhI",
+                "timeAgo": "1 week ago",
+                "videoUrl": "https://youtu.be/tpELxjjICmg?si=Rk9NVqYH78HhbirR",
                 "status": "published",
-                "createdAt": "2026-10-05"
+                "createdAt": "2026-10-30"
         },
         {
                 "id": "vid-5-loi-thuong-gap",
                 "title": "5 Common Pitfalls When Implementing Kaizen in Factories",
+                "desc": "Analyzing common mistakes that cause Kaizen and 5S initiatives to lose momentum and how to sustain continuous improvement.",
                 "thumbnail": "assets/images/resources/vid-mistakes.jpg",
                 "duration": "18:20",
                 "views": "24K views",
@@ -171,6 +181,7 @@ var INVAMAX_TOOLKIT_STORE = (function () {
         {
                 "id": "vid-ai-du-bao-san-xuat",
                 "title": "AI Applications in Manufacturing Demand & Scheduling",
+                "desc": "How to leverage data and artificial intelligence to improve demand forecasting accuracy, production scheduling, and inventory optimization.",
                 "thumbnail": "assets/images/resources/vid-ai-pred.jpg",
                 "duration": "15:10",
                 "views": "18K views",
@@ -182,6 +193,7 @@ var INVAMAX_TOOLKIT_STORE = (function () {
         {
                 "id": "vid-xay-dung-cost-down",
                 "title": "How to Build a Sustainable Cost Down Governance System",
+                "desc": "Methodology for establishing consumption standards, identifying waste, and organizing an effective manufacturing cost-reduction program.",
                 "thumbnail": "assets/images/resources/vid-costdown-sys.jpg",
                 "duration": "10:45",
                 "views": "21K views",
@@ -326,18 +338,28 @@ var INVAMAX_TOOLKIT_STORE = (function () {
     const DEFAULT_VIDEOS_VI = [
         {
             id: 'vid-lean-intro-12p',
-            title: 'Giới thiệu Lean Manufacturing trong 12 phút',
-            thumbnail: 'assets/images/resources/vid-intro.jpg',
-            duration: '12:34',
+            title: 'Hiểu về Lean Manufacturing trong 10 phút',
+            desc: 'Tìm hiểu tư duy Lean Manufacturing từ 5 nguyên lý nền tảng, cách nhận diện 8 loại lãng phí đến lựa chọn công cụ cải tiến và ứng dụng thực tế trong nhà máy.',
+            highlights: [
+                'Lean Manufacturing là gì? Bản chất của sản xuất tinh gọn.',
+                'Phân biệt hoạt động tạo giá trị (VA), cần thiết nhưng không tạo giá trị (NNVA) và không tạo giá trị (NVA).',
+                '5 nguyên lý Lean: Value, Value Stream, Flow, Pull và Perfection.',
+                '8 loại lãng phí thường gặp trong sản xuất.',
+                'Các công cụ cải tiến: 5S, Kaizen, Kanban, VSM, SMED, Poka-Yoke, TPM và 5 Why.',
+                'Ví dụ ứng dụng Lean trong dây chuyền sản xuất & cách bắt đầu triển khai tại doanh nghiệp.'
+            ],
+            thumbnail: 'assets/images/resources/vid-intro.jpg?v=2',
+            duration: '11:07',
             views: '32K lượt xem',
-            timeAgo: '2 tuần trước',
-            videoUrl: 'https://youtube.com/@invamax?si=5aj2VVcbw5KCaFhI',
+            timeAgo: '1 tuần trước',
+            videoUrl: 'https://youtu.be/tpELxjjICmg?si=Rk9NVqYH78HhbirR',
             status: 'published',
-            createdAt: '2026-10-05'
+            createdAt: '2026-10-30'
         },
         {
             id: 'vid-5-loi-thuong-gap',
             title: '5 lỗi thường gặp khi triển khai cải tiến tại nhà máy',
+            desc: 'Phân tích những sai lầm phổ biến khiến phong trào Kaizen, 5S nhanh chóng hạ nhiệt và cách khắc phục để duy trì cải tiến bền vững.',
             thumbnail: 'assets/images/resources/vid-mistakes.jpg',
             duration: '18:20',
             views: '24K lượt xem',
@@ -349,6 +371,7 @@ var INVAMAX_TOOLKIT_STORE = (function () {
         {
             id: 'vid-ai-du-bao-san-xuat',
             title: 'Ứng dụng AI trong dự báo sản xuất',
+            desc: 'Cách ứng dụng dữ liệu và trí tuệ nhân tạo để nâng cao độ chính xác khi dự báo nhu cầu, lập kế hoạch sản xuất và tối ưu tồn kho.',
             thumbnail: 'assets/images/resources/vid-ai-pred.jpg',
             duration: '15:10',
             views: '18K lượt xem',
@@ -360,6 +383,7 @@ var INVAMAX_TOOLKIT_STORE = (function () {
         {
             id: 'vid-xay-dung-cost-down',
             title: 'Cách xây dựng hệ thống Cost Down bền vững',
+            desc: 'Phương pháp thiết lập cơ chế kiểm soát định mức, nhận diện lãng phí và tổ chức chương trình giảm chi phí sản xuất hiệu quả.',
             thumbnail: 'assets/images/resources/vid-costdown-sys.jpg',
             duration: '10:45',
             views: '21K lượt xem',
@@ -1239,6 +1263,137 @@ var INVAMAX_TOOLKIT_STORE = (function () {
         return saveVideos(DEFAULT_VIDEOS);
     }
 
+    function extractYouTubeId(url) {
+        if (!url || typeof url !== 'string') return null;
+        const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/);
+        return match ? match[1] : null;
+    }
+
+    function ensureVideoPlayerModal() {
+        if (typeof document === 'undefined') return null;
+        let modal = document.getElementById('videoPlayerModal');
+        if (modal) return modal;
+
+        modal = document.createElement('div');
+        modal.id = 'videoPlayerModal';
+        modal.className = 'doc-preview-modal-backdrop';
+        modal.onclick = function (e) {
+            if (e && e.target && e.target.id === 'videoPlayerModal') {
+                closeVideoPlayerModal();
+            }
+        };
+        modal.innerHTML = `
+            <div class="doc-preview-modal-dialog" style="max-width: 900px;" onclick="event.stopPropagation()">
+                <div class="doc-preview-modal-header" style="display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 14px 22px; background: #fafafa; border-bottom: 1px solid #e2e8f0;">
+                    <h3 style="margin: 0; font-size: 16px; font-weight: 800; display: flex; align-items: center; gap: 9px; flex: 1 1 auto; min-width: 0; overflow: hidden; white-space: nowrap;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--iv-orange)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                        <span id="videoPlayerModalTitle" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Video</span>
+                    </h3>
+                    <div class="doc-preview-header-actions" style="display: flex; align-items: center; gap: 8px; flex-shrink: 0;">
+                        <a id="videoPlayerYoutubeBtn" href="#" target="_blank" rel="noopener" class="preview-tool-btn primary" style="display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;">
+                            <i data-lucide="external-link"></i> ${isEN ? 'Watch on YouTube' : 'Xem trên YouTube'}
+                        </a>
+                        <button type="button" class="doc-preview-modal-close" onclick="INVAMAX_TOOLKIT_STORE.closeVideoPlayerModal()" title="${isEN ? 'Close' : 'Đóng'}" style="flex-shrink: 0; margin-left: 4px;">&times;</button>
+                    </div>
+                </div>
+                <div class="doc-preview-modal-body" style="padding: 18px 22px; max-height: 82vh; overflow-y: auto;">
+                    <div id="videoPlayerContainer" class="vid-player-iframe-box"></div>
+                    <div id="videoPlayerInfoBox" class="vid-player-info-card" style="display: none;">
+                        <p id="videoPlayerDesc" class="vid-player-info-desc"></p>
+                        <div id="videoPlayerHighlightsWrap" style="display: none;">
+                            <div class="vid-player-highlights-title">${isEN ? 'Key Video Topics:' : 'Nội dung chính trong video:'}</div>
+                            <ul id="videoPlayerHighlightsList" class="vid-player-highlights-list"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeVideoPlayerModal();
+        });
+        return modal;
+    }
+
+    function handleVideoPlay(id, event) {
+        if (event) event.preventDefault();
+        const vid = getVideos().find(v => v.id === id);
+        if (!vid) return;
+        const ytId = extractYouTubeId(vid.videoUrl);
+        if (!ytId) return;
+
+        const modal = ensureVideoPlayerModal();
+        if (!modal) {
+            window.open(vid.videoUrl, '_blank', 'noopener');
+            return;
+        }
+
+        const titleEl = document.getElementById('videoPlayerModalTitle');
+        if (titleEl) titleEl.innerText = vid.title || '';
+
+        const ytBtn = document.getElementById('videoPlayerYoutubeBtn');
+        if (ytBtn) ytBtn.href = vid.videoUrl;
+
+        const container = document.getElementById('videoPlayerContainer');
+        if (container) {
+            if (typeof window !== 'undefined' && window.location && window.location.protocol === 'file:') {
+                const thumb = resolveAssetUrl(vid.thumbnail || `https://i.ytimg.com/vi/${ytId}/maxresdefault.jpg`);
+                container.innerHTML = `
+                    <a href="${escapeHTML(vid.videoUrl)}" target="_blank" rel="noopener" style="display: block; width: 100%; height: 100%; position: relative; text-decoration: none;">
+                        <img src="${thumb}" alt="${escapeHTML(vid.title)}" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                        <div style="position: absolute; inset: 0; background: rgba(15, 23, 42, 0.35); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;">
+                            <div style="width: 68px; height: 68px; border-radius: 50%; background: var(--iv-orange); color: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(234, 88, 12, 0.5);">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" style="margin-left: 3px;"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                            </div>
+                            <span style="background: rgba(15, 23, 42, 0.85); color: #fff; font-size: 13px; font-weight: 700; padding: 6px 16px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2);">
+                                ${isEN ? 'Click to watch video on YouTube' : 'Bấm để phát video trên YouTube'}
+                            </span>
+                        </div>
+                    </a>
+                `;
+            } else {
+                container.innerHTML = `<iframe src="https://www.youtube.com/embed/${ytId}?autoplay=1&rel=0" title="${escapeHTML(vid.title)}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+            }
+        }
+
+        const infoBox = document.getElementById('videoPlayerInfoBox');
+        const descEl = document.getElementById('videoPlayerDesc');
+        const hlWrap = document.getElementById('videoPlayerHighlightsWrap');
+        const hlList = document.getElementById('videoPlayerHighlightsList');
+
+        if (infoBox && (vid.desc || (Array.isArray(vid.highlights) && vid.highlights.length > 0))) {
+            infoBox.style.display = 'block';
+            if (descEl) {
+                descEl.innerText = vid.desc || '';
+                descEl.style.display = vid.desc ? 'block' : 'none';
+            }
+            if (hlWrap && hlList && Array.isArray(vid.highlights) && vid.highlights.length > 0) {
+                hlList.innerHTML = vid.highlights.map(h => `<li>${escapeHTML(h)}</li>`).join('');
+                hlWrap.style.display = 'block';
+            } else if (hlWrap) {
+                hlWrap.style.display = 'none';
+            }
+        } else if (infoBox) {
+            infoBox.style.display = 'none';
+        }
+
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+            window.lucide.createIcons();
+        }
+    }
+
+    function closeVideoPlayerModal() {
+        const modal = document.getElementById('videoPlayerModal');
+        if (modal) {
+            modal.classList.remove('show');
+            const container = document.getElementById('videoPlayerContainer');
+            if (container) container.innerHTML = '';
+        }
+        document.body.style.overflow = '';
+    }
+
     function renderVideoCardHTML(vid) {
         const thumb = resolveAssetUrl(vid.thumbnail || 'assets/images/resources/vid-intro.jpg');
         let viewsText = vid.views || (isEN ? '0 views' : '0 lượt xem');
@@ -1250,8 +1405,13 @@ var INVAMAX_TOOLKIT_STORE = (function () {
             timeAgoText = timeAgoText.replace('tuần trước', 'weeks ago').replace('tháng trước', 'months ago');
         }
 
+        const ytId = extractYouTubeId(vid.videoUrl);
+        const hasRealVideo = !!ytId;
+        const cardClass = hasRealVideo ? 'vid-card-light has-video' : 'vid-card-light';
+        const clickAttr = hasRealVideo ? `onclick="INVAMAX_TOOLKIT_STORE.handleVideoPlay('${escapeHTML(vid.id)}', event)" title="${isEN ? 'Click to watch video' : 'Bấm để xem video'}"` : 'style="cursor: default;"';
+
         return `
-            <div class="vid-card-light" data-id="${escapeHTML(vid.id)}" style="cursor: default;">
+            <div class="${cardClass}" data-id="${escapeHTML(vid.id)}" ${clickAttr}>
                 <div class="vid-thumb-wrap">
                     <img src="${thumb}" alt="${escapeHTML(vid.title)}" loading="lazy">
                     <div class="vid-play-btn-circle" style="pointer-events: none;"><i data-lucide="play"></i></div>
@@ -1259,6 +1419,7 @@ var INVAMAX_TOOLKIT_STORE = (function () {
                 </div>
                 <div class="vid-body-light">
                     <h3 class="vid-title-light">${escapeHTML(vid.title)}</h3>
+                    ${vid.desc ? `<p class="vid-desc-light">${escapeHTML(vid.desc)}</p>` : ''}
                     <div class="vid-meta-footer-light">
                         <span class="vid-meta-item"><i data-lucide="play-circle" style="width: 12px; height: 12px;"></i> ${escapeHTML(viewsText)}</span>
                         <span class="vid-meta-item"><i data-lucide="clock" style="width: 12px; height: 12px;"></i> ${escapeHTML(timeAgoText)}</span>
@@ -1504,7 +1665,9 @@ var INVAMAX_TOOLKIT_STORE = (function () {
         moveVideo,
         moveVideoToIndex,
         resetVideosToDefault,
-        renderVideoCardHTML
+        renderVideoCardHTML,
+        handleVideoPlay,
+        closeVideoPlayerModal
     };
 })();
 

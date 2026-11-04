@@ -1,18 +1,28 @@
 [
   {
     "id": "vid-lean-intro-12p",
-    "title": "Introduction to Lean Manufacturing in 12 Minutes",
-    "thumbnail": "assets/images/resources/vid-intro.jpg",
-    "duration": "12:34",
+    "title": "Understanding Lean Manufacturing in 10 Minutes",
+    "desc": "Explore Lean Manufacturing thinking—from the 5 core principles and identifying the 8 wastes to selecting improvement tools and applying them on the factory floor.",
+    "highlights": [
+      "What is Lean Manufacturing? The true essence of lean production.",
+      "Distinguishing Value-Added (VA), Necessary Non-Value-Added (NNVA), and Non-Value-Added (NVA) activities.",
+      "The 5 Lean Principles: Value, Value Stream, Flow, Pull, and Perfection.",
+      "The 8 common types of waste in manufacturing.",
+      "Core improvement tools: 5S, Kaizen, Kanban, VSM, SMED, Poka-Yoke, TPM, and 5 Why.",
+      "Real production line examples & how to start implementing Lean in your enterprise."
+    ],
+    "thumbnail": "assets/images/resources/vid-intro.jpg?v=2",
+    "duration": "11:07",
     "views": "32K views",
-    "timeAgo": "2 weeks ago",
-    "videoUrl": "https://youtube.com/@invamax?si=5aj2VVcbw5KCaFhI",
+    "timeAgo": "1 week ago",
+    "videoUrl": "https://youtu.be/tpELxjjICmg?si=Rk9NVqYH78HhbirR",
     "status": "published",
-    "createdAt": "2026-10-05"
+    "createdAt": "2026-10-30"
   },
   {
     "id": "vid-5-loi-thuong-gap",
     "title": "5 Common Pitfalls When Implementing Kaizen in Factories",
+    "desc": "Analyzing common mistakes that cause Kaizen and 5S initiatives to lose momentum and how to sustain continuous improvement.",
     "thumbnail": "assets/images/resources/vid-mistakes.jpg",
     "duration": "18:20",
     "views": "24K views",
@@ -24,6 +34,7 @@
   {
     "id": "vid-ai-du-bao-san-xuat",
     "title": "AI Applications in Manufacturing Demand & Scheduling",
+    "desc": "How to leverage data and artificial intelligence to improve demand forecasting accuracy, production scheduling, and inventory optimization.",
     "thumbnail": "assets/images/resources/vid-ai-pred.jpg",
     "duration": "15:10",
     "views": "18K views",
@@ -35,6 +46,7 @@
   {
     "id": "vid-xay-dung-cost-down",
     "title": "How to Build a Sustainable Cost Down Governance System",
+    "desc": "Methodology for establishing consumption standards, identifying waste, and organizing an effective manufacturing cost-reduction program.",
     "thumbnail": "assets/images/resources/vid-costdown-sys.jpg",
     "duration": "10:45",
     "views": "21K views",

@@ -1,18 +1,28 @@
 [
   {
     "id": "vid-lean-intro-12p",
-    "title": "Giới thiệu Lean Manufacturing trong 12 phút",
-    "thumbnail": "assets/images/resources/vid-intro.jpg",
-    "duration": "12:34",
+    "title": "Hiểu về Lean Manufacturing trong 10 phút",
+    "desc": "Tìm hiểu tư duy Lean Manufacturing từ 5 nguyên lý nền tảng, cách nhận diện 8 loại lãng phí đến lựa chọn công cụ cải tiến và ứng dụng thực tế trong nhà máy.",
+    "highlights": [
+      "Lean Manufacturing là gì? Bản chất của sản xuất tinh gọn.",
+      "Phân biệt hoạt động tạo giá trị (VA), cần thiết nhưng không tạo giá trị (NNVA) và không tạo giá trị (NVA).",
+      "5 nguyên lý Lean: Value, Value Stream, Flow, Pull và Perfection.",
+      "8 loại lãng phí thường gặp trong sản xuất.",
+      "Các công cụ cải tiến: 5S, Kaizen, Kanban, VSM, SMED, Poka-Yoke, TPM và 5 Why.",
+      "Ví dụ ứng dụng Lean trong dây chuyền sản xuất & cách bắt đầu triển khai tại doanh nghiệp."
+    ],
+    "thumbnail": "assets/images/resources/vid-intro.jpg?v=2",
+    "duration": "11:07",
     "views": "32K lượt xem",
-    "timeAgo": "2 tuần trước",
-    "videoUrl": "https://youtube.com/@invamax?si=5aj2VVcbw5KCaFhI",
+    "timeAgo": "1 tuần trước",
+    "videoUrl": "https://youtu.be/tpELxjjICmg?si=Rk9NVqYH78HhbirR",
     "status": "published",
-    "createdAt": "2026-10-05"
+    "createdAt": "2026-10-30"
   },
   {
     "id": "vid-5-loi-thuong-gap",
     "title": "5 lỗi thường gặp khi triển khai cải tiến tại nhà máy",
+    "desc": "Phân tích những sai lầm phổ biến khiến phong trào Kaizen, 5S nhanh chóng hạ nhiệt và cách khắc phục để duy trì cải tiến bền vững.",
     "thumbnail": "assets/images/resources/vid-mistakes.jpg",
     "duration": "18:20",
     "views": "24K lượt xem",
@@ -24,6 +34,7 @@
   {
     "id": "vid-ai-du-bao-san-xuat",
     "title": "Ứng dụng AI trong dự báo sản xuất",
+    "desc": "Cách ứng dụng dữ liệu và trí tuệ nhân tạo để nâng cao độ chính xác khi dự báo nhu cầu, lập kế hoạch sản xuất và tối ưu tồn kho.",
     "thumbnail": "assets/images/resources/vid-ai-pred.jpg",
     "duration": "15:10",
     "views": "18K lượt xem",
@@ -35,6 +46,7 @@
   {
     "id": "vid-xay-dung-cost-down",
     "title": "Cách xây dựng hệ thống Cost Down bền vững",
+    "desc": "Phương pháp thiết lập cơ chế kiểm soát định mức, nhận diện lãng phí và tổ chức chương trình giảm chi phí sản xuất hiệu quả.",
     "thumbnail": "assets/images/resources/vid-costdown-sys.jpg",
     "duration": "10:45",
     "views": "21K lượt xem",
