@@ -55,7 +55,10 @@
         }
         .event-card-horizontal {
             display: grid;
-            grid-template-columns: 210px 1fr;
+            grid-template-columns: 185px 1fr;
+            gap: 20px;
+            padding: 18px;
+            align-items: stretch;
             background: #ffffff;
             border: 1px solid #e2e8f0;
             border-radius: 16px;
@@ -72,14 +75,21 @@
         .event-card-img-wrap {
             position: relative;
             overflow: hidden;
-            height: 100%;
-            min-height: 240px;
+            width: 185px;
+            height: 204px;
+            min-height: 204px;
+            max-height: 204px;
+            align-self: center;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
             background: #f1f5f9;
         }
         .event-card-img-wrap img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center 20%;
             display: block;
             transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -88,13 +98,13 @@
         }
         .event-card-badge {
             position: absolute;
-            top: 14px;
-            left: 14px;
+            top: 10px;
+            left: 10px;
             background: rgba(239, 109, 28, 0.95);
             color: #ffffff;
-            font-size: 10.5px;
+            font-size: 9.5px;
             font-weight: 800;
-            padding: 4px 10px;
+            padding: 3.5px 9px;
             border-radius: 999px;
             text-transform: uppercase;
             letter-spacing: 0.04em;
@@ -103,7 +113,7 @@
             z-index: 2;
         }
         .event-card-content {
-            padding: 22px 24px;
+            padding: 2px 4px 2px 0;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -119,7 +129,7 @@
             line-height: 1.35;
         }
         .event-card-title {
-            font-size: 1.25rem;
+            font-size: 1.22rem;
             font-weight: 800;
             color: #0f172a;
             line-height: 1.35;
@@ -134,7 +144,7 @@
             color: #64748b;
             font-size: 0.88rem;
             line-height: 1.55;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
             display: -webkit-box;
             -webkit-line-clamp: 4;
             -webkit-box-orient: vertical;
@@ -144,7 +154,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding-top: 14px;
+            padding-top: 12px;
             border-top: 1px solid #f1f5f9;
             margin-top: auto;
             flex-wrap: wrap;
@@ -193,12 +203,16 @@
             }
             .event-card-horizontal {
                 grid-template-columns: 1fr;
+                padding: 14px;
+                gap: 12px;
                 border-radius: 12px;
             }
             .event-card-img-wrap {
-                height: 140px;
-                min-height: 140px;
-                max-height: 140px;
+                width: 100%;
+                height: 155px;
+                min-height: 155px;
+                max-height: 155px;
+                border-radius: 10px;
             }
             .event-card-badge {
                 top: 10px;
@@ -207,7 +221,7 @@
                 padding: 3px 8px;
             }
             .event-card-content {
-                padding: 12px 14px 14px;
+                padding: 0;
             }
             .event-card-status {
                 font-size: 11px;
@@ -360,7 +374,7 @@
             <!-- Event Card 0: Giám đốc Operational Excellence Đồng hành (Fractional OpEx Director) -->
             <article class="event-card-horizontal">
                 <div class="event-card-img-wrap">
-                    <img src="../assets/images/events/fractional-opex-poster.jpg?v=1" alt="Operational Excellence – Dịch vụ Giám đốc OpEx Đồng hành tại Việt Nam" loading="lazy">
+                    <img src="../assets/images/events/fractional-opex-thumb.jpg?v=2" alt="Operational Excellence – Dịch vụ Giám đốc OpEx Đồng hành tại Việt Nam" loading="lazy">
                     <span class="event-card-badge">
                         Chương trình hợp tác
                     </span>
