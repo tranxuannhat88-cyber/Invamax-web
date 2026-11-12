@@ -72,14 +72,21 @@
             transform: translateY(-4px);
             box-shadow: 0 16px 32px rgba(15, 23, 42, 0.09);
         }
+        .event-card-left {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 10px;
+            width: 185px;
+        }
         .event-card-img-wrap {
             position: relative;
             overflow: hidden;
             width: 185px;
-            height: 204px;
-            min-height: 204px;
-            max-height: 204px;
-            align-self: center;
+            height: 188px;
+            min-height: 188px;
+            max-height: 188px;
             border-radius: 12px;
             border: 1px solid #e2e8f0;
             box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
@@ -97,20 +104,20 @@
             transform: scale(1.06);
         }
         .event-card-badge {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background: rgba(239, 109, 28, 0.95);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #ef6d1c;
             color: #ffffff;
-            font-size: 9.5px;
+            font-size: 10px;
             font-weight: 800;
-            padding: 3.5px 9px;
+            padding: 4.5px 12px;
             border-radius: 999px;
             text-transform: uppercase;
             letter-spacing: 0.04em;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(6px);
-            z-index: 2;
+            box-shadow: 0 3px 10px rgba(239, 109, 28, 0.25);
+            line-height: 1.2;
+            white-space: nowrap;
         }
         .event-card-content {
             padding: 2px 4px 2px 0;
@@ -207,6 +214,11 @@
                 gap: 12px;
                 border-radius: 12px;
             }
+            .event-card-left {
+                width: 100%;
+                align-items: flex-start;
+                gap: 8px;
+            }
             .event-card-img-wrap {
                 width: 100%;
                 height: 155px;
@@ -215,10 +227,8 @@
                 border-radius: 10px;
             }
             .event-card-badge {
-                top: 10px;
-                left: 10px;
                 font-size: 9.5px;
-                padding: 3px 8px;
+                padding: 4px 10px;
             }
             .event-card-content {
                 padding: 0;
@@ -373,11 +383,13 @@
         <div class="events-list">
             <!-- Event Card 0: Fractional Operational Excellence Director -->
             <article class="event-card-horizontal">
-                <div class="event-card-img-wrap">
-                    <img src="../assets/images/events/fractional-opex-thumb.jpg?v=2" alt="Operational Excellence – Fractional OpEx Director Services in Vietnam" loading="lazy">
+                <div class="event-card-left">
                     <span class="event-card-badge">
                         Partnership Program
                     </span>
+                    <div class="event-card-img-wrap">
+                        <img src="../assets/images/events/fractional-opex-thumb.jpg?v=2" alt="Operational Excellence – Fractional OpEx Director Services in Vietnam" loading="lazy">
+                    </div>
                 </div>
                 <div class="event-card-content">
                     <div>
@@ -404,11 +416,13 @@
             </article>
             <!-- Event Card 1: Manufacturing Cost Optimization -->
             <article class="event-card-horizontal">
-                <div class="event-card-img-wrap">
-                    <img src="../assets/images/campaign-hero.jpg" alt="Manufacturing Cost Optimization Partnership Program" loading="lazy">
+                <div class="event-card-left">
                     <span class="event-card-badge">
                         Partnership Program
                     </span>
+                    <div class="event-card-img-wrap">
+                        <img src="../assets/images/campaign-hero.jpg" alt="Manufacturing Cost Optimization Partnership Program" loading="lazy">
+                    </div>
                 </div>
                 <div class="event-card-content">
                     <div>
