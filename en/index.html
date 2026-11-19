@@ -36,7 +36,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/invamax-tokens.css">
-    <link rel="stylesheet" href="../assets/css/homepage.css?v=8">
+    <link rel="stylesheet" href="../assets/css/homepage.css?v=9">
     
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -241,6 +241,39 @@
                 <div class="actions">
                     <a class="btn btn-orange" href="#solutions">Explore Solutions <span>&rarr;</span></a>
                     <a class="btn btn-outline" href="#" onclick="openContactModal(); return false;">Consult with INVAMAX Experts</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 1.5. ABOUT INVAMAX & INTRO VIDEO SECTION -->
+        <section class="section about-video" id="about-invamax" aria-labelledby="about-video-title">
+            <div class="container">
+                <div class="about-video-grid">
+                    <div class="about-video-copy">
+                        <p class="eyebrow left">ABOUT INVAMAX</p>
+                        <h2 id="about-video-title">Solid Foundation &ndash; <em>Effortless Operations</em></h2>
+                        <p class="about-video-desc">As a pioneer in hands-on factory operations management in Vietnam, INVAMAX partners with business owners and leadership teams to eliminate key-person dependency and build self-sustaining manufacturing systems.</p>
+                        <ul class="about-video-points">
+                            <li>Real-world governance challenges facing modern manufacturing plants</li>
+                            <li>3 core pillars: Operational Restructuring &middot; Direct Operations &middot; Digitalization</li>
+                            <li>Hands-on capabilities and measurable outcomes from real factory projects</li>
+                        </ul>
+                        <div class="about-video-actions">
+                            <a class="about-video-link" href="https://www.youtube.com/watch?v=6_6-MhMKeJw" target="_blank" rel="noopener noreferrer">Watch on INVAMAX YouTube Channel <span>&rarr;</span></a>
+                        </div>
+                    </div>
+                    <div class="about-video-media">
+                        <div class="about-video-card" data-video-id="6_6-MhMKeJw" role="button" tabindex="0" aria-label="Play INVAMAX introduction video (04:31)">
+                            <img class="about-video-thumb" src="https://i.ytimg.com/vi/6_6-MhMKeJw/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/6_6-MhMKeJw/hqdefault.jpg';" alt="INVAMAX — Pioneer in Factory Operations Management in Vietnam" loading="lazy">
+                            <div class="about-video-overlay"></div>
+                            <span class="about-video-duration">04:31</span>
+                            <div class="about-video-play" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -587,6 +620,28 @@
     <script src="../assets/js/main.js?v=6"></script>
     <script>
         lucide.createIcons();
+        document.querySelectorAll('.about-video-card[data-video-id]').forEach(function (card) {
+            function loadYouTubePlayer() {
+                var videoId = card.getAttribute('data-video-id');
+                if (!videoId || card.dataset.loaded === '1') return;
+                card.dataset.loaded = '1';
+                var iframe = document.createElement('iframe');
+                iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0&modestbranding=1';
+                iframe.title = 'INVAMAX — Pioneer in Factory Operations Management in Vietnam';
+                iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+                iframe.allowFullscreen = true;
+                card.innerHTML = '';
+                card.appendChild(iframe);
+                card.style.cursor = 'default';
+            }
+            card.addEventListener('click', loadYouTubePlayer);
+            card.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    loadYouTubePlayer();
+                }
+            });
+        });
     </script>
 </body>
 </html>

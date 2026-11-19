@@ -822,3 +822,196 @@ footer{padding:46px 0 22px;background:var(--iv-dark)}.footer-grid{grid-template-
     }
 }
 
+/* ========================================================
+   INVAMAX ABOUT & INTRO VIDEO SECTION (BELOW HERO)
+   ======================================================== */
+.about-video {
+    background-color: var(--iv-light, #F5F7F6);
+    border-bottom: 1px solid var(--iv-border, #DDE5E1);
+    padding: 72px 0;
+}
+
+.about-video-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: 48px;
+    align-items: center;
+}
+
+.about-video-copy h2 {
+    font-size: clamp(26px, 2.6vw, 34px);
+    line-height: 1.24;
+    font-weight: 800;
+    color: var(--iv-dark, #0B211A);
+    margin: 0 0 16px;
+}
+
+.about-video-copy h2 em {
+    font-style: normal;
+    color: var(--iv-orange, #FF6900);
+}
+
+.about-video-desc {
+    font-size: 14.5px;
+    line-height: 1.75;
+    color: var(--iv-muted, #667085);
+    margin: 0 0 20px;
+}
+
+.about-video-points {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.about-video-points li {
+    position: relative;
+    padding-left: 26px;
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--iv-text, #111827);
+}
+
+.about-video-points li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--iv-color-orange-tint, #FFF1E8);
+    color: var(--iv-orange, #FF6900);
+    font-size: 11px;
+    font-weight: 800;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-video-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 18px;
+}
+
+.about-video-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--iv-orange, #FF6900);
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.about-video-link:hover {
+    color: var(--iv-color-orange-hover, #E95E00);
+    transform: translateX(3px);
+}
+
+.about-video-card {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--iv-radius-card, 16px);
+    overflow: hidden;
+    background: var(--iv-dark, #0B211A);
+    border: 1px solid rgba(11, 33, 26, 0.12);
+    box-shadow: 0 20px 42px -16px rgba(11, 33, 26, 0.28);
+    cursor: pointer;
+}
+
+.about-video-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.35s ease;
+}
+
+.about-video-card:hover .about-video-thumb {
+    transform: scale(1.03);
+}
+
+.about-video-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(11, 33, 26, 0.14) 0%, rgba(11, 33, 26, 0.48) 100%);
+    pointer-events: none;
+}
+
+.about-video-duration {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    background: rgba(6, 28, 22, 0.8);
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    pointer-events: none;
+}
+
+.about-video-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    background: var(--iv-orange, #FF6900);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 0 10px rgba(255, 105, 0, 0.24);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    pointer-events: none;
+}
+
+.about-video-play svg {
+    margin-left: 3px;
+}
+
+.about-video-card:hover .about-video-play {
+    transform: translate(-50%, -50%) scale(1.08);
+    background: var(--iv-color-orange-hover, #E95E00);
+}
+
+.about-video-card iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+@media (max-width: 900px) {
+    .about-video {
+        padding: 56px 0;
+    }
+    .about-video-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+}
+
+@media (max-width: 560px) {
+    .about-video {
+        padding: 44px 0;
+    }
+    .about-video-play {
+        width: 58px;
+        height: 58px;
+    }
+}
+
+

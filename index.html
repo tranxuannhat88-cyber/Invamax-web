@@ -36,7 +36,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/invamax-tokens.css">
-    <link rel="stylesheet" href="assets/css/homepage.css?v=8">
+    <link rel="stylesheet" href="assets/css/homepage.css?v=9">
     
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -242,6 +242,39 @@
                 <div class="actions">
                     <a class="btn btn-orange" href="#giai-phap">Khám phá giải pháp <span>&rarr;</span></a>
                     <a class="btn btn-outline" href="#" onclick="openContactModal(); return false;">Tư vấn với đội ngũ INVAMAX</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 1.5. ABOUT INVAMAX & INTRO VIDEO SECTION -->
+        <section class="section about-video" id="ve-invamax" aria-labelledby="about-video-title">
+            <div class="container">
+                <div class="about-video-grid">
+                    <div class="about-video-copy">
+                        <p class="eyebrow left">VỀ INVAMAX</p>
+                        <h2 id="about-video-title">Xây nền vững &ndash; <em>Vận hành nhẹ</em></h2>
+                        <p class="about-video-desc">Là đơn vị tiên phong điều hành nhà máy tại Việt Nam, INVAMAX đồng hành cùng chủ doanh nghiệp và ban điều hành tháo gỡ bài toán phụ thuộc cá nhân, xây dựng hệ thống quản trị sản xuất bài bản và tự vận hành bền vững.</p>
+                        <ul class="about-video-points">
+                            <li>Bức tranh thực trạng và điểm nghẽn vận hành nhà máy sản xuất hiện nay</li>
+                            <li>3 trụ cột giải pháp: Tái cấu trúc &middot; Trực tiếp điều hành &middot; Số hóa vận hành</li>
+                            <li>Năng lực thực chiến và kết quả cải tiến từ các dự án nhà máy tiêu biểu</li>
+                        </ul>
+                        <div class="about-video-actions">
+                            <a class="about-video-link" href="https://www.youtube.com/watch?v=6_6-MhMKeJw" target="_blank" rel="noopener noreferrer">Xem trên kênh YouTube INVAMAX <span>&rarr;</span></a>
+                        </div>
+                    </div>
+                    <div class="about-video-media">
+                        <div class="about-video-card" data-video-id="6_6-MhMKeJw" role="button" tabindex="0" aria-label="Phát video giới thiệu INVAMAX (04:31)">
+                            <img class="about-video-thumb" src="https://i.ytimg.com/vi/6_6-MhMKeJw/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/6_6-MhMKeJw/hqdefault.jpg';" alt="INVAMAX — Đơn Vị Tiên Phong Điều Hành Nhà Máy Tại Việt Nam" loading="lazy">
+                            <div class="about-video-overlay"></div>
+                            <span class="about-video-duration">04:31</span>
+                            <div class="about-video-play" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -588,6 +621,28 @@
     <script src="assets/js/main.js?v=6"></script>
     <script>
         lucide.createIcons();
+        document.querySelectorAll('.about-video-card[data-video-id]').forEach(function (card) {
+            function loadYouTubePlayer() {
+                var videoId = card.getAttribute('data-video-id');
+                if (!videoId || card.dataset.loaded === '1') return;
+                card.dataset.loaded = '1';
+                var iframe = document.createElement('iframe');
+                iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0&modestbranding=1';
+                iframe.title = 'INVAMAX — Đơn Vị Tiên Phong Điều Hành Nhà Máy Tại Việt Nam';
+                iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+                iframe.allowFullscreen = true;
+                card.innerHTML = '';
+                card.appendChild(iframe);
+                card.style.cursor = 'default';
+            }
+            card.addEventListener('click', loadYouTubePlayer);
+            card.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    loadYouTubePlayer();
+                }
+            });
+        });
     </script>
 </body>
 </html>
