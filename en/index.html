@@ -624,7 +624,7 @@
                 if (!videoId || card.dataset.loaded === '1') return;
                 card.dataset.loaded = '1';
                 var iframe = document.createElement('iframe');
-                iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0&modestbranding=1';
+                iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&mute=1&rel=0&modestbranding=1';
                 iframe.title = 'INVAMAX — Pioneer in Factory Operations Management in Vietnam';
                 iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
                 iframe.allowFullscreen = true;
