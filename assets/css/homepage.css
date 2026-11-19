@@ -841,6 +841,11 @@ footer{padding:46px 0 22px;background:var(--iv-dark)}.footer-grid{grid-template-
     align-items: center;
 }
 
+.about-video .eyebrow:after {
+    content: ' —';
+    margin-left: 8px;
+}
+
 .about-video-copy h2 {
     font-size: clamp(26px, 2.6vw, 34px);
     line-height: 1.24;
@@ -916,6 +921,7 @@ footer{padding:46px 0 22px;background:var(--iv-dark)}.footer-grid{grid-template-
 }
 
 .about-video-actions {
+    margin-top: 18px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
