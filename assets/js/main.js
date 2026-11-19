@@ -223,33 +223,33 @@ function getUnifiedModalContentHTML(isEn) {
                 <div class="form-grid">
                     <div class="form-group">
                         <label>Full Name *</label>
-                        <input type="text" name="hoTen" required placeholder="John Doe">
+                        <input type="text" name="hoTen" required>
                     </div>
                     <div class="form-group">
                         <label>Job Title *</label>
-                        <input type="text" name="chucDanh" required placeholder="Director / Manager">
+                        <input type="text" name="chucDanh" required>
                     </div>
                 </div>
                 
                 <div class="form-grid">
                     <div class="form-group">
                         <label>Phone Number *</label>
-                        <input type="tel" name="soDienThoai" required placeholder="+84 988...">
+                        <input type="tel" name="soDienThoai" required>
                     </div>
                     <div class="form-group">
                         <label>Email *</label>
-                        <input type="email" name="email" required placeholder="email@company.com">
+                        <input type="email" name="email" required>
                     </div>
                 </div>
                 
                 <div class="form-grid">
                     <div class="form-group">
                         <label>Factory / Company Name *</label>
-                        <input type="text" name="tenNhaMay" required placeholder="XYZ Manufacturing Co., Ltd">
+                        <input type="text" name="tenNhaMay" required>
                     </div>
                     <div class="form-group">
                         <label>Factory Address *</label>
-                        <input type="text" name="diaChi" required placeholder="Industrial Park, Province...">
+                        <input type="text" name="diaChi" required>
                     </div>
                 </div>
                 
@@ -283,7 +283,7 @@ function getUnifiedModalContentHTML(isEn) {
                 
                 <div class="form-group">
                     <label>Consultation Topic *</label>
-                    <textarea name="noiDung" rows="2" required placeholder="Briefly describe your factory's current challenges or goals..."></textarea>
+                    <textarea name="noiDung" rows="2" required></textarea>
                 </div>
                 
                 <button type="submit" id="btnSubmitForm" class="btn btn-orange">
@@ -314,33 +314,33 @@ function getUnifiedModalContentHTML(isEn) {
                 <div class="form-grid">
                     <div class="form-group">
                         <label>Họ và tên *</label>
-                        <input type="text" name="hoTen" required placeholder="Nguyễn Văn A">
+                        <input type="text" name="hoTen" required>
                     </div>
                     <div class="form-group">
                         <label>Chức danh *</label>
-                        <input type="text" name="chucDanh" required placeholder="Giám đốc / Trưởng phòng">
+                        <input type="text" name="chucDanh" required>
                     </div>
                 </div>
                 
                 <div class="form-grid">
                     <div class="form-group">
                         <label>Số điện thoại *</label>
-                        <input type="tel" name="soDienThoai" required placeholder="0988...">
+                        <input type="tel" name="soDienThoai" required>
                     </div>
                     <div class="form-group">
                         <label>Email *</label>
-                        <input type="email" name="email" required placeholder="email@congty.com">
+                        <input type="email" name="email" required>
                     </div>
                 </div>
                 
                 <div class="form-grid">
                     <div class="form-group">
                         <label>Tên nhà máy / Công ty *</label>
-                        <input type="text" name="tenNhaMay" required placeholder="Công ty TNHH XYZ">
+                        <input type="text" name="tenNhaMay" required>
                     </div>
                     <div class="form-group">
                         <label>Địa chỉ nhà máy *</label>
-                        <input type="text" name="diaChi" required placeholder="KCN abc, Tỉnh xyz...">
+                        <input type="text" name="diaChi" required>
                     </div>
                 </div>
                 
@@ -374,7 +374,7 @@ function getUnifiedModalContentHTML(isEn) {
                 
                 <div class="form-group">
                     <label>Nội dung cần tư vấn *</label>
-                    <textarea name="noiDung" rows="2" required placeholder="Mô tả sơ bộ về định hướng, vấn đề hiện tại của nhà máy..."></textarea>
+                    <textarea name="noiDung" rows="2" required></textarea>
                 </div>
                 
                 <button type="submit" id="btnSubmitForm" class="btn btn-orange">
