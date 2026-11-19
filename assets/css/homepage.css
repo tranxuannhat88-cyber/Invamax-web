@@ -464,22 +464,25 @@ footer{padding:46px 0 22px;background:var(--iv-dark)}.footer-grid{grid-template-
 }
 
 
-/* Hero vertical balance after removing proof badges */
+/* Hero vertical balance — matched to subpage hero height (420px below 52px navbar) */
 .hero {
-    min-height: 660px !important;
+    padding-top: 52px !important;
+    min-height: 472px !important;
+    display: flex !important;
+    align-items: center !important;
 }
 .hero-content {
-    padding-top: 190px !important;
-    padding-bottom: 115px !important;
+    padding-top: 52px !important;
+    padding-bottom: 52px !important;
 }
 
 @media (max-width: 980px) {
     .hero {
-        min-height: 580px !important;
+        min-height: 432px !important;
     }
     .hero-content {
-        padding-top: 150px !important;
-        padding-bottom: 80px !important;
+        padding-top: 44px !important;
+        padding-bottom: 44px !important;
     }
 }
 
@@ -488,8 +491,8 @@ footer{padding:46px 0 22px;background:var(--iv-dark)}.footer-grid{grid-template-
         min-height: auto !important;
     }
     .hero-content {
-        padding-top: 125px !important;
-        padding-bottom: 60px !important;
+        padding-top: 40px !important;
+        padding-bottom: 48px !important;
     }
 }
 
