@@ -856,9 +856,29 @@ footer{padding:46px 0 22px;background:var(--iv-dark)}.footer-grid{grid-template-
 
 .about-video-desc {
     font-size: 14.5px;
-    line-height: 1.75;
+    line-height: 1.72;
     color: var(--iv-muted, #667085);
-    margin: 0 0 20px;
+    margin: 0 0 14px;
+}
+
+.about-video-desc strong {
+    color: var(--iv-dark, #0B211A);
+    font-weight: 700;
+}
+
+.about-video-motto {
+    margin: 18px 0 0;
+    padding-left: 14px;
+    border-left: 3px solid var(--iv-orange, #FF6900);
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.5;
+    color: var(--iv-dark, #0B211A);
+}
+
+.about-video-motto em {
+    font-style: normal;
+    color: var(--iv-orange, #FF6900);
 }
 
 .about-video-points {
@@ -950,11 +970,11 @@ footer{padding:46px 0 22px;background:var(--iv-dark)}.footer-grid{grid-template-
 
 .about-video-duration {
     position: absolute;
-    top: 14px;
+    bottom: 14px;
     right: 14px;
     padding: 4px 10px;
     border-radius: 6px;
-    background: rgba(6, 28, 22, 0.8);
+    background: rgba(6, 28, 22, 0.82);
     color: #ffffff;
     font-size: 12px;
     font-weight: 600;
